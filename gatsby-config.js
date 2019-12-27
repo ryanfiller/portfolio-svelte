@@ -1,20 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `ryanfiller.com`,
+    siteUrl: `https://www.ryanfiller.com`,
+    description: `The blog and porfolio for Ryan Filler.`,
+    author: `@ryanfiller_`,
+    headshot: `https://res.cloudinary.com/ryanfiller/image/upload/v1570907728/Screen_Shot_2019-04-12_at_8.27.48_AM_irt6b6.png`,
+    about: `I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee.`
   },
+
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
-    },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -27,8 +22,32 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+
+    // data related plugins
+    {
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `content`,
+				path: `${__dirname}/src/content/`,
+			},
+		},
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+				extensions: [`.mdx`, `.md`, `.markdown`],
+				defaultLayouts: {
+          content: require.resolve(`./src/components/layout/markdown.js`),
+				},
+				// gatsbyRemarkPlugins: [],
+      },
+    },
+    
+    // client side related plugins
+    {
+			resolve: `gatsby-plugin-layout`,
+			options: {
+					component: require.resolve(`./src/components/layout/page-layout`)
+			}
+		},
   ],
 }
