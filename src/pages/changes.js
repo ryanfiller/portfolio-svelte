@@ -5,22 +5,27 @@ import PropTypes from 'prop-types';
 import Markdown from '../components/layout/markdown';
 
 export const query = graphql`
-	query WorkshopPage {
-		mdx(frontmatter: { name: { eq: "workshop" } } ) {
+	query ChangeLogPage {
+		mdx(frontmatter: { name: { eq: "changes" } } ) {
 			frontmatter {
 				title
 			}
+      tableOfContents
 			body
 		}
 	}
 `
 
-const WorkshopPage = (props) => {
-	return <Markdown post={props.data.mdx.body} />
+const ChangeLogPage = (props) => {
+	return (
+    <>
+      <Markdown post={props.data.mdx.body} />
+    </>
+  )
 }
 
-WorkshopPage.propTypes = {
+ChangeLogPage.propTypes = {
     data: PropTypes.object.isRequired,
 };
 
-export default WorkshopPage;
+export default ChangeLogPage;

@@ -620,3 +620,10 @@ pre tt:after {
     font-size: 100%;
   }
 }
+
+article img {
+  display: block;
+  margin: 1em auto;
+  width: 100%;
+  max-width: 500px;
+}

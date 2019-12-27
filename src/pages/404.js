@@ -6,7 +6,7 @@ import SEO from "../components/seo"
 
 export const query = graphql`
 	query NotFoundPage {
-		mdx(frontmatter: { title: { eq: "404" } } ) {
+		mdx(frontmatter: { name: { eq: "404" } } ) {
 			frontmatter {
 				title
         options {

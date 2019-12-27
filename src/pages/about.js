@@ -6,7 +6,7 @@ import Markdown from '../components/layout/markdown';
 
 export const query = graphql`
 	query AboutPage {
-		mdx(frontmatter: { title: { eq: "about" } } ) {
+		mdx(frontmatter: { name: { eq: "about" } } ) {
 			frontmatter {
 				title
 			}

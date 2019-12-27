@@ -1,10 +1,12 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
+
+import Posts from '../components/posts'
 
 export const query = graphql`
 	query BlogPage {
-		mdx(frontmatter: { title: { eq: "blog" } } ) {
+		mdx(frontmatter: { name: { eq: "blog" } } ) {
 			frontmatter {
         title
 			}
@@ -25,7 +27,8 @@ export const query = graphql`
 					frontmatter {
 						title
 						meta {
-							date(formatString: "MMM.DD.YY")
+							date
+							humanDate: date(formatString: "MMM.DD.YY")
 						}
 					}
 				}
@@ -39,14 +42,7 @@ const BlogPage = (props) => {
     <>
       <h1>blog</h1>
 
-			{props.data.allMdx.edges.map(({ node }, index) => (
-				<div key={index}> 
-					<Link to={node.fields.slug}>
-						{node.frontmatter.title}
-						{node.frontmatter.meta.date}
-					</Link>
-				</div>
-			))} 
+			<Posts posts={props.data.allMdx.edges} />
     </>
   )
 }
