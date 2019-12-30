@@ -24,7 +24,7 @@ const Header = (props) => (
             textDecoration: `none`,
           }}
         >
-          {props.siteTitle}
+          {props.title}
         </Link>
       </h1>
     </div>
@@ -32,7 +32,7 @@ const Header = (props) => (
 )
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  title: PropTypes.string,
 }
 
 Header.defaultProps = {

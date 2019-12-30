@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export const query = graphql`
 	query PortfolioPage {
-		mdx(frontmatter: { title: { eq: "portfolio" } } ) {
+		mdx(frontmatter: { name: { eq: "portfolio" } } ) {
 			frontmatter {
         title
 			}
