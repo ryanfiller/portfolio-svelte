@@ -35,8 +35,4 @@ Header.propTypes = {
   title: PropTypes.string,
 }
 
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
 export default Header

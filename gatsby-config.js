@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `ryanfiller.com`,
     siteUrl: `https://www.ryanfiller.com`,
-    description: `The blog and porfolio for Ryan Filler.`,
+    description: `The blog and porfolio of Ryan Filler.`,
     author: `@ryanfiller_`,
     headshot: `https://res.cloudinary.com/ryanfiller/image/upload/v1570907728/Screen_Shot_2019-04-12_at_8.27.48_AM_irt6b6.png`,
     about: `I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee.`

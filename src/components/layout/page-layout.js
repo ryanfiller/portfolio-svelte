@@ -12,7 +12,6 @@ const PageLayout = (props) => {
       title,
       options: {
         hideSiteHeader = false,
-        color = 'pink'
       } = {}
     }
   } = props.data.mdx
@@ -21,7 +20,7 @@ const PageLayout = (props) => {
     <>
       <SEO {...title} />
       <div id="site" >
-        {!hideSiteHeader && <Header title={'ryanfiller.com'} color={color} />}
+        {!hideSiteHeader && <Header title={'ryanfiller.com'} />}
         <main id="content"
           style={{
             margin: `0 auto`,
