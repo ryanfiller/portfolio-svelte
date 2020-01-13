@@ -19,11 +19,27 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/images/gatsby-icon.png`,
       },
     },
 
+    // CMS / content related plugins
+    {
+			resolve: `gatsby-plugin-netlify-cms`,
+			options: {
+				manualInit: true,
+				modulePath: `${__dirname}/src/cms/cms.js`,
+			},
+    },
+
     // data related plugins
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/images`,
+      },
+    },
     {
 			resolve: `gatsby-source-filesystem`,
 			options: {
@@ -42,7 +58,15 @@ module.exports = {
       },
     },
     
-    // client side related plugins
+    // design related plugins
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        cssLoaderOptions: {
+          camelCase: false, // to use BEM syntax
+        },
+      },
+    },
     {
 			resolve: `gatsby-plugin-layout`,
 			options: {

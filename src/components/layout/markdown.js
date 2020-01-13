@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import { MDXRenderer } from "gatsby-plugin-mdx"
 import { MDXProvider } from '@mdx-js/react'
 
-const components = {
+import Image from '../markdown/image'
 
+const components = {
+	img: Image,
 }
 
 const Markdown = (props) => {
