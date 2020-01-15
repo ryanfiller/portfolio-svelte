@@ -1,0 +1,38 @@
+@import './variables.module.scss';
+
+@mixin small() {
+  @media screen and (min-width: $smallBreak) {
+    @content;
+  }
+}
+
+@mixin medium() {
+  @media screen and (min-width: $mediumBreak) {
+    @content;
+  }
+}
+
+@mixin large() {
+  @media screen and (min-width: $largeBreak) {
+    @content;
+  }
+}
+
+@mixin extra() {
+  @media screen and (min-width: $extraBreak) {
+    @content;
+  }
+}
+
+// @mixin font-size($desktop-size: 1.5em, $tablet-size: 1.25em, $phone-size: 1em) {
+//   font-size: $desktop-size;
+//   line-height: 1.25em;
+
+//   @include tablet-break {
+//     font-size: $tablet-size;
+//   }
+
+//   @include phone-break {
+//     font-size: $phone-size;
+//   }
+// }

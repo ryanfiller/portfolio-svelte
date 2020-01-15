@@ -1,11 +1,12 @@
 import React from 'react'
+import { fishAttr } from '../../helpers'
 
 const image = {
   id: 'image', // this overwrites the default netlifycms image
   label: "Image",
   fields: [
     {
-      name: 'url',
+      name: 'src',
       label: 'Image',
       widget: 'image'
     },
@@ -17,6 +18,12 @@ const image = {
     {
       name: 'title',
       label: 'Title',
+      widget: 'string',
+      required: false,
+    },
+    {
+      name: 'caption',
+      label: 'Caption',
       widget: 'string',
       required: false,
     },
@@ -40,25 +47,25 @@ const image = {
     },
   ],
   pattern: /<img(.*)/,
-  fromBlock: function(match) {
+  fromBlock: match => {
     const string = match[0]
     const obj = {
-      url: string.match(/src="(.*?)"/)[1],
-      alt: string.match(/alt="(.*?)"/)[1],
-      title: string.includes('title') ? string.match(/title="(.*?)"/)[1] : '',
-      align: string.match(/align="(.*?)"/)[1],
-      small: string.match(/small="(.*?)"/)[1],
+      src: fishAttr(string, 'src'),
+      alt: fishAttr(string, 'alt'),
+      caption: fishAttr(string, 'data-caption'),
+      align: fishAttr(string, 'data-align'),
+      small: fishAttr(string, 'data-small'),
     };
     return obj;
   },
   // Function to create a text block from an instance of this component
   // what is actually written in the markdownfile
-  toBlock: function(obj) {
-    return `<img src="${obj.url}" alt="${obj.alt}" title="${obj.title}" align="${obj.align}" small="${obj.small}" />`;
+  toBlock: obj => {
+    return `<img src="${obj.src}" alt="${obj.alt}" data-caption="${obj.caption}" data-align="${obj.align}" data-small="${obj.small}" />`;
   },
 
   // What is rendered in the netlify editor
-  toPreview: function(obj) {
+  toPreview: obj => {
     return (
       <ImagePreview {...obj} />
     )  
@@ -66,13 +73,14 @@ const image = {
 }
 
 const ImagePreview = props => {
-
   const {
-    url,
+    src,
     alt,
+    caption,
     align,
-    small,
+    small
   } = props
+
 
   let style;
 
@@ -80,37 +88,50 @@ const ImagePreview = props => {
     case 'full':
       style = {
         display: 'block',
-        margin: '0',
+        margin: '0'
       }
       break;
     case 'left':
       style = {
         float: 'left',
         display: 'block',
-        marginRight: '1em',
+        marginRight: '1em'
       }
       break;
     case 'right':
       style = {
         float: 'right',
         display: 'block',
-        marginLeft: '1em',
+        marginLeft: '1em'
       }
       break;
     default:
       // 'center'
       style = {
         display: 'block',
-        margin: '0 auto',
+        margin: '0 auto'
       }
   }
 
-  if (small === 'true' && align !== 'full') {
-    style.width = '25%';
+  if (align === 'full') {
+    style.width = '100%'
+  } else if (small === 'true') {
+    style.width = '25%'
+  } else {
+    style.width = '50%'
   }
   
   return (
-    !!url ? <img src={url} alt={alt} style={{...style}} /> : null
+    !!src ? 
+      <div style={{...style}}>
+        <img 
+          src={`https://www.ryanfiller.com${src}`}
+          alt={alt}
+          style={{width: '100%'}}
+        />
+        {!!caption && <span>{caption}</span>}
+      </div> 
+    : null
   )
 }
 
