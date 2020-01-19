@@ -15,20 +15,34 @@ const Image = (props) => {
   } = props
   
   // TODO? - https://css-tricks.com/reducing-motion-with-the-picture-element/
+  // TODO - lazy load images
 
-  const Img = (props) => (
-    <img 
-      className={props.className}
-      alt={alt}
-      title={title}
-      srcset={`
-        ${src}?nf_resize=fit&w=500 500w, 
-        ${src}?nf_resize=fit&w=800 8000w
-      `}
-      sizes="100vw" // TODO? - maybe make this more specifc
-      src={`${src}?nf_resize=fit&w=1000`}
-      />
-  )
+  const Img = (props) => {
+    if (src.includes('.gif' || '.svg')) {
+      return (
+        <img 
+          className={props.className}
+          alt={alt}
+          title={title}
+          src={src}
+        />
+      )
+    } else {
+      return (
+        <img 
+          className={props.className}
+          alt={alt}
+          title={title}
+          srcset={`
+            ${src}?nf_resize=fit&w=500 500w, 
+            ${src}?nf_resize=fit&w=800 8000w
+          `}
+          sizes="100vw" // TODO? - maybe make this more specifc
+          src={`${src}?nf_resize=fit&w=1000`}
+        />
+      )
+    }
+  }
 
   const classNames = cx(
     styles[`image`],
