@@ -1,0 +1,65 @@
+@import '../../styles/functions.module.scss';
+
+.image {
+  	width: 100%;
+  	height: auto;
+  	margin: 0 0 1em 0;
+  	display: block;
+  	clear: both;
+
+  	&--center {
+  		@include small() {
+  				margin: 0 auto;
+  				width: 40%;
+  		}
+    }
+    
+  	&--right {
+  		@include small() {
+  				float: right;
+  				margin: 0 0 1rem 1rem;
+  				width: 40%;
+  		}
+    }
+    
+  	&--left {
+  		@include small() {
+  				float: left;
+  				margin: 0 1rem 1rem 0;
+  				width: 40%;
+  		}
+    }
+    
+  	&--full {
+  		@include small() {
+  				display: block;
+          width: 100%;
+          max-width: none !important; // full supercedes small
+  				height: auto;
+  				margin: 0 0 1rem 0;
+  		}
+    }
+    
+    &--small {
+      @include small() {
+        max-width: 10em;
+      }
+  	}
+
+  // for when figure.image and img is a child
+  img {
+    display: block;
+    line-height: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  figcaption {
+    text-align: center;
+    font-style: italic;
+		font-size: .8em;
+		line-height: 1.25;
+		padding: .25em .5em;
+	}
+}

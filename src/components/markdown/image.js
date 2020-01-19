@@ -1,85 +1,53 @@
-
 import React from 'react'
+import cx from 'classnames'
 
-// TODO this whole file needs rethinking
+import styles from './image.module.scss'
 
-import styles from './test.module.scss'
- 
-export default (props) => {
+const Image = (props) => {
   
   const {
     src,
     alt,
     title,
-    align,
-    small,
+    'data-align': align,
+    'data-small': small,
+    'data-caption': caption,
   } = props
+  
+  // TODO? - https://css-tricks.com/reducing-motion-with-the-picture-element/
 
-  let style;
-
-  switch (align) {
-    case 'full':
-      style = {
-        display: 'block',
-        margin: '0 0 1em 0',
-      }
-      break;
-    case 'left':
-      style = {
-        float: 'left',
-        display: 'block',
-        marginRight: '0 1em 1em 0',
-        width: '50%',
-      }
-      break;
-    case 'right':
-      style = {
-        float: 'right',
-        display: 'block',
-        marginLeft: '0 0 1em 1em',
-        width: '50%',
-      }
-      break;
-    default:
-      // 'center'
-      style = {
-        display: 'block',
-        margin: '0 auto 1em auto',
-        width: '50%',
-      }
-  }
-
-  if (small === 'true' && align !== 'full') {
-    style.width = '25%';
-  }
-
-  const addParams = (url, params) => {
-		const splitUrl = url.split('upload/')
-		return `${splitUrl[0]}upload/${params}/${splitUrl[1]}`
-	}
-
-  return ( 
-    <picture style={{...style}} className={styles['test']}>
-        {!src.includes('.gif'|| '.svg') &&
-					<>
-						{props.align === 'full' &&
-							<source 
-								srcSet={addParams(src, `c_scale,w_1200`)} 
-								media={`(min-width: 1200px)`} 
-							/>
-						}
-						<source 
-							srcSet={addParams(src, `c_scale,w_768`)} 
-							media={`(min-width: 768px)`} 
-						/>
-					</>
-				}
-				<img 
-					src={src}
-					alt={alt}
-          title={title}
-          style={{margin: '0', lineHeight: '0', display: 'block', width: '100%'}}
-				/>
-    </picture>
+  const Img = (props) => (
+    <img 
+      className={props.className}
+      alt={alt}
+      title={title}
+      srcset={`
+        ${src}?nf_resize=fit&w=500 500w, 
+        ${src}?nf_resize=fit&w=800 8000w
+      `}
+      sizes="100vw" // TODO? - maybe make this more specifc
+      src={`${src}?nf_resize=fit&w=1000`}
+      />
   )
+
+  const classNames = cx(
+    styles[`image`],
+    styles[`image--${align}`],
+    small && styles[`image--small`],
+  )
+
+  if (!!caption) {
+    return (
+      <figure className={classNames}>
+          <Img />
+          <figcaption>{caption}</figcaption>
+      </figure>
+    )
+  } else {
+    return ( 
+      <Img className={classNames} />   
+    )
+  }
 }
+
+export default Image

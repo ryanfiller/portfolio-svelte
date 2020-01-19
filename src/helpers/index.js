@@ -7,8 +7,16 @@ function slugify(string) {
   .replace(/--+/g, '-')       // Replace multiple - with single -
   .replace(/^-+/, '')         // Trim - from start of text
   .replace(/-+$/, '');        // Trim - from end of text
-};
+}
+
+function fishAttr(string, attr) {
+  var regex = new RegExp(`${attr}="(.*?)"`);
+  const match = string.match(regex)
+  // netlifycms blows up if no match, return ''
+  return match ? match[1] : ''
+}
 
 module.exports = {
   slugify,
-};
+  fishAttr
+}
