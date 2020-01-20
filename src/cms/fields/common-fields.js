@@ -2,7 +2,7 @@ const commonFields = [
   {
     name: 'title',
     label: 'Title',
-    widget: 'string' 
+    widget: 'string'
   },
   {
     name: 'options',
@@ -12,13 +12,13 @@ const commonFields = [
       {
         name: 'published',
         abel: 'Published',
-        widget: 'boolean', 
+        widget: 'boolean',
         default: false
       },
       {
         name: 'customurl',
         label: 'Custom Path',
-        widget: 'string', 
+        widget: 'string',
         default: '',
         required: false
       },
@@ -26,9 +26,9 @@ const commonFields = [
         name: 'customtemplate',
         label: 'Custom Template',
         widget: 'string',
-        default: '', 
-        required: false,
-      },
+        default: '',
+        required: false
+      }
     ]
   },
   {
@@ -39,10 +39,10 @@ const commonFields = [
       {
         name: 'date',
         label: 'Date',
-        widget: 'date' 
-      },
+        widget: 'date'
+      }
     ]
-  },
+  }
 ]
 
-export default commonFields;
+export default commonFields

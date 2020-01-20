@@ -4,8 +4,52 @@ name: 'changes'
 
 # A page to track my site getting better (or worse)
 
+## RF-05-01 - "Zephyranthes"
+
+  Added general behind the scenes improvements - testing and code styles
+
+  - ### Features
+    - [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31)
+
+  - ### Content
+    - Changelog
+    - README.md
+
+  - ### Tests
+    - Layout
+      - \+ `<Markdown />`
+    - Markdown
+      - \+ `<Image />`
+    - Helpers
+      - \+ `slugify`
+      - \+ `fishAttr`
+
+  - ### Packages
+    - \+ babel-eslint
+    - \+ babel-jest
+    - \+ babel-preset-gatsby
+    - \+ enzyme
+    - \+ enzyme-adapter-react-16
+    - \+ eslint
+    - \+ eslint-config-standard
+    - \+ eslint-config-standard-react
+    - \+ eslint-plugin-css-modules
+    - \+ eslint-plugin-import
+    - \+ eslint-plugin-jsx-a11y
+    - \+ eslint-plugin-react
+    - \+ eslint-plugin-react-hooks
+    - \+ identity-obj-proxy
+    - \+ jest
+    - \+ jest-axe
+    - \+ jest-coverage-badges
+    - \+ react-test-renderer
+
 ## RF-05-00-GN1 "Alex"
-  [feature/netlify-cms](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/d68c0cccd7c7f9c6f38cda1382693e48cb7b39bd)
+
+  Added NetlifyCMS backend with a custom Netlify LFS image implementation.
+
+  [feature/netlify-cms](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/21)
+  [feature/cms-images](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/24)
 
   - ### Features
     - [NetlifyCMS](https://www.netlifycms.org/docs/gatsby/)
@@ -29,7 +73,7 @@ name: 'changes'
   - ### Helpers
     - `fishAttr()` - takes an element and returns a dom attribute or an empty string
 
-  - ### Package 
+  - ### Packages 
     - \+ netlify-cms-app
     - \+ gatsby-plugin-netlify-cms
     - \+ node-sass
@@ -43,9 +87,12 @@ name: 'changes'
      - \+ breakpoints
 
 ## RF-05-00-G "Prototype"
+  
+  A bare bones Gatsby site that aggregates blog posts on the homepage.
+
   [Initial commit](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/b56638550881dc0d4dd0e0856ec3ff362309ea78) made Christmas Eve, 2019.
-  [init-config](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/7130a0ea4644a7003494291b44ef26442530fb89)
-  [feature/change-log ](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/109ace23a8808a05d52cb740c474d53d1a360d3a)
+  [init-config](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/1)
+  [feature/change-log ](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/2)
 
   - ### Features
     - [MDX](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
@@ -73,7 +120,7 @@ name: 'changes'
       - \+ PageLayout
     - \+ Posts
 
-  - ### Package 
+  - ### Packages
     - \+ @mdx-js/mdx
     - \+ @mdx-js/react
     - \+ gatsby-plugin-layout

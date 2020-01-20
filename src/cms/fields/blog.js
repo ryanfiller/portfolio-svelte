@@ -13,7 +13,7 @@ export const blog = {
     {
       name: 'body',
       label: 'Body',
-      widget: 'markdown' 
-    },
+      widget: 'markdown'
+    }
   ]
-};
+}

@@ -7,7 +7,7 @@ import { blog } from './fields/blog'
 import image from './editor/image'
 
 // editor components
-CMS.registerEditorComponent(image);
+CMS.registerEditorComponent(image)
 
 CMS.init({
   config: {
@@ -21,12 +21,12 @@ CMS.init({
       repo: 'ryanfiller/portfolio-gatsby-v2',
       branch: 'master',
       squash_merges: true,
-      use_large_media_transforms_in_media_library: true,
+      use_large_media_transforms_in_media_library: true
     },
     media_folder: 'static/images/uploads',
     public_folder: '/images/uploads',
     collections: [
       blog
     ]
-  },
-});
+  }
+})
