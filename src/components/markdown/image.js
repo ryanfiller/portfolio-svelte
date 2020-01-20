@@ -35,7 +35,7 @@ const Image = (props) => {
           title={title}
           srcset={`
             ${src}?nf_resize=fit&w=500 500w, 
-            ${src}?nf_resize=fit&w=800 8000w
+            ${src}?nf_resize=fit&w=800 800w
           `}
           sizes="100vw" // TODO? - maybe make this more specifc
           src={`${src}?nf_resize=fit&w=1000`}
