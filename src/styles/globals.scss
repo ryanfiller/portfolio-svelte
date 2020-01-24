@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './functions.scss';
+// @import '../../static/fonts/fonts.css';
 
 :root {
   --containerMaxWidth: $largeBreak;
@@ -38,6 +39,8 @@ html {
 }
 
 * {
+  box-sizing: border-box;
+  
   @include animate {
     scroll-behavior: smooth;
   }

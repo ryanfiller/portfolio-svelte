@@ -53,7 +53,11 @@ const WorkshopPage = (props) => {
       <section>
         <ul className='list'>
           {posts.map((post, index) => (
-            <li key={index} className={`workshop--${post.node.frontmatter.meta.categories[0]}`}>
+            <li
+              key={index}
+              className={`workshop--${post.node.frontmatter.meta.categories[0]}`}
+              style={{ marginBottom: '2rem' }}
+            >
               <PostPreview {...post} />
             </li>
           ))}

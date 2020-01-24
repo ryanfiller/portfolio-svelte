@@ -4,6 +4,7 @@ import Helmet from 'react-helmet'
 
 import SEO from './seo'
 import Header from './header'
+import FontImporter from '../../../static/fonts/font-importer'
 import Footer from './footer'
 import '../layout.css'
 
@@ -30,9 +31,10 @@ const Page = (props) => {
       <Helmet>
         <script 
           async
-          src="//gc.zgo.at/count.js"
-          data-goatcounter="https://ryanfiller.goatcounter.com/count"
+          src='//gc.zgo.at/count.js'
+          data-goatcounter='https://ryanfiller.goatcounter.com/count'
         />
+        <FontImporter />
       </Helmet>
       <SEO {...props.data.mdx} />
       <div id='site' className={pageName}>

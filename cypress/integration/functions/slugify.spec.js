@@ -22,8 +22,8 @@ describe('slugify()',() => {
   })
 
   it('should trim - from start of text',() => {
-    const result = slugify(' fontspace')
-    expect(result).to.eq('fontspace')
+    const result = slugify(' frontspace')
+    expect(result).to.eq('frontspace')
   })
 
   it('should trim - from end of text',() => {

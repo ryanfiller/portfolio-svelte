@@ -18,6 +18,8 @@ import Change from '../../components/misc/change'
   [design/color-chart](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/58) - Colors chart components, css changes, color config object
   
   [feature/workshop-page](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/62) - Adding page to contain workshop experiments and gadgets
+  
+  [design/fonts](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/63) - Add variable fonts to the site, create component to test them.
 
   - Features
     - Added actual site navigation
@@ -38,6 +40,9 @@ import Change from '../../components/misc/change'
       - `<PageLayout />` -> `<Page />`
     - Misc
       - \+ `<ColorChart />`
+      - \+ `<VariableFont />`
+    - Static
+      - \+ `<FontLoader />`
 
   - Tests
     - Layout
@@ -51,24 +56,27 @@ import Change from '../../components/misc/change'
       - `<PageLayout />` -> `<Page />`
     - Misc
       - \+ `<ColorChart />`
+      - \+ `<VariableFont />`
+    - Commands
+      - \+ `inputChange()`
 
   - Styles 
     - globals
       - changed global `rem` size from `16px` to `12px`
-
     - functions
       - \+ container
       - \+ readable
+      - \+ visuallyHide
 
   - Config
     - \+ `pages.js`
-    - \+ `colors.js`
 
   - Packages
     - \+ react-color-contrast-table
     - \- babel-preset-gatsby
     - \- identity-obj-proxy
     - \- react-test-renderer
+    - \+ cypress-commands
 
 </Change>
 
