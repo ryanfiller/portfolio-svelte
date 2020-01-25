@@ -1,0 +1,157 @@
+---
+title: Tips & Tricks I've Learned About Gatsby with NetlifyCMS
+options:
+  customtemplate: ''
+  customurl: ''
+  published: false
+meta:
+  date: 2020-01-23T06:00:00.000Z
+---
+## I can quit making new Gatsby sites any time I want, I swear...
+
+For a number of reasons, some for money and some for fun, I've scaffolded out more than half a dozen new Gatsby sites in the past year. There's been a few weird "hacks" and escape hatches I've liked to leave myself every time and I thought those might be fun to share. I thought an aggregate of some quick-but-powerful tips and tricks might be helpful for anyone setting up a Gatsby site for a first time, or even anyone struggling with an existing implementation.
+
+## Design stuff
+
+### gatsby-plugin-layout
+
+Gatsby v1 had a concept of "layouts", which were high level components that automatically wrapped each page. This default behavior was changed in Gatsby v2, but their offical docs explains the new situation pretty well. 
+
+> In the original implementation, the layout component was wrapped around the outside of the page component. This meant that the layout component could manage things like transitions and persistent state without any special workarounds, because it never rerendered. In version 2, the layout component is no longer special, and it’s included in every page that wants to display it. This means that it does rerender on every route change.
+
+I like being able to do page transitions and other things that required my header and footer not to rerender.﻿ This component wraps every page template and I've found that its also a good place to put other global things like styles or some context providers. I have a feeling this is using Gatsby's [`wrapPageElement` Browser API](https://www.gatsbyjs.org/docs/browser-apis/#wrapPageElement) behind the scenes, but I think its a little bit easier to configure via plugin.
+
+### gatsby-plugin-react-helmet
+
+https://github.com/ryanfiller/portfolio-gatsby/search?q=helmet&unscoped_q=helmet
+
+https://github.com/nfl/react-helmet
+
+https://css-tricks.com/the-sass-ampersand/#article-header-id-5
+
+## Content Stuff
+
+### gatsby-plugin-mdx
+
+I thnk the [plugin docs](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/) explain what MDX is best - 
+
+> MDX is markdown for the component era. It lets you write JSX embedded inside markdown.
+
+Anyone using Gatsby is already familiar with React, so the ability to easily render React components inside markdown feels like a pretty natural extension. The part that I want to highlight, though, is the ability to pass a `components` object to the `MDXProvider` and have it *automagically* replace default html elements with React components whenever they appear in your markdown.
+
+```javascript
+import Header from './special-header'
+import Image from './special-image'
+
+const Markdown = props => (
+  <MDXProvider components={{
+    h2: Header,
+    img: Image
+  }}>
+    <MDXRenderer>
+      {props.post}
+    </MDXRenderer>
+  </MDXProvider>
+)
+```
+
+This lets you build your own tool similar to [gatsby-remark-autolink-headers](https://www.gatsbyjs.org/packages/gatsby-remark-autolink-headers/), or do your own custom images with any build in functionality you want. You literally have the power of a custom React component anywhere, and you only have to configure it in one place.
+
+### gatsby-node.js
+
+Gatsby has a pretty robust node API exposed in their `gatsby-node` file, and anyone who has build a blog has dug into this file. [This tutorial section](https://www.gatsbyjs.org/tutorial/part-seven/) walks through how to generate pages for say, a blog, from data by creating a slug for each .md file and then resolving a template to render. I like to take this a step further and give myself some nice defaults with the ability to override them in frontmatter.
+
+```javascript
+if (node.internal.type === 'Mdx' && !node.fileAbsolutePath.includes('content/pages/')) {
+  const directory = node.fileAbsolutePath.match(/([^/]+)\/[^/]+$/)[1]
+  let url
+  let template
+
+  if (node.frontmatter.options.customUrl) {
+    url = slugify(node.frontmatter.options.customUrl)
+  } else {
+    url = slugify(node.frontmatter.title)
+  }
+
+  const slug = `${directory}/${url}`
+
+  if (node.frontmatter.options.customTemplate) {
+    template = node.frontmatter.options.customTemplate
+  } else {
+    template = directory
+  }
+
+  // create appropriate createNodeField() calls down here...
+}
+```
+
+With this setup anything in the `blog` directory gets the default template of `blog.js`. I have a similar default that will build a url from the directory name and post title, so like `blog/post-title`, but if I want to override that I can give any post with something maybe shorter or more readable.
+
+https://www.gatsbyjs.org/docs/node-apis/
+
+## CMS Stuff
+
+### CMS Manual Initialization
+
+While technically in beta, NetlifyCMS supports [manual javascript initialization](https://www.netlifycms.org/docs/beta-features/#manual-initialization) of the CMS instead of using a `config.yaml` file. In my opinion this makes perfect sense to do with Gatsby since the entire ecosystem is already nearly entirely javascript. Besides not having to deal with yaml indention, the big plus is having the full power of javascript. That means you can break up configurations into different partials and compose them in your `config` object.
+
+```javascript
+// common-fields.js
+
+export const commonFields = [
+  {
+    name: 'title',
+    label: 'Title',
+    widget: 'string'
+  },
+  {
+    name: 'date',
+    label: 'Date',
+    widget: 'date'
+  }
+]
+
+---
+
+// blog.js
+
+import commonFields from './common-fields'
+
+export const blog = {
+  label: 'Blog',
+  name: 'blog',
+  fields: [
+    ...commonFields,
+    {
+      name: 'body',
+      label: 'Body',
+      widget: 'markdown'
+    }
+  ]
+}
+
+---
+
+// cms.js
+
+import blog from './blog'
+
+CMS.init({
+  config: {
+    ... 
+    collections: [
+      blog
+    ]
+  }
+})
+```
+
+This is nice because I personally don't care for yaml, but it also lets you abstract common things like title and date into one file and reuse them on any collection you want.
+
+### Extending Default Editor Widgets
+
+Editor Widgets are editor components that appear under the + in the body while editting a post. The default comes with Image and Code blocks, and there are [pretty good docs](https://www.netlifycms.org/docs/custom-widgets/#registereditorcomponent) on the NetlifyCMS site about how to create your own editor widgets. The example shows how to build a YouTube embed, but what happens if you pass the name of an existing widget to the `id` field? Well, it overwrites it of course! Obviously you have to be careful not to break any fucntionality with this, but I have had a lot of luck overriding the default Image widget with a custom one of my own to add a few more options.
+
+<img src="/images/uploads/cms_image_editor_widget_example.png" alt="example of my custom image editor widget" data-caption="undefined" data-align="full" data-small="false" />
+
+It's pretty easy to break the editor by trying to query something that isn't there, so be careful with that regex and make sure it accounts for *not* matching anything, but its even possible to pass a custom React component into the `toPreview` value and customize how the image looks in the preview pane. This pairs super well with the MDX component I outlined above. Just [dump out the props in the `toBlock` value](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/cms/editor/image.js#L63) and have the [MDX component grab them on the front end](https://github.com/ryanfiller/portfolio-gatsby-v2/blob/master/src/components/markdown/image.js#L8) and it's possible to make highly configurable React widgets that a user can easily edit.
