@@ -1,0 +1,27 @@
+.change {
+  margin-bottom: var(--padding);
+  
+  & > ul { // top level ul only
+    max-height: 0;
+    overflow: hidden;
+    transition: var(--transitionSpeed);
+    margin-bottom: 0;
+    margin: 0;
+    padding-left: 1rem;
+  }
+
+  &--open {    
+    & > ul {
+      max-height: 100vh;
+      margin-bottom: inherit;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: var(--padding);
+  }
+}

@@ -2,29 +2,48 @@
 name: 'changes'
 ---
 
+import Change from '../../components/misc/change'
+
 # A page to track my site getting better (or worse)
 
-## RF-05-01 - "Zephyranthes"
+<Change>
 
-  Added general behind the scenes improvements - testing and code styles
+  ## RF-05-01 - "Zephyranthes"
 
-  - ### Features
-    - [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31)
+  Added general behind the scenes improvements - testing and code styles.
+  Added better user experience for growing changes page - collapsable list and linked headers.
 
-  - ### Content
+  [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31)
+  [feature/headers-and-changelog-mdx-components](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/32)
+
+  - **Features**
+    - [eslint](https://www.gatsbyjs.org/docs/eslint/)
+    - [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)  
+
+  - **Content**
     - Changelog
     - README.md
 
-  - ### Tests
+  - **Components**
+    - Markdown
+      - \+ `<Heading />`
+      - \+ `<Change />`
+
+  - **Tests**
     - Layout
       - \+ `<Markdown />`
     - Markdown
+      - \+ `<Heading />`
+      - \+ `<Change />`
       - \+ `<Image />`
     - Helpers
       - \+ `slugify`
       - \+ `fishAttr`
 
-  - ### Packages
+  - **Styles **
+    - \+ globals
+
+  - **Packages**
     - \+ babel-eslint
     - \+ babel-jest
     - \+ babel-preset-gatsby
@@ -44,83 +63,92 @@ name: 'changes'
     - \+ jest-coverage-badges
     - \+ react-test-renderer
 
-## RF-05-00-GN1 "Alex"
+</Change>
+
+<Change>  
+
+  ## RF-05-00-GN1 "Alex"
 
   Added NetlifyCMS backend with a custom Netlify LFS image implementation.
 
   [feature/netlify-cms](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/21)
+
   [feature/cms-images](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/24)
 
-  - ### Features
+  - **Features**
     - [NetlifyCMS](https://www.netlifycms.org/docs/gatsby/)
     - [Netlify Large Media](https://www.netlifycms.org/docs/netlify-large-media/)
 
-  - ### Content
+  - **Content**
     - Changelog
     - Styles
       - add `<Image />` examples
 
-  - ### Components
+  - **Components**
     - Markdown
       - \+ `<Image />`
 
-  - ### CMS
+  - **CMS**
     - Editor
       - \+ Image
     - Fields
       - \+ Blog (Scaffolded)
 
-  - ### Helpers
+  - **Helpers**
     - `fishAttr()` - takes an element and returns a dom attribute or an empty string
 
-  - ### Packages 
+  - **Packages **
     - \+ netlify-cms-app
     - \+ gatsby-plugin-netlify-cms
     - \+ node-sass
     - \+ gatsby-plugin-sass
     - \+ classnames
 
-  - ### Styles 
+  - **Styles **
     - \+ variables
-     - \+ breakpoints
     - \+ functions
-     - \+ breakpoints
 
-## RF-05-00-G "Prototype"
-  
+</Change>
+
+<Change>
+
+  ## RF-05-00-G "Prototype"
+    
   A bare bones Gatsby site that aggregates blog posts on the homepage.
 
   [Initial commit](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/b56638550881dc0d4dd0e0856ec3ff362309ea78) made Christmas Eve, 2019.
+
   [init-config](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/1)
+
   [feature/change-log ](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/2)
 
-  - ### Features
+  - **Features**
     - [MDX](https://www.gatsbyjs.org/packages/gatsby-plugin-layout/)
     - [Gatsby v1 Layout](https://www.gatsbyjs.org/packages/gatsby-plugin-mdx/)
     - `gatsby-node.js`
       - `customUrl` override for posts
       - `customTemplate` override for posts
 
-  - ### Content
+  - **Content**
     - 404 (scaffolded)
     - About (scaffolded)
     - Blog
     - Changelog
     - Homepage
-     - siteMetadata
-     - blog posts
+      - siteMetadata
+      - blog posts
     - Portfolio (scaffolded)
     - Styles (scaffolded)
     - Workshop (scaffolded)
 
-  - ### Components
+  - **Components**
     - \+ Layout
       - \+ Header
       - \+ Markdown
       - \+ PageLayout
     - \+ Posts
 
-  - ### Packages
+  - **Packages**
     - \+ @mdx-js/mdx
     - \+ @mdx-js/react
     - \+ gatsby-plugin-layout
@@ -128,8 +156,13 @@ name: 'changes'
     - \- gatsby-plugin-sharp
     - \- gatsby-transformer-sharp
 
-## Previous Versions
-This version of my personal website follows five previous versions, dating all the way back to Thanksgiving Break 2011.
+</Change>
+
+<Change>
+
+  ## Previous Versions
+
+  This version of my personal website follows five previous versions, dating all the way back to Thanksgiving Break 2011.
 
   - RF-04-G
     - [Early 2018](http://2018.ryanfiller.com/)
@@ -150,7 +183,7 @@ This version of my personal website follows five previous versions, dating all t
     - Mid 2014
     - Built using the [Good Space](https://themeforest.net/item/good-space-responsive-minimal-wp-theme/2278615) WordPress page builder theme
     - This site was lost to the internet while trying to migrate hosts, I did not know much about databases at the time
-  
+
   - RF-01-P
     - [Mid to Late Spring 2012](http://2012.ryanfiller.com/)
     - HTML, CSS, and jQuery. A version that converted pages to PHP and used `<?php echo $year; ?>` in the footer for automatic copyright update also existed.
@@ -159,3 +192,5 @@ This version of my personal website follows five previous versions, dating all t
   - RF-00-H
     - [Late Fall 2011](http://2011.ryanfiller.com/)
     - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
+
+</Change>
