@@ -1,26 +1,26 @@
 import React from 'react'
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import Markdown from '../components/layout/markdown';
+import Markdown from '../components/layout/markdown'
 
 export const query = graphql`
-	query AboutPage {
-		mdx(frontmatter: { name: { eq: "about" } } ) {
-			frontmatter {
-				title
-			}
-			body
-		}
-	}
+  query AboutPage {
+    mdx(frontmatter: { name: { eq: "about" } } ) {
+      frontmatter {
+        title
+      }
+      body
+    }
+  }
 `
 
 const AboutPage = (props) => {
-	return <Markdown post={props.data.mdx.body} />
+  return <Markdown post={props.data.mdx.body} />
 }
 
 AboutPage.propTypes = {
-    data: PropTypes.object.isRequired,
-};
+  data: PropTypes.object.isRequired
+}
 
-export default AboutPage;
+export default AboutPage

@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 
 const Posts = (props) => {
-	return (
-    <section style={{clear: 'both'}}>
+  return (
+    <section style={{ clear: 'both' }}>
       <h2>Blog Posts: </h2>
       <ul>
         {props.posts.map(({ node }, index) => (
           <li key={index}>
-            <article> 
+            <article>
               <Link to={node.fields.slug}>
                 <header>
                   <time dateTime={node.frontmatter.meta.date}>
@@ -19,14 +19,15 @@ const Posts = (props) => {
               </Link>
             </article>
           </li>
-        ))} 
+        ))}
       </ul>
     </section>
   )
 }
 
 Posts.propTypes = {
-  posts: PropTypes.array.isRequired,
-};
+  // TODO shapeOf here
+  posts: PropTypes.array.isRequired
+}
 
-export default Posts;
+export default Posts

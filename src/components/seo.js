@@ -5,13 +5,12 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 
-const SEO = ( props) => {
-
+const SEO = (props) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -33,42 +32,42 @@ const SEO = ( props) => {
   return (
     <Helmet
       htmlAttributes={{
-        lang: "en"
+        lang: 'en'
       }}
       title={siteTitle}
       meta={[
         {
-          name: `description`,
-          content: metaDescription,
+          name: 'description',
+          content: metaDescription
         },
         {
-          property: `og:title`,
-          content: props.title,
+          property: 'og:title',
+          content: props.title
         },
         {
-          property: `og:description`,
-          content: metaDescription,
+          property: 'og:description',
+          content: metaDescription
         },
         {
-          property: `og:type`,
-          content: `website`,
+          property: 'og:type',
+          content: 'website'
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          name: 'twitter:card',
+          content: 'summary'
         },
         {
-          name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          name: 'twitter:creator',
+          content: site.siteMetadata.author
         },
         {
-          name: `twitter:title`,
-          content: props.title,
+          name: 'twitter:title',
+          content: props.title
         },
         {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
+          name: 'twitter:description',
+          content: metaDescription
+        }
       ].concat(props.meta || [])}
     />
   )
@@ -77,7 +76,7 @@ const SEO = ( props) => {
 SEO.propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  meta: PropTypes.arrayOf(PropTypes.object),
+  meta: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default SEO

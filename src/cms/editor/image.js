@@ -3,7 +3,7 @@ import { fishAttr } from '../../helpers'
 
 const image = {
   id: 'image', // this overwrites the default netlifycms image
-  label: "Image",
+  label: 'Image',
   fields: [
     {
       name: 'src',
@@ -19,13 +19,13 @@ const image = {
       name: 'title',
       label: 'Title',
       widget: 'string',
-      required: false,
+      required: false
     },
     {
       name: 'caption',
       label: 'Caption',
       widget: 'string',
-      required: false,
+      required: false
     },
     {
       name: 'align',
@@ -44,7 +44,7 @@ const image = {
       label: 'Small',
       widget: 'boolean',
       default: false
-    },
+    }
   ],
   pattern: /<img(.*)/,
   fromBlock: match => {
@@ -54,21 +54,21 @@ const image = {
       alt: fishAttr(string, 'alt'),
       caption: fishAttr(string, 'data-caption'),
       align: fishAttr(string, 'data-align'),
-      small: fishAttr(string, 'data-small'),
-    };
-    return obj;
+      small: fishAttr(string, 'data-small')
+    }
+    return obj
   },
   // Function to create a text block from an instance of this component
   // what is actually written in the markdownfile
   toBlock: obj => {
-    return `<img src="${obj.src}" alt="${obj.alt}" data-caption="${obj.caption}" data-align="${obj.align}" data-small="${obj.small}" />`;
+    return `<img src="${obj.src}" alt="${obj.alt}" data-caption="${obj.caption}" data-align="${obj.align}" data-small="${obj.small}" />`
   },
 
   // What is rendered in the netlify editor
   toPreview: obj => {
     return (
       <ImagePreview {...obj} />
-    )  
+    )
   }
 }
 
@@ -81,8 +81,7 @@ const ImagePreview = props => {
     small
   } = props
 
-
-  let style;
+  let style
 
   switch (align) {
     case 'full':
@@ -90,21 +89,21 @@ const ImagePreview = props => {
         display: 'block',
         margin: '0'
       }
-      break;
+      break
     case 'left':
       style = {
         float: 'left',
         display: 'block',
         marginRight: '1em'
       }
-      break;
+      break
     case 'right':
       style = {
         float: 'right',
         display: 'block',
         marginLeft: '1em'
       }
-      break;
+      break
     default:
       // 'center'
       style = {
@@ -120,18 +119,18 @@ const ImagePreview = props => {
   } else {
     style.width = '50%'
   }
-  
+
   return (
-    !!src ? 
-      <div style={{...style}}>
-        <img 
+    src ? (
+      <div style={{ ...style }}>
+        <img
           src={`https://www.ryanfiller.com${src}`}
           alt={alt}
-          style={{width: '100%'}}
+          style={{ width: '100%' }}
         />
         {!!caption && <span>{caption}</span>}
-      </div> 
-    : null
+      </div>
+    ) : null
   )
 }
 

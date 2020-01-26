@@ -1,23 +1,23 @@
 import React from 'react'
-import { graphql } from 'gatsby';
-import PropTypes from 'prop-types';
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import Markdown from '../components/layout/markdown';
+import Markdown from '../components/layout/markdown'
 
 export const query = graphql`
-	query ChangeLogPage {
-		mdx(frontmatter: { name: { eq: "changes" } } ) {
-			frontmatter {
-				title
-			}
+  query ChangeLogPage {
+    mdx(frontmatter: { name: { eq: "changes" } } ) {
+      frontmatter {
+        title
+      }
       tableOfContents
-			body
-		}
-	}
+      body
+    }
+  }
 `
 
 const ChangeLogPage = (props) => {
-	return (
+  return (
     <>
       <Markdown post={props.data.mdx.body} />
     </>
@@ -25,7 +25,7 @@ const ChangeLogPage = (props) => {
 }
 
 ChangeLogPage.propTypes = {
-    data: PropTypes.object.isRequired,
-};
+  data: PropTypes.object.isRequired
+}
 
-export default ChangeLogPage;
+export default ChangeLogPage
