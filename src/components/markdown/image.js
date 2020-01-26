@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import cx from 'classnames'
 
 import styles from './image.module.scss'
@@ -59,6 +60,20 @@ const Image = (props) => {
   } else {
     return <Img className={classNames} />
   }
+}
+
+Image.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  'data-align': PropTypes.oneOf([
+    'left', 
+    'right',
+    'center',
+    'full'
+  ]),
+  'data-small': PropTypes.oneOf(['', 'true', 'false']),
+  'data-caption': PropTypes.string
 }
 
 export default Image

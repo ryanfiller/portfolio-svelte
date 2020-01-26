@@ -1,0 +1,11 @@
+@import './variables.module.scss';
+@import './functions.module.scss';
+
+:root {
+  --transitionSpeed: .2s;
+  --padding: 1rem;
+  
+  @include medium() {
+    --padding: 2rem;
+  }
+}

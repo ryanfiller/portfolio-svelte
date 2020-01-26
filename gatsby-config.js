@@ -8,6 +8,8 @@ module.exports = {
     about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee.'
   },
 
+  // TODO? - look into this - https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cache/
+
   plugins: [
     'gatsby-plugin-react-helmet',
     {

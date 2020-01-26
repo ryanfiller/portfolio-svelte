@@ -1,0 +1,31 @@
+@import '../../../styles/functions.module.scss';
+
+.heading {
+  position: relative;
+  display: block;
+
+  &__copy {
+    display: none;
+    opacity: 0;
+    transition: var(--transitionSpeed);
+    position: absolute;
+    right: 100%;
+    text-align: right;
+
+    @include medium() {
+      display: block;
+    }
+
+    &:before {
+      content: '#';
+      font-size: 1em;
+    }
+  }
+  
+  &:hover {
+    .heading__copy {
+      cursor: copy;
+      opacity: 1;
+    }
+  }
+}

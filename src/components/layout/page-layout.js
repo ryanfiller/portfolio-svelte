@@ -5,6 +5,8 @@ import SEO from '../seo'
 import Header from './header'
 import '../layout.css'
 
+import '../../styles/globals.module.scss'
+
 const PageLayout = (props) => {
   const {
     frontmatter: {
@@ -25,8 +27,7 @@ const PageLayout = (props) => {
           style={{
             margin: '0 auto',
             maxWidth: 960,
-            padding: '0px 1.0875rem 1.45rem',
-            paddingTop: 0
+            padding: '0px var(--padding) 1.45rem',
           }}
         >
           {props.children}
