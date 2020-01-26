@@ -2,10 +2,10 @@ module.exports = {
   siteMetadata: {
     title: 'ryanfiller.com',
     siteUrl: 'https://www.ryanfiller.com',
-    description: 'The blog and porfolio of Ryan Filler.',
     author: '@ryanfiller_',
     headshot: 'https://www.ryanfiller.com/images/uploads/headshot_2017.jpg',
-    about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee.'
+    description: 'The blog and porfolio of Ryan Filler',
+    about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.'
   },
 
   // TODO? - look into this - https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cache/

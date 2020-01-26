@@ -2,8 +2,6 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import SEO from '../components/seo'
-
 export const query = graphql`
   query NotFoundPage {
     mdx(frontmatter: { name: { eq: "404" } } ) {
@@ -13,6 +11,7 @@ export const query = graphql`
           hideSiteHeader
         }
       }
+      excerpt
       body
     }
   }
@@ -20,7 +19,6 @@ export const query = graphql`
 
 const NotFoundPage = () => (
   <>
-    <SEO title='404: Not found' />
     <h1>Ruh Roh.</h1>
   </>
 )

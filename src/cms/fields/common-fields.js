@@ -40,6 +40,23 @@ const commonFields = [
         name: 'date',
         label: 'Date',
         widget: 'date'
+      },
+      {
+        name: 'excerpt',
+        label: 'Excerpt',
+        widget: 'text'
+      },
+      {
+        name: 'categories',
+        label: 'Categories',
+        widget: 'list',
+        required: false
+      },
+      {
+        name: 'tags',
+        label: 'Tags',
+        widget: 'list',
+        required: false
       }
     ]
   }
