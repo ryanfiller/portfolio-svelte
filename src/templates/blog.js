@@ -11,8 +11,12 @@ export const query = graphql`
         title
         meta {
           date(formatString: "MMMM DD, YYYY")
+          excerpt
+          categories
+          tags
         }
       }
+      excerpt
       body
     }
   }

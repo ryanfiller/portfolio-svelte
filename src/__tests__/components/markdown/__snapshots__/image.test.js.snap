@@ -3,6 +3,6 @@
 exports[`<Image /> should render correctly 1`] = `
 "<img class=\\"image image--undefined\\" alt=\\"alt\\" title=\\"title\\" srcset=\\"
             test.jpg?nf_resize=fit&amp;w=500 500w, 
-            test.jpg?nf_resize=fit&amp;w=800 8000w
+            test.jpg?nf_resize=fit&amp;w=800 800w
           \\" sizes=\\"100vw\\" src=\\"test.jpg?nf_resize=fit&amp;w=1000\\">"
 `;

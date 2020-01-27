@@ -1,5 +1,6 @@
 ---
 name: 'changes'
+title: 'Change Log'
 ---
 
 import Change from '../../components/misc/change'
@@ -11,14 +12,21 @@ import Change from '../../components/misc/change'
   ## RF-05-01 - "Zephyranthes"
 
   Added general behind the scenes improvements - testing and code styles.
+  
   Added better user experience for growing changes page - collapsable list and linked headers.
 
+  Updated metadata hopefully get accurate SEO traction.
+
   [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31)
+  
   [feature/headers-and-changelog-mdx-components](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/32)
+  
+  [feature/seo and metadata](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/34)
 
   - **Features**
     - [eslint](https://www.gatsbyjs.org/docs/eslint/)
-    - [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)  
+    - [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)
+    - Updated [ReactHelmet](https://github.com/nfl/react-helmet) to pull data from post frontmatter
 
   - **Content**
     - Changelog
@@ -32,6 +40,7 @@ import Change from '../../components/misc/change'
   - **Tests**
     - Layout
       - \+ `<Markdown />`
+      - \+ `<SEO />`
     - Markdown
       - \+ `<Heading />`
       - \+ `<Change />`
@@ -164,32 +173,32 @@ import Change from '../../components/misc/change'
 
   This version of my personal website follows five previous versions, dating all the way back to Thanksgiving Break 2011.
 
-  - RF-04-G
+  - **RF-04-G**
     - [Early 2018](http://2018.ryanfiller.com/)
     - Built using [Gatsby](https://www.gatsbyjs.org/) and [NetlifyCMS](https://www.netlifycms.org/)
     - Abandoned due to ever increasing complexity and difficulty of backwards compatability. Complexity and build time needed to be cut down since Netlify introduced limited build minutes, and sometimes starting fresh is easiest.
 
-  - RF-03-J
+  - **RF-03-J**
     - [Late 2016](http://2016.ryanfiller.com/)
     - Built using [Jekyll](https://jekyllrb.com/)
     - I never quite settled on a homepage for this site.
     - Abandoned due to complexity of managing local Ruby versions and increasingly long build times as the site grew in size.
 
-  - RF-02-2-WP
+  - **RF-02-2-WP**
     - Late 2016
     - [Development](https://github.com/ryanfiller/wordpress-portfolio) on a custom WordPress theme was started but was never deployed.
 
-  - RF-02-WP
+  - **RF-02-WP**
     - Mid 2014
     - Built using the [Good Space](https://themeforest.net/item/good-space-responsive-minimal-wp-theme/2278615) WordPress page builder theme
     - This site was lost to the internet while trying to migrate hosts, I did not know much about databases at the time
 
-  - RF-01-P
+  - **RF-01-P**
     - [Mid to Late Spring 2012](http://2012.ryanfiller.com/)
     - HTML, CSS, and jQuery. A version that converted pages to PHP and used `<?php echo $year; ?>` in the footer for automatic copyright update also existed.
     - Built for a Web02 college course, and to start applying for jobs.
 
-  - RF-00-H
+  - **RF-00-H**
     - [Late Fall 2011](http://2011.ryanfiller.com/)
     - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
 

@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import SEO from '../seo'
+import SEO from './seo'
 import Header from './header'
 import '../layout.css'
 
 import '../../styles/globals.module.scss'
 
 const PageLayout = (props) => {
-  const {
-    frontmatter: {
-      title,
-      options: {
-        hideSiteHeader = false
-      } = {}
-    }
-  } = props.data.mdx
+  // const { frontmatter } = props.data.mdx
+
+  const { 
+    options: { 
+      hideSiteHeader = false
+    } = {} // default to empty object if any values are missing
+  } = props.data.mdx.frontmatter
 
   return (
     <>
-      <SEO {...title} />
+      {/* <SEO frontmatter={frontmatter} /> */}
+      <SEO {...props.data.mdx} />
       <div id='site'>
         {!hideSiteHeader && <Header title='ryanfiller.com' />}
         <main
@@ -42,7 +42,7 @@ PageLayout.propTypes = {
   data: PropTypes.shape({
     mdx: PropTypes.shape({
       frontmatter: PropTypes.shape({
-        title: PropTypes.string.isRequired,
+        title: PropTypes.string,
         options: PropTypes.shape({
           hideSiteHeader: PropTypes.bool
         })
