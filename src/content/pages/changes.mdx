@@ -11,17 +11,20 @@ import Change from '../../components/misc/change'
 
   ## RF-05-01 - "Zephyranthes"
 
-  Added general behind the scenes improvements - testing and code styles.
+  General behind the scenes improvements and accessibility formatting.
   
-  Added better user experience for growing changes page - collapsable list and linked headers.
-
-  Updated metadata hopefully get accurate SEO traction.
+  - Testing and code styles.
+  - Added better user experience for growing changes page - collapsable list and linked headers.
+  - Updated metadata hopefully get accurate SEO traction.
+  - Added better post preview formatting.
 
   [tooling/eslint-and-jest](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/31)
   
   [feature/headers-and-changelog-mdx-components](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/32)
   
-  [feature/seo and metadata](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/34)
+  [feature/seo-and-metadata](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/34)
+  
+  [design/post-preview](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/35)
 
   - **Features**
     - [eslint](https://www.gatsbyjs.org/docs/eslint/)
@@ -33,11 +36,17 @@ import Change from '../../components/misc/change'
     - README.md
 
   - **Components**
+    - Content
+      - \+ `<Meta />`
+      - \+ `<PostPreview />`
     - Markdown
       - \+ `<Heading />`
       - \+ `<Change />`
 
   - **Tests**
+    - Content
+      - \+ `<Meta />`
+      - \+ `<PostPreview />`
     - Layout
       - \+ `<Markdown />`
       - \+ `<SEO />`
@@ -56,6 +65,7 @@ import Change from '../../components/misc/change'
     - \+ babel-eslint
     - \+ babel-jest
     - \+ babel-preset-gatsby
+    - \+ date-fns
     - \+ enzyme
     - \+ enzyme-adapter-react-16
     - \+ eslint
