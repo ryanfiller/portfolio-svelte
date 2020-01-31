@@ -1,0 +1,35 @@
+.meta {
+  &__date {
+    display: block;
+  }
+
+  &__categories,
+  &__tags {
+    font-size: 1em;
+    color: currentColor;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+
+    li {
+      margin: 0;
+      display: inline-block;
+
+      &:before {
+        content: '#'
+      }
+
+      &:after {
+        content: ',';
+        margin-right: .25em;
+      }
+    }
+
+    & + ul { // get rid of the last comma when cats and tags are siblings
+      li:last-child:after {
+        content: '';
+      }
+    }
+  }
+}

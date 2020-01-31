@@ -1,23 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
+
+import PostPreview from './content/post-preview'
 
 const Posts = (props) => {
   return (
     <section style={{ clear: 'both' }}>
       <h2>Blog Posts: </h2>
-      <ul>
-        {props.posts.map(({ node }, index) => (
+      <ul style={{ listStyle: 'none', padding: '0', margin: '0 0 2rem 0' }}>
+        {props.posts.map((post, index) => (
           <li key={index}>
-            <article>
-              <Link to={node.fields.slug}>
-                <header>
-                  <time dateTime={node.frontmatter.meta.date}>
-                    {node.frontmatter.meta.humanDate}
-                  </time> - {node.frontmatter.title}
-                </header>
-              </Link>
-            </article>
+            <PostPreview {...post} />
           </li>
         ))}
       </ul>
@@ -26,7 +19,6 @@ const Posts = (props) => {
 }
 
 Posts.propTypes = {
-  // TODO shapeOf here
   posts: PropTypes.array.isRequired
 }
 

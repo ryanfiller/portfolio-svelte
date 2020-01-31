@@ -39,8 +39,10 @@ export const query = graphql`
           frontmatter {
             title
             meta {
+              excerpt
               date
-              humanDate: date(formatString: "MMM.DD.YY")
+              categories
+              tags
             }
           }
         }
