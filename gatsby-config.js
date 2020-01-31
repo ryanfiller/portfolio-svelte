@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        name: 'gatsby-starter-default',
-        short_name: 'starter',
+        name: 'ryanfiller.com',
+        short_name: 'ryanfiller.com',
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',
@@ -39,6 +39,7 @@ module.exports = {
     },
 
     // data related plugins
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -64,7 +65,8 @@ module.exports = {
       }
     },
 
-    // design related plugins
+    // design / render related plugins
+    'gatsby-plugin-preact',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
