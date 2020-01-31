@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import { slugify } from '../../../helpers'
-import styles from './heading.module.scss'
+import './heading.scss'
 
 const Heading = (props) => {
 
@@ -17,7 +17,7 @@ const Heading = (props) => {
   return (
     <Level 
       id={hashUrl}
-      className={styles.heading}
+      className='heading'
     >
       <a href={`#${hashUrl}`}>
         {children}

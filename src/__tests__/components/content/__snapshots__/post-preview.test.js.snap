@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<PostPreview /> should render correctly 1`] = `"<article class=\\"post\\"><header class=\\"post__header\\"><a href=\\"#\\">post title</a></header><div class=\\"post__date meta\\"><time class=\\"meta__date\\" datetime=\\"1989-04-30T00:00:00.000\\">April 30, 1989</time></div><p class=\\"post__excerpt\\">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><div class=\\"post__tags meta\\"><ul class=\\"meta__categories\\"><li>one</li><li>two</li><li>third</li></ul><ul class=\\"meta__tags\\"><li>one</li><li>two</li><li>third</li></ul></div><a class=\\"post__link\\" href=\\"#\\">Read</a></article>"`;

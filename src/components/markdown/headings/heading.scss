@@ -1,0 +1,28 @@
+@import '../../../styles/functions.scss';
+
+.heading {
+  position: relative;
+  display: block;
+
+  a {
+    font-size: inherit;
+    color: currentColor;
+    text-decoration: none;
+
+    &:before {
+      content: '#';
+      font-size: 1em;
+      opacity: 0;
+      transition: var(--transitionSpeed);
+      position: absolute;
+      right: 100%;
+      text-align: right;
+    }
+    
+    &:hover {
+      &:before {
+        opacity: 1;
+      }
+    }
+  }
+}

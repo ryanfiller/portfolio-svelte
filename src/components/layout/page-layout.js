@@ -6,7 +6,7 @@ import SEO from './seo'
 import Header from './header'
 import '../layout.css'
 
-import '../../styles/globals.module.scss'
+import '../../styles/globals.scss'
 
 const PageLayout = (props) => {
 

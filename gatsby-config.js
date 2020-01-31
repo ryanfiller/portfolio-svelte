@@ -28,6 +28,9 @@ module.exports = {
       }
     },
 
+    // build related plugins
+    'gatsby-plugin-netlify-cache',
+
     // CMS / content related plugins
     {
       resolve: 'gatsby-plugin-netlify-cms',
