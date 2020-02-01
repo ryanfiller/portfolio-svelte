@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 
 import SEO from './seo'
 import Header from './header'
@@ -8,7 +9,6 @@ import '../layout.css'
 import '../../styles/globals.module.scss'
 
 const PageLayout = (props) => {
-  // const { frontmatter } = props.data.mdx
 
   const { 
     options: { 
@@ -18,7 +18,9 @@ const PageLayout = (props) => {
 
   return (
     <>
-      {/* <SEO frontmatter={frontmatter} /> */}
+      <Helmet>
+        <script data-goatcounter="https://ryanfiller.goatcounter.com/count" async src="//gc.zgo.at/count.js"/>
+      </Helmet>
       <SEO {...props.data.mdx} />
       <div id='site'>
         {!hideSiteHeader && <Header title='ryanfiller.com' />}
