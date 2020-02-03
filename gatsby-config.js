@@ -11,7 +11,10 @@ module.exports = {
   // TODO? - look into this - https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cache/
 
   plugins: [
+
+    // SEO related plugins plugins
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-sitemap', 
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
