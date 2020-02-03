@@ -18,6 +18,7 @@
     "gatsby-plugin-offline": "^3.0.27",
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sass": "^2.1.27",
+    "gatsby-plugin-sitemap": "^2.2.27",
     "gatsby-source-filesystem": "^2.1.40",
     "netlify-cms-app": "^2.11.1",
     "node-sass": "^4.13.0",
