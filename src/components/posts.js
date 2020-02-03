@@ -9,7 +9,7 @@ const Posts = (props) => {
       <h2>Blog Posts: </h2>
       <ul style={{ listStyle: 'none', padding: '0', margin: '0 0 2rem 0' }}>
         {props.posts.map((post, index) => (
-          <li key={index}>
+          <li key={index} style={{ marginBottom: '2rem' }}>
             <PostPreview {...post} />
           </li>
         ))}
