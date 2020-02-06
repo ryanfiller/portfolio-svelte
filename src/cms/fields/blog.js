@@ -1,4 +1,4 @@
-import commonFields from './common-fields'
+import { postFields } from './common-fields'
 
 export const blog = {
   label: 'Blog',
@@ -9,7 +9,7 @@ export const blog = {
   create: true,
   delete: true,
   fields: [
-    ...commonFields,
+    ...postFields,
     {
       name: 'body',
       label: 'Body',
