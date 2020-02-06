@@ -19,13 +19,15 @@ const image = {
       name: 'title',
       label: 'Title',
       widget: 'string',
-      required: false
+      required: false,
+      default: ''
     },
     {
       name: 'caption',
       label: 'Caption',
       widget: 'string',
-      required: false
+      required: false,
+      default: ''
     },
     {
       name: 'align',
