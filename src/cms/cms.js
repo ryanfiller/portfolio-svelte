@@ -4,9 +4,11 @@ import CMS from 'netlify-cms-app'
 import { blog } from './fields/blog'
 
 // editor components
+import clearfix from './editor/clearfix'
 import image from './editor/image'
 
 // editor components
+CMS.registerEditorComponent(clearfix)
 CMS.registerEditorComponent(image)
 
 CMS.init({
