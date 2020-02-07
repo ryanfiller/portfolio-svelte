@@ -1,4 +1,32 @@
-const commonFields = [
+export const pageFields = [
+  {
+    name: 'title',
+    label: 'Title',
+    widget: 'string'
+  },
+  {
+    name: 'options',
+    label: 'Options',
+    widget: 'object',
+    fields: [
+      {
+        name: 'hideSiteHeader',
+        label: 'Hide Site Header',
+        widget: 'boolean',
+        required: false,
+        default: false
+      },
+    ]
+  },
+  {
+    name: 'body',
+    label: 'Body',
+    widget: 'markdown',
+    required: false
+  }
+]
+
+export const postFields = [
   {
     name: 'title',
     label: 'Title',
@@ -11,7 +39,7 @@ const commonFields = [
     fields: [
       {
         name: 'published',
-        abel: 'Published',
+        label: 'Published',
         widget: 'boolean',
         default: false
       },
@@ -61,5 +89,3 @@ const commonFields = [
     ]
   }
 ]
-
-export default commonFields

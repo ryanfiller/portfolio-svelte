@@ -1,6 +1,7 @@
 import CMS from 'netlify-cms-app'
 
 // collection field partials
+import { pages } from './fields/pages'
 import { blog } from './fields/blog'
 
 // editor components
@@ -28,6 +29,7 @@ CMS.init({
     media_folder: 'static/images/uploads',
     public_folder: '/images/uploads',
     collections: [
+      pages,
       blog
     ]
   }
