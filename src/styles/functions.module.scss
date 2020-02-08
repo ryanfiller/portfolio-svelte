@@ -24,6 +24,12 @@
   }
 }
 
+@mixin animate() {
+  @media not all and (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}
+
 // @mixin font-size($desktop-size: 1.5em, $tablet-size: 1.25em, $phone-size: 1em) {
 //   font-size: $desktop-size;
 //   line-height: 1.25em;
@@ -36,3 +42,34 @@
 //     font-size: $phone-size;
 //   }
 // }
+
+@mixin arrow($direction: right) {
+  font-size: 1em;
+  display: inline-block;
+  width: 0;
+  height: 0;
+
+  @if $direction == up {
+    border-left: .3em solid transparent;
+    border-right: .3em solid transparent;
+    border-bottom: .4em solid currentColor;
+  }
+  
+  @if $direction == down {
+    border-left: .3em solid transparent;
+    border-right: .3em solid transparent;
+    border-top: .4em solid currentColor;
+  }
+  
+  @if $direction == right {
+    border-top: .3em solid transparent;
+    border-bottom: .3em solid transparent;
+    border-left: .4em solid currentColor;
+  }
+  
+  @if $direction == left {
+    border-top: .3em solid transparent;
+    border-bottom: .3em solid transparent; 
+    border-right: .4em solid currentColor; 
+  }
+}

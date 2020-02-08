@@ -5,7 +5,7 @@ import React from 'react'
 const Header = (props) => (
   <header
     style={{
-      background: 'rebeccapurple',
+      background: 'var(--primaryColor)',
       marginBottom: '1.45rem'
     }}
   >
