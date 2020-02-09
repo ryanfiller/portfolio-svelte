@@ -23,14 +23,19 @@ import Change from '../../components/change'
   
   [refactor/change-component](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/46) - Refactor `<Change/>` for accessbility
   
+  [refactor/link-header](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/48) - Refactor `<Heading/>` for accessbility
+  
   - Features
-    - Restructured Changes to use details/summary for better screen reader accessibility
     - Added Clearfix and Embed components to CMS widgets
     - Added ability to edit pages with Netlify CMS
     - Replaced clientside React with [Preact](https://preactjs.com/)
+    - Restructured Changes to use details/summary for better screen reader accessibility
+    - Refactored linked Heading component, added smooth scoll
+    - Added global helper function to wrap animations in `prefers-reduced-motion: reduce` check
 
   - Components
     - `<Change />`
+    - `<Heading />`
 
   - CMS
     - Editor

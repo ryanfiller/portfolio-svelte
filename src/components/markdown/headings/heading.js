@@ -13,26 +13,15 @@ const Heading = (props) => {
   
   const hashUrl = slugify(children)
   const Level = `h${h}`
-  
-  const copyHashLink = event => {
-    event.preventDefault() // don't navigate to the link
-    const pageLink = `${window.location}#${hashUrl}`
-    navigator.clipboard.writeText(pageLink)
-    console.log(`Copied ${pageLink} to clipboard.`)
-  }
 
   return (
     <Level 
       id={hashUrl}
       className={styles.heading}
-      onClick={copyHashLink}
-      aria-label="Copy link to this header"
     >
-      <span
-        className={styles.heading__copy}
-        title="Copy link to this header?"
-      />
-      {children}
+      <a href={`#${hashUrl}`}>
+        {children}
+      </a>
     </Level>
   )
 }
