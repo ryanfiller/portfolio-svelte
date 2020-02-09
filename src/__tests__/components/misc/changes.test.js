@@ -1,5 +1,5 @@
 import React from 'react'
-import Change from '../../../components/misc/change'
+import Change from '../../../components/change'
 
 describe('<Change />', () => {
   const component = mount(

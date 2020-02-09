@@ -2,10 +2,15 @@
 @import './functions.module.scss';
 
 :root {
-  --transitionSpeed: .2s;
+
+  @include animate {
+    --transitionSpeed: .2s;
+  }
+
   --padding: 1rem;
-  
   @include medium() {
     --padding: 2rem;
   }
+
+  --primaryColor: rebeccapurple
 }
