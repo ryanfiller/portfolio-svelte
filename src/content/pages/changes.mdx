@@ -25,6 +25,8 @@ import Change from '../../components/change'
   
   [refactor/link-header](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/48) - Refactor `<Heading/>` for accessbility
   
+  [feature/link-parser](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/49) - Added `<Link/>` to automatically use javascript routing for internal links
+  
   - Features
     - Added Clearfix and Embed components to CMS widgets
     - Added ability to edit pages with Netlify CMS
@@ -32,10 +34,14 @@ import Change from '../../components/change'
     - Restructured Changes to use details/summary for better screen reader accessibility
     - Refactored linked Heading component, added smooth scoll
     - Added global helper function to wrap animations in `prefers-reduced-motion: reduce` check
+    - Added highlight hover animation
+    - Added component to automatically add [Gatsby Link](https://www.gatsbyjs.org/docs/gatsby-link/) to internal urls
 
   - Components
+    - Markdown
+      - `<Heading />`
+      - \+ `<Link />`
     - `<Change />`
-    - `<Heading />`
 
   - CMS
     - Editor
@@ -55,6 +61,7 @@ import Change from '../../components/change'
     - functions
       - \+ animate
       - \+ arrow
+      - \+ highlight
       
 </Change> 
 
