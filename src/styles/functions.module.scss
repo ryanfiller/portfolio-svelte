@@ -43,6 +43,25 @@
 //   }
 // }
 
+@mixin highlight(
+    $color: var(--primaryColor),
+    $hoverColor: var(--backgroundColor),
+    $backgroundColor: var(--primaryColor) 
+  ) {
+  color: $color;
+  transition: var(--transitionSpeed);
+  background-image: linear-gradient(to right, transparent 51%, $backgroundColor 49%);
+  background-position: 0;
+  background-size: 200%;
+  padding: 0 .125em;
+
+  &:hover {
+    color: $hoverColor;
+    background-image: linear-gradient(to right, transparent 50%, $backgroundColor 50%);
+    background-position: -100%;
+  }
+}
+
 @mixin arrow($direction: right) {
   font-size: 1em;
   display: inline-block;
