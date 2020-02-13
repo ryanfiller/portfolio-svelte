@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cx from 'classnames'
 
-import styles from './image.module.scss'
+import './image.scss'
 
 const Image = (props) => {
   const {
@@ -33,10 +33,7 @@ const Image = (props) => {
           className={props.className}
           alt={alt}
           title={title}
-          srcSet={`
-            ${src}?nf_resize=fit&w=500 500w, 
-            ${src}?nf_resize=fit&w=800 800w
-          `}
+          srcSet={`${src}?nf_resize=fit&w=500 500w, ${src}?nf_resize=fit&w=800 800w`}
           sizes='100vw' // TODO? - maybe make this more specifc
           src={`${src}?nf_resize=fit&w=1000`}
         />
@@ -45,9 +42,9 @@ const Image = (props) => {
   }
 
   const classNames = cx(
-    styles['image'],
-    styles[`image--${align}`],
-    small && styles['image--small']
+    'image',
+    `image--${align}`,
+    small && 'image--small'
   )
 
   if (caption) {

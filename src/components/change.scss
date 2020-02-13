@@ -1,0 +1,98 @@
+@import '../styles/variables.scss';
+@import '../styles/functions.scss';
+
+.change {
+  border: .125rem solid var(--primaryColor);
+  border-radius: .25rem;
+  padding: calc(var(--padding)/2) var(--padding);
+  margin-bottom: var(--padding);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &__summary-text {
+    p {
+      margin-bottom: 0;
+  
+      &:first-of-type,
+      &:last-of-type {
+        margin-bottom: 1em;
+      }
+    }
+  }
+
+  &__details {
+    &-label {
+      font-size: 1.125em;
+      &::-webkit-details-marker { display:none; }
+      cursor: pointer;
+
+      &:before{
+        content: '';
+        @include arrow;
+        transition: var(--transitionSpeed);
+        margin-right: .25em;
+      }
+    }
+
+    &-text {
+      font-size: 1em;
+      
+      &[open] {
+        .change__details-label:before {
+          transform: rotate(90deg);
+        }
+  
+        & > ul {
+          max-height: 100%;
+        }
+      }
+  
+      & > ul { // top level ul only
+        max-height: 0;
+        overflow: hidden;
+        margin-left: .185rem;
+        // TODO? - maybe make a border mixin
+        border-left: .125rem solid var(--primaryColor);
+        padding-left: .5rem;
+        padding-top: 1rem;
+
+        p {
+          margin-bottom: 0;
+        }
+  
+        & > li {
+          font-weight: bold;
+  
+          ul {
+            font-weight: normal;
+            margin-top: 0;
+            margin-bottom: 1rem;
+
+            li {
+              margin-bottom: 0;
+            }
+
+            ul {
+              list-style: none;
+              margin-left: 0;
+            }
+          }
+        }
+  
+        // <CSStransition>
+        &.list--enter {
+          max-height: 100vh;
+          transition: var(--transitionSpeed);
+        }
+  
+        &.list--enter-done {
+          max-height: none;
+        }
+        // &.list--exit {}
+        // &.list--exit-done {}
+      }
+    }
+  }
+}

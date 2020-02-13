@@ -37,11 +37,9 @@ The site is now running at `http://localhost:8000`!
 
 ## I like testing!
 
-![Coverage badge green](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg)
+<!-- (This badge _probably_ isn't 💯 yet but I'm doing my best!) -->
 
-(This badge _probably_ isn't 💯 yet but I'm doing my best!)
-
-This site uses Jest with several extensions. To run basic tests
+This site uses [Cypress](https://www.cypress.io/) with several accessibility extensions. To run basic tests
 
 ``` shell
 npm run test

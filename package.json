@@ -14,6 +14,7 @@
     "gatsby-plugin-layout": "^1.1.18",
     "gatsby-plugin-manifest": "^2.2.31",
     "gatsby-plugin-mdx": "^1.0.64",
+    "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-netlify-cms": "^4.1.35",
     "gatsby-plugin-offline": "^3.0.27",
     "gatsby-plugin-preact": "^3.1.25",
@@ -31,9 +32,11 @@
     "react-transition-group": "^4.3.0"
   },
   "devDependencies": {
+    "axe-core": "^3.4.2",
     "babel-eslint": "^10.0.3",
-    "babel-jest": "^24.9.0",
     "babel-preset-gatsby": "^0.2.27",
+    "cypress": "^4.0.1",
+    "cypress-axe": "^0.5.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^6.8.0",
@@ -45,9 +48,6 @@
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^24.9.0",
-    "jest-axe": "^3.3.0",
-    "jest-coverage-badges": "^1.1.2",
     "react-test-renderer": "^16.12.0"
   },
   "keywords": [
@@ -60,9 +60,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage && jest-coverage-badges"
+    "test": "cypress open"
   },
   "repository": {
     "type": "git",

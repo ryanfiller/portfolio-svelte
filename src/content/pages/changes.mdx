@@ -9,7 +9,7 @@ import Change from '../../components/change'
 
 <Change>
 
-  ## RF-05-02 - "Full Burnern"
+  ## RF-05-01b - "Full Burnern"
 
   Improving up CMS funtionality and improve both site build time and client side performance.
 
@@ -27,6 +27,8 @@ import Change from '../../components/change'
   
   [feature/link-parser](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/49) - Added `<Link/>` to automatically use javascript routing for internal links
   
+  [tooling/cypres](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/50) - Replace `Jest` with `Cypress
+  
   - Features
     - Added Clearfix and Embed components to CMS widgets
     - Added ability to edit pages with Netlify CMS
@@ -36,10 +38,12 @@ import Change from '../../components/change'
     - Added global helper function to wrap animations in `prefers-reduced-motion: reduce` check
     - Added highlight hover animation
     - Added component to automatically add [Gatsby Link](https://www.gatsbyjs.org/docs/gatsby-link/) to internal urls
+    - Remove [Jest](https://jestjs.io/), replace with [Cypress](https://www.cypress.io/) and refactor all tests. Also refactors scss-modules to be scss imports
 
   - Components
     - Markdown
-      - `<Heading />`
+      - \+ `<Embed />`
+      - ≈ `<Heading />`
       - \+ `<Link />`
     - `<Change />`
 
@@ -57,11 +61,38 @@ import Change from '../../components/change'
     - \+ gatsby-plugin-preact
     - \+ react-transition-group
 
+  - Tests
+    - Content
+      - ≈ `<Meta />`
+      - ≈ `<PostPreview />`
+    - Layout
+      - ≈ `<Markdown />`
+      - ≈ `<SEO />`
+    - Markdown
+      - \+ `<Embed />`
+      - ≈ `<Heading />`
+      - ≈ `<Image />`
+      - \+ `<Link />`
+    - ≈ `<Change />`
+    - Helpers
+      - ≈ `slugify()`
+      - ≈ `fishAttr()`
+
   - Styles 
     - functions
       - \+ animate
       - \+ arrow
       - \+ highlight
+
+  - Packages
+    - \+ gatsby-plugin-netlify-cache
+    - \+ axe-core
+    - \- babel-jest
+    - \+ cypress
+    - \+ cypress-axe
+    - \- jest
+    - \- jest-axe
+    - \- jest-coverage-badges
       
 </Change> 
 
@@ -112,8 +143,8 @@ import Change from '../../components/change'
       - \+ `<Image />`
     - \+ `<Change />`
     - Helpers
-      - \+ `slugify`
-      - \+ `fishAttr`
+      - \+ `slugify()`
+      - \+ `fishAttr()`
 
   - Styles 
     - \+ globals

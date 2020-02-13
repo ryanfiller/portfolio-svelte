@@ -64,7 +64,7 @@ const SEO = (props) => {
       htmlAttributes={{
         lang: 'en'
       }}
-      title={pageTitle ? `${siteTitle} | ${pageTitle}` : siteTitle}
+      title={pageTitle ? `${pageTitle} | ${siteTitle}` : siteTitle}
 
       meta={[
         {

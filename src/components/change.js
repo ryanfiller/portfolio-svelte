@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition } from 'react-transition-group'
+import cx from 'classnames'
 
-import styles from './change.module.scss'
+import './change.scss'
 
 const Change = props => {
   const [open, toggleOpen] = useState(false)
@@ -18,18 +19,22 @@ const Change = props => {
   const list = elements.pop()
 
   return (
-    <section className={styles['change']} >
+    <section 
+      className={cx(
+        'change',
+      )}
+    >
       {header}
-      <div className={styles['change__summary-text']}>
+      <div className='change__summary-text'>
         {elements}
       </div>
       <details 
         open={open}
-        className={styles['change__details-text']}
+        className='change__details-text'
       >
         <summary 
           onClick={handleToggleOpen}
-          className={styles['change__details-label']}
+          className='change__details-label'
         >
           Version Details
         </summary>
@@ -37,10 +42,10 @@ const Change = props => {
           in={open}
           timeout={300}
           classNames={{
-            enter: styles['list--enter'],
-            enterDone: styles['list--enter-done'],
-            exit: styles['list--exit'],
-            exitDone: styles['list--exit-done']
+            enter: 'list--enter',
+            enterDone: 'list--enter-done',
+            exit: 'list--exit',
+            exitDone: 'list--exit-done'
            }}
         >
           {list}

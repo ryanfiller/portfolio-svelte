@@ -1,0 +1,12 @@
+@import '../../styles/functions.scss';
+
+.link {
+  color: var(--primaryColor);
+  text-decoration: none;
+  border-bottom: 0;
+  border-bottom: 2px currentColor dotted;
+
+  @include medium() {
+    @include highlight();
+  }
+}

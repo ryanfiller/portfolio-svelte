@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link as GatsbyLink } from 'gatsby'
 
-import styles from './link.module.scss'
+import './link.scss'
 
 const Link = (props) => {
   const {
@@ -25,7 +25,7 @@ const Link = (props) => {
       <GatsbyLink
         to={internalUrl}
         title={`ryanfiller.com${internalUrl}`}
-        className={styles['link']}
+        className='link'
       >
         {content} 
       </GatsbyLink>
@@ -35,7 +35,7 @@ const Link = (props) => {
       <a 
         href={href}
         title={href}
-        className={styles['link']}
+        className='link'
         target="_blank" rel="noopener noreferrer"
       >
         {content}

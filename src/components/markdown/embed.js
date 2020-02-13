@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import styles from './embed.module.scss'
+import './embed.scss'
 
 const Embed = (props) => {
   const {
@@ -12,11 +12,11 @@ const Embed = (props) => {
 
   return (
     <div
-    className={styles['embed']}
-    style={{'--aspect-ratio': ratio}}
+      className={'embed'}
+      data-aspect-ratio={ratio}
     >
       <iframe
-        className={styles['embed__content']}
+        className={'embed__content'}
         title={title}
         src={src}
         loading='lazy'
