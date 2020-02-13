@@ -24,8 +24,8 @@
 
   &__details {
     &-label {
-      font-size: 1.125em;
       &::-webkit-details-marker { display:none; }
+      font-size: 1.125em;
       cursor: pointer;
 
       &:before{
