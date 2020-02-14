@@ -8,8 +8,6 @@ module.exports = {
     about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.'
   },
 
-  // TODO? - look into this - https://www.gatsbyjs.org/packages/gatsby-plugin-netlify-cache/
-
   plugins: [
 
     // SEO related plugins plugins
@@ -81,7 +79,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-layout',
       options: {
-        component: require.resolve('./src/components/layout/page-layout')
+        component: require.resolve('./src/components/layout/page')
       }
     }
   ]

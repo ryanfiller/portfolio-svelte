@@ -3,6 +3,8 @@
 
 :root {
 
+  --containerMaxWidth: $largeBreak;
+
   @include animate {
     --transitionSpeed: .2s;
   }
@@ -12,19 +14,25 @@
     --padding: 2rem;
   }
 
-  --primaryColor: rebeccapurple;
-  --backgroundColor: white;
+  --px1: .25rem;
+  --px2: calc(2 * var(--px1));
+
+  --colorPrimary: rebeccapurple;
+  --colorWhite: white;
 }
 
 html {
+  font-size: 12px;
+
+  body {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+}
+
+* {
   @include animate {
     scroll-behavior: smooth;
   }
-
-  // font-size: 12px;
-
-  // body {
-  //   font-size: 1.5rem;
-  //   line-height: 1.5;
-  // }
 }

@@ -10,11 +10,11 @@ context('<Embed /> component', () => {
     .get('iframe').should('exist')
 
     cy.get('.embed[data-aspect-ratio="16/9"]')
-    .should('have.css', 'padding-top', '499.5px')
+    .should('have.css', 'padding-top', '384.75px')
     .get('iframe').should('exist')
 
     cy.get('.embed[data-aspect-ratio="4/3"]')
-    .should('have.css', 'padding-top', '666px')
+    .should('have.css', 'padding-top', '513px')
     .get('iframe').should('exist')
 
     cy.checkA11y()

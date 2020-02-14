@@ -5,7 +5,7 @@ context('<Markdown /> component', () => {
   })
   
   it('renders the MDX components', () => {
-    cy.get('main#content').within(() => {
+    cy.get('#content').within(() => {
       // <Link />
       cy.get('a').should('exist')
       cy.get('a[target="_blank"]').should('exist')

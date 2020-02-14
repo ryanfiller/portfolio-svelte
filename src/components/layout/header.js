@@ -1,33 +1,24 @@
+import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
-import React from 'react'
+
+import { mainNav } from '../../config/pages'
+import Nav from './nav'
+
+import './header.scss'
 
 const Header = (props) => (
   <header
-    style={{
-      background: 'var(--primaryColor)',
-      marginBottom: '1.45rem'
-    }}
+    id='site-header'
+    className='header'
   >
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '1.45rem 1.0875rem'
-      }}
+    <Link
+      to='/'
+      className='logo'
     >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to='/'
-          style={{
-            color: 'white',
-            textDecoration: 'none'
-          }}
-        >
-          {props.title}
-        </Link>
-      </h1>
-    </div>
+      {props.title}
+    </Link>
+    <Nav links={mainNav} label='main navigation' />
   </header>
 )
 

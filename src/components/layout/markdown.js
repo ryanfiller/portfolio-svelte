@@ -2,11 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
+import cx from 'classnames'
 
 import { H1, H2, H3, H4, H5, H6 } from '../markdown/headings'
 import Embed from '../markdown/embed'
 import Image from '../markdown/image'
 import Link from '../markdown/link'
+
+import './markdown.scss'
 
 const components = {
   a: Link,
@@ -23,7 +26,12 @@ const components = {
 const Markdown = (props) => {
   return (
     <MDXProvider components={components}>
-      <article className={props.className}>
+      <article 
+        className={cx(
+          'markdown',
+          props.className
+        )}
+      >
         <MDXRenderer>
           {props.post}
         </MDXRenderer>

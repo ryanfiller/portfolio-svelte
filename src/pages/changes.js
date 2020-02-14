@@ -8,6 +8,7 @@ export const query = graphql`
   query ChangeLogPage {
     mdx(frontmatter: { name: { eq: "changes" } } ) {
       frontmatter {
+        name
         title
       }
       tableOfContents
@@ -18,9 +19,9 @@ export const query = graphql`
 
 const ChangeLogPage = (props) => {
   return (
-    <>
+    <main>
       <Markdown post={props.data.mdx.body} />
-    </>
+    </main>
   )
 }
 

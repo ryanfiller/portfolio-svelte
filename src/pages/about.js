@@ -8,6 +8,7 @@ export const query = graphql`
   query AboutPage {
     mdx(frontmatter: { name: { eq: "about" } } ) {
       frontmatter {
+        name
         title
       }
       body
@@ -16,7 +17,11 @@ export const query = graphql`
 `
 
 const AboutPage = (props) => {
-  return <Markdown post={props.data.mdx.body} />
+  return (
+    <main>
+      <Markdown post={props.data.mdx.body} />
+    </main>
+  )
 }
 
 AboutPage.propTypes = {

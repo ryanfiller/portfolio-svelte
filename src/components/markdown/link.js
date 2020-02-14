@@ -16,8 +16,20 @@ const Link = (props) => {
     // if it starts with / its a relative link
     internalUrl = href
   } else if (href.includes('ryanfiller.com')) {
-    // break on domain name, get everything after
-    internalUrl = href.split("ryanfiller.com").slice(-1)[0] 
+    // // break on domain name, get everything after
+    // internalUrl = href.split('ryanfiller.com').slice(-1)[0] 
+
+    const urlParts = href.replace('https://', '').replace('http://', '').split('.')
+
+    // catch ryanfiller.com and www.ryanfiller.com
+    if (urlParts[0] === 'ryanfiller' || urlParts[1] === 'ryanfiller') {
+      internalUrl = href.split('ryanfiller.com').slice(-1)[0] 
+    }
+
+    // catch subdomains
+    if (urlParts[1] === 'ryanfiller' && urlParts[0] !== 'www') {
+      internalUrl = null
+    }
   }
 
   if (internalUrl) {
@@ -36,7 +48,7 @@ const Link = (props) => {
         href={href}
         title={href}
         className='link'
-        target="_blank" rel="noopener noreferrer"
+        target='_blank' rel='noopener noreferrer'
       >
         {content}
       </a>

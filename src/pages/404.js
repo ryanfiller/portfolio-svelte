@@ -6,6 +6,7 @@ export const query = graphql`
   query NotFoundPage {
     mdx(frontmatter: { name: { eq: "404" } } ) {
       frontmatter {
+        name
         title
         options {
           hideSiteHeader
@@ -18,9 +19,9 @@ export const query = graphql`
 `
 
 const NotFoundPage = () => (
-  <>
+  <main>
     <h1>Ruh Roh.</h1>
-  </>
+  </main>
 )
 
 NotFoundPage.propTypes = {

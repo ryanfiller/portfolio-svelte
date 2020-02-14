@@ -6,6 +6,7 @@ export const query = graphql`
   query PortfolioPage {
     mdx(frontmatter: { name: { eq: "portfolio" } } ) {
       frontmatter {
+        name
         title
       }
     }
@@ -14,9 +15,9 @@ export const query = graphql`
 
 const PortfolioPage = (props) => {
   return (
-    <>
+    <main>
       <h1>portfolio</h1>
-    </>
+    </main>
   )
 }
 

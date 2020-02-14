@@ -5,8 +5,7 @@ import PostPreview from './content/post-preview'
 
 const Posts = (props) => {
   return (
-    <section style={{ clear: 'both' }}>
-      <h2>Blog Posts: </h2>
+    <section style={{ clear: 'both', lineHeight: '1.5' }}>
       <ul style={{ listStyle: 'none', padding: '0', margin: '0 0 2rem 0' }}>
         {props.posts.map((post, index) => (
           <li key={index} style={{ marginBottom: '2rem' }}>

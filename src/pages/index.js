@@ -18,6 +18,7 @@ export const query = graphql`
 
     mdx(frontmatter: { name: { eq: "homepage" } } ) {
       frontmatter {
+        name
         options {
           hideSiteHeader
         }
@@ -53,14 +54,14 @@ export const query = graphql`
 
 const HomePage = (props) => {
   return (
-    <>
+    <main>
       <section
         style={{
           display: 'flex',
           alignItems: 'center'
         }}
       >
-        <div>
+        <div style={{ lineHeight: '1.5' }}>
           <h1>{props.data.site.siteMetadata.description}</h1>
           <p style={{ margin: '1em 0' }}>
             {props.data.site.siteMetadata.about}
@@ -78,7 +79,7 @@ const HomePage = (props) => {
       </section>
 
       <Posts posts={props.data.allMdx.edges} />
-    </>
+    </main>
   )
 }
 

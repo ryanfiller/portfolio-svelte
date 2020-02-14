@@ -8,6 +8,7 @@ export const query = graphql`
   query StylesPage {
     mdx(frontmatter: { name: { eq: "styles" } } ) {
       frontmatter {
+        name
         title
       }
       body
@@ -16,7 +17,11 @@ export const query = graphql`
 `
 
 const StylesPage = (props) => {
-  return <Markdown post={props.data.mdx.body} />
+  return (
+    <main>
+      <Markdown post={props.data.mdx.body} />
+    </main>
+  )
 }
 
 StylesPage.propTypes = {

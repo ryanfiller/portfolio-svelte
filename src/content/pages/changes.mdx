@@ -9,9 +9,47 @@ import Change from '../../components/change'
 
 <Change>
 
+  ## RF-05-02 - "Ground Type"
+
+  Adding structure beyond the homepage.
+
+  [design/header-footer](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/53) - Build header, footer, and navigation
+
+  - Features
+    - Added actual site navigation
+
+  - Components
+    - Layout
+      - ≈ `<Header />`
+      - \+ `<Nav />`
+      - \+ `<Footer />`
+      - `<PageLayout />` -> `<Page />`
+
+  - Tests
+    - Layout
+      - ≈ `<Header />`
+      - \+ `<Nav />`
+      - \+ `<Footer />`
+      - `<PageLayout />` -> `<Page />`
+
+  - Styles 
+    - changed global `rem` size from `16px` to `12px`
+
+    - functions
+      - \+ container
+      - \+ readable
+
+  - Config
+    - \+ `pages.json`
+
+
+</Change>
+
+<Change>
+
   ## RF-05-01b - "Full Burnern"
 
-  Improving up CMS funtionality and improve both site build time and client side performance.
+  Improving up CMS funtionality, site build time, and client side performance.
 
   [feature/cms-clearfix](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/40) - Add clearfix editor widget because sometimes laying out pages is hard
   
@@ -27,7 +65,7 @@ import Change from '../../components/change'
   
   [feature/link-parser](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/49) - Added `<Link/>` to automatically use javascript routing for internal links
   
-  [tooling/cypres](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/50) - Replace `Jest` with `Cypress
+  [tooling/cypres](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/50) - Replace `Jest` with `Cypress`
   
   - Features
     - Added Clearfix and Embed components to CMS widgets
@@ -250,10 +288,10 @@ import Change from '../../components/change'
 
   - Components
     - \+ Layout
-      - \+ Header
-      - \+ Markdown
-      - \+ PageLayout
-    - \+ Posts
+      - \+ `<Header />`
+      - \+ `<Markdown />`
+      - \+ `<PageLayout />`
+    - \+ `<Posts />`
 
   - Packages
     - \+ @mdx-js/mdx

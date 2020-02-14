@@ -26,7 +26,7 @@ context('<Link /> component', () => {
     })
   })
 
-  context('an external', () => {    
+  context('an external link', () => {    
     it('renders correctly', () => {
       cy.get('div#text').within(() => {        
         cy.get('a').eq(2)
@@ -38,4 +38,10 @@ context('<Link /> component', () => {
       })
     })
   })
+
+  // context('a subdomain link', () => {    
+  //   it('renders correctly', () => {
+  //     // TODO
+  //   })
+  // })
 })

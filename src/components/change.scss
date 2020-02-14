@@ -2,9 +2,6 @@
 @import '../styles/functions.scss';
 
 .change {
-  border: .125rem solid var(--primaryColor);
-  border-radius: .25rem;
-  padding: calc(var(--padding)/2) var(--padding);
   margin-bottom: var(--padding);
 
   &:last-child {
@@ -24,9 +21,12 @@
 
   &__details {
     &-label {
-      &::-webkit-details-marker { display:none; }
       font-size: 1.125em;
       cursor: pointer;
+
+      // hide default arrow
+      list-style: none;
+      &::-webkit-details-marker { display:none; }
 
       &:before{
         content: '';
@@ -54,7 +54,7 @@
         overflow: hidden;
         margin-left: .185rem;
         // TODO? - maybe make a border mixin
-        border-left: .125rem solid var(--primaryColor);
+        border-left: .125rem solid var(--colorPrimary);
         padding-left: .5rem;
         padding-top: 1rem;
 

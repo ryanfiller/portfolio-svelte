@@ -1,8 +1,13 @@
 @import '../../../styles/functions.scss';
 
-.heading {
+@mixin headingStyles() {
   position: relative;
   display: block;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  margin: 0;
+  margin-bottom: 1rem;
+  padding: 0;
+  font-weight: bold;
 
   a {
     font-size: inherit;
@@ -26,3 +31,33 @@
     }
   }
 }
+
+h1.heading {
+  font-size: 2.4em;
+  @include headingStyles;
+}
+
+h2.heading {
+  font-size: 1.8em;
+  @include headingStyles;
+}
+
+h3.heading {
+  font-size: 1.6em;
+  @include headingStyles;
+}
+
+h4.heading {
+  font-size: 1.4em;
+  @include headingStyles;
+}
+
+h5.heading {
+  font-size: 1.2em;
+  @include headingStyles;
+}
+
+h6.heading {
+  font-size: 1em;
+  @include headingStyles;
+}  

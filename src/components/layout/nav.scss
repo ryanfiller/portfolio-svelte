@@ -1,0 +1,37 @@
+@import '../../styles/functions.scss';
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    &-item {
+      margin-bottom: 0;
+      margin-right: 1em;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__link {
+    color: currentColor;
+
+    &--active {
+      position: relative;
+
+      &:after {
+        content: '';
+        display: block;
+        @include arrow(up);
+        position: absolute;
+        top: calc(100% + .125em);
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
