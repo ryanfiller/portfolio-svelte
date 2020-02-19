@@ -1,7 +1,10 @@
-@import '../styles/variables.scss';
-@import '../styles/functions.scss';
+@import '../../styles/variables.scss';
+@import '../../styles/functions.scss';
 
 .change {
+  border: .125rem solid var(--colorPrimary);
+  border-radius: .25rem;
+  padding: calc(var(--padding)/2) var(--padding);
   margin-bottom: var(--padding);
 
   &:last-child {

@@ -62,7 +62,7 @@
 
 @mixin highlight(
     $color: var(--colorPrimary),
-    $hoverColor: var(--colorWhite),
+    $hoverColor: var(--colorLight),
     $backgroundColor: var(--colorPrimary) 
   ) {
   color: $color;

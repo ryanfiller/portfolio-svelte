@@ -11,6 +11,10 @@ context('<Page /> component', () => {
       cy.get('footer#site-footer').should('exist')
       cy.checkA11y()
     })
+
+    it('sets the css colors variables correctly', () => {
+      // TODO - need to visually test this
+    })
   })
 
   context('on the 404 page', () => {

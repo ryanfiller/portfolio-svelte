@@ -2,14 +2,15 @@
 @import '../../styles/functions.scss';
 
 .footer {
+  // --background: var(--colorDark);
   --background: var(--colorPrimary);
-  --text: var(--colorWhite);
+  --text: var(--colorLight);
   font-size: 1rem;
-  padding: .5rem;
   background: var(--background);
   color: var(--text);
   
   &__content {
+    padding: .5rem;
     @include container;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     font-weight: bold;

@@ -1,11 +1,15 @@
 @import '../../styles/variables.scss';
 @import '../../styles/functions.scss';
 
+:root {
+  // --headerBackground: var(--colorDark);
+  --headerBackground: var(--colorPrimary);
+  --headerText: var(--colorLight);
+}
+
 .header {
-  --background: var(--colorPrimary);
-  --text: var(--colorWhite);
-  background: var(--background);
-  color: var(--text);
+  background: var(--headerBackground);
+  color: var(--headerText);
   position: relative; // catch banner <picture> element
 
   &__content {
