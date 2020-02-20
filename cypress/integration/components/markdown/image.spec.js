@@ -43,44 +43,72 @@ context('<Image /> component', () => {
       it('renders imgs', () => {
         cy.get('div#imgs').within(() => {
           // full
-          cy.get('img.image--full').should('have.css', 'width', '526px')
+          cy.get('img.image--full').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // left
-          cy.get('img.image--left').should('have.css', 'width', '526px')
+          cy.get('img.image--left').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // right
-          cy.get('img.image--right').should('have.css', 'width', '526px')
+          cy.get('img.image--right').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // center
-          cy.get('img.image--center').should('have.css', 'width', '526px')
+          cy.get('img.image--center').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // left small
-          cy.get('img.image--left.image--small').should('have.css', 'width', '526px')
+          cy.get('img.image--left.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // right small
-          cy.get('img.image--right.image--small').should('have.css', 'width', '526px')
+          cy.get('img.image--right.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           // center small
-          cy.get('img.image--center.image--small').should('have.css', 'width', '526px')
+          cy.get('img.image--center.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
         })
       })
 
       it('renders figures', () => {
         cy.get('div#figures').within(() => {
           // full
-          cy.get('figure.image--full').should('have.css', 'width', '526px')
+          cy.get('figure.image--full').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a full width image')
           // left
-          cy.get('figure.image--left').should('have.css', 'width', '526px')
+          cy.get('figure.image--left').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a left aligned image')
           // right
-          cy.get('figure.image--right').should('have.css', 'width', '526px')
+          cy.get('figure.image--right').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a right aligned image')
           // center
-          cy.get('figure.image--center').should('have.css', 'width', '526px')
+          cy.get('figure.image--center').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a center aligned image')
           // left small
-          cy.get('figure.image--left.image--small').should('have.css', 'width', '526px')
+          cy.get('figure.image--left.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a left aligned, small image')
           // right small
-          cy.get('figure.image--right.image--small').should('have.css', 'width', '526px')
+          cy.get('figure.image--right.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a right aligned, small image')
           // center small
-          cy.get('figure.image--center.image--small').should('have.css', 'width', '526px')
+          cy.get('figure.image--center.image--small').should(() => {
+            'have.css', 'width', '526px' || 'have.css', 'width', '511px'
+          })
           .find('figcaption').contains('this is a center aligned, small image')
         })
       })

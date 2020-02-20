@@ -7,9 +7,9 @@
 
 #site {
   min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: grid;
-  grid-template-columns: 100vw;
+  grid-template-columns: 100%;
   justify-content: stretch;
   grid-template-rows: auto 1fr auto;
   align-items: center;

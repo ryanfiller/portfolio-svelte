@@ -1,0 +1,42 @@
+@import '../styles/functions.scss';
+
+#site.workshop {
+
+  #content {
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      @include container;
+
+      // @include large {
+      //   display: grid;
+      //   grid-gap: var(--padding);
+      //   grid-template-columns: 1fr 1fr;
+      //   grid-template-rows: auto;
+      //   grid-template-areas: "gadgets experiments";
+
+      //   li:before {
+      //     position:relative;
+      //     z-index:1
+      //   }
+
+      //   .workshop--gadgets {
+      //     grid-area: gadgets;
+
+      //     // &:before {
+      //     //   content: 'gadgets';
+      //     // }
+      //   }
+
+      //   .workshop--experiments {
+      //     grid-area: experiments;
+
+      //     // &:before {
+      //     //   content: 'experiments';
+      //     // }
+      //   }
+      // }
+    }
+  }
+}

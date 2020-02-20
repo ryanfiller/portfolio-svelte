@@ -2,7 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import Markdown from '../components/layout/markdown'
+import './workshop.scss'
+
+import PostPreview from '../components/content/post-preview'
 
 export const query = graphql`
   query WorkshopPage {
@@ -11,15 +13,52 @@ export const query = graphql`
         name
         title
       }
-      body
+    }
+
+    allMdx(
+      sort: { order: DESC, fields: [frontmatter___meta___date]},
+      filter: {
+        fields: {contentType: { eq: "workshop" }},
+        frontmatter: { options: { published: { eq: true } } }
+      },
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            meta {
+              excerpt
+              date
+              categories
+              tags
+            }
+          }
+        }
+      }
     }
   }
 `
 
 const WorkshopPage = (props) => {
+
+  const {
+    edges: posts
+  } = props.data.allMdx
+
   return (
     <main>
-      <Markdown post={props.data.mdx.body} />
+      <section>
+        <ul className='list'>
+          {posts.map((post, index) => (
+            <li key={index} className={`workshop--${post.node.frontmatter.meta.categories[0]}`}>
+              <PostPreview {...post} />
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   )
 }

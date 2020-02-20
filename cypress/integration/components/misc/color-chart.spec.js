@@ -1,12 +1,12 @@
 context('<ColorChart /> component', () => {
-  beforeEach(() => {
-    cy.visit('/styles')
-    cy.injectAxe()
-  })
-
   // actual functionality is tested in the npm package
   
   context('default chart', () => {
+    beforeEach(() => {
+      cy.visit('/styles')
+      cy.injectAxe()
+    })
+
     it('renders correctly', () => {
       cy.get('section.color-chart').within(() => {
         cy.get('table').should('exist')
@@ -17,6 +17,11 @@ context('<ColorChart /> component', () => {
   })
 
   context('editable chart', () => {
+    beforeEach(() => {
+      cy.visit('/workshop/color-contrast-table')
+      cy.injectAxe()
+    })
+
     it('renders correctly', () => {
       cy.get('section.color-chart').within(() => {
         cy.get('input[type="color"]').should('have.length', 4)
