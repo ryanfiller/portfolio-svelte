@@ -4,24 +4,26 @@
 .footer {
   --background: var(--colorPrimary);
   --text: var(--colorWhite);
-
   font-size: 1rem;
   padding: .5rem;
-  @include container;
   background: var(--background);
   color: var(--text);
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-
-  a {
-    text-decoration: none;
-    color: currentColor;
-    margin: 0 .25em;
-    
-    &:hover {
-      text-decoration: underline;
+  
+  &__content {
+    @include container;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  
+    a {
+      text-decoration: none;
+      color: currentColor;
+      margin: 0 .25em;
+      
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
 }

@@ -3,14 +3,20 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
 import Markdown from '../components/layout/markdown'
-import Meta from '../components/content/meta'
 
 
 export const query = graphql`
   query BlogPost($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
+      fields {
+        contentType
+      }
       frontmatter {
         title
+        banner {
+          url
+          alt
+        }
         meta {
           date(formatString: "MMMM DD, YYYY")
           excerpt
@@ -32,11 +38,6 @@ const BlogPost = (props) => {
 
   return (
     <main className='blog-post'>
-      <header style={{textAlign: 'center', margin: '3rem 1rem'}}>
-        <h1>{frontmatter.title}</h1>
-        <Meta date={frontmatter.meta.date} />
-      </header>
-      <br />
       <Markdown post={body} />
     </main>
   )

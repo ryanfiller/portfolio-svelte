@@ -1,6 +1,23 @@
 @import '../../styles/functions.scss';
 
 .nav {
+
+  header & {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include small() {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      .logo {
+        margin-bottom: 0;
+      }
+    }
+  }
+
   &__list {
     display: flex;
     list-style: none;

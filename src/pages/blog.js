@@ -43,7 +43,6 @@ export const query = graphql`
 const BlogPage = (props) => {
   return (
     <main>
-      <h1>blog</h1>
       <Posts posts={props.data.allMdx.edges} />
     </main>
   )
