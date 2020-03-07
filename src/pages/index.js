@@ -56,6 +56,7 @@ const HomePage = (props) => {
   return (
     <main>
       <section
+       className='temp-bio'
         style={{
           display: 'flex',
           alignItems: 'center'

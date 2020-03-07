@@ -10,17 +10,19 @@ const Footer = () => (
     id='site-footer'
     className='footer'
   >
-    <span>
-      Built with
-      <a href='https://www.gatsbyjs.org/' target='_blank' rel='noopener noreferrer'>
-        Gatsby
-      </a>
-        and hosted on
-      <a href='https://www.netlify.com/' target='_blank' rel='noopener noreferrer'>
-        Netlfy
-      </a>
-    </span>
-    <Nav links={secondaryNav} label='utility navigation' />
+    <div className='footer__content'>
+      <span>
+        Built with
+        <a href='https://www.gatsbyjs.org/' target='_blank' rel='noopener noreferrer'>
+          Gatsby
+        </a>
+          and hosted on
+        <a href='https://www.netlify.com/' target='_blank' rel='noopener noreferrer'>
+          Netlfy
+        </a>
+      </span>
+      <Nav links={secondaryNav} label='utility navigation' />
+    </div>
   </footer>
 )
 

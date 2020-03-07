@@ -2,7 +2,6 @@
 @import './functions.scss';
 
 :root {
-
   --containerMaxWidth: $largeBreak;
 
   @include animate {
@@ -17,8 +16,13 @@
   --px1: .25rem;
   --px2: calc(2 * var(--px1));
 
-  --colorPrimary: rebeccapurple;
-  --colorWhite: white;
+  // must interpolate to set scss variable to custom property
+  --colorPrimary: #{$primary};
+  --colorDark: #{$dark};
+  --colorLight: #{$light};
+  --colorHighlight: #{$highlight};
+  --colorActive: #{$active};
+  --colorDisabled: #{$disabled};
 }
 
 html {
@@ -28,6 +32,8 @@ html {
     margin: 0;
     font-size: 1.5rem;
     line-height: 1;
+    background-color: var(--colorLight);
+    color: var(--colorDark);
   }
 }
 

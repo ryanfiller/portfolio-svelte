@@ -1,6 +1,7 @@
 @import '../../styles/functions.scss';
 
 .markdown {
+  padding: calc(2 * var(--padding));
   @include readable();
   line-height: 1.4;
 }

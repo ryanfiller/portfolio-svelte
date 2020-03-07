@@ -3,9 +3,7 @@ name: 'changes'
 title: 'Change Log'
 ---
 
-import Change from '../../components/change'
-
-# A page to track my site getting better (or worse)
+import Change from '../../components/misc/change'
 
 <Change>
 
@@ -14,34 +12,56 @@ import Change from '../../components/change'
   Adding structure beyond the homepage.
 
   [design/header-footer](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/53) - Build header, footer, and navigation
+  
+  [design/page-banners](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/54) - Added banners, custom blog banner and default for other pages
+  
+  [design/color-chart](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/58) - Colors chart components, css changes, color config object
 
   - Features
     - Added actual site navigation
+    - Added `react-color-contrast-table` package, component, and chart
 
   - Components
     - Layout
       - ≈ `<Header />`
       - \+ `<Nav />`
+      - \+ `<Banners />`
+        - \+ `<DefaultBanner />`
+        - \+ `<BlogBanner />`
       - \+ `<Footer />`
       - `<PageLayout />` -> `<Page />`
+    - Misc
+      - \+ `<ColorChart />`
 
   - Tests
     - Layout
       - ≈ `<Header />`
       - \+ `<Nav />`
+      - \+ `<Banners />`
+        - \+ `<DefaultBanner />`
+        - \+ `<BlogBanner />`
       - \+ `<Footer />`
       - `<PageLayout />` -> `<Page />`
+    - Misc
+      - \+ `<ColorChart />`
 
   - Styles 
-    - changed global `rem` size from `16px` to `12px`
+    - globals
+      - changed global `rem` size from `16px` to `12px`
 
     - functions
       - \+ container
       - \+ readable
 
   - Config
-    - \+ `pages.json`
+    - \+ `pages.js`
+    - \+ `colors.js`
 
+  - Packages
+    - \+ react-color-contrast-table
+    - \- babel-preset-gatsby
+    - \- identity-obj-proxy
+    - \- react-test-renderer
 
 </Change>
 
@@ -94,11 +114,6 @@ import Change from '../../components/change'
       - \+ pageFields
       - \+ postFields
 
-  - Packages
-    - \+ preact
-    - \+ gatsby-plugin-preact
-    - \+ react-transition-group
-
   - Tests
     - Content
       - ≈ `<Meta />`
@@ -122,8 +137,10 @@ import Change from '../../components/change'
       - \+ arrow
       - \+ highlight
 
+
   - Packages
     - \+ gatsby-plugin-netlify-cache
+    - \+ gatsby-plugin-preact
     - \+ axe-core
     - \- babel-jest
     - \+ cypress
@@ -131,6 +148,8 @@ import Change from '../../components/change'
     - \- jest
     - \- jest-axe
     - \- jest-coverage-badges
+    - \+ preact
+    - \+ react-transition-group
       
 </Change> 
 

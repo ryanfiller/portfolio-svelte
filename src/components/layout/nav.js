@@ -29,6 +29,7 @@ const Nav = props => {
 
   return (
     <nav className='nav' aria-label={props.label}>
+      {props.children}
       <ul className='nav__list'>
         {props.links.map((link, index) => {
           return (
@@ -47,6 +48,7 @@ const Nav = props => {
 
 Nav.propTypes = {
   label: PropTypes.string.isRequired,
+  children: PropTypes.node,
   links: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,

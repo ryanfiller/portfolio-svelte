@@ -1,0 +1,71 @@
+.color-chart {
+  display: flex;
+  align-items: stretch;
+  font-size: 1rem;
+  margin-bottom: var(--padding);
+
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    min-width: 6rem;
+
+    & > * {
+      flex: 1;
+    }
+  }
+
+  &__input {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding-right: 1em;
+
+    &-label {
+      font-weight: bold;
+      text-align: right;
+      line-height: 1;
+      margin-right: .5em;
+      width: 10ch;
+
+      &--name {
+        display: block;
+        font-size: .8em;
+        margin-bottom: .25rem;
+      }
+
+      &--value {
+        display: block;
+        font-size: 1em;
+        margin-bottom: .25rem;
+        font-variant-numeric: tabular-nums;
+      }
+    }
+
+    input {
+      width: 2.25em;
+      height: 2.25em;
+      padding: 0;
+      border: 0;
+
+      &:not([disabled]) {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__table {
+    flex: 1;
+    overflow: auto;
+
+    table {
+      width: 100%;
+      margin-bottom: 0;
+    }
+
+    &--editable {
+      th {
+        display: none;
+      }
+    }
+  }
+}
