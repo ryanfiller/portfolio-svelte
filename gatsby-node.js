@@ -6,7 +6,8 @@ exports.onCreateNode = ({ node, actions }) => {
 
   // block out content/pages since they have different frontmatter
   if (node.internal.type === 'Mdx' && !node.fileAbsolutePath.includes('content/pages/')) {
-    const directory = node.fileAbsolutePath.match(/([^/]+)\/[^/]+$/)[1]
+    // get the directory immediately after content, that's the default template
+    const directory = node.fileAbsolutePath.split('content/')[1].split('/')[0]
     let url
     let template
 

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 
 import {
   Default,
-  Blog
+  Blog,
+  Workshop
 } from './banners'
 
 import './banner.scss'
@@ -16,6 +17,8 @@ const Banner = (props) => {
     switch (contentType) {
       case 'blog':
         return <Blog {...props} />
+      case 'workshop':
+        return <Workshop {...props} />
       default: 
         return <Default {...props} />
     }
