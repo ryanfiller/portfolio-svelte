@@ -18,7 +18,7 @@ context('<ColorChart /> component', () => {
 
   context('editable chart', () => {
     beforeEach(() => {
-      cy.visit('/workshop/color-contrast-table')
+      cy.visit('/lab/color-contrast-table')
       cy.injectAxe()
     })
 

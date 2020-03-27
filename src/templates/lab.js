@@ -5,7 +5,7 @@ import { graphql } from 'gatsby'
 import Markdown from '../components/layout/markdown'
 
 export const query = graphql`
-  query WorkshopPost($slug: String!) {
+  query LabPost($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       fields {
         contentType
@@ -25,21 +25,21 @@ export const query = graphql`
   }
 `
 
-const WorkshopPost = (props) => {
+const LabPost = (props) => {
   const {
     frontmatter,
     body
   } = props.data.mdx
 
   return (
-    <main className='workshop-post'>
+    <main className='lab-post'>
       <Markdown post={body} />
     </main>
   )
 }
 
-WorkshopPost.propTypes = {
+LabPost.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-export default WorkshopPost
+export default LabPost

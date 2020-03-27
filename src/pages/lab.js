@@ -2,13 +2,13 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import './workshop.scss'
+import './lab.scss'
 
 import PostPreview from '../components/content/post-preview'
 
 export const query = graphql`
-  query WorkshopPage {
-    mdx(frontmatter: { name: { eq: "workshop" } } ) {
+  query LabPage {
+    mdx(frontmatter: { name: { eq: "lab" } } ) {
       frontmatter {
         name
         title
@@ -18,7 +18,7 @@ export const query = graphql`
     allMdx(
       sort: { order: DESC, fields: [frontmatter___meta___date]},
       filter: {
-        fields: {contentType: { eq: "workshop" }},
+        fields: {contentType: { eq: "lab" }},
         frontmatter: { options: { published: { eq: true } } }
       },
     ) {
@@ -42,7 +42,7 @@ export const query = graphql`
   }
 `
 
-const WorkshopPage = (props) => {
+const LabPage = (props) => {
 
   const {
     edges: posts
@@ -55,7 +55,7 @@ const WorkshopPage = (props) => {
           {posts.map((post, index) => (
             <li
               key={index}
-              className={`workshop--${post.node.frontmatter.meta.categories[0]}`}
+              className={`lab--${post.node.frontmatter.meta.categories[0]}`}
               style={{ marginBottom: '2rem' }}
             >
               <PostPreview {...post} />
@@ -67,8 +67,8 @@ const WorkshopPage = (props) => {
   )
 }
 
-WorkshopPage.propTypes = {
+LabPage.propTypes = {
   data: PropTypes.object.isRequired
 }
 
-export default WorkshopPage
+export default LabPage

@@ -11,7 +11,7 @@ const changeRangeInputValue = $range => value => {
 
 context('<VariableFont /> component', () => {
   beforeEach(() => {
-    cy.visit('/workshop/variable-font-display')
+    cy.visit('/lab/variable-font-display')
     cy.injectAxe()
   })
 

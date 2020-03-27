@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import {
   Default,
   Blog,
-  Workshop
+  Lab
 } from './banners'
 
 import './banner.scss'
@@ -17,8 +17,8 @@ const Banner = (props) => {
     switch (contentType) {
       case 'blog':
         return <Blog {...props} />
-      case 'workshop':
-        return <Workshop {...props} />
+      case 'lab':
+        return <Lab {...props} />
       default: 
         return <Default {...props} />
     }
