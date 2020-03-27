@@ -1,0 +1,107 @@
+@import '../../styles/functions.scss';
+
+.variable-font {
+  margin: var(--padding) 0;
+
+  &__link {
+    font-size: .75em;
+    text-transform: uppercase;
+    text-decoration:none;
+    letter-spacing: .125em;
+    display: block;
+    padding: var(--padding) 1em;
+    background-color: var(--colorPrimary);
+    color: var(--colorLight);
+    line-height: 1;
+    transition: background-color var(--transitionSpeed);
+
+    &:hover {
+      background-color: var(--colorActive);
+    }
+  }
+
+  &__options {
+    margin: 0 var(--padding);
+    padding: var(--padding);
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+
+    label {
+      text-transform: lowercase;
+      margin-right: 1em;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+
+  &__select {
+    margin-top: .5em;
+    
+    label {
+      display: block;
+    }
+
+    select {
+      width: 100%;
+    }
+  }
+
+  &__code {
+    padding: var(--padding);
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  &__example {
+
+    label {
+      @include visuallyHide;
+    }
+    
+    textarea {
+      padding: var(--padding);
+      resize: none;
+      width: 100%;
+      border: 0;
+      font-size: 2em;
+      line-height: 1.25;
+      height: 4em;
+      color: currentColor;
+    }
+  }
+
+  @include medium {
+    display: grid;
+    grid-template-columns: auto 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+      "link example example"
+      "link options code";
+
+    &__link {
+      grid-area: link;
+      writing-mode: sideways-lr;
+      // well this feels weird...
+      text-align: right;
+    }
+
+    &__options {
+      grid-area: options;
+    }
+
+    &__example {
+      grid-area: example;
+    }
+    
+    &__code {
+      grid-area: code;
+      margin-top: 1rem;
+    }
+  }
+}

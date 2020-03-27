@@ -3,7 +3,7 @@ title: variable font display
 options:
   custompath: ''
   customtemplate: ''
-  published: false
+  published: true
 meta:
   categories:
     - experiments
@@ -12,14 +12,43 @@ meta:
     A way to visualize variable font font-variation properties
   tags:
     - javascript
-    - accessibility
-    - react
+    - variable fonts
 url:
   - https://www.npmjs.com/package/color-contrast-table
 ---
 
-import ColorChart from '../../../components/misc/color-chart'
+import VariableFont from '../../../components/misc/variable-font'
 
-<ColorChart editable />
+<VariableFont 
+  name='Science Gothic'
+  url='https://github.com/tphinney/science-gothic'
+  options={{
+    wght: [100, 900],
+    wdth: [50, 200],
+    YOPQ: [18, 122],
+    slnt: [-10, 0]
+  }}
+/>
 
-I made a tool in vanilla js and also in react
+<VariableFont 
+  name='Recursive'
+  url='https://www.recursive.design/'
+  options={{
+    MONO: [0, 1],
+    CASL: [0, 1],
+    wght: [0, 1000],
+    slnt: [-15, 0],
+    ital: [0, 1]
+  }}
+/>
+
+<VariableFont 
+  name='LabDJR'
+  url='https://djr.com/lab-variable/'
+  options={{
+    BEVL: [1, 1000],
+    OVAL: [1, 1000],
+    QUAD: [1, 1000],
+    SIZE: [1, 1000]
+  }}
+/>

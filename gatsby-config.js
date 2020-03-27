@@ -73,14 +73,15 @@ module.exports = {
       options: {
         cssLoaderOptions: {
           camelCase: false // to use BEM syntax
-        }
+        },
+        // data: `@import "${__dirname}/src/styles/styles";`,
       }
     },
     {
-      resolve: 'gatsby-plugin-layout',
-      options: {
+			resolve: 'gatsby-plugin-layout',
+			options: {
         component: require.resolve('./src/components/layout/page')
-      }
-    }
-  ]
+			}
+		},
+  ],
 }

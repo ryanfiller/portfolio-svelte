@@ -31,12 +31,11 @@ context('<ColorChart /> component', () => {
 
     it('correctly sets new colors', () => {
       cy.get('section.color-chart').within(() => {
-        cy.get('input').eq(0)
-          // trigger color change
-          .as('color')
-          .invoke('val', '#639639')
-          .trigger('change')
-          .should('have.value', '#639639')
+        cy.get('input').eq(0).then(input => {
+          cy.inputChange(input, '#00ff00')
+        })
+        // annoying that it converts hex to rgb, but whatever...
+        cy.get('tr').eq(0).should('have.css', 'background-color', 'rgb(0, 255, 0)')
       })
       
       // refresh the page, reset the theme colors
