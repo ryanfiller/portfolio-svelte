@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Meta from '../../../components/content/meta'
+import Meta from '../../content/meta'
 
-const WorkshopBanner = (props) => {
+const LabBanner = (props) => {
   const {
     contentType,
     title,
@@ -23,9 +23,9 @@ const WorkshopBanner = (props) => {
   )
 }
 
-WorkshopBanner.propTypes = {
+LabBanner.propTypes = {
   contentType: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired
 }
 
-export default WorkshopBanner
+export default LabBanner

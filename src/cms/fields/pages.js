@@ -66,15 +66,15 @@ export const pages = {
       ]
     },
     {
-      label: 'Workshop',
-      name: 'workshop',
-      file: 'src/content/pages/workshop.mdx',
+      label: 'Lab',
+      name: 'lab',
+      file: 'src/content/pages/lab.mdx',
       fields: [
         {
           label: 'Name',
           name: 'name',
           widget: 'hidden',
-          default: 'workshop'
+          default: 'lab'
         },
         ...pageFields
       ]

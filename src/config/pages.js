@@ -10,7 +10,7 @@ const mainNav = [
   // },
   // {
   // 	name: 'r&d',
-  // 	url: 'workshop'
+  // 	url: 'lab'
   // },
   // {
   //   name: 'contact',
