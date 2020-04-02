@@ -2,7 +2,9 @@ audio,
 canvas,
 progress,
 video {
-  display: inline-block;
+  display: block;
+  height: auto;
+  width: 100%;
 }
 audio:not([controls]) {
   display: none;
