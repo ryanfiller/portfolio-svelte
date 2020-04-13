@@ -1,10 +1,11 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import './fonts.css'
 
 const FontImporter = () => {
   return (
-    <>
+    <Helmet>
       <link
         rel='preload'
         as='font'
@@ -25,7 +26,7 @@ const FontImporter = () => {
         href={'./LabDJR-VF.woff'}
         type='font/woff'
       />
-    </>
+    </Helmet>
   )
 }
 

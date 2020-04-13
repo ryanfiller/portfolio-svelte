@@ -62,14 +62,22 @@ I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what
 
 <img src="/images/uploads/font-load-test-control.png" alt="lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
 
-<table class="variable-font-speed">
-  <tbody>
+<table class="plus-minus">
+  <thead>
     <tr>
       <th></th>
       <th>
         <a href="https://font-science-gothic.netlify.com/">control</a>
       </th>
     </tr>
+  </thead>
+  <tbody>
+    {/* <tr>
+      <th></th>
+      <th>
+        <a href="https://font-science-gothic.netlify.com/">control</a>
+      </th>
+    </tr> */}
     <tr>
       <td>First Meaningful Paint</td>
       <td>0.80</td>
@@ -100,7 +108,7 @@ Gatsby offers two places to keep files - in the `src` directory of the project, 
 
 The external CDN is another Netlify hosted site I set up that only contains the .ttf file for the font.
 
-<table class="variable-font-speed">
+<table class="plus-minus">
   <caption>values compared to control</caption>
   <tbody>
     <tr>
@@ -142,8 +150,8 @@ These numbers were roughly what I expected. Gatsby [reccomends putting all asset
 
 Gatsby does offer this [first party plugin](https://www.gatsbyjs.org/packages/gatsby-plugin-preload-fonts/) to help apply preloading to font calls (more on what exactly that means later). Here is the same speed test again, but with this plugin and its generated `font-preload-cache.json` file included
 
-<table class="variable-font-speed">
-  <caption>values compared to speeds without \\\\\\`gatsby-plugin-preload-fonts\\\\\\`</caption>
+<table class="plus-minus">
+  <caption>values compared to speeds without `gatsby-plugin-preload-fonts`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -211,8 +219,8 @@ From [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Preloading_content)
 
 In short, `preload` is a flag to the browser that this resource, be it a font, javascript, or a critical css file, needs to be downloaded as soon as possible. The most important part about this is that the file will be loaded in a *non-blocking* way, meaning that the rest of the page can progress while the font is still downloading.
 
-<table class="variable-font-speed">
-  <caption>compared to fonts without \\\\\\`rel="preload"\\\\\\`</caption>
+<table class="plus-minus">
+  <caption>compared to fonts without `rel="preload"`</caption>
   <tbody>
     <tr>
       <th></th>
@@ -332,7 +340,7 @@ Because the data has been transposed to text, it can now be downloaded as part o
 
 To compare the data: 
 
-<table class="variable-font-speed">
+<table class="plus-minus">
   <caption>values compared to control</caption>
   <tbody>
     <tr>
