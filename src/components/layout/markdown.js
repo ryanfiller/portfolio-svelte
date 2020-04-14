@@ -8,6 +8,7 @@ import { H1, H2, H3, H4, H5, H6 } from '../markdown/headings'
 import Embed from '../markdown/embed'
 import Image from '../markdown/image'
 import Link from '../markdown/link'
+import Table from '../markdown/table'
 
 import './markdown.scss'
 
@@ -21,6 +22,7 @@ const components = {
   h6: H6,
   iframe: Embed,
   img: Image,
+  table: Table,
 }
 
 const Markdown = (props) => {

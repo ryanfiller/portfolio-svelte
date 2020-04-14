@@ -34,8 +34,8 @@ const Page = (props) => {
           src='//gc.zgo.at/count.js'
           data-goatcounter='https://ryanfiller.goatcounter.com/count'
         />
-        <FontImporter />
       </Helmet>
+      <FontImporter />
       <SEO {...props.data.mdx} />
       <div id='site' className={pageName}>
         {!hideSiteHeader && 

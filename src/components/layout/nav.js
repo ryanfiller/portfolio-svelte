@@ -8,7 +8,7 @@ const Nav = props => {
 
   const Internal = props => (
     <Link 
-      to={props.url || props.name}
+      to={`/${props.url || props.name}`}
       className='nav__link'
       activeClassName='nav__link--active'
       partiallyActive={true} // return active when child routes are active
