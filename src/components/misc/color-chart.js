@@ -56,9 +56,6 @@ const ColorChart = props => {
   )
 
   const handleInputChange = index => event => {
-    console.log(event)
-    console.log('index', index)
-    console.log('event', event)
     const newColors = [...colors]
     const { name, value } = event.target
     newColors[index] = {name: name, value: value}

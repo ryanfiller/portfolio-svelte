@@ -34,7 +34,7 @@
   		@include small() {
   				display: block;
           width: 100%;
-          max-width: none !important; // full supercedes small
+          max-width: none !important; // full supersedes small
   				height: auto;
   				margin: 0 0 1rem 0;
   		}
