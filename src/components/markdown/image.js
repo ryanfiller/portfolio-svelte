@@ -44,7 +44,7 @@ const Image = (props) => {
   const classNames = cx(
     'image',
     `image--${align}`,
-    small && 'image--small'
+    small === 'true' && 'image--small'
   )
 
   if (caption) {

@@ -186,13 +186,13 @@ Now that one site is able to pull data directly from the other, I need a mechani
 
 This works by configuring two things. First, on the auto-deploying site, a new `build hook` needs to be added. This is a url that can be POSTed to that will notify Netlify to start a new build. It lives at Settings > Deploys > Build Hooks.
 
-<img src="/images/uploads/netlify-build-hook-incoming.png" alt="Netlify incoming build hook configuration" data-caption="" data-align="center" data-small="false" />
+<img src="/images/uploads/netlify-build-hook-incoming.png" alt="Netlify incoming build hook configuration" data-caption="" data-align="full" data-small="false" />
 
 Once that url has been created, a matching Deploy Notification needs to be created on the original site. It lives at Settings > Deploys > Deploy Notifications.
 
-<img src="/images/uploads/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="center" data-small="false" />
+<img src="/images/uploads/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="full" data-small="false" />
 
-Tada! Now when the first site successfully completes a build, magic will happen on the internet and the second site automatically will to!
+Ta-da! Now when the first site successfully completes a build, magic will happen on the internet and the second site automatically will to!
 
 ## Quick SEO Notes
 
