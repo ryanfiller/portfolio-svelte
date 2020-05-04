@@ -63,7 +63,16 @@ module.exports = {
         extensions: ['.mdx', '.md', '.markdown'],
         defaultLayouts: {
           content: require.resolve('./src/components/layout/markdown.js')
-        }
+        },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: f => `images/uploads/${f.name}`,
+              ignoreFileExtensions: ['.md', '.mdx'],
+            },
+          },
+        ],
       }
     },
 
