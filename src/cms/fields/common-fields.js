@@ -1,3 +1,9 @@
+export const mediaSettings = {
+  path: '{{slug}}/index',
+  media_folder: '',
+  public_folder: '/images/uploads'
+}
+
 export const pageFields = [
   {
     name: 'title',

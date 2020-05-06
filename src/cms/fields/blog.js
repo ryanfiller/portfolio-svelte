@@ -1,4 +1,4 @@
-import { postFields } from './common-fields'
+import { postFields, mediaSettings } from './common-fields'
 
 export const blog = {
   label: 'Blog',
@@ -8,6 +8,7 @@ export const blog = {
   format: 'frontmatter',
   create: true,
   delete: true,
+  ...mediaSettings,
   fields: [
     ...postFields,
     {
