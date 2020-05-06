@@ -126,7 +126,7 @@ const ImagePreview = props => {
     src ? (
       <div style={{ ...style }}>
         <img
-          src={`https://www.ryanfiller.com${src}`}
+          src={src}
           alt={alt}
           style={{ width: '100%' }}
         />

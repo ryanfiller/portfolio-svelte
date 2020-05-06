@@ -60,7 +60,7 @@ For a baseline in this experiment, I've made a fresh Gatsby site that contains t
 
 I'm testing the page's Lighthouse ranking with no extra fonts loaded to see what the weight of a "normal" web page under these circumstances would be.
 
-<img src="/images/uploads/font-load-test-control.png" alt="lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
+<img src="/font-load-test-control.png" alt="lighthouse control score" data-caption="Page with default fonts, Science Gothic not loaded." data-align="full" data-small="false" />
 
 <table class="plus-minus">
   <tbody>
@@ -302,7 +302,7 @@ This option give the longest possible time to check for the font before renderin
 
 <figure class="image--full">
   <video controls loop autoplay width="100%">
-    <source src="https://www.ryanfiller.com/images/uploads/font-load-test-3g-font-display.mp4" type="video/mp4" />
+    <source src="/font-load-test-3g-font-display.mp4" type="video/mp4" />
     Sorry, your browser doesn't support embedded videos.
   </video>
   <figcaption>examples showing optional, fallback, swap, and block loading</figcaption>
@@ -328,7 +328,7 @@ It would be nice if fonts could load instantaneously, and though that technicall
 
 Because the data has been transposed to text, it can now be downloaded as part of a the site's css (or js, if css-in-js is your thing) bundle. Just like with variable fonts themselves though, number of requests is only half the equation here. This will **greatly** increase the size of the overall bundle, and depending on the size of the font, probably isn't ever a good idea.
 
-<img src="/images/uploads/font-load-test-base64.png" alt="lighthouse score of page with base64 encoded font" data-caption="" data-align="full" data-small="false" />
+<img src="/font-load-test-base64.png" alt="lighthouse score of page with base64 encoded font" data-caption="" data-align="full" data-small="false" />
 
 To compare the data: 
 

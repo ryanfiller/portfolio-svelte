@@ -16,7 +16,7 @@ meta:
 ---
 Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of starting a development blog together. He even went through all the trouble buying a url and setting us each our own subdomain. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
 
-<img src="/images/uploads/bender_two_things.gif" alt="Bender talking to Fry and The Professor" data-caption="" data-align="center" data-small="false" />
+<img src="/bender_two_things.gif" alt="Bender talking to Fry and The Professor" data-caption="" data-align="center" data-small="false" />
 
 But, since I *did* already have a blog, it made me curious to see if I could syndicate my posts from one site to the other. I put together a [quick site](https://github.com/ryanfiller/bearded-robots) with [Material-UI](https://material-ui.com/) and started trying to figure out how to get data out of one Gatsby site and into the other.
 
@@ -105,7 +105,7 @@ serialize: ({query: {site, allMdx }}) => {
 }
 ```
 
- These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function  in regards to making sure links would be handled correctly on different domains.  Both the post slugs (/blog/post-name) and image urls (/images/uploads/image-name.jpg) use relative paths, meaning that their urls are relative to the current domain. For things like posting images or doing links back to the original url of the post, I needed to query the url of the original site and append it to the beginning of my relative paths in the serialize function.
+ These might seem obvious, but there's a couple of things I wanted to make sure and call out in the `serialize` function  in regards to making sure links would be handled correctly on different domains.  Both the post slugs (/blog/post-name) and image urls (/image-name.jpg) use relative paths, meaning that their urls are relative to the current domain. For things like posting images or doing links back to the original url of the post, I needed to query the url of the original site and append it to the beginning of my relative paths in the serialize function.
 
 Also worth noting, `gatsby-plugin-feed` will automatically parse some fields, like `title`, `date,` and `url,` but anything extra can be passed in as objects into the `custom_elements` array.
 
@@ -186,11 +186,11 @@ Now that one site is able to pull data directly from the other, I need a mechani
 
 This works by configuring two things. First, on the auto-deploying site, a new `build hook` needs to be added. This is a url that can be POSTed to that will notify Netlify to start a new build. It lives at Settings > Deploys > Build Hooks.
 
-<img src="/images/uploads/netlify-build-hook-incoming.png" alt="Netlify incoming build hook configuration" data-caption="" data-align="full" data-small="false" />
+<img src="/netlify-build-hook-incoming.png" alt="Netlify incoming build hook configuration" data-caption="" data-align="full" data-small="false" />
 
 Once that url has been created, a matching Deploy Notification needs to be created on the original site. It lives at Settings > Deploys > Deploy Notifications.
 
-<img src="/images/uploads/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="full" data-small="false" />
+<img src="/netlify-build-hook-outgoing.png" alt="Netlify outgoing build hook configuration" data-caption="" data-align="full" data-small="false" />
 
 Ta-da! Now when the first site successfully completes a build, magic will happen on the internet and the second site automatically will to!
 

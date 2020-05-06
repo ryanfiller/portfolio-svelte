@@ -3,7 +3,7 @@ name: 'changes'
 title: 'Change Log'
 ---
 
-import Change from '../../components/misc/change'
+import Change from '../../../components/misc/change'
 
 <Change>
 
@@ -15,8 +15,16 @@ import Change from '../../components/misc/change'
   
   [feature/uses](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/73) - Add a /uses page and content
 
+  [refactor/relative-iamges](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/74) - Move `content/` directory to `name/index.mdx` convention to use relative paths for images
+
   - Features
     - Added RSS feed for #code category in blog
+    - Added /uses page
+    - Refactored structure of content and updated CMS config accordingly
+
+  - CMS
+    - Fields
+      - \+ mediasettings
 
   - Content
     - /uses
@@ -188,7 +196,6 @@ import Change from '../../components/misc/change'
       - \+ animate
       - \+ arrow
       - \+ highlight
-
 
   - Packages
     - \+ gatsby-plugin-netlify-cache
