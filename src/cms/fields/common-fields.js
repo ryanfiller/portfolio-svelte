@@ -1,7 +1,8 @@
 export const mediaSettings = {
   path: '{{slug}}/index.mdx',
   media_folder: '',
-  public_folder: '/images/uploads'
+  // '/' will write images in markdown as src="./image.jpg"
+  public_folder: '/'
 }
 
 export const pageFields = [
