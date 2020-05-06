@@ -1,5 +1,5 @@
 export const mediaSettings = {
-  path: '{{slug}}/index',
+  path: '{{slug}}/index.mdx',
   media_folder: '',
   public_folder: '/images/uploads'
 }
