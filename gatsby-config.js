@@ -201,10 +201,8 @@ function buildRSS(config) {
           }
         } = edge.node
 
-        // fix image urls and strip of frontmatter
-        const body = content.replace(/<img src="\//g, `<img src="${siteUrl}/`).split('---')[2]
-
-        console.log(body.split('---')[2])
+        // fix image urls and strip off frontmatter
+        const body = content.replace(/<img src="\//g, `<img src="${siteUrl}/`).replace(/---([\S\s]*?)---/, '')
 
         const url = `${siteUrl}/${edge.node.fields.slug}`
         return {
