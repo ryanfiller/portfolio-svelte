@@ -1,5 +1,5 @@
 export const mediaSettings = {
-  path: '{{slug}}/index.mdx',
+  path: '{{slug}}/index',
   media_folder: '',
   // '/' will write images in markdown as src="./image.jpg"
   public_folder: '/'
@@ -79,7 +79,8 @@ export const postFields = [
       {
         name: 'excerpt',
         label: 'Excerpt',
-        widget: 'text'
+        widget: 'text',
+        required: false
       },
       {
         name: 'categories',
