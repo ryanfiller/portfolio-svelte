@@ -41,7 +41,7 @@ module.exports = {
       }
     },
 
-    // data related plugins
+    // data / content related plugins
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -55,6 +55,14 @@ module.exports = {
       options: {
         name: 'content',
         path: `${__dirname}/src/content/`
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /static/
+        }
       }
     },
     {
