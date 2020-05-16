@@ -47,12 +47,12 @@
         .banner__date {
           grid-area: date;
           align-self: start;
-          justify-self: end;
+          justify-self: flex-end;
         }
 
         .banner__tags {
           grid-area: tags;
-          justify-self: end;
+          justify-self: flex-end;
         }
       }
     }

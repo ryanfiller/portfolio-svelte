@@ -60,7 +60,7 @@ table.table {
       div {
         display: inline-flex;
         flex-direction: row-reverse;
-        justify-content: end;
+        justify-content: flex-end;
 
         span {
           font-size: .75em;

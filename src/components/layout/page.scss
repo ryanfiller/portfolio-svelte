@@ -1,8 +1,10 @@
 @import '../../styles/functions.scss';
 
 // TODO remove this
-.temp-bio {
+.temp-bio,
+form#contact {
   @include readable();
+  margin-bottom: var(--padding);
 }
 
 #site {

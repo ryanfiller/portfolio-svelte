@@ -23,6 +23,7 @@ context('rss feed', () => {
     })
 
     it('has the correct items', () => {
+      // TODO makes sure rss posts don't contain frontmatter
       const itemTags = [
         'title',
         'link',
