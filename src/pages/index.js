@@ -2,6 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
 
+import Form from '../components/form'
+import { contactForm } from '../config/forms'
+
 import Posts from '../components/posts'
 
 export const query = graphql`
@@ -78,8 +81,11 @@ const HomePage = (props) => {
           alt={props.data.site.siteMetadata.author}
         />
       </section>
-
+      
       <Posts posts={props.data.allMdx.edges} />
+      
+      <Form {...contactForm} location={props.location.pathname} />
+
     </main>
   )
 }
