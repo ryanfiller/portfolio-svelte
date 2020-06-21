@@ -45,13 +45,13 @@ This site uses [Cypress](https://www.cypress.io/) with several accessibility ext
 npm run test
 ```
 
-See my testing setup [here](#TODO)
+See my testing setup [here](https://github.com/ryanfiller/portfolio-gatsby-v2/tree/master/cypress)
 
 ## I like Netlify!
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/60054267-354c-4772-8941-db16095fee82/deploy-status)](https://app.netlify.com/sites/ryanfiller-gatsby/deploys)
 
-I use [Netlify](https://www.netlify.com/) for hosting, [NetlifyCMS](https://www.netlifycms.org/) for content management, and [Netlify Large Media](https://www.netlify.com/products/large-media/) as my image transformer and CDN.
+I use [Netlify](https://www.netlify.com/) for hosting and [Netlify Large Media](https://www.netlify.com/products/large-media/) as my image transformer and CDN.
 
 ## I like Your Privacy!
 This site contains no invasive analtyics tracking. It uses  [Netlify Analytics](https://www.netlify.com/products/analytics/) on the site to anonymously track how many server requests are made, and [GoatCounter](https://www.goatcounter.com/) to see what browsers and screen sizes people are using.
