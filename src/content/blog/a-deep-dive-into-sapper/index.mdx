@@ -13,12 +13,11 @@ meta:
     - svelte
     - sapper
 ---
-
 Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at a [local meetup](https://memphiswebworkers.com/) last summer. I built a basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) to test some of the things he talked about, I and haven't touched Svelte since then. Both the Svelte framework and the world have changed a lot in the last year. [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released a few months ago so I thought now was a good time to take another look at the Svelte ecosystem. 
 
 ## What is Svelte and what is Sapper?
 
-[Svelte](https://svelte.dev/) is a young-ish framework that, in their words, takes a _"radical new approach to building user interfaces."_ Svelte differs from other Javascript UI tools — like [React](https://reactjs.org/) or [Vue](https://vuejs.org/) — in that it does the work during compile time rather than during clientside runtime. This means that rather than bundle and ship the library, Svelte "boils itself away" and only vanilla Javascript is ever sent to the browser.
+[Svelte](https://svelte.dev/) is a young-ish framework that, in their words, takes a *"radical new approach to building user interfaces."* Svelte differs from other Javascript UI tools — like [React](https://reactjs.org/) or [Vue](https://vuejs.org/) — in that it does the work during compile time rather than during clientside runtime. This means that rather than bundle and ship the library, Svelte "boils itself away" and only vanilla Javascript is ever sent to the browser.
 
 [This video](https://www.youtube.com/watch?v=AdNJ3fydeao) sums up the philosophy behind Svelte and I see it cited online as the best selling point for using it.
 
@@ -40,7 +39,7 @@ I've been working in the Gatsby-React ecosystem for a while, and I've formed pre
 
 I put together a [quick starter project](https://github.com/ryanfiller/sapper-test) and hosted it on [Netlify](https://sapper-goals.netlify.app/). I wanted to see if I could accomplish the things on this list, and figure out how difficult they would be to do in Sapper.
 
-<img src="/sapper-test-site-screenshot.png" alt="Sapper test site" data-align="full" />
+<img src="/sapper-test-site-screenshot.png" alt="Sapper test site" data-caption="" data-align="full" data-small="false" />
 
 (Spoilers: Sapper did everything I wanted, and was relatively easy.)
 
@@ -363,7 +362,7 @@ An important note here is that during the Sapper static export process, Sapper w
 
 ## Final Thoughts
 
-All in all, Sapper was cool and I enjoyed the Svelte platform. Some things felt very different than other tools, but I think the tradeoffs are worth it. By compiling away the framework this reduces the download size of the initial Javascript bundle anywhere from ~50k to ~100k. It also means that Svelte can be as feature-rich as it wants because a site will only ship the specific code it actually uses. 
+All in all, Sapper was cool and I enjoyed the Svelte platform. Some things felt very different than other tools, but I think the tradeoffs are worth it. By compiling away the framework this reduces the download size of the initial Javascript bundle anywhere from \~50k to \~100k. It also means that Svelte can be as feature-rich as it wants because a site will only ship the specific code it actually uses. 
 
 Sapper comes with different tools than Gatsby. Gatsby has a built-in way to query internal data with GraphQL, but Sapper handles page creation and template inheritance with a lot more magic. Both have a rich plugin ecosystem and can be customize to accomplish pretty much anything. 
 
