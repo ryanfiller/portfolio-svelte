@@ -5,7 +5,7 @@ options:
   customurl: ''
   customtemplate: ''
 meta:
-  date: 2020-07-11
+  date: 2020-07-26
   excerpt: Three big limitations I've discovered while working with Svelte and Sapper
   categories:
     - code
