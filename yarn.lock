@@ -2867,6 +2867,14 @@ collection-visit@^1.0.0:
     map-visit "^1.0.0"
     object-visit "^1.0.0"
 
+color-contrast-table-react@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/color-contrast-table-react/-/color-contrast-table-react-2.1.0.tgz#61dd211b05f09dccdf8675fe443e6c7863530fbc"
+  dependencies:
+    color-contrast-table "^1.0.0"
+    throttle-debounce "^2.2.1"
+    wcag-contrast "^3.0.0"
+
 color-contrast-table@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/color-contrast-table/-/color-contrast-table-1.0.0.tgz#a7a6d4a32786dd55a85374b653406cf51b6404e7"
@@ -10034,13 +10042,6 @@ react-codemirror2@^6.0.0:
   version "6.0.1"
   resolved "https://registry.yarnpkg.com/react-codemirror2/-/react-codemirror2-6.0.1.tgz#7daba40795eb2a52637926b6fe0b73a6e9090723"
 
-react-color-contrast-table@^1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/react-color-contrast-table/-/react-color-contrast-table-1.1.1.tgz#c69e32aef4b10608aa9dad1137912d37e71c832d"
-  dependencies:
-    color-contrast-table "^1.0.0"
-    wcag-contrast "^3.0.0"
-
 react-datetime@^2.16.3:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/react-datetime/-/react-datetime-2.16.3.tgz#7f9ac7d4014a939c11c761d0c22d1fb506cb505e"
@@ -12196,6 +12197,10 @@ terser@^4.1.2:
 text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
+
+throttle-debounce@^2.2.1:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
 
 throttleit@^1.0.0:
   version "1.0.0"
