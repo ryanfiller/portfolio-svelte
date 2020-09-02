@@ -10,11 +10,12 @@ function slugify(string) {
     .replace(/-+$/, '')         // Trim - from end of text
 }
 
+// TODO - `noQuotes` arg can go away with netlifyCMS
 function fishAttr(string, attr) {
-  var regex = new RegExp(`${attr}="(.*?)"`)
+  var regex = new RegExp(`${attr}=('|")(.*?)('|")`)
   const match = string.match(regex)
-  // netlifycms blows up if no match, return ''
-  return match ? match[1] : ''
+
+  return match ? match[2] : null
 }
 
 module.exports = {

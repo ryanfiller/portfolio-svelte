@@ -4,32 +4,11 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { MDXProvider } from '@mdx-js/react'
 import cx from 'classnames'
 
-import Blockquote from '../markdown/blockquote'
-import { H1, H2, H3, H4, H5, H6 } from '../markdown/headings'
-import Embed from '../markdown/embed'
-import Image from '../markdown/image'
-import Link from '../markdown/link'
-import Table from '../markdown/table'
-
 import './markdown.scss'
-
-const components = {
-  a: Link,
-  blockquote: Blockquote,
-  h1: H1,
-  h2: H2,
-  h3: H3,
-  h4: H4,
-  h5: H5,
-  h6: H6,
-  iframe: Embed,
-  img: Image,
-  table: Table,
-}
 
 const Markdown = (props) => {
   return (
-    <MDXProvider components={components}>
+    <MDXProvider>
       <article 
         className={cx(
           'markdown',

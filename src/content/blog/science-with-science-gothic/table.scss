@@ -1,0 +1,16 @@
+table.diff-table {
+  .diff {
+    font-size: .75em;
+    font-weight: bold;
+    margin-top: .25em;
+    margin-right: .25em;
+
+    &--increase {
+      color: var(--colorHighlight);
+    }
+
+    &--decrease {
+      color: var(--colorActive);
+    }
+  }
+}

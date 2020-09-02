@@ -62,15 +62,29 @@ module.exports = {
         defaultLayouts: {
           content: require.resolve('./src/components/layout/markdown.js')
         },
+        // TODO remark-abbr
+        remarkPlugins: [
+          require(`remark-attr`),
+          require(`${__dirname}/plugins/remark/blockquote`),
+          require(`${__dirname}/plugins/remark/headings`),
+          require(`${__dirname}/plugins/remark/images`),
+          require(`${__dirname}/plugins/remark/links`),
+          // require(`${__dirname}/plugins/remark/video`), only called from image component for now...
+        ],
+        // TODO https://github.com/JS-DevTools/rehype-toc
+        rehypePlugins: [
+          require(`${__dirname}/plugins/rehype/embed`),
+          require(`${__dirname}/plugins/rehype/twitter`)
+        ],
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-copy-linked-files',
             options: {
               destinationDir: f => `images/uploads/${f.name}`,
-              ignoreFileExtensions: ['.md', '.mdx'],
-            },
-          },
-        ],
+              ignoreFileExtensions: ['.md', '.mdx']
+            }
+          }
+        ]
       }
     },
 
