@@ -63,7 +63,7 @@ Sapper works best in two scenarios:
  - as a node.js app running on a server and dynamically generating pages
  - as a statically served site with a predetermined URL structure
 
-Serving the site statically meant that I would need to trigger a build and a red-deploy any time a user added any new data. While it is possible to deploy a Sapper project in Node-mode to [Vercel](https://vercel.com/), I wanted to host this site on Netlify to avoid trying too many new things at once. Maybe next time I'll give Vercel a shot.
+Serving the site statically meant that I would need to trigger a build and a re-deploy any time a user added any new data. While it is possible to deploy a Sapper project in Node-mode to [Vercel](https://vercel.com/), I wanted to host this site on Netlify to avoid trying too many new things at once. Maybe next time I'll give Vercel a shot.
 
 Luckily, [Routify](https://routify.dev/) exists as an entirely client-side routing solution for Svelte apps. This means that the site could still deploy statically to Netlify, and instead of running a Vercel server to create dynamic pages, I could do all the work in a user's browser. As a bonus, Routify has a very similar API to Sapper so it wasn't a huge lift to refactor.
 
