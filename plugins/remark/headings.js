@@ -1,6 +1,7 @@
-const visit = require('unist-util-visit')
+import visit from 'unist-util-visit'
 const toString = require('mdast-util-to-string')
-const { slugify } = require('../../src/helpers')
+// relative to rollup.config.js for some reason?
+const { slugify } = require('./src/helpers')
 
 function transformer(ast) {
   visit(ast, 'heading', visitor)
@@ -29,4 +30,4 @@ function headings() {
   return transformer
 }
 
-module.exports = headings
+export default headings

@@ -1,7 +1,6 @@
-const visit = require('unist-util-visit')
-
-// TODO pull this from some config file elsewhere
-const siteUrl = 'ryanfiller.com'
+import visit from 'unist-util-visit'
+import { meta } from '../../src/site-config.js' 
+const siteUrl = meta.siteUrl
 
 function transformer(ast) {
   visit(ast, 'link', visitor)
@@ -56,4 +55,4 @@ function links() {
   return transformer
 }
 
-module.exports = links
+export default links

@@ -33,7 +33,7 @@ context('<Form /> component', () => {
               "headers": {
                 "Content-Type": "application/x-www-form-urlencoded"
               },
-              "body": "form-name=contact&name=Philip&email=fry%40planetexpress.com&message=What%20if%20that%20thing%20I%20said%3F&location=%2F"
+              "body": "form-name=contact&name=Philip&email=fry%40planetexpress.com&message=What%20if%20that%20thing%20I%20said%3F&location="
             }
           ])
         })

@@ -1,5 +1,5 @@
-const visit = require('unist-util-visit')
-const fetch = require('node-fetch')
+import visit from 'unist-util-visit'
+import fetch from 'node-fetch'
 
 const twitter = () => async (tree) => {
   const promises = []
@@ -8,7 +8,7 @@ const twitter = () => async (tree) => {
     const tweetRegex = new RegExp(/<blockquote class="twitter-tweet">(.*)<\/blockquote>/)
   
     if (node.value && node.value.match(tweetRegex)) {
-      // sometimes this grabs other jsx values... not sure why?
+      // sometimes this grabs other lines... not sure why?
       const value = node.value.match(tweetRegex)[0]
 
       const user = value.match(/&mdash(.*)\)/)[0]
@@ -75,12 +75,10 @@ const twitter = () => async (tree) => {
         })
         .then(avatarUrl => {
           const newNodeValue = render(avatarUrl)
-
           return node.value = node.value.replace(tweetRegex, newNodeValue)
         })
         .catch(() => {
           const newNodeValue = render(avatarFallback)
-
           return node.value = node.value.replace(tweetRegex, newNodeValue)
         })
   
@@ -88,10 +86,10 @@ const twitter = () => async (tree) => {
     }
   }
 
-  visit(tree, 'jsx', createTweet)
+  visit(tree, 'raw', createTweet)
   await Promise.all(promises)
 
   return
 }
 
-module.exports = twitter
+export default twitter

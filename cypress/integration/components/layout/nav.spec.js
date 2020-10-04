@@ -1,4 +1,4 @@
-import { mainNav, secondaryNav } from '../../../../src/config/pages'
+import { mainNav, secondaryNav } from '../../../../src/site-config.js'
 
 context('<Nav /> component', () => {
   beforeEach(() => {

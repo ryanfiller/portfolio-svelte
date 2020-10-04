@@ -10,7 +10,6 @@ function slugify(string) {
     .replace(/-+$/, '')         // Trim - from end of text
 }
 
-// TODO - `noQuotes` arg can go away with netlifyCMS
 function fishAttr(string, attr) {
   var regex = new RegExp(`${attr}=('|")(.*?)('|")`)
   const match = string.match(regex)
@@ -18,7 +17,13 @@ function fishAttr(string, attr) {
   return match ? match[2] : null
 }
 
+function capitalize(string) {
+  if (typeof string !== 'string') return ''
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
 module.exports = {
   slugify,
-  fishAttr
+  fishAttr,
+  capitalize
 }

@@ -6,7 +6,7 @@ context('<Banner /> component', () => {
 
   it('renders the default page banner on subpages', () => {
     cy.visit('/about')
-    cy.get('.banner--page').should('exist')
+    cy.get('.banner--default').should('exist')
   })
 
   it('renders the blog banner on blog pages', () => {

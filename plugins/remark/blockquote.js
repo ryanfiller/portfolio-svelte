@@ -1,4 +1,4 @@
-const visit = require('unist-util-visit')
+import visit from 'unist-util-visit'
 
 function transformer(ast) {
   visit(ast, 'blockquote', visitor)
@@ -31,4 +31,4 @@ function blockquote() {
   return transformer
 }
 
-module.exports = blockquote
+export default blockquote

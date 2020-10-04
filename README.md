@@ -37,8 +37,6 @@ The site is now running at `http://localhost:8000`!
 
 ## I like testing!
 
-<!-- (This badge _probably_ isn't 💯 yet but I'm doing my best!) -->
-
 This site uses [Cypress](https://www.cypress.io/) with several accessibility extensions. To run basic tests
 
 ``` shell
