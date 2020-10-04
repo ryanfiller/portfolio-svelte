@@ -31,16 +31,6 @@ module.exports = {
     // build related plugins
     'gatsby-plugin-netlify-cache',
 
-    // CMS / content related plugins
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        manualInit: true,
-        enableIdentityWidget: false,
-        modulePath: `${__dirname}/src/cms/cms.js`
-      }
-    },
-
     // data / content related plugins
     'gatsby-plugin-react-helmet',
     {
