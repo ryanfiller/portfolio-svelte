@@ -12,9 +12,12 @@ import Change from '../../../components/misc/change'
   Big changes. The nuclear option.
 
   [remove-netlify-cms](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/96) - Remove NetlifyCMS from project
+  
+  [refactor/mdx-to-remark](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/97) - Replace MDX custom components with remark/rehype plugins
 
   - Features
     - Completely remove NetlifyCMS
+    - Remove MDX custom components, add remark & rehype plugins
 
   - CMS
     - Editor
@@ -28,9 +31,47 @@ import Change from '../../../components/misc/change'
       - \- postFields
       - \- mediasettings
 
+  - Components
+    - Markdown
+      - \- `<Blockquote />`
+      - \- `<Embed />`
+      - \- `<Heading />`
+      - \- `<Image />`
+      - \- `<Link />`
+      - \- `<Table />`
+
+  - Helpers
+    - ≈ `fishAttr`
+
+  - Plugins
+    - remark
+      - \+ `blockquote`
+      - \+ `heading`
+      - \+ `image`
+      - \+ `link`
+      - \+ `twitter`
+    - rehype
+      - \+ `embed`
+      - \+ `video`
+
+  - Tests
+    - Markdown
+      - ≈ `blockquote`
+      - ≈ `embed`
+      - ≈ `fishAttr`
+      - ≈ `heading`
+      - ≈ `image`
+      - ≈ `link`
+      - \+ `twitter`
+      - \+ `video`
+
   - Packages 
-    - \- netlify-cms-app
     - \- gatsby-plugin-netlify-cms
+    - \+ mdast-util-to-string 
+    - \- netlify-cms-app
+    - \+ node-fetch 
+    - \+ remark-attr 
+    - \+ unist-util-visit
 
 </Change>
 

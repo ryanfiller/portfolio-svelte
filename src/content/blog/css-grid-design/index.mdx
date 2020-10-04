@@ -93,7 +93,7 @@ Line height does not work the same way on the web as it does in print. Rather th
 
 Because of this, even though the math seems like a 1rem repeating vertical grid would line up with the baselines of the text, it actually ends up nearly in the middle of the vertical space between each line of text.
 
-<iframe data-aspect-ratio="full" title="MXEPGe" src="//codepen.io/ryanfiller89/embed/MXEPGe" loading="lazy"></iframe>
+<iframe data-aspect-ratio="full" title="MXEPGe" src="//codepen.io/ryanfiller89/embed/MXEPGe"></iframe>
 
 It seems like it would make sense to compensate for this using some math.
 
@@ -106,7 +106,7 @@ text {
 
 This would take the total height of a line of text, remove the size of the text leaving only the empty space, then divide it in half to account for only the space added to the top. However, because different web fonts come with different negative space baked into them, this still isn't a catch all formula for applying a baseline grid to web text. Starting with the formula and then using some trial and error from there, I was able to get the heading, subheading and body text to eventually line up to the baseline grid.
 
-<iframe data-aspect-ratio="16/9" title="Baseline Grid Test" src="//codepen.io/ryanfiller89/embed/NzzxKm" loading="lazy"></iframe>
+<iframe data-aspect-ratio="16/9" title="Baseline Grid Test" src="//codepen.io/ryanfiller89/embed/NzzxKm"></iframe>
 
 The downside to this is that if for any reason you need to set the text elements to anything other than `position: relative` you either are introducing even more complicated css styles, or need to introduce more markup to act as wrappers. There are, of course, [libraries available](https://sassline.com/) to help do some of the work without as much effort, but the larger question is probably "is all of this worth it just to vertically align text?"
 

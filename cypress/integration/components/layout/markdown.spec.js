@@ -6,39 +6,49 @@ context('<Markdown /> component', () => {
   
   it('renders the MDX components', () => {
     cy.get('#content').within(() => {
-      // <Link />
+      // links
       cy.get('a').should('exist')
       cy.get('a[target="_blank"]').should('exist')
 
-      // <Heading />
+      // text?
+
+      // headings
       cy.get('h1#heading-level-1').should('exist')
       cy.get('h2#heading-level-2').should('exist')
       cy.get('h3#heading-level-3').should('exist')
       cy.get('h4#heading-level-4').should('exist')
       cy.get('h5#heading-level-5').should('exist')
       cy.get('h6#heading-level-6').should('exist')
-      
-      // <Embed />
+
+      // blockquotes
+      cy.get('div.twitter-tweet').should('exist')
+
+      // tables
+
+      // images
+      cy.get('img[data-align="full"]').should('exist')
+      cy.get('img[data-align="left"]').should('exist')
+      cy.get('img[data-align="right"]').should('exist')
+      cy.get('img[data-align="center"]').should('exist')
+      cy.get('img[data-small="true"]').should('exist')
+
+      // iframes
       cy.get('.embed[data-aspect-ratio="full"]').should('exist')
       cy.get('.embed[data-aspect-ratio="16/9"]').should('exist')
       cy.get('.embed[data-aspect-ratio="4/3"]').should('exist')
 
-      // <Image />
-      cy.get('img.image--full').should('exist')
-      cy.get('img.image--left').should('exist')
-      cy.get('img.image--right').should('exist')
-      cy.get('img.image--center').should('exist')
-      cy.get('img.image--left.image--small').should('exist')
-      cy.get('img.image--right.image--small').should('exist')
-      cy.get('img.image--center.image--small').should('exist')
+      cy.get('figure[data-align="full"]').should('exist')
+      cy.get('figure[data-align="left"]').should('exist')
+      cy.get('figure[data-align="right"]').should('exist')
+      cy.get('figure[data-align="center"]').should('exist')
+      cy.get('figure[data-small="true"]').should('exist')
 
-      cy.get('figure.image--full').should('exist')
-      cy.get('figure.image--left').should('exist')
-      cy.get('figure.image--right').should('exist')
-      cy.get('figure.image--center').should('exist')
-      cy.get('figure.image--left.image--small').should('exist')
-      cy.get('figure.image--right.image--small').should('exist')
-      cy.get('figure.image--center.image--small').should('exist')
+      // videos
+      cy.get('figure[data-align="full"]').get('video').should('exist')
+      cy.get('video[data-align="left"]').should('exist')
+      cy.get('video[data-align="right"]').should('exist')
+      cy.get('video[data-align="center"]').should('exist')
+      cy.get('video[data-small="true"]').should('exist')
     })
     
     cy.checkA11y()

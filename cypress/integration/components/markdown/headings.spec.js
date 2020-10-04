@@ -1,4 +1,4 @@
-context('<Heading /> component', () => {
+context('remark headings', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.injectAxe()

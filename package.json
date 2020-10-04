@@ -26,13 +26,17 @@
     "gatsby-remark-copy-linked-files": "^2.3.1",
     "gatsby-source-filesystem": "^2.1.40",
     "marked": "^1.0.0",
+    "mdast-util-to-string": "^1.1.0",
+    "node-fetch": "^2.6.1",
     "node-sass": "^4.13.0",
     "preact": "^10.3.1",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "remark-attr": "^0.11.1",
+    "unist-util-visit": "^2.0.3"
   },
   "devDependencies": {
     "axe-core": "^3.4.2",
@@ -58,7 +62,7 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "start": "npm run develop",
+    "start": "rm -rf .cache && gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "cypress open"
