@@ -7,7 +7,7 @@ This is my personal portfolio site and blog. It's way over engineered for just a
 Clone the repository
 
 ``` shell
-git clone git@github.com:ryanfiller/portfolio-gatsby-v2.git ryansite
+git clone git@github.com:ryanfiller/portfolio-sapper.git ryansite
 ```
 
 This site uses [git LFS](https://git-lfs.github.com/) to store images, so if you want those you'll also need to run
@@ -23,17 +23,17 @@ cd ryansite
 yarn install
 ```
 
-## I like Gatsby!
+## I like Sapper!
+
+This site is built using [Svelte](https://svelte.dev/) & [Sapper](https://sapper.svelte.dev/).
 
 Navigate into this site’s directory and start it up.
 
 ``` shell
-gatsby develop
+npm run start
 ```
 
-The site is now running at `http://localhost:8000`!
-
-  _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+The site is now running at `http://localhost:3000`!
 
 ## I like testing!
 
@@ -43,7 +43,7 @@ This site uses [Cypress](https://www.cypress.io/) with several accessibility ext
 npm run test
 ```
 
-See my testing setup [here](https://github.com/ryanfiller/portfolio-gatsby-v2/tree/master/cypress)
+See my testing setup [here](https://github.com/ryanfiller/portfolio-sapper/tree/main/cypress)
 
 ## I like Netlify!
 
@@ -56,15 +56,19 @@ This site contains no invasive analtyics tracking. It uses  [Netlify Analytics](
 
 ## Roadmap
 
-See my planned features / known bugs [here](https://github.com/ryanfiller/portfolio-gatsby-v2/projects/1).
+See my planned features / known bugs [here](https://github.com/ryanfiller/portfolio-sapper/projects/1).
 I also keep a pretty up to date change log [here](http://ryanfiller.com/changes)
 
 ## Bugs!
 
 Oh no! 🐜
 
-If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-gatsby-v2/issues) or DM me on [twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
+If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-sapper/issues) or DM me on [twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
 
 ## License
 
 This is a public repository under an MIT license. Feel free to replicate any code you find here if it helps you, but please, do not steal my original content.
+
+## Old Repo
+
+If for some reason you're looking for the [Gatsby](https://www.gatsbyjs.com/) version of this site, that repo can be found [here](ttps://github.com/ryanfiller/portfolio-gatsby-v2).

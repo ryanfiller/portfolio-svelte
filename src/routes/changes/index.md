@@ -17,6 +17,8 @@ Big changes. The nuclear option.
 
 [refactor/mdx-to-remark](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/97) - Replace MDX custom components with remark/rehype plugins
 
+[refactor/sapper](https://github.com/ryanfiller/portfolio-sapper/pull/1) - Big refactor to change entire site framework
+
 [[details | Version Details]]
 | - Features
 |   - Completely remove NetlifyCMS
@@ -35,6 +37,7 @@ Big changes. The nuclear option.
 |     - \- mediasettings
 | 
 | - Components
+|   - ≈ * `React` -> `Svelte`
 |   - Markdown
 |     - \- `<Blockquote />`
 |     - \- `<Embed />`
@@ -42,9 +45,15 @@ Big changes. The nuclear option.
 |     - \- `<Image />`
 |     - \- `<Link />`
 |     - \- `<Table />`
+|   - Misc (moved into relevant page directories)
+|     - \- `<Change />`
+|     - \- `<Color-chart />`
+|     - \- `<Variable-font. />`
 | 
 | - Helpers
 |   - ≈ `fishAttr`
+|   - \+ `getPages`
+|   - \+ `capitalize`
 | 
 | - Plugins
 |   - remark
@@ -75,6 +84,86 @@ Big changes. The nuclear option.
 |   - \+ node-fetch
 |   - \+ remark-attr 
 |   - \+ unist-util-visit
+|   - ---
+|   - \- @mdx-js/mdx
+|   - \- @mdx-js/react
+|   - \- axe-core
+|   - \- babel-eslint
+|   - \- classnames
+|   - \- color-contrast-table-react
+|   - \- enzyme
+|   - \- enzyme-adapter-react-16
+|   - \- eslint
+|   - \- eslint-config-standard
+|   - \- eslint-config-standard-react
+|   - \- eslint-plugin-css-modules
+|   - \- eslint-plugin-import
+|   - \- eslint-plugin-jsx-a11y
+|   - \- eslint-plugin-react
+|   - \- eslint-plugin-react-hooks
+|   - \- gatsby
+|   - \- gatsby-image
+|   - \- gatsby-plugin-feed
+|   - \- gatsby-plugin-layout
+|   - \- gatsby-plugin-manifest
+|   - \- gatsby-plugin-mdx
+|   - \- gatsby-plugin-netlify-cache
+|   - \- gatsby-plugin-offline
+|   - \- gatsby-plugin-preact
+|   - \- gatsby-plugin-react-helmet
+|   - \- gatsby-plugin-react-svg
+|   - \- gatsby-plugin-sass
+|   - \- gatsby-plugin-sitemap
+|   - \- gatsby-remark-copy-linked-files
+|   - \- gatsby-source-filesystem
+|   - \- marked
+|   - \- preact
+|   - \- prop-types
+|   - \- react
+|   - \- react-dom
+|   - \- react-helmet
+|   - \- react-transition-group
+|   - \- unist-util-visit
+|   
+|   - \+ @babel/core
+|   - \+ @babel/plugin-syntax-dynamic-import
+|   - \+ @babel/plugin-transform-runtime
+|   - \+ @babel/preset-env
+|   - \+ @babel/runtime
+|   - \+ @rollup/plugin-babel
+|   - \+ @rollup/plugin-commonjs
+|   - \+ @rollup/plugin-node-resolve
+|   - \+ @rollup/plugin-replace
+|   - \+ color-contrast-table-svelte
+|   - \+ compression
+|   - \+ cross-env
+|   - \+ html-entities
+|   - \+ mdsvex
+|   - \+ npm-run-all
+|   - \+ polka
+|   - \+ postcss
+|   - \+ rehype-stringify
+|   - \+ remark
+|   - \+ remark-custom-blocks
+|   - \+ remark-extract-frontmatter
+|   - \+ remark-frontmatter
+|   - \+ remark-parse
+|   - \+ remark-parse-yaml
+|   - \+ remark-rehype
+|   - \+ remark-stringify
+|   - \+ rollup
+|   - \+ rollup-plugin-copy
+|   - \+ rollup-plugin-svelte
+|   - \+ rollup-plugin-svelte-svg
+|   - \+ rollup-plugin-terser
+|   - \+ sapper
+|   - \+ sirv
+|   - \+ svelte
+|   - \+ svelte-preprocess
+|   - \+ to-vfile
+|   - \+ unified
+|   - \+ unist-util-visit
+|   - \+ yaml
 
 </Change>
 

@@ -25,7 +25,7 @@ The light is an [Ikea Terital work lamp](https://www.ikea.com/us/en/p/tertial-wo
 
 ## software
 
-* I pretty exclusively use [VSCode](https://code.visualstudio.com/) for text editting.
+* I pretty exclusively use [VSCode](https://code.visualstudio.com/) for text editing.
 
   * I switch up my theme fairly regularly; current theme is [Shades of Purple](https://marketplace.visualstudio.com/items?itemName=ahmadawais.shades-of-purple) by [Ahmad Awais](https://ahmadawais.com/). I get a lot of positive comments on it from the backend devs on my team whenever we screenshare.
 * I've been using [iTerm2](https://www.iterm2.com/) for a long time now, and while I wouldn't say I absolutely love it, it is the best terminal I've come across so far. It does everything a terminal needs to do, and has nice extras for running multiple terminal instances at the same time.
@@ -37,11 +37,10 @@ The light is an [Ikea Terital work lamp](https://www.ikea.com/us/en/p/tertial-wo
 
 This particular site is made with:
 
-* [Gatsy](https://www.gatsbyjs.org/) as a framework
-* [MDX](https://mdxjs.com/) to augment my markdown content
+* [Sapper](https://sapper.svelte.dev/) as a framework
+* [remark](https://github.com/remarkjs) & [rehype](https://github.com/rehypejs) to augment my markdown content
 * [Netlify](https://www.netlify.com/) for CDN hosting, automatic CI/CD, and SSL
 * [GitHub](https://github.com/ryanfiller/portfolio-gatsby-v2) for version control
-* [NetlifyCMS](https://www.netlifycms.org/) for content / markdown editting
 * [Netlify Large Media](https://www.netlify.com/products/large-media/) for image handling and manipulation
 * [SCSS](https://sass-lang.com/) component imports and [BEM](http://getbem.com/) methodoly to scope styles
 * [Cypress](https://www.cypress.io/) as an end-to-end testing framework
