@@ -1,4 +1,4 @@
-static/images/uploads/** filter=lfs diff=lfs merge=lfs -text
+static/images/site-assets/** filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.png filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.gif filter=lfs diff=lfs merge=lfs -text

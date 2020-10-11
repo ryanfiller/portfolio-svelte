@@ -28,22 +28,22 @@
   --colorDisabled: #{$disabled};
 }
 
-html {
-  font-size: 12px;
+// html {
+//   font-size: 12px;
 
-  body {
-    margin: 0;
-    font-size: 1.5rem;
-    line-height: 1;
-    background-color: var(--colorLight);
-    color: var(--colorDark);
-  }
-}
+//   body {
+//     margin: 0;
+//     font-size: 1.5rem;
+//     line-height: 1;
+//     background-color: var(--colorLight);
+//     color: var(--colorDark);
+//   }
+// }
 
-* {
-  box-sizing: border-box;
+// * {
+//   box-sizing: border-box;
   
-  @include animate {
-    scroll-behavior: smooth;
-  }
-}
+//   @include animate {
+//     scroll-behavior: smooth;
+//   }
+// }

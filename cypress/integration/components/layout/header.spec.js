@@ -9,7 +9,7 @@ context('<Header /> component', () => {
       cy.get('a.logo')
         .should('exist')
         .click()
-        cy.url().should('eq', 'http://localhost:8000/')
+        cy.url().should('eq', 'http://localhost:3000/')
       cy.get('nav').should('exist')
     })
     

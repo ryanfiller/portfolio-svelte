@@ -4,7 +4,8 @@ context('<Markdown /> component', () => {
     cy.injectAxe()
   })
   
-  it('renders the MDX components', () => {
+  it('renders the markdown components', () => {
+    cy.get('#content').scrollIntoView()
     cy.get('#content').within(() => {
       // links
       cy.get('a').should('exist')

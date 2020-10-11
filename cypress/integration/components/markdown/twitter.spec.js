@@ -1,11 +1,12 @@
 context('rehype twitter', () => {
   beforeEach(() => {
     cy.visit('/styles')
+    cy.get('#quotes').scrollIntoView()
     cy.injectAxe()
   })
 
   it('renders twitter embeds correctly', () => {
-    cy.get('div#quotes').within(() => {        
+    cy.get('#quotes').within(() => {        
       cy.get('div.twitter-tweet').within(() => {        
         cy.get('.account__avatar')
           .should('have.attr', 'href', 'https://twitter.com/ryanfiller_')

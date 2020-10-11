@@ -1,5 +1,5 @@
-const visit = require('unist-util-visit')
-const renderVideo = require('./video.js')
+import visit from 'unist-util-visit'
+import { renderVideo } from './video.js'
 
 function transformer(ast) {
   visit(ast, 'image', visitor)
@@ -78,4 +78,4 @@ function images() {
   return transformer
 }
 
-module.exports = images
+export default images

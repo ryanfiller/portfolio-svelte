@@ -4,6 +4,7 @@ context('<ColorChart /> component', () => {
   context('default chart', () => {
     beforeEach(() => {
       cy.visit('/styles')
+      cy.get('#colors').scrollIntoView()
       cy.injectAxe()
     })
 
@@ -31,9 +32,9 @@ context('<ColorChart /> component', () => {
 
     it('correctly sets new colors', () => {
       cy.get('section.color-chart').within(() => {
-        cy.get('input').eq(0).then(input => {
-          cy.inputChange(input, '#00ff00')
-        })
+        cy.get('input[type=color]').eq(0)
+          .invoke('val', '#00ff00')
+          .trigger('input')
         // annoying that it converts hex to rgb, but whatever...
         cy.get('tr').eq(0).should('have.css', 'background-color', 'rgb(0, 255, 0)')
       })
