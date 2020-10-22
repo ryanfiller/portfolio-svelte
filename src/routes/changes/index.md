@@ -17,7 +17,7 @@ Big changes. The nuclear option.
 
 [refactor/mdx-to-remark](https://github.com/ryanfiller/portfolio-gatsby-v2/pull/97) - Replace MDX custom components with remark/rehype plugins
 
-[refactor/sapper](https://github.com/ryanfiller/portfolio-sapper/pull/1) - Big refactor to change entire site framework
+[refactor/sapper](https://github.com/ryanfiller/portfolio-svelte/pull/1) - Big refactor to change entire site framework
 
 [[details | Version Details]]
 | - Features

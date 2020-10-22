@@ -7,7 +7,7 @@ This is my personal portfolio site and blog. It's way over engineered for just a
 Clone the repository
 
 ``` shell
-git clone git@github.com:ryanfiller/portfolio-sapper.git ryansite
+git clone git@github.com:ryanfiller/portfolio-svelte.git ryansite
 ```
 
 This site uses [git LFS](https://git-lfs.github.com/) to store images, so if you want those you'll also need to run
@@ -43,7 +43,7 @@ This site uses [Cypress](https://www.cypress.io/) with several accessibility ext
 npm run test
 ```
 
-See my testing setup [here](https://github.com/ryanfiller/portfolio-sapper/tree/main/cypress)
+See my testing setup [here](https://github.com/ryanfiller/portfolio-svelte/tree/main/cypress)
 
 ## I like Netlify!
 
@@ -56,14 +56,14 @@ This site contains no invasive analtyics tracking. It uses  [Netlify Analytics](
 
 ## Roadmap
 
-See my planned features / known bugs [here](https://github.com/ryanfiller/portfolio-sapper/projects/1).
+See my planned features / known bugs [here](https://github.com/ryanfiller/portfolio-svelte/projects/1).
 I also keep a pretty up to date change log [here](http://ryanfiller.com/changes)
 
 ## Bugs!
 
 Oh no! 🐜
 
-If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-sapper/issues) or DM me on [twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
+If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-svelte/issues) or DM me on [twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
 
 ## License
 
