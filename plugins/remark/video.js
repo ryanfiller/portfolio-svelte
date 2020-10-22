@@ -7,7 +7,7 @@ function renderVideo(node) {
   const title = node.title
   const caption = props['data-caption']
   let src
-  if (process.env.NODE_ENV !== 'test') { // the breaks cypress
+  if (process.env.NODE_ENV !== 'test') { // this breaks cypress
     src = node.url
   } else {
     src = ''

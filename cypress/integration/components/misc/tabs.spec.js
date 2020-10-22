@@ -17,7 +17,7 @@ context('<Tabs /> and <Tab /> components', () => {
   it('renders correctly', () => {
     cy.get('div.tabs').within(() => {
       exampleTabs.map((title, index) => {
-        const id = slugify(title)
+        const id = `${slugify(title)}-${exampleName}`
         cy.get('input').eq(index).should('have.attr', 'id', id)
         cy.get('input').eq(index).should('have.attr', 'name', exampleName)
         cy.get('label').eq(index).should('have.attr', 'id', `tab-${id}`)

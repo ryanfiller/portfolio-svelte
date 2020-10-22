@@ -4,7 +4,6 @@ const { fishAttr } = require('./src/helpers')
 
 function transformer(tree) {
   visit(tree, 'raw', visitor)
-  
   function visitor(node) {
     const iframeRegex = new RegExp(/<iframe(.*)<\/iframe>/g)
 

@@ -150,6 +150,6 @@ If you accidentally check in a file that you meant to put into LFS:
 
 The bottom line to remember here is that `.gitattribues` lets the repository know how to treat a file differently than it normally would. In order to make git "see" a new type of file it needs to be removed, configured correctly, and added again. Think of it in the same way as trying to change the same image from a .png to a .jpg. Git needs to let go of the old version so it can hang on to the new one.
 
-Git can be intimidating enough if its not a tool you're familiar with, and adding another layer like LFS on top can make it all the more frustrating when it feels like things are going wrong. I hope this post might help anyone who, like me, was struggling with how to undo an accidental LFS mistake. -->
+Git can be intimidating enough if its not a tool you're familiar with, and adding another layer like LFS on top can make it all the more frustrating when it feels like things are going wrong. I hope this post might help anyone who, like me, was struggling with how to undo an accidental LFS mistake.
 
 <!-- UPDATE local file system vs production file system - https://github.com/ryanfiller/portfolio-gatsby-v2/commit/a9a73d8ec5ee31416d2f25046c956ba5d1147a4e -->

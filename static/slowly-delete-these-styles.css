@@ -26,9 +26,6 @@ strong {
   font-weight: inherit;
   font-weight: bolder;
 }
-dfn {
-  font-style: italic;
-}
 mark {
   background-color: #ff0;
   color: #000;
@@ -93,26 +90,6 @@ ol {
   margin-bottom: 1.45rem;
   list-style-position: outside;
   list-style-image: none;
-}
-dl {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-}
-dd {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
 }
 p {
   margin-left: 0;
