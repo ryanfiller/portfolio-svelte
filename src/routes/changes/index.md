@@ -9,6 +9,26 @@ title: 'Change Log'
 
 <Change>
 
+## RF-05-04 - "Ez8"
+
+[design/tabs](https://github.com/ryanfiller/portfolio-svelte/pull/2) - Build a `<Tabs />` component
+
+[[details | Version Details]]
+| - Features
+|   - `<Tabs />`, `<Tab />` for use in content
+|
+| - Components
+|   - Misc
+|     - \+ `<Tabs />`, `<Tab />`
+|
+| - Tests
+|   - Misc
+|     - \+ `<Tabs />`, `<Tab />`
+
+</Change>
+
+<Change>
+
 ## RF-05-04 - "Physalis"
 
 Big changes. The nuclear option.
@@ -47,8 +67,8 @@ Big changes. The nuclear option.
 |     - \- `<Table />`
 |   - Misc (moved into relevant page directories)
 |     - \- `<Change />`
-|     - \- `<Color-chart />`
-|     - \- `<Variable-font. />`
+|     - \- `<ColorChart />`
+|     - \- `<VariableFont />`
 | 
 | - Helpers
 |   - ≈ `fishAttr`
