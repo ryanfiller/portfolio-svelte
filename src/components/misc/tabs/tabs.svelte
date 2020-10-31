@@ -1,8 +1,14 @@
 <script>
   export let name
 
-  import { tabData } from './tab-data.js'  
-  $tabData.groupName = name
+  import { setContext } from 'svelte'
+  import { writable } from 'svelte/store'
+
+  setContext('tabs', { data: writable({
+    group: name,
+    tabs: [],
+    active: ''
+  })})
 </script>
 
 <style global type='text/scss'>
@@ -20,7 +26,9 @@
 
     // weird offsets that will work at all sizes
     margin-left: -1em;
-    label, div {
+    
+    label, 
+    div[role="tabpanel"] {
       margin-left: 1em;
     }
 
@@ -36,6 +44,7 @@
       position: relative;
       margin-bottom: calc(-1 * var(--borderWidth));
       transition: var(--transitionSpeed);
+      border: var(--border);
 
       span {
         font-weight: 1.125em;
@@ -43,24 +52,14 @@
         border-bottom: var(--borderWidth) solid transparent;
         transition: var(--transitionSpeed);
       }
-
-      &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        border: var(--border);
-        transition: var(--transitionSpeed);
-      }
     }
 
-    div {
+    div[role="tabpanel"] {
       border: var(--border);
       padding: 1em;
       width: 100%;
+      max-width: 100%;
+      overflow: auto;
       order: 999;
       position: relative;
       z-index: 1;
@@ -79,8 +78,8 @@
       }
     }
 
-    div,
-    input:checked ~ div ~ div {
+    div[role="tabpanel"],
+    input:checked ~ div[role="tabpanel"] ~ div[role="tabpanel"] {
       display: none;
     }
 
@@ -96,7 +95,7 @@
       }
     }
 
-    input:checked ~ div {
+    input:checked ~ div[role="tabpanel"] {
       display: block;
     }
 

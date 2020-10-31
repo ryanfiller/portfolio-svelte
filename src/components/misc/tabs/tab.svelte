@@ -1,16 +1,17 @@
 <script>
   export let title
+  import { getContext } from 'svelte'
   
   import { slugify } from '../../../helpers'
-  import { tabData } from './tab-data.js'
-  const id = slugify(title)
+  const { data } = getContext('tabs')
 
-  $tabData.tabs = [...$tabData.tabs, id]
+  const id = `${slugify(title)}-${slugify($data.group)}`
+  $data.tabs = [...$data.tabs, id]
 
   $: active = () => {
-    if (!$tabData.active && $tabData.tabs[0] === id) { // default to first tab
+    if (!$data.active && $data.tabs[0] === id) { // default to first tab
       return true
-    } else if ($tabData.active === id) { // else use active tab
+    } else if ($data.active === id) { // else use active tab
       return true
     } else {
       return false
@@ -20,11 +21,10 @@
   const setActive = (event) => {
     if (event.target.getAttribute('for')) { // if this is the label
       const tab = event.target.getAttribute('for')
-      console.log(tab)
-      $tabData.active = tab
+      $data.active = tab
       document.getElementById(tab).focus()
     } else { // else if this is the input itself
-      $tabData.active = event.target.getAttribute('id')
+      $data.active = event.target.getAttribute('id')
     }
   }
 
@@ -34,7 +34,7 @@
 
 <input
   type='radio'
-  name={$tabData.groupName}
+  name={$data.group}
   id={id}
   checked={active()}
   on:focus={setActive}
@@ -43,7 +43,6 @@
 <label
   for={id}
   id={`tab-${id}`}
-  tab-index='1'
   on:click={setActive}
 >
   <span
@@ -56,7 +55,7 @@
 </label>
 
 <div
-  class='tab content1'
+  class='tab'
   role='tabpanel'
   id={`panel-${id}`}
   aria-labelledby={`tab-${id}`}

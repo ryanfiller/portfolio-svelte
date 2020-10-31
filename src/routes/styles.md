@@ -5,7 +5,7 @@ title: 'Style Guide'
 
 <script>
   import ColorChart from './lab/color-contrast-table/_color-chart.svelte'
-  import { Tabs, Tab} from '../components/misc/tabs'
+  import { Tabs, Tab } from '../components/misc/tabs'
 </script>
 
 <div id="colors">
@@ -88,7 +88,7 @@ title: 'Style Guide'
       It evolves into Ivysaur starting at level 16, which evolves into Venusaur starting at level 32. 
 
     </Tab>
-    <Tab title="Charmander">
+    <Tab title='Charmander'>
 
       ![#004 Charmander](https://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/250px-004Charmander.png){data-small="true" data-align="left"}
 
@@ -97,7 +97,7 @@ title: 'Style Guide'
       It evolves into Charmeleon starting at level 16, which evolves into Charizard starting at level 36. 
 
     </Tab>
-    <Tab title="Squirtle">
+    <Tab title='Squirtle'>
 
       ![#007 Squirtle](https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/250px-007Squirtle.png){data-small="true" data-align="left"}
 

@@ -14,10 +14,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ryanfiller/portfolio-gatsby-v2"
+    "url": "https://github.com/ryanfiller/portfolio-svelte"
   },
   "bugs": {
-    "url": "https://github.com/ryanfiller/portfolio-gatsby-v2/issues"
+    "url": "https://github.com/ryanfiller/portfolio-svelte/issues"
   },
   "dependencies": {
     "compression": "^1.7.1",

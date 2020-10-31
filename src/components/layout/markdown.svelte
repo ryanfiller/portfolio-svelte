@@ -331,6 +331,17 @@
       }
     }
 
+    // definitions
+    dfn {
+      font-style: italic;
+    }
+    dl {
+      margin: 0;
+    }
+    dd {
+      margin-left: 1em;
+    }
+
     // table
 
     table:not(.color-contrast-table) {
