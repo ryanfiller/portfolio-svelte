@@ -16,7 +16,6 @@
 			a.addEventListener('click', event => {
 				event.preventDefault()
 				window.location.hash = event.target.getAttribute('href')
-				event.target.scrollIntoView()
 			})
 		})
 	})

@@ -44,7 +44,7 @@
 
 @mixin readable() {
   @include container();
-  max-width: 65rem;
+  max-width: var(--readableMax);
 }
 
 // @mixin font-size($desktop-size: 1.5em, $tablet-size: 1.25em, $phone-size: 1em) {
