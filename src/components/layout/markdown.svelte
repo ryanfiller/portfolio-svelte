@@ -177,7 +177,7 @@
     }
 
     // links
-    a {
+    p a {
       color: var(--colorPrimary);
       text-decoration: none;
       border-bottom: 0;
