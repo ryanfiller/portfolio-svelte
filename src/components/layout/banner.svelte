@@ -1,108 +1,159 @@
 <script>
   export let segment
 
-  import Default from './banners/default.svelte'
-  import Blog from './banners/blog.svelte'
-  import Lab from './banners/lab.svelte'
-
   import { stores } from '@sapper/app'
-	const { preloading, page } = stores()
+	const { page } = stores()
   import { markdown } from '../../stores.js'
 
-  let isRoot
-  $: isRoot = $page.path.split('/').filter(Boolean).length === 1
+  import Date from '../content/date.svelte'
+  import TagList from '../content/tag-list.svelte'
+
+  let root
+  $: root = $page.path.split('/').filter(Boolean).length === 1
 
 </script>
 
 <style global type='text/scss'>
   @import '../../styles/functions.scss';
 
-  .banner {
+  :root {
+    // for calc() division the right size number had to be unitless, * 1px everywhere to fix this
+    --headerWidth: 1280;
+    --headerHeight: 675;
+    --headerAspectRatioHeight: calc(100vw * (var(--headerHeight) / var(--headerWidth)));
+  }
+
+  .banner-content {
     width: 100%;
-    background-color: var(--colorPrimary);
+    @include container;
+    @include readable;
 
-    &__content {
-      padding: var(--padding);
-      @include container;
-      @include readable;
-      position: relative;
-      z-index: 2;
-    }
-
-    &__title {
+    h1 {
       margin: 0;
     }
 
-    &--blog {
-      .banner__title {
-        margin-bottom: calc(1.5 * var(--padding));
+    &[data-segment="blog"] {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: auto ;
+        grid-template-rows: auto ;
+        grid-template-areas: "title"
+                             "date"
+                             "tags";
+
+      h1 {
+        grid-area: title;
+        font-size: 4rem;
+      }
+  
+      .date {
+        grid-area: date;
+        display: block;
       }
 
-      .banner__date {
-        margin-bottom: calc(1 * var(--padding));
+      .tag-list {
+        grid-area: tags;
+        display: block;
+        align-self: end;
       }
 
       @include large {
-        .banner__content {
-          // max-width: 100%;
-          display: grid;
-          grid-template-columns: 1fr auto auto;
-          grid-template-rows: 1fr auto;
-          grid-template-areas:
-            "title title date"
-            "title title tags";
-
-          & > * {
-            margin-bottom: 0;
-          }
-
-          .banner__title {
-            grid-area: title;
-            font-size: 4rem;
-          }
-      
-          .banner__date {
-            grid-area: date;
-            align-self: start;
-            justify-self: flex-end;
-          }
-
-          .banner__tags {
-            grid-area: tags;
-            justify-self: flex-end;
-          }
-        }
+        grid-template-columns: 1fr auto auto;
+        grid-template-rows: 1fr auto auto;
+        grid-template-areas: "title .    date"
+                             "title tags tags";
       }
+    }
+  }
 
-      .banner__image {
-        position: absolute;
-        z-index: 1;
-        width: 100%;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        overflow: hidden;
-        
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center center;
-          image-rendering: crisp-edges;
-        }
+  .banner-image {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    height: 100%;
+    min-height: calc(.66 * var(--headerAspectRatioHeight));
+    // filter: grayscale(100%);
+    // opacity: .75;
+    // mix-blend-mode: overlay;
+    // margin: 0;
+    background-color: inherit;
+    
+    img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+
+      filter: grayscale(100%);
+      opacity: .75;
+      mix-blend-mode: overlay;
+      margin: 0;
+    }
+
+    figcaption {
+      font-size: 1rem;
+      position: absolute;
+      padding: .25em var(--padding) 1rem var(--padding);
+      right: 0;
+      bottom: 0;
+      opacity: .75;
+    }
+
+    // match --headerWidth
+    @media (min-width: 1280px) {
+      min-height: calc(.66 * 1px * var(--headerHeight));
+      
+      img {
+        --margin: .5vw;
+        margin: calc(-1 * var(--margin));
+        width: calc(100% + (2 * var(--margin)));
+        height: calc(100% + (2 * var(--margin)));
+        filter: grayscale(100%) blur(calc(.0125 * (100vw - (1px * var(--headerWidth))))); // blur, but only a little
       }
     }
   }
 </style>
 
-
-{#if isRoot}
-  <Default title={segment} />
-{:else if Object.keys($markdown).length}
-  {#if segment === 'blog'}
-    <Blog {...$markdown} />
-  {:else if segment === 'lab'}
-    <Lab {...$markdown} />
+<div
+  class='banner-content'
+  data-root={!!root}
+  data-segment={segment}
+>
+  <h1>
+    {$markdown.title || segment}
+  </h1>
+  {#if $markdown.meta}
+    {#if segment === 'blog' && !root}
+      <Date date={$markdown.meta.date} />
+    {/if}
+    {#if (segment === 'blog' || segment === 'lab') && !root}
+      <TagList
+        categories={$markdown.meta.categories}
+        tags={$markdown.meta.tags}
+      />
+    {/if}
   {/if}
+</div>
+
+{#if $markdown.banner}
+  <figure class='banner-image'>
+    <img
+      src={`${$markdown.banner.src}?nf_resize=fit&w=100`}
+      alt={$markdown.banner.alt}
+      title={$markdown.banner.attribution}
+    />
+    {#if $markdown.banner.attribution}
+      <figcaption>
+        image: {$markdown.banner.attribution}
+      </figcaption>
+    {/if}
+  </figure>
 {/if}

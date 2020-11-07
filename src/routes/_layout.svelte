@@ -162,12 +162,15 @@
 	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
-<SEO segment={segment} />
+<SEO {segment} />
 
-<div id='site' className={segment}>
-	<Header segment={segment} />
+<div
+	id='site'
+	className={segment}
+>
+	<Header {segment} />
 	<main id='content'>
-		<slot markdown={$markdown}></slot>
+		<slot />
 	</main> 
-	<Footer segment={segment} />
+	<Footer {segment} />
 </div>

@@ -1,5 +1,9 @@
 ---
 title: Fighting with Git LFS
+banner:
+  src: '/images/indiana-jones-warehouse.jpg'
+  alt: 'the warehouse from "Raiders of the Lost Ark'
+  attribution: 'Raiders of the Lost Ark, Lucasfilm Ltd.'
 options:
   published: true
 meta:

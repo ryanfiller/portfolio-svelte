@@ -1,5 +1,9 @@
 ---
 title: Tips & Tricks I've Learned About Gatsby with NetlifyCMS
+banner:
+  src: '/images/tony-hawk-spencer-weiner.jpg'
+  alt: 'Tony Hawk doing some sort of trick'
+  attribution: 'Spencer Weiner, Getty Images'
 options:
   published: true
 meta:

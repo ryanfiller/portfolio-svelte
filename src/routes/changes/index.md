@@ -1,6 +1,10 @@
 ---
 name: 'changes'
 title: 'Change Log'
+banner:
+  src: '/images/gundam-gp01-repair.png'
+  alt: 'gundam gp-01 being upgraded'
+  attribution: 'Mobile Suit Gundam 0083: Stardust Memory, Sunrise / Bandai'
 ---
 
 <script>
@@ -11,19 +15,49 @@ title: 'Change Log'
 
 ## RF-05-04 - "Ez8"
 
+A new head and some internal updates.
+
 [design/tabs](https://github.com/ryanfiller/portfolio-svelte/pull/2) - Build a `<Tabs />` component
+
+[design/banner-images](https://github.com/ryanfiller/portfolio-svelte/pull/6) - Refactor `<Banner />`, add images for every blog post and then some.
 
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
+|   - Refactor `<Banner />` and add images for blogs
 |
 | - Components
+|   - Layout
+|     - ≈ `<Header />`
+|     - ≈ `<Nav />`
+|     - ≈ `<Banners />`
+|       - \- `<DefaultBanner />`
+|       - \- `<BlogBanner />`
+|       - \- `<LabBanner />`
+|   - Content
+|     - \- `<Meta />`
+|     - \+ `<Date />`
+|     - \+ `<TagList />`
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
 |
 | - Tests
+|   - Layout
+|     - ≈ `<Header />`
+|     - ≈ `<Nav />`
+|     - ≈`<Banners />`
+|       \\- `<DefaultBanner />`
+|       - \- `<BlogBanner />`
+|       - \- `<LabBanner />`
+|   - Content
+|     - \- `<Meta />`
+|     - \+ `<Date />`
+|     - \+ `<TagList />`
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
+|
+| - Project Files
+|   - `.psd` template for images
 
 </Change>
 

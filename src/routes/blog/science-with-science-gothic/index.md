@@ -1,5 +1,9 @@
 ---
 title: 'Science, with Science Gothic'
+banner:
+ src: '/images/batman-science.jpg'
+ alt: 'Batman and Alfred playing with beakers'
+ attribution: 'Batman 1996, Warner Bros.'
 options:
   published: true
 meta:

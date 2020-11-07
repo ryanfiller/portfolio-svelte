@@ -1,6 +1,7 @@
 <script>
   export let post
-  import Meta from './meta.svelte'
+  import Date from './date.svelte'
+  import TagList from './tag-list.svelte'
 
   const { 
     title,
@@ -32,30 +33,30 @@
       }
     }
 
-    &__header{
+    &__header {
       font-family: sans-serif;
       font-size: 1.25em;
       font-weight: bold;
       margin-bottom: .5rem;
     }
 
-    &__date{
+    .date {
       opacity: .75;
       font-weight: bold;
       margin-bottom: .75rem;
     }
 
-    &__excerpt{
+    &__excerpt {
       margin-bottom: .5rem;
     }
 
-    &__tags{
+    &__tags {
       opacity: .75;
       font-weight: bold;
       margin-bottom: .5rem;
     }
 
-    &__link{
+    &__link {
       &:after {
         content: '»';
         margin-left: .25em;
@@ -70,15 +71,11 @@
       {title}
     </a>
   </header>
-  <Meta
-    className='post__date'
-    date={date}
-  />
+  <Date date={date} />
   <p class='post__excerpt'>
     {excerpt}
   </p>
-  <Meta 
-    className='post__tags'
+  <TagList
     categories={categories}
     tags={tags}
   />

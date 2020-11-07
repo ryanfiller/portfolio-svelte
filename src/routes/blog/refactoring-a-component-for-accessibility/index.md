@@ -1,5 +1,9 @@
 ---
 title: Refactoring a Component for Accessibility
+banner:
+  src: '/images/robson-park-stairs.jpg'
+  alt: 'Robson Square, Vancouver stairs and ramp'
+  attribution: 'City of Vancouver, Canada'
 options:
   published: true
 meta:

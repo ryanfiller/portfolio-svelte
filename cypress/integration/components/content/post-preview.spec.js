@@ -8,8 +8,8 @@ context('<PostPreview /> component', () => {
     cy.get('article.post').within(() => {
       cy.get('header > a').should('exist')
       cy.get('time').should('exist')
-      cy.get('ul.meta__categories').should('exist')
-      cy.get('ul.meta__tags').should('exist')
+      cy.get('ul.categories').should('exist')
+      cy.get('ul.tags').should('exist')
       cy.get('a.post__link').should('exist')
     })
     cy.checkA11y()

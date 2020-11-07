@@ -1,5 +1,9 @@
 ---
 title: Things Svelte and Sapper Can't Do (Yet)
+banner:
+ src: '/images/manhattan-bridge-construction.jpg'
+ alt: 'Manhattan Bridge under construction, 1909'
+ attribution: 'Getty Images'
 options:
   published: true
 meta:
