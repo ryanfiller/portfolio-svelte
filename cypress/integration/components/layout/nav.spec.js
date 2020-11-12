@@ -6,13 +6,6 @@ context('<Nav /> component', () => {
     cy.injectAxe()
   })
 
-  it('renders children and links', () => {
-    cy.get('header#site-header').find('nav').within(() => {
-      cy.get('.logo').should('exist')
-      cy.get('ul').should('exist')
-    })
-  })
-
   context('in the header', () => {
     it('renders all the links', () => {
       cy.get('header#site-header').find('nav').find('li').should('have.length', mainNav.length)

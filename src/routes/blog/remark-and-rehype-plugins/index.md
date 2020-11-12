@@ -1,5 +1,9 @@
 ---
 title: 'Transforming Markdown with Remark & Rehype'
+banner:
+  src: '/images/optimus-prime-2.jpg'
+  alt: 'Optimus Prime, leader of the Autobots'
+  attribution: 'The Transformers: The Movie, Hasbro'
 options:
   published: true
 meta:

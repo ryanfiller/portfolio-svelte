@@ -1,5 +1,9 @@
 ---
 title: Building a Component in Three Frameworks
+banner:
+  src: '/images/powerpuff-three-frameworks.jpg'
+  alt: 'The Powerpuff Girls'
+  attribution: 'The Powerpuff Girls, Cartoon Network'
 options:
   published: true
 meta:

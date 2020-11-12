@@ -1,5 +1,9 @@
 ---
 title: Svelte, Sanity, and Severless Functions
+banner:
+  src: '/images/90s_S.jpg'
+  alt: '90s pointy Ss'
+  attribution: "What the Hell Was That 'S' Thing Everyone Drew in School?, vice.com"
 options:
   published: true
 meta:

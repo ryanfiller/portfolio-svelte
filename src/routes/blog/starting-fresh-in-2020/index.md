@@ -2,6 +2,10 @@
 title: Starting Fresh in 2020
 options:
   published: true
+banner:
+  src: '/images/new-years-2020.jpg'
+  alt: '2020 NYC New Years Ball Drop'
+  attribution: ''
 meta:
   date: '2019-12-31'
   excerpt: A short history of my previous Gatsby site, and why I'm choosing to start over from scratch in the new decade.

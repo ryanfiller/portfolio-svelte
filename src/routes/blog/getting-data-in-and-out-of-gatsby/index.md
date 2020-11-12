@@ -1,5 +1,9 @@
 ---
 title: Getting Data In and Out of Gatsby
+banner:
+  src: '/images/superman-phone-booth.jpg'
+  alt: 'Clark Kent going into a phone booth and Superman coming out'
+  attribution: 'Superman, DC Comics'
 options:
   published: true
 meta:

@@ -1,7 +1,4 @@
 <script>
-  export let className =''
-  export let date = ''
-  export let dateFormat = 'MMMM dd, yyyy'
   export let tags = []
   export let categories = []
 
@@ -9,13 +6,9 @@
 </script>
 
 <style global type='text/scss'>
-  .meta {
-    &__date {
-      display: block;
-    }
-
-    &__categories,
-    &__tags {
+  .tag-list {
+    .categories,
+    .tags {
       font-size: 1em;
       color: currentColor;
       list-style: none;
@@ -46,24 +39,16 @@
   }
 </style>
 
-<div class={className ? `${className} meta` : 'meta'}>
-  {#if date} 
-    <time
-      class='meta__date' 
-      dateTime={date}
-    >
-      {format(new Date(date), dateFormat)}
-    </time>
-  {/if}
+<div class='tag-list'>
   {#if categories.length}
-    <ul class='meta__categories'>
+    <ul class='categories'>
     {#each categories as category}
       <li >{category}</li>
     {/each} 
     </ul>
   {/if}
   {#if tags.length}
-    <ul class='meta__tags'>
+    <ul class='tags'>
     {#each tags as tag}
       <li >{tag}</li>
     {/each}

@@ -2,8 +2,7 @@
   import { onMount, onDestroy } from 'svelte'
 
   import { markdown } from '../../stores.js'
-
-  onMount(() => markdown.set({...$$props})) // make sure no data excapes its own page
+  onMount(() => markdown.set({...$$props}))
   onDestroy(() => markdown.set({})) // make sure no data excapes its own page
 
   import Markdown from './markdown.svelte'

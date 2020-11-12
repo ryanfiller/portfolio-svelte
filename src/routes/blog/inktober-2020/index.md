@@ -1,5 +1,9 @@
 ---
 title: 'Inktober 2020'
+banner:
+  src: '/images/les_mollusques.jpg'
+  alt: 'botanical illustrations of squids'
+  attribution: "Les Mollusques: Decrits Et Figures D'Apres La Classification"
 options:
   published: true
 meta:

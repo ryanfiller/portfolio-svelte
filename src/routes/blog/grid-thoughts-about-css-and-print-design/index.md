@@ -1,10 +1,11 @@
 ---
 title: Grid Thoughts About CSS And Print Design
 options:
-  published: false
+  published: true
 banner:
-  url: '/css-grid-tron.jpg'
-  alt: ''
+  src: '/images/css-grid-tron.jpg'
+  alt: 'lightcyles, from Tron'
+  attribution: 'Tron, Disney'
 meta:
   categories:
     - code

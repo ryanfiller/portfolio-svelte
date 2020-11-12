@@ -68,7 +68,6 @@
 <!-- TODO? rel=prefetch on any of these? -->
 
 <nav class='nav' aria-label={label}>
-  <slot />
   <ul class='nav__list'>
     {#each links as link}
       <li class='nav__list-item'>
