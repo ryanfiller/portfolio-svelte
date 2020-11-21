@@ -18,7 +18,7 @@
     &__content {
       padding: .5rem;
       @include container;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      font-family: var(--font);
       font-weight: bold;
       display: flex;
       justify-content: space-between;
@@ -50,7 +50,7 @@
         </a>
           and hosted on
         <a href='https://www.netlify.com/' target='_blank' rel='noopener noreferrer'>
-          Netlfy
+          Netlify
         </a>
       </span>
       <Nav

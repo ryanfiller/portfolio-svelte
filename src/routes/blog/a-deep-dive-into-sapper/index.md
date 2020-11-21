@@ -2,7 +2,7 @@
 title: A Deep Dive into Sapper
 banner:
   src: '/images/goblin-sapper-explosion.jpg'
-  alt: 'a War Craft Goblin sapper'
+  alt: 'a Warcraft Goblin sapper'
   attribution: 'Hearthstone, Blizzard Entertainment'
 options:
   published: true

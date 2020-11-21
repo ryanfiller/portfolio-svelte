@@ -15,21 +15,30 @@ banner:
 
 ## RF-05-04 - "Ez8"
 
-A new head and some internal updates.
+A new header, new styles, and some internal updates.
 
 [design/tabs](https://github.com/ryanfiller/portfolio-svelte/pull/2) - Build a `<Tabs />` component
 
 [design/banner-images](https://github.com/ryanfiller/portfolio-svelte/pull/6) - Refactor `<Banner />`, add images for every blog post and then some.
 
+[design/post-images](https://github.com/ryanfiller/portfolio-svelte/pull/7) - Add a cloud function to automatically generate social images.
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
 |   - Refactor `<Banner />` and add images for blogs
+|   - Add a route and serverless function that will take query params and return an image
+|
+| - Routes
+|   - ≈ `/layout`
+|   - \+ `/generate-image`
 |
 | - Components
 |   - Layout
 |     - ≈ `<Header />`
 |     - ≈ `<Nav />`
+|     - ≈ `<SEO />`
+|     - ≈ `<Mdsvex />`
 |     - ≈ `<Banners />`
 |       - \- `<DefaultBanner />`
 |       - \- `<BlogBanner />`
@@ -41,20 +50,43 @@ A new head and some internal updates.
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
 |
+| - Functions
+|   - Serverless
+|     - \+ `generate-image`
+|
+| - Helpers
+|   - \+ `objectToParams`
+|   - \+ `paramsToObject`
+|
 | - Tests
-|   - Layout
-|     - ≈ `<Header />`
-|     - ≈ `<Nav />`
-|     - ≈`<Banners />`
-|       \\- `<DefaultBanner />`
-|       - \- `<BlogBanner />`
-|       - \- `<LabBanner />`
-|   - Content
-|     - \- `<Meta />`
-|     - \+ `<Date />`
-|     - \+ `<TagList />`
-|   - Misc
-|     - \+ `<Tabs />`, `<Tab />`
+|   - Routes
+|     - \+ `/generate-image`
+|   - Components
+|     - Layout
+|       - ≈ `<Header />`
+|       - ≈ `<Nav />`
+|       - ≈`<Banners />`
+|         \\- `<DefaultBanner />`
+|         - \- `<BlogBanner />`
+|         - \- `<LabBanner />`
+|     - Content
+|       - \- `<Meta />`
+|       - \+ `<Date />`
+|       - \+ `<TagList />`
+|     - Misc
+|       - \+ `<Tabs />`, `<Tab />`
+|   - Helpers
+|     - \+ `objectToParams`
+|     - \+ `paramsToObject`
+|
+| - Packages
+|   - \+ chrome-aws-lambda
+|   - \+ cloudinary
+|   - \+ cypress-image-snapshot
+|   - \+ dotenv
+|   - \+ netlify-lambda
+|   - \+ node-fetch
+|   - \+ puppeteer-core
 |
 | - Project Files
 |   - `.psd` template for images
@@ -63,7 +95,7 @@ A new head and some internal updates.
 
 <Change>
 
-## RF-05-04 - "Physalis"
+## RF-05-03S - "Physalis"
 
 Big changes. The nuclear option.
 

@@ -39,8 +39,9 @@ typings/
 # Mac files
 .DS_Store
 
-# Local Netlify folder
+# Netlify files
 .netlify
+functions-build
 
 # Editor Config
 .vscode

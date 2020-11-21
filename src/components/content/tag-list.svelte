@@ -30,9 +30,11 @@
         }
       }
 
+      &:only-child, // when there's only one list
       & + ul { // get rid of the last comma when cats and tags are siblings
         li:last-child:after {
           content: '';
+          margin-right: 0;
         }
       }
     }

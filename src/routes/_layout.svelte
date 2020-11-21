@@ -1,6 +1,9 @@
 <script>
 	export let segment
 	// export let title
+	import { stores } from '@sapper/app'
+	const { page } = stores()
+
 	import Header from '../components/layout/header.svelte'
 	import Footer from '../components/layout/footer.svelte'
 
@@ -162,15 +165,18 @@
 	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
-<SEO {segment} />
-
-<div
-	id='site'
-	className={segment}
->
-	<Header {segment} />
-	<main id='content'>
-		<slot />
-	</main> 
-	<Footer {segment} />
-</div>
+{#if segment === 'generate-image'}
+	<slot />
+{:else}
+	<SEO {segment} />
+	<div
+		id='site'
+		className={segment}
+	>
+		<Header {segment} />
+		<main id='content'>
+			<slot />
+		</main> 
+		<Footer {segment} />
+	</div>
+{/if}

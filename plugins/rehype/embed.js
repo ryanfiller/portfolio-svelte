@@ -40,7 +40,7 @@ function transformer(tree) {
         if (title) {
           attrs.push(`title="${title}"`)
         }
-        if (process.env.NODE_ENV !== 'test') { // the breaks cypress
+        if (process.env.NODE_ENV !== 'test') { // this breaks cypress
           attrs.push(`loading="lazy"`)
         }
         return attrs.join(' ')
