@@ -12,12 +12,13 @@
 </script>
 
 <style global type='text/scss'>
-  .tabs {
-    // TODO make this global
+  :root {
     --borderColor: var(--colorActive);
     --borderWidth: .25rem;
     --border: var(--borderWidth) solid var(--borderColor);
-
+  }
+  
+  .tabs {
     display: flex;
     flex-wrap: wrap;
     position: relative; // keep the inputs from going toooooo far

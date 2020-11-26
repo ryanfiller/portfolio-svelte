@@ -10,7 +10,7 @@
     @mixin headingStyles() {
       position: relative;
       display: block;
-      font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+      font-family: var(--font);
       margin: 0;
       margin-bottom: 1rem;
       padding: 0;
@@ -177,14 +177,18 @@
     }
 
     // links
-    p a {
-      color: var(--colorPrimary);
-      text-decoration: none;
-      border-bottom: 0;
-      border-bottom: 2px currentColor dotted;
-    
-      @include medium() {
-        @include highlight();
+    p,
+    dl, ol, ul,
+    blockquote {
+      a  {
+        color: var(--colorPrimary);
+        text-decoration: none;
+        border-bottom: 0;
+        border-bottom: 2px currentColor dotted;
+      
+        @include medium() {
+          @include highlight();
+        }
       }
     }
     

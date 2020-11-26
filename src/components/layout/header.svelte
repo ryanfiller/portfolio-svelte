@@ -18,7 +18,7 @@
     background: var(--headerBackground);
     color: var(--headerText);
 
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: var(--font);
     font-weight: bold;
 
     display: grid;

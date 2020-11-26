@@ -426,9 +426,9 @@ In order to keep this plugin from infinitely creating and visiting new `image` t
   <Tab title="Rendered">
   <section style='display: flex; justify-content: space-evenly;'>
 
-  !['placekittens'](http://placekitten.com/500/750){data-small='true'}
+  !['placekittens'](https://placekitten.com/500/750){data-small='true'}
 
-  !['placekittens'](http://placekitten.com/500/750){data-caption='a caption' data-small='true'}
+  !['placekittens'](https://placekitten.com/500/750){data-caption='a caption' data-small='true'}
   
   </section>
   </Tab>

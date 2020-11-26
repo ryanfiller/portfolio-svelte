@@ -33,10 +33,10 @@ context('<SEO /> component', () => {
       cy.get('.post__header').eq(index).invoke('text').then(text => obj.title = text)
       cy.get('.post__excerpt').eq(index).invoke('text').then(text => obj.excerpt = text)
       obj.keywords = []
-      cy.get('ul.meta__categories').eq(index).within(() => {
+      cy.get('ul.categories').eq(index).within(() => {
         cy.get('li').each(li => obj.keywords.push(li.text()))
       })
-      cy.get('ul.meta__tags').eq(index).within(() => {
+      cy.get('ul.tags').eq(index).within(() => {
         cy.get('li').each(li => obj.keywords.push(li.text()))
       })
       posts.push(obj)
@@ -57,4 +57,6 @@ context('<SEO /> component', () => {
       
     })
   })
+
+  // TODO - need to test twitter / og images whenever that gets sorted
 })

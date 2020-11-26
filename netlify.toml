@@ -1,2 +1,7 @@
 [build.environment]
   CI="1"
+
+[build]
+  command = "npm run export"
+  publish = "__sapper__/export"
+  functions = "functions"

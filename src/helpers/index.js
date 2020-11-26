@@ -1,4 +1,18 @@
-// commonjs syntax to use in gatsby-node
+// commonjs syntax to use in node
+const queryHelpers = require('./query-param-helpers.js')
+const { objectToParams,paramsToObject } = queryHelpers
+
+function capitalize(string) {
+  if (typeof string !== 'string') return ''
+  return string.charAt(0).toUpperCase() + string.slice(1)
+}
+
+function fishAttr(string, attr) {
+  var regex = new RegExp(`${attr}=('|")(.*?)('|")`)
+  const match = string.match(regex)
+
+  return match ? match[2] : null
+}
 
 /* eslint-disable no-multi-spaces */
 function slugify(string) {
@@ -10,20 +24,10 @@ function slugify(string) {
     .replace(/-+$/, '')         // Trim - from end of text
 }
 
-function fishAttr(string, attr) {
-  var regex = new RegExp(`${attr}=('|")(.*?)('|")`)
-  const match = string.match(regex)
-
-  return match ? match[2] : null
-}
-
-function capitalize(string) {
-  if (typeof string !== 'string') return ''
-  return string.charAt(0).toUpperCase() + string.slice(1)
-}
-
 module.exports = {
-  slugify,
+  capitalize,
   fishAttr,
-  capitalize
+  slugify,
+  objectToParams,
+  paramsToObject
 }

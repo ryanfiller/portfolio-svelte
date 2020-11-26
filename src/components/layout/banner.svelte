@@ -152,7 +152,7 @@
     />
     {#if $markdown.banner.attribution}
       <figcaption>
-        image: {$markdown.banner.attribution}
+        Image Credit: {$markdown.banner.attribution}
       </figcaption>
     {/if}
   </figure>

@@ -47,7 +47,7 @@ See my testing setup [here](https://github.com/ryanfiller/portfolio-svelte/tree/
 
 ## I like Netlify!
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/60054267-354c-4772-8941-db16095fee82/deploy-status)](https://app.netlify.com/sites/ryanfiller-gatsby/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2a2468bd-7002-493e-a56d-1ddc2ffd2efc/deploy-status)](https://app.netlify.com/sites/ryanfiller-svelte/deploys)
 
 I use [Netlify](https://www.netlify.com/) for hosting and [Netlify Large Media](https://www.netlify.com/products/large-media/) as my image transformer and CDN.
 

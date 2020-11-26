@@ -10,6 +10,7 @@ import { mdsvex } from 'mdsvex'
 import svelteSVG from "rollup-plugin-svelte-svg"
 import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
+require('dotenv').config()
 
 import attr from 'remark-attr'
 import remarkCustomBlocks from 'remark-custom-blocks'
@@ -28,6 +29,20 @@ import twitter from './plugins/rehype/twitter'
 const mode = process.env.NODE_ENV
 const dev = mode === 'development'
 const legacy = !!process.env.SAPPER_LEGACY_BUILD
+
+// https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
+let netlifyUrl = ''
+if (process.env.CONTEXT !== 'production') {
+	netlifyUrl = process.env.DEPLOY_URL
+} else {
+	netlifyUrl = process.env.URL
+}
+
+const envVars = {
+	'process.env.NODE_ENV': JSON.stringify(mode),
+	'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
+	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD)
+}
 
 const preprocess = [
 	mdsvex({
@@ -66,7 +81,7 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode),
+				...envVars,
 			}),
 			svelte({
 				dev,
@@ -119,7 +134,7 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode),
+				...envVars,
 			}),
 			svelte({
 				generate: 'ssr',
@@ -153,7 +168,7 @@ export default {
 	// 		resolve(),
 	// 		replace({
 	// 			'process.browser': true,
-	// 			'process.env.NODE_ENV': JSON.stringify(mode)
+	// 			...envVars
 	// 		}),
 	// 		commonjs(),
 	// 		!dev && terser()
