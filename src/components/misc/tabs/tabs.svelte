@@ -64,6 +64,10 @@
       order: 999;
       position: relative;
       z-index: 1;
+
+      & > *:last-child {
+        margin-bottom: 0;
+      }
     }
 
     // not active states

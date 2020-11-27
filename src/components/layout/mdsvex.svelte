@@ -24,14 +24,18 @@
     imageParams = objectToParams({
       title: $$props.title,
       excerpt: $$props.meta.excerpt || '',
-      // categories: $$props.meta.categories,
-      // tags: $$props.meta.tags,
+      categories: $$props.meta.categories ? $$props.meta.categories.join(',') : '',
+      tags: $$props.meta.tags ? $$props.meta.tags.join(',') : '',
       imageSrc: $$props.banner && $$props.banner.src ? $$props.banner.src : '',
       imageCredit: $$props.banner && $$props.banner.attribution ? $$props.banner.attribution : '',
       url: pageUrl.replace('https://www.', '')
     })
     // socialImageUrl = `${siteUrl}/.netlify/functions/generate-image?${imageParams}`
     socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify($$props.title)}.png`
+
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`${siteUrl}/.netlify/functions/generate-image?${imageParams}`)
+    }
   }
 
 </script>
@@ -48,6 +52,7 @@
     <meta name='twitter:title' content={$$props.title} />
     <meta name='twitter:description' content={$$props.meta && $$props.meta.excerpt ? $$props.meta.excerpt : ''} />
     <meta name='twitter:image' content={socialImageUrl} />
+    <meta name='twitter:image:alt' content={$$props.banner && $$props.banner.alt ? $$props.banner.alt : ''} />
 
     <!-- for opengraph -->
     <meta property='og:type' content='article' />
@@ -57,6 +62,7 @@
     <meta property='og:description' content={$$props.meta && $$props.meta.excerpt ? $$props.meta.excerpt : ''} />
     <meta property='og:url' content={pageUrl} />
     <meta property='og:image' content={socialImageUrl} />
+    <meta property='og:og:image:alt' content={$$props.banner && $$props.banner.alt ? $$props.banner.alt : ''} />
     <meta property='og:image:height' content='630' />
     <meta property='og:image:width' content='1200' />
   {/if}

@@ -13,7 +13,7 @@ meta:
   tags:
     - git
     - lfs
-    - large media
+    - media
   excerpt: >-
     Lessons learned from using git-lfs (Git Large File Storage), which can be
     quite easy to mess up and equally as frustrating to fix.
