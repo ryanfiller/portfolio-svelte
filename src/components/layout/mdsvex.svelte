@@ -62,7 +62,7 @@
     <meta property='og:description' content={$$props.meta && $$props.meta.excerpt ? $$props.meta.excerpt : ''} />
     <meta property='og:url' content={pageUrl} />
     <meta property='og:image' content={socialImageUrl} />
-    <meta property='og:og:image:alt' content={$$props.banner && $$props.banner.alt ? $$props.banner.alt : ''} />
+    <meta property='og:image:alt' content={$$props.banner && $$props.banner.alt ? $$props.banner.alt : ''} />
     <meta property='og:image:height' content='630' />
     <meta property='og:image:width' content='1200' />
   {/if}
