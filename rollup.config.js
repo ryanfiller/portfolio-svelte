@@ -41,7 +41,8 @@ if (process.env.CONTEXT !== 'production') {
 const envVars = {
 	'process.env.NODE_ENV': JSON.stringify(mode),
 	'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
-	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD)
+	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
+	exclude: 'src/routes/**/*.md'
 }
 
 const preprocess = [
@@ -81,7 +82,7 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': true,
-				...envVars,
+				...envVars
 			}),
 			svelte({
 				dev,
@@ -134,7 +135,7 @@ export default {
 		plugins: [
 			replace({
 				'process.browser': false,
-				...envVars,
+				...envVars
 			}),
 			svelte({
 				generate: 'ssr',

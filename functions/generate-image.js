@@ -15,7 +15,7 @@ cloudinary.config({
 const cloudFolder = 'social-images'
 
 const getImage = async function(title) {
-  const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${title}.png`
+  const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/${cloudFolder}/${title}.png`
   return await fetch(url)
     .then(result => {
       if (result.status !== 404) {
@@ -39,49 +39,50 @@ const takeScreenshot = async function(url) {
   await page.goto(url)
   const buffer = await page.screenshot()
   await browser.close()
-  return buffer
+  return `data:image/png;base64,${buffer.toString('base64')}`
 }
 
-const putImage = async function(title, buffer) {
+const putImage = async function(title, image) {
   const cloudinaryOptions = {
     public_id: `${cloudFolder}/${title}`,
     unique_filename: false
   }
-  const base64 = `data:image/png;base64,${buffer.toString('base64')}`
   console.log(`uploading ${title} to cloudinary`)
-  return await cloudinary.uploader.upload(base64, cloudinaryOptions)
+  return await cloudinary.uploader.upload(image, cloudinaryOptions)
     .then(response => response.url)
+}
+
+const forwardResponse = async (imageUrl) => {
+  return {
+    statusCode: 308, // Permanent Redirect
+    headers: {
+      'location': cloudinary.url(imageUrl, { sign_url: true })
+    },
+    body: ''
+  }
 }
 
 exports.handler = async function(event) {
   if (!event.queryStringParameters) {
-    console.log(`no params`)
+    console.log(`no params given`)
     return
   }
 
   const title = slugify(event.queryStringParameters.title)
-  console.log(`post: ${title}`)
+  console.log(`processing ${title}...`)
 
   const existingImage = await getImage(title)
 
-  const response = async (imageUrl) => {
-    return {
-      statusCode: 301,
-      headers: {
-        'location': cloudinary.url(imageUrl, { sign_url: true })
-      },
-      body: ''
-    }
-  }
-
   if (existingImage) {
     console.log(`yay, ${title} already existed`)
-    return response(existingImage)
+    return forwardResponse(existingImage)
   }
 
+  console.log(`generating image for ${title}`)
   const url = local ? `http://${event.headers.host}` : `https://${event.headers.host}`
   const imageParams = objectToParams(event.queryStringParameters)
-  const screenshotBuffer = await takeScreenshot(`${url}/generate-image?${imageParams}`)
-  const newImage = await putImage(title, screenshotBuffer)
-  return response(newImage)
+  const screenshot = await takeScreenshot(`${url}/generate-image?${imageParams}`)
+  const newImage = await putImage(title, screenshot)
+  console.log(`done with ${title}`)
+  return forwardResponse(newImage)
 }

@@ -11,6 +11,7 @@ const twitter = () => async (tree) => {
       // sometimes this grabs other lines... not sure why?
       const value = node.value.match(tweetRegex)[0]
 
+      // TODO this doesn't handle tweets with links in them...
       const user = value.match(/&mdash(.*)\)/)[0]
       const handle = user.match(/\((.*)\)/)[1]
       const name = user.match(/&mdash; (.*) \(/)[1]

@@ -1,7 +1,7 @@
 function objectToParams(object) {
-  const params = new URLSearchParams
+const params = new URLSearchParams
   Object.entries(object).map(entry => {
-    const [key, value] = entry
+    let [key, value] = entry
     params.set(key, value)
   })
   return params.toString()

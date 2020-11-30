@@ -226,7 +226,7 @@
       border-radius: 1em;
       padding: .75em 1em;
       font-family: sans-serif !important;
-      margin: 0 auto;
+      margin: var(--verticalSpacing) auto;
       position: relative;
     
       &::after {

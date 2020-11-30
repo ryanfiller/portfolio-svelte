@@ -1,6 +1,7 @@
 <script>
   import { meta } from '../site-config.js' 
   import { paramsToObject } from '../helpers'
+  import TagList from '../components/content/tag-list.svelte'
 
   import { stores } from '@sapper/app'
   const { page } = stores()
@@ -8,6 +9,8 @@
   $: ({
     title = '',
     excerpt = '',
+    categories = '',
+    tags = '',
     imageSrc = '',
     imageCredit = '',
     url = ''
@@ -51,13 +54,15 @@
     border-color: currentColor;
     display: grid;
     gap: var(--space);;
-    grid-template-rows: auto auto 1fr auto auto;
-    grid-template-columns: 3fr 2fr;
-    grid-template-areas: "title   title      "
-                         "excerpt excerpt    "
-                         ".       .          " 
-                         "author  attribution"
-                         "url     attribution";
+    grid-template-rows: 1fr auto auto 1fr auto auto auto;
+    grid-template-columns: 3fr 2fr 1fr;
+    grid-template-areas: ".       .            ." 
+                        "title   title        ."
+                         "tags    tags         ."
+                         "url     url          url"
+                         ".       .            ." 
+                         ".       attribution  attribution"
+                         "author  attribution  attribution";
   }
 
   h1 {
@@ -66,22 +71,27 @@
     grid-area: title;
   }
 
-  p {
-    grid-area: excerpt;
-    font-size: 3.5em;
-    line-height: 1.25;
-  }
-
-  .author {
-    grid-area: author;
-    display: block;
-    font-size: 3em;
+  .tag-list {
+    grid-area: tags;
+    font-size: 2em;
   }
 
   .url {
     grid-area: url;
     display: block;
     font-size: 2em;
+  }
+
+  /* p {
+    grid-area: excerpt;
+    font-size: 3.5em;
+    line-height: 1.25;
+  } */
+
+  .author {
+    grid-area: author;
+    display: block;
+    font-size: 3em;
   }
 
   .attribution {
@@ -113,17 +123,6 @@
     mix-blend-mode: overlay;
     margin: 0;
   }
-
-  figcaption {
-    display: block;
-    font-size: calc(.5 * var(--space));
-    padding: calc(.25 * var(--space)) var(--space);
-    text-align: right;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    opacity: .75;
-  }
 </style>
 
 <div id='wrapper'>
@@ -131,10 +130,20 @@
     <main class='content'>
       <h1>{title}</h1>
 
+      {#if categories || tags}
+        <div class='tag-list'>
+          <TagList
+            categories={categories.split(',')}
+            tags={tags.split(',')}
+          />
+        </div>
+      {/if}
+
+      <span class='url'>{url}</span>
+
       <!-- <p>{excerpt}</p> -->
 
       <span class='author'>{meta.author}</span>
-      <span class='url'>{url}</span>
 
       {#if imageSrc && imageCredit}
         <p class='attribution'>
