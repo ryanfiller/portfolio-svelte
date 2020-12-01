@@ -1,4 +1,4 @@
-context('<Form /> component', () => {
+describe('<Form /> component', () => {
   context('contact form', () => {
     beforeEach(() => {
       cy.visit('/')

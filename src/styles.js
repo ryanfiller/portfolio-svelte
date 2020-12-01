@@ -1,4 +1,4 @@
-let colors = {
+export const colors = {
   // https://www.comiclink.com/img/comics/scans/RADB3E84201959_16201.jpg
   black: '#080025',
   white: '#fefdf2',
@@ -20,7 +20,7 @@ let colors = {
   // gray: '#9892a3',
 }
 
-const themes = {
+export const themes = {
   light: {
     text: 'black',
     background: 'white',
@@ -39,6 +39,36 @@ const themes = {
   }
 }
 
-export { colors, themes }
+export const fonts = {
+  LabDJR: {
+    name: 'LabDJR',
+    url: 'https://djr.com/lab-variable/',
+    options: {
+      BEVL: [1, 1000],
+      OVAL: [1, 1000],
+      QUAD: [1, 1000],
+      SIZE: [1, 1000]
+    }
+  },
 
+  Barlow: {
+    name: 'Barlow',
+    url: 'https://tribby.com/fonts/barlow/',
+      options: {
+      wght: [22, 188],
+      wdth: [300, 500]
+    }
+  },
 
+  Recursive: {
+    name: 'Recursive',
+    url: 'https://www.recursive.design/',
+      options: {
+      MONO: [0, 1],
+      CASL: [0, 1],
+      wght: [0, 1000],
+      slnt: [-15, 0],
+      ital: [0, 1]
+    }
+  }
+}

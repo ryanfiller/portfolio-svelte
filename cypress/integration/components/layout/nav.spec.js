@@ -1,6 +1,6 @@
 import { mainNav, secondaryNav } from '../../../../src/config.js'
 
-context('<Nav /> component', () => {
+describe('<Nav /> component', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.injectAxe()

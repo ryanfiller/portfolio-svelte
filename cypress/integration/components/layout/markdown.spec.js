@@ -1,4 +1,6 @@
-context('<Markdown /> component', () => {
+const COLOR_SCHEME_LS_KEY = 'user-color-scheme'
+
+describe('<Markdown /> component', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.injectAxe()
@@ -14,7 +16,6 @@ context('<Markdown /> component', () => {
         cy.get('a').should('exist')
         cy.get('a[target="_blank"]').should('exist')
       })
-
 
       cy.get('#headings').within(() => {
         cy.checkA11y('#headings')
@@ -69,4 +70,26 @@ context('<Markdown /> component', () => {
       })
     })
   })
+
+  // context('light theme code blocks', () => {
+  //   beforeEach(() => {
+  //     cy.setLocalStorage(COLOR_SCHEME_LS_KEY, 'light')
+  //   })
+
+  //   it('renders light code blocks', () => {
+  //     cy.checkA11y('#code') // this blows up with focusable, scrollable text for some reason
+  //     cy.get('#code').matchImageSnapshot()
+  //   })
+  // })
+
+  // context('dark theme code blocks', () => {
+  //   beforeEach(() => {
+  //     cy.setLocalStorage(COLOR_SCHEME_LS_KEY, 'dark')
+  //   })
+
+  //   it('renders dark code blocks', () => {
+  //     cy.checkA11y('#code') // this blows up with focusable, scrollable text for some reason
+  //     cy.get('#code').matchImageSnapshot()
+  //   })
+  // })
 })

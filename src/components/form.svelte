@@ -2,6 +2,7 @@
   .form {
     --borderWidth: calc(.25rem);
     --labelHeight: 1.25em;
+    --rowHeight: 4em;
 
     &__wrapper {
       height: 30rem;
@@ -42,7 +43,6 @@
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    font-size: 1.25rem;
 
     & > * {
       margin-bottom: calc(.5 * var(--padding));
@@ -55,7 +55,7 @@
 
     &__row {
       --rowColor: var(--colorHighlight);
-      min-height: 4em;
+      min-height: var(--rowHeight);
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -96,7 +96,6 @@
       textarea {
         background: transparent;
         color: var(--colorText);
-        font-family: var(--font);
         font-size: 1em;
         padding: calc(.25 * var(--padding));
         border: var(--borderWidth) solid transparent;
@@ -111,8 +110,8 @@
 
         &::placeholder {
           text-transform: capitalize;
-          color: var(--colorText);
-          opacity: .8;
+          color: var(--colorDisabled);
+          opacity: 1;
         }
 
         &:focus,
@@ -128,11 +127,14 @@
     }
 
     @supports (writing-mode: sideways-lr) {
+      --rowHeight: 3em;
+
       &__row {
         flex-direction: row;
         flex-wrap: nowrap;
 
         label {
+          font-size: .75em;
           order: -1;
           writing-mode: sideways-lr;
           height: 100%;

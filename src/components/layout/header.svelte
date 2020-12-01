@@ -8,13 +8,10 @@
 
 <style global type='text/scss'>
   @import '../../styles/functions.scss';
-  @import '../../styles/globals.scss';
 
   .header {
     color: var(--colorWhite);
     background: var(--colorPrimary);
-
-    font-family: var(--font);
     font-weight: bold;
 
     display: grid;

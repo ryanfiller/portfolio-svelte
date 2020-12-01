@@ -65,6 +65,14 @@
       position: relative;
       z-index: 1;
 
+      & > * {
+        // this is to combat code style width
+        margin: 0;
+        left: unset;
+        right: unset;
+        width: 100%;
+      }
+
       & > *:last-child {
         margin-bottom: 0;
       }
@@ -106,16 +114,13 @@
     input:focus + label {
       background-color: var(--colorHighlight) !important;
       span {
-        border-bottom-color: currentColor !important;
+        color: var(--colorWhite) !important;
       }
     }
 
     // hover/focus for already active
     input:checked + label:hover {
       background-color: var(--borderColor) !important;
-      span {
-        color: var(--colorWhite) !important;
-      }
     }
   }
 </style>

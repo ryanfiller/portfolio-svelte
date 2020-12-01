@@ -1,4 +1,4 @@
-context('rehype iframe', () => {
+describe('rehype iframe', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#iframes').scrollIntoView()

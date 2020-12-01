@@ -1,4 +1,4 @@
-context('remark headings', () => {
+describe('remark headings', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#headings').scrollIntoView()

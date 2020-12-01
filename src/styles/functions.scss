@@ -44,19 +44,6 @@ $extraBreak: 1400px;
   max-width: var(--readableMax);
 }
 
-// @mixin font-size($desktop-size: 1.5em, $tablet-size: 1.25em, $phone-size: 1em) {
-//   font-size: $desktop-size;
-//   line-height: 1.25em;
-
-//   @include tablet-break {
-//     font-size: $tablet-size;
-//   }
-
-//   @include phone-break {
-//     font-size: $phone-size;
-//   }
-// }
-
 @mixin highlight(
     $color: var(--colorHighlight),
     $hoverColor: var(--colorWhite),

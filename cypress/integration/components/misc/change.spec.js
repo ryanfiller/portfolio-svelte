@@ -1,4 +1,4 @@
-context('<Change /> component', () => {
+describe('<Change /> component', () => {
   beforeEach(() => {
     cy.visit('/changes')
     cy.injectAxe()

@@ -1,7 +1,7 @@
 import { colors, themes } from '../../../../src/styles.js'
 import { capitalize, getCustomProperty } from '../../../../src/helpers/index.js'
 
-context('<Styles /> component', () => {
+describe('<Styles /> component', () => {
   beforeEach(() => {
     cy.visit('/')
   })

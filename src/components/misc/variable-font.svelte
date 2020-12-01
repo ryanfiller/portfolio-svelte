@@ -1,5 +1,5 @@
 <style type='text/scss'>
-  @import '../../../styles/functions.scss';
+  @import '../../styles/functions.scss';
 
   .variable-font {
     margin: var(--padding) 0;
@@ -26,29 +26,40 @@
       padding: var(--padding);
     }
 
+    label {
+      text-transform: lowercase;
+      margin-right: 1em;
+    }
+
+
     &__slider {
       display: flex;
       align-items: center;
 
-      label {
-        text-transform: lowercase;
-        margin-right: 1em;
-      }
-
       input {
         width: 100%;
+
+        // // TODO need to make inputs components
+        // &::-webkit-slider-runnable-track,
+        // &::-moz-range-track {
+        //   height: 100%;
+        //   background: var(--textColor);
+        //   border-radius: 50%;
+        // }
+      }
+    }
+
+    &__checkbox {
+      input {
+        margin: 0;
       }
     }
 
     &__select {
-      margin-top: .5em;
-      
-      label {
-        display: block;
-      }
+      display: flex;
 
       select {
-        width: 100%;
+        flex: 1;
       }
     }
 
@@ -57,6 +68,12 @@
       display: flex;
       align-items: center;
       margin: 0;
+      left: unset;
+      width: 100%;
+
+      *::after {
+        display: none;
+      }
     }
 
     &__example {
@@ -110,7 +127,7 @@
 </style>
 
 <script>
-  import { slugify } from '../../../helpers'
+  import { slugify } from '../../helpers'
 
   export let url = ''
   export let name = ''
@@ -118,6 +135,7 @@
 
   let text = 'the five boxing wizards jump quickly'
   let capitalization = 'none'
+  let italic = false
 
   const styleOptions = Object.entries(options).map(option => {
     const [name, [min, max]] = option
@@ -170,6 +188,15 @@
       </div>
     {/each}
 
+    <div class='variable-font__checkbox'>
+      <label for={makeId('italic')}>italic</label>
+      <input
+        type='checkbox'
+        id={makeId('italic')}
+        bind:checked={italic}
+      />
+    </div>
+
     <div class='variable-font__select'>
       <label for={makeId('capitalization')}>text-transform</label>
       <select
@@ -196,6 +223,7 @@
         font-family: {name};
         font-variation-settings: {fontStyles};
         text-transform: {capitalization};
+        font-style: {italic ? 'italic' : ''};
       "
     />
   </div>
@@ -212,6 +240,13 @@ font-variation-settings: {
 };
 {#if capitalization !== 'none'}
   text-transform: "{capitalization}";
+{:else}
+  {` `}
+{/if}
+{#if italic}
+  font-style: "italic";
+{:else}
+  {` `}
 {/if}
     </code>
   </pre>

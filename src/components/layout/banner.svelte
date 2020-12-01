@@ -100,7 +100,6 @@
       padding: .25em var(--padding) 1rem var(--padding);
       right: 0;
       bottom: 0;
-      opacity: .75;
     }
 
     // match --headerWidth
