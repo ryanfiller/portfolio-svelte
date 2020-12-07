@@ -33,9 +33,18 @@
 
 <svelte:head>
   <title>{pageTitle}</title>
-  <a href={`mailto:${meta.email}`} rel="me">{meta.email}</a>
   <meta name='author' content={meta.author}>
   <meta name='description' content={description}>
   <meta name='keywords' content={keywords() || ''}>
   <link rel='sitemap' type='application/xml' href='/sitemap.xml'>
+
+  <!-- webmention.io stuff -->
+  <link rel="webmention" href="https://webmention.io/www.ryanfiller.com/webmention" />
+  <link rel="pingback" href="https://webmention.io/www.ryanfiller.com/xmlrpc" />
+  <!-- https://webmention.io/api/mentions.html?token=nseQFcsLWSvq0TOTOuSVkQ -->
+  <!-- https://webmention.io/api/mentions.atom?token=nseQFcsLWSvq0TOTOuSVkQ -->
+  <!-- nseQFcsLWSvq0TOTOuSVkQ -->
 </svelte:head>
+
+<!-- webmention.io stuff -->
+<a style='display: none' href={`mailto:${meta.email}`} rel="me">{meta.email}</a>
