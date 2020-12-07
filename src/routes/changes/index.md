@@ -23,11 +23,14 @@ A new header, new styles, and some internal updates.
 
 [design/post-images](https://github.com/ryanfiller/portfolio-svelte/pull/7) - Add a cloud function to automatically generate social images.
 
+[feature/webmentions](https://github.com/ryanfiller/portfolio-svelte/pull/9) - Add email to log into [webmention.io](https://webmention.io/)
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
 |   - Refactor `<Banner />` and add images for blogs
 |   - Add a route and serverless function that will take query params and return an image
+|   - Add webmentions via Add email to log into [webmention.io](https://webmention.io/)
 |
 | - Routes
 |   - ≈ `/layout`

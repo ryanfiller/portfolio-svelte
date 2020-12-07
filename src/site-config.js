@@ -2,6 +2,7 @@ const siteUrl = 'https://www.ryanfiller.com'
 
 export const meta = {
   title: 'ryanfiller.com',
+  email: 'ryanfiller89@gmail.com',
   siteUrl: siteUrl,
   author: '@ryanfiller_',
   headshot: `${siteUrl}/images/site-assets/headshot_2017.jpg`,
