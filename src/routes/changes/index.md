@@ -23,7 +23,7 @@ A new header, new styles, and some internal updates.
 
 [design/post-images](https://github.com/ryanfiller/portfolio-svelte/pull/7) - Add a cloud function to automatically generate social images.
 
-[feature/webmentions](https://github.com/ryanfiller/portfolio-svelte/pull/9) - Add email to log into [webmention.io](https://webmention.io/)
+[feature/webmentions](https://github.com/ryanfiller/portfolio-svelte/pull/10) - Add email to log into [webmention.io](https://webmention.io/)
 
 [[details | Version Details]]
 | - Features
