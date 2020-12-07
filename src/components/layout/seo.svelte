@@ -33,6 +33,7 @@
 
 <svelte:head>
   <title>{pageTitle}</title>
+  <a href={`mailto:${meta.email}`} rel="me">{meta.email}</a>
   <meta name='author' content={meta.author}>
   <meta name='description' content={description}>
   <meta name='keywords' content={keywords() || ''}>
