@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit'
-import { meta } from '../../src/site-config.js' 
+import { meta } from '../../src/config.js' 
 const siteUrl = meta.siteUrl
 
 function transformer(ast) {

@@ -13,7 +13,7 @@ context('<Date /> component', () => {
       // /\d{0,4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/ 
       // match 2020-01-30T06:00:00.000Z
       // cypress can't regex match attributes yet
-      cy.checkA11y()
+      cy.checkA11y('time.date')
     })
   })
 })

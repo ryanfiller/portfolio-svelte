@@ -12,7 +12,7 @@ context('<Form /> component', () => {
         cy.get('textarea[name="message"][required]').should('exist')
         cy.get('button[type="submit"]').should('exist')
       })
-      cy.checkA11y()
+      cy.checkA11y('form#contact')
     })
 
     context('success state', () => {

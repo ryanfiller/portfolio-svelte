@@ -4,13 +4,14 @@ title: 'Style Guide'
 ---
 
 <script>
+  import { colors } from '../styles.js'
   import ColorChart from './lab/color-contrast-table/_color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
 </script>
 
 <div id="colors">
 
-  <ColorChart />
+  <ColorChart colors={colors} />
 
 </div>
 
@@ -48,7 +49,7 @@ title: 'Style Guide'
 
 </div>
 
-<div id="quotes">
+<div id="blockquotes">
 
   > Any sufficiently advanced technology is indistinguishable from magic.
   > ***
@@ -110,7 +111,7 @@ title: 'Style Guide'
 
 </div>
 
-<div id="imgs">
+<div id="images">
 
   ![alt](/images/site-assets/_placeholder.jpg 'title'){data-align="full"}
 

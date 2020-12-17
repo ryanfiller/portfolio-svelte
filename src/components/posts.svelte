@@ -18,7 +18,7 @@
     
 		li {
 			margin: .25em 0;
-			&:before {
+			&::before {
 				content: attr(data-bullet);
 				margin-right: .25em;
 			}

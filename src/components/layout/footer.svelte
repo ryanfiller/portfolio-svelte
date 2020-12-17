@@ -1,7 +1,7 @@
 <script>
   export let segment
 
-  import { secondaryNav } from '../../site-config.js'
+  import { secondaryNav } from '../../config.js'
   import Nav from './nav.svelte'
 </script>
 
@@ -9,11 +9,9 @@
   @import '../../styles/functions.scss';
 
   .footer {
-    --background: var(--colorPrimary);
-    --text: var(--colorLight);
     font-size: 1rem;
-    background: var(--background);
-    color: var(--text);
+    color: var(--colorWhite);
+    background: var(--colorPrimary);
     
     &__content {
       padding: .5rem;

@@ -25,12 +25,16 @@ A new header, new styles, and some internal updates.
 
 [feature/webmentions](https://github.com/ryanfiller/portfolio-svelte/pull/10) - Add email to log into [webmention.io](https://webmention.io/)
 
+[design/colors](https://github.com/ryanfiller/portfolio-svelte/pull/11) - Add brand colors and light/dark theme toggle
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
 |   - Refactor `<Banner />` and add images for blogs
 |   - Add a route and serverless function that will take query params and return an image
 |   - Add webmentions via Add email to log into [webmention.io](https://webmention.io/)
+|   - Brand colors, theme styles and toggle
+|   - Added `no-js` top level class
 |
 | - Routes
 |   - ≈ `/layout`
@@ -40,7 +44,9 @@ A new header, new styles, and some internal updates.
 |   - Layout
 |     - ≈ `<Header />`
 |     - ≈ `<Nav />`
+|     - \+ `<Styles />`
 |     - ≈ `<SEO />`
+|     - \+ `<ColorSchemeToggle />`
 |     - ≈ `<Mdsvex />`
 |     - ≈ `<Banners />`
 |       - \- `<DefaultBanner />`
@@ -52,6 +58,7 @@ A new header, new styles, and some internal updates.
 |     - \+ `<TagList />`
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
+|     - ≈ `<ColorChart />`
 |
 | - Functions
 |   - Serverless
@@ -60,6 +67,8 @@ A new header, new styles, and some internal updates.
 | - Helpers
 |   - \+ `objectToParams`
 |   - \+ `paramsToObject`
+|   - \+ `getCustomProperty`
+|   - \+ `setCustomProperty`
 |
 | - Tests
 |   - Routes
@@ -68,6 +77,8 @@ A new header, new styles, and some internal updates.
 |     - Layout
 |       - ≈ `<Header />`
 |       - ≈ `<Nav />`
+|       - \+ `<Styles />`
+|       - \+ `<ColorSchemeToggle />`
 |       - ≈`<Banners />`
 |         \\- `<DefaultBanner />`
 |         - \- `<BlogBanner />`
@@ -78,14 +89,24 @@ A new header, new styles, and some internal updates.
 |       - \+ `<TagList />`
 |     - Misc
 |       - \+ `<Tabs />`, `<Tab />`
+|     - ≈ `<ColorChart />`
 |   - Helpers
 |     - \+ `objectToParams`
 |     - \+ `paramsToObject`
+|     - \+ `getCustomProperty`
+|     - \+ `setCustomProperty`
+|   - Commands
+|     - \+ `setColorScheme()`
+|     - \+ `cypress-localstorage-commands`
+|
+| - Config
+|   - \+ `styles.js`
 |
 | - Packages
 |   - \+ chrome-aws-lambda
 |   - \+ cloudinary
 |   - \+ cypress-image-snapshot
+|   - \+ cypress-localstorage-commands
 |   - \+ dotenv
 |   - \+ netlify-lambda
 |   - \+ node-fetch

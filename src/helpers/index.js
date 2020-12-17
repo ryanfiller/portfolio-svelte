@@ -1,6 +1,6 @@
 // commonjs syntax to use in node
 const queryHelpers = require('./query-param-helpers.js')
-const { objectToParams,paramsToObject } = queryHelpers
+const { objectToParams, paramsToObject } = queryHelpers
 
 function capitalize(string) {
   if (typeof string !== 'string') return ''
@@ -12,6 +12,20 @@ function fishAttr(string, attr) {
   const match = string.match(regex)
 
   return match ? match[2] : null
+}
+
+function getCustomProperty(property) {
+  if (typeof(window) != 'undefined') {
+    return getComputedStyle(document.documentElement).getPropertyValue(`--${property}`).replace(/(\"|\')/g, '').trim()
+  } else {
+    return ''
+  }
+}
+
+function setCustomProperty(property, value) {
+  if (typeof(window) != 'undefined') {
+    document.documentElement.style.setProperty(`--${property}`, value)
+  }
 }
 
 /* eslint-disable no-multi-spaces */
@@ -27,6 +41,8 @@ function slugify(string) {
 module.exports = {
   capitalize,
   fishAttr,
+  getCustomProperty,
+  setCustomProperty,
   slugify,
   objectToParams,
   paramsToObject

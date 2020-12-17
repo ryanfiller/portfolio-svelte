@@ -25,11 +25,12 @@
       font-family: sans-serif;
       font-weight: bold;
       font-size: 1.25em;
-      color: var(--colorPrimary);
+      color: var(--colorHighlight);
       text-decoration: none;
 
       &:hover {
         text-decoration: underline;
+        color: var(--colorActive);
       }
     }
 
@@ -57,7 +58,7 @@
     }
 
     &__link {
-      &:after {
+      &::after {
         content: '»';
         margin-left: .25em;
       }

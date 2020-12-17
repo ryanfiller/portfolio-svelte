@@ -11,7 +11,7 @@
 <script>
   export let posts
 	
-  import { meta, forms } from '../site-config'
+  import { meta, forms } from '../config'
 	import Posts from '../components/posts.svelte'
 	import Form from '../components/form.svelte'
 </script>

@@ -9,9 +9,8 @@ meta:
   excerpt: >-
     A tool that takes an array of colors and returns the WCAG contast scores for all of their possible color combinations.
   tags:
-    - javascript
     - accessibility
-    - react
+    - color
 url:
   - https://www.npmjs.com/package/color-contrast-table
 ---
@@ -20,6 +19,4 @@ url:
   import ColorChart from './_color-chart.svelte'
 </script>
 
-<ColorChart editable />
-
-I made a tool in vanilla js and also in react
+<ColorChart />

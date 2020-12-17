@@ -119,7 +119,7 @@
     left: 0;
     display: none;
     z-index: 1000;
-    color: var(--colorLight);
+    color: var(--colorWhite);
     /* display: flex; */
     flex-direction: column;
     justify-content: center;
@@ -163,8 +163,9 @@
     bottom: 0;
     left: 0;
     opacity: 0;
-    background: var(--colorDark);
-    opacity: .66;
+    background: var(--colorBlack);
+    opacity: .75;
+    mix-blend-mode: multiply;
     z-index: -1;
   }
 

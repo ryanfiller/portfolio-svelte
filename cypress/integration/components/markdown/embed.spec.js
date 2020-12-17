@@ -22,7 +22,7 @@ context('rehype iframe', () => {
       .should('have.css', 'padding-top', '549px')
       .get('iframe').should('exist')
   
-      cy.checkA11y()
+      cy.checkA11y('#iframes')
     })
   })
 })

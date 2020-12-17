@@ -25,7 +25,7 @@
           display: none;
         }
     
-        &:before {
+        &::before {
           content: '#';
           font-size: 1em;
           opacity: 0;
@@ -36,7 +36,7 @@
         }
         
         &:hover {
-          &:before {
+          &::before {
             opacity: 1;
           }
         }
@@ -181,7 +181,7 @@
     dl, ol, ul,
     blockquote {
       a  {
-        color: var(--colorPrimary);
+        color: var(--colorHighlight);
         text-decoration: none;
         border-bottom: 0;
         border-bottom: 2px currentColor dotted;
@@ -196,7 +196,7 @@
     blockquote {
       margin: var(--padding) 0;
       padding: 0 var(--padding);
-      border-left: calc(.5 * var(--padding)) solid var(--colorHighlight);
+      border-left: calc(.5 * var(--padding)) solid var(--colorPrimary);
       font-size: 1.125em;
       position: relative;
     
@@ -207,7 +207,7 @@
         margin-top: 1em;
         text-align: right;
         
-        &:before {
+        &::before {
           content: '— ';
         }
       }
@@ -360,10 +360,10 @@
         font-size: .8em;
         font-weight: bold;
     
-        &:before {
+        &::before {
           content: '*';
           margin-right: .25em;
-          color: var(--colorHighlight);
+          color: var(--colorPrimary);
         }
       }
 
@@ -372,10 +372,10 @@
       thead th,
       th {
         background: var(--colorPrimary);
-        color: var(--colorLight);
+        color: var(--colorWhite);
         
         * {
-          color: var(--colorLight);
+          color: var(--colorWhite);
         }
       }
     

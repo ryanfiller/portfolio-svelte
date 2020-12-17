@@ -1,21 +1,20 @@
 <!doctype html>
 <html lang='en'>
-<head>
-	<meta charset='utf-8'>
-	<meta name='viewport' content='width=device-width,initial-scale=1.0'>
-	<meta name='theme-color' content='#663399'>
+	<head>
+		<meta charset='utf-8'>
+		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
 
-	%sapper.base%
+		%sapper.base%
 
-	<link rel='manifest' href='manifest.json' crossorigin='use-credentials'>
-	<link rel='icon' type='image/png' href='favicon.png'>
+		<link rel='manifest' href='manifest.json' crossorigin='use-credentials'>
+		<link rel='icon' type='image/png' href='favicon.png'>
 
-	%sapper.styles%
+		%sapper.styles%
 
-	%sapper.head%
-</head>
-<body>
-	<div id='sapper'>%sapper.html%</div>
-	%sapper.scripts%
-</body>
+		%sapper.head%
+	</head>
+	<body data-no-js>
+		<div id='sapper'>%sapper.html%</div>
+		%sapper.scripts%
+	</body>
 </html>

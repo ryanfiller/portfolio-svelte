@@ -38,6 +38,6 @@ context('remark headings', () => {
       cy.url().should('include', '#heading-level-6')
     })
     
-    cy.checkA11y()
+    cy.checkA11y('#headings')
   })
 })

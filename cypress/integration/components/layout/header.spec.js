@@ -11,8 +11,9 @@ context('<Header /> component', () => {
         .click()
         cy.url().should('eq', 'http://localhost:3000/')
       cy.get('nav').should('exist')
+      cy.get('.options').should('exist')
     })
     
-    cy.checkA11y()
+    cy.checkA11y('header#site-header')
   })
 })

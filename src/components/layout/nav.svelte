@@ -2,7 +2,6 @@
   export let segment
   export let label = ''
   export let links = []
-
 </script>
 
 <style global type='text/scss'>
@@ -51,7 +50,7 @@
       &--active {
         position: relative;
 
-        &:after {
+        &::after {
           content: '';
           display: block;
           @include arrow(up);

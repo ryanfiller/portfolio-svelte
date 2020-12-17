@@ -1,4 +1,4 @@
-import { mainNav, secondaryNav } from '../../../../src/site-config.js'
+import { mainNav, secondaryNav } from '../../../../src/config.js'
 
 context('<Nav /> component', () => {
   beforeEach(() => {
@@ -9,14 +9,14 @@ context('<Nav /> component', () => {
   context('in the header', () => {
     it('renders all the links', () => {
       cy.get('header#site-header').find('nav').find('li').should('have.length', mainNav.length)
-      cy.checkA11y()
+      cy.checkA11y('header#site-header nav')
     })
   })
 
   context('in the footer', () => {
     it('renders all the links', () => {
       cy.get('footer#site-footer').find('nav').find('li').should('have.length', secondaryNav.length)
-      cy.checkA11y()
+      cy.checkA11y('footer#site-footer nav')
     })
   })
   

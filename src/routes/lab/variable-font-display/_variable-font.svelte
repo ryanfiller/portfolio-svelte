@@ -12,7 +12,7 @@
       display: block;
       padding: var(--padding) 1em;
       background-color: var(--colorPrimary);
-      color: var(--colorLight);
+      color: var(--colorWhite);
       line-height: 1;
       transition: background-color var(--transitionSpeed);
 
@@ -67,13 +67,14 @@
       
       textarea {
         padding: var(--padding);
-        resize: none;
+        resize: vertical;
         width: 100%;
         border: 0;
         font-size: 2em;
         line-height: 1.25;
         height: 4em;
         color: currentColor;
+        background: transparent;
       }
     }
 

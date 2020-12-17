@@ -10,7 +10,7 @@ export const meta = {
   about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.'
 }
 
-const mainNav = [
+export const mainNav = [
   // {
   //   name: 'about',
   //   url: 'about'
@@ -32,7 +32,7 @@ const mainNav = [
   // },
 ]
 
-const secondaryNav = [
+export const secondaryNav = [
   {
     name: 'changelog',
     url: 'changes'
@@ -47,8 +47,6 @@ const secondaryNav = [
     external: true
   }
 ]
-
-export { mainNav, secondaryNav }
 
 export const forms = {
   'contact': {

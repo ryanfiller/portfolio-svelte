@@ -20,11 +20,11 @@
         margin: 0;
         display: inline-block;
 
-        &:before {
+        &::before {
           content: '#'
         }
 
-        &:after {
+        &::after {
           content: ',';
           margin-right: .25em;
         }

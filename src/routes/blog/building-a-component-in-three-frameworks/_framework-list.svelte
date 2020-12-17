@@ -19,7 +19,7 @@
           margin-top: calc(-1 * var(--iconSize)); // move the first paragraph up
         }
     
-        &:before {
+        &::before {
           content: '';
           display: block;
           height: var(--iconSize);

@@ -1,5 +1,5 @@
 <script>
-  import { meta } from '../site-config.js' 
+  import { meta } from '../config.js' 
   import { paramsToObject } from '../helpers'
   import TagList from '../components/content/tag-list.svelte'
 
@@ -25,16 +25,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--colorDark);
+    background: var(--colorBlack);
   }
 
   #preview {
     --space: 2rem;
-    /* TODO needs to be an og tag in the <head> for this */
     height: 630px;
     width: 1200px;
     background: var(--colorPrimary);
-    color: var(--colorLight);
+    color: var(--colorWhite);
     position: relative;
     font-family: var(--font);
   }
