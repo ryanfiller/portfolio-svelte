@@ -21,7 +21,7 @@ context('<VariableFont /> component', () => {
       cy.get('fieldset').should('exist')
       cy.get('pre').should('exist')
     })
-    cy.checkA11y()
+    cy.checkA11y('section.variable-font')
   })
 
   it('changes a variable property', () => {

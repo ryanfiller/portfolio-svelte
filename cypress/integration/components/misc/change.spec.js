@@ -10,7 +10,7 @@ context('<Change /> component', () => {
       cy.get('div').should('exist')
       cy.get('summary').should('exist')
     })
-    cy.checkA11y()
+    cy.checkA11y('section.change')
   })
 
   it('should be closed by default', () => {
@@ -22,6 +22,6 @@ context('<Change /> component', () => {
       cy.get('summary').click()
       cy.get('details[open]').should('exist')
     })
-    cy.checkA11y()
+    cy.checkA11y('section.change')
   })
 })

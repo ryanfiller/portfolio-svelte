@@ -29,7 +29,7 @@ context('<Banner /> component', () => {
       cy.get('figure.banner-image').should('exist')
       cy.get('figure.banner-image').find('img').should('exist')
       cy.get('figure.banner-image').find('figcaption').should('exist')
-      cy.checkA11y()
+      cy.checkA11y('#page-banner')
     })
   })
 
@@ -48,7 +48,7 @@ context('<Banner /> component', () => {
         cy.get('.date').should('exist')
         cy.get('.tags').should('exist')
       })
-      cy.checkA11y()
+      cy.checkA11y('#page-banner')
     })
   })
 
@@ -67,7 +67,7 @@ context('<Banner /> component', () => {
         cy.get('.date').should('not.exist')
         cy.get('.tags').should('exist')
       })
-      cy.checkA11y()
+      cy.checkA11y('#page-banner')
     })
   })
 })

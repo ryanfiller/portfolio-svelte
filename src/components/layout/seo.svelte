@@ -4,8 +4,9 @@
   import { stores } from '@sapper/app'
   const { page } = stores()
   
-  import { meta } from '../../site-config.js'
   import { markdown } from '../../stores.js'
+  import { meta } from '../../config.js'
+  import { colors } from '../../styles.js'
   import { capitalize, objectToParams, paramsToObject } from '../../helpers'
 
   const local = process.env.NODE_ENV === 'development'
@@ -32,11 +33,19 @@
 <!-- stupid -->
 
 <svelte:head>
+  <script 
+		async
+		src='//gc.zgo.at/count.js'
+		data-goatcounter='https://ryanfiller.goatcounter.com/count'
+	></script>
+  
   <title>{pageTitle}</title>
   <meta name='author' content={meta.author}>
   <meta name='description' content={description}>
   <meta name='keywords' content={keywords() || ''}>
   <link rel='sitemap' type='application/xml' href='/sitemap.xml'>
+  <meta name='theme-color' content={colors.primary}>
+  <meta name='theme-color' content={colors.primary}>
 
   <!-- webmention.io stuff -->
   <link rel="webmention" href="https://webmention.io/www.ryanfiller.com/webmention" />
@@ -44,6 +53,7 @@
   <!-- https://webmention.io/api/mentions.html?token=nseQFcsLWSvq0TOTOuSVkQ -->
   <!-- https://webmention.io/api/mentions.atom?token=nseQFcsLWSvq0TOTOuSVkQ -->
   <!-- nseQFcsLWSvq0TOTOuSVkQ -->
+  <meta name='theme-color' content={colors.primary}>
 </svelte:head>
 
 <!-- webmention.io stuff -->

@@ -15,7 +15,7 @@
         cursor: pointer;
         border: none;
         background: var(--colorHighlight);
-        color: var(--colorLight);
+        color: var(--colorWhite);
         transition: var(--transitionSpeed);
         font-size: 1em;
         padding: 1rem;
@@ -54,15 +54,19 @@
     } 
 
     &__row {
+      --rowColor: var(--colorHighlight);
       min-height: 4em;
       width: 100%;
       display: flex;
       flex-direction: column;
       color: currentColor;
-      border: var(--borderWidth) solid var(--colorHighlight);
+      border: var(--borderWidth) solid var(--rowColor);
       flex: 0;
-
       overflow: hidden;
+
+      &:focus-within {
+        --rowColor: var(--colorActive);
+      }
       
       &--textarea {
         flex: 1;
@@ -74,8 +78,8 @@
 
       label {
         text-transform: uppercase;
-        color: var(--colorLight);
-        background: var(--colorHighlight);
+        color: var(--colorWhite);
+        background: var(--rowColor);
         order: 2;
         display: flex;
         align-items: center;
@@ -85,13 +89,14 @@
         transition: margin var(--transitionSpeed);
         height: var(--labelHeight);
         margin-bottom: calc(-1 * var(--labelHeight) - var(--borderWidth));
-        border-top: var(--borderWidth) solid var(--colorHighlight);
+        border-top: var(--borderWidth) solid var(--rowColor);
       }
 
       input, 
       textarea {
-        background: var(--colorLight);
-        color: var(--colorDark);
+        background: transparent;
+        color: var(--colorText);
+        font-family: var(--font);
         font-size: 1em;
         padding: calc(.25 * var(--padding));
         border: var(--borderWidth) solid transparent;
@@ -106,7 +111,8 @@
 
         &::placeholder {
           text-transform: capitalize;
-          color: var(--colorDisabled);
+          color: var(--colorText);
+          opacity: .8;
         }
 
         &:focus,

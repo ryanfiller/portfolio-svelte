@@ -1,7 +1,6 @@
 <style global type='text/scss'>
-  @import '../../styles/variables.scss';
   @import '../../styles/functions.scss';
-
+  
   .change {
     border: .125rem solid var(--colorPrimary);
     border-radius: .25rem;
@@ -26,7 +25,7 @@
         list-style: none;
         &::-webkit-details-marker { display:none; }
 
-        &:before{
+        &::before{
           content: '';
           @include arrow;
           transition: var(--transitionSpeed);

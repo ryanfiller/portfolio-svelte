@@ -75,10 +75,6 @@
     grid-row: 1 / -1;
     height: 100%;
     min-height: calc(.66 * var(--headerAspectRatioHeight));
-    // filter: grayscale(100%);
-    // opacity: .75;
-    // mix-blend-mode: overlay;
-    // margin: 0;
     background-color: inherit;
     
     img {
@@ -123,6 +119,7 @@
 </style>
 
 <div
+  id='page-banner'
   class='banner-content'
   data-root={!!root}
   data-segment={segment}

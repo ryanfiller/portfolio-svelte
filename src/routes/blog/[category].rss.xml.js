@@ -4,7 +4,7 @@
 const Entities = require('html-entities').XmlEntities
 const entities = new Entities()
 
-import { meta as config } from '../../site-config.js'
+import { meta as config } from '../../config.js'
 import getPages from '../../helpers/get-pages.js'
 
 export function get(req, res) {

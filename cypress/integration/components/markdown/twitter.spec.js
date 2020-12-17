@@ -1,12 +1,12 @@
 context('rehype twitter', () => {
   beforeEach(() => {
     cy.visit('/styles')
-    cy.get('#quotes').scrollIntoView()
+    cy.get('#blockquotes').scrollIntoView()
     cy.injectAxe()
   })
 
   it('renders twitter embeds correctly', () => {
-    cy.get('#quotes').within(() => {        
+    cy.get('#blockquotes').within(() => {        
       cy.get('div.twitter-tweet').within(() => {        
         cy.get('.account__avatar')
           .should('have.attr', 'href', 'https://twitter.com/ryanfiller_')
@@ -17,7 +17,7 @@ context('rehype twitter', () => {
         cy.get('.tweet').should('exist')
         cy.get('.meta__date').should('have.text', 'May 10, 2020')
         cy.get('.meta__info').find('svg').should('exist')
-        cy.checkA11y()
+        cy.checkA11y('#blockquotes .twitter-tweet')
       })
     })
   })

@@ -11,7 +11,7 @@
   // TODO move all this seo stuff somewhere better...
   import { stores } from '@sapper/app'
   const { page } = stores()
-  import { meta } from '../../site-config.js'
+  import { meta } from '../../config.js'
   import { capitalize, objectToParams, slugify } from '../../helpers'
 
   const local = process.env.NODE_ENV === 'development'
@@ -32,10 +32,6 @@
     })
     // socialImageUrl = `${siteUrl}/.netlify/functions/generate-image?${imageParams}`
     socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify($$props.title)}.png`
-
-    if (process.env.NODE_ENV === 'development') {
-      console.log(`${siteUrl}/.netlify/functions/generate-image?${imageParams}`)
-    }
   }
 
 </script>

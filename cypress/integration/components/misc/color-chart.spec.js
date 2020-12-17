@@ -1,46 +1,69 @@
+import { colors } from '../../../../src/styles.js'
+
 context('<ColorChart /> component', () => {
   // actual functionality is tested in the npm package
   
-  context('default chart', () => {
-    beforeEach(() => {
-      cy.visit('/styles')
-      cy.get('#colors').scrollIntoView()
-      cy.injectAxe()
-    })
+  beforeEach(() => {
+    cy.visit('/styles')
+    cy.get('#colors').scrollIntoView()
+  })
 
-    it('renders correctly', () => {
+  afterEach(() => {
+    // refresh the page, reset the theme colors
+    cy.reload()
+  })
+  
+  describe('rendering', () => {
+    it('renders all correctly', () => {
       cy.get('section.color-chart').within(() => {
+        cy.get('#show-all-colors').click()
         cy.get('table').should('exist')
-        cy.get('tr').should('have.length', 4)
+        cy.get('tr').should('have.length', Object.entries(colors).length)
       })
-      cy.checkA11y()
     })
   })
 
-  context('editable chart', () => {
+  context('light theme', () => {
     beforeEach(() => {
-      cy.visit('/lab/color-contrast-table')
-      cy.injectAxe()
+      cy.setColorScheme('light')
     })
 
-    it('renders correctly', () => {
-      cy.get('section.color-chart').within(() => {
-        cy.get('input[type="color"]').should('have.length', 4)
+    it('renders the light colors', () => {
+      cy.get('#colors').within(() => {
+        cy.wait(500) // wait for scroll animation to finish
+        cy.get('table').matchImageSnapshot()
       })
-      cy.checkA11y()
+    })
+  })
+
+  context('dark theme', () => {
+    beforeEach(() => {
+      cy.setColorScheme('dark')
     })
 
-    it('correctly sets new colors', () => {
-      cy.get('section.color-chart').within(() => {
-        cy.get('input[type=color]').eq(0)
-          .invoke('val', '#00ff00')
-          .trigger('input')
-        // annoying that it converts hex to rgb, but whatever...
-        cy.get('tr').eq(0).should('have.css', 'background-color', 'rgb(0, 255, 0)')
+    it('renders the dark colors', () => {
+      cy.get('#colors').within(() => {
+        cy.wait(500) // wait for scroll animation to finish
+        cy.get('table').matchImageSnapshot()
       })
-      
-      // refresh the page, reset the theme colors
-      cy.reload()
+    })
+  })
+
+  it('correctly shows all colors', () => {
+    cy.get('#colors').within(() => {
+      cy.get('#show-all-colors').click()
+      cy.wait(500) // wait for scroll animation to finish
+      cy.get('table').matchImageSnapshot()
+    })
+  })
+
+  it('correctly sets new colors', () => {
+    cy.get('section.color-chart').within(() => {
+      cy.get('input[type=color]').eq(0)
+        .invoke('val', '#00ff00')
+        .trigger('input')
+      // annoying that it converts hex to rgb, but whatever...
+      cy.get('tr').eq(0).should('have.css', 'background-color', 'rgb(0, 255, 0)')
     })
   })
 })

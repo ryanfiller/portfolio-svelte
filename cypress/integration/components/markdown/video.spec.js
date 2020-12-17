@@ -8,7 +8,7 @@ context('remark videos', () => {
   it('renders the correct attributes', () => {
     cy.get('#videos').within(() => {
       cy.get('video').eq(0).should('have.attr', 'title', 'title')
-      cy.checkA11y()
+      cy.checkA11y('#videos')
     })
   })
 

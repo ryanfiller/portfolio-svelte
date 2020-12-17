@@ -26,7 +26,7 @@ context('<Tabs /> and <Tab /> components', () => {
         cy.get('div').eq(index).should('have.attr', 'aria-labelledby', `tab-${id}`)
       })
     })
-    cy.checkA11y()
+    cy.checkA11y('div.tabs')
   })
 
   it('has the correct default', () => {

@@ -19,6 +19,7 @@ context('<SEO /> component', () => {
   it('renders a root page correctly', () => {
     cy.visit('/about')
       cy.title().should('eq', 'About | ryanfiller.com')
+      
     cy.document().get('head meta[name="description"]')
       .should('have.attr', 'content', 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.')
   })

@@ -4,10 +4,12 @@
 	import { stores } from '@sapper/app'
 	const { page } = stores()
 
+	import SEO from '../components/layout/seo.svelte'
+	import Styles from '../components/layout/styles.svelte'
+
 	import Header from '../components/layout/header.svelte'
 	import Footer from '../components/layout/footer.svelte'
 
-	import SEO from '../components/layout/seo.svelte'
 
 	import { markdown } from '../stores.js'
 
@@ -27,26 +29,6 @@
 <style global type="text/scss">
 	@import '../styles/globals.scss';
 	@import '../styles/functions.scss';
-
-	html {
-		font-size: 12px;
-
-		body {
-			margin: 0;
-			font-size: 1.5rem;
-			line-height: 1;
-			background-color: var(--colorLight);
-			color: var(--colorDark);
-		}
-	}
-
-	* {
-		box-sizing: border-box;
-		
-		@include animate {
-			scroll-behavior: smooth;
-		}
-	}
 
 	/* TODO remove this */
 	.temp-bio,
@@ -85,90 +67,19 @@
 			width: 100%;
 			height: 100%;
 		}
-
-		// @include extra() {
-		//   --sidebarWidth: 20rem;
-		//   display: initial;
-
-		//   #site-header .header__content,
-		//   #site-footer {
-		//     position: fixed;
-		//     width: var(--sidebarWidth);
-		//   }
-			
-
-		//   #site-header .header__content {
-		//     background: var(--colorPrimary);
-		//     top: 0;
-		//     left: 0;
-		//     height: 75vh;
-		//   }
-
-		//   #site-header,
-		//   #content {
-		//     margin-left: var(--sidebarWidth);
-		//     width: calc(100% 0 var(--sidebarWidth));
-		//   }
-
-		//   #site-footer {
-		//     bottom: 0;
-		//     left: 0;
-		//     height: 25vh;
-		//   }
-
-		//   #site-header .header__content,
-		//   #site-footer .footer__content {
-		//     text-align: center;
-		//     display: flex;
-		//     flex-direction: column;
-		//     align-items: center;
-		//     justify-content: center;
-
-		//     nav {
-		//       .logo {
-		//         margin: 0 auto;
-		//       }
-
-		//       ul {
-		//         width: 100%;
-		//         display: flex;
-		//         flex-direction: column;
-		//         align-items: center;
-		//         justify-content: center;
-
-		//         li {
-		//           margin: 0;
-		//         }
-		
-		//         a {
-		//           display: inline-block;
-		//           margin: .5em;
-		//         }
-		//       }
-		//     }
-		//   }
-
-		//   #site-footer .footer__content {
-		//     height: 100%;
-		//     justify-content: space-between;
-		//   }
-		// }
 	}
 </style>
 
 <svelte:head>
-	<script 
-		async
-		src='//gc.zgo.at/count.js'
-		data-goatcounter='https://ryanfiller.goatcounter.com/count'
-	></script>
 	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
+
+<Styles />
+<SEO {segment} />
 
 {#if segment === 'generate-image'}
 	<slot />
 {:else}
-	<SEO {segment} />
 	<div
 		id='site'
 		className={segment}

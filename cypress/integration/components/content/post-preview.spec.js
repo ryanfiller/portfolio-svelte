@@ -12,6 +12,6 @@ context('<PostPreview /> component', () => {
       cy.get('ul.tags').should('exist')
       cy.get('a.post__link').should('exist')
     })
-    cy.checkA11y()
+    cy.checkA11y('article.post')
   })
 })

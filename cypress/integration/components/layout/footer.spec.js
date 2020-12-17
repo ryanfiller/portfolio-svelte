@@ -10,6 +10,6 @@ context('<Footer /> component', () => {
       cy.get('nav').should('exist')
     })
     
-    cy.checkA11y()
+    cy.checkA11y('footer#site-footer')
   })
 })

@@ -1,5 +1,8 @@
-static/images/site-assets/** filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.png filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.gif filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+# include this directory
+static/images/site-assets/**/*.* filter=lfs diff=lfs merge=lfs -text
+# ignore these directories
+static/images/site-assets/icons/** filter= diff= merge= -text

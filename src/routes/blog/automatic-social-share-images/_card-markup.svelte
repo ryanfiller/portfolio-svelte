@@ -1,24 +1,21 @@
 <style>
   .exapmle-wrapper {
-    --space: 2em;
-    --colorPrimary: #663390;
-    --colorLight: #fefefe;
-    --font: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     margin: 0 auto;
   }
 
   .exapmle-preview {
-    background: var(--colorPrimary);
-    color: var(--colorLight);
-    position: relative;
-    font-family: var(--font);
+    /* intentionally Gatsby theme colors and font */
+    background: #663390;
+    color: #fefefe;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;;
     font-size: clamp(0.125vw, 1.155vw, calc(.01175 * var(--readableMax))); /* I got to .01175 by trial and error... */
     height: 45em;
     /* height: 630px; */
     width: 80em;
     /* width: 1200px; */
-    padding: var(--space);
+    padding: 2em;
     margin: 0 auto;
+    position: relative;
   }
 
   .exapmle-preview :not(img) {
@@ -30,10 +27,10 @@
     font-size: 1em;
     height: 100%;
     width: 100%;
-    padding: var(--space);
+    padding: 2em;
     border: .125em solid currentColor;
     display: grid;
-    gap: var(--space);;
+    gap: 2em;
     grid-template-rows: 1fr auto auto 1fr auto auto auto;
     grid-template-columns: 3fr 2fr 1fr;
     grid-template-areas: ".       .            ." 

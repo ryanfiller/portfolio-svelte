@@ -13,7 +13,7 @@
 
 <style global type='text/scss'>
   :root {
-    --borderColor: var(--colorActive);
+    --borderColor: var(--colorPrimary);
     --borderWidth: .25rem;
     --border: var(--borderWidth) solid var(--borderColor);
   }
@@ -76,9 +76,9 @@
       z-index: 0;
       background-color: transparent;
       color: currentColor;
+      border-color: var(--colorHighlight);
 
       span {
-        opacity: .75;
         border-bottom-color: transparent;
       }
     }
@@ -91,13 +91,9 @@
     // YES active states
     input:checked ~ label {
       z-index: 10;
-      // border-color: currentColor;
+      border-color: var(--borderColor);
       background-color: var(--borderColor);
-      color: var(--colorLight);
-
-      span {
-        opacity: 1;
-      }
+      color: var(--colorWhite);
     }
 
     input:checked ~ div[role="tabpanel"] {
@@ -108,9 +104,17 @@
     // hover/focus states 
     label:hover,
     input:focus + label {
+      background-color: var(--colorHighlight) !important;
       span {
-        opacity: 1;
         border-bottom-color: currentColor !important;
+      }
+    }
+
+    // hover/focus for already active
+    input:checked + label:hover {
+      background-color: var(--borderColor) !important;
+      span {
+        color: var(--colorWhite) !important;
       }
     }
   }

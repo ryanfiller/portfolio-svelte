@@ -1,18 +1,18 @@
 <!-- TODO - figure out where to put `svelte-ignore css-unused-selector` in this file -->
 
-<style>
-  .diff {
+<style global>
+  .diff-table .diff {
     font-size: .75em;
     font-weight: bold;
     margin-top: .25em;
     margin-right: .25em;
   }
 
-  .dif--increase {
+  .diff-table .diff--increase {
     color: var(--colorHighlight);
   }
 
-  .dif--decrease {
+  .diff-table .diff--decrease {
     color: var(--colorActive);
   }
 </style>

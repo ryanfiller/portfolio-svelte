@@ -5,8 +5,8 @@ context('remark images', () => {
   })
 
   it('renders the correct attributes', () => {
-    cy.get('#imgs').scrollIntoView()
-    cy.get('#imgs').within(() => {
+    cy.get('#images').scrollIntoView()
+    cy.get('#images').within(() => {
       cy.get('img').eq(0)
       .should('have.attr', 'alt', 'alt')
       .should('have.attr', 'title', 'title')
@@ -19,13 +19,13 @@ context('remark images', () => {
       .should('have.attr', 'title', 'title')
     })
 
-    cy.checkA11y()
+    cy.checkA11y('#images')
   })
 
   context('image transformations', () => {
     it('adds query params to images', () => {
-      cy.get('#imgs').scrollIntoView()
-      cy.get('#imgs').within(() => {
+      cy.get('#images').scrollIntoView()
+      cy.get('#images').within(() => {
         cy.get('img').eq(0)
         .should('have.attr', 'src', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=1000')
         .should('have.attr', 'srcset', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=500 500w, /images/site-assets/_placeholder.jpg?nf_resize=fit&w=800 800w')
@@ -54,8 +54,8 @@ context('remark images', () => {
       })
   
       it('renders imgs', () => {
-        cy.get('#imgs').scrollIntoView()
-        cy.get('#imgs').within(() => {
+        cy.get('#images').scrollIntoView()
+        cy.get('#images').within(() => {
           // full
           cy.get('img[data-align="full"]').should(() => {
             'have.css', 'width', '526px' || 'have.css', 'width', '511px'
@@ -135,8 +135,8 @@ context('remark images', () => {
       })
   
       it('renders imgs', () => {
-        cy.get('#imgs').scrollIntoView()
-        cy.get('#imgs').within(() => {
+        cy.get('#images').scrollIntoView()
+        cy.get('#images').within(() => {
           // full
           cy.get('img[data-align="full"]').should('have.css', 'width', '732px')
           // left
@@ -152,7 +152,7 @@ context('remark images', () => {
           // center small
           cy.get('img[data-align="center"][data-small="true"]').should('have.css', 'width', '180px', 'margin-left', '222px', 'margin-right', '222px')
         })
-        cy.checkA11y()
+        cy.checkA11y('#images')
       })
 
       it('renders figures', () => {

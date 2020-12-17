@@ -1,4 +1,5 @@
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command'
+import 'cypress-localstorage-commands'
 
 Cypress.Commands.add('inputChange', (input, value) => {
   const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
@@ -36,4 +37,8 @@ Cypress.Commands.add("setResolution", (size) => {
    } else {
     cy.viewport(size);
   }
+})
+
+Cypress.Commands.add('setColorScheme', (theme) => {
+  cy.get('html').then(html => html[0].setAttribute('data-user-color-scheme', theme))
 })
