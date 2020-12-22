@@ -87,7 +87,7 @@ Both services offer multiple card styles — small images, large images, videos,
 
 Rather than making one-off images in Photoshop for each post like I have done in the past, I decided to create each image dynamically in HTML. To do this, I built a basic page and styled it with CSS to look like the card image I had designed.
 
-```HTML
+```html
 <div id='wrapper'>
   <div id='preview'>
     <main class='content'>
@@ -405,7 +405,7 @@ The final image generated with the metadata from this post should look something
 
 One added benefit is that even though the two protocols used here were created specifically by Twitter and Facebook, many other web-based services now tap into these tags and create custom preview cards as well.
 
-![final generated cards for this post](/images/final-card-image-composite.jpg){data-align="full" data-caption="final generated cared for Twitter, Facebook, Slack, Discord, and iMessage"}
+![final generated cards for this post](/images/final-card-image-composite.png){data-align="full" data-caption="final generated cared for Twitter, Facebook, Slack, Discord, and iMessage"}
 
 ## Shoutouts
 

@@ -27,12 +27,14 @@ A new header, new styles, and some internal updates.
 
 [design/colors](https://github.com/ryanfiller/portfolio-svelte/pull/11) - Add brand colors and light/dark theme toggle
 
+[design/fonts](https://github.com/ryanfiller/portfolio-svelte/pull/12) - Add some variable fonts to the site
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
 |   - Refactor `<Banner />` and add images for blogs
 |   - Add a route and serverless function that will take query params and return an image
-|   - Add webmentions via Add email to log into [webmention.io](https://webmention.io/)
+|   - Add webmentions via Add email to log into webmention.io
 |   - Brand colors, theme styles and toggle
 |   - Added `no-js` top level class
 |
@@ -59,6 +61,7 @@ A new header, new styles, and some internal updates.
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
 |     - ≈ `<ColorChart />`
+|     - ≈ `<VariableFont />`
 |
 | - Functions
 |   - Serverless
@@ -69,6 +72,10 @@ A new header, new styles, and some internal updates.
 |   - \+ `paramsToObject`
 |   - \+ `getCustomProperty`
 |   - \+ `setCustomProperty`
+|
+| - Plugins
+|   - remark
+|     - ≈ `twitter`
 |
 | - Tests
 |   - Routes
@@ -90,6 +97,7 @@ A new header, new styles, and some internal updates.
 |     - Misc
 |       - \+ `<Tabs />`, `<Tab />`
 |     - ≈ `<ColorChart />`
+|     - ≈ `<VariableFont />`
 |   - Helpers
 |     - \+ `objectToParams`
 |     - \+ `paramsToObject`
@@ -113,7 +121,11 @@ A new header, new styles, and some internal updates.
 |   - \+ puppeteer-core
 |
 | - Project Files
-|   - `.psd` template for images
+|   - \+ `.psd` template for images
+|   - \+ `LabDJR-VF.woff`
+|   - \+ `Barlow.woff2`
+|   - \+ `Recursive.woff2`
+
 
 </Change>
 

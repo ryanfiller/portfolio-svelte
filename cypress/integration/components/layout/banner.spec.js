@@ -1,4 +1,4 @@
-context('<Banner /> component', () => {  
+describe('<Banner /> component', () => {  
   beforeEach(() => {
     cy.visit('/')
   })

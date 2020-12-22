@@ -27,7 +27,6 @@
 </script>
 
 <style global type="text/scss">
-	@import '../styles/globals.scss';
 	@import '../styles/functions.scss';
 
 	/* TODO remove this */

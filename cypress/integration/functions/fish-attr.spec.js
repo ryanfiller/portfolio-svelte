@@ -1,6 +1,6 @@
 import { fishAttr } from '../../../src/helpers/'
 
-context('fishAttr()', () => {
+describe('fishAttr()', () => {
   const string = `<img src="logo.png" title='okay' alt="logo" />`
 
   it('returns a data attribute from a DOM string with double quotes', () => {

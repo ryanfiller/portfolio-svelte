@@ -5,7 +5,7 @@ title: 'Style Guide'
 
 <script>
   import { colors } from '../styles.js'
-  import ColorChart from './lab/color-contrast-table/_color-chart.svelte'
+  import ColorChart from '../components/misc/color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
 </script>
 
@@ -46,6 +46,45 @@ title: 'Style Guide'
   1. Donec sed odio dui.
   2. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
   3. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+
+</div>
+
+<div id="code">
+
+  This is an `inline code sample`.
+
+  This is a code block using [`prismjs`](https://prismjs.com/):
+
+  ```html
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>This is a title</title>
+    </head>
+    <body>
+      <div>
+          <p>Hello world!</p>
+      </div>
+    </body>
+  </html>
+  ```
+
+  ```css
+  h1 {
+    color: blue;
+  }
+  ```
+
+  ```javascript
+  function factorial(n) {
+    if (n === 0)
+        return 1; // 0! = 1
+
+    return n * factorial(n - 1);
+  }
+
+  factorial(3); // returns 6
+  ```
 
 </div>
 

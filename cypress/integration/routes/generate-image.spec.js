@@ -1,6 +1,6 @@
 import { objectToParams } from '../../../src/helpers'
 
-context('/generate-image route', () => {
+describe('/generate-image route', () => {
   
   const params =  objectToParams({
     title: 'test title',

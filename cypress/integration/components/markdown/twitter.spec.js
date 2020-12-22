@@ -1,4 +1,4 @@
-context('rehype twitter', () => {
+describe('rehype twitter', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#blockquotes').scrollIntoView()

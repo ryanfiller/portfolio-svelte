@@ -1,4 +1,4 @@
-context('<SEO /> component', () => {
+describe('<SEO /> component', () => {
   it('renders the default info', () => {
     cy.visit('/')
     cy.title().should('eq', 'ryanfiller.com')

@@ -1,4 +1,4 @@
-context('remark blockquote', () => {
+describe('remark blockquote', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#blockquotes').scrollIntoView()

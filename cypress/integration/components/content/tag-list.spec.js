@@ -1,4 +1,4 @@
-context('<TagList /> component', () => {
+describe('<TagList /> component', () => {
   context('where categories are used', () => {
     beforeEach(() => {
       cy.visit('/blog')

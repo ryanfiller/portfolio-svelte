@@ -42,7 +42,6 @@
     }
 
     .date {
-      opacity: .75;
       font-weight: bold;
       margin-bottom: .75rem;
     }
@@ -52,7 +51,6 @@
     }
 
     &__tags {
-      opacity: .75;
       font-weight: bold;
       margin-bottom: .5rem;
     }

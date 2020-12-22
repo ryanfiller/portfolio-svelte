@@ -35,7 +35,6 @@
     background: var(--colorPrimary);
     color: var(--colorWhite);
     position: relative;
-    font-family: var(--font);
   }
 
   #preview > :not(img) {

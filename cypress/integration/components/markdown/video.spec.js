@@ -1,4 +1,4 @@
-context('remark videos', () => {
+describe('remark videos', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#videos').scrollIntoView()

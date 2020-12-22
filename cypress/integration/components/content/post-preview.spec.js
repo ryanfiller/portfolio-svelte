@@ -1,4 +1,4 @@
-context('<PostPreview /> component', () => {
+describe('<PostPreview /> component', () => {
   beforeEach(() => {
     cy.visit('/blog')
     cy.injectAxe()

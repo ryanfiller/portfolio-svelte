@@ -1,4 +1,4 @@
-context('remark images', () => {
+describe('remark images', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.injectAxe()
@@ -22,7 +22,7 @@ context('remark images', () => {
     cy.checkA11y('#images')
   })
 
-  context('image transformations', () => {
+  describe('image transformations', () => {
     it('adds query params to images', () => {
       cy.get('#images').scrollIntoView()
       cy.get('#images').within(() => {
@@ -47,7 +47,7 @@ context('remark images', () => {
     })
   })
 
-  context('render sizes and alignments', () => {
+  describe('render sizes and alignments', () => {
     context('at smaller screen sizes', () => {
       beforeEach(() => {
         cy.viewport(550, 600)

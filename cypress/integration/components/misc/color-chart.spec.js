@@ -1,6 +1,6 @@
 import { colors } from '../../../../src/styles.js'
 
-context('<ColorChart /> component', () => {
+describe('<ColorChart /> component', () => {
   // actual functionality is tested in the npm package
   
   beforeEach(() => {

@@ -4,13 +4,12 @@
   .markdown {
     padding: calc(2 * var(--padding));
     @include readable();
-    line-height: 1.4;
+    line-height: 1.5;
 
     // headings
     @mixin headingStyles() {
       position: relative;
       display: block;
-      font-family: var(--font);
       margin: 0;
       margin-bottom: 1rem;
       padding: 0;
@@ -217,17 +216,28 @@
     .twitter-tweet {
       --twitterBlue: #1da1f2;
       --twitterGray: #ccd6dd;
+      --twitterWhite: #ffffff;
+      --twitterBlack: #000000;
       font-size: 15px;
       line-height: 1.3125;
     
+      color: var(--twitterBlack);
+      background-color: var(--twitterWhite);
       min-width: 30ch;
       max-width: 75ch;
       border: 1px solid var(--twitterGray);
       border-radius: 1em;
       padding: .75em 1em;
-      font-family: sans-serif !important;
       margin: var(--verticalSpacing) auto;
       position: relative;
+
+      // specificity!
+      div.account,
+      div.tweet,
+      div.meta {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important; // twitter's font styles
+        font-variation-settings: initial !important;
+      }
     
       &::after {
         content: '';
@@ -271,6 +281,7 @@
         align-items: stretch;
         margin-bottom: .75em;
         height: 3.33em;
+        font-weight: bold;
     
         &__avatar {
           height: 3.33em;
@@ -294,7 +305,7 @@
         }
         
         &__name {
-          font-weight: bold;
+          font-weight: bold !important;
         }
     
         .twitter-logo {
@@ -312,6 +323,10 @@
       .tweet {
         cursor: text;
         font-size: 1.45em;
+
+        img {
+          margin-top: .75em;
+        }
       }
       
       .meta {
@@ -319,6 +334,7 @@
         align-items: center;
         justify-content: space-between;
         margin-top: 1em;
+        font-weight: bold !important;
         
         &__date {
           font-size: 1em;
@@ -386,6 +402,129 @@
       th, td {
         border: 1px solid var(--colorPrimary);
         padding: .25em;
+      }
+    }
+
+    pre, pre *,
+    code, code *,
+    kbd, kbd *,
+    samp, samp * {
+      font-family: var(--mono);
+      font-variation-settings: "MONO" 1,  "wght" 450;
+      font-size: .95em;
+      overflow: auto;
+    }
+
+    pre {
+      // TODO make a remark/rehype plugin for this, but a utility class on it
+      --width: calc(100vw - (2 * var(--padding)));
+      width: var(--width);
+      position: relative;
+      left: 50%;
+      margin-left: calc(-1 * var(--width) / 2);
+
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: var(--colorText);
+        opacity: 0.05;
+        z-index: -1;
+      }
+    }
+
+    pre[class*='language-'] {
+      white-space: pre;
+      word-spacing: normal;
+      word-break: normal;
+      tab-size: 4;
+      hyphens: none;
+      padding: var(--padding) 0;
+      position: relative;
+
+      * {
+        font-size: 1.5rem !important;
+      }
+
+      code {
+        display: block;
+        @include readable();
+        background: none;
+        line-height: 1.75;
+        color: var(--colorText);
+      }
+
+      .token.punctuation {
+        color: var(--colorGrayLight);
+      }
+
+      .token.comment,
+      .token.prolog,
+      .token.cdata {
+        color: var(--colorBlueLight);
+        font-variation-settings: "MONO" 0, "CASL" 0.5, "wght" 360, "slnt" -15, "ital" 1;
+      }
+
+      .token.entity,
+      .token.symbol,
+      .token.url,
+      .token.regex,
+      .token.attr-value .punctuation:first-child {
+        color: var(--colorBlueDark);
+      }
+
+      .token.delimiter,
+      .token.keyword,
+      .token.selector,
+      .token.important,
+      .token.atrule,
+      .token.operator,
+      .token.attr-name,
+      .token.tag,
+      .token.tag .punctuation,
+      .token.doctype,
+      .token.builtin,
+      code.language-css .token.id,
+      code.language-css .token.selector > .token.class,
+      code.language-css .token.selector > .token.attribute,
+      code.language-css .token.selector > .token.pseudo-class,
+      code.language-css .token.selector > .token.pseudo-element {
+        color: var(--colorOrangeLight);
+      }
+
+      .token.function,
+      .token.boolean,
+      .token.property,
+      .token.constant,
+      .token.variable,
+      .token.number,
+      .token.deleted {
+        color: var(--colorOrangeDark);
+      }    
+
+      .token.string,
+      .token.char,
+      .token.attr-value,
+      .token.attr-value .punctuation,
+      .token.inserted,
+      .token.class-name {
+        color: var(--colorPurpleLight);
+      }
+
+      .token.url {
+        text-decoration: underline;
+      }
+
+      .token.bold {
+        font-weight: bold;
+      }
+
+      .token.italic {
+        font-style: italic;
       }
     }
   }

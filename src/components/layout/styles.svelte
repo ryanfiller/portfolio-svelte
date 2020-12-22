@@ -40,10 +40,82 @@
       }
     </style>
   `}
+
+  <!-- preload fonts for performance reasons -->
+  <link
+    rel='preload'
+    as='font'
+    href={'/fonts/LabDJR-VF.woff'}
+    type='font/woff'
+  />
+  <link
+    rel='preload'
+    as='font'
+    href={'/fonts/Barlow.woff2'}
+    type='font/woff2'
+  />
+  <link
+    rel='preload'
+    as='font'
+    href={'/fonts/Recursive.woff2'}
+    type='font/woff2'
+  />
 </svelte:head>
 
-<!-- TODO  a postCSS media query here would be sweet https://github.com/postcss/postcss-custom-media -->
 <style global type='text/scss'>
+
+  // -------------
+  // fonts
+  // -------------
+
+  @font-face {
+    font-family: 'LabDJR';
+    src: url('/fonts/LabDJR-VF.woff');
+    // unicode-range: U+0000-00FF;  
+    // font-display: fallback;
+  }
+
+  @font-face {
+    font-family: 'Barlow';
+    src: url('/fonts/Barlow.woff2');
+    // unicode-range: U+0000-00FF;
+    // font-display: fallback;
+  }
+
+  @font-face {
+    font-family: 'Recursive';
+    src: url('/fonts/Recursive.woff2');
+    // unicode-range: U+0000-00FF;
+    // font-display: fallback;
+  }
+
+  // -------------
+  // variables
+  // -------------
+
+  :root {
+    // sizing
+    --containerMaxWidth: $largeBreak;
+
+    // spacing
+    --padding: clamp(1rem, 2.5vw, 2rem);
+    --verticalSpacing: calc(2 * var(--padding));
+
+    // accessibility stuff
+    --tapableSize: 40px;
+    --readableMax: 65rem;
+
+    // fonts
+    --sansSerif: 'Barlow';
+    // -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+    --mono: 'Recursive';
+    // "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace
+  }
+
+  // -------------
+  // default styles
+  // -------------
+
   html {
     font-size: 12px;
 
@@ -53,10 +125,15 @@
       line-height: 1;
       color: var(--colorText);
       background-color: var(--colorBackground);
+      font-family: var(--sansSerif);
+      font-variation-settings: 'wght' 60, 'wdth' 500;
     }
   }
 
+  // -------------
   // resets and preferences
+  // -------------
+
   * {
     box-sizing: border-box;
 
@@ -68,7 +145,10 @@
     transition: color var(--transitionSpeed);
   }
 
+  // -------------
   // utility classes
+  // -------------
+
   body[data-no-js] .needs-js {
 		display: none;
 	}

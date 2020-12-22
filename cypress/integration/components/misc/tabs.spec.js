@@ -1,6 +1,6 @@
 import { slugify } from '../../../../src/helpers'
 
-context('<Tabs /> and <Tab /> components', () => {  
+describe('<Tabs /> and <Tab /> components', () => {  
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#tabs').scrollIntoView()
@@ -43,7 +43,7 @@ context('<Tabs /> and <Tab /> components', () => {
     })
   })
 
-  context('navigating the tabs', () => {
+  describe('navigating the tabs', () => {
     beforeEach(() => {
       cy.get('div.tabs').find('label').eq(0).click()
     })

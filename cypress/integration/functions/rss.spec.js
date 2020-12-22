@@ -1,4 +1,4 @@
-context('rss feed', () => {
+describe('rss feed', () => {
   context('blog, #code', () => {
     it('has the correct metadata', () => {
       const metaTags = [

@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "sapper dev --ext '.svelte .md'",
     "build": "sapper build --legacy --ext '.svelte .md'",
-    "export": "sapper export --legacy --ext '.svelte .md' --entry '/ generate-image'",
+    "export": "sapper export --legacy --ext '.svelte .md' --entry '/ lab generate-image'",
     "start": "node __sapper__/build",
     "test": "cross-env NODE_ENV=test npm run build && npm run start & cypress open"
   },

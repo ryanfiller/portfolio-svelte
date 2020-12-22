@@ -7,9 +7,7 @@ const changeRangeInputValue = $range => value => {
   $range[0].dispatchEvent(new Event('change', { value, bubbles: true }))
 }
 
-// .then(input => changeRangeInputValue(input)(0))
-
-context('<VariableFont /> component', () => {
+describe('<VariableFont /> component', () => {
   beforeEach(() => {
     cy.visit('/lab/variable-font-display')
     cy.injectAxe()
@@ -34,11 +32,13 @@ context('<VariableFont /> component', () => {
         variable = input.attr('name')
         cy.wrap(name).as('property')
 
-        value = ((input.attr('max') - input.attr('min')) / 2).toString()
+        value = Math.round((input.attr('max') - input.attr('min')) / 2).toString()
         cy.inputChange(input, value)
       })
 
       cy.get('textarea').eq(0).then(text => {
+        console.log(`"${variable}" ${value}`)
+        console.log('text.css', text.css('font-variation-settings'))
         expect(text.css('font-variation-settings').includes(`"${variable}" ${value}`)).to.be.true
       })
 
@@ -48,18 +48,32 @@ context('<VariableFont /> component', () => {
     })
   })
 
-  it('changes the capitalization', () => {
+  it('makes the text italic', () => {
     cy.get('section.variable-font').within(() => {
-      // TODO this is broke, but the functionality works.
-      // cy.get('select').eq(0).select('uppercase')
+      cy.get('input[type="checkbox"]').eq(0).click()
 
-      // cy.get('textarea').eq(0).then(text => {
-      //   expect(text.css('text-transform').includes('uppercase')).to.be.true
-      // })
+      cy.get('textarea').eq(0).then(text => {
+        expect(text.css('font-style').includes('italic')).to.be.true
+      })
 
-      // cy.get('pre code').eq(0).text().then(text => {
-      //   expect(text.includes('uppercase')).to.be.true
-      // })
+      cy.get('pre code').eq(0).text().then(text => {
+        expect(text.includes('italic')).to.be.true
+      })
     })
   })
+
+  // // TODO this is broke, but the functionality works.
+  // it('changes the capitalization', () => {
+  //   cy.get('section.variable-font').within(() => {
+  //     cy.get('select').eq(0).select('uppercase')
+
+  //     cy.get('textarea').eq(0).then(text => {
+  //       expect(text.css('text-transform').includes('uppercase')).to.be.true
+  //     })
+
+  //     cy.get('pre code').eq(0).text().then(text => {
+  //       expect(text.includes('uppercase')).to.be.true
+  //     })
+  //   })
+  // })
 })

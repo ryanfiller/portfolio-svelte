@@ -1,4 +1,4 @@
-context('<Footer /> component', () => {
+describe('<Footer /> component', () => {
   beforeEach(() => {
     cy.visit('/')
     cy.injectAxe()

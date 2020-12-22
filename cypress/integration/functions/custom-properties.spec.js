@@ -1,6 +1,6 @@
 import { getCustomProperty, setCustomProperty, } from '../../../src/helpers/'
 
-context('getCustomProperty()', () => {
+describe('getCustomProperty()', () => {
   // it('gets', () => { ... })
   
   it('does not blow up when `window` is undefined', () => {
@@ -9,7 +9,7 @@ context('getCustomProperty()', () => {
   })
 })
 
-context('setCustomProperty()', () => {
+describe('setCustomProperty()', () => {
   // it('sets', () => { ... })
   
   it('does not blow up when `window` is undefined', () => {
