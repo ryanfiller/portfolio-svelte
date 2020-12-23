@@ -30,14 +30,10 @@
       imageCredit: $$props.banner && $$props.banner.attribution ? $$props.banner.attribution : '',
       url: pageUrl.replace('https://www.', '')
     })
+    // socialImageUrl = `${siteUrl}/.netlify/functions/generate-image?${imageParams}`
+    // console.log(`${siteUrl}/.netlify/functions/generate-image?${imageParams}`)
     socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify($$props.title)}.png`
-    
-    if (process.env.NODE_ENV === 'development') {
-      console.log('socialImageUrl', `${siteUrl}/.netlify/functions/generate-image?${imageParams}`)
-    }
   }
-
-
 
 </script>
 

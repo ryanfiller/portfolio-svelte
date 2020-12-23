@@ -7,7 +7,7 @@
     /* intentionally Gatsby theme colors and font */
     background: #663390;
     color: #fefefe;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
     font-size: clamp(0.125vw, 1.155vw, calc(.01175 * var(--readableMax))); /* I got to .01175 by trial and error... */
     height: 45em;
     /* height: 630px; */

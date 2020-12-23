@@ -15,6 +15,7 @@ meta:
     - gatsby
     - blogging
 ---
+
 ## New Year, New Decade, New Website
 
 ![Kylo Ren saying 'Its time to let old things die.'](/images/kylo-ren-tlj-old-things-die.gif){data-caption="The Last Jedi, Star Wars" data-align="full"}
