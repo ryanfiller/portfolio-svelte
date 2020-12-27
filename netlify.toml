@@ -5,3 +5,8 @@
   command = "npm run export"
   publish = "__sapper__/export"
   functions = "functions"
+
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404

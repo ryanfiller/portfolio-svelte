@@ -1,6 +1,5 @@
 <style global type='text/scss'>
   .form {
-    --borderWidth: calc(.25rem);
     --labelHeight: 1.25em;
     --rowHeight: 4em;
 

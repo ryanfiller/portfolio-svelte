@@ -29,6 +29,8 @@ A new header, new styles, and some internal updates.
 
 [design/fonts](https://github.com/ryanfiller/portfolio-svelte/pull/12) - Add some variable fonts to the site
 
+[design/design/four-oh-four-page](https://github.com/ryanfiller/portfolio-svelte/pull/13) - Design the error page
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
@@ -40,6 +42,7 @@ A new header, new styles, and some internal updates.
 |
 | - Routes
 |   - ≈ `/layout`
+|   - ≈ `/error`
 |   - \+ `/generate-image`
 |
 | - Components
@@ -73,12 +76,21 @@ A new header, new styles, and some internal updates.
 |   - \+ `getCustomProperty`
 |   - \+ `setCustomProperty`
 |
+| - Styles
+|   - globals
+|     - \+ `--pixelBorder`
+|     - \+ `--pixelGrid`
+|     - \+ `--steppedGradient`
+|   - layouts
+|     - \+ `.columns` (scaffold)
+|
 | - Plugins
 |   - remark
 |     - ≈ `twitter`
 |
 | - Tests
 |   - Routes
+|     - \+ `/error`
 |     - \+ `/generate-image`
 |   - Components
 |     - Layout
@@ -125,7 +137,6 @@ A new header, new styles, and some internal updates.
 |   - \+ `LabDJR-VF.woff`
 |   - \+ `Barlow.woff2`
 |   - \+ `Recursive.woff2`
-
 
 </Change>
 
@@ -413,7 +424,7 @@ Adding structure beyond the homepage.
 |   - Commands
 |     - \+ `inputChange()`
 | 
-| - Styles 
+| - Styles
 |   - globals
 |     - changed global `rem` size from `16px` to `12px`
 |   - functions

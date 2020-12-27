@@ -14,7 +14,6 @@
 <style global type='text/scss'>
   :root {
     --borderColor: var(--colorPrimary);
-    --borderWidth: .25rem;
     --border: var(--borderWidth) solid var(--borderColor);
   }
   
