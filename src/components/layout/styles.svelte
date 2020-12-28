@@ -96,6 +96,7 @@
   :root {
     // sizing
     --containerMaxWidth: $largeBreak;
+    --borderWidth: calc(var(--padding) / 8);
 
     // spacing
     --padding: clamp(1rem, 2.5vw, 2rem);
@@ -110,6 +111,60 @@
     // -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
     --mono: 'Recursive';
     // "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace
+    --display: 'LabDJR';
+    // "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace
+
+    // gradients
+    --pixelSize: .25rem;
+    --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
+    --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
+
+    --steppedGradientColor: 0, 0, 0;
+    --steppedGradient: linear-gradient(
+			rgb(var(--steppedGradientColor), 0) 0%, rgb(var(--steppedGradientColor), 0) 5%, 
+			rgb(var(--steppedGradientColor), .05) 5%, rgb(var(--steppedGradientColor), .05) 10%, 
+			rgb(var(--steppedGradientColor), .10) 10%, rgb(var(--steppedGradientColor), .10) 15%, 
+			rgb(var(--steppedGradientColor), .15) 15%, rgb(var(--steppedGradientColor), .15) 20%, 
+			rgb(var(--steppedGradientColor), .20) 20%, rgb(var(--steppedGradientColor), .20) 25%, 
+			rgb(var(--steppedGradientColor), .25) 25%, rgb(var(--steppedGradientColor), .25) 30%, 
+			rgb(var(--steppedGradientColor), .30) 30%, rgb(var(--steppedGradientColor), .30) 35%, 
+			rgb(var(--steppedGradientColor), .35) 35%, rgb(var(--steppedGradientColor), .35) 40%, 
+			rgb(var(--steppedGradientColor), .40) 40%, rgb(var(--steppedGradientColor), .40) 45%, 
+			rgb(var(--steppedGradientColor), .45) 45%, rgb(var(--steppedGradientColor), .45) 50%, 
+			rgb(var(--steppedGradientColor), .50) 50%, rgb(var(--steppedGradientColor), .50) 55%, 
+			rgb(var(--steppedGradientColor), .55) 55%, rgb(var(--steppedGradientColor), .55) 60%, 
+			rgb(var(--steppedGradientColor), .60) 60%, rgb(var(--steppedGradientColor), .60) 65%, 
+			rgb(var(--steppedGradientColor), .65) 65%, rgb(var(--steppedGradientColor), .65) 70%, 
+			rgb(var(--steppedGradientColor), .70) 70%, rgb(var(--steppedGradientColor), .70) 75%, 
+			rgb(var(--steppedGradientColor), .75) 75%, rgb(var(--steppedGradientColor), .75) 80%, 
+			rgb(var(--steppedGradientColor), .80) 80%, rgb(var(--steppedGradientColor), .80) 85%, 
+			rgb(var(--steppedGradientColor), .85) 85%, rgb(var(--steppedGradientColor), .85) 90%, 
+			rgb(var(--steppedGradientColor), .90) 90%, rgb(var(--steppedGradientColor), .90) 95%, 
+			rgb(var(--steppedGradientColor), .95) 95%, rgb(var(--steppedGradientColor), .95) 100%
+		);
+
+    --pixelBorderColor: currentColor;
+    // --pixelBorderWidth: calc(2 * var(--borderWidth)); 
+    --pixelBorderWidth: var(--borderWidth);
+    --pixelBorder: 
+      /* <image> <position> / <size> */
+      /* top and bottom */
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(3 * var(--pixelBorderWidth)) 0 / calc(100% - calc(6 * var(--pixelBorderWidth))) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(3 * var(--pixelBorderWidth)) 100% / calc(100% - calc(6 * var(--pixelBorderWidth))) var(--pixelBorderWidth),
+      /* left and right */
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) 0 calc(3 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) calc(100% - calc(6 * var(--pixelBorderWidth))),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) 100% calc(3 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) calc(100% - calc(6 * var(--pixelBorderWidth))),
+      /* inner corners */
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(2 * var(--pixelBorderWidth)) calc(var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(2 * var(--pixelBorderWidth)) calc(100% - var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - (2 * var(--pixelBorderWidth))) calc(var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - (2 * var(--pixelBorderWidth))) calc(100% - var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      /* outer corners */
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(var(--pixelBorderWidth)) calc(2 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(var(--pixelBorderWidth)) calc(100% - (2 * var(--pixelBorderWidth))) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - var(--pixelBorderWidth)) calc(2 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - var(--pixelBorderWidth)) calc(100% - (2 * var(--pixelBorderWidth))) / var(--pixelBorderWidth) var(--pixelBorderWidth)
+    ;
   }
 
   // -------------
@@ -152,6 +207,24 @@
   body[data-no-js] .needs-js {
 		display: none;
 	}
+
+  // -------------
+  // layouts
+  // -------------
+
+  .columns {
+    display: grid;
+    padding: var(--padding);
+    grid-template-columns: auto minmax(auto, var(--readableMax)) auto;
+    grid-template-rows: auto;
+    grid-template-areas: "left center right";
+
+    & > * {
+      grid-area: center;
+      grid-row: auto;
+    }
+  }
+
 </style>
 
 <!-- this is an intentionally blocking script that runs when js is enabled -->

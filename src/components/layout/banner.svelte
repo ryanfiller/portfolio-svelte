@@ -33,13 +33,13 @@
     }
 
     &[data-segment="blog"] {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: auto ;
-        grid-template-rows: auto ;
-        grid-template-areas: "title"
-                             "date"
-                             "tags";
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: auto ;
+      grid-template-rows: auto ;
+      grid-template-areas: "title"
+                            "date"
+                            "tags";
 
       h1 {
         grid-area: title;
@@ -75,6 +75,7 @@
     grid-row: 1 / -1;
     height: 100%;
     min-height: calc(.66 * var(--headerAspectRatioHeight));
+    // background: var(--pixelGrid);
     background-color: inherit;
     
     img {

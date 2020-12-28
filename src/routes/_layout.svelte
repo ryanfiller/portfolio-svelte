@@ -10,8 +10,18 @@
 	import Header from '../components/layout/header.svelte'
 	import Footer from '../components/layout/footer.svelte'
 
-
 	import { markdown } from '../stores.js'
+
+	const getBodyClass = page => {
+		if (segment) {
+			return segment
+		} else if (page.path === '/') {
+			return 'homepage'
+		} else {
+			return 'error'
+		}
+	}
+	$: bodyClass = getBodyClass($page)
 
 	// temporary fix for broken #hash links - https://github.com/sveltejs/sapper/issues/904#issuecomment-540536561
 	import { onMount } from 'svelte'
@@ -81,9 +91,11 @@
 {:else}
 	<div
 		id='site'
-		className={segment}
+		class={bodyClass}
 	>
+	{#if bodyClass !== 'error'}
 		<Header {segment} />
+	{/if}
 		<main id='content'>
 			<slot />
 		</main> 
