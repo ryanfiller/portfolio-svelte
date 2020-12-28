@@ -132,7 +132,10 @@
 		content: '';
 		display: block;
 		position: absolute;
-		inset: -1px;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
 		pointer-events: none;
 	}
 
@@ -191,7 +194,10 @@
 
 	.error #content figure {
 		position: absolute;
-		inset: 0;
+		top: -1px;
+		right: -1px;
+		bottom: -1px;
+		left: -1px;
 		padding: 0;
 		margin: 0;
 		z-index: -1;
@@ -261,4 +267,3 @@
 		</figure>
 	{/if}
 </article>
-
