@@ -2,7 +2,7 @@
   export let images
   
   import { onMount } from 'svelte'
-  import { slugify } from '../../../helpers'
+  import { slugify } from '../../helpers'
 
   let searchParams
   let openImage = ''
@@ -16,8 +16,7 @@
 
   const openModal = event => {
     event.preventDefault()
-    event.stopPropagation()
-    openImage = event.target.id
+    openImage = event.currentTarget.id
     searchParams.set('lightbox', openImage)
     history.pushState({}, null, `${window.location}?${searchParams.toString()}`)
   }
@@ -39,21 +38,24 @@
     clear: both;
     display: grid;
     gap: var(--padding);
-    justify-content: center;
+    padding: var(--padding);
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-template-rows: auto;
-    margin-top: var(--verticalSpacing);
-    margin-bottom: var(--verticalSpacing);
-    /* this sucks... */
-    width: calc(100vw - (3 * var(--padding)));
-    margin-left: min(0px, calc(-1 * ((100vw - var(--readableMax)) - var(--padding))  / 2));
-    margin-right: min(0px, calc(-1 * ((100vw - var(--readableMax)) - var(--padding))  / 2));
+    justify-content: center;
+    align-items: center;
+
+    --width: calc(100vw - (1 * var(--padding)));
+    width: var(--width);
+    position: relative;
+    left: 50%;
+    margin-left: calc(-1 * var(--width) / 2);
   }
 
   .photo-grid button {
+    display: block;
     border: 0;
     padding: 0;
-    margin: 0;
+    margin: 0 auto;
     cursor: pointer;
   }
 
@@ -64,14 +66,15 @@
     outline: .25rem solid var(--colorHighlight);
   }
 
-  .photo-grid img,
-  .photo-grid figure {
-    margin: 0;
+  [data-no-js] .photo-grid button:hover,
+  [data-no-js] .photo-grid button:focus {
+    outline: none;
+    cursor: initial;
   }
 
-  .photo-grid img {
-    /* for some reason this is making the event bubbling weird */
-    pointer-events: none;
+  .photo-grid img,
+  .photo-grid figure {
+    margin: 0 !important;
   }
 
   /* TODO abstract close button class */
@@ -168,8 +171,6 @@
     mix-blend-mode: multiply;
     z-index: -1;
   }
-
-
 </style>
 
 <svelte:window on:keydown={event => {
@@ -179,7 +180,6 @@
 }}/>
 
 <section class='photo-grid'>
-  <noscript>Sorry... you need JavaScript on to expand these thumbnails</noscript>
   {#each images as image}
     <figure
       class:active="{openImage === `${slugify(image.title)}`}"
@@ -188,6 +188,8 @@
       <button
         id={`${slugify(image.title)}`}
         on:click={openModal}
+        aria-haspopup='true'
+        aria-expanded={openImage === `${slugify(image.title)}`}
       >
         <img
           alt={image.alt}
@@ -202,7 +204,12 @@
         {#if image.caption}
           <p>{image.caption}</p>
         {/if}
-        <button on:click={closeModal}><span>close</span></button>
+        <button
+          on:click={closeModal}
+          aria-label='Close'
+        >
+          <span>close</span>
+        </button>
       </figcaption>
     </figure>
   {/each}

@@ -31,6 +31,8 @@ A new header, new styles, and some internal updates.
 
 [design/design/four-oh-four-page](https://github.com/ryanfiller/portfolio-svelte/pull/13) - Design the error page
 
+[refactor/photo-grid-component](https://github.com/ryanfiller/portfolio-svelte/pull/15) - Make `<PhotoGrid>` a real component
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
@@ -64,6 +66,7 @@ A new header, new styles, and some internal updates.
 |   - Misc
 |     - \+ `<Tabs />`, `<Tab />`
 |     - ≈ `<ColorChart />`
+|     - \+ `<PhotoGrid />`
 |     - ≈ `<VariableFont />`
 |
 | - Functions
@@ -109,6 +112,7 @@ A new header, new styles, and some internal updates.
 |     - Misc
 |       - \+ `<Tabs />`, `<Tab />`
 |     - ≈ `<ColorChart />`
+|     - \+ `<PhotoGrid />`
 |     - ≈ `<VariableFont />`
 |   - Helpers
 |     - \+ `objectToParams`

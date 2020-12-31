@@ -18,7 +18,7 @@ meta:
 ---
 
 <script>
-  import PhotoGrid from './_photo-grid.svelte'
+  import PhotoGrid from '../../../components/misc/photo-grid.svelte'
 </script>
 
 ![the 2020 list of prompts](/images/2020-prompts.jpg){data-align='right'}
@@ -42,14 +42,14 @@ This was the first year I had the perseverence to finish all 31 drawings for [#I
       caption: `10/02/31 - Mog, from Final Fantasy VI, doing the will-o-the-wisp dance.`
     },
     {
-      title: 'Nulky',
+      title: 'Bulky',
       alt: 'MS09-B DOM illustration',
       src: '/images/inktober-2020-03-bulky.jpg',
       caption: `10/03/31 - My favorite Principality of Zeon mono-eye thicc boi, the MS-09B Dom. I cheated and didn’t actually ink this one :/`
     },
     {
       title: 'Radio',
-      alt: 'Yank Hotel Foxtrot cover illustration',
+      alt: 'Yanky Hotel Foxtrot cover illustration',
       src: '/images/inktober-2020-04-radio.jpg',
       caption: `10/04/31 - "Yankee Hotel Foxtrot" by Wilco, with the song "Radio Cure." I listened to this album a lot last year.
 I didn’t even know these were buildings until I looked it up today...`
@@ -110,7 +110,7 @@ I didn’t even know these were buildings until I looked it up today...`
     },
     {
       title: 'Armor',
-      alt: 'Samur Aran illustration',
+      alt: 'Samus Aran illustration',
       src: '/images/inktober-2020-14-armor.jpg',
       caption: `10/14/31 - Samus, the best power armor around. Metroid Prime is possibly my favorite game of all time, and my very favorite moment is the first time you see Samus’s eyes reflected back in her visor.`
     },

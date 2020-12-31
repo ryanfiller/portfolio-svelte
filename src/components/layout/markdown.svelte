@@ -416,7 +416,7 @@
     }
 
     pre {
-      // TODO make a remark/rehype plugin for this, but a utility class on it
+      // TODO make a remark/rehype plugin for this, put a utility class on it
       --width: calc(100vw - (2 * var(--padding)));
       width: var(--width);
       position: relative;
