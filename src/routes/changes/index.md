@@ -15,7 +15,7 @@ banner:
 
 ## RF-05-04 - "Ez8"
 
-A new header, new styles, and some internal updates.
+A new header and footer, new styles, and some internal updates.
 
 [design/tabs](https://github.com/ryanfiller/portfolio-svelte/pull/2) - Build a `<Tabs />` component
 
@@ -32,6 +32,8 @@ A new header, new styles, and some internal updates.
 [design/design/four-oh-four-page](https://github.com/ryanfiller/portfolio-svelte/pull/13) - Design the error page
 
 [refactor/photo-grid-component](https://github.com/ryanfiller/portfolio-svelte/pull/15) - Make `<PhotoGrid>` a real component
+
+[design/footer](https://github.com/ryanfiller/portfolio-svelte/pull/16) - Create `<SocialLinks>` component and add it to footer
 
 [[details | Version Details]]
 | - Features
@@ -51,6 +53,8 @@ A new header, new styles, and some internal updates.
 |   - Layout
 |     - ≈ `<Header />`
 |     - ≈ `<Nav />`
+|     - ≈ `<Footer />`
+|     - \+ `<SocialLinks />`
 |     - \+ `<Styles />`
 |     - ≈ `<SEO />`
 |     - \+ `<ColorSchemeToggle />`
@@ -99,6 +103,8 @@ A new header, new styles, and some internal updates.
 |     - Layout
 |       - ≈ `<Header />`
 |       - ≈ `<Nav />`
+|       - ≈ `<Footer />`
+|       - \+ `<SocialLinks />`
 |       - \+ `<Styles />`
 |       - \+ `<ColorSchemeToggle />`
 |       - ≈`<Banners />`
@@ -125,6 +131,7 @@ A new header, new styles, and some internal updates.
 |
 | - Config
 |   - \+ `styles.js`
+|   - \+ `socialLinks.js`
 |
 | - Packages
 |   - \+ chrome-aws-lambda

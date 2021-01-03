@@ -11,7 +11,7 @@ describe('<SEO /> component', () => {
 
   it('renders the 404 page correctly', () => {
     cy.visit('/404', { failOnStatusCode: false })
-      cy.title().should('eq', 'Uh Oh - 404 | ryanfiller.com')
+      cy.title().should('eq', 'Error - 404 | ryanfiller.com')
     cy.document().get('head meta[name="description"]')
       .should('have.attr', 'content', 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.')
   })

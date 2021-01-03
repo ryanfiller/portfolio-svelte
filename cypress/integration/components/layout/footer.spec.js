@@ -7,6 +7,7 @@ describe('<Footer /> component', () => {
   it('renders the components', () => {
     cy.get('footer#site-footer').within(() => {
       // TODO this test could be more robust
+      cy.get('ul.social-list').should('exist')
       cy.get('nav').should('exist')
     })
     

@@ -7,7 +7,7 @@ import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import { mdsvex } from 'mdsvex'
-import svelteSVG from "rollup-plugin-svelte-svg"
+import svelteSVG from 'rollup-plugin-svelte-svg'
 import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
 require('dotenv').config()
@@ -147,7 +147,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
-			svelteSVG({ generate: "ssr", dev }),
+			svelteSVG({ generate: 'ssr', dev }),
 			copy({
 				targets: [
 					{ src: 'src/**/_images/*.*', dest: 'static/images' }
