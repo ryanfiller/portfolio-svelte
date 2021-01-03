@@ -33,10 +33,10 @@ describe('<Nav /> component', () => {
       .should('have.attr', 'href', '/changes')
     })
 
-    it('renders an external link', () => {
-      cy.get('footer#site-footer').find('nav').find('a').eq(2)
-      .contains('analytics')
-      .should('have.attr', 'target', '_blank')
-    })
+    // it('renders an external link', () => {
+    //   cy.get('footer#site-footer').find('nav').find('a').eq(2)
+    //   .contains('analytics')
+    //   .should('have.attr', 'target', '_blank')
+    // })
   })
 })

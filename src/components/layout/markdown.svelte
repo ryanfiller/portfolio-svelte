@@ -76,6 +76,28 @@
       font-size: 1em;
       @include headingStyles;
     }  
+
+    li,
+    li > p {
+      margin-bottom: 1em;
+    }
+
+    ol li,
+    ul li {
+      padding-left: 0;
+    }
+
+    li > ol,
+    li > ul {
+      margin-left: 2em;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+    
+    li *:last-child,
+    p *:last-child {
+      margin-bottom: 0;
+    }
     
     // images
     // ...and other media I guess.

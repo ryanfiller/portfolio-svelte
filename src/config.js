@@ -41,11 +41,56 @@ export const secondaryNav = [
     name: 'styles',
     url: 'styles'
   },
+  // {
+  //   name: 'analytics',
+  //   url: 'https://ryanfiller.goatcounter.com/',
+  //   external: true
+  // }
+]
+
+export const socialLinks = [
   {
-    name: 'analytics',
-    url: 'https://ryanfiller.goatcounter.com/',
-    external: true
-  }
+    name: 'email',
+    url: './#contact',
+    color: '#bb001b',
+    text: 'Email',
+  },
+  {
+    name: 'twitter',
+    url: 'https://twitter.com/ryanfiller_',
+    color: '#1DA1F2',
+    text: 'Twitter',
+  },
+  {
+    name: 'instagram',
+    url: 'https://www.instagram.com/ryanfiller_/',
+    color: '#e1306c',
+    text: 'Instagram',
+  },
+  // {
+  //   name: 'linkedin',
+  //   url: 'https://www.linkedin.com/in/ryanfiller',
+  //   color: '#0a66c2',
+  //   text: 'LinkedIn',
+  // },
+  {
+    name: 'github',
+    url: 'https://github.com/ryanfiller',
+    color: '#0366d6',
+    text: 'GitHub',
+  },
+  {
+    name: 'codepen',
+    url: 'https://codepen.io/ryanfiller',
+    color: '#ffdd40',
+    text: 'CodePen',
+  },
+  // {
+  //   name: 'pokemongo',
+  //   url: '#',
+  //   color: '#ff0000',
+  //   text: 'PokemonGO',
+  // },
 ]
 
 export const forms = {

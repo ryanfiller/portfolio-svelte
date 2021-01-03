@@ -3,6 +3,7 @@
 
   import { secondaryNav } from '../../config.js'
   import Nav from './nav.svelte'
+  import SocialLinks from './social-links.svelte'
 </script>
 
 <style global type='text/scss'>
@@ -14,11 +15,17 @@
     background: var(--colorPrimary);
     
     &__content {
-      padding: 1rem;
+      padding-top: 1rem;
       @include container;
       font-weight: bold;
       display: flex;
+      flex-wrap: wrap;
       justify-content: space-between;
+      align-items: center;
+
+      & > * {
+        margin-bottom: 1rem;
+      }
     
       a {
         text-decoration: none;
@@ -50,10 +57,14 @@
         Netlify
       </a>
     </span>
+
+    <SocialLinks />
+
     <Nav
       segment={segment}
       links={secondaryNav}
       label='utility navigation'
     />
+
   </div>
 </footer>
