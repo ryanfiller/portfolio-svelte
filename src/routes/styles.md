@@ -7,6 +7,7 @@ title: 'Style Guide'
   import { colors } from '../styles.js'
   import ColorChart from '../components/misc/color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
+  import PhotoGrid from '../components/misc/photo-grid.svelte'
 </script>
 
 <div id="colors">

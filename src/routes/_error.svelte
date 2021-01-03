@@ -90,6 +90,7 @@
 		text-transform: uppercase;
 		height: 100%;
 		position: relative;
+		overflow: hidden;
 	}
 
 	.error #content article {
