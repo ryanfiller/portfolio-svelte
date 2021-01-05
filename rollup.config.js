@@ -106,6 +106,7 @@ export default {
 			svelteSVG({ dev }),
 			copy({
 				targets: [
+					// dunno why, but this breaks the server.js process if its `_images`
 					{ src: 'src/**/images/*.*', dest: 'static/images' }
 				]
 			}),
