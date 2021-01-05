@@ -6,3 +6,5 @@ src/content/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
 static/images/site-assets/**/*.* filter=lfs diff=lfs merge=lfs -text
 # ignore these directories
 static/images/site-assets/icons/** filter= diff= merge= -text
+# ignoring this is temporary, maybe?
+static/images/site-assets/headshot_2017.jpg filter= diff= merge= -text 
