@@ -47,14 +47,18 @@
   <meta name='theme-color' content={colors.primary}>
   <meta name='theme-color' content={colors.primary}>
 
-  <!-- webmention.io stuff -->
-  <link rel="webmention" href="https://webmention.io/www.ryanfiller.com/webmention" />
-  <link rel="pingback" href="https://webmention.io/www.ryanfiller.com/xmlrpc" />
+  <!-- webmention stuff -->
+  <link rel='webmention' href='https://webmention.io/www.ryanfiller.com/webmention' />
+  <link rel='pingback' href='https://webmention.io/www.ryanfiller.com/xmlrpc' />
   <!-- https://webmention.io/api/mentions.html?token=nseQFcsLWSvq0TOTOuSVkQ -->
   <!-- https://webmention.io/api/mentions.atom?token=nseQFcsLWSvq0TOTOuSVkQ -->
   <!-- nseQFcsLWSvq0TOTOuSVkQ -->
+
+  <!-- webmonetization stuff -->
+  <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
+
   <meta name='theme-color' content={colors.primary}>
 </svelte:head>
 
 <!-- webmention.io stuff -->
-<a style='display: none' href={`mailto:${meta.email}`} rel="me">{meta.email}</a>
+<a style='display: none' href={`mailto:${meta.email}`} rel='me'>{meta.email}</a>

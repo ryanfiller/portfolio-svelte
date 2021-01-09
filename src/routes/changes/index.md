@@ -35,6 +35,8 @@ A new header and footer, new styles, and some internal updates.
 
 [design/footer](https://github.com/ryanfiller/portfolio-svelte/pull/16) - Create `<SocialLinks>` component and add it to footer
 
+[feature/webmonetization](https://github.com/ryanfiller/portfolio-svelte/pull/17) - Add [Coil](https://coil.com/) integration
+
 [[details | Version Details]]
 | - Features
 |   - `<Tabs />`, `<Tab />` for use in content
