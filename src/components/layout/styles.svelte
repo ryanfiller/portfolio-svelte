@@ -109,6 +109,8 @@
     --tapableSize: 40px;
     --readableMax: 65rem;
 
+    --readableColumn: minmax(auto, var(--readableMax));
+
     // fonts
     --sansSerif: 'Barlow';
     // -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
@@ -218,13 +220,36 @@
   .columns {
     display: grid;
     padding: var(--padding);
-    grid-template-columns: auto minmax(auto, var(--readableMax)) auto;
+    grid-template-columns: auto var(--readableColumn) auto;
     grid-template-rows: auto;
     grid-template-areas: "left center right";
 
     & > * {
       grid-area: center;
       grid-row: auto;
+    }
+  }
+
+  // -------------
+  // form elements
+  // -------------
+
+  .button,
+  button {
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    border: none;
+    background: var(--colorHighlight);
+    color: var(--colorWhite);
+    transition: var(--transitionSpeed);
+    font-size: 1em;
+    padding: 1rem;
+    margin: 0 auto;
+
+    &:hover,
+    &:focus {
+      background: var(--colorActive);
     }
   }
 

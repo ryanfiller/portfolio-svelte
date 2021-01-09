@@ -49,7 +49,7 @@ const preprocess = [
 	mdsvex({
 		extension: '.md',
 		layout: {
-			blog: 'src/layouts/markdown.svelte',
+			blog: 'src/layouts/blog.svelte',
 			lab: 'src/layouts/lab.svelte',
 			_: 'src/layouts/markdown.svelte',
 		},

@@ -28,7 +28,7 @@ const getPosts = ({
 
 	const route = `src/routes/${directory}`
 	const posts = fs.readdirSync(route)
-		.filter(post => isDir(`${route}/${post}`))
+		.filter(post => isDir(`${route}/${post}`) && post.charAt(0) !== '_' && post !== 'series')
 		.map(post => {
 			const file = fs.readFileSync(path.resolve(route, `${post}/index.md`), 'utf-8')
 

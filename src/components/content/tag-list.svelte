@@ -42,14 +42,14 @@
 </style>
 
 <div class='tag-list'>
-  {#if categories.length}
+  {#if !!categories}
     <ul class='categories'>
     {#each categories as category}
       <li >{category}</li>
     {/each} 
     </ul>
   {/if}
-  {#if tags.length}
+  {#if !!tags}
     <ul class='tags'>
     {#each tags as tag}
       <li >{tag}</li>

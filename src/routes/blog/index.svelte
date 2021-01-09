@@ -12,9 +12,13 @@
 	export let posts
 	
 	import Page from '../../layouts/page.svelte'
-	import Posts from '../../components/posts.svelte'
+	import List from  '../../components/content/list.svelte'
+	import PostPreview from '../../components/blog/post-preview.svelte'
 </script>
 
 <Page>
-  <Posts {posts} />
+	<List
+    content={posts}
+    component={PostPreview}
+  />
 </Page>

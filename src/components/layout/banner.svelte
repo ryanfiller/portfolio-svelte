@@ -32,7 +32,8 @@
       margin: 0;
     }
 
-    &[data-segment="blog"] {
+    &[data-segment="blog"],
+    &[data-segment="series"] {
       display: grid;
       gap: 1rem;
       grid-template-columns: auto ;
@@ -68,7 +69,7 @@
     &-image {
       margin: 0;
       position: relative;
-      z-index: 1;
+      z-index: 1 !important;
       overflow: hidden;
       grid-column: 1 / -1;
       grid-row: 1 / -1;
