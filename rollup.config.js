@@ -48,7 +48,11 @@ const envVars = {
 const preprocess = [
 	mdsvex({
 		extension: '.md',
-		layout: 'src/components/layout/mdsvex.svelte',
+		layout: {
+			blog: 'src/layouts/markdown.svelte',
+			lab: 'src/layouts/lab.svelte',
+			_: 'src/layouts/markdown.svelte',
+		},
 		remarkPlugins: [
 			[attr, { scope: 'every' }],
 			[remarkCustomBlocks, {
@@ -73,7 +77,10 @@ const preprocess = [
 	globalStyle()
 ]
 
-const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning)
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
 
 export default {
 	client: {
@@ -138,8 +145,9 @@ export default {
 				...envVars
 			}),
 			svelte({
-				generate: 'ssr',
 				dev,
+				generate: 'ssr',
+				hydratable: true,
 				extensions: ['.svelte', '.md'],
 				preprocess
 			}),

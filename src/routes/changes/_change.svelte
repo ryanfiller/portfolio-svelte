@@ -1,3 +1,5 @@
+<!-- TODO make this a generic 'collapse' or something component-->
+
 <style global type='text/scss'>
   @import '../../styles/functions.scss';
   

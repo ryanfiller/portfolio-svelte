@@ -60,6 +60,8 @@
     href={'/fonts/Recursive.woff2'}
     type='font/woff2'
   />
+
+  <link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
 <style global type='text/scss'>
@@ -226,6 +228,3 @@
   }
 
 </style>
-
-<!-- this is an intentionally blocking script that runs when js is enabled -->
-{@html ` <script>document.body.removeAttribute('data-no-js')</script> `}

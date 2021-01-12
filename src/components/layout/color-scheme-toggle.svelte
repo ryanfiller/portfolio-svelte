@@ -48,7 +48,6 @@
 </script>
 
 <svelte:head>
-  <meta name='color-scheme' content='dark light'>
   {@html `
     <script>
       const existingUserPrefernece = window.localStorage.getItem('${LS_KEY}')

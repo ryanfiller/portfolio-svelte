@@ -41,9 +41,9 @@ describe('<Banner /> component', () => {
     })
 
     it('renders the correct elements', () => {
-      cy.get('.banner-content[data-root="false"][data-segment="blog"]').should('exist')
+      cy.get('.banner[data-segment="blog"]').should('exist')
       cy.get('figure.banner-image').should('exist')
-      cy.get('.banner-content').within(() => {
+      cy.get('.banner').within(() => {
         cy.get('h1').should('exist')
         cy.get('.date').should('exist')
         cy.get('.tags').should('exist')
@@ -60,9 +60,9 @@ describe('<Banner /> component', () => {
     })
 
     it('renders the correct elements', () => {
-      cy.get('.banner-content[data-root="false"][data-segment="lab"]').should('exist')
+      cy.get('.banner[data-segment="lab"]').should('exist')
       // cy.get('figure.banner-image').should('exist')
-      cy.get('.banner-content').within(() => {
+      cy.get('.banner').within(() => {
         cy.get('h1').should('exist')
         cy.get('.date').should('not.exist')
         cy.get('.tags').should('exist')

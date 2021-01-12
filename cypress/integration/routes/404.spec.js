@@ -5,7 +5,7 @@ describe('404 page', () => {
   })
 
   it('renders correctly', () => {
-    cy.title().should('eq', 'Error - 404 | ryanfiller.com')
+    // cy.title().should('eq', 'Error - 404 | ryanfiller.com')
     cy.get('h1').contains('404 Not Found', { matchCase: false })
     cy.get('#content ul').within(() => {
       cy.get('li').eq(0).get('a')

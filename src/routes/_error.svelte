@@ -1,9 +1,10 @@
-
 <script>
 	export let status
 	export let error
 	const dev = process.env.NODE_ENV === 'development'
 	import { meta } from '../config'
+
+	import Page from '../layouts/page.svelte'
 
 	const images = [
 		{
@@ -82,7 +83,7 @@
 </script>
 
 <style global>
-	.error #content {
+	#content.error {
 		color: var(--colorWhite);
 		font-family: var(--display);
 		font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;
@@ -93,16 +94,16 @@
 		overflow: hidden;
 	}
 
-	.error #content article {
+	#content.error article {
 		height: 100%;
 		grid-template-rows: 1fr auto 1fr auto 1fr;
 	}
 
-	.error #content header {
+	#content.error header {
 		grid-row: 2 / 3;
 	}
 
-	.error #content h1 {
+	#content.error h1 {
 		font-size: 3em;
 		margin: 0 0 var(--padding) 0;
 		display: flex;
@@ -112,11 +113,11 @@
 		margin: 0 0 10vh 0;
 	}
 
-	.error #content h1 span {
+	#content.error h1 span {
 		display: inline-block;
 	}
 
-	.error #content ul {
+	#content.error ul {
 		margin: 0;
 		padding: var(--padding);
 		background-color: var(--colorPrimary);
@@ -128,8 +129,8 @@
 		grid-row: 4 / 5;
 	}
 
-	.error #content ul::before,
-	.error #content ul::after {
+	#content.error ul::before,
+	#content.error ul::after {
 		content: '';
 		display: block;
 		position: absolute;
@@ -140,12 +141,12 @@
 		pointer-events: none;
 	}
 
-	.error #content ul::before {
+	#content.error ul::before {
 		background: var(--pixelBorder);
 		z-index: 3;
 	}
 
-	.error #content ul::after {
+	#content.error ul::after {
 		background: var(--steppedGradient);
 		border-radius: calc(6 * var(--pixelBorderWidth));
 		z-index: 1;
@@ -153,13 +154,13 @@
 		mix-blend-mode: overlay;
 	}
 
-	.error #content ul li {
+	#content.error ul li {
 		margin: 0;
 		display: block;
 		flex-basis: 25ch;
 	}
 
-	.error #content ul li a {
+	#content.error ul li a {
 		position: relative;
 		color: var(--colorLight);
 		display: inline-flex;
@@ -172,13 +173,13 @@
 		transition: 0;
 	}
 
-	.error #content ul li a:hover,
-	.error #content ul li a:focus {
+	#content.error ul li a:hover,
+	#content.error ul li a:focus {
     transform: translate(var(--pixelBorderWidth), calc(-1 * var(--pixelBorderWidth)));
     text-shadow: calc(-1 * var(--pixelBorderWidth)) var(--pixelBorderWidth) var(--colorBlack);
 	}
 
-	.error #content ul li a::before {
+	#content.error ul li a::before {
 		content: '';
 		display: block;
 		height: 1em;
@@ -188,12 +189,12 @@
 		background-repeat: no-repeat;
 	}
 
-	.error #content ul li a:hover::before,
-	.error #content ul li a:focus::before {
+	#content.error ul li a:hover::before,
+	#content.error ul li a:focus::before {
 		background-image: url('/images/site-assets/404/pointer.svg');
 	}
 
-	.error #content figure {
+	#content.error figure {
 		position: absolute;
 		top: -1px;
 		right: -1px;
@@ -206,7 +207,7 @@
 		background-color: var(--colorHighlight);
 	}
 
-	.error #content img {
+	#content.error img {
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
@@ -215,7 +216,7 @@
 		mix-blend-mode: overlay;
 	}
 
-	.error #content figcaption {
+	#content.error figcaption {
 		font-size: 1rem;
 		position: absolute;
 		bottom: var(--padding);
@@ -226,45 +227,47 @@
 
 </style>
 
+<!-- TODO move this into seo.svelte with 0.28 update -->
 <svelte:head>
-	<title>Error - {status} | {meta.title}</title>
+	<title>Error {status} | {meta.title}</title>
 </svelte:head>
 
-<article class='columns'>
-	<header>
-		<h1>
-			<span class='code'>
-				{status}
-			</span>
-			<span class='message'>
-				{error.message}
-			</span>
-		</h1>
+<Page segment='error' hideBanner >
+	<article class='columns'>
+		<header>
+			<h1>
+				<span class='code'>
+					{status}
+				</span>
+				<span class='message'>
+					{error.message}
+				</span>
+			</h1>
 
-		{#if dev && error.stack}
-			<pre>{error.stack}</pre>
+			{#if dev && error.stack}
+				<pre>{error.stack}</pre>
+			{/if}
+		</header>
+
+		<ul>
+			<li>
+				<a href='/'>Go home</a>
+			</li>
+			<li>
+				<a href='_' on:click={() => history.back()}>Go back</a>
+			</li>
+			<li>
+				<a href='/blog'>Read some blogs</a>
+			</li>
+			<li>
+				<a href='/#contact'>Contact Me</a>
+			</li>
+		</ul>
+		{#if image}
+			<figure>
+				<img alt={image.alt} src={image.src} />
+				{#if image.attribution}<figcaption>image source: {image.attribution}</figcaption>{/if}
+			</figure>
 		{/if}
-	</header>
-
-
-	<ul>
-		<li>
-			<a href='/'>Go home</a>
-		</li>
-		<li>
-			<a href='_' on:click={() => history.back()}>Go back</a>
-		</li>
-		<li>
-			<a href='/blog'>Read some blogs</a>
-		</li>
-		<li>
-			<a href='/#contact'>Contact Me</a>
-		</li>
-	</ul>
-	{#if image}
-		<figure>
-			<img alt={image.alt} src={image.src} />
-			{#if image.attribution}<figcaption>image source: {image.attribution}</figcaption>{/if}
-		</figure>
-	{/if}
-</article>
+	</article>
+</Page>

@@ -13,6 +13,61 @@ banner:
 
 <Change>
 
+## RF-05-05 - "F91"
+
+Performance Updates and Reactors
+
+[refactor/data-flow](https://github.com/ryanfiller/portfolio-svelte/pull/18) - Refactor to move away from `$stores` for better SSR support
+
+[[details | Version Details]]
+| - Features
+|   - Remove `$markdown` store and rework how `mdsvex` layout flow works
+|   - Refactor `<Banner />` and add images for blogs
+|   - Add a route and serverless function that will take query params and return an image
+|   - Add webmentions via Add email to log into webmention.io
+|   - Brand colors, theme styles and toggle
+|   - Added `no-js` top level class
+|
+| - Routes
+|   - ≈ `/layout`
+|   - ≈ `/error`
+|
+| - Layouts
+|   - \+ `page`
+|   - \+ `markdown`
+|   - \+ `lab`
+|
+| - Components
+|   - Layout
+|     - ≈ `<SEO />`
+|     - ≈ `<Header />`
+|     - \- `<Mdsvex />`
+|     - ≈ `<Banners />`
+|
+| - Tests
+|   - Routes
+|     - \+ `/error`
+|     - \+ `/generate-image`
+|   - Layouts
+|     - \+ `layout`
+|     - \+ `page`
+|   - Components
+|     - Layout
+|       - ≈`<SEO />`
+|       - ≈`<Banners />`
+|   - Commands
+|     - \+ `snapshot()`
+|
+| - Config
+|   - ≈ `config.js`
+|
+| - Packages
+|   - \+ @cypress/snapshot
+
+</Change>
+
+<Change>
+
 ## RF-05-04 - "Ez8"
 
 A new header and footer, new styles, and some internal updates.
@@ -119,9 +174,9 @@ A new header and footer, new styles, and some internal updates.
 |       - \+ `<TagList />`
 |     - Misc
 |       - \+ `<Tabs />`, `<Tab />`
-|     - ≈ `<ColorChart />`
-|     - \+ `<PhotoGrid />`
-|     - ≈ `<VariableFont />`
+|       - ≈ `<ColorChart />`
+|       - \+ `<PhotoGrid />`
+|       - ≈ `<VariableFont />`
 |   - Helpers
 |     - \+ `objectToParams`
 |     - \+ `paramsToObject`

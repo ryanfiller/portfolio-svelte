@@ -3,7 +3,6 @@
   import { mainNav } from '../../config.js'
   import Nav from './nav.svelte'
   import ColorSchemeToggle from './color-scheme-toggle.svelte'
-  import Banner from './banner.svelte'
 </script>
 
 <style global type='text/scss'>
@@ -57,12 +56,6 @@
       display: flex;
       align-items: center;
     }
-
-    .banner-content {
-      grid-area: content;
-      margin-top: calc(2 * var(--padding));
-      margin-bottom: calc((2 * var(--padding)) + 2rem); // two rem is for attribution
-    }
   }
 </style>
 
@@ -84,8 +77,5 @@
     <ColorSchemeToggle />
   </div>
 
-  <!-- blank segment is homepage or _error -->
-  {#if !!segment}
-    <Banner {segment} />
-  {/if}
+  <slot />
 </header>
