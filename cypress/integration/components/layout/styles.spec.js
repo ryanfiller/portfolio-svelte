@@ -5,11 +5,6 @@ describe('<Styles /> component', () => {
   beforeEach(() => {
     cy.visit('/')
   })
-  
-  it('removes the data-no-js class from the body', () => {
-    // I really should test what it does when this IS on...
-    cy.get('.data-no-js').should('not.exist')
-  })
 
   it('sets the css color variables', () => {
     cy.document().then(document => {

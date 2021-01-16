@@ -1,31 +1,34 @@
 <script>
-	export let segment
-	// export let title
-	import { stores } from '@sapper/app'
-	const { page } = stores()
+	import { setContext } from 'svelte'
+	import { colors } from '../styles.js'
 
-	import SEO from '../components/layout/seo.svelte'
 	import Styles from '../components/layout/styles.svelte'
 
-	import Header from '../components/layout/header.svelte'
-	import Footer from '../components/layout/footer.svelte'
-
-	import { markdown } from '../stores.js'
-
-	const getBodyClass = page => {
-		if (segment) {
-			return segment
-		} else if (page.path === '/') {
-			return 'homepage'
-		} else {
+	// TODO this `segment` section needs work
+	// $page.error is introduced in sapper 0.28, but that introduced the double svelte:head bug
+	// https://github.com/sveltejs/svelte/issues/4308
+	// waiting on this issue to revolve, then revisit this
+	import { stores } from '@sapper/app'
+	const { page } = stores()
+	export let segment
+	const getSegement = () => {
+		if ($page.error) {
 			return 'error'
+		} else if (!!segment) {
+			return segment
+		} else {
+			return 'homepage'
 		}
 	}
-	$: bodyClass = getBodyClass($page)
+	$: {
+		segment = getSegement()
+		setContext('segment', segment)
+	}
 
-	// temporary fix for broken #hash links - https://github.com/sveltejs/sapper/issues/904#issuecomment-540536561
-	import { onMount } from 'svelte'
-	onMount(() => {
+	// temporary fix for broken #hash links, run it on every page
+	// https://github.com/sveltejs/sapper/issues/904#issuecomment-540536561
+	import { afterUpdate } from 'svelte'
+	afterUpdate(() => {
 		document.querySelectorAll('a').forEach(a => {
 			if (!a.hash || !document.querySelectorAll(a.hash).length) return
 			a.addEventListener('click', event => {
@@ -36,69 +39,36 @@
 	})
 </script>
 
-<style global type="text/scss">
-	@import '../styles/functions.scss';
-
-	/* TODO remove this */
-	.temp-bio,
-	form#contact {
-		@include readable();
-		margin-bottom: var(--padding);
-	}
-
-	#site {
-		min-height: 100vh;
-		width: 100%;
-		display: grid;
-		grid-template-columns: 100%;
-		justify-content: stretch;
-		grid-template-rows: auto 1fr auto;
-		align-items: center;
-		grid-template-areas:
-			"header"
-			"content"
-			"footer";
-
-		#site-header {
-			grid-area: header;
-			width: 100%;
-			height: 100%;
-		}
-
-		#content {
-			grid-area: content;
-			width: 100%;
-			max-height: 100%;
-		}
-
-		#site-footer {
-			grid-area: footer;
-			width: 100%;
-			height: 100%;
-		}
-	}
-</style>
-
 <svelte:head>
-	<link rel='stylesheet' href='/slowly-delete-these-styles.css'>
+	<link rel='sitemap' type='application/xml' href='/sitemap.xml'>
+  <meta name='theme-color' content={colors.primary}>
+
+	<!-- analtyics -->
+	<script 
+		async
+		src='//gc.zgo.at/count.js'
+		data-goatcounter='https://ryanfiller.goatcounter.com/count'
+	></script>
+
+  <!-- webmention stuff -->
+  <link rel='webmention' href='https://webmention.io/www.ryanfiller.com/webmention' />
+  <link rel='pingback' href='https://webmention.io/www.ryanfiller.com/xmlrpc' />
+  <!-- https://webmention.io/api/mentions.html?token=nseQFcsLWSvq0TOTOuSVkQ -->
+  <!-- https://webmention.io/api/mentions.atom?token=nseQFcsLWSvq0TOTOuSVkQ -->
+  <!-- nseQFcsLWSvq0TOTOuSVkQ -->
+
+  <!-- webmonetization stuff -->
+  <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
 </svelte:head>
 
-<Styles />
-<SEO {segment} />
+<!-- this is an intentionally blocking script that runs when js is not disabled -->
+{@html ` <script>document.body.removeAttribute('data-no-js')</script> `}
 
-{#if segment === 'generate-image'}
+<Styles />
+
+<div
+  id='site'
+  class={segment}
+>
 	<slot />
-{:else}
-	<div
-		id='site'
-		class={bodyClass}
-	>
-	{#if bodyClass !== 'error'}
-		<Header {segment} />
-	{/if}
-		<main id='content'>
-			<slot />
-		</main> 
-		<Footer {segment} />
-	</div>
-{/if}
+</div>

@@ -1,31 +1,65 @@
 <script>
-  export let segment
+  export let title = ''
+  export let meta = {}
+  export let banner = {}
 
+  import { getContext } from 'svelte'
   import { stores } from '@sapper/app'
   const { page } = stores()
-  
-  import { markdown } from '../../stores.js'
-  import { meta } from '../../config.js'
-  import { colors } from '../../styles.js'
-  import { capitalize, objectToParams, paramsToObject } from '../../helpers'
 
+  const segment = getContext('segment')
   const local = process.env.NODE_ENV === 'development'
-  const siteUrl = local ? `http://${$page.host}` : `https://${$page.host}`
+  const host = local ? `http://${$page.host}` : `https://${$page.host}`
   
-  $: pageTitle = $markdown.title && `${$markdown.title} | ${meta.title}` || segment && `${capitalize(segment)} | ${meta.title}` || meta.title
-  $: description = $markdown.meta && $markdown.meta.excerpt || meta.about
-  $: keywords = () => {
-    const keywords = []
+  import { meta as site } from '../../config.js'
+  import { capitalize, objectToParams, paramsToObject, slugify } from '../../helpers'
 
-    if ($markdown.meta && $markdown.meta.categories) {
-      $markdown.meta.categories.map(category => keywords.push(category))
+  const pageTitle = () => {
+    if (title) {
+      return `${title} | ${site.title}`
+    } else if (!title && segment !== 'homepage') {
+      return `${capitalize(segment)} | ${site.title}`
+    } else {
+      return site.title
     }
+  }
 
-    if ($markdown.meta && $markdown.meta.tags) {
-      $markdown.meta.tags.map(tag => keywords.push(tag))
+  const description = () => meta.excerpt || site.about
+
+  const keywords = () => {
+    let keywords = []
+
+    if (meta.categories || meta.tags) {
+      if (meta.categories) {
+        meta.categories.map(category => keywords.push(category))
+      }
+
+      if (meta.tags) {
+        meta.tags.map(tag => keywords.push(tag))
+      }    
+    } else {
+      keywords = site.keywords
     }
 
     return keywords.join(', ')
+  }
+
+  const pageUrl = `${site.siteUrl}${$page.path}`
+
+  let imageParams = {}
+  let socialImageUrl = ''
+  $: if (!!banner){
+    imageParams = objectToParams({
+      title: title,
+      excerpt: meta.excerpt || '',
+      categories: meta.categories ? meta.categories.join(',') : '',
+      tags: meta.tags ? meta.tags.join(',') : '',
+      imageSrc: banner.src ? banner.src : '',
+      imageCredit: banner.attribution ? banner.attribution : '',
+      url: pageUrl.replace('https://www.', '')
+    })
+    local && console.log('imageFunctionUrl', `${host}/.netlify/functions/generate-image?${imageParams}`)
+    socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify(title)}.png`
   }
 </script>
 
@@ -33,32 +67,43 @@
 <!-- stupid -->
 
 <svelte:head>
-  <script 
-		async
-		src='//gc.zgo.at/count.js'
-		data-goatcounter='https://ryanfiller.goatcounter.com/count'
-	></script>
-  
-  <title>{pageTitle}</title>
-  <meta name='author' content={meta.author}>
-  <meta name='description' content={description}>
-  <meta name='keywords' content={keywords() || ''}>
-  <link rel='sitemap' type='application/xml' href='/sitemap.xml'>
-  <meta name='theme-color' content={colors.primary}>
-  <meta name='theme-color' content={colors.primary}>
+  <title>{pageTitle()}</title>
+  <meta name='author' content={site.author}>
+  <meta name='description' content={description()}>
+  <meta name='keywords' content={keywords()}>
 
-  <!-- webmention stuff -->
-  <link rel='webmention' href='https://webmention.io/www.ryanfiller.com/webmention' />
-  <link rel='pingback' href='https://webmention.io/www.ryanfiller.com/xmlrpc' />
-  <!-- https://webmention.io/api/mentions.html?token=nseQFcsLWSvq0TOTOuSVkQ -->
-  <!-- https://webmention.io/api/mentions.atom?token=nseQFcsLWSvq0TOTOuSVkQ -->
-  <!-- nseQFcsLWSvq0TOTOuSVkQ -->
+  <!-- for twitter -->
+  <meta name='twitter:site' content={site.siteUrl} />
+  <meta name='twitter:creator' content={site.author} />
+  <meta name='twitter:url' content={pageUrl} />
+  <meta name='twitter:title' content={$$props.title} />
+  <meta name='twitter:description' content={description()} />
+  {#if !!banner.src}
+    <meta name='twitter:card' content='summary_large_image' />  
+    <meta name='twitter:image' content={socialImageUrl} />
+    <meta name='twitter:image:alt' content={banner.alt} />
+  {:else}
+    <!-- <meta name=”twitter:card” content=”summary” />  -->
+    <!-- <meta name='twitter:image' content={logo??} /> -->
+    <!-- <meta name='twitter:image:alt' content={'???'} /> -->
+  {/if}
 
-  <!-- webmonetization stuff -->
-  <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
-
-  <meta name='theme-color' content={colors.primary}>
+  <!-- for opengraph -->
+  <meta property='og:locale' content='en_US' />
+  <meta property='og:site_name' content={site.title} />
+  <meta property='og:title' content={$$props.title} />
+  <meta property='og:description' content={description()} />
+  <meta property='og:url' content={pageUrl} />
+  {#if !!banner.src}
+    <meta property='og:type' content='article' />
+    <meta property='og:image' content={socialImageUrl} />
+    <meta property='og:image:alt' content={banner.alt} />
+    <meta property='og:image:height' content='630' />
+    <meta property='og:image:width' content='1200' />
+  {:else}
+    <meta property='og:type' content='website' />
+  {/if}
 </svelte:head>
 
 <!-- webmention.io stuff -->
-<a style='display: none' href={`mailto:${meta.email}`} rel='me'>{meta.email}</a>
+<a style='display: none' href={`mailto:${site.email}`} rel='me'>{site.email}</a>

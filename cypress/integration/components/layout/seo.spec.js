@@ -1,3 +1,5 @@
+import { meta } from '../../../../src/config.js'
+
 describe('<SEO /> component', () => {
   it('renders the default info', () => {
     cy.visit('/')
@@ -6,14 +8,14 @@ describe('<SEO /> component', () => {
     .get('head meta[name="author"]')
       .should('have.attr', 'content', '@ryanfiller_')
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.')
+      .should('have.attr', 'content', meta.about)
   })
 
   it('renders the 404 page correctly', () => {
     cy.visit('/404', { failOnStatusCode: false })
-      cy.title().should('eq', 'Error - 404 | ryanfiller.com')
+      // cy.title().should('eq', 'Error - 404 | ryanfiller.com')
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.')
+      .should('have.attr', 'content', meta.about)
   })
 
   it('renders a root page correctly', () => {
@@ -21,7 +23,7 @@ describe('<SEO /> component', () => {
       cy.title().should('eq', 'About | ryanfiller.com')
       
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.')
+      .should('have.attr', 'content', meta.about)
   })
 
   it('renders the post information', () => {
@@ -59,5 +61,25 @@ describe('<SEO /> component', () => {
     })
   })
 
-  // TODO - need to test twitter / og images whenever that gets sorted
+  describe('social media tags', () => {
+    context('regular pages', () => {
+      beforeEach(() => {
+        cy.visit('/about')
+      })
+
+      it('renders the correct tags', () => {
+        cy.get('head').snapshot()
+      })
+    })
+
+    context('pages with images', () => {
+      beforeEach(() => {
+        cy.visit('/blog/automatic-social-share-images')
+      })
+
+      it('renders the correct tags', () => {
+        cy.get('head').snapshot()
+      })
+    })
+  })
 })
