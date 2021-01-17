@@ -42,7 +42,7 @@
   `}
 
   <!-- preload fonts for performance reasons -->
-  <link
+  <!-- <link
     rel='preload'
     as='font'
     crossorigin='anonymous'
@@ -62,7 +62,7 @@
     crossorigin='anonymous'
     href={'/fonts/Recursive.woff2'}
     type='font/woff2'
-  />
+  /> -->
 </svelte:head>
 
 <style global type='text/scss'>
