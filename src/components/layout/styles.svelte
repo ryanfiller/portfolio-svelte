@@ -63,8 +63,6 @@
     href={'/fonts/Recursive.woff2'}
     type='font/woff2'
   />
-
-  <link rel='stylesheet' href='/slowly-delete-these-styles.css'>
 </svelte:head>
 
 <style global type='text/scss'>
@@ -228,6 +226,88 @@
       grid-area: center;
       grid-row: auto;
     }
+  }
+
+  // -------------
+  // holdover gatsby styles to slowly delete
+  // -------------
+  progress {
+    vertical-align: baseline;
+  }
+  mark {
+    background-color: #ff0;
+    color: #000;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+
+  ul, ol {
+    margin-left: 1.45rem;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-bottom: 1.45rem;
+    list-style-position: outside;
+    list-style-image: none;
+  }
+  p {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-bottom: 1.45rem;
+  }
+  fieldset,
+  address {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    margin-bottom: 1.45rem;
+  }
+  b,
+  strong {
+    font-weight: inherit;
+    font-weight: bold;
+  }
+  dt {
+    font-weight: bold;
+  }
+  acronym {
+    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    cursor: help;
+  }
+  abbr {
+    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    cursor: help;
+  }
+  abbr[title] {
+    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
+    cursor: help;
+    text-decoration: none;
   }
 
 </style>
