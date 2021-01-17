@@ -42,7 +42,7 @@
   `}
 
   <!-- preload fonts for performance reasons -->
-  <link
+  <!-- <link
     rel='preload'
     as='font'
     crossorigin='anonymous'
@@ -62,7 +62,7 @@
     crossorigin='anonymous'
     href={'/fonts/Recursive.woff2'}
     type='font/woff2'
-  />
+  /> -->
 </svelte:head>
 
 <style global type='text/scss'>
@@ -73,24 +73,21 @@
 
   @font-face {
     font-family: 'LabDJR';
-    // src: url('/fonts/LabDJR-VF.woff');
-    src: local();
+    src: url('/fonts/LabDJR-VF.woff');
     // unicode-range: U+0000-00FF;  
     // font-display: fallback;
   }
 
   @font-face {
     font-family: 'Barlow';
-    // src: url('/fonts/Barlow.woff2');
-    src: local();
+    src: url('/fonts/Barlow.woff2');
     // unicode-range: U+0000-00FF;
     // font-display: fallback;
   }
 
   @font-face {
     font-family: 'Recursive';
-    // src: url('/fonts/Recursive.woff2');
-    src: local();
+    src: url('/fonts/Recursive.woff2');
     // unicode-range: U+0000-00FF;
     // font-display: fallback;
   }
