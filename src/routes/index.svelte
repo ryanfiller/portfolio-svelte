@@ -54,10 +54,10 @@
         {meta.about}
       </p>
     </div>
-    <!-- <img  
+    <img  
       src={meta.headshot}
       alt={meta.author}
-    /> -->
+    />
   </section>
 
   <Posts {posts} />
