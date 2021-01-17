@@ -74,22 +74,22 @@
   @font-face {
     font-family: 'LabDJR';
     src: url('/fonts/LabDJR-VF.woff');
+    font-display: swap;
     // unicode-range: U+0000-00FF;  
-    // font-display: fallback;
   }
 
   @font-face {
     font-family: 'Barlow';
     src: url('/fonts/Barlow.woff2');
+    font-display: swap;
     // unicode-range: U+0000-00FF;
-    // font-display: fallback;
   }
 
   @font-face {
     font-family: 'Recursive';
     src: url('/fonts/Recursive.woff2');
+    font-display: swap;
     // unicode-range: U+0000-00FF;
-    // font-display: fallback;
   }
 
   // -------------
