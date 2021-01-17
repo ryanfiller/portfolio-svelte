@@ -9,7 +9,7 @@
     "dev": "sapper dev --ext '.svelte .md'",
     "build": "sapper build --legacy --ext '.svelte .md'",
     "export": "sapper export --legacy --ext '.svelte .md' --entry '/ /404 lab generate-image'",
-    "postexport": "mv __sapper__/export/404/index.html __sapper__/export/404.html",
+    "postexport": "cp __sapper__/export/404/index.html __sapper__/export/404.html",
     "start": "node __sapper__/build",
     "test": "cross-env NODE_ENV=test npm run build && npm run start & cypress open"
   },

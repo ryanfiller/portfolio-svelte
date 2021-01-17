@@ -16,7 +16,7 @@ meta:
     - rss
     - blogging
 ---
-Last year, my friend [Josh](josh.beardedrobots.com/) brought up the idea of starting a development blog together. He even went through all the trouble buying a url and setting us each our own subdomain. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
+Last year, my friend [Josh](https://josh.beardedrobots.com/) brought up the idea of starting a development blog together. He even went through all the trouble buying a url and setting us each our own subdomain. This seemed like a fun idea, but since I already had my own blog about development writing a second one seemed like more work than I would have time for.
 
 ![Bender talking to Fry and The Professor](/images/bender_two_things.gif){data-align="center"}
 
