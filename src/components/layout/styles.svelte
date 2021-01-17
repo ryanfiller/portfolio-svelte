@@ -45,18 +45,21 @@
   <link
     rel='preload'
     as='font'
+    crossorigin='anonymous'
     href={'/fonts/LabDJR-VF.woff'}
     type='font/woff'
   />
   <link
     rel='preload'
     as='font'
+    crossorigin='anonymous'
     href={'/fonts/Barlow.woff2'}
     type='font/woff2'
   />
   <link
     rel='preload'
     as='font'
+    crossorigin='anonymous'
     href={'/fonts/Recursive.woff2'}
     type='font/woff2'
   />
