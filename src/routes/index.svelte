@@ -54,8 +54,12 @@
         {meta.about}
       </p>
     </div>
-    <img  
+    <!-- <img  
       src={meta.headshot}
+      alt={meta.author}
+    /> -->
+    <img  
+      src='/images/site-assets/headshot_2017.jpg'
       alt={meta.author}
     />
   </section>

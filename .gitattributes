@@ -1,10 +1,9 @@
-src/content/**/*.jpg filter=lfs diff=lfs merge=lfs -text
-src/content/**/*.png filter=lfs diff=lfs merge=lfs -text
-src/content/**/*.gif filter=lfs diff=lfs merge=lfs -text
-src/content/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
-# include this directory
-static/images/site-assets/**/*.* filter=lfs diff=lfs merge=lfs -text
-# ignore these directories
-static/images/site-assets/icons/** filter= diff= merge= -text
-# ignoring this is temporary, maybe?
-static/images/site-assets/headshot_2017.jpg filter= diff= merge= -text 
+src/routes/**/_images/*.jpg filter=lfs diff=lfs merge=lfs -text
+src/routes/**/_images/*.png filter=lfs diff=lfs merge=lfs -text
+src/routes/**/_images/*.gif filter=lfs diff=lfs merge=lfs -text
+src/routes/**/_images/*.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# this file doesn't do exclusions, so ...
+# include the entire direcotry and then explicitly make svgs text
+static/images/**/*.* filter=lfs diff=lfs merge=lfs -text
+static/images/**/*.svg filter= diff= merge= -text
