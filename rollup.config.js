@@ -45,6 +45,10 @@ const envVars = {
 	exclude: 'src/routes/**/*.md'
 }
 
+const copyTargets = [
+	{ src: 'src/**/_images/*.*', dest: 'static/images' }
+]
+
 const preprocess = [
 	mdsvex({
 		extension: '.md',
@@ -105,9 +109,7 @@ export default {
 			commonjs(),
 			svelteSVG({ dev }),
 			copy({
-				targets: [
-					{ src: 'src/**/_images/*.*', dest: 'static/images' }
-				]
+				targets: [...copyTargets]
 			}),
 
 			legacy && babel({
@@ -157,9 +159,7 @@ export default {
 			commonjs(),
 			svelteSVG({ generate: 'ssr', dev }),
 			copy({
-				targets: [
-					{ src: 'src/**/_images/*.*', dest: 'static/images' }
-				]
+				targets: [...copyTargets]
 			})
 		],
 		external: Object.keys(pkg.dependencies).concat(
