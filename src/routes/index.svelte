@@ -38,8 +38,8 @@
     }
   
     img {
-      float: right;
-      margin: 0 0 1em 1em;
+      float: left;
+      margin-right: 1em;
       width: 200px;
     }
   }
@@ -48,20 +48,19 @@
 <Page hideBanner>
 
   <section class='temp-bio'>
-    <div>
-      <h1>{meta.description}</h1>
-      <p>
-        {meta.about}
-      </p>
-    </div>
+    <h1>{meta.description}</h1>
     <!-- <img  
       src={meta.headshot}
       alt={meta.author}
     /> -->
+    <!-- src='/images/site-assets/headshot_2017.jpg?nf_resize=fit&w=200' -->
     <img  
       src='/images/site-assets/headshot_2017.jpg'
       alt={meta.author}
     />
+    <p>
+      {meta.about}
+    </p>
   </section>
 
   <Posts {posts} />
