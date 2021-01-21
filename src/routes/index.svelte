@@ -38,9 +38,9 @@
     }
   
     img {
-      float: left;
-      margin-right: 1em;
-      width: 200px;
+      float: right;
+      margin-left: 1em;
+      width: 100px;
     }
   }
 </style>
@@ -48,16 +48,11 @@
 <Page hideBanner>
 
   <section class='temp-bio'>
-    <h1>{meta.description}</h1>
-    <!-- <img  
-      src={meta.headshot}
-      alt={meta.author}
-    /> -->
-    <!-- src='/images/site-assets/headshot_2017.jpg?nf_resize=fit&w=200' -->
     <img  
-      src='/images/site-assets/headshot_2017.jpg'
+      src='/images/site-assets/headshot_2017.jpg?nf_resize=fit&w=100'
       alt={meta.author}
     />
+    <h1>{meta.description}</h1>
     <p>
       {meta.about}
     </p>
