@@ -63,7 +63,7 @@ I also keep a pretty up to date change log [here](http://ryanfiller.com/changes)
 
 Oh no! 🐜
 
-If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-svelte/issues) or DM me on [twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
+If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-svelte/issues) or DM me on [Twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
 
 ## License
 
@@ -71,4 +71,4 @@ This is a public repository under an MIT license. Feel free to replicate any cod
 
 ## Old Repo
 
-If for some reason you're looking for the [Gatsby](https://www.gatsbyjs.com/) version of this site, that repo can be found [here](ttps://github.com/ryanfiller/portfolio-gatsby-v2).
+If for some reason you're looking for the [Gatsby](https://www.gatsbyjs.com/) version of this site, that repo can be found [here](https://github.com/ryanfiller/portfolio-gatsby-v2).

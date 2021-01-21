@@ -140,7 +140,7 @@
 {#if banner.src}
   <figure class='banner-image'>
     <img
-      src={`${banner.src}?nf_resize=fit&w=100`}
+      src={`${banner.src}?nf_resize=fit&w=1280`}
       alt={banner.alt}
       title={banner.attribution}
     />

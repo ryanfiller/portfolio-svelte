@@ -27,22 +27,22 @@ describe('remark images', () => {
       cy.get('#images').scrollIntoView()
       cy.get('#images').within(() => {
         cy.get('img').eq(0)
-        .should('have.attr', 'src', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=1000')
-        .should('have.attr', 'srcset', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=500 500w, /images/site-assets/_placeholder.jpg?nf_resize=fit&w=800 800w')
+        .should('have.attr', 'src', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500')
+        .should('have.attr', 'srcset', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
       })
 
       cy.get('#figures').scrollIntoView()
       cy.get('#figures').within(() => {
         cy.get('figure').eq(0).find('img')
-        .should('have.attr', 'src', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=1000')
-        .should('have.attr', 'srcset', '/images/site-assets/_placeholder.jpg?nf_resize=fit&w=500 500w, /images/site-assets/_placeholder.jpg?nf_resize=fit&w=800 800w')
+        .should('have.attr', 'src', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500')
+        .should('have.attr', 'srcset', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
       })
     })
 
     it('does not add query params to gifs', () => {
       cy.get('#gifs').scrollIntoView()
       cy.get('#gifs').within(() => {
-        cy.get('img').eq(0).should('have.attr', 'src', '/images/site-assets/_placeholder.gif')
+        cy.get('img').eq(0).should('have.attr', 'src', '/images/site-assets/placeholders/gif.gif')
       })
     })
   })

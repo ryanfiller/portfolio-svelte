@@ -36,7 +36,7 @@ HOMEPAGE
      - A user can view and edit JSON for the color data.
 ```
 
-For the final product, check out the code on [GitHub](https://github.com/ryanfiller/color-contrast-site) or the [live site](colors.ryanfiller.com/).
+For the final product, check out the code on [GitHub](https://github.com/ryanfiller/color-contrast-site) or the [live site](https://colors.ryanfiller.com/).
 
 ## The Tech Stack
 
@@ -678,7 +678,7 @@ Once the correct `<input>` elements are rendered, the Svelte [`bind:` directive]
 
 Now that we have data and users can create or edit data, we need a way to send that new data back to Sanity. The [Sanity `client`](https://www.sanity.io/docs/js-client) can help here, with the `.create` and `.mutate` methods, but sending data requires a little more care than getting data.
 
-Technically, anyone is able to hit the Sanity url endpoint and query data. There are ways to lock this down, but in my app I'm not too worried about it. However, I don't want just anybody to be able to _write_ to that endpoint, which means I need a `sanityClient` configured with an [authentication token](https://www.sanity.io/docs/http-auth). Tokens can be generated from the Sanity dashboard on [manage.sanity.io](manage.sanity.io), under Settings > API > CORS Origins.
+Technically, anyone is able to hit the Sanity url endpoint and query data. There are ways to lock this down, but in my app I'm not too worried about it. However, I don't want just anybody to be able to _write_ to that endpoint, which means I need a `sanityClient` configured with an [authentication token](https://www.sanity.io/docs/http-auth). Tokens can be generated from the Sanity dashboard on [manage.sanity.io](https://manage.sanity.io), under Settings > API > CORS Origins.
 
 ``` javascript
 const client = sanityClient({

@@ -39,8 +39,8 @@
   
     img {
       float: right;
-      margin: 0 0 1em 1em;
-      width: 200px;
+      margin-left: 1em;
+      width: 100px;
     }
   }
 </style>
@@ -48,16 +48,14 @@
 <Page hideBanner>
 
   <section class='temp-bio'>
-    <div>
-      <h1>{meta.description}</h1>
-      <p>
-        {meta.about}
-      </p>
-    </div>
     <img  
-      src={meta.headshot}
+      src={`${meta.headshot}?nf_resize=fit&w=100`}
       alt={meta.author}
     />
+    <h1>{meta.description}</h1>
+    <p>
+      {meta.about}
+    </p>
   </section>
 
   <Posts {posts} />

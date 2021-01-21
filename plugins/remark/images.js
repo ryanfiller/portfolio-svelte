@@ -47,8 +47,7 @@ function transformer(ast) {
         } else {
           attrs.push(
             `srcset="${src}?nf_resize=fit&w=500 500w, ${src}?nf_resize=fit&w=800 800w"`,
-            `sizes="100vw"`, // TODO? - maybe `size` could be more specific
-            `src="${src}?nf_resize=fit&w=1000"`,
+            `src="${src}?nf_resize=fit&w=500"`,
           )
         }
         return attrs.join(' ')

@@ -19,6 +19,8 @@ Performance Updates and Reactors
 
 [refactor/data-flow](https://github.com/ryanfiller/portfolio-svelte/pull/18) - Refactor to move away from `$stores` for better SSR support
 
+[refactor/lighthouse-scores-01](https://github.com/ryanfiller/portfolio-svelte/pull/21) - Address Lighthouse scores, mostly around preloading and Large Media images
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -31,6 +33,7 @@ Performance Updates and Reactors
 | - Routes
 |   - ≈ `/layout`
 |   - ≈ `/error`
+|   - ≈ `index.svelte`
 |
 | - Layouts
 |   - \+ `page`
@@ -43,6 +46,10 @@ Performance Updates and Reactors
 |     - ≈ `<Header />`
 |     - \- `<Mdsvex />`
 |     - ≈ `<Banners />`
+|
+| - Plugins
+|   - remark
+|     - ≈ `image`
 |
 | - Tests
 |   - Routes
@@ -100,6 +107,8 @@ A new header and footer, new styles, and some internal updates.
 |   - Add webmentions via Add email to log into webmention.io
 |   - Brand colors, theme styles and toggle
 |   - Added `no-js` top level class
+|   - Fix LFS images
+|   - Remove manual `rel='preload'` of fonts
 |
 | - Routes
 |   - ≈ `/layout`
