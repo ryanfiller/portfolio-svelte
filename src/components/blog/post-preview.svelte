@@ -1,30 +1,26 @@
 <script>
-  export let post
-  import Date from './date.svelte'
-  import TagList from './tag-list.svelte'
+  export let h = '2'
+  export let title = ''
+  export let slug = ''
+  export let meta = {}
 
-  const { 
-    title,
-    slug, 
-    meta: {
-      date,
-      excerpt,
-      categories,
-      tags
-    } 
-  } = post
+  import Date from '../content/date.svelte'
+  import TagList from '../content/tag-list.svelte'
+
+  const renderHeader = () => `
+    <h${h} class='post-preview__header'>
+      <a rel='prefetch' href=${slug}>
+        ${title}
+      </a>
+    </h${h}>
+  `
 </script>
 
 <style global type='text/scss'>
-  @import '../../styles/functions.scss';
-
-  .post {
-    @include readable();
-
+  .post-preview {
     a {
       font-family: sans-serif;
       font-weight: bold;
-      font-size: 1.25em;
       color: var(--colorHighlight);
       text-decoration: none;
 
@@ -36,7 +32,7 @@
 
     &__header {
       font-family: sans-serif;
-      font-size: 1.25em;
+      font-size: 1.5em;
       font-weight: bold;
       margin-bottom: .5rem;
     }
@@ -56,6 +52,7 @@
     }
 
     &__link {
+      font-size: 1.25em;
       &::after {
         content: '»';
         margin-left: .25em;
@@ -64,21 +61,17 @@
   }
 </style>
 
-<article class='post'>
-  <header class='post__header'>
-    <a rel='prefetch' href={slug}>
-      {title}
-    </a>
-  </header>
-  <Date date={date} />
-  <p class='post__excerpt'>
-    {excerpt}
+<article class='post-preview'>
+  {@html renderHeader()}
+  <Date date={meta.date} />
+  <p class='post-preview__excerpt'>
+    {meta.excerpt}
   </p>
   <TagList
-    categories={categories}
-    tags={tags}
+    categories={meta.categories}
+    tags={meta.tags}
   />
-  <a rel='prefetch' href={slug} class='post__link'>
-      Read
+  <a rel='prefetch' href={slug} class='post-preview__link'>
+    Read
   </a>
 </article>

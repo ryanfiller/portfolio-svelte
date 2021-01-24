@@ -36,7 +36,7 @@ describe('<Banner /> component', () => {
   context('/blog subpages', () => {  
     beforeEach(() => {
       cy.visit('/blog')
-      cy.get('.post').eq(0).find('a').eq(0).click()
+      cy.get('.post-preview').eq(0).find('a').eq(0).click()
       cy.injectAxe()
     })
 
@@ -55,7 +55,7 @@ describe('<Banner /> component', () => {
   context('/lab subpages', () => {  
     beforeEach(() => {
       cy.visit('/lab')
-      cy.get('.post').eq(0).find('a').eq(0).click()
+      cy.get('.post-preview').eq(0).find('a').eq(0).click()
       cy.injectAxe()
     })
 

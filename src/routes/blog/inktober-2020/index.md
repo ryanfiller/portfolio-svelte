@@ -25,7 +25,7 @@ meta:
 
 ## Drawing 31 Things in 31 Days
 
-This was the first year I had the perseverence to finish all 31 drawings for [#Inktober](https://inktober.com/rules). They're not all the best drawings I've ever done in my life, but I am very proud of making it all the way through this year. I thought it might be fun to post all my drawings outside of only on my [Instagram](https://www.instagram.com/ryanfiller_/).
+This was the first year I had the perseverance to finish all 31 drawings for [#Inktober](https://inktober.com/rules). They're not all the best drawings I've ever done in my life, but I am very proud of making it all the way through this year. I thought it might be fun to post all my drawings outside of only on my [Instagram](https://www.instagram.com/ryanfiller_/).
 
 <PhotoGrid
   images={[

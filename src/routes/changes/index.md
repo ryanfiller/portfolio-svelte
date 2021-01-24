@@ -21,6 +21,8 @@ Performance Updates and Reactors
 
 [refactor/lighthouse-scores-01](https://github.com/ryanfiller/portfolio-svelte/pull/21) - Address Lighthouse scores, mostly around preloading and Large Media images
 
+[feature/series](https://github.com/ryanfiller/portfolio-svelte/pull/22) - Add structure of posts to be part of a series
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -34,18 +36,28 @@ Performance Updates and Reactors
 |   - ≈ `/layout`
 |   - ≈ `/error`
 |   - ≈ `index.svelte`
+|   - \+ `/blog/series`
+|   - \+ `/blog/series.json`
 |
 | - Layouts
 |   - \+ `page`
 |   - \+ `markdown`
+|   - \+ `blog`
 |   - \+ `lab`
 |
 | - Components
+|   - \- `<Posts />`
 |   - Layout
 |     - ≈ `<SEO />`
 |     - ≈ `<Header />`
 |     - \- `<Mdsvex />`
 |     - ≈ `<Banners />`
+|   - Content
+|     - \- `<PostPreview />`
+|     - \+ `<List />`
+|   - Blog
+|     - \+ `<PostPreview />`
+|     - \+ `<SeriesPreview />`
 |
 | - Plugins
 |   - remark
@@ -55,6 +67,7 @@ Performance Updates and Reactors
 |   - Routes
 |     - \+ `/error`
 |     - \+ `/generate-image`
+|     - \+ `/blog/series.json`
 |   - Layouts
 |     - \+ `layout`
 |     - \+ `page`
@@ -62,6 +75,12 @@ Performance Updates and Reactors
 |     - Layout
 |       - ≈`<SEO />`
 |       - ≈`<Banners />`
+|     - Content
+|       - \- `<PostPreview />`
+|       - \+ `<List />`
+|     - Blog
+|       - \+ `<PostPreview />`
+|       - \+ `<SeriesPreview />`
 |   - Commands
 |     - \+ `snapshot()`
 |

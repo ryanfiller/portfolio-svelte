@@ -59,8 +59,8 @@
   <slot />
 </main>
 
-<!-- <aside>
-  content in here will relate to the body document
+<!-- <aside id='sidebar'>
+  <slot name='sidebar' />
 </aside> -->
 
 <Footer />

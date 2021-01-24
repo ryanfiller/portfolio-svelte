@@ -9,23 +9,6 @@
       align-items: center;
       justify-content: center;
       font-family: sans-serif;
-
-      button {
-        display: block;
-        cursor: pointer;
-        border: none;
-        background: var(--colorHighlight);
-        color: var(--colorWhite);
-        transition: var(--transitionSpeed);
-        font-size: 1em;
-        padding: 1rem;
-        margin: 0 auto;
-    
-        &:hover,
-        &:focus {
-          background: var(--colorActive);
-        }
-      }
     }
     
     &__error,

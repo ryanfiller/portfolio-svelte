@@ -31,10 +31,10 @@ describe('<SEO /> component', () => {
     
     const posts = []
 
-    cy.get('article.post').each((article, index) => {
+    cy.get('article.post-preview').each((_article, index) => {
       const obj = {}
-      cy.get('.post__header').eq(index).invoke('text').then(text => obj.title = text)
-      cy.get('.post__excerpt').eq(index).invoke('text').then(text => obj.excerpt = text)
+      cy.get('.post-preview__header').eq(index).invoke('text').then(text => obj.title = text)
+      cy.get('.post-preview__excerpt').eq(index).invoke('text').then(text => obj.excerpt = text)
       obj.keywords = []
       cy.get('ul.categories').eq(index).within(() => {
         cy.get('li').each(li => obj.keywords.push(li.text()))
@@ -46,7 +46,7 @@ describe('<SEO /> component', () => {
     }).then(() => {
       const random = Math.floor(Math.random() * posts.length)
 
-      cy.get('article.post').eq(random).find('header > a')
+      cy.get('article.post-preview').eq(random).find('.post-preview__header > a')
       .should('have.attr', 'href')
       .then((href) => cy.visit(href))
 
