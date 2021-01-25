@@ -7,17 +7,15 @@ banner:
   alt: "Reese's Peanut Butter Cups"
   attribution: 'The Hershey Company'
 meta:
-  categories:
-    - code
   date: 2018-09-20T05:00:00.000Z
   excerpt: >-
     I switched my website back and forth between SCSS and Styled-Components four times. Here are some thoughts on why I couldn't make up my mind and why I eventually chose what I did.
+  categories:
+    - code
   tags:
-    - scss
-    - bem
+    - css
     - javascript
-    - styled-components
-    - design systems
+    - design
 ---
 
 SCSS is magical. As someone who learned web development through the front end, seeing things like nesting, variables, and mixins were game changers for me. With the addition of learning [BEM](http://getbem.com/) — gone were the days of having a monolithic, hundreds-of-lines-long .css file and a new age of writing maintainable component libraries was laid out in front of me.

@@ -110,7 +110,7 @@ Components are small pieces of reusable code that combine to build up complex ap
 
 The most simple component in my color-chart is the `<Color>` component. This component needs to look at a `color` object which will contain a `name`, `value`, `score`, and contrast `ratio`. 
 
-<div style="clear:both" class="clearfix"></div>
+
 
 <FrameworkList>
 

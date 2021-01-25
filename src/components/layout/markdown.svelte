@@ -103,51 +103,57 @@
     // ...and other media I guess.
     img,
     figure,
-    video {
-        width: 100%;
-        height: auto;
-        margin: 0 0 1em 0;
-        display: block;
-        clear: both;
-    
-        &[data-align="center"] {
-          @include small() {
-              margin: 0 auto 1rem auto;
-              width: 50%;
-          }
+    video,
+    *[data-align] {
+      width: 100%;
+      height: auto;
+      margin: 0 0 1em 0;
+      display: block;
+      clear: both;
+
+      /* TODO fix images and typography for dark mode, but probably don't do it in this file */
+      /* [style*="--user-color-scheme:dark;"] & {
+        filter: brightness(.8) contrast(1.2);
+      } */
+  
+      &[data-align="center"] {
+        @include small() {
+            margin: 0 auto 1rem auto;
+            width: 50%;
         }
-        
-        &[data-align="right"] {
-          @include small() {
-              float: right;
-              margin: 0 0 1rem 1rem;
-              width: 50%;
-          }
+      }
+      
+      &[data-align="right"] {
+        @include small() {
+            float: right;
+            margin: 0 0 1rem 1rem;
+            width: 50%;
         }
-        
-        &[data-align="left"] {
-          @include small() {
-              float: left;
-              margin: 0 1rem 1rem 0;
-              width: 50%;
-          }
+      }
+      
+      &[data-align="left"] {
+        @include small() {
+            float: left;
+            margin: 0 1rem 1rem 0;
+            width: 50%;
         }
-        
-        &[data-align="full"] {
-          @include small() {
-              display: block;
-              width: 100%;
-              max-width: none !important; // full supersedes small
-              height: auto;
-              margin: 0 0 1rem 0;
-          }
+      }
+      
+      &[data-align="full"] {
+        @include small() {
+            display: block;
+            width: 100%;
+            max-width: none !important; // full supercedes small
+            height: auto;
+            margin: 0 0 1rem 0;
         }
-        
-        &[data-small="true"] {
-          @include small() {
-            max-width: 10em;
-          }
+      }
+      
+      &[data-small="true"] {
+        @include small() {
+          max-width: 10em;
         }
+      }
     
       // for when figure.image and img is a child
       img {
@@ -158,12 +164,13 @@
         margin: 0;
       }
     
-      figcaption {
+      figcaption,
+      .caption {
         text-align: center;
         font-style: italic;
         font-size: .8em;
         line-height: 1.25;
-        padding: .25em .5em;
+        padding: .5em 1em;
       }
     }
     

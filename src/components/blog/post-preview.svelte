@@ -1,6 +1,7 @@
 <script>
   export let h = '2'
   export let title = ''
+  export let series = ''
   export let slug = ''
   export let meta = {}
 
@@ -10,7 +11,10 @@
   const renderHeader = () => `
     <h${h} class='post-preview__header'>
       <a rel='prefetch' href=${slug}>
-        ${title}
+        ${!!series 
+          ? `<span class='post-preview__series-header'>${series}: </span> ${title}` 
+          : title
+        }
       </a>
     </h${h}>
   `
@@ -37,6 +41,11 @@
       margin-bottom: .5rem;
     }
 
+    &__series-header {
+      display: block;
+      font-size: .75em;
+    }
+
     .date {
       font-weight: bold;
       margin-bottom: .75rem;
@@ -46,7 +55,7 @@
       margin-bottom: .5rem;
     }
 
-    &__tags {
+    .tag-list {
       font-weight: bold;
       margin-bottom: .5rem;
     }
