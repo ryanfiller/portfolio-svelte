@@ -1,6 +1,6 @@
 export default [
   {
     title: 'Dark Mode',
-    excerpt: 'exploring how to add dark mode and stuff'
+    excerpt: 'Exploring the Intricacies of Adding Dark and Light Colors Schemes'
   }
 ]

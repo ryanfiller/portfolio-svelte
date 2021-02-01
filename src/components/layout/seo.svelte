@@ -1,5 +1,6 @@
 <script>
   export let title = ''
+  export let series = ''
   export let meta = {}
   export let banner = {}
 
@@ -51,6 +52,7 @@
   $: if (!!banner){
     imageParams = objectToParams({
       title: title,
+      series: series,
       excerpt: meta.excerpt || '',
       categories: meta.categories ? meta.categories.join(',') : '',
       tags: meta.tags ? meta.tags.join(',') : '',

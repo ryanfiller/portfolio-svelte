@@ -72,6 +72,10 @@
     cursor: pointer;
     color: currentColor;
 
+    &:hover {
+      background-color: transparent;
+    }
+
     svg {
       // height: var(--tapableSize);
       height: 25px;

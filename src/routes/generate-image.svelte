@@ -8,6 +8,7 @@
 
   $: ({
     title = '',
+    series = '',
     excerpt = '',
     categories = '',
     tags = '',
@@ -69,6 +70,11 @@
     grid-area: title;
   }
 
+  h1 .series {
+    font-size: .5em;
+    display: block;
+  }
+
   .tag-list {
     grid-area: tags;
     font-size: 2em;
@@ -111,8 +117,8 @@
     right: -1px;
     bottom: -1px;
     left: -1px;
-    width: 100%;
-    height: 100%;
+    width: calc(100% + 2px);
+    height: calc(100% + 2px);
     object-fit: cover;
     object-position: center center;
 
@@ -126,7 +132,14 @@
 <div id='wrapper'>
   <div id='preview'>
     <main class='content'>
-      <h1>{title}</h1>
+      <h1>
+        {#if series}
+          <span class='series'>
+            {series}:
+          </span>
+        {/if}
+        {title}
+      </h1>
 
       {#if categories || tags}
         <div class='tag-list'>

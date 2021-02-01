@@ -7,16 +7,16 @@ banner:
   alt: 'lightcyles, from Tron'
   attribution: 'Tron, Disney'
 meta:
-  categories:
-    - code
   date: 2018-09-02T05:00:00.000Z
   excerpt: >-
     Thoughts on CSS Grid from someone who learned about typographic grids for
     print in design school
+  categories:
+    - code
+    - design
   tags:
     - css
     - typography
-    - design-systems
 thumbnail:
   url: '/css-grid-tron.jpg'
   alt: ''
