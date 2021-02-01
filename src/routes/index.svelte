@@ -16,7 +16,7 @@
   export let posts
   export let series
 	
-  import { meta, forms } from '../config'
+  import { site, forms } from '../config'
 	import Page from '../layouts/page.svelte'
   import List from  '../components/content/list.svelte'
   import PostPreview from '../components/blog/post-preview.svelte'
@@ -62,12 +62,12 @@
 <Page hideBanner>
   <section class='temp-bio'>
     <img  
-      src={`${meta.headshot}?nf_resize=fit&w=100`}
-      alt={meta.author}
+      src={`${site.headshot}?nf_resize=fit&w=100`}
+      alt={site.author}
     />
-    <h1>{meta.description}</h1>
+    <h1>{site.description}</h1>
     <p>
-      {meta.about}
+      {site.about}
     </p>
   </section>
 

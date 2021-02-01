@@ -1,5 +1,5 @@
 <script>
-  import { meta } from '../config.js' 
+  import { site } from '../config.js' 
   import { paramsToObject } from '../helpers'
   import TagList from '../components/content/tag-list.svelte'
 
@@ -154,7 +154,7 @@
 
       <!-- <p>{excerpt}</p> -->
 
-      <span class='author'>{meta.author}</span>
+      <span class='author'>{site.twitter}</span>
 
       {#if imageSrc && imageCredit}
         <p class='attribution'>

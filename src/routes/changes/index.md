@@ -23,6 +23,8 @@ Performance Updates and Reactors
 
 [feature/series](https://github.com/ryanfiller/portfolio-svelte/pull/22) - Add structure of posts to be part of a series
 
+[refactor/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/24) - Rework RSS filter, add new missing data and make sure the feed validates
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -31,6 +33,7 @@ Performance Updates and Reactors
 |   - Add webmentions via Add email to log into webmention.io
 |   - Brand colors, theme styles and toggle
 |   - Added `no-js` top level class
+|   - Make sure RSS feed passes W3C validation, change endpoint url
 |
 | - Routes
 |   - ≈ `/layout`
@@ -38,6 +41,8 @@ Performance Updates and Reactors
 |   - ≈ `index.svelte`
 |   - \+ `/blog/series`
 |   - \+ `/blog/series.json`
+|   - \- `/blog/[category]/rss.xml`
+|   - \+ `/blog/rss.xml`
 |
 | - Layouts
 |   - \+ `page`
@@ -52,6 +57,7 @@ Performance Updates and Reactors
 |     - ≈ `<Header />`
 |     - \- `<Mdsvex />`
 |     - ≈ `<Banners />`
+|     - ≈ `<SocialLinks />`
 |   - Content
 |     - \- `<PostPreview />`
 |     - \+ `<List />`
@@ -68,6 +74,7 @@ Performance Updates and Reactors
 |     - \+ `/error`
 |     - \+ `/generate-image`
 |     - \+ `/blog/series.json`
+|     - \+ `/blog/rss.xml`
 |   - Layouts
 |     - \+ `layout`
 |     - \+ `page`
@@ -81,6 +88,8 @@ Performance Updates and Reactors
 |     - Blog
 |       - \+ `<PostPreview />`
 |       - \+ `<SeriesPreview />`
+|   - Functions
+|     - \- `/rss`
 |   - Commands
 |     - \+ `snapshot()`
 |

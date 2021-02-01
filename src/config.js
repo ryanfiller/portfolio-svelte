@@ -1,10 +1,11 @@
 const siteUrl = 'https://www.ryanfiller.com'
 
-export const meta = {
+export const site = {
   title: 'ryanfiller.com',
   email: 'ryanfiller89@gmail.com',
   siteUrl: siteUrl,
-  author: '@ryanfiller_',
+  author: 'Ryan Filler',
+  twitter: '@ryanfiller_',
   headshot: `${siteUrl}/images/site-assets/headshot_2017.jpg`,
   description: 'The blog and portfolio of Ryan Filler',
   about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.',
@@ -16,7 +17,8 @@ export const meta = {
     'css',
     'javascript',
     'svelte', 
-  ]
+  ],
+  rss: `${siteUrl}/blog/rss.xml`
 }
 
 export const mainNav = [
@@ -100,6 +102,12 @@ export const socialLinks = [
   //   color: '#ff0000',
   //   text: 'PokemonGO',
   // },
+  {
+    name: 'rss',
+    url: site.rss,
+    color: '#ee802f',
+    text: 'Blog RSS',
+  },
 ]
 
 export const forms = {
