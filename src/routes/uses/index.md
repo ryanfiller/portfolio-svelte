@@ -45,7 +45,7 @@ This particular site is made with:
 * [SCSS](https://sass-lang.com/) component imports and [BEM](http://getbem.com/) methodoly to scope styles
 * [Cypress](https://www.cypress.io/) as an end-to-end testing framework
 * [GoatCounter](https://www.goatcounter.com/) for anonymous traffic and browser usage analytics
-* [RSS](https://en.wikipedia.org/wiki/RSS) as a [public endpoint](/blog/code.rss.xml) for anyone looking to grab my code-related blog posts
+* [RSS](https://en.wikipedia.org/wiki/RSS) as a [public endpoint](/blog/rss.xml) for anyone looking to grab my code-related blog posts
 
 <!-- ## smarthome?
 

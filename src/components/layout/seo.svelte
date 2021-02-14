@@ -12,7 +12,7 @@
   const local = process.env.NODE_ENV === 'development'
   const host = local ? `http://${$page.host}` : `https://${$page.host}`
   
-  import { meta as site } from '../../config.js'
+  import { site } from '../../config.js'
   import { capitalize, objectToParams, paramsToObject, slugify } from '../../helpers'
 
   const pageTitle = () => {
@@ -74,9 +74,11 @@
   <meta name='description' content={description()}>
   <meta name='keywords' content={keywords()}>
 
+  <link rel='alternate' type='application/rss+xml' title='RSS' href={site.rss} >
+
   <!-- for twitter -->
   <meta name='twitter:site' content={site.siteUrl} />
-  <meta name='twitter:creator' content={site.author} />
+  <meta name='twitter:creator' content={site.twitter} />
   <meta name='twitter:url' content={pageUrl} />
   <meta name='twitter:title' content={$$props.title} />
   <meta name='twitter:description' content={description()} />

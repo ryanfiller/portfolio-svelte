@@ -1,4 +1,4 @@
-import { meta } from '../../../../src/config.js'
+import { site } from '../../../../src/config.js'
 
 describe('<SEO /> component', () => {
   it('renders the default info', () => {
@@ -6,16 +6,16 @@ describe('<SEO /> component', () => {
     cy.title().should('eq', 'ryanfiller.com')
     cy.document()
     .get('head meta[name="author"]')
-      .should('have.attr', 'content', '@ryanfiller_')
+      .should('have.attr', 'content', site.author)
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', meta.about)
+      .should('have.attr', 'content', site.about)
   })
 
   it('renders the 404 page correctly', () => {
     cy.visit('/404', { failOnStatusCode: false })
       // cy.title().should('eq', 'Error - 404 | ryanfiller.com')
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', meta.about)
+      .should('have.attr', 'content', site.about)
   })
 
   it('renders a root page correctly', () => {
@@ -23,7 +23,7 @@ describe('<SEO /> component', () => {
       cy.title().should('eq', 'About | ryanfiller.com')
       
     cy.document().get('head meta[name="description"]')
-      .should('have.attr', 'content', meta.about)
+      .should('have.attr', 'content', site.about)
   })
 
   it('renders the post information', () => {

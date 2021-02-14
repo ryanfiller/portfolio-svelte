@@ -19,16 +19,9 @@ meta:
 
 <script>
   import PhotoGrid from '../../../components/misc/photo-grid.svelte'
-</script>
 
-![the 2020 list of prompts](/images/2020-prompts.jpg){data-align='right'}
-
-## Drawing 31 Things in 31 Days
-
-This was the first year I had the perseverance to finish all 31 drawings for [#Inktober](https://inktober.com/rules). They're not all the best drawings I've ever done in my life, but I am very proud of making it all the way through this year. I thought it might be fun to post all my drawings outside of only on my [Instagram](https://www.instagram.com/ryanfiller_/).
-
-<PhotoGrid
-  images={[
+  // define this here because the compile explodes on multi-line components
+  const images = [
     {
       title: 'Fish',
       alt: 'Altolamprologus calvus illustration',
@@ -216,5 +209,14 @@ I didn’t even know these were buildings until I looked it up today...`
       src: '/images/inktober-2020-31-crawl.jpg',
       caption: `10/31/31 - I think this might be the first time in my entire life I’ve ever drawn black suit Spider-Man. Weird.`
     },
-  ]}
-/>
+  ]
+</script>
+
+
+![the 2020 list of prompts](/images/2020-prompts.jpg){data-align='right'}
+
+## Drawing 31 Things in 31 Days
+
+This was the first year I had the perseverance to finish all 31 drawings for [#Inktober](https://inktober.com/rules). They're not all the best drawings I've ever done in my life, but I am very proud of making it all the way through this year. I thought it might be fun to post all my drawings outside of only on my [Instagram](https://www.instagram.com/ryanfiller_/).
+
+<PhotoGrid {images} />

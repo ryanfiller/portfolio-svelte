@@ -2,7 +2,7 @@
 	export let status
 	export let error
 	const dev = process.env.NODE_ENV === 'development'
-	import { meta } from '../config'
+	import { site } from '../config'
 
 	import Page from '../layouts/page.svelte'
 
@@ -229,7 +229,7 @@
 
 <!-- TODO move this into seo.svelte with 0.28 update -->
 <svelte:head>
-	<title>Error {status} | {meta.title}</title>
+	<title>Error {status} | {site.title}</title>
 </svelte:head>
 
 <Page segment='error' hideBanner >

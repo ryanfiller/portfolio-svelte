@@ -1,7 +1,7 @@
 const fs = require('fs')
-import { meta as config } from '../config.js'
+import { site } from '../config.js'
 
-const BASE_URL = config.siteUrl
+const BASE_URL = site.siteUrl
 const ROUTES = './src/routes'
 
 const pages = []

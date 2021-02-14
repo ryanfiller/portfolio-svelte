@@ -8,6 +8,7 @@
   import GitHub from '../../../static/images/site-assets/icons/social/github.svg'
   import CodePen from '../../../static/images/site-assets/icons/social/codepen.svg'
   import PokemonGO from '../../../static/images/site-assets/icons/social/pokemongo.svg'
+  import RSS from '../../../static/images/site-assets/icons/social/rss.svg'
 
   const icons = {
     email: Email,
@@ -16,7 +17,8 @@
     linkedin: LinkedIn,
     github: GitHub,
     codepen: CodePen,
-    pokemongo: PokemonGO
+    pokemongo: PokemonGO,
+    rss: RSS
   }
 </script>
 
