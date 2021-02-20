@@ -11,7 +11,7 @@ meta:
     - drawing
   date: 2020-11-01
   excerpt: >-
-    All of my Inktober drawings from October 2020
+    All of my Inktober drawings from October 2020.
   tags:
     - doodles
     - inking

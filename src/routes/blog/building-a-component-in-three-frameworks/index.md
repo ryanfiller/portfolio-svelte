@@ -38,7 +38,7 @@ In order to make sure I was building the same features into each package, I came
  - have a pair of props that would be able to toggle the name and value being edited in real time and stored in local state
  - be able to pass in custom functions for when `names` and `values` change as well as a function for when inputs `blur`
 
- <div style="clear:both" class="clearfix"></div>
+ [[clearfix]]
 
  I made a table of props and proptypes that each version of the component would need to conform to.
 

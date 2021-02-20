@@ -21,7 +21,7 @@ I think anybody reading this would agree that saying "2020 didn't go as planned"
 
 I also want to be upfront with the fact that personally, my 2020 could have gone a _lot_ worse. My heart really goes out to everyone who struggled more than I did this year. It was rough for a lot of people and I'm endlessly thankful for my relatively safe life.
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ## I spent the last year rebuilding my blog
 
@@ -66,7 +66,7 @@ I hope by now everyone knows that the GitHub contribution graph is kind of bogus
 
 I am, however, proud of that 25% of things I did this year that _weren't_ commits, especially that 7% of code review.
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ### I wrapped up a HUGE project at work
 
@@ -129,7 +129,7 @@ I want to complete one Gundam model from start to finish, all the way through pa
 - I want to keep running. Even after all the work I put in this year, I still can't run a consistent 5k distance without having to stop and catch my breath and rest my legs. This year I got my mid-run stops down from two to just one, so maybe this year will be the year I can finally make the whole distance all in one go.
 - And, of course, I want to get the COVID vaccine when it's available so I can hug my family and high-five my friends again.
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ### Everything in 2020 was terrible, but maybe it wasn't an anomaly?
 

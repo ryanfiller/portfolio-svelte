@@ -105,7 +105,7 @@ export async function get(req, res) {
               ${entities.encode(post.meta.excerpt)}
               ${post.series
                 ? `<![CDATA[
-                    This post is part of a <a href="${blogUrl}/series/${slugify(post.series)}">series about ${post.series}</a>
+                    This post is part of a <a href="${blogUrl}/series/${slugify(post.series)}">series about ${post.series}</a>.
                   ]]>`
                 : ''
               }

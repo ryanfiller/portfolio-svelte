@@ -61,6 +61,9 @@ const preprocess = [
 					title: 'required',
 					details: true
 				},
+				clearfix: {
+					classes: 'clearfix'
+				}
 			}],
 			blockquote,
 			headings,

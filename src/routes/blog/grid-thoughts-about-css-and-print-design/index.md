@@ -10,7 +10,7 @@ meta:
   date: 2018-09-02T05:00:00.000Z
   excerpt: >-
     Thoughts on CSS Grid from someone who learned about typographic grids for
-    print in design school
+    print in design school.
   categories:
     - code
     - design
@@ -41,7 +41,7 @@ Having the ability to specifically define how content and images span both rows 
 - four column modular grid
 - baseline scaled to 10/12 font size
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ![indesign screenshot of grid](/images/css-grid-indesign-screenshot.jpg){data-align="right"}
 
@@ -52,7 +52,7 @@ Having the ability to specifically define how content and images span both rows 
 - 4 column grid, 12pt gutter
 - 36pt margins
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ![codepen screenshot](/images/css-grid-code-screenshot.jpg){data-align="left"}
 
@@ -63,7 +63,7 @@ Having the ability to specifically define how content and images span both rows 
 - columns: 6rem; except when it's not
 - rows: 6 x auto;
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 A modular grid is created by combining a baseline grid (vertical lines running horizontally along the bottom of each letter, defined by the leading or line-height of the text), with page divisions that make a number of columns with gutters between them. The width of the gutters is often the same space between each baseline grid line.
 

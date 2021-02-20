@@ -245,6 +245,10 @@
       transform: rotate(-45deg);
     }
   }
+    
+  .clearfix {
+    clear: both !important;
+  }
 
   // -------------
   // layouts
@@ -286,6 +290,20 @@
   }
 
   // -------------
+  // typography
+  // -------------
+
+  b,
+  strong {
+    font-weight: bold;
+  }
+
+  i,
+  em {
+    font-style: italic;
+  }
+
+  // -------------
   // holdover gatsby styles to slowly delete
   // -------------
   progress {
@@ -311,19 +329,6 @@
   sup {
     top: -0.5em;
   }
-
-  ul, ol {
-    margin-left: 1.45rem;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    margin-bottom: 1.45rem;
-    list-style-position: outside;
-    list-style-image: none;
-  }
   p {
     margin-left: 0;
     margin-right: 0;
@@ -344,11 +349,6 @@
     padding-right: 0;
     padding-top: 0;
     margin-bottom: 1.45rem;
-  }
-  b,
-  strong {
-    font-weight: inherit;
-    font-weight: bold;
   }
   dt {
     font-weight: bold;

@@ -7,7 +7,7 @@ meta:
     - experiments
   date: 2019-11-03
   excerpt: >-
-    A way to visualize variable font font-variation properties
+    A way to visualize variable font font-variation properties.
   tags:
     - javascript
     - variable fonts

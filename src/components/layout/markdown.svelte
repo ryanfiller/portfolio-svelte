@@ -75,12 +75,16 @@
     h6 {
       font-size: 1em;
       @include headingStyles;
-    }  
-
-    li,
-    li > p {
-      margin-bottom: 1em;
     }
+
+    li {
+      margin-bottom: .5em;
+
+      & > p {
+        margin-bottom: 1em;
+      }
+    }
+      
 
     ol li,
     ul li {
