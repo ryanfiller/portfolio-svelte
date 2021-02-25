@@ -25,6 +25,8 @@ Performance Updates and Reactors
 
 [refactor/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/24) - Rework RSS filter, add new missing data and make sure the feed validates
 
+[feature/alert](https://github.com/ryanfiller/portfolio-svelte/pull/25) - Create an alert/aside component
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -54,6 +56,7 @@ Performance Updates and Reactors
 |   - \- `<Posts />`
 |   - Layout
 |     - ≈ `<SEO />`
+|     - ≈ `<Styles />`
 |     - ≈ `<Header />`
 |     - \- `<Mdsvex />`
 |     - ≈ `<Banners />`
@@ -61,6 +64,8 @@ Performance Updates and Reactors
 |   - Content
 |     - \- `<PostPreview />`
 |     - \+ `<List />`
+|   - Misc
+|     - \+ `<Alert />`
 |   - Blog
 |     - \+ `<PostPreview />`
 |     - \+ `<SeriesPreview />`
@@ -85,6 +90,8 @@ Performance Updates and Reactors
 |     - Content
 |       - \- `<PostPreview />`
 |       - \+ `<List />`
+|     - Content
+|       - \+ `<Misc />`
 |     - Blog
 |       - \+ `<PostPreview />`
 |       - \+ `<SeriesPreview />`
