@@ -7,7 +7,11 @@ title: 'Style Guide'
   import { colors } from '../styles.js'
   import ColorChart from '../components/misc/color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
+  import Alert from '../components/misc/alert.svelte'
   import PhotoGrid from '../components/misc/photo-grid.svelte'
+
+  let showAlert = true
+  const closeAlert = () => { showAlert = false }
 </script>
 
 <div id="colors">
@@ -148,6 +152,18 @@ title: 'Style Guide'
 
     </Tab>
   </Tabs>
+
+</div>
+
+<div id="alert">
+
+  <Alert
+    show={showAlert}
+    close={closeAlert}
+    title='We are under attack!'
+  >
+    Your warriors have engaged the enemy!
+  </Alert>
 
 </div>
 

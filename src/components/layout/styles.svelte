@@ -148,27 +148,35 @@
 			rgb(var(--steppedGradientColor), .95) 95%, rgb(var(--steppedGradientColor), .95) 100%
 		);
 
-    --pixelBorderColor: currentColor;
-    // --pixelBorderWidth: calc(2 * var(--borderWidth)); 
-    --pixelBorderWidth: var(--borderWidth);
+    /* <image> <position> / <size> */
     --pixelBorder: 
-      /* <image> <position> / <size> */
       /* top and bottom */
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(3 * var(--pixelBorderWidth)) 0 / calc(100% - calc(6 * var(--pixelBorderWidth))) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(3 * var(--pixelBorderWidth)) 100% / calc(100% - calc(6 * var(--pixelBorderWidth))) var(--pixelBorderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 0 / calc(100% - calc(6 * var(--borderWidth))) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 100% / calc(100% - calc(6 * var(--borderWidth))) var(--borderWidth),
       /* left and right */
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) 0 calc(3 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) calc(100% - calc(6 * var(--pixelBorderWidth))),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) 100% calc(3 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) calc(100% - calc(6 * var(--pixelBorderWidth))),
+      no-repeat linear-gradient(currentColor, currentColor) 0 calc(3 * var(--borderWidth)) / var(--borderWidth) calc(100% - calc(6 * var(--borderWidth))),
+      no-repeat linear-gradient(currentColor, currentColor) 100% calc(3 * var(--borderWidth)) / var(--borderWidth) calc(100% - calc(6 * var(--borderWidth))),
       /* inner corners */
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(2 * var(--pixelBorderWidth)) calc(var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(2 * var(--pixelBorderWidth)) calc(100% - var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - (2 * var(--pixelBorderWidth))) calc(var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - (2 * var(--pixelBorderWidth))) calc(100% - var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--borderWidth)) calc(var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--borderWidth)) calc(100% - var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(100% - (2 * var(--borderWidth))) calc(var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(100% - (2 * var(--borderWidth))) calc(100% - var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
       /* outer corners */
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(var(--pixelBorderWidth)) calc(2 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(var(--pixelBorderWidth)) calc(100% - (2 * var(--pixelBorderWidth))) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - var(--pixelBorderWidth)) calc(2 * var(--pixelBorderWidth)) / var(--pixelBorderWidth) var(--pixelBorderWidth),
-      no-repeat linear-gradient(var(--pixelBorderColor), var(--pixelBorderColor)) calc(100% - var(--pixelBorderWidth)) calc(100% - (2 * var(--pixelBorderWidth))) / var(--pixelBorderWidth) var(--pixelBorderWidth)
+      no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(100% - (2 * var(--borderWidth))) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(100% - var(--borderWidth)) calc(2 * var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
+      no-repeat linear-gradient(currentColor, currentColor) calc(100% - var(--borderWidth)) calc(100% - (2 * var(--borderWidth))) / var(--borderWidth) var(--borderWidth)
+    ;
+
+    --pixelBorderFill: 
+      /* top and bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 0 / calc(100% - calc(6 * var(--borderWidth))) 100%,
+      /* left and right */
+      no-repeat linear-gradient(currentColor, currentColor) 0 calc(3 * var(--borderWidth)) / 100% calc(100% - calc(6 * var(--borderWidth))),
+      /* inner corners */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--borderWidth)) calc(var(--borderWidth)) / calc(100% - (4 * var(--borderWidth))) calc(100% - (2 * var(--borderWidth))),
+      /* outer corners */
+      no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)))
     ;
   }
 
@@ -213,6 +221,31 @@
 		display: none;
 	}
 
+  .x {
+    position: relative;
+    display: block;
+    height: 1em;
+    width: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      background-color: currentColor;
+      height: .25em;
+      width: 1em;
+      position: absolute;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+
   // -------------
   // layouts
   // -------------
@@ -245,7 +278,6 @@
     transition: var(--transitionSpeed);
     font-size: 1em;
     padding: 1rem;
-    margin: 0 auto;
 
     &:hover,
     &:focus {
