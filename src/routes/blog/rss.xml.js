@@ -32,6 +32,8 @@ export async function get(req, res) {
       .replace(new RegExp(`href="\/${ignoreInCode}`, 'g'), `href="${siteUrl}/`)
       // remove data attrs
       .replace(new RegExp(`{data-(.*)}${ignoreInCode}`, 'g'), '')
+      // remove [[shortcodes]]
+      .replace(new RegExp(`(<p>)?\\[\\[.*\\]\\](<\/p>)?${ignoreInCode}`, 'g'), '')
       // remove custom components that sneak in, with our without p tags
       // for some reason multiline mdsvex sneaks through, must investigate...
       .replace(new RegExp(`(<p>)?(&#x3C;|<)[A-Z].*?(&#x3E;|\/>)(<\/p>)?${ignoreInCode}`, 'g'), '')
