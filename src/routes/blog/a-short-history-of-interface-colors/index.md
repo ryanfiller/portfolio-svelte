@@ -16,7 +16,7 @@ meta:
     - accessibility
     - research
   excerpt: >-
-    A non-comprehensive look at the history of "dark mode" in user interface design
+    A non-comprehensive look at the history of "dark mode" in user interface design.
 ---
 
 In the last year or so, adding a dark mode toggle to websites is a trend that has exploded for personal blogs and big brands. Thanks to some browser features and system APIs dark mode has become easier than ever to implement. I recently added this feature to my own site, and here are some things I learned along the way.
@@ -35,7 +35,7 @@ If you look back on the [history of computer interfaces](https://eyeondesign.aig
 
 As computers became more powerful and interfaces more sophisticated it was easier to fill entire screens with light. The first consumer [graphical user interface](https://en.wikipedia.org/wiki/Graphical_user_interface) (or GUI) was introduced by [Xerox](https://en.wikipedia.org/wiki/PARC_(company)) in 1973 and light themed interfaces have [been the norm in home computing ever since](https://www.webdesignerdepot.com/2009/03/operating-system-interface-design-between-1981-2009/). My best guess for why this trend is that with the rise of [home desktop publishing](https://en.wikipedia.org/wiki/Desktop_publishing) users were more comfortable working with an interface that resembled paper.
 
-<div style="clear:both" class="clearfix"></div>
+[[clearfix]]
 
 ![Windows 95 desktop](/images/windows-95-desktop.png){data-align="right" data-small="true" data-caption="Windows 95"}
 

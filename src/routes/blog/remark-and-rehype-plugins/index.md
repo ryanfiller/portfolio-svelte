@@ -11,7 +11,7 @@ meta:
     - code
   date: 2020-10-31
   excerpt: >-
-    Writing custom plugins to give extra powers to Markdown syntax using the Unified ecosystem
+    Writing custom plugins to give extra powers to Markdown syntax using the Unified ecosystem.
   tags:
     - markdown
     - blogging

@@ -43,6 +43,8 @@
     flex-wrap: wrap;
     justify-content: center;
     font-size: 1.25em;
+    position: relative;
+    z-index: 1;
 
     p {
       text-align: center;

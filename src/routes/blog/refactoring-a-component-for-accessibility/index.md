@@ -12,7 +12,7 @@ meta:
   date: 2020-02-13T16:15:49.682Z
   excerpt: >-
     Refactoring a component to use an html5 <details> element instead of ARIA
-    and javascript.
+    and JavaScript.
   tags:
     - accessibility
     - ARIA
