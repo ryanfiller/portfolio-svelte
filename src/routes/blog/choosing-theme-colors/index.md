@@ -91,7 +91,7 @@ One of the hardest parts about choosing colors for the web is finding the right 
 
 Something that worked out well for me is to focus on making sure the first two rows and first two columns of this chart are all passing scores. In most scenarios, text will either appear as black or white on a colored background, or as a color on a black or white background. If there are other specific color combinations you know you want to use, make sure they also pass the [WCAG color contrast ratio](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html).
 
-Fireox also has a [cool feature](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector/Simulation) in the accessibility section of their developer tools that will simulate how different colors look to users with different vision deficiencies.
+Firefox also has a [cool feature](https://developer.mozilla.org/en-US/docs/Tools/Accessibility_inspector/Simulation) in the accessibility section of their developer tools that will simulate how different colors look to users with different vision deficiencies.
 
 ![simulated vision modes in dev tools](/images/color-scheme-simulated-vision-modes.png){data-align="full" data-caption="Simulation of Protanopia (no red), Deuteranopia (no green), Tritanopia (no blue), Achromatopsia (no color), and Contrast loss"}
 
