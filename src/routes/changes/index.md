@@ -27,6 +27,8 @@ Performance Updates and Reactors
 
 [feature/alert](https://github.com/ryanfiller/portfolio-svelte/pull/25) - Create an alert/aside component
 
+[refactor/remove-babel](https://github.com/ryanfiller/portfolio-svelte/pull/29) - remove Babel
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -36,6 +38,7 @@ Performance Updates and Reactors
 |   - Brand colors, theme styles and toggle
 |   - Added `no-js` top level class
 |   - Make sure RSS feed passes W3C validation, change endpoint url
+|   - Stop building with the `--legacy` flag, remove `babel` and IE11 support
 |
 | - Routes
 |   - ≈ `/layout`
@@ -102,9 +105,16 @@ Performance Updates and Reactors
 |
 | - Config
 |   - ≈ `config.js`
+|   - ≈ `rollup.config.js`
 |
 | - Packages
 |   - \+ @cypress/snapshot
+|   - \- @babel/core
+|   - \- @babel/plugin-syntax-dynamic-import
+|   - \- @babel/plugin-transform-runtime
+|   - \- @babel/preset-env
+|   - \- @babel/runtime
+|   - \- @rollup/plugin-babel
 
 </Change>
 
