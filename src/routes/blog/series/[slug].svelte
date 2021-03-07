@@ -1,6 +1,6 @@
 <script context='module'>
 	export function preload({ params, query }) {
-		return this.fetch(`/blog/series.json`)
+		return this.fetch(`/blog/series/${params.slug}.json`)
 		.then(response => response.json())
 		.then(series => {
       return { series }
@@ -10,10 +10,6 @@
 
 <script>
 	export let series
-	import { stores } from '@sapper/app'
-	const { page } = stores()
-	
-	series = series.filter(series => series.slug = $page.params.slug)[0]
 	const preview = {...series, title: ''}
   
   import Page from '../../../layouts/page.svelte'

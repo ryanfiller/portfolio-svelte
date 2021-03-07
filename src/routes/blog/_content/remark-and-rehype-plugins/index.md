@@ -18,7 +18,7 @@ meta:
 ---
 
 <script>
-  import { Tabs, Tab } from '../../../components/misc/tabs/index.js'
+  import { Tabs, Tab } from '../../../../components/misc/tabs/index.js'
 </script>
  
 My blog, like a lot of [JAMstack](https://jamstack.org/) content, is written in [Markdown](https://en.wikipedia.org/wiki/Markdown). I've [written](/blog/tips-and-tricks-ive-learned-about-gatsby-with-netlifycms#gatsby-plugin-mdx) about how I've used [`MDX`](https://mdxjs.com/) as a parser to give my Markdown extra power. I've also written a bit about some of the [shortcomings](/blog/things-svelte-and-sapper-cant-do-yet#mdsvex-headings-in-sapper) I've had trying to replicate the same `MDX` functionality in [`MDsveX`](https://mdsvex.com/). One thing that `MDX` and `MDsveX` have in common is that they are both built on top of the [`remark`](https://unifiedjs.com/explore/package/remark/) and [`rehype`](https://unifiedjs.com/explore/package/rehype/) packages from the [unified](https://unifiedjs.com/) ecosystem. Both parsers use these dependencies and they each have the ability to use any plugin that would work with the raw `remark` or `rehype` processors. To make my workflow less coupled to a specific technology, I decided to move the transformations up a level of abstraction. Instead of using `MDX` I wrote a series of plugins to transform my markdown.

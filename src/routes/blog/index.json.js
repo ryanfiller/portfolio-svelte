@@ -5,5 +5,5 @@ export function get(_req, res) {
 		'Content-Type': 'application/json'
 	})
 
-	res.end(JSON.stringify(getPages({directory: 'blog'})))
+	res.end(JSON.stringify(getPages({directory: 'blog/_content'})))
 } 

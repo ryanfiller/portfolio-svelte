@@ -2,7 +2,7 @@
   export async function preload({ params, query }) {
 		const posts = await this.fetch(`/blog.json`)
 		.then(response => response.json())
-		.then(posts => posts.filter(post => !post.meta.series).slice(0, 3))
+		.then(posts => posts.filter(post => !post.series).slice(0, 3))
 		
 		const series = await this.fetch(`/blog/series.json`)
 		.then(response => response.json())
@@ -81,7 +81,7 @@
     }}
   />
 
-  <!-- {#if series.length}
+  {#if series.length}
     <List
       title='Recent Series'
       content={series}
@@ -91,7 +91,7 @@
         text: 'See More'
       }}
     />
-  {/if} -->
+  {/if}
   
   <Form {...forms.contact} />
 </Page>

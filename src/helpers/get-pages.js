@@ -52,7 +52,8 @@ const getPosts = ({
 
 			return ({
 				...frontmatter,
-				slug: `${directory}/${post}`,
+				// TODO remove _content from this helper method all together
+				slug: `/${directory.replace('/_content', '')}/${post}`,
 				html: html
 			})
 		})

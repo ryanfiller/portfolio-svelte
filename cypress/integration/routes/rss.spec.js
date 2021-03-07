@@ -38,7 +38,9 @@ describe('/blog/rss.xml', () => {
       ]
       cy.request('/blog/rss.xml')
         .then(({body}) => {
+          console.log('body', body)
           const items = body.match(/<item>(.|\n)*?<\/item>/g)
+          console.log('items', items)
           expect(items).to.have.length.of.at.most(12)
           items.map(item => {
             itemTags.map(tag => {

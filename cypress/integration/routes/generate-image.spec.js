@@ -4,7 +4,7 @@ describe('/generate-image route', () => {
   
   const params =  objectToParams({
     title: 'test title',
-    excerpt: 'short expcert',
+    excerpt: 'short excerpt',
     categories: ['one fish', 'two fish'],
     tags: ['red fish', 'blue fish'],
     imageSrc: '/images/site-assets/_placeholder.jpg',

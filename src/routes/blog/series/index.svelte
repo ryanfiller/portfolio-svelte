@@ -10,14 +10,10 @@
 
 <script>
 	export let series
-	
-	import { setContext } from 'svelte'
 
   import Page from '../../../layouts/page.svelte'
 	import List from  '../../../components/content/list.svelte'
 	import SeriesPreview from '../../../components/blog/series-preview.svelte'
-
-	setContext('segment', 'series')
 </script>
 
 <Page>

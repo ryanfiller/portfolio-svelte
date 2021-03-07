@@ -6,6 +6,7 @@ import { terser } from 'rollup-plugin-terser'
 import config from 'sapper/config/rollup.js'
 import pkg from './package.json'
 import { mdsvex } from 'mdsvex'
+import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
 import svelteSVG from 'rollup-plugin-svelte-svg'
 import { globalStyle, scss } from 'svelte-preprocess'
 import copy from 'rollup-plugin-copy'
@@ -41,6 +42,10 @@ const envVars = {
 	'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
 	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
 	exclude: 'src/routes/**/*.md'
+}
+
+const dynamicImportVarsOptions = {
+	include: `src/routes/**/*.svelte`
 }
 
 const preprocess = [
@@ -104,6 +109,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
 			svelteSVG({ dev }),
 			copy({
 				targets: [
@@ -139,6 +145,7 @@ export default {
 				dedupe: ['svelte']
 			}),
 			commonjs(),
+			dynamicImportVars(dynamicImportVarsOptions),
 			svelteSVG({ generate: 'ssr', dev }),
 			copy({
 				targets: [
