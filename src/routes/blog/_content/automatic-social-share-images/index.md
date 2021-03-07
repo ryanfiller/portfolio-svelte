@@ -19,7 +19,7 @@ meta:
 
 <script>
   import CardMarkup from './_card-markup.svelte'
-  import { Tabs, Tab } from '../../../components/misc/tabs/index.js'
+  import { Tabs, Tab } from '../../../../components/misc/tabs/index.js'
 </script>
 
 Every time I write a new blog post, I share it to Twitter. And, if I'm being honest, these tweets usually look pretty boring. Here's the tweet for last month's blog post.
