@@ -13,9 +13,9 @@ banner:
 
 <Change>
 
-## RF-05-05 - "F91"
+## RF-05-05 - "Hazel"
 
-Performance Updates and Reactors
+Performance Updates and Refactors
 
 [refactor/data-flow](https://github.com/ryanfiller/portfolio-svelte/pull/18) - Refactor to move away from `$stores` for better SSR support
 
@@ -29,6 +29,8 @@ Performance Updates and Reactors
 
 [refactor/remove-babel](https://github.com/ryanfiller/portfolio-svelte/pull/29) - remove Babel
 
+[design/series-layout](https://github.com/ryanfiller/portfolio-svelte/pull/23) - Add pages for series, way for posts within a series to navigate between each other
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -39,15 +41,18 @@ Performance Updates and Reactors
 |   - Added `no-js` top level class
 |   - Make sure RSS feed passes W3C validation, change endpoint url
 |   - Stop building with the `--legacy` flag, remove `babel` and IE11 support
+|   - Create relationship between posts in the same series
 |
 | - Routes
 |   - ≈ `/layout`
 |   - ≈ `/error`
 |   - ≈ `index.svelte`
-|   - \+ `/blog/series`
 |   - \+ `/blog/series.json`
+|   - \+ `/blog/series[slug].json`
+|   - \+ `/blog/series[slug].svelte`
 |   - \- `/blog/[category]/rss.xml`
 |   - \+ `/blog/rss.xml`
+|   - `/blog/[slug]/index.md` -> `/blog/_content/[slug]/index.md`
 |
 | - Layouts
 |   - \+ `page`
@@ -72,6 +77,7 @@ Performance Updates and Reactors
 |   - Blog
 |     - \+ `<PostPreview />`
 |     - \+ `<SeriesPreview />`
+|     - \+ `<SeriesNavigator />`
 |
 | - Plugins
 |   - remark
@@ -98,6 +104,7 @@ Performance Updates and Reactors
 |     - Blog
 |       - \+ `<PostPreview />`
 |       - \+ `<SeriesPreview />`
+|       - \+ `<SeriesNavigator />`
 |   - Functions
 |     - \- `/rss`
 |   - Commands
@@ -115,6 +122,7 @@ Performance Updates and Reactors
 |   - \- @babel/preset-env
 |   - \- @babel/runtime
 |   - \- @rollup/plugin-babel
+|   - \+ @rollup/plugin-dynamic-import-vars
 
 </Change>
 

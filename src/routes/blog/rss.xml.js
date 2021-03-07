@@ -14,7 +14,7 @@ export async function get(req, res) {
   const category = req.query.category || null
 
   const posts = getPages({
-    directory: 'blog',
+    directory: 'blog/_content',
     returnBody: true,
     category: category,
     slice: [0, 12]

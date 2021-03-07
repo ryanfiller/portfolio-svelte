@@ -21,7 +21,7 @@ describe('/blog/series.json route', () => {
         if (index > 0) {
           date = new Date(date).getTime()
           const previousDate = new Date(dates[index - 1]).getTime()
-          expect(date < previousDate).to.be.true
+          expect(date > previousDate).to.be.true
         }
       })
     })
