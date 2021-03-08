@@ -39,7 +39,7 @@ function renderVideo(node) {
       value: `
       <!-- svelte-ignore a11y-media-has-caption -->
       <figure ${wrapperProps()}>
-        <video title="${title || alt}" controls loop autoplay>
+        <video title="${title || alt}" controls loop autoplay muted>
           <source src="${src}" type="video/mp4" muted />
           Sorry, your browser doesn't support embedded videos.
           <track kind="descriptions" label="${title || alt}" />
@@ -52,7 +52,7 @@ function renderVideo(node) {
       type: 'html',
       value: `
       <!-- svelte-ignore a11y-media-has-caption -->
-      <video title="${title || alt}" ${wrapperProps()} controls loop autoplay>
+      <video title="${title || alt}" ${wrapperProps()} controls loop autoplay muted>
         <source src="${src}" type="video/mp4" muted />
         Sorry, your browser doesn't support embedded videos.
         <track kind="descriptions" label="${title || alt}" />

@@ -79,7 +79,7 @@ export async function get(req, res) {
         
         <generator>https://github.com/ryanfiller/portfolio-svelte/blob/main/src/routes/blog/rss.xml.js</generator>
 
-        <atom:link href="${site.rss}" rel="self" type="application/rss+xml"></atom:link>
+        <atom:link href="${`${site.siteUrl}${site.rss}`}" rel="self" type="application/rss+xml"></atom:link>
 
         ${posts.map(post => `
           <item>

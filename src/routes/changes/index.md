@@ -103,9 +103,8 @@ Performance Updates and Refactors
 |     - Layout
 |       - ≈`<SEO />`
 |       - ≈`<Banners />`
-|     - Content
-|       - \- `<PostPreview />`
-|       - \+ `<List />`
+|     - Misc
+|       - \+ `<Alert />`
 |     - Content
 |       - \- `<PostPreview />`
 |       - \+ `<List />`
