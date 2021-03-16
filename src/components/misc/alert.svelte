@@ -1,6 +1,6 @@
 <script>
   export let show = true
-  export let close = () => null
+  export let close = null
   export let title = 'Hey!'
 </script>
 
