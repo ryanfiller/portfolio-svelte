@@ -7,7 +7,9 @@ banner:
 options:
   published: true
 meta:
-  date: 2020-11-30
+  date: 
+   - 2020-11-30
+   - 2021-03-16
   excerpt: 'Generating social share images with a serverless function and headless browser'
   categories:
     - code
