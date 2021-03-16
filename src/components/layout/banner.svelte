@@ -50,6 +50,7 @@
       .date {
         grid-area: date;
         display: block;
+        text-align: right;
       }
 
       .tag-list {

@@ -31,6 +31,8 @@ Performance Updates and Refactors
 
 [design/series-layout](https://github.com/ryanfiller/portfolio-svelte/pull/23) - Add pages for series, way for posts within a series to navigate between each other
 
+[feature/last-updated](https://github.com/ryanfiller/portfolio-svelte/pull/32) - Edited posts can now have an array of publish dates
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -42,6 +44,7 @@ Performance Updates and Refactors
 |   - Make sure RSS feed passes W3C validation, change endpoint url
 |   - Stop building with the `--legacy` flag, remove `babel` and IE11 support
 |   - Create relationship between posts in the same series
+|   - Add 'updated on' functionality to edited posts
 |
 | - Routes
 |   - ≈ `/layout`
@@ -72,6 +75,7 @@ Performance Updates and Refactors
 |   - Content
 |     - \- `<PostPreview />`
 |     - \+ `<List />`
+|     - ≈  `<Date />`
 |   - Misc
 |     - \+ `<Alert />`
 |   - Blog
@@ -100,7 +104,9 @@ Performance Updates and Refactors
 |       - \- `<PostPreview />`
 |       - \+ `<List />`
 |     - Content
-|       - \+ `<Misc />`
+|       - \- `<PostPreview />`
+|       - \+ `<List />`
+|       - ≈  `<Date />`
 |     - Blog
 |       - \+ `<PostPreview />`
 |       - \+ `<SeriesPreview />`
