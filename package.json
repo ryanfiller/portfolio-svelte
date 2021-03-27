@@ -11,7 +11,7 @@
     "export": "sapper export --ext '.svelte .md' --entry '/ /404 lab generate-image'",
     "postexport": "mv __sapper__/export/404/index.html __sapper__/export/404.html",
     "start": "node __sapper__/build",
-    "test": "cross-env NODE_ENV=test npm run build && npm run start & cypress open"
+    "surge": "npm run export && surge --project ./__sapper__/export --domain beta.ryanfiller.com"
   },
   "repository": {
     "type": "git",
