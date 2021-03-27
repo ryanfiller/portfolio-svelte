@@ -33,6 +33,8 @@ Performance Updates and Refactors
 
 [feature/last-updated](https://github.com/ryanfiller/portfolio-svelte/pull/32) - Edited posts can now have an array of publish dates
 
+[feature/surge](https://github.com/ryanfiller/portfolio-svelte/pull/33) - add script to use [surge.sh](https://surge.sh/) to deploy to [beta.ryanfiller.com](http://beta.ryanfiller.com/)
+
 [[details | Version Details]]
 | - Features
 |   - Remove `$markdown` store and rework how `mdsvex` layout flow works
@@ -45,6 +47,7 @@ Performance Updates and Refactors
 |   - Stop building with the `--legacy` flag, remove `babel` and IE11 support
 |   - Create relationship between posts in the same series
 |   - Add 'updated on' functionality to edited posts
+|   - Stop having to rely on Netlify preview builds, use surge.sh instead
 |
 | - Routes
 |   - ≈ `/layout`
