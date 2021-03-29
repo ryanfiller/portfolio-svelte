@@ -28,7 +28,7 @@ meta:
 
 This blog has been running as a [Svelte](https://svelte.dev/)-powered [Sapper](https://sapper.svelte.dev/) app since October 2020. Before changing frameworks from [Gatsby](https://www.gatsbyjs.com/) I put together a [test site](https://sapper-goals.netlify.app/) and wrote a [blog post](/blog/a-deep-dive-into-sapper) about what I learned about configuring Sapper. I found a set up that worked for me, so I [switched my site over](https://github.com/ryanfiller/portfolio-svelte/commit/12a1de926c681ca182be8fca1030b42c4c9ff3cf).
 
-The data flow I explored on my test site worked perfectly enough until I ran into a compmlication — I wanted to compose a post with information from two different sources without having to load data client side and rerender. I built a solution that I think combines the best of Sapper’s native data flow with mdsvex’s powerful preprocessing.
+The data flow I explored on my test site worked perfectly enough until I ran into a snag — I wanted to compose a post with information from two different sources without having to load data client side and rerender. I built a solution that I think combines the best of Sapper’s native data flow with mdsvex’s powerful preprocessing.
 
 This post is a somewhat deep dive, so if it's confusing checkout the [original Sapper/mdsvex post](/blog/a-deep-dive-into-sapper) and come back after that.
 
