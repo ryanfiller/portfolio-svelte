@@ -18,7 +18,7 @@ export const site = {
     'javascript',
     'svelte', 
   ],
-  rss: `${siteUrl}/blog/rss.xml`
+  rss: `/blog/rss.xml`
 }
 
 export const mainNav = [

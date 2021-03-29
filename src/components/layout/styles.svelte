@@ -97,13 +97,14 @@
   // -------------
 
   :root {
-    // sizing
-    --containerMaxWidth: $largeBreak;
-    --borderWidth: calc(var(--padding) / 8);
-
     // spacing
     --padding: clamp(1rem, 2.5vw, 2rem);
     --verticalSpacing: calc(2 * var(--padding));
+
+    // sizing
+    --containerMaxWidth: $largeBreak;
+    --borderRadius: 1rem;
+    --borderWidth: calc(var(--padding) / 8);
 
     // accessibility stuff
     --tapableSize: 40px;

@@ -74,7 +74,7 @@
   <meta name='description' content={description()}>
   <meta name='keywords' content={keywords()}>
 
-  <link rel='alternate' type='application/rss+xml' title='ryanblog' href={site.rss} >
+  <link rel='alternate' type='application/rss+xml' title='ryanblog' href={`${site.siteUrl}${site.rss}`} >
 
   <!-- for twitter -->
   <meta name='twitter:site' content={site.siteUrl} />
