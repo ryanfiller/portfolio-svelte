@@ -1,0 +1,15 @@
+<script>
+  import ColorSchemeToggle from '../../../../../components/layout/color-scheme-toggle.svelte'
+</script>
+
+<style>
+  .color-scheme-toggle-demo {
+    display: flex;
+    justify-content: center;
+    font-size: 3em;
+  }
+</style>
+
+<div class='color-scheme-toggle-demo'>
+  <ColorSchemeToggle />
+</div>

@@ -16,8 +16,8 @@ describe('<ColorSchemeToggle /> component', () => {
       cy.visit('/')
     })
 
-    it('does not set a data attribute', () => {
-      cy.get('[data-user-color-scheme]').should('not.exist')
+    it('sets a data attribute', () => {
+      cy.get('[data-user-color-scheme]').should('exist')
     })
   })
 

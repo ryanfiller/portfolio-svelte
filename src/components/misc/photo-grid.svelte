@@ -44,6 +44,7 @@
     justify-content: center;
     align-items: center;
 
+    /* TODO this should be a utility class */
     --width: calc(100vw - (1 * var(--padding)));
     width: var(--width);
     position: relative;

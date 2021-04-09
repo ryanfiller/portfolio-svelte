@@ -1,69 +1,74 @@
 <script>
   import { onMount } from 'svelte'
   import { colorScheme } from '../../stores'
-  import { capitalize, getCustomProperty, setCustomProperty } from '../../helpers'
+  import { getCustomProperty, setCustomProperty } from '../../helpers'
   import Icon from '../../../static/images/site-assets/icons/sun-moon.svg'
 
   const LS_KEY = 'user-color-scheme'
   const DOM_ATTR = `data-${LS_KEY}`
   const CSS_PROP = LS_KEY
 
-  const getOpposite = (mode = 'dark') => mode === 'dark' ? 'light' : 'dark'
+  const getOpposite = mode => mode === 'dark' ? 'light' : 'dark'
 
   // need to explicitly pass quite a few things here so that SSR will understand this function correctly
-  const setPreference = (window, setCustomProperty, LS_KEY, DOM_ATTR, CSS_PROP, newPreference) => {
+  const setPreference = (newPreference, getCustomProperty, setCustomProperty, LS_KEY, DOM_ATTR, CSS_PROP) => {
     if (window) {
-      const preference = newPreference || window.localStorage.getItem(LS_KEY)
-      if (preference) {
-        document.documentElement.setAttribute(DOM_ATTR, preference)
-        setCustomProperty(CSS_PROP, preference)
-        window.localStorage.setItem(LS_KEY, preference)
+      if (newPreference) {
+        console.log('if', newPreference)
+        document.documentElement.setAttribute(DOM_ATTR, newPreference)
+        setCustomProperty(CSS_PROP, newPreference)
+        window.localStorage.setItem(LS_KEY, newPreference)
+      } else {
+        const OS = getCustomProperty(CSS_PROP)
+        document.documentElement.setAttribute(DOM_ATTR, OS)
+        setCustomProperty(CSS_PROP, OS)
       }
     }
   }
 
   let currentColorScheme
   let toggleColorScheme
-  let toggleText
   onMount(() => {
     currentColorScheme = getCustomProperty(CSS_PROP)
     $colorScheme = currentColorScheme
-    toggleText = getOpposite(currentColorScheme)
     
     toggleColorScheme = event => {
       event.preventDefault()
 
-      let existingUserPrefernece = window.localStorage.getItem(LS_KEY);
-      if (existingUserPrefernece === null) {
-        existingUserPrefernece = getOpposite(currentColorScheme)
-      } else {
-        existingUserPrefernece = getOpposite(existingUserPrefernece)
-      }
+      const currentPreference = window.localStorage.getItem(LS_KEY) || currentColorScheme
+      const newPreference = getOpposite(currentPreference)
 
-      setPreference(window, setCustomProperty, LS_KEY, DOM_ATTR, CSS_PROP, existingUserPrefernece)
-      $colorScheme = existingUserPrefernece
-      toggleText = getOpposite(existingUserPrefernece)
+      setPreference(newPreference, getCustomProperty, setCustomProperty, LS_KEY, DOM_ATTR, CSS_PROP)
+      $colorScheme = newPreference
     }
   })
 </script>
 
 <svelte:head>
   {@html `
+    <style>
+      :root {
+        --${CSS_PROP}: 'light';
+      }
+      
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --${CSS_PROP}: 'dark';
+        }
+      }
+    </style>
+
     <script>
-      const existingUserPrefernece = window.localStorage.getItem('${LS_KEY}')
-      const setPreference = ${setPreference.toString()}
-      const setCustomProperty = ${setCustomProperty.toString()}
-      setPreference(window, setCustomProperty, '${LS_KEY}', '${DOM_ATTR}', '${CSS_PROP}', existingUserPrefernece)
+      var existingUserPreference = window.localStorage.getItem('${LS_KEY}');
+      var setPreference = ${setPreference.toString()};
+      var getCustomProperty = ${getCustomProperty.toString()};
+      var setCustomProperty = ${setCustomProperty.toString()};
+      setPreference(existingUserPreference, getCustomProperty, setCustomProperty, '${LS_KEY}', '${DOM_ATTR}', '${CSS_PROP}');
     </script>
   `}
 </svelte:head>
 
 <style global type='text/scss'>
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --user-color-scheme: 'dark';
-    }
-  }
 
   .color-scheme-toggle-button {
     background: transparent;
@@ -72,15 +77,16 @@
     cursor: pointer;
     color: currentColor;
 
-    &:hover {
+    &:hover,
+    &:focus {
       background-color: transparent;
     }
 
     svg {
-      // height: var(--tapableSize);
-      height: 25px;
-      // width: var(--tapableSize);
-      width: 25px;
+      height: 1.5em;
+      /* height: var(--tapableSize); */
+      width: 1.5em;
+      /* width: var(--tapableSize); */
       transform: rotate(-90deg);
 
       * {
@@ -102,29 +108,29 @@
           stroke-width: 0;
         }
       }
+    }
+  }
 
-      &.light {
-        #main-shape {
-          transform: scale(1.25);
-        }
+  [style*='light'] .color-scheme-toggle-button {
+    #main-shape {
+      transform: scale(1.25);
+    }
 
-        #moon-mask {
-          transform: translate(-35%, 35%);
-        }
-      }
+    #moon-mask {
+      transform: translate(-35%, 35%);
+    }
+  }
 
-      &.dark {
-        #main-shape {
-          transform: scale(.75);
-        }
+  [style*='dark'] .color-scheme-toggle-button {
+    #main-shape {
+      transform: scale(.75);
+    }
 
-        #sun-rays {
-          transform: scale(1);
+    #sun-rays {
+      transform: scale(1);
 
-          line {
-            stroke-width: 10;
-          }
-        }
+      line {
+        stroke-width: 10;
       }
     }
   }
@@ -134,7 +140,7 @@
 <button
   class='needs-js color-scheme-toggle-button'
   on:click={toggleColorScheme}
-  title={`toggle ${toggleText} mode`}
+  title={`toggle ${getOpposite($colorScheme)} mode`}
 >
-  <Icon class={toggleText} />
+  <Icon />
 </button>

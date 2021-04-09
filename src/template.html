@@ -14,6 +14,9 @@
 		%sapper.head%
 	</head>
 	<body data-no-js>
+		<!-- this is an intentionally blocking script that runs when js is not disabled -->
+		<script>document.body.removeAttribute('data-no-js')</script>
+		
 		<div id='sapper'>%sapper.html%</div>
 		%sapper.scripts%
 	</body>

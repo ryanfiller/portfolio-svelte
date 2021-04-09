@@ -173,7 +173,7 @@ In addition to switching the `text` and `background` colors, I also picked brigh
 }
 ```
 
-I’ll cover this much more in part three, but it’s worth noting that media queries don’t increase [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity). To make sure these variables are overwritten you’ll want to put the `prefers-color-scheme: dark` rules lower in the cascade.
+I’ll cover this much more in [part three](/blog/building-a-color-scheme-toggle), but it’s worth noting that media queries don’t increase [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity). To make sure these variables are overwritten you’ll want to put the `prefers-color-scheme: dark` rules lower in the cascade.
 
 ## Other considerations for Dark Mode
 
