@@ -24,7 +24,7 @@ The first problem I uncovered is a limitation within the Svelte framework. I fou
 
 On my Gatsby blog I use [MDX](https://mdxjs.com/) to replace markdown elements with React components. Sapper has an equivalent tool, [MDsveX](https://mdsvex.com/). The configuration for both is similar — they need to import components and create an object that maps them to HTML elements.
 
-``` javascript
+```javascript
 // react
 import { H1, H2, H3, H4, H5, H6 } from "../markdown/headings/index.js"
 
@@ -90,7 +90,7 @@ export { H1, H2, H3, H4, H5, H6 }
 
 My directory structure looked like this.
 
-```text
+```
 └─ headings/
   ├─ heading.js // the generic component
   └─ index.js // export of composed h1-h6
@@ -157,7 +157,7 @@ Svelte components can be imported and exported using ES6 syntax, but only one co
 
 An index file that exports six headings is still possible, but the directory structure is a lot messier than with React.
 
-```text
+```
 └─ headings/
   ├─ h1.svelte // composed component
   ├─ h2.svelte

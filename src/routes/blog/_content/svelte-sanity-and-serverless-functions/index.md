@@ -680,7 +680,7 @@ Now that we have data and users can create or edit data, we need a way to send t
 
 Technically, anyone is able to hit the Sanity url endpoint and query data. There are ways to lock this down, but in my app I'm not too worried about it. However, I don't want just anybody to be able to _write_ to that endpoint, which means I need a `sanityClient` configured with an [authentication token](https://www.sanity.io/docs/http-auth). Tokens can be generated from the Sanity dashboard on [manage.sanity.io](https://manage.sanity.io), under Settings > API > CORS Origins.
 
-``` javascript
+```javascript
 const client = sanityClient({
   projectId: process.env.SANITY_ID,
   dataset: 'production',
@@ -744,7 +744,7 @@ The `returnDocuments: true` option in the configuration object is important beca
 
 To avoid exposing my token credentials in these functions, I used the [`dotenv`](https://www.npmjs.com/package/dotenv) package again. After this package is installed, its `config()` method needs to be called as soon as possible in the project, so I put it at the top of my `rollup.config.js` file.
 
-```js
+```javascript
 // rollup.config.js
 
 import dotenv from 'dotenv'

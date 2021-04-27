@@ -157,7 +157,7 @@ It is a [controversial opinion](https://css-tricks.com/use-target_blank/), but I
 
 The original AST tree for a `link` node looks roughly like this:
 
-```
+```javascript
 {
   type: 'link',
   title: 'string,
@@ -240,7 +240,7 @@ This plugin reads any [heading element](https://developer.mozilla.org/en-US/docs
 
 The original AST tree for a `heading` node looks roughly like this:
 
-```
+```javascript
 {
   type: 'heading',
   depth: number,
@@ -282,7 +282,6 @@ function headings() {
 }
 
 export default headings
-
 ```
 
 In order to wrap the original text element, the [...spread operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) can be used to create a new array filled with the data from the original `heading`. Then a new `children` array that contains a single `link` type node can be assigned to the `heading`. The new `link` node will have all the elements of the original heading.
@@ -323,7 +322,7 @@ In a [previous post](/blog/fighting-with-git-lfs#why-use-lfs) I explained how I 
 
 The original AST tree for a `image` node looks roughly like this:
 
-```
+```javascript
 {
   type: 'image',
   url: 'string',
@@ -523,13 +522,13 @@ Like `remark`, `rehype` only recognizes a handful of default `types`. Also like 
 
 The RegEx matcher I used looks like this:
 
-```
+```javascript
 new RegExp(/<iframe(.*)<\/iframe>/g)
 ```
 
 And the matching AST node looks roughly like this:
 
-```
+```javascript
 {
   type: 'raw',
   value: '<iframe>...</iframe>'
@@ -614,13 +613,13 @@ Since these plugins are just node functions, they have the ability to [`fetch`](
 
 For this particular plugin, I wanted to take the [Twitter provided HTML embed code](https://publish.twitter.com/?query=https%3A%2F%2Ftwitter.com%2Fryanfiller_%2Fstatus%2F1259280535421140998&widget=Tweet), strip off the `<script>` tag that would load the JavaScript from Twitter, and instead use `rehype` to format the HTML in a way I could style myself. I used the same strategy as matching `<iframe>` elements, but looked for `<blockquote>`s that had a class of `"twitter-tweet"`.
 
-```
+```javascript
 new RegExp(/<blockquote class="twitter-tweet">(.*)<\/blockquote>/)
 ```
 
 And the matching AST node looks roughly like this:
 
-```
+```javascript
 {
   type: 'raw',
   value: '<blockquote class="twitter-tweet">...</iframe>'

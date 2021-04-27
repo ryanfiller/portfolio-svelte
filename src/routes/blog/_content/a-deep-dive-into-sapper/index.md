@@ -199,7 +199,7 @@ This endpoint can then be fetched against in a module script to get data that ca
 
 Another added benefit of the module organization pattern is that images can be kept directly alongside Markdown content.
 
-```text
+```
 └─ blog/
   └─ post-name/
     ├─ index.md
