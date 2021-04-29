@@ -48,7 +48,7 @@ This is a direct extension of trying to move away from the "this has to be perfe
 
 Back to what I said about having close to 600 commits, that averages out to almost one commit per day for two years. That is way too much, especially when some of the commit messages look like this:
 
-```git
+```shell
 9ff2fce fix bad quotes
 a1e80cb cms is dumb sometimes
 5c2fb4d fix block quote

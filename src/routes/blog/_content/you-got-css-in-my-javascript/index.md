@@ -36,7 +36,7 @@ And to the point of having display logic already in your JSX files, why not go o
 
 In my project I have a config.js file that looks mostly like this:
 
-``` javascript
+```javascript
 module.exports = {
   breaks: {
     large: 1200,
@@ -48,7 +48,7 @@ module.exports = {
 
 I did some research around using [Redux](https://redux.js.org/) to track browser size as part of my site's overall state, but using Redux to store only a handful of thing seemed like overkill. Alternatively I settled on using [react-responsive](https://github.com/contra/react-responsive). This means that instead of having to render my mobile nav and hide it with `display: none`, I can just wrap it in a `<MediaQuery>` tag and not have it as part of the page until I need it.
 
-``` javascript
+```javascript
 <MediaQuery query={`(max-width: ${breaks.tablet}px)`}>
     <Navicon />
 </MediaQuery>
@@ -56,7 +56,7 @@ I did some research around using [Redux](https://redux.js.org/) to track browser
 
 Using this same configuration style, I was able to pull these values — as well as colors and fonts — directly into styles that lived right next to the markup for the component itself, and use the same SCSS shorthand I was used to.
 
-``` javascript
+```javascript
 const StyledSocials = styled.ul`
   .social {
     width: 1.75rem;
@@ -90,7 +90,7 @@ The first and most obvious frustration was debugging. The way Styled-Components 
 
 You <em>can</em> add your own classes, but if you're correctly leveraging the power of the scope and cascade you shouldn't be afraid to just style based on elements.
 
-``` javascript 
+```javascript 
 const Container = styled.div`  
   max-width: 40rem;
 
@@ -122,7 +122,7 @@ This is great and very readable while authoring code, but it makes debugging in 
 
 Another downside to the mental model required here is that even though these styles are written in javascript and use javascript syntax they still boil down to css using css syntax. This means using and understanding a lot of extraneous code just to compile the final product into a format that will work.
 
-``` scss
+```scss
 $tablet: 768px;
 
 @mixin tablet-break () {
@@ -140,7 +140,7 @@ $tablet: 768px;
 
 In order to replicate this relatively simple SCSS mixin (above) in Styled-Components we need to define a break size, write a function to scope styles to that breakpoint, and then call that function in a component.
 
-``` javascript
+```javascript
 export const breaks = {
   tablet: 768
 
@@ -177,7 +177,7 @@ Yes and no.
 
 One of the biggest reasons I've heard for switching to css-in-js is that it will solve the problem of globally scoped css. Is this really a problem though? It never has been for me. Proper use of [BEM](http://getbem.com/) makes it very easy to scope elements to their appropriate block. Even when not using the BEM syntax it's easy enough to wrap something in a top level class applied to the html body or a component.
 
-``` scss
+```scss
 .button {
   background: $orange;
 }
@@ -205,7 +205,7 @@ body.form-page {
 
 BEM aside, taking advantage of SCSS's native ampersand ability gives you just as much power as Styled-Componen'ts [theming functionality](https://www.styled-components.com/docs/advanced#theming).
 
-``` scss
+```scss
 .button {
   background: $orange;
 
@@ -217,7 +217,7 @@ BEM aside, taking advantage of SCSS's native ampersand ability gives you just as
 
 Not as many people know about [putting the ampersand <em>after</em> the nested selector in SCSS](https://css-tricks.com/the-sass-ampersand/#article-header-id-5), but this is a great way to add styles to components only when they are used on certain scenarios inside of other components. The above code will compile to the following CSS
 
-``` scss
+```scss
 .button {
   background: orange;
 }

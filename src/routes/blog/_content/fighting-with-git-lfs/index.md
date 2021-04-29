@@ -113,7 +113,7 @@ The good news is that once a file is stored in LFS, git is a little smarter than
 
 The BAD news is that once a regular image is in there... its in there, even after you've modified and commited a `.gitattributes` file that would have included it.
 
-```.gitattributes
+```
 static/images/** filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 src/content/**/*.png filter=lfs diff=lfs merge=lfs -text

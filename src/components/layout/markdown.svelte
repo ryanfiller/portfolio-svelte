@@ -102,6 +102,10 @@
     p *:last-child {
       margin-bottom: 0;
     }
+
+    hr {
+      margin: 5rem 0;
+    }
     
     // images
     // ...and other media I guess.
@@ -448,13 +452,16 @@
       overflow: auto;
     }
 
-    pre {
-      // TODO make a remark/rehype plugin for this, put a utility class on it
-      --width: calc(100vw - (2 * var(--padding)));
-      width: var(--width);
+    pre, code {
+      --codeBackgroundColor: var(--colorPrimary);
+      --codeBackgroundOpacity: .25;
+    }
+
+    /* for inline */
+    code {
       position: relative;
-      left: 50%;
-      margin-left: calc(-1 * var(--width) / 2);
+      padding: 0 .125em;
+      color: var(--colorText);
 
       &::after {
         content: '';
@@ -464,13 +471,19 @@
         right: 0;
         bottom: 0;
         left: 0;
-        background: var(--colorText);
-        opacity: 0.05;
         z-index: -1;
+        background-color : var(--codeBackgroundColor);
+        opacity: var(--codeBackgroundOpacity);
       }
     }
 
-    pre[class*='language-'] {
+    /* for blocks */
+    pre {
+      --width: calc(100vw - (2 * var(--padding))); /* TODO this should be a utility class */
+      width: var(--width);
+      position: relative;
+      left: 50%;
+      margin-left: calc(-1 * var(--width) / 2);
       white-space: pre;
       word-spacing: normal;
       word-break: normal;
@@ -479,85 +492,48 @@
       padding: var(--padding) 0;
       position: relative;
 
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: var(--codeBackgroundColor);
+        opacity: var(--codeBackgroundOpacity);
+        z-index: -2;
+      }
+
       * {
         font-size: 1.5rem !important;
       }
 
       code {
         display: block;
+        padding: 0;
         @include readable();
-        background: none;
-        line-height: 1.75;
-        color: var(--colorText);
+        /* this matters a LOT for the line highlight */
+        --line-highlight-color: var(--colorBackground);
+        --line-height: 1.5;
+        line-height: var(--line-height); 
+
+        &::after {
+          background-color: transparent;
+          background-image: var(--line-highlight);
+          opacity: 1;
+        }
       }
 
-      .token.punctuation {
-        color: var(--colorGrayLight);
-      }
-
-      .token.comment,
-      .token.prolog,
-      .token.cdata {
-        color: var(--colorBlueLight);
-        font-variation-settings: "MONO" 0, "CASL" 0.5, "wght" 360, "slnt" -15, "ital" 1;
-      }
-
-      .token.entity,
-      .token.symbol,
-      .token.url,
-      .token.regex,
-      .token.attr-value .punctuation:first-child {
-        color: var(--colorBlueDark);
-      }
-
-      .token.delimiter,
-      .token.keyword,
-      .token.selector,
-      .token.important,
-      .token.atrule,
-      .token.operator,
-      .token.attr-name,
-      .token.tag,
-      .token.tag .punctuation,
-      .token.doctype,
-      .token.builtin,
-      code.language-css .token.id,
-      code.language-css .token.selector > .token.class,
-      code.language-css .token.selector > .token.attribute,
-      code.language-css .token.selector > .token.pseudo-class,
-      code.language-css .token.selector > .token.pseudo-element {
-        color: var(--colorOrangeLight);
-      }
-
-      .token.function,
-      .token.boolean,
-      .token.property,
-      .token.constant,
-      .token.variable,
-      .token.number,
-      .token.deleted {
-        color: var(--colorOrangeDark);
-      }    
-
-      .token.string,
-      .token.char,
-      .token.attr-value,
-      .token.attr-value .punctuation,
-      .token.inserted,
-      .token.class-name {
-        color: var(--colorPurpleLight);
-      }
-
-      .token.url {
-        text-decoration: underline;
-      }
-
-      .token.bold {
-        font-weight: bold;
-      }
-
-      .token.italic {
-        font-style: italic;
+      code[data-language] {
+        &::before {
+          content: attr(data-language);
+          background: var(--pixelBorder);
+          font-size: .8em;
+          padding: .125em 1em;
+          float: right;
+          font-variation-settings: "MONO" 0, "CASL" 0.5, "wght" 360, "slnt" -15, "ital" 1;
+        }
       }
     }
   }

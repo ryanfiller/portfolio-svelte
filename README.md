@@ -6,19 +6,19 @@ This is my personal portfolio site and blog. It's way over engineered for just a
 
 Clone the repository
 
-``` shell
+```shell
 git clone git@github.com:ryanfiller/portfolio-svelte.git ryansite
 ```
 
 This site uses [git LFS](https://git-lfs.github.com/) to store images, so if you want those you'll also need to run
 
-``` shell
+```shell
 git lfs get
 ```
 
 Install dependencies
 
-``` shell
+```shell
 cd ryansite
 yarn install
 ```
@@ -29,7 +29,7 @@ This site is built using [Svelte](https://svelte.dev/) & [Sapper](https://sapper
 
 Navigate into this site’s directory and start it up.
 
-``` shell
+```shell
 npm run start
 ```
 
@@ -39,7 +39,7 @@ The site is now running at `http://localhost:3000`!
 
 This site uses [Cypress](https://www.cypress.io/) with several accessibility extensions. To run basic tests
 
-``` shell
+```shell
 npm run test
 ```
 

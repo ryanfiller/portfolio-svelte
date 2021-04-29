@@ -141,14 +141,14 @@ One thing that `search params` _don't_ do well is handle special characters. Sin
 <Tabs name='encodeURI'>
   <Tab title='decoded'>
 
-  ```text
+  ```
   abc 123 #&? ABC {}[]"
   ```
 
   </Tab>
   <Tab title='encoded'>
 
-  ```text
+  ```
   abc%20123%20#&?%20ABC%20%7B%7D%5B%5D%22
   ```
 
@@ -164,14 +164,14 @@ Notice that space characters were replaced with `%20` and other symbols like bra
 <Tabs name='encodeURIComponent'>
   <Tab title='decoded'>
 
-  ```text
+  ```
   abc 123 #&? ABC {}[]"
   ```
 
   </Tab>
   <Tab title='encoded'>
 
-  ```text
+  ```
   abc%20123%20%23%26%3F%20ABC%20%7B%7D%5B%5D%22
   ```
 
@@ -209,7 +209,7 @@ function paramsToObject(paramString) {
 <Tabs name='URLSearchParams'>
   <Tab title='decoded'>
 
-  ```text
+  ```
   {
     title: 'post title',
     categories: ['array', 'of', 'categories'].join(','),
@@ -223,7 +223,7 @@ function paramsToObject(paramString) {
   </Tab>
   <Tab title='encoded'>
 
-  ```text
+  ```
   title=post+title&categories=array%2Cof%2Ccategories&tags=array%2Cof%2Ctags&imageSrc=image+source&imageCredit=attribution&url=post+url
   ```
 
@@ -356,7 +356,7 @@ If successful, `cloudinary.uploader.upload` will return the URL to which the ima
 
 The last thing to do is make to sure the final Cloudinary URL makes it to the browser. To do this, I used a [`308` Permanent Redirect](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/308) in the response header returned from the function. This means that when a user visits the URL for the Netlify Function the process will run and automatically redirect them to either the existing or newly generated Cloudinary URL. The `308` redirect should also help SEO crawlers handle this link correctly.
 
-``` javascript
+```javascript
 const forwardResponse = imageUrl => {
   return {
     statusCode: 308, // Permanent Redirect

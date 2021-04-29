@@ -69,7 +69,7 @@ A trick I learned in design school is to find an image with a vibe you like and 
 
 > Good artists borrow, great artists steal.
 > ***
-> ~~Pablo Picasso~~ <br/> Ryan Filler
+> ~~Pablo Picasso~~ <br /> Ryan Filler
 
 (_Really I just wanted to make this joke, but the [actual history of this quote](https://www.uvu.edu/arts/applause/posts/stealing.html) was too ironic not to also share._)
 

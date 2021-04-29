@@ -4,7 +4,11 @@
 
     ul {
       margin-left: 0;
-      padding-left: 2em;
+      padding-left: 2rem;
+
+      pre > code {
+        padding-left: calc(var(--padding) + 2rem) !important;
+      }
     
       & > li {
         list-style: none;
@@ -32,15 +36,15 @@
           transform: translateX(calc(-1.5 * var(--iconSize)));
         }
     
-        &:nth-child(1):before {
+        &.react:before {
           background-image: url('/images/react-logo.svg');
         }
     
-        &:nth-child(2):before {
+        &.svelte:before {
           background-image: url('/images/svelte-logo.svg');
         }
     
-        &:nth-child(3):before {
+        &.vue:before {
           background-image: url('/images/vue-logo.svg');
         }
       }
@@ -49,5 +53,7 @@
 </style>
 
 <section class='framework-list'>
-  <slot />
+  <ul>
+    <slot />
+  </ul>
 </section>

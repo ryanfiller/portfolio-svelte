@@ -69,7 +69,7 @@ A modular grid is created by combining a baseline grid (vertical lines running h
 
 The power that CSS Grid has over traditional print is firstly fluidity. The browser viewport can be divided into equal columns with gutters between them, and these columns will automatically adjust to a percentage of the browser width as it changes. Since font size _probably_ isn't changing until set breakpoints, the columns can even be resized dynamically with the gutters between them staying relative to overall font size.
 
-``` css
+```css
 body {
   font-size: 12px;
 }
@@ -96,7 +96,7 @@ Because of this, even though the math seems like a 1rem repeating vertical grid 
 
 It seems like it would make sense to compensate for this using some math.
 
-``` css
+```css
 text {
   position: relative;
   top: (line-height - font-size) / 2;
