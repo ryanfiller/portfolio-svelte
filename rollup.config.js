@@ -39,10 +39,19 @@ if (process.env.CONTEXT !== 'production') {
 }
 
 const envVars = {
-	'process.env.NODE_ENV': JSON.stringify(mode),
-	'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
-	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
-	exclude: 'src/routes/**/*.md'
+	values: {
+		'process.env.NODE_ENV': JSON.stringify(mode),
+		'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
+		'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
+	},
+	// whyyyyy doesn't this work
+	// exclude: [
+	// 	'src/**/*.md'
+	// ],
+	include: [
+		'src/**/*.svelte',
+		'src/**/*.js',
+	]
 }
 
 const dynamicImportVarsOptions = {
