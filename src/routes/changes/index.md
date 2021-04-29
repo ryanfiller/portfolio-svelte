@@ -13,6 +13,35 @@ banner:
 
 <Change>
 
+## RF-05-05.5 - "Core Block"
+
+Change some internals
+
+[refactor/code-highlighting](https://github.com/ryanfiller/portfolio-svelte/pull/36) - Replace `Prism` with a `remark` plugin.
+
+[[details | Version Details]]
+| - Features
+|   - lose `mdsvex` `Prism` highlighting in favor of using `remark` to highlight specific lines
+|
+| - Components
+|   - Layout
+|     - ≈ `<Markdown />`
+|
+| - Plugins
+|   - remark
+|     - \+ `code`
+|
+| - Tests
+|   - Markdown
+|     - \+ `code`
+|
+| - Config
+|   - ≈ `rollup.config.js`
+
+</Change>
+
+<Change>
+
 ## RF-05-05 - "Hazel"
 
 Performance Updates and Refactors

@@ -56,40 +56,45 @@ title: 'Style Guide'
 
 <div id="code">
 
-  This is an `inline code sample`.
+This is an `inline code sample`.
 
-  This is a code block using [`prismjs`](https://prismjs.com/):
+These are line highlighted code blocks:
 
-  ```html
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>This is a title</title>
-    </head>
-    <body>
-      <div>
-          <p>Hello world!</p>
-      </div>
-    </body>
-  </html>
-  ```
+```html {1, 3-5, 11}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>This is a title</title>
+  </head>
+  <body>
+    <div>
+        <p>Hello world!</p>
+    </div>
 
-  ```css
-  h1 {
-    color: blue;
+    <!-- other markup goes here -->
+  </body>
+</html>
+```
+
+```css {2,3}
+h1 {
+  /* purple is my favorite color! */
+  color: purple;
+}
+```
+
+```javascript {3, 10}
+function factorial(n) {
+  if (n === 0) {
+    return 1; // 0! = 1
   }
-  ```
 
-  ```javascript
-  function factorial(n) {
-    if (n === 0)
-        return 1; // 0! = 1
+  return n * factorial(n - 1);
+}
 
-    return n * factorial(n - 1);
-  }
-
-  factorial(3); // returns 6
-  ```
+// returns 6
+factorial(3);
+```
 
 </div>
 

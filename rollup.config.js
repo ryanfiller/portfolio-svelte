@@ -19,6 +19,7 @@ import remarkCustomBlocks from 'remark-custom-blocks'
 
 // custom plugins
 import blockquote from './plugins/remark/blockquote'
+import code from './plugins/remark/code'
 import headings from './plugins/remark/headings'
 import images from './plugins/remark/images'
 import links from './plugins/remark/links'
@@ -56,6 +57,7 @@ const preprocess = [
 			lab: 'src/layouts/lab.svelte',
 			_: 'src/layouts/markdown.svelte',
 		},
+		highlight: false, // use remark plugin instead
 		remarkPlugins: [
 			[attr, { scope: 'every' }],
 			[remarkCustomBlocks, {
@@ -69,6 +71,7 @@ const preprocess = [
 				}
 			}],
 			blockquote,
+			code,
 			headings,
 			images,
 			links,
