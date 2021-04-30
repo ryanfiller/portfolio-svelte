@@ -502,7 +502,7 @@
       }
 
       code {
-        --tag-size: calc(2rem +( 2 * var(--borderWidth)));
+        --tag-size: calc(2rem + (2 * var(--borderWidth)));
         display: block;
         padding: var(--tag-size) 0;
         @include readable();
