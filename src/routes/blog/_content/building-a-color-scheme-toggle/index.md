@@ -397,7 +397,7 @@ The selector `[style*='...']` is using a [matcher](https://developer.mozilla.org
 
 The final code for the entire component should look something like [this](https://github.com/ryanfiller/snippets/blob/main/color-scheme-toggle-demo.svelte).
 
-The actual code as it exists on my site is a bit more abstracted, but you can find the `data-no-js` functionality in my [`template.html` file](https://github.com/ryanfiller/portfolio-svelte/blob/18c3def5f450158dd36834506263e8fd6ed0f169/src/template.html), the setting of my CSS variables from JSON in my [`styles.svelte` file](https://github.com/ryanfiller/portfolio-svelte/blob/18c3def5f450158dd36834506263e8fd6ed0f169/src/components/layout/styles.svelte), the rest of the theme and button logic in the [component file](https://github.com/ryanfiller/portfolio-svelte/blob/18c3def5f450158dd36834506263e8fd6ed0f169/src/components/layout/color-scheme-toggle.svelte).
+The actual code as it exists on my site is a bit more abstracted, but you can find the `data-no-js` functionality in my [`template.html` file](https://github.com/ryanfiller/portfolio-svelte/blob/8fd00f52b10f7a1a1f17dfffcc8cd962c0ca04ae/src/template.html), the setting of my CSS variables from JSON in my [`styles.svelte` file](https://github.com/ryanfiller/portfolio-svelte/blob/8fd00f52b10f7a1a1f17dfffcc8cd962c0ca04ae/src/components/layout/styles.svelte), the rest of the theme and button logic in the [component file](https://github.com/ryanfiller/portfolio-svelte/blob/8fd00f52b10f7a1a1f17dfffcc8cd962c0ca04ae/src/components/layout/color-scheme-toggle.svelte).
 
 As always, reach out on [Twitter](https://twitter.com/ryanfiller_) or [GitHub](https://github.com/ryanfiller/) with any questions, comments, or concerns. Happy theming!
 
