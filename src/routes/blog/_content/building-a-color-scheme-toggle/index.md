@@ -17,7 +17,7 @@ meta:
     - javascript
     - ui
   excerpt: >-
-    This one is going to be able building the toggle.
+    How to build a system that will read, set, and save a user's preferred color scheme.
 ---
 
 <script>
