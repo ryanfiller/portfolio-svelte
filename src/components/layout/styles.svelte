@@ -20,7 +20,6 @@
 
 <svelte:head>
   <meta name='color-scheme' content='dark light'>
-  <!-- TODO need some sort of function/mixin for this... -->
   {@html `
     <style>
       :root {
@@ -40,29 +39,6 @@
       }
     </style>
   `}
-
-  <!-- preload fonts for performance reasons -->
-  <!-- <link
-    rel='preload'
-    as='font'
-    crossorigin='anonymous'
-    href={'/fonts/LabDJR-VF.woff'}
-    type='font/woff'
-  />
-  <link
-    rel='preload'
-    as='font'
-    crossorigin='anonymous'
-    href={'/fonts/Barlow.woff2'}
-    type='font/woff2'
-  />
-  <link
-    rel='preload'
-    as='font'
-    crossorigin='anonymous'
-    href={'/fonts/Recursive.woff2'}
-    type='font/woff2'
-  /> -->
 </svelte:head>
 
 <style global type='text/scss'>

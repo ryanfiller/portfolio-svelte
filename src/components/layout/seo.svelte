@@ -60,7 +60,7 @@
       imageCredit: banner.attribution ? banner.attribution : '',
       url: pageUrl.replace('https://www.', '')
     })
-    // local && console.log('imageFunctionUrl', `${host}/.netlify/functions/generate-image?${imageParams}`)
+    local && console.log('imageFunctionUrl', `${host}/.netlify/functions/generate-image?${imageParams}`)
     socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify(title)}.png`
   }
 </script>

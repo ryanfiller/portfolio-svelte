@@ -57,7 +57,7 @@
     width: 100%;
     overflow-x: auto;
 
-    // TODO this style sucks, fix is with grid at some point
+    /* TODO this should be a utility class */
     --width: calc(100vw - (2 * var(--padding)));
     width: var(--width);
     position: relative;

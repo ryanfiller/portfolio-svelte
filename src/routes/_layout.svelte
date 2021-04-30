@@ -61,9 +61,6 @@
   <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
 </svelte:head>
 
-<!-- this is an intentionally blocking script that runs when js is not disabled -->
-{@html ` <script>document.body.removeAttribute('data-no-js')</script> `}
-
 <Styles />
 
 <div

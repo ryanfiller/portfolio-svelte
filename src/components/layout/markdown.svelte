@@ -455,13 +455,6 @@
     pre, code {
       --codeBackgroundColor: var(--colorPrimary);
       --codeBackgroundOpacity: .25;
-    }
-
-    /* for inline */
-    code {
-      position: relative;
-      padding: 0 .125em;
-      color: var(--colorText);
 
       &::after {
         content: '';
@@ -471,6 +464,16 @@
         right: 0;
         bottom: 0;
         left: 0;
+      }
+    }
+
+    /* for inline */
+    code {
+      position: relative;
+      padding: 0 .125em;
+      color: var(--colorText);
+
+      &::after {
         z-index: -1;
         background-color : var(--codeBackgroundColor);
         opacity: var(--codeBackgroundOpacity);
@@ -489,36 +492,29 @@
       word-break: normal;
       tab-size: 4;
       hyphens: none;
-      padding: var(--padding) 0;
+      padding: 0;
       position: relative;
 
       &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: var(--codeBackgroundColor);
+        background-color: var(--codeBackgroundColor);
         opacity: var(--codeBackgroundOpacity);
         z-index: -2;
       }
 
-      * {
-        font-size: 1.5rem !important;
-      }
-
       code {
+        --tag-size: calc(2rem + (2 * var(--borderWidth)));
         display: block;
-        padding: 0;
+        padding: var(--tag-size) 0;
         @include readable();
         /* this matters a LOT for the line highlight */
+        font-size: 1.5rem !important;
         --line-highlight-color: var(--colorBackground);
         --line-height: 1.5;
         line-height: var(--line-height); 
 
         &::after {
+          top: var(--tag-size);
+          bottom: var(--padding);
           background-color: transparent;
           background-image: var(--line-highlight);
           opacity: 1;
@@ -531,8 +527,10 @@
           background: var(--pixelBorder);
           font-size: .8em;
           padding: .125em 1em;
-          float: right;
           font-variation-settings: "MONO" 0, "CASL" 0.5, "wght" 360, "slnt" -15, "ital" 1;
+          position: absolute;
+          top: var(--borderWidth);
+          right: 0;
         }
       }
     }
