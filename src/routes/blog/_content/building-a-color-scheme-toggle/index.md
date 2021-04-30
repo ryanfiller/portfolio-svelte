@@ -92,7 +92,7 @@ This might all seem like a _lot_ of legwork just to set some color variables, bu
 
 ## Designing the Toggle
 
-Josh W Comeau has a [great post](https://www.joshwcomeau.com/react/dark-mode) about how he built The Peferct Dark Mode for his site. I thought the section about [requirements](https://www.joshwcomeau.com/react/dark-mode/#our-requirements) was especially helpful, and is the general plan I'm going to follow for my toggle. My goals were mostly the same as his, but I chose to tackle them in a different order:
+Josh W Comeau has a [great post](https://www.joshwcomeau.com/react/dark-mode) about how he built The Perfect Dark Mode for his site. I thought the section about [requirements](https://www.joshwcomeau.com/react/dark-mode/#our-requirements) was especially helpful, and is the general plan I'm going to follow for my toggle. My goals were mostly the same as his, but I chose to tackle them in a different order:
 
 1. The site should respect the user's Operating System preference if it is set and supported, if not it will default to light theme.
 2. The user should be able to click a button to toggle themes.

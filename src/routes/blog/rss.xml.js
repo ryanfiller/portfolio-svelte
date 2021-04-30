@@ -89,12 +89,12 @@ export async function get(req, res) {
                 : entities.encode(post.title)
               }
             </title>
-            <enclosure url="${siteUrl}/${post.banner.src}" length="0" type="image/png"></enclosure>
+            <enclosure url="${siteUrl}${post.banner.src}" length="0" type="image/png"></enclosure>
             <link>
-              ${siteUrl}/${post.slug}
+              ${siteUrl}${post.slug}
             </link>
             <guid>
-              ${siteUrl}/${post.slug}
+              ${siteUrl}${post.slug}
             </guid>
             <pubDate>
               ${new Date(post.meta.date).toUTCString()}
