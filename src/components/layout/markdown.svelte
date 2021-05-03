@@ -85,6 +85,7 @@
       }
     }
       
+    // lists
 
     ol li,
     ul li {
@@ -229,7 +230,9 @@
     }
     
     // blockquotes 
-    blockquote {
+    // ... and also a list
+    blockquote,
+    dl {
       margin: var(--padding) 0;
       padding: 0 var(--padding);
       border-left: calc(.5 * var(--padding)) solid var(--colorPrimary);
@@ -394,9 +397,11 @@
     }
     dl {
       margin: 0;
+      margin-bottom: var(--padding);
     }
     dd {
       margin-left: 1em;
+      margin-bottom: .5em;
     }
 
     // table

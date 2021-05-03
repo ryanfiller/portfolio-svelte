@@ -678,7 +678,7 @@ Once the correct `<input>` elements are rendered, the Svelte [`bind:` directive]
 
 Now that we have data and users can create or edit data, we need a way to send that new data back to Sanity. The [Sanity `client`](https://www.sanity.io/docs/js-client) can help here, with the `.create` and `.mutate` methods, but sending data requires a little more care than getting data.
 
-Technically, anyone is able to hit the Sanity url endpoint and query data. There are ways to lock this down, but in my app I'm not too worried about it. However, I don't want just anybody to be able to _write_ to that endpoint, which means I need a `sanityClient` configured with an [authentication token](https://www.sanity.io/docs/http-auth). Tokens can be generated from the Sanity dashboard on [manage.sanity.io](https://manage.sanity.io), under Settings > API > CORS Origins.
+Technically, anyone is able to hit the Sanity url endpoint and query data. There are ways to lock this down, but in my app I'm not too worried about it. However, I don't want just anybody to be able to _write_ to that endpoint, which means I need a `sanityClient` configured with an [authentication token](https://www.sanity.io/docs/http-auth). Tokens can be generated from the Sanity dashboard on [manage.sanity.io](https://manage.sanity.io), under `Settings > API > CORS Origins`.
 
 ```javascript
 const client = sanityClient({
@@ -751,9 +751,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 ```
 
-`process.env` values can be defined in a `.env` file locally (make sure to add this to your `.gitignore` and commit it!), and in the Settings > Deploys > Environment section of the Netlify dashboard. These values don't have to match in both places, but they do both need to be valid tokens.
+`process.env` values can be defined in a `.env` file locally (make sure to add this to your `.gitignore` and commit it!), and in the `Settings > Deploys > Environment` section of the Netlify dashboard. These values don't have to match in both places, but they do both need to be valid tokens.
 
-![Netlify dashboard, Settings  Deploys > Environment](/images/netlify-environment-dashboard.png){data-align="full"}
+![Netlify dashboard, Settings  `Deploys > Environment`](/images/netlify-environment-dashboard.png){data-align="full"}
 
 #### Sending Data
 

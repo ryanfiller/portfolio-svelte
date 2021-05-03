@@ -15,9 +15,9 @@ const twitter = () => async (tree) => {
       const user = value.match(/&mdash(.*)\)/)[0]
       const handle = user.match(/\((.*)\)/)[1]
       const name = user.match(/&mdash; (.*) \(/)[1]
-      const body = value.match(/<p.*">(.*)<\/p>&mdash;/)[1]
+      const body = value.match(/<p.*?">(.*)<\/p>&mdash;/)[1]
       const date = value.match(/<a.*>([A-Za-z]+ [0-9][0-9]?, [0-9][0-9][0-9][0-9])<\/a>/)[1]
-      const tweetLink = value.match(/<a href="(.*)">/)[1]
+      const tweetLink = value.match(/\(@.*\) <a href="(.*)">/)[1]
 
       const twitterUrl = 'https://twitter.com'
       const noJStwitterUrl = 'https://mobile.twitter.com'
