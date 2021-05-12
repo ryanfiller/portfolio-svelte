@@ -40,7 +40,6 @@ if (process.env.CONTEXT !== 'production') {
 
 const envVars = {
 	values: {
-		'process.env.PORT': JSON.stringify(process.env.PORT),
 		'process.env.NODE_ENV': JSON.stringify(mode),
 		'process.env.NETLIFY_URL': JSON.stringify(netlifyUrl),
 		'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
