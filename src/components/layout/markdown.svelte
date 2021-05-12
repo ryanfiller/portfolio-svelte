@@ -484,7 +484,6 @@
     pre {
       --width: calc(100vw - (2 * var(--padding))); /* TODO this should be a utility class */
       width: var(--width);
-      position: relative;
       left: 50%;
       margin-left: calc(-1 * var(--width) / 2);
       white-space: pre;

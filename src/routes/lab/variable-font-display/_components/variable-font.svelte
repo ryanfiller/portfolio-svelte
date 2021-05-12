@@ -1,5 +1,5 @@
 <style type='text/scss'>
-  @import '../../styles/functions.scss';
+  @import '../../../../styles/functions.scss';
 
   .variable-font {
     margin: var(--padding) 0;
@@ -127,7 +127,7 @@
 </style>
 
 <script>
-  import { slugify } from '../../helpers'
+  import { slugify } from '../../../../helpers'
 
   export let url = ''
   export let name = ''
