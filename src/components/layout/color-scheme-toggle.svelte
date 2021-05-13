@@ -14,7 +14,6 @@
   const setPreference = (newPreference, getCustomProperty, setCustomProperty, LS_KEY, DOM_ATTR, CSS_PROP) => {
     if (window) {
       if (newPreference) {
-        console.log('if', newPreference)
         document.documentElement.setAttribute(DOM_ATTR, newPreference)
         setCustomProperty(CSS_PROP, newPreference)
         window.localStorage.setItem(LS_KEY, newPreference)

@@ -17,7 +17,7 @@ url:
 
 <script>
   import { fonts } from '../../../styles.js'
-  import VariableFont from '../../../components/misc/variable-font.svelte'
+  import VariableFont from './_components/variable-font.svelte'
 </script>
 
 <VariableFont {...fonts['LabDJR']} />
