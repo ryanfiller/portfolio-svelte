@@ -15,7 +15,7 @@ export async function get(_req, res) {
     list[series.title] = series
   })
 
-	await fetch('http://localhost:3000/blog.json')
+	await fetch(`http://localhost:${process.env.PORT}/blog.json`)
     .then(response => response.json())
     // get only the posts that have series
     .then(posts => posts.filter(post => !!post.series && Object.keys(list).includes(post.series)))

@@ -186,11 +186,11 @@ exports.onCreateNode = ({ node, actions }) => {
 
 Now that one site is able to pull data directly from the other, I need a mechanism for that site to let the other one know that new content exists and a new build needs to be started. Luckily, Netlify has a very straightforward way to add [build hooks](https://docs.netlify.com/configure-builds/build-hooks/) to any site!
 
-This works by configuring two things. First, on the auto-deploying site, a new `build hook` needs to be added. This is a url that can be POSTed to that will notify Netlify to start a new build. It lives at Settings > Deploys > Build Hooks.
+This works by configuring two things. First, on the auto-deploying site, a new `build hook` needs to be added. This is a url that can be POSTed to that will notify Netlify to start a new build. It lives at `Settings > Deploys > Build Hooks`.
 
 ![Netlify incoming build hook configuration](/images/netlify-build-hook-incoming.png){data-align="full"}
 
-Once that url has been created, a matching Deploy Notification needs to be created on the original site. It lives at Settings > Deploys > Deploy Notifications.
+Once that url has been created, a matching Deploy Notification needs to be created on the original site. It lives at `Settings > Deploys > Deploy Notifications`.
 
 ![Netlify outgoing build hook configuration](/images/netlify-build-hook-outgoing.png){data-align="full"}
 
