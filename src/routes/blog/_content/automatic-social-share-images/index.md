@@ -22,16 +22,16 @@ meta:
 <script>
   import CardMarkup from './_card-markup.svelte'
   import { Tabs, Tab } from '../../../../components/misc/tabs/index.js'
-  import Alert from '../../../../components/misc/alert.svelte'
+  import Note from '../../../../components/misc/note.svelte'
 </script>
 
-<Alert title='Cloudinary Dev Jams!'>
+<Note title='Cloudinary Dev Jams!'>
 
 The awesome folks at [Cloudinary](https://cloudinary.com/) were kind enough to have me on their [Dev Jams](https://www.youtube.com/playlist?list=PL8dVGjLA2oMr09amgERARsZyrOz_sPvqw) podcast to talk through this post. Check it out!
 
 <iframe src='https://www.youtube.com/embed/-Si5o-R7KHY' title='Dev Jams #3' data-aspect-ratio="16/9"></iframe>
 
-</Alert>
+</Note>
 
 Every time I write a new blog post, I share it to Twitter. And, if I'm being honest, these tweets usually look pretty boring. Here's the tweet for last month's blog post.
 

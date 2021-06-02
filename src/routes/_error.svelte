@@ -123,7 +123,7 @@
 		background-color: var(--colorPrimary);
 		position: relative;
 		list-style: none;
-		border-radius: calc(6 * var(--pixelBorderWidth));
+		border-radius: var(--pixelBorderRadius);
 		display: flex;
 		flex-wrap: wrap;
 		grid-row: 4 / 5;
@@ -148,7 +148,7 @@
 
 	#content.error ul::after {
 		background: var(--steppedGradient);
-		border-radius: calc(6 * var(--pixelBorderWidth));
+		border-radius: var(--pixelBorderRadius);
 		z-index: 1;
 		opacity: .75;
 		mix-blend-mode: overlay;
@@ -175,8 +175,8 @@
 
 	#content.error ul li a:hover,
 	#content.error ul li a:focus {
-    transform: translate(var(--pixelBorderWidth), calc(-1 * var(--pixelBorderWidth)));
-    text-shadow: calc(-1 * var(--pixelBorderWidth)) var(--pixelBorderWidth) var(--colorBlack);
+    transform: translate(var(--borderWidth), calc(-1 * var(--borderWidth)));
+    text-shadow: calc(-1 * var(--borderWidth)) var(--borderWidth) var(--colorBlack);
 	}
 
 	#content.error ul li a::before {

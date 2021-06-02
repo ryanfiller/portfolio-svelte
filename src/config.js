@@ -33,10 +33,10 @@ export const mainNav = [
   // {
   //   name: 'portfolio',
   // },
-  // {
-  // 	name: 'r&d',
-  // 	url: 'lab'
-  // },
+  {
+  	name: 'r&d',
+  	url: 'lab'
+  },
   // {
   //   name: 'contact',
   //   url: '#contact'

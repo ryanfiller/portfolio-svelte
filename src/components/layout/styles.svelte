@@ -155,6 +155,8 @@
       /* outer corners */
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)))
     ;
+
+    --pixelBorderRadius: calc(6.25 * var(--borderWidth));
   }
 
   // -------------
@@ -197,6 +199,17 @@
   body[data-no-js] .needs-js {
 		display: none;
 	}
+
+  .screenreader {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
 
   .x {
     position: relative;
