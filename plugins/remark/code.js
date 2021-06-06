@@ -1,10 +1,16 @@
 import visit from 'unist-util-visit'
 
+// https://github.com/pngwn/MDsveX/blob/d0b8d4e824b9cbfef9343e2c73aeb6d2005df805/packages/mdsvex/src/transformers/index.ts#L573
+const escapeSvelte = (string) => (
+  string.replace(/[{}`]/g, (c) => ({ '{': '&#123;', '}': '&#125;', '`': '&#96;' }[c]))
+    .replace(/\\([trn])/g, '&#92;$1')
+)
+
 function transformer(ast) {
   visit(ast, 'code', visitor)
 
   function visitor(node) {
-    const { lang, meta, value} = node
+    const { lang, meta, value } = node
 
     let style = ''
     if (meta) {
@@ -47,6 +53,8 @@ function transformer(ast) {
         style: !style ?  null : style
       }
     }
+
+    node.value = escapeSvelte(value)
   }
 }
 

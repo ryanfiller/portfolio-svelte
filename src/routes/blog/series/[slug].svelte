@@ -1,10 +1,17 @@
 <script context='module'>
-	export function preload({ params, query }) {
-		return this.fetch(`/blog/series/${params.slug}.json`)
-		.then(response => response.json())
-		.then(series => {
-      return { series }
-    })
+	export async function load({ page, fetch }) {
+		const { params: { slug } } = page
+
+		return await fetch(`/blog/series.json`)
+			.then(response => response.json())
+			.then(allSeries => {
+				const series = allSeries.filter(series => series.slug === `/blog/series/${slug}`)[0]
+				return { props: { series } }
+			})
+			.catch(error => {
+				console.log('blog series page', error)
+				return null
+			})
 	}
 </script>
 

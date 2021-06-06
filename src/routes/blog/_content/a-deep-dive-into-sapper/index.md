@@ -317,7 +317,7 @@ export function get(req, res) {
 }
 ```
 
-Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/rss.xml) was similar to building the RSS feed. Rather than query the endpoint containing the posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to build an array of everything inside of the `src/routes`  directory. Because I was using the post/index organization and also didn't want my images included in the sitemap I excluded those files, as well as any files starting with `_`.
+Creating a sitemap that would live at [`/sitemap.xml`](https://sapper-goals.netlify.app/goals/sitemap.xml) was similar to building the RSS feed. Rather than query the endpoint containing the posts, I used [`fs.readdirSync`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options) again to build an array of everything inside of the `src/routes`  directory. Because I was using the post/index organization and also didn't want my images included in the sitemap I excluded those files, as well as any files starting with `_`.
 
 That array could then be looped through to build another XML tree.
 

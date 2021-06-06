@@ -1,6 +1,6 @@
 describe('remark videos', () => {
   beforeEach(() => {
-    cy.visit('/styles')
+    cy.visit('/styles', { timeout: 15000 })
     cy.get('#videos').scrollIntoView()
     cy.injectAxe()
   })

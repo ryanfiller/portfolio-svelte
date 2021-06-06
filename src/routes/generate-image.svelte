@@ -3,8 +3,7 @@
   import { paramsToObject } from '../helpers'
   import TagList from '../components/content/tag-list.svelte'
 
-  import { stores } from '@sapper/app'
-  const { page } = stores()
+  import { page } from '$app/stores'
 
   $: ({
     title = '',

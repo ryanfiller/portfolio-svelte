@@ -1,8 +1,4 @@
 describe('<Banner /> component', () => {  
-  beforeEach(() => {
-    cy.visit('/')
-  })
-
   it('does not render a banner on the homepage', () => {
     cy.get('.banner').should('not.exist')
   })
@@ -36,7 +32,9 @@ describe('<Banner /> component', () => {
   context('/blog subpages', () => {  
     beforeEach(() => {
       cy.visit('/blog')
-      cy.get('.post-preview').eq(0).find('a').eq(0).click()
+      cy.get('.post-preview').eq(0).find('a').eq(0)
+        .should('have.attr', 'href')
+        .then((href) => cy.visit(href))
       cy.injectAxe()
     })
 
@@ -55,11 +53,15 @@ describe('<Banner /> component', () => {
   context('/lab subpages', () => {  
     beforeEach(() => {
       cy.visit('/lab')
-      cy.get('.post-preview').eq(0).find('a').eq(0).click()
+      cy.get('.post-preview').eq(0).find('a').eq(0)
+        .should('have.attr', 'href')
+        .then((href) => cy.visit(href))
       cy.injectAxe()
     })
 
     it('renders the correct elements', () => {
+      cy.closeAlert()
+
       cy.get('.banner[data-segment="lab"]').should('exist')
       // cy.get('figure.banner-image').should('exist')
       cy.get('.banner').within(() => {

@@ -1,8 +1,21 @@
+<script context='module'>
+	export function load({ error, status }) {
+		return {
+			props: { error, status }
+		}
+	}
+</script>
+
 <script>
 	export let status
 	export let error
-	const dev = process.env.NODE_ENV === 'development'
 	import { site } from '../config'
+
+	import { dev } from '$app/env'
+
+	if (dev) {
+		console.log(error)
+	}
 
 	import Page from '../layouts/page.svelte'
 
@@ -117,6 +130,10 @@
 		display: inline-block;
 	}
 
+	#content.error pre {
+		white-space: pre-line;
+	}
+
 	#content.error ul {
 		margin: 0;
 		padding: var(--padding);
@@ -224,10 +241,8 @@
 		z-index: 10;
 		font-family: var(--mono);
 	}
-
 </style>
 
-<!-- TODO move this into seo.svelte with 0.28 update -->
 <svelte:head>
 	<title>Error {status} | {site.title}</title>
 </svelte:head>
@@ -243,7 +258,6 @@
 					{error.message}
 				</span>
 			</h1>
-
 			{#if dev && error.stack}
 				<pre>{error.stack}</pre>
 			{/if}
@@ -254,7 +268,7 @@
 				<a href='/'>Go home</a>
 			</li>
 			<li>
-				<a href='_' on:click={() => history.back()}>Go back</a>
+				<a href='javascript:void(0)' on:click={() => history.back()}>Go back</a>
 			</li>
 			<li>
 				<a href='/blog'>Read some blogs</a>

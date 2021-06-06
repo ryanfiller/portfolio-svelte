@@ -1,8 +1,6 @@
 <script>
   export let tags = []
   export let categories = []
-
-  import { format } from 'date-fns'
 </script>
 
 <style global type='text/scss'>

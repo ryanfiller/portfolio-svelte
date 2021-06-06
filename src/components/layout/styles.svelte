@@ -21,7 +21,7 @@
 <svelte:head>
   <meta name='color-scheme' content='dark light'>
   {@html `
-    <style>
+    <${'style'}>
       :root {
         ${setColors(colors)}
         ${setTheme(themes.light)}
@@ -37,7 +37,7 @@
       [data-user-color-scheme='dark'] {
         ${setTheme(themes.dark)}
       }
-    </style>
+    </${'style'}>
   `}
 </svelte:head>
 

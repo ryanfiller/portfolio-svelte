@@ -1,7 +1,7 @@
 ---
 title: You got CSS in my Javascript
 options:
-  published: true
+  published: false
 banner:
   src: '/images/css-in-js-reeses.jpg'
   alt: "Reese's Peanut Butter Cups"
@@ -116,7 +116,7 @@ const Image = () => (
 )
 ```
 
-<img src="/css-in-js-devtools.png" alt="dev tools screenshot" title="" data-align="right" data-small="" />
+![dev tools screenshot](/images/css-in-js-devtools.png){data-caption="this is a video" data-align="right"}
 
 This is great and very readable while authoring code, but it makes debugging in the browser very hard. I'm sure there are ways to set up sourcemaps, but by default there's no easy way to see where a style is declared in your project. It's easy enough to track down a top level bug since its probably obvious which component the style is coming from, but specificity is still a problem when components are nested. Rather than being self-documented in the browser with classnames, this required keeping the location of styles in mind while working. This is especially difficult when coming back to a project weeks or months later.
 

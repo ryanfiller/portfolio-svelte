@@ -1,6 +1,6 @@
 describe('remark headings', () => {
   beforeEach(() => {
-    cy.visit('/styles')
+    cy.visit('/styles', { timeout: 15000 })
     cy.get('#headings').scrollIntoView()
     cy.injectAxe()
   })

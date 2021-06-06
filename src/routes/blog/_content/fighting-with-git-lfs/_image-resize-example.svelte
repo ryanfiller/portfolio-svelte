@@ -37,5 +37,5 @@
     on:change={handleWidthChange}
   />
   <pre>{`<img src="image.jpg${params}" />`}</pre>
-  <img alt="dog placeholder, her name is Ollie" src={`/images/site-assets/_placeholder.jpg${params}`}/>
+  <img alt="dog placeholder, her name is Ollie" src={`/images/site-assets/placeholders/jpeg.jpg${params}`}/>
 </div>

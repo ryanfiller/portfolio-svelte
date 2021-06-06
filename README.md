@@ -23,9 +23,9 @@ cd ryansite
 yarn install
 ```
 
-## I like Sapper!
+## I like Svelte!
 
-This site is built using [Svelte](https://svelte.dev/) & [Sapper](https://sapper.svelte.dev/).
+This site is built using [Svelte](https://svelte.dev/) & [SvelteKit](https://kit.svelte.dev/).
 
 Navigate into this site’s directory and start it up.
 

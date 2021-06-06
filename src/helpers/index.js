@@ -1,6 +1,4 @@
-// commonjs syntax to use in node
-const queryHelpers = require('./query-param-helpers.js')
-const { objectToParams, paramsToObject } = queryHelpers
+import { objectToParams, paramsToObject } from './query-param-helpers.js'
 
 function capitalize(string) {
   if (typeof string !== 'string') return ''
@@ -38,12 +36,21 @@ function slugify(string) {
     .replace(/-+$/, '')         // Trim - from end of text
 }
 
-module.exports = {
+function xmlEncode(string) {
+  return string.replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+export {
   capitalize,
   fishAttr,
   getCustomProperty,
   setCustomProperty,
   slugify,
   objectToParams,
-  paramsToObject
+  paramsToObject,
+  xmlEncode
 }

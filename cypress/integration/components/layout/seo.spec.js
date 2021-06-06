@@ -50,8 +50,10 @@ describe('<SEO /> component', () => {
       .should('have.attr', 'href')
       .then((href) => cy.visit(href))
 
-      cy.title()
-        .should('eq', `${posts[random].title} | ryanfiller.com`)
+      cy.title().then(title => {
+        title.includes(`${posts[random].title} | ryanfiller.com`)
+      })
+
       cy.document().get('head meta[name="description"]')
         .should('have.attr', 'content', posts[random].excerpt)
 

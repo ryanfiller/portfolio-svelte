@@ -16,7 +16,7 @@ function paramsToObject(paramString) {
   return object
 }
 
-module.exports = {
+export {
   objectToParams,
   paramsToObject
 }

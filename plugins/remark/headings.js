@@ -1,7 +1,6 @@
 import visit from 'unist-util-visit'
-const toString = require('mdast-util-to-string')
-// relative to rollup.config.js for some reason?
-const { slugify } = require('./src/helpers')
+import toString from 'mdast-util-to-string'
+import { slugify } from '../../src/helpers/index.js'
 
 function transformer(ast) {
   visit(ast, 'heading', visitor)

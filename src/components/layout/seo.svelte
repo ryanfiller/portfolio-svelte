@@ -3,14 +3,12 @@
   export let series = ''
   export let meta = {}
   export let banner = {}
+  export let segment = ''
 
-  import { getContext } from 'svelte'
-  import { stores } from '@sapper/app'
-  const { page } = stores()
+  import { page } from '$app/stores'
+  import { dev } from '$app/env'
 
-  const segment = getContext('segment')
-  const local = process.env.NODE_ENV === 'development'
-  const host = local ? `http://${$page.host}` : `https://${$page.host}`
+  const host = dev ? `https://${$page.host}` : `http://${$page.host}`
   
   import { site } from '../../config.js'
   import { capitalize, objectToParams, paramsToObject, slugify } from '../../helpers'
@@ -60,7 +58,7 @@
       imageCredit: banner.attribution ? banner.attribution : '',
       url: pageUrl.replace('https://www.', '')
     })
-    local && console.log('imageFunctionUrl', `${host}/.netlify/functions/generate-image?${imageParams}`)
+    // dev && console.log('imageFunctionUrl', `${host}/.netlify/functions/generate-image?${imageParams}`)
     socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify(title)}.png`
   }
 </script>

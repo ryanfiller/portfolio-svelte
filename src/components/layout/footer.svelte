@@ -49,8 +49,8 @@
   <div class='footer__content'>
     <span>
       Built with
-      <a href='https://sapper.svelte.dev/' target='_blank' rel='noopener noreferrer'>
-        Sapper
+      <a href='https://kit.svelte.dev/' target='_blank' rel='noopener noreferrer'>
+        Svelte
       </a>
         and hosted on
       <a href='https://www.netlify.com/' target='_blank' rel='noopener noreferrer'>
