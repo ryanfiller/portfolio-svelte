@@ -3,11 +3,7 @@
 	import { colors } from '../styles.js'
 
 	import Styles from '../components/layout/styles.svelte'
-
-	// TODO this `segment` section needs work
-	// $page.error is introduced in sapper 0.28, but that introduced the double svelte:head bug
-	// https://github.com/sveltejs/svelte/issues/4308
-	// waiting on this issue to revolve, then revisit this
+	
 	import { stores } from '@sapper/app'
 	const { page } = stores()
 	export let segment
@@ -63,9 +59,4 @@
 
 <Styles />
 
-<div
-  id='site'
-  class={segment}
->
-	<slot />
-</div>
+<slot />

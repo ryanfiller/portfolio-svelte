@@ -8,6 +8,8 @@
   import Header from '../components/layout/header.svelte'
   import Banner from '../components/layout/banner.svelte'
   import Footer from '../components/layout/footer.svelte'
+
+  const alertActive = $$slots.alert
 </script>
 
 <style global>
@@ -49,21 +51,31 @@
 
 <SEO {segment} {...$$props} />
 
-<Header>
-  {#if !hideBanner}
-    <Banner {segment} {...$$props} />
-  {/if}
-</Header>
-
-<main
-  id='content'
+<div
+	tabindex={alertActive ? -1 : 0}
+  id='site'
   class={segment}
 >
-  <slot />
-</main>
+  <Header>
+    {#if !hideBanner}
+      <Banner {segment} {...$$props} />
+    {/if}
+  </Header>
 
-<!-- <aside id='sidebar'>
-  <slot name='sidebar' />
-</aside> -->
+  <main
+    id='content'
+    class={segment}
+  >
+    <slot />
+  </main>
 
-<Footer />
+  <!-- <aside id='sidebar'>
+    <slot name='sidebar' />
+  </aside> -->
+
+  <Footer />
+</div>
+
+{#if alertActive}
+  <slot name='alert' />
+{/if}

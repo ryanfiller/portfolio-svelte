@@ -7,11 +7,14 @@ title: 'Style Guide'
   import { colors } from '../styles.js'
   import ColorChart from '../components/misc/color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
+  import Note from '../components/misc/note.svelte'
+  let showNote = true
+  const closeNote = () => { showNote = false }
   import Alert from '../components/misc/alert.svelte'
+  let showAlert = false
+  const closeAlert = () => { showAlert = false }
   import PhotoGrid from '../components/misc/photo-grid.svelte'
 
-  let showAlert = true
-  const closeAlert = () => { showAlert = false }
 </script>
 
 <div id="colors">
@@ -174,14 +177,40 @@ factorial(3);
 
 ---
 
-<div id="alert">
+<div id="note">
+
+<Note
+  show={showNote}
+  close={closeNote}
+  title='We are under attack!'
+>
+  Your warriors have engaged the enemy!
+</Note>
+
+</div>
+
+---
+
+<div id="Alert">
+
+<button
+  on:click={() => showAlert = true}
+  style='width: 100%;'
+>
+  Show Alert?
+</button>
 
 <Alert
   show={showAlert}
   close={closeAlert}
-  title='We are under attack!'
+  title='This is an alert!'
 >
-  Your warriors have engaged the enemy!
+  Have you chosen to show the alert.
+  <svelte:fragment slot='actions'>
+    <button on:click={() => closeAlert()}>
+      Close Alert.
+    </button>
+  </svelte:fragment>
 </Alert>
 
 </div>

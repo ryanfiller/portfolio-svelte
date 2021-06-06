@@ -19,24 +19,57 @@ Change some internals
 
 [refactor/code-highlighting](https://github.com/ryanfiller/portfolio-svelte/pull/36) - Replace `Prism` with a `remark` plugin.
 
+[feature/lab-pop-up](https://github.com/ryanfiller/portfolio-svelte/pull/40) - Rename some components, add a warning to `/lab` pages
+
 [[details | Version Details]]
 | - Features
 |   - lose `mdsvex` `Prism` highlighting in favor of using `remark` to highlight specific lines
+|   - rename `<Alert>` -> `<Note>`, add new `<Alert>`
+|   - add `<Alert>` to `/lab` routes
+|   - add `focusTrap` action
+|   - add `user` store
+|   - move `#index` wrapper from `_layout.svelte` to `layouts/page.svelte`
+|
+| - Layouts
+|   - ≈ `page`
 |
 | - Components
 |   - Layout
 |     - ≈ `<Markdown />`
+|   - Misc
+|     - ≈ `<Alert />`=> `<Note />`
+|     - \+ `<Alert />`
+|
+| - Routes
+|   - ≈ `/lab/[page]`
 |
 | - Plugins
 |   - remark
 |     - \+ `code`
 |
+| - Actions
+|   - \+ `focusTrap`
+|
+| - Stores
+|   - \+ `user`
+|   - \+ `themes`
+|
 | - Tests
+|   - Misc
+|     - ≈ `<Alert />`=> `<Note />`
+|     - \+ `<Alert />`
 |   - Markdown
 |     - \+ `code`
+|   - Routes
+|     - \+ `/lab/[page]`
+|   - Commands
+|     - \+ `tab()`
 |
 | - Config
 |   - ≈ `rollup.config.js`
+|
+| - Packages
+|   - \+ cypress-plugin-tab
 
 </Change>
 

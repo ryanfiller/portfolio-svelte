@@ -286,7 +286,7 @@
         {@html output}
       </code>
     </pre>
-    {#if !!document}
+    {#if document}
       <button on:click={event => copyText(event)}>
         {copyButtonText}
       </button>

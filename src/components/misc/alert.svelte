@@ -1,79 +1,81 @@
 <script>
-  export let show = true
-  export let close = null
-  export let title = 'Hey!'
+  export let show
+  export let close
+  export let title
+
+  import Note from './note.svelte'
+  import focusTrap from '../../actions/focus-trap.js'
 </script>
 
-<style>
-  aside,
-  aside > header,
-  aside > header > button {
-    color: var(--colorHighlight);
-  }
-
-  aside {
-    padding: var(--padding);
-    background: var(--pixelBorder);
-    margin-top: var(--verticalSpacing);
-    margin-bottom: var(--verticalSpacing);
-  }
-
-  header {
-    margin: calc(-1 * var(--padding));
-    margin-bottom: var(--padding);
-    background: var(--pixelBorderFill);
-    box-shadow: inset 0 calc(-2 * var(--pixelSize)) currentColor;
-  }
-
-  header button {
-    background: var(--pixelBorderFill);
-  }
-
-  header button:hover {
-    color: var(--colorHighlight);
-  }
-
-  header {
+<style global type='text/scss'>
+  .alert {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    z-index: 5000;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+
+    .note {
+      width: 100%;
+      max-width: calc(var(--readableMax) - (4 * var(--padding)));
+
+      &::after {
+        color: var(--colorWhite);
+      }
+    }
+  
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: var(--colorBlack);
+      opacity: .5;
+      z-index: -1;
+    }
   }
 
-  header strong,
-  header span {
-    color: var(--colorWhite);
+  .alert-actions {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-
-  .alert__title {
-    font-size: 1.5em;
-    padding-left: var(--padding);
-  }
-
-  .alert__content {
-    color: var(--colorText);
-  }
-
 </style>
 
-{#if show}
-  <aside
-    class='alert'
-    role='note'
-  >
-    <header>
-      <strong class='alert__title'>
-        <!-- TODO this really ought to be a slot... -->
-        {title}
-      </strong>
-      {#if close}
-        <button on:click={close} title='close'>
-          <span class='x' />
-        </button>
-      {/if}
-    </header>
+<svelte:window on:keydown={(show && close) ? event => event.key === 'Escape' && close() : null}/>
 
-    <div class='alert__content'>
+{#if show}
+  <dialog
+    open
+    class='alert'
+    on:click={close ? event => event.target['tagName'] === 'DIALOG' && close() : null}
+    tabindex='-1'
+    use:focusTrap
+  >
+    <Note
+      title={title}
+      show={show}
+      close={close}
+    >
       <slot />
-    </div>
-  </aside>
+      {#if $$slots.actions}
+        <div class='alert-actions'>
+          <slot name='actions' />
+        </div>
+      {/if}
+    </Note>
+  </dialog>
 {/if}
