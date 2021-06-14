@@ -44,6 +44,7 @@
     margin: 0 auto;
     --s: 1rem;
     --g: var(--s);
+    --g: calc(.5 * var(--s));
     width: calc(7 * var(--s));
     height: calc(4 * var(--s));;
     display: grid;
