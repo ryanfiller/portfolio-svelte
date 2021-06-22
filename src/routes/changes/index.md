@@ -7,17 +7,6 @@ banner:
   attribution: 'Mobile Suit Gundam 0083: Stardust Memory, Sunrise / Bandai'
 ---
 
-|   - ≈ `/layout`
-|   - ≈ `/error`
-|   - ≈ `index.svelte`
-|   - \+ `/blog/series.json`
-|   - \+ `/blog/series[slug].json`
-|   - \+ `/blog/series[slug].svelte`
-|   - \- `/blog/[category]/rss.xml`
-|   - \+ `/blog/rss.xml`
-|   - `/blog/[slug]/index.md` -> `/blog/_content/[slug]/index.md`
-
-
 <script>
   import Change from './_change.svelte'
 </script>
