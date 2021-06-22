@@ -1,73 +1,125 @@
-import fs from 'fs'
-import path from 'path'
+//  ???
+//  TOOD refactor this entire file
 
-const unified = require('unified')
-const remarkParse = require('remark-parse')
-const remarkStringify = require('remark-stringify')
-const remarkFrontmatter = require('remark-frontmatter')
-const remarkExtractFrontmatter = require('remark-extract-frontmatter')
-const yaml = require('yaml').parse
-const remarkToRehype = require('remark-rehype')
-const rehypeStringify = require('rehype-stringify')
+// import path from 'path'
+// import { promises as fs } from 'fs'
 
-function isDir(path) {
-	try {
-		const stat = fs.lstatSync(path)
-		return stat.isDirectory()
-	} catch (e) { return false }
-}
+// import unified from 'unified'
+// import remarkParse from 'remark-parse'
+// import remarkStringify from 'remark-stringify'
+// import remarkFrontmatter from 'remark-frontmatter'
+// import remarkExtractFrontmatter from 'remark-extract-frontmatter'
+// import yaml from 'yaml'
+// import remarkToRehype from 'remark-rehype'
+// import rehypeStringify from 'rehype-stringify'
 
-const getPosts = ({
-	directory,
-	category,
-	returnBody = false,
-	slice = [0, undefined]
-}) => {
+// async function getPosts(files) {
+// 	async function isPost(path) {
+// 		let isDirectory = false
+// 		let hasIndex = false
 
-	if (!directory) { return }
+// 		isDirectory = await fs.stat(path).then(path => path.isDirectory())
 
-	const route = `src/routes/${directory}`
-	const posts = fs.readdirSync(route)
-		.filter(post => isDir(`${route}/${post}`) && post.charAt(0) !== '_' && post !== 'series')
-		.map(post => {
-			const file = fs.readFileSync(path.resolve(route, `${post}/index.md`), 'utf-8')
+// 		if (isDirectory) {
+// 			hasIndex = await fs.stat(`${path}/index.md`).then(path => path.isFile())
+// 		}
+		
+// 		if (isDirectory && hasIndex) {
+// 			return path
+// 		}
+// 	}
 
-			let frontmatter
-			let html
-			
-		unified()
-			.use(remarkParse)
-			.use(remarkFrontmatter, ['yaml'])
-			.use(remarkExtractFrontmatter, { yaml: yaml })
-			.use(remarkStringify)
-			.use(remarkToRehype)
-			.use(rehypeStringify)
-			.process(file, function (err, file) {
-				if (err) {
-					console.error('error getting page', err)
-				}
-				frontmatter = file.data,
-				html = !!returnBody ? file.contents : null
-			})
+//   const results = await Promise.all(files.map(async file => isPost(file)))
+//   return results.filter(Boolean)
+// }
 
-			return ({
-				...frontmatter,
-				// TODO remove _content from this helper method all together
-				slug: `/${directory.replace('/_content', '')}/${post}`,
-				html: html
-			})
-		})
-    // reverse chronological date sort
-		.filter(page => page.options.published)
-		// if category, do a filter, or else return them all
-		.filter(page => category ? page.meta.categories.includes(category) : page)
-		// TODO rethink if this should happen in the component or here, maybe make another arg?
-		.sort((a, b) => (a.meta.date < b.meta.date) ? 1 : -1)
+// function sortDates(a, b, direction) {
+// 	const getDate = date => Array.isArray(date)
+// 		? new Date(date[date.length - 1]) // its a range, get the oldest
+// 		: new Date(date) // its a string
 
-		// for pagination, defaults to 0-all
-		const [ start, end ] = slice
+// 	// default to NOT reverse
+// 	return direction === 'reverse'
+// 		? (getDate(a.meta.date) > getDate(b.meta.date) ? 1 : -1)
+// 		: (getDate(a.meta.date) < getDate(b.meta.date) ? 1 : -1)
+// }
 
-		return posts.slice(start, end)
-}
+// const getPages = async ({
+// 	directory,
+// 	category,
+// 	returnBody = false,
+// 	slice = [0, undefined]
+// }) => {
+// 	// const modules = import.meta.globEager(`./src/routes/${directory}/**/*.md`)
+// 	// const modules = import.meta.globEager(`./src/routes/blog/_content/*.md`)
+// 	// const modules = import.meta.globEager(`.src/**/*.md`)
+// 	console.log('directory', directory)
+// 	// const modules = import.meta.globEager(directory)
 
-export default getPosts
+// 	// console.log('modules', modules)
+
+// 	return {
+// 		// modules 
+// 	}
+// }
+
+// // const getPages = async ({
+// // 	directory,
+// // 	category,
+// // 	returnBody = false,
+// // 	slice = [0, undefined]
+// // }) => {
+
+// // 	if (!directory) { return }
+
+// // 	const filePath = `src/routes/${directory}`
+// // 	const files = await fs.readdir(filePath)
+
+// // 	let posts = await getPosts(files.map(file => `${filePath}/${file}`))
+
+// // 	posts = posts.map(async (post) => {
+// // 		const content = await fs.readFile(path.resolve(`${post}/index.md`), 'utf-8')
+
+// // 		let frontmatter
+// // 		let html
+		
+// // 		unified()
+// // 			.use(remarkParse)
+// // 			.use(remarkFrontmatter, ['yaml'])
+// // 			.use(remarkExtractFrontmatter, { yaml: yaml.parse })
+// // 			.use(remarkStringify)
+// // 			.use(remarkToRehype)
+// // 			.use(rehypeStringify)
+// // 			.process(content, function (err, content) {
+// // 				if (err) {
+// // 					console.error('error getting page', err)
+// // 				}
+// // 				frontmatter = content.data,
+// // 				html = !!returnBody ? content.contents : null
+// // 			})
+
+// // 			const processedPost = {
+// // 				...frontmatter,
+// // 			// TODO fix this replace business...
+// // 			slug: `/${post.replace('/_content', '').replace('src/routes/', '')}`,
+// // 			html: html
+// // 		}
+
+// // 		return processedPost
+// // 	})
+
+// // 	posts = await Promise.all(posts).then(posts => {
+// // 		return posts
+// // 			.filter(page => page.options.published)
+// // 			// if category, do a filter, or else return them all
+// // 			.filter(page => category ? page.meta.categories.includes(category) : page)
+// // 			.sort((a, b) => sortDates(a, b))
+// // 	})
+
+// // 	// for pagination, defaults to 0-all
+// // 	const [ start, end ] = slice
+
+// // 	return posts.slice(start, end)
+// // }
+
+// export default getPages

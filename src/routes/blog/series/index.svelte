@@ -1,9 +1,11 @@
 <script context='module'>
-	export function preload({ params, query }) {
-		return this.fetch(`/blog/series.json`)
+	export async function load({ fetch }) {
+		return await fetch(`/blog/series.json`)
 		.then(response => response.json())
 		.then(series => {
-      return { series }
+      return { 
+				props: { series } 
+			}
     })
 	}
 </script>

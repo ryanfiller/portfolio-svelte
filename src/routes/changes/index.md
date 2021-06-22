@@ -7,6 +7,17 @@ banner:
   attribution: 'Mobile Suit Gundam 0083: Stardust Memory, Sunrise / Bandai'
 ---
 
+|   - ≈ `/layout`
+|   - ≈ `/error`
+|   - ≈ `index.svelte`
+|   - \+ `/blog/series.json`
+|   - \+ `/blog/series[slug].json`
+|   - \+ `/blog/series[slug].svelte`
+|   - \- `/blog/[category]/rss.xml`
+|   - \+ `/blog/rss.xml`
+|   - `/blog/[slug]/index.md` -> `/blog/_content/[slug]/index.md`
+
+
 <script>
   import Change from './_change.svelte'
 </script>
@@ -21,6 +32,8 @@ Change some internals
 
 [feature/lab-pop-up](https://github.com/ryanfiller/portfolio-svelte/pull/40) - Rename some components, add a warning to `/lab` pages
 
+[refactor/sveltekit](https://github.com/ryanfiller/portfolio-svelte/pull/41) - Sapper -> SvelteKit
+
 [[details | Version Details]]
 | - Features
 |   - lose `mdsvex` `Prism` highlighting in favor of using `remark` to highlight specific lines
@@ -29,23 +42,66 @@ Change some internals
 |   - add `focusTrap` action
 |   - add `user` store
 |   - move `#index` wrapper from `_layout.svelte` to `layouts/page.svelte`
+|   - fix `npm audit` warnings
+|   - _finally_ refactor to SvelteKit at `1.0.0-next.113`, temporarily use @adpater-static to deploy
+|
+| - Content
+|   - ≈ README.md
 |
 | - Layouts
-|   - ≈ `page`
+|   - ≈ `<Page />`
 |
 | - Components
 |   - Layout
 |     - ≈ `<Markdown />`
+|     - ≈ `<ColorSchemeToggle />`
+|     - ≈ `<Footer />`
+|     - ≈ `<SEO />`
+|     - ≈ `<Styles />`
+|   - Content
+|     - ≈ `<Date />`
+|     - ≈ `<TagList />`
+|     - ≈ `<Form />`
 |   - Misc
 |     - ≈ `<Alert />`=> `<Note />`
 |     - \+ `<Alert />`
+|     - ≈ `<ColorChart />`
+|     - ≈ `<ColorStepper />`
 |
 | - Routes
-|   - ≈ `/lab/[page]`
+|   - ≈ `/`
+|   - ≈ `/lab`
+|   - ≈ `/lab/[slug]`
+|   - ≈ `/404` (`__error` and temporary page)
+|   - ≈ `/blog/[slug]`
+|   - ≈ `/blog`
+|   - ≈ `/blog/rss.xml`
+|   - ≈ `/blog/series/[slug]`
+|   - ≈ `/blog/series`
+|   - ≈ `/generate-image`
+|   - ≈ `/sitemap` (temporary disabled)
+|
+| - Endpoints
+|   - ≈ `/lab.json`
+|   - ≈ `/blog.json`
+|   - ≈ `blog/series.json`
+|   - \- `blog/series/[slug].json`
 |
 | - Plugins
 |   - remark
+|     - ≈ `blockquote`
 |     - \+ `code`
+|     - ≈ `headings`
+|     - ≈ `image`
+|     - ≈ `link`
+|     - ≈ `twitter`
+|   - rehype
+|     - ≈ `embed`
+|     - ≈ `video`
+|
+| - Helpers
+|   - ≈ `getPages()`
+|   - \+ `xmlEncode()`
 |
 | - Actions
 |   - \+ `focusTrap`
@@ -55,21 +111,55 @@ Change some internals
 |   - \+ `themes`
 |
 | - Tests
+|   - Components
+|     - Layout
+|       - ≈ `<Banners />`
+|       - ≈ `<ColorSchemeToggle />`
+|     - ≈ `<SEO />`
+|     - Blog
+|       - ≈ `<SeriesNavigator />`
 |   - Misc
 |     - ≈ `<Alert />`=> `<Note />`
 |     - \+ `<Alert />`
+|     - ≈ `<ColorStepper />`
+|     - ≈ `<PhotoGrid />`
+|     - ≈ `<VariableFont />`
 |   - Markdown
 |     - \+ `code`
+|     - ≈ `blockquote`
+|     - ≈ `headings`
+|     - ≈ `image`
+|     - ≈ `twitter`
+|     - ≈ `video`
 |   - Routes
 |     - \+ `/lab/[page]`
+|     - ≈ `/404`
+|     - ≈ `/generate-image`
+|     - ≈ `/rss`
 |   - Commands
 |     - \+ `tab()`
+|     - \+ `closeAlert()`
 |
 | - Config
-|   - ≈ `rollup.config.js`
+|   - \- `rollup.config.js`
+|   - \+ `svelte.config.js`
+|   - ≈ `netlify.toml`
+|   - ≈ `.gitignore`
 |
 | - Packages
 |   - \+ cypress-plugin-tab
+|   - \- compression
+|   - \- polka
+|   - \- sirv
+|   - \- date-fns
+|   - \- html-entities
+|   - \- rollup-plugin-svelte-svg
+|   - \- sapper
+|   - \+ @sveltejs/adapter-netlify
+|   - \+ @sveltejs/adapter-static
+|   - \+ @sveltejs/kit
+|   - \+ encoding
+|   - \+ vite
 
 </Change>
 

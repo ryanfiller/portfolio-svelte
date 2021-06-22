@@ -55,23 +55,26 @@ describe('<ColorSchemeToggle /> component', () => {
     })
   })
 
-  it('toggles the theme back and forth', () => {
+  it('toggles the theme back and forth', async () => {
     const getOpposite = (mode = 'dark') => mode === 'dark' ? 'light' : 'dark'
-    let originalTheme
-    let newTheme
-    cy.get('.color-scheme-toggle-button')
-      .then(button => {
-        originalTheme = button[0].title.match(/toggle (.+) mode/)[1]
-        button.click()
+    const getTheme = async () => {
+      let theme
+      await cy.get('.color-scheme-toggle-button')
+        .then(button => {
+          theme = button[0].title.match(/toggle (.+) mode/)[1]
+          console.log('theme?', theme)
       })
-      .then(button => {
-        newTheme = button[0].title.match(/toggle (.+) mode/)[1]
-        expect(newTheme).to.equal(getOpposite(originalTheme))
-        button.click()
-      })
-      .then(button => {
-        newTheme = button[0].title.match(/toggle (.+) mode/)[1]
-        expect(newTheme).to.equal(originalTheme)
-      })
+      return theme
+    }
+
+    const originalTheme = await getTheme()
+
+    cy.get('.color-scheme-toggle-button').click()
+    const newTheme = await getTheme()
+    expect(newTheme).to.equal(getOpposite(originalTheme))
+    
+    cy.get('.color-scheme-toggle-button').click()
+    const newerTheme = await getTheme()
+    expect(newerTheme).to.equal(originalTheme)
   })
 })

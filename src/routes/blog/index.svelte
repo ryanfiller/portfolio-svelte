@@ -1,10 +1,20 @@
 <script context='module'>
-	export function preload({ params, query }) {
-		return this.fetch(`/blog.json`)
-		.then(response => response.json())
-		.then(posts => {
-      return { posts }
-    })
+	export async function load({ fetch }) {
+		let error
+		const posts = await fetch(`/blog.json`)
+			.then(response => response.json())
+			.catch(response => error = response)
+
+		if (error) {
+			console.log('blog page', error)
+			return {
+				props: { error }
+			}
+		}
+
+		return {
+			props: { posts }
+		}
 	}
 </script>
 

@@ -2,10 +2,10 @@ describe('<Alert /> component', () => {
   beforeEach(() => {
     cy.visit('/styles')
     cy.get('#Alert').scrollIntoView()
-    cy.injectAxe()
     cy.get('#Alert').within(() => {
       cy.get('button').click()
     })
+    cy.injectAxe()
   })
   
   it('renders correctly', () => {

@@ -1,7 +1,7 @@
 <script>
-  import { getContext } from 'svelte'
+  import { page } from '$app/stores'
   // default to context, but overridable with prop // like the error page
-  export let segment = getContext('segment')
+  export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
   export let hideBanner = false
 
   import SEO from '../components/layout/seo.svelte'

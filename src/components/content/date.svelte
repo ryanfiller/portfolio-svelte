@@ -8,7 +8,7 @@
     return date
   }
 
-  import { format } from 'date-fns'
+  const format = date => date.toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
 </script>
 
 <style global type='text/scss'>

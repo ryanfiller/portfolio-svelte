@@ -1,10 +1,18 @@
 <script context='module'>
-	export function preload({ params, query }) {
-		return this.fetch(`/lab.json`)
-		.then(response => response.json())
-		.then(labs => {
-      return { labs }
-    })
+	export async function load({ fetch }) {
+		return await fetch(`/lab.json`)
+			.then(response => response.json())
+			.then(labs => {
+				return {
+					props: { labs }
+				}
+			})
+			.catch(error => {
+				console.log('lab page', error)
+				return {
+					props: { error }
+				}
+			})
 	}
 </script>
 
@@ -18,7 +26,7 @@
 
 <Page>
 	<List
-    content={labs}
-    component={PostPreview}
-  />
+		content={labs}
+		component={PostPreview}
+	/>
 </Page>

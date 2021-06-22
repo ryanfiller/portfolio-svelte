@@ -1,6 +1,6 @@
 describe('remark blockquote', () => {
   beforeEach(() => {
-    cy.visit('/styles')
+    cy.visit('/styles', { timeout: 15000 })
     cy.get('#blockquotes').scrollIntoView()
     cy.injectAxe()
   })

@@ -1,6 +1,5 @@
 import visit from 'unist-util-visit'
-// relative to rollup.config.js for some reason?
-const { fishAttr } = require('./src/helpers')
+import { fishAttr } from '../../src/helpers/index.js'
 
 function transformer(tree) {
   visit(tree, 'raw', visitor)

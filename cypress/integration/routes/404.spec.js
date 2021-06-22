@@ -13,7 +13,7 @@ describe('404 page', () => {
         .should('have.attr', 'href', '/')
       cy.get('li').eq(1).get('a')
         .contains('Go back')
-        .should('have.attr', 'href', '_')
+        .should('have.attr', 'href', 'javascript:void(0)')
       cy.get('li').eq(2).get('a')
         .contains('Read some blogs')
         .should('have.attr', 'href', '/blog')

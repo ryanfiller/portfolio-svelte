@@ -1,6 +1,6 @@
 describe('remark images', () => {
   beforeEach(() => {
-    cy.visit('/styles')
+    cy.visit('/styles', { timeout: 15000 })
     cy.injectAxe()
   })
 

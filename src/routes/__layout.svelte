@@ -1,38 +1,6 @@
 <script>
-	import { setContext } from 'svelte'
 	import { colors } from '../styles.js'
-
 	import Styles from '../components/layout/styles.svelte'
-	
-	import { stores } from '@sapper/app'
-	const { page } = stores()
-	export let segment
-	const getSegement = () => {
-		if ($page.error) {
-			return 'error'
-		} else if (!!segment) {
-			return segment
-		} else {
-			return 'homepage'
-		}
-	}
-	$: {
-		segment = getSegement()
-		setContext('segment', segment)
-	}
-
-	// temporary fix for broken #hash links, run it on every page
-	// https://github.com/sveltejs/sapper/issues/904#issuecomment-540536561
-	import { afterUpdate } from 'svelte'
-	afterUpdate(() => {
-		document.querySelectorAll('a').forEach(a => {
-			if (!a.hash || !document.querySelectorAll(a.hash).length) return
-			a.addEventListener('click', event => {
-				event.preventDefault()
-				window.location.hash = event.target.getAttribute('href')
-			})
-		})
-	})
 </script>
 
 <svelte:head>

@@ -43,3 +43,7 @@ Cypress.Commands.add("setResolution", (size) => {
 Cypress.Commands.add('setColorScheme', (theme) => {
   cy.get('html').then(html => html[0].setAttribute('data-user-color-scheme', theme))
 })
+
+Cypress.Commands.add('closeAlert', () => {
+  cy.get('dialog.alert', { timeout: 2000 }).find('button').eq(0).click()
+})

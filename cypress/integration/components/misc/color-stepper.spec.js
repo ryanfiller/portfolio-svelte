@@ -2,8 +2,9 @@ describe('<ColorStepper /> component', () => {
   
   beforeEach(() => {
     cy.visit('/lab/color-stepper')
-    cy.injectAxe()
+    cy.closeAlert()
     cy.get('.color-stepper').scrollIntoView()
+    cy.injectAxe()
   })
 
   it('renders the defaults', () => {

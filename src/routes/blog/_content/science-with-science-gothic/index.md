@@ -210,7 +210,7 @@ It would be nice if fonts could load instantaneously, and though that technicall
 
 Because the data has been transposed to text, it can now be downloaded as part of a the site's css (or js, if css-in-js is your thing) bundle. Just like with variable fonts themselves though, number of requests is only half the equation here. This will **greatly** increase the size of the overall bundle, and depending on the size of the font, probably isn't ever a good idea.
 
-![lighthouse score of page with base64 encoded font](/font-load-test-base64.png){data-align="full"}
+![lighthouse score of page with base64 encoded font](/images/font-load-test-base64.png){data-align="full"}
 
 To compare the data: 
 

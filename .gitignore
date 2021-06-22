@@ -50,6 +50,10 @@ functions-build
 /__sapper__/
 /src/node_modules/@sapper/
 
+# sveltekitstuff
+/.svelte-kit
+/build
+
 # ignore all the images sapper moves over, but not the ones I want to keep
 /static/images/*
 !/static/images/site-assets

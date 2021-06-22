@@ -45,7 +45,7 @@
 
 <svelte:head>
   {@html `
-    <style>
+    <${'style'}>
       :root {
         --${CSS_PROP}: 'light';
       }
@@ -55,7 +55,7 @@
           --${CSS_PROP}: 'dark';
         }
       }
-    </style>
+    </${'style'}>
 
     <script>
       var existingUserPreference = window.localStorage.getItem('${LS_KEY}');

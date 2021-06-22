@@ -1,6 +1,6 @@
 describe('rehype iframe', () => {
   beforeEach(() => {
-    cy.visit('/styles')
+    cy.visit('/styles', { timeout: 15000 })
     cy.get('#iframes').scrollIntoView()
     cy.injectAxe()
   })

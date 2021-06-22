@@ -1,18 +1,26 @@
 <script context='module'>
-  export async function preload({ params, query }) {
-		const posts = await this.fetch(`/blog.json`)
-		.then(response => response.json())
-		.then(posts => posts.filter(post => !post.series).slice(0, 3))
+  export async function load({ page, fetch }) {
+		const posts = await fetch(`/blog.json`)
+      .then(response => response.json())
+      .then(posts => posts.filter(post => !post.series).slice(0, 3))
+      .catch(error => console.log(page.path, error))
 		
-		const series = await this.fetch(`/blog/series.json`)
-		.then(response => response.json())
-		.then(series => series.slice(0, 3))
-		
-		return { posts, series }
+		const series = await fetch(`/blog/series.json`)
+      .then(response => response.json())
+      .then(series => series.slice(0, 3))
+      .catch(error => console.log(page.path, error))
+
+		return {
+      props: {
+        posts,
+        series
+      }
+    }
 	}
 </script>
 
 <script>
+  export let test
   export let posts
   export let series
 	
@@ -92,6 +100,6 @@
       }}
     />
   {/if}
-  
+
   <Form {...forms.contact} />
 </Page>

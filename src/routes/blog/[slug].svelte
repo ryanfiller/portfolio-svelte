@@ -1,11 +1,12 @@
 <script context='module'>
-  export async function preload(page) {
+  export async function load({ page, fetch }) {
 
     const { slug } = page.params
+    if (slug === 'rss.xml') return
 
     const component = await import(`./_content/${slug}/index.md`)
 
-    const series = await this.fetch(`/blog/series.json`)
+    const series = await fetch(`/blog/series.json`)
       .then(response => response.json())
       .then(allSeries => allSeries.find(series => {
         const postSlugs = series.posts.map(series => series.slug.replace('/blog/', ''))
@@ -13,11 +14,14 @@
           return series
         }
       }))
+      .catch(error => console.log(error))
 
     return {
-      page: component.default,
-      metadata: component.metadata,
-      series: series
+      props: {
+        page: component.default,
+        metadata: component.metadata,
+        series: series
+      }
     }
   }
 </script>

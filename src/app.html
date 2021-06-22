@@ -3,21 +3,13 @@
 	<head>
 		<meta charset='utf-8'>
 		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
-
-		%sapper.base%
-
-		<link rel='manifest' href='manifest.json' crossorigin='use-credentials'>
-		<link rel='icon' type='image/png' href='favicon.png'>
-
-		%sapper.styles%
-
-		%sapper.head%
+		<!-- <link rel='manifest' href='manifest.json' crossorigin='use-credentials'> -->
+		<!-- <link rel='icon' type='image/png' href='favicon.png'> -->
+		%svelte.head%
 	</head>
 	<body data-no-js>
 		<!-- this is an intentionally blocking script that runs when js is not disabled -->
 		<script>document.body.removeAttribute('data-no-js')</script>
-		
-		<div id='sapper'>%sapper.html%</div>
-		%sapper.scripts%
+		%svelte.body%
 	</body>
 </html>

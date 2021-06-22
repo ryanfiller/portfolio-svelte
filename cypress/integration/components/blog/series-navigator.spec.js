@@ -14,7 +14,9 @@ describe('<SeriesNavigator /> component', () => {
     beforeEach(() => {
       cy.visit('/blog/series')
       // navigate to the first post
-      cy.get('.post-preview-list').find('a').eq(0).click()
+      cy.get('.post-preview-list').find('a').eq(0)
+        .should('have.attr', 'href')
+        .then((href) => cy.visit(href))
       cy.injectAxe()
     })
 

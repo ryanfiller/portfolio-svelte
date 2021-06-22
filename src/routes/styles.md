@@ -146,7 +146,7 @@ factorial(3);
 <Tabs name='test-tabs'>
   <Tab title='Bulbasaur'>
 
-    ![#001 Bulbasaur](https://cdn.bulbagarden.net/upload/thumb/2/21/001Bulbasaur.png/250px-001Bulbasaur.png){data-small="true" data-align="left"}
+    ![#001 Bulbasaur](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png){data-small="true" data-align="left"}
 
     Bulbasaur (Japanese: フシギダネ Fushigidane) is a dual-type Grass/Poison Pokémon introduced in Generation I.
 
@@ -155,7 +155,7 @@ factorial(3);
   </Tab>
   <Tab title='Charmander'>
 
-    ![#004 Charmander](https://cdn.bulbagarden.net/upload/thumb/7/73/004Charmander.png/250px-004Charmander.png){data-small="true" data-align="left"}
+    ![#004 Charmander](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png){data-small="true" data-align="left"}
 
     Charmander (Japanese: ヒトカゲ Hitokage) is a Fire-type Pokémon introduced in Generation I.
 
@@ -164,7 +164,7 @@ factorial(3);
   </Tab>
   <Tab title='Squirtle'>
 
-    ![#007 Squirtle](https://cdn.bulbagarden.net/upload/thumb/3/39/007Squirtle.png/250px-007Squirtle.png){data-small="true" data-align="left"}
+    ![#007 Squirtle](https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png){data-small="true" data-align="left"}
 
     Squirtle (Japanese: ゼニガメ Zenigame) is a Water-type Pokémon introduced in Generation I.
 

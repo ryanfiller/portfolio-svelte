@@ -1,9 +1,23 @@
 import getPages from '../../helpers/get-pages.js'
 
-export function get(_req, res) {
-	res.writeHead(200, {
-		'Content-Type': 'application/json'
-	})
+const pages = import.meta.globEager('./**/*.md')
 
-	res.end(JSON.stringify(getPages({directory: 'lab'})))
+export async function get() {
+	return {
+		statusCode: 200,
+    headers: {
+      'Content-Type': 'application/json'
+    },
+		// body: await getPages({directory: 'lab'})
+		body: Object.entries(pages).map(([path, component]) => {
+			return {
+				...component.metadata,
+				slug: `/lab/${path.split('/')[1]}`
+			}
+		}).filter(post => {
+			return post.options.published
+		}).sort((a, b) => {
+			return new Date(a.meta.date) < new Date(b.meta.date) ? 1 : -1
+		})
+	}
 } 

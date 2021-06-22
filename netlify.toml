@@ -2,11 +2,7 @@
   CI="1"
 
 [build]
-  command = "npm run export"
-  publish = "__sapper__/export"
-  functions = "functions"
-
-[[redirects]]
-  from = "/*"
-  to = "/404.html"
-  status = 404
+  command = "npm run build"
+  publish = "build/"
+  functions = "functions/"
+  

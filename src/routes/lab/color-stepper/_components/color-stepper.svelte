@@ -201,7 +201,7 @@
   $: copyButtonText = 'copy styles'
   function copyText(event) {
     event.preventDefault()
-    if (!!document) {
+    if (document !== 'undefined') {
       var code = document.getElementById('hidden-code').getElementsByTagName('textarea')[0]
       code.focus()
       code.select()
@@ -286,7 +286,7 @@
         {@html output}
       </code>
     </pre>
-    {#if document}
+    {#if typeof document !== 'undefined'}
       <button on:click={event => copyText(event)}>
         {copyButtonText}
       </button>

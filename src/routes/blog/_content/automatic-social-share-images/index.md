@@ -248,7 +248,7 @@ One thing to note here is that testing this function locally using the [Netlify 
 
 ```javascript
 exports.handler = async function(event) {
-  const local = process.env.NODE_ENV === 'development'
+  const local = process.env['NODE_ENV'] === 'development'
   const url = local ? `http://${event.headers.host}` : `https://${event.headers.host}`
   const imageParams = objectToParams(event.queryStringParameters)
   const screenshot = await takeScreenshot(`${url}/generate-image?${imageParams}`)
@@ -294,9 +294,9 @@ It is also important to use the `v2` version of the `cloudinary` package to get 
 const cloudinary = require('cloudinary').v2
 
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD,
-  api_key: process.env.CLOUDINARY_KEY,
-  api_secret: process.env.CLOUDINARY_SECRET
+  cloud_name: process.env['CLOUDINARY_CLOUD'],
+  api_key: process.env['CLOUDINARY_KEY'],
+  api_secret: process.env['CLOUDINARY_SECRET']
 })
 ```
 
@@ -322,7 +322,7 @@ Since I knew the structure for the final URL for each screenshot, I ran [`node-f
 
 ```javascript
 const getImage = async function(title) {
-  const url = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${title}.png`
+  const url = `https://res.cloudinary.com/${process.env['CLOUDINARY_CLOUD']}/image/upload/social-images/${title}.png`
   return await fetch(url)
     .then(result => {
       if (result.status !== 404) {
@@ -369,7 +369,7 @@ const forwardResponse = imageUrl => {
 Because I was uploading each image with the same URL structure this meant that I could dynamically reconstruct it inside the `<head>` for each blog post.
 
 ```javascript
-socialImageUrl = `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD}/image/upload/social-images/${slugify($$props.title)}.png`
+socialImageUrl = `https://res.cloudinary.com/${process.env['CLOUDINARY_CLOUD']}/image/upload/social-images/${slugify($$props.title)}.png`
 
 <meta name='twitter:image' content={socialImageUrl} />
 <meta property='og:image' content={socialImageUrl} />
