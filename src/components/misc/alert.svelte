@@ -2,6 +2,9 @@
   export let show
   export let close
   export let title
+  
+  import { slugify } from '../../helpers'
+  const id = `${slugify(title)}`
 
   import Note from './note.svelte'
   import focusTrap from '../../actions/focus-trap.js'
@@ -44,6 +47,7 @@
       background: var(--colorBlack);
       opacity: .5;
       z-index: -1;
+      pointer-events: none;
     }
   }
 
@@ -60,6 +64,9 @@
 {#if show}
   <dialog
     open
+    role='dialog'
+    aria-labelledby={`${id}-title`}
+    aria-describedby={`${id}-content`}
     class='alert'
     on:click={close ? event => event.target['tagName'] === 'DIALOG' && close() : null}
     tabindex='-1'

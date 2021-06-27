@@ -1,3 +1,5 @@
+// TODO implement 'svelte-local-storage-store' (also add to changelog)
+
 import { writable } from 'svelte/store'
 
 export const user = writable({})

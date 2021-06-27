@@ -277,6 +277,11 @@
     &:focus {
       background: var(--colorActive);
     }
+
+    &:disabled {
+      background: var(--colorDisabled);
+      cursor: not-allowed;
+    }
   }
 
   // -------------

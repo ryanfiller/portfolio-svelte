@@ -4,7 +4,7 @@
   export let title = 'hey!'
 
   import { slugify } from '../../helpers'
-  const id = `${slugify(title)}-note`
+  const id = `${slugify(title)}`
 </script>
 
 <style global type='text/scss'>
@@ -98,14 +98,14 @@
     {#if close}
       <input
         type='checkbox'
-        id={id}
+        id={`${id}-note`}
         checked={show}
         tabindex='-1'
       >
         <label
         class='x'
         tabindex='0'
-        for={id}
+        for={`${id}-note`}
         on:click={close}
         on:keydown={event => { if (event.key === "Enter") { close() }} }
       >
@@ -114,13 +114,16 @@
     {/if}
 
     <div role='note'>
-      <header>
+      <header id={`${id}-title`}>
         <strong class='title'>
           {title}
         </strong>
       </header>
   
-      <div class='content'>
+      <div
+        class='content'
+        id={`${id}-content`}
+      >
         <slot />
       </div>
     </div>
