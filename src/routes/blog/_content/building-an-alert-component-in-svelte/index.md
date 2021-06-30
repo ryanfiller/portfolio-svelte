@@ -14,7 +14,7 @@ meta:
   tags:
     - svelte
     - UI
-    - accessbility
+    - accessibility
 ---
 
 <script>
