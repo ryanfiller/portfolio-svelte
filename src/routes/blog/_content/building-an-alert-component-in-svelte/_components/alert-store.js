@@ -1,4 +1,6 @@
-import { writable } from 'svelte-local-storage-store'
+// weird ESM fix...
+import * as svelteLocalStorage from 'svelte-local-storage-store'
+const { writable } = svelteLocalStorage
 
 export const alert = writable('alertBlogExample', {
   title: 'One Of My Favorite Quotes:',
