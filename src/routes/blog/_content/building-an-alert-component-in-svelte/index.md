@@ -13,6 +13,8 @@ meta:
     - code
   tags:
     - svelte
+    - UI
+    - accessbility
 ---
 
 <script>
