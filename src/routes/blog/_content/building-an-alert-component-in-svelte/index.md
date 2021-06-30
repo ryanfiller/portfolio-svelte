@@ -645,7 +645,7 @@ The final component should be something that has both an ergonomic experience fo
 
 <AlertExample openAlert={() => openAlert({ buttons: true })} />
 
-As usual, thanks to the [Svelte discord](https://discord.com/channels/457912077277855764/) for helping me figure out a few aspects of the code, particularly `kursus75` and `c-bandy` with help around `localStorage` and Svelte `stores`.
+As usual, thanks to the [Svelte discord](https://discord.com/channels/457912077277855764/) for helping me figure out a few aspects of the code, particularly `kursus75` and `c-bandy` with help around `localStorage` and Svelte `stores` and `GrygrFlzr` for help with my deploy.
 
 I hope this walkthrough helps people build their own inclusive version of this component. If this does help you build something cool, shoot me a link on [Twitter](https://twitter.com/ryanfiller_) because I'd love to see it! Reach out with any questions or concerns too, especially if there are any errors I need to fix with this component's accessibility.
 

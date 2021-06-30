@@ -29,8 +29,7 @@
     "dotenv": "^8.2.0",
     "netlify-lambda": "^2.0.1",
     "node-fetch": "^2.6.1",
-    "puppeteer-core": "^5.5.0",
-    "svelte-local-storage-store": "^0.2.3"
+    "puppeteer-core": "^5.5.0"
   },
   "devDependencies": {
     "@cypress/snapshot": "^2.1.7",
@@ -71,6 +70,7 @@
     "rollup-plugin-svelte": "^6.1.1",
     "rollup-plugin-terser": "^5.3.0",
     "svelte": "^3.38.2",
+    "svelte-local-storage-store": "^0.2.3",
     "svelte-preprocess": "^3.7.4",
     "to-vfile": "^6.1.0",
     "unified": "^9.2.0",
