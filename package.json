@@ -29,7 +29,8 @@
     "dotenv": "^8.2.0",
     "netlify-lambda": "^2.0.1",
     "node-fetch": "^2.6.1",
-    "puppeteer-core": "^5.5.0"
+    "puppeteer-core": "^5.5.0",
+    "svelte-local-storage-store": "^0.2.3"
   },
   "devDependencies": {
     "@cypress/snapshot": "^2.1.7",

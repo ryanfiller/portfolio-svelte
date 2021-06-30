@@ -10,4 +10,6 @@
       <slot />
     </Markdown>
   </SeriesNavigator>
+
+  <slot name='alert' slot='alert' />
 </Page>

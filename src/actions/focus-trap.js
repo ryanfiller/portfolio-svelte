@@ -42,7 +42,4 @@ export default function focusTrap(element) {
   })
 }
 
-// https://hiddedevries.nl/en/blog/2017-01-29-using-javascript-to-trap-focus-in-an-element
-// https://zellwk.com/blog/keyboard-focusable-elements/
-// https://github.com/focus-trap/focus-trap
-// https://github.com/Duder-onomy/svelte-focus-trap
+// TODO return a `destroy` here that returns focus to the last clicked element

@@ -8,7 +8,7 @@
 
   const alertContent = `
     <p>
-      Some features in the section require JavaScript, might not work great on mobile, and may not have been throughly tested.
+      Some features in the section require JavaScript, might not work great on mobile, and may not have been thoroughly tested.
       <br />
       If you find a bug you can <a href='https://github.com/ryanfiller/portfolio-svelte/issues'>report it</a>.
       <br />
@@ -34,25 +34,24 @@
     <slot />
   </Markdown>
 
-  <svelte:fragment slot='alert'>
-    <Alert
-      title='Caution!'
-      show={showAlert}
-    >
-      {@html alertContent}
-      <svelte:fragment slot='actions'>
-        <button on:click={() => closeAlert()}>
-          That's okay.  
-        </button>
-        <button on:click={() => history.back()}>
-          No, go back.
-        </button>
-        <a href='/' class='button'>
-          No, go to homepage.
-        </a>
-      </svelte:fragment>
-    </Alert>
-  </svelte:fragment>
+  <Alert
+    title='Caution!'
+    show={showAlert}
+    slot='alert'
+  >
+    {@html alertContent}
+    <svelte:fragment slot='actions'>
+      <button on:click={() => closeAlert()}>
+        That's okay.  
+      </button>
+      <button on:click={() => history.back()}>
+        No, go back.
+      </button>
+      <a href='/' class='button'>
+        No, go to homepage.
+      </a>
+    </svelte:fragment>
+  </Alert>
   
 </Page>
 
