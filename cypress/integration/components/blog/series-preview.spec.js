@@ -6,8 +6,8 @@ describe('<SeriesPreview /> component', () => {
   
   it('renders correctly', () => {
     cy.get('article.series-preview').within(() => {
-      cy.get('.post-preview__header').should('exist')
-      cy.get('.post-preview__excerpt').should('exist')
+      cy.get('.header').should('exist')
+      cy.get('.excerpt').should('exist')
     })
     cy.checkA11y('article.series-preview')
   })
@@ -19,9 +19,9 @@ describe('<SeriesPreview /> component', () => {
 
     it('shows posts', () => {
       cy.get('article.series-preview').within(() => {
-        cy.get('ul.post-preview-list').should('exist')
+        cy.get('ul').should('exist')
         // this currently catches the button in the post, needs to change up css for this to work
-        // cy.get('a.post-preview__link').should('not.exist')
+        // cy.get('a').should('not.exist')
       })
     })
   })
@@ -34,7 +34,7 @@ describe('<SeriesPreview /> component', () => {
     it('hides posts', () => {
       cy.get('article.series-preview').within(() => {
         cy.get('ul.post-preview-list').should('not.exist')
-        cy.get('a.post-preview__link').should('exist')
+        cy.get('a').should('exist')
       })
     })
   })
@@ -45,7 +45,7 @@ describe('<SeriesPreview /> component', () => {
     })
 
     it('renders an h2', () => {
-      cy.get('.content-list').eq(0).find('h2.post-preview__header').should('exist')
+      cy.get('.content-list').eq(0).find('h2.header').should('exist')
     })
   })
 
@@ -55,7 +55,7 @@ describe('<SeriesPreview /> component', () => {
     })
 
     it('renders an h3', () => {
-      cy.get('.content-list').eq(1).find('h3.post-preview__header').should('exist')
+      cy.get('.content-list').eq(1).find('h3.header').should('exist')
     })
   })
 })

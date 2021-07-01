@@ -1,12 +1,12 @@
-<style global type='text/scss'> 
+<style global> 
   .framework-list {
     --iconSize: 2rem;
 
-    ul {
+    & ul {
       margin-left: 0;
       padding-left: 2rem;
 
-      pre > code {
+      & pre > code {
         padding-left: calc(var(--padding) + 2rem) !important;
       }
     
@@ -15,12 +15,12 @@
         position: relative;
         margin-bottom: 0;
     
-        + li {
+        & + li {
           margin-top: 2em;
         }
 
         & > p:first-child {
-          margin-top: calc(-1 * var(--iconSize)); // move the first paragraph up
+          margin-top: calc(-1 * var(--iconSize));  /* move the first paragraph up */
         }
     
         &::before {

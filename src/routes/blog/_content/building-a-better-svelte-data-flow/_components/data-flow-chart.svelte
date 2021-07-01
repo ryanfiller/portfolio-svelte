@@ -7,7 +7,7 @@
   import Transform from './transform.svelte'
 </script>
 
-<style global type='text/scss'>
+<style>
   .data-flow-chart {
     list-style: none;
     padding: 0 var(--padding);
@@ -15,20 +15,6 @@
     justify-content: center;
     align-items: center;
     font-size: .75em;
-
-    li {
-      margin: 0;
-
-      &.text,
-      &.file,
-      &.browser {
-        padding: 1rem;
-      
-        svg {
-          width: 7.5em;
-        }
-      }
-    }
 
     &.top-level {
       margin: calc(2 * var(--padding)) 0;
@@ -43,49 +29,66 @@
       justify-content: center;
     }
 
-    .transform {
-      height: 12rem;
-
-      svg {
-        transform: rotate(90deg);
-        height: 100%;
-        width: auto;
-        overflow: hidden;
+    & :global {
+      & li {
+        margin: 0;
+  
+        &.text,
+        &.file,
+        &.browser {
+          padding: 1rem;
+        
+          & svg {
+            width: 7.5em;
+          }
+        }
+      }
+  
+      & .transform {
+        height: 12rem;
+  
+        & svg {
+          transform: rotate(90deg);
+          height: 100%;
+          width: auto;
+          overflow: hidden;
+        }
+      }
+  
+      & .text,
+      & .file,
+      & .browser,
+      & .transform {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: 100%;
+        justify-items: center;
+        align-items: center;
+        
+        & > * {
+          grid-area: 1 / 1 / 1 / 1;
+        }
+  
+        & .label {
+          fill: var(--colorText);
+          font-size: 1em;
+          white-space: nowrap;
+          padding: .5em;
+          background: var(--colorBackground);
+          border: var(--borderWidth) solid var(--colorText);
+          z-index: 10;
+        }
+      }
+  
+      & .browser .label {
+        border: none;
+      }
+  
+      & .transform .label {
+        border-radius: var(--borderRadius);
       }
     }
 
-    .text,
-    .file,
-    .browser,
-    .transform {
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: 100%;
-      justify-items: center;
-      align-items: center;
-      
-      > * {
-        grid-area: 1 / 1 / 1 / 1;
-      }
-
-      .label {
-        fill: var(--colorText);
-        font-size: 1em;
-        white-space: nowrap;
-        padding: .5em;
-        background: var(--colorBackground);
-        border: var(--borderWidth) solid var(--colorText);
-        z-index: 10;
-      }
-    }
-
-    .browser .label {
-      border: none;
-    }
-
-    .transform .label {
-      border-radius: var(--borderRadius);
-    }
 
     /* TODO abstract this size into a utility class next time you need it */
     @media (min-width: 1200px) {
@@ -104,14 +107,16 @@
         align-self: stretch;
       }
 
-      .transform {
-        flex-basis: 20%;
-
-        svg {
-          flex: 1;
-          transform: none;
-          height: 100%;
-          width: 100%;
+      & :global {
+        & .transform {
+          flex-basis: 20%;
+  
+          & svg {
+            flex: 1;
+            transform: none;
+            height: 100%;
+            width: 100%;
+          }
         }
       }
     }

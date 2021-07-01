@@ -9,10 +9,10 @@
   import TagList from '../content/tag-list.svelte'
 
   const renderHeader = () => `
-    <h${h} class='post-preview__header'>
+    <h${h} class='header'>
       <a rel='prefetch' href=${slug}>
         ${!!series 
-          ? `<span class='post-preview__series-header'>${series}: </span> ${title}` 
+          ? `<span class='series-header'>${series}: </span> ${title}` 
           : title
         }
       </a>
@@ -20,9 +20,10 @@
   `
 </script>
 
-<style global type='text/scss'>
-  .post-preview {
-    a {
+<style>
+  .post-preview,
+  :global(.series-preview) { /* TODO this should abstract better and not inherit like this */
+    & :global(a) {
       font-family: sans-serif;
       font-weight: bold;
       color: var(--colorHighlight);
@@ -34,33 +35,33 @@
       }
     }
 
-    &__header {
+    & :global(.header) {
       font-family: sans-serif;
       font-size: 1.5em;
       font-weight: bold;
       margin-bottom: .5rem;
     }
 
-    &__series-header {
+    & :global(.series-header) {
       display: block;
       font-size: .75em;
     }
 
-    .date {
+    & :global(.date) {
       font-weight: bold;
       margin-bottom: .75rem;
     }
 
-    &__excerpt {
+    & .excerpt {
       margin-bottom: .5rem;
     }
 
-    .tag-list {
+    & :global(.tag-list) {
       font-weight: bold;
       margin-bottom: .5rem;
     }
 
-    &__link {
+    & .link {
       font-size: 1.25em;
       &::after {
         content: '»';
@@ -73,14 +74,14 @@
 <article class='post-preview'>
   {@html renderHeader()}
   <Date date={meta.date} />
-  <p class='post-preview__excerpt'>
+  <p class='excerpt'>
     {meta.excerpt}
   </p>
   <TagList
     categories={meta.categories}
     tags={meta.tags}
   />
-  <a rel='prefetch' href={slug} class='post-preview__link'>
+  <a rel='prefetch' href={slug} class='link'>
     Read
   </a>
 </article>

@@ -11,12 +11,12 @@
   const format = date => date.toLocaleString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })
 </script>
 
-<style global type='text/scss'>
+<style>
   .date {
     display: block;
 
-    &__initial,
-    &__updated {
+    & .initial,
+    & .updated {
       display: block;
     }
   }
@@ -25,13 +25,13 @@
 {#if Array.isArray(date)}
   <div class='date'>
     <time
-      class='date__initial' 
+      class='initial' 
       dateTime={removeTimezone([date[0]])}
     >
       {format(new Date(removeTimezone([date[0]])), dateFormat)}
     </time>
     <time
-      class='date__updated' 
+      class='updated' 
       dateTime={removeTimezone(date[date.length - 1])}
     >
       (updated on {format(new Date(removeTimezone(date[date.length - 1])), dateFormat)})

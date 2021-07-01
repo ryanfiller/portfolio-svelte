@@ -1,6 +1,6 @@
 <script>
-	import { colors } from '../styles.js'
-	import Styles from '../components/layout/styles.svelte'
+	import { colors } from '../styles/config.js'
+	import Styles from '../styles/index.svelte'
 </script>
 
 <svelte:head>

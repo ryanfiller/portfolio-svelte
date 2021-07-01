@@ -6,14 +6,14 @@
   export let checked = false
 </script>
 
-<style global type='text/scss'>
+<style>
   .toggle {
-    input,
-    label span {
+    & input,
+    & label span {
       display: none;
     }
 
-    label {
+    & label {
       display: inline-block;
       position: relative;
       background: var(--colorHighlight);
@@ -37,7 +37,7 @@
     }
 
 
-    input:checked ~ label::after {
+    & input:checked ~ label::after {
       transform: translateX(1em);
       background-color: var(--colorActive);
     }

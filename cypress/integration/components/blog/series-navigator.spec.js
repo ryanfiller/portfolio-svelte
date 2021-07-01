@@ -5,8 +5,8 @@ describe('<SeriesNavigator /> component', () => {
     })
 
     it('does not render', () => {
-      cy.get('.series-navigator__title').should('not.exist')
-      cy.get('.series-navigator__buttons').should('not.exist')
+      cy.get('.series-navigator.title').should('not.exist')
+      cy.get('.series-navigator.buttons').should('not.exist')
     })
   })
 
@@ -21,27 +21,27 @@ describe('<SeriesNavigator /> component', () => {
     })
 
     it('renders correctly', () => {
-      cy.get('.series-navigator__title').contains('This is post 1 of')
-      cy.get('.series-navigator__buttons').within(() => {
-        cy.get('.series-navigator__previous').should('not.exist')
-        cy.get('.series-navigator__next').should('exist')
+      cy.get('.series-navigator.title').contains('This is post 1 of')
+      cy.get('.series-navigator.buttons').within(() => {
+        cy.get('.previous').should('not.exist')
+        cy.get('.next').should('exist')
       })
-      // cy.checkA11y('.series-navigator__title')
-      // cy.checkA11y('.series-navigator__buttons')
+      // cy.checkA11y('.series-navigator.title')
+      // cy.checkA11y('.series-navigator.buttons')
     })
   
     it('navigates forward and backwards', () => {
-      cy.get('.series-navigator__buttons').within(() => {
-        cy.get('.series-navigator__next').click()
+      cy.get('.series-navigator.buttons').within(() => {
+        cy.get('.next').click()
       })
       cy.reload() // why???
-      cy.get('.series-navigator__title').contains('This is post 2 of')
-      cy.get('.series-navigator__buttons').within(() => {
-        cy.get('.series-navigator__previous').should('exist')
-        cy.get('.series-navigator__previous').click()
+      cy.get('.series-navigator.title').contains('This is post 2 of')
+      cy.get('.series-navigator.buttons').within(() => {
+        cy.get('.previous').should('exist')
+        cy.get('.previous').click()
       })
       cy.reload() // why???
-      cy.get('.series-navigator__title').contains('This is post 1 of')
+      cy.get('.series-navigator.title').contains('This is post 1 of')
     })
   })
 })

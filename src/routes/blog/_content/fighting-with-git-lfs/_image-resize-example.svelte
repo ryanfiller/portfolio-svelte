@@ -1,23 +1,30 @@
 <script>
   let width = '250'
   const handleWidthChange = event => width = event.target.value
-  const params = `?nf_resize=fit&w=${width}`
+  $: params = `?nf_resize=fit&w=${width}`
 </script>
 
-<style type='text/scss'>
+<style>
+  pre {
+    width: 100%;
+    margin: 0;
+    transform: none;
+    left: 0;
+  }
+
   .image-resize-example {
     margin: var(--padding) 0;
 
-    label {
+    & label {
       display: block;
       width: 100%;
     }
 
-    input {
+    & input {
       width: 100%;
     }
 
-    img {
+    & img {
       display: block;
       margin: 0 auto;
       max-width: 100%;

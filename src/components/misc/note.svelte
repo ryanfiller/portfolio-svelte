@@ -7,22 +7,20 @@
   const id = `${slugify(title)}`
 </script>
 
-<style global type='text/scss'>
-  @import '../../styles/functions.scss';
-
+<style global>
   .note {
-    position: relative;
     --buttonSize: 3rem;
+    position: relative;
     margin-top: var(--verticalSpacing);
     margin-bottom: var(--verticalSpacing);
 
-    input[type='checkbox'],
-    input[type='checkbox']:not(:checked) ~ label,
-    input[type='checkbox']:not(:checked) ~ aside {
+    & input[type='checkbox'],
+    & input[type='checkbox']:not(:checked) ~ label,
+    & input[type='checkbox']:not(:checked) ~ aside {
       display: none;
     }
 
-    label {
+    & label {
       display: block;
       position: absolute;
       top: 0;
@@ -43,11 +41,11 @@
       }
     }
 
-    div[role='note'] {
+    & div[role='note'] {
       position: relative;
     }
   
-    div[role='note']::after {
+    & div[role='note']::after {
       content: '';
       display: block;
       position: absolute;
@@ -61,7 +59,7 @@
       background: var(--pixelBorder);
     }
   
-    header {
+    & header {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -74,15 +72,13 @@
 
       color: var(--colorWhite);
       font-size: 1.5em;
-      @include readable();
-      padding-right: calc(var(--buttonSize) + var(--padding));
+      padding: 0 calc(var(--buttonSize) + var(--padding)) 0 var(--padding);
     }
     
-    .content {
+    & .content {
       background-color: var(--colorWhite);
       color: var(--colorBlack);
       padding: var(--padding);
-      @include readable();
       border-bottom-right-radius: var(--pixelBorderRadius);
       border-bottom-left-radius: var(--pixelBorderRadius);
       overflow: hidden;

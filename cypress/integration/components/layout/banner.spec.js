@@ -1,6 +1,6 @@
 describe('<Banner /> component', () => {  
   it('does not render a banner on the homepage', () => {
-    cy.get('.banner').should('not.exist')
+    cy.get('#page-banner').should('not.exist')
   })
 
   context('when there is no banner image', () => {  
@@ -10,7 +10,7 @@ describe('<Banner /> component', () => {
 
     it('does not render a figure element', () => {
       cy.get('h1').should('exist')
-      cy.get('figure.banner').should('not.exist')
+      cy.get('figure#page-banner').should('not.exist')
     })
   })
 
@@ -22,9 +22,9 @@ describe('<Banner /> component', () => {
 
     it('renders a figure element and content', () => {
       cy.get('h1').should('exist')
-      cy.get('figure.banner-image').should('exist')
-      cy.get('figure.banner-image').find('img').should('exist')
-      cy.get('figure.banner-image').find('figcaption').should('exist')
+      cy.get('figure').should('exist')
+      cy.get('figure').find('img').should('exist')
+      cy.get('figure').find('figcaption').should('exist')
       cy.checkA11y('#page-banner')
     })
   })
@@ -39,9 +39,9 @@ describe('<Banner /> component', () => {
     })
 
     it('renders the correct elements', () => {
-      cy.get('.banner[data-segment="blog"]').should('exist')
-      cy.get('figure.banner-image').should('exist')
-      cy.get('.banner').within(() => {
+      cy.get('#page-banner[data-segment="blog"]').should('exist')
+      cy.get('figure').should('exist')
+      cy.get('#page-banner').within(() => {
         cy.get('h1').should('exist')
         cy.get('.date').should('exist')
         cy.get('.tags').should('exist')
@@ -62,9 +62,9 @@ describe('<Banner /> component', () => {
     it('renders the correct elements', () => {
       cy.closeAlert()
 
-      cy.get('.banner[data-segment="lab"]').should('exist')
-      // cy.get('figure.banner-image').should('exist')
-      cy.get('.banner').within(() => {
+      cy.get('#page-banner[data-segment="lab"]').should('exist')
+      // cy.get('figure').should('exist')
+      cy.get('#page-banner').within(() => {
         cy.get('h1').should('exist')
         cy.get('.date').should('not.exist')
         cy.get('.tags').should('exist')

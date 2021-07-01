@@ -17,7 +17,8 @@ Cypress.Commands.add('inputChange', (input, value) => {
 })
 
 Cypress.Commands.add('fillOutContactForm', () => {
-  cy.get('form#contact').within(() => {
+  cy.get('#contact form').scrollIntoView()
+  cy.get('#contact form').within(() => {
     cy.get('input[name="name"]').type('Philip')
     cy.get('input[name="email"]').type('fry@planetexpress.com')
     cy.get('textarea[name="message"]').type('What if that thing I said?')

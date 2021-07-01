@@ -57,19 +57,21 @@
       }
     </${'style'}>
 
-    <script>
+    <${'script'}>
       var existingUserPreference = window.localStorage.getItem('${LS_KEY}');
       var setPreference = ${setPreference.toString()};
       var getCustomProperty = ${getCustomProperty.toString()};
       var setCustomProperty = ${setCustomProperty.toString()};
       setPreference(existingUserPreference, getCustomProperty, setCustomProperty, '${LS_KEY}', '${DOM_ATTR}', '${CSS_PROP}');
-    </script>
+    </${'script'}>
   `}
 </svelte:head>
 
-<style global type='text/scss'>
-
-  .color-scheme-toggle-button {
+<style>
+  /* freakin yikes at all the :global() going on here... */
+  button {
+    /* specificity to override display: none; */
+    display: block !important;
     background: transparent;
     padding: 0;
     border: none;
@@ -81,28 +83,28 @@
       background-color: transparent;
     }
 
-    svg {
-      height: 1.5em;
+    & :global(svg) {
       /* height: var(--tapableSize); */
-      width: 1.5em;
+      height: 1.5em;
       /* width: var(--tapableSize); */
+      width: 1.5em;
       transform: rotate(-90deg);
 
-      * {
+      & :global(*) {
         transform-origin: center center;
         transition: var(--transitionSpeed);
       }
 
-      #main-shape,
-      #sun-rays {
+      & :global(#main-shape),
+      & :global(#sun-rays) {
         fill: currentColor;
         stroke-width: 0;
       }
 
-      #sun-rays {
+      & :global(#sun-rays) {
         transform: scale(0);
 
-        line {
+        & :global(line) {
           stroke: currentColor;
           stroke-width: 0;
         }
@@ -110,25 +112,25 @@
     }
   }
 
-  [style*='light'] .color-scheme-toggle-button {
-    #main-shape {
+  :global([style*='light']) button {
+    & :global(#main-shape) {
       transform: scale(1.25);
     }
 
-    #moon-mask {
+    & :global(#moon-mask) {
       transform: translate(-35%, 35%);
     }
   }
 
-  [style*='dark'] .color-scheme-toggle-button {
-    #main-shape {
+  :global([style*='dark']) button {
+    & :global(#main-shape) {
       transform: scale(.75);
     }
 
-    #sun-rays {
+    & :global(#sun-rays) {
       transform: scale(1);
 
-      line {
+      & :global(line) {
         stroke-width: 10;
       }
     }
@@ -137,7 +139,8 @@
 </style>
 
 <button
-  class='needs-js color-scheme-toggle-button'
+  style='display: none;' 
+  class='needs-js color-scheme-toggle'
   on:click={toggleColorScheme}
   title={`toggle ${getOpposite($colorScheme)} mode`}
 >

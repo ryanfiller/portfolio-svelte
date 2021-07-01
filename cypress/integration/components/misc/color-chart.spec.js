@@ -1,4 +1,4 @@
-import { colors } from '../../../../src/styles.js'
+import { colors } from '../../../../src/styles/config.js'
 
 describe('<ColorChart /> component', () => {
   // actual functionality is tested in the npm package

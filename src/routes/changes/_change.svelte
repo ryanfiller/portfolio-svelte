@@ -1,73 +1,78 @@
-<!-- TODO make this a generic 'collapse' or something component-->
-
-<style global type='text/scss'>
-  @import '../../styles/functions.scss';
-  
+<style>
   .change {
-    border: .125rem solid var(--colorPrimary);
-    border-radius: .25rem;
     padding: calc(var(--padding)/2) var(--padding);
     margin-bottom: var(--padding);
+    background: var(--pixelBorder);
+    color: var(--colorPrimary);
 
-    p {
-      margin-bottom: 0;
+    & :global {
+      & *:not(a) { 
+        color: var(--colorText);
+      } 
+
+      & p {
+        margin: 0;
+    
+        &:first-of-type,
+        &:last-of-type {
+          margin-bottom: 1em;
+        }
+      }
   
-      &:first-of-type,
-      &:last-of-type {
-        margin-bottom: 1em;
-      }
-    }
-
-    details {
-      summary {
-        font-size: 1.125em;
-        cursor: pointer;
-
-        // hide default arrow
-        list-style: none;
-        &::-webkit-details-marker { display:none; }
-
-        &::before{
-          content: '';
-          @include arrow;
-          transition: var(--transitionSpeed);
-          margin-right: .25em;
-        }
-      }
-
-      &[open] {
-        summary:before {
-          transform: rotate(90deg);
-        }
-      }
-
-      div > ul { // remark-custom-block inserts a div
-        &:first-of-type { // top level ul only
-          transition: var(--transitionSpeed);
-          // TODO? - maybe make a border mixin
-          border-left: .125rem solid var(--colorPrimary);
+      & details {
+        & summary {
+          font-size: 1.125em;
+          cursor: pointer;
+          
+          /* hide default arrow */
           list-style: none;
-          margin-left: .185rem;
-          padding-left: 1rem;
-          padding-top: 1rem;
-          font-weight: bold;
+          &::-webkit-details-marker { display:none; }
 
-          ul {
-            font-weight: normal;
-            margin-top: 0;
-            margin-bottom: 1rem;
+          &::before{
+            content: '';
+            display: inline-block;
+            transition: var(--transitionSpeed);
+            margin-right: .5em;
+            height: 0;
+            width: 0;
+            border-top: .33em solid transparent;
+            border-bottom: .33em solid transparent;
+            border-left: .5em solid currentColor;
+            transform: rotate(0turn);
+          }
+        }
+
+  
+        &[open] {
+          & summary:before {
+            transform: rotate(0.25turn);
+          }
+        }
+  
+        /* remark-custom-block inserts a div */
+        & div {
+          & > ul { /* top level only */
+            border-left: var(--borderWidth) solid var(--colorPrimary);
+            font-weight: bold;
+
+            & ul {
+              font-weight: normal;
+              margin-top: 0;
+            }
+          }
+          & ul {
+            list-style: none;
+            margin-left: .185rem;
+            padding: 0 var(--padding);
           }
 
-          p {
-            margin-bottom: 0;
-          }
         }
       }
     }
   }
 </style>
 
-<!-- TODO - refactor this to use 'callout' component -->
+<!-- TODO make this a generic 'collapse' or something component-->
 
 <section class='change'>
   <slot />

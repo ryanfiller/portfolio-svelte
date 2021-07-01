@@ -16,45 +16,53 @@
   }
 </script>
 
-<style global type='text/scss'>
+<style>
   .series-navigator {
-    &__title {
+    &.title {
       color: var(--colorWhite);
       background: var(--colorHighlight);
       text-align: center;
       padding: var(--padding);
-      a {
+  
+      & a {
         color: inherit;
         &:not(:hover) {
           text-decoration: none;
         }
       }
     }
-    &__buttons {
+    
+    &.buttons {
       background: var(--colorHighlight);
       display: flex;
     }
-    &__previous,
-    &__next {
+  
+    & .previous,
+    & .next {
       flex-wrap: wrap;
       width: 50%;
-      &:before {
+  
+      &::before {
         font-size: .8em;
         margin-bottom: calc(.5 * var(--padding));
         display: block;
       }
     }
-    &__previous {
+  
+    & .previous {
       text-align: right;
       margin-right: auto;
-      &:before {
+  
+      &::before {
         content: '« previous';
       }
     }
-    &__next {
+  
+    & .next {
       text-align: left;
       margin-left: auto;
-      &:before {
+      
+      &::before {
         content: 'next »';
       }
     }
@@ -62,20 +70,20 @@
 </style>
 
 {#if series}  
-  <aside class='series-navigator__title'>
+  <aside class='series-navigator title'>
     This is post {postIndex + 1} of {series.posts.length} in the <a href={series.slug}>{series.title}</a> series.
   </aside>
 
   <slot />
 
-  <aside class='series-navigator__buttons'>
+  <aside class='series-navigator buttons'>
     {#if previous}
-      <a href={previous.slug} class='series-navigator__previous button'>
+      <a href={previous.slug} class='previous button'>
         {previous.title}
       </a>
     {/if}
     {#if next}
-      <a href={next.slug} class='series-navigator__next button'>
+      <a href={next.slug} class='next button'>
         {next.title}
       </a>
     {/if}

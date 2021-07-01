@@ -1,4 +1,4 @@
-import { colors, themes } from '../../../../src/styles.js'
+import { colors, themes } from '../../../../src/styles/config.js'
 import { capitalize, getCustomProperty } from '../../../../src/helpers/index.js'
 
 describe('<Styles /> component', () => {

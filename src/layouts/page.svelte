@@ -12,7 +12,7 @@
   const alertActive = $$slots.alert
 </script>
 
-<style global>
+<style>
 	#site {
     min-height: 100vh;
     width: 100%;
@@ -40,6 +40,10 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    & > :global(*) {
+      width: 100%;
+    }
   }
 
   #site-footer {
@@ -56,7 +60,7 @@
   id='site'
   class={segment}
 >
-  <Header>
+  <Header {segment}>
     {#if !hideBanner}
       <Banner {segment} {...$$props} />
     {/if}
