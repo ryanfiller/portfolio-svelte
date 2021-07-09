@@ -44,7 +44,7 @@
   id='site-footer'
   class='footer'
 >
-  <div class='container'>
+  <div>
     <span>
       Built with
       <a href='https://kit.svelte.dev/' target='_blank' rel='noopener noreferrer'>
