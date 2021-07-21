@@ -1,7 +1,7 @@
 <script>
   import Chart from 'color-contrast-table-svelte'
   import { onMount } from 'svelte'
-  import { colors, themes } from '../../styles.js'
+  import { colors, themes } from '../../styles/config.js'
   import { capitalize, getCustomProperty, setCustomProperty } from '../../helpers'
 
   const nameColor = color => `color${capitalize(color)}`
@@ -52,7 +52,7 @@
 
 </script>
 
-<style global type='text/scss'>
+<style>
   .color-chart {
     width: 100%;
     overflow-x: auto;
@@ -64,31 +64,25 @@
     left: 50%;
     margin-left: calc(-1 * var(--width) / 2);
 
-    &__options {
+    & .options {
       cursor: pointer;
       margin-bottom: calc(.5 * var(--padding));
       position: sticky;
       left: 0;
       text-align: right;
 
-      * > {
+      & * > {
         display: inline-block;
       }
     }
 
-    & > table {
+    & :global(table) {
       width: 100%;
 
-      th {
+      & :global(th) {
         position: sticky;
         left: 0;
         z-index: 50;
-      }
-
-      // this is still clickable with the label
-      // it just looks bad when it lags behind the background
-      input[type="color"] {
-        opacity: 0;
       }
     }
   }
@@ -118,7 +112,7 @@
 </svelte:head>
 
 <section class={showAllColors ? 'color-chart color-chart--show-all-colors' : 'color-chart'}>
-  <div class='needs-js color-chart__options'>
+  <div class='needs-js options'>
     <label for='show-all-colors'>
       show all colors
     </label>

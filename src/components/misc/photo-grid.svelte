@@ -32,8 +32,7 @@
 
 <!-- TODO this entire idea needs to get rewritten and tested -->
 
-<style global>
-
+<style>
   .photo-grid {
     clear: both;
     display: grid;

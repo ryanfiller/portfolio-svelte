@@ -4,7 +4,7 @@ title: 'Style Guide'
 ---
 
 <script>
-  import { colors } from '../styles.js'
+  import { colors } from '../styles/config.js'
   import ColorChart from '../components/misc/color-chart.svelte'
   import { Tabs, Tab } from '../components/misc/tabs'
   import Note from '../components/misc/note.svelte'

@@ -10,7 +10,7 @@
   import PostPreview from './post-preview.svelte'
 
   const renderHeader = () => `
-    <h${h} class='post-preview__header'>
+    <h${h} class='header'>
     ${hidePosts
       ? `<a rel='prefetch' href=${slug}>
         ${title}
@@ -21,31 +21,33 @@
   `
 </script>
 
-<style global type='text/scss'>
-  // this is currently inehertting .post-preview from `global` in post-preview.svelte
-
-  @import '../../styles/functions.scss';
-
-  .series-preview {
+<style>
+  /* TODO this inherits a lot from post-preview.svelte, which isn't my favorite thing ever */
+  article {
     padding: calc(2 * var(--padding));
-    @include readable();
+    /* include readable */
+    max-width: var(--readableMax);
+    margin: 0 auto;
+    padding: var(--padding);
 
-    .content-list & {
-      padding: 0;
-    }
-
-    .post-preview-list {
+    & ul.post-preview-list {
       list-style: none;
       margin: 0;
+      padding: 0;
     }
+  }
+
+  :global(.content-list) article {
+    padding-left: 0;
+    padding-right: 0;
   }
 </style>
 
-<article class='post-preview series-preview'>
+<article class='series-preview'>
   {#if !!title}
     {@html renderHeader()}
   {/if}
-  <p class='post-preview__excerpt'>
+  <p>
     {excerpt}
   </p>
   {#if !hidePosts}
@@ -58,7 +60,7 @@
     </ul>
   {/if}
   {#if hidePosts}
-    <a rel='prefetch' href={slug} class='post-preview__link'>
+    <a rel='prefetch' href={slug}>
       See Posts
     </a>
   {/if}

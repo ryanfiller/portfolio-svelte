@@ -33,8 +33,7 @@
     min-height: 15rem;
   }
 
-  input span,
-  textarea span {
+  span {
     display: block;
   }
 

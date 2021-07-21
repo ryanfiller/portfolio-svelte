@@ -1,13 +1,20 @@
-<style global type='text/scss'>
-  @import '../../styles/functions.scss';
-
+<style global>
   .markdown {
     padding: calc(2 * var(--padding));
-    @include readable();
     line-height: 1.5;
+    /* include readable */
+    max-width: var(--readableMax);
+    margin: 0 auto;
 
-    // headings
-    @mixin headingStyles() {
+    /* ------------- */
+    /* headings */
+    /* ------------- */
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
       position: relative;
       display: block;
       margin: 0;
@@ -15,12 +22,12 @@
       padding: 0;
       font-weight: bold;
     
-      a {
+      & a {
         font-size: inherit;
         color: currentColor;
         text-decoration: none;
     
-        span {
+        & span {
           display: none;
         }
     
@@ -39,81 +46,69 @@
             opacity: 1;
           }
         }
-    
-        // undo link styles, this is dumb...
-        color: currentColor !important;
-        border-bottom: none !important;
-        background-image: none !important;
       }
     }
     
-    h1 {
+    & h1 {
       font-size: 2.4em;
-      @include headingStyles;
     }
     
-    h2 {
+    & h2 {
       font-size: 1.8em;
-      @include headingStyles;
     }
     
-    h3 {
+    & h3 {
       font-size: 1.6em;
-      @include headingStyles;
     }
     
-    h4 {
+    & h4 {
       font-size: 1.4em;
-      @include headingStyles;
     }
     
-    h5 {
+    & h5 {
       font-size: 1.2em;
-      @include headingStyles;
     }
     
-    h6 {
+    & h6 {
       font-size: 1em;
-      @include headingStyles;
     }
 
-    li {
+    /* ------------- */
+    /* lists */
+    /* ------------- */
+    & ol li,
+    & ul li {
+      padding-left: 0;
       margin-bottom: .5em;
 
       & > p {
         margin-bottom: 1em;
       }
     }
-      
-    // lists
 
-    ol li,
-    ul li {
-      padding-left: 0;
-    }
-
-    li > ol,
-    li > ul {
+    & li > ol,
+    & li > ul {
       margin-left: 2em;
       margin-bottom: 1em;
       margin-top: 1em;
     }
     
-    li *:last-child,
-    p *:last-child {
+    & li *:last-child,
+    & p *:last-child {
       margin-bottom: 0;
     }
 
-    hr {
+    & hr {
       margin: 5rem 0;
     }
     
-    // images
-    // ...and other media I guess.
-    img,
-    figure,
-    video,
-    *[data-align] {
+    /* ------------- */
+    /* images / media  */
+    /* ------------- */
+    & img,
+    & figure,
+    & video,
+    & *[data-align] {
       width: 100%;
       height: auto;
       margin: 0 0 1em 0;
@@ -126,46 +121,46 @@
       } */
   
       &[data-align="center"] {
-        @include small() {
-            margin: 0 auto 1rem auto;
-            width: 50%;
+        @media (--smallWidth) {
+          margin: 0 auto 1rem auto;
+          width: 50%;
         }
       }
       
       &[data-align="right"] {
-        @include small() {
-            float: right;
-            margin: 0 0 1rem 1rem;
+        @media (--smallWidth) {
+          float: right;
+          margin: 0 0 1rem 1rem;
             width: 50%;
         }
       }
       
       &[data-align="left"] {
-        @include small() {
-            float: left;
-            margin: 0 1rem 1rem 0;
+        @media (--smallWidth) {
+          float: left;
+          margin: 0 1rem 1rem 0;
             width: 50%;
         }
       }
       
       &[data-align="full"] {
-        @include small() {
-            display: block;
-            width: 100%;
-            max-width: none !important; // full supercedes small
+        @media (--smallWidth) {
+          display: block;
+          width: 100%;
+            max-width: none !important; /* full supercedes small */
             height: auto;
             margin: 0 0 1rem 0;
         }
       }
       
       &[data-small="true"] {
-        @include small() {
-          max-width: 10em;
-        }
+        @media (--smallWidth) {
+        max-width: 10em;
+      }
       }
     
-      // for when figure.image and img is a child
-      img {
+      /* for when figure.image and img is a child */
+      & img {
         display: block;
         line-height: 0;
         width: 100%;
@@ -173,8 +168,8 @@
         margin: 0;
       }
     
-      figcaption,
-      .caption {
+      & figcaption,
+      & .caption {
         text-align: center;
         font-style: italic;
         font-size: .8em;
@@ -183,13 +178,18 @@
       }
     }
     
-    // iframes
-    .embed {
+    /* ------------- */
+    /* iframes  */
+    /* ------------- */
+    & .embed {
       position: relative;
       overflow: hidden;
       height: 0;
       width: 100%;
       margin-bottom: var(--padding);
+
+      /* TODO - just replace this with aspect-ratio */
+      /* https://caniuse.com/mdn-css_properties_aspect-ratio */
     
       &[data-aspect-ratio="full"] {
         padding-top: 95vh;
@@ -203,7 +203,7 @@
         padding-top: calc(100% / (4/3));
       }
     
-      iframe {
+      & iframe {
         position: absolute;
         top: 0;
         left: 0;
@@ -213,33 +213,47 @@
       }
     }
 
-    // links
-    p,
-    dl, ol, ul,
-    blockquote {
-      a  {
+    /* ------------- */
+    /* links */
+    /* ------------- */
+    & p,
+    & dl, & ol, & ul,
+    & blockquote {
+      & a  {
         color: var(--colorHighlight);
         text-decoration: none;
         border-bottom: 0;
         border-bottom: 2px currentColor dotted;
-      
-        @include medium() {
-          @include highlight();
+
+        @media (--mediumWidth) {
+          color: var(--colorHighlight);
+          transition: var(--transitionSpeed);
+          background-image: linear-gradient(to right, transparent 51%, var(--colorHighlight) 49%);
+          background-position: 0;
+          background-size: 200%;
+          padding: 0 .125em;
+
+          &:hover {
+            color: var(--colorWhite);
+            background-image: linear-gradient(to right, transparent 50%, var(--colorHighlight) 50%);
+            background-position: -100%;
+          }
         }
       }
     }
     
-    // blockquotes 
-    // ... and also a list
-    blockquote,
-    dl {
+    /* ------------- */
+    /* blockquotes  */
+    /* ------------- */
+    & blockquote,
+    & dl {
       margin: var(--padding) 0;
       padding: 0 var(--padding);
       border-left: calc(.5 * var(--padding)) solid var(--colorPrimary);
       font-size: 1.125em;
       position: relative;
     
-      cite {
+      & cite {
         display: block;
         font-style: italic;
         font-size: .8em;
@@ -252,8 +266,8 @@
       }
     }
     
-    // twitter
-    .twitter-tweet {
+    /* twitter */
+    & .twitter-tweet {
       --twitterBlue: #1da1f2;
       --twitterGray: #ccd6dd;
       --twitterWhite: #ffffff;
@@ -271,11 +285,12 @@
       margin: var(--verticalSpacing) auto;
       position: relative;
 
-      // specificity!
-      div.account,
-      div.tweet,
-      div.meta {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important; // twitter's font styles
+      /* specificity! */
+      & div.account,
+      & div.tweet,
+      & div.meta {
+        /* twitter's font styles */
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
         font-variation-settings: initial !important;
       }
     
@@ -298,17 +313,18 @@
         }
       }
     
-      a, a:hover {
+      & a,
+      & a:hover {
         border: none;
         background: none;
         color: currentColor;
       }
     
-      a:hover {
+      & a:hover {
         color: var(--colorHighlight);
       }
     
-      svg {
+      & svg {
         transition: var(--transitionSpeed);
         
         &:hover {
@@ -316,104 +332,109 @@
         }
       }
       
-      .account {
+      & .account {
         display: flex;
         align-items: stretch;
         margin-bottom: .75em;
         height: 3.33em;
         font-weight: bold;
     
-        &__avatar {
+        & .avatar {
           height: 3.33em;
           width: 3.33em;
           
-          img {
+          & img {
             border-radius: 100%;
           }
         }
         
-        &__text {
+        & .text {
           font-size: 1em;
           margin: 0 .33em;
           display: flex;
           flex-direction: column;
           justify-content: center;
           
-          span {
+          & span {
             display: block;
           }
         }
         
-        &__name {
+        & .name {
           font-weight: bold !important;
         }
     
-        .twitter-logo {
+        & .twitter-logo {
           width: 1.75em;
           height: 1.75em;
           align-self: start;
           margin-left: auto;
     
-          * {
+          & * {
             fill: var(--twitterBlue);
           }
         }
       }
       
-      .tweet {
+      & .tweet {
         cursor: text;
         font-size: 1.45em;
 
-        img {
+        & img {
           margin-top: .75em;
         }
       }
       
-      .meta {
+      & .meta {
         display: flex;
         align-items: center;
         justify-content: space-between;
         margin-top: 1em;
         font-weight: bold !important;
         
-        &__date {
+        & .date {
           font-size: 1em;
         }
         
-        &__info {
+        & .info {
           height: 1.25em;
           width: 1.25em;
     
-          * {
+          & * {
             fill: currentColor;
           }
         }
       }
     }
 
-    // definitions
-    dfn {
+    /* ------------- */
+    /* definitions  */
+    /* ------------- */
+    & dfn {
       font-style: italic;
     }
-    dl {
+
+    & dl {
       margin: 0;
       margin-bottom: var(--padding);
     }
-    dd {
+
+    & dd {
       margin-left: 1em;
       margin-bottom: .5em;
     }
 
-    // table
-
-    table:not(.color-contrast-table) {
+    /* ------------- */
+    /* table  */
+    /* ------------- */
+    & table:not(.color-contrast-table) {
       margin-top: var(--verticalSpacing);
       margin-bottom: var(--verticalSpacing);
       border-collapse: collapse;
       width: 100%;
       border-bottom: 1rem solid var(--colorPrimary);
     
-      caption {
+      & caption {
         text-align: left;
         font-size: .8em;
         font-weight: bold;
@@ -425,39 +446,45 @@
         }
       }
 
-      tbody {}
+      & tbody {}
       
-      thead th,
-      th {
+      & thead th,
+      & th {
         background: var(--colorPrimary);
         color: var(--colorWhite);
         
-        * {
+        & * {
           color: var(--colorWhite);
         }
       }
     
-      tr {
+      & tr {
         width: 100%;
       }
     
-      th, td {
+      & th,
+      & td {
         border: 1px solid var(--colorPrimary);
         padding: .25em;
       }
     }
 
-    pre, pre *,
-    code, code *,
-    kbd, kbd *,
-    samp, samp * {
+
+    /* ------------- */
+    /* code  */
+    /* ------------- */
+    & pre, & pre *,
+    & code, & code *,
+    & kbd, & kbd *,
+    & samp, & samp * {
       font-family: var(--mono);
       font-variation-settings: "MONO" 1,  "wght" 450;
       font-size: .95em;
       overflow: auto;
     }
 
-    pre, code {
+    & pre,
+    & code {
       --codeBackgroundColor: var(--colorPrimary);
       --codeBackgroundOpacity: .25;
 
@@ -472,8 +499,8 @@
       }
     }
 
-    /* for inline */
-    code {
+    /* or inline */
+    & code {
       position: relative;
       padding: 0 .125em;
       color: var(--colorText);
@@ -486,8 +513,9 @@
     }
 
     /* for blocks */
-    pre {
-      --width: calc(100vw - (2 * var(--padding))); /* TODO this should be a utility class */
+    & pre {
+      /* TODO this should be a utility class */
+      --width: calc(100vw - (2 * var(--padding))); 
       width: var(--width);
       left: 50%;
       margin-left: calc(-1 * var(--width) / 2);
@@ -505,11 +533,13 @@
         z-index: -2;
       }
 
-      code {
+      & code {
         --tag-size: calc(2rem + (2 * var(--borderWidth)));
         display: block;
         padding: var(--tag-size) 0;
-        @include readable();
+        /* include readable */
+        max-width: var(--readableMax);
+        margin: 0 auto;
         /* this matters a LOT for the line highlight */
         font-size: 1.5rem !important;
         --line-highlight-color: var(--colorBackground);
@@ -525,7 +555,7 @@
         }
       }
 
-      code[data-language] {
+      & code[data-language] {
         &::before {
           content: attr(data-language);
           background: var(--pixelBorder);

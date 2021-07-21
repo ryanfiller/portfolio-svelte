@@ -3,10 +3,10 @@
   export let categories = []
 </script>
 
-<style global type='text/scss'>
+<style>
   .tag-list {
-    .categories,
-    .tags {
+    & .categories,
+    & .tags {
       font-size: 1em;
       color: currentColor;
       list-style: none;
@@ -14,7 +14,7 @@
       margin: 0;
       display: inline-block;
 
-      li {
+      & li {
         margin: 0;
         display: inline-block;
 
@@ -28,9 +28,9 @@
         }
       }
 
-      &:only-child, // when there's only one list
-      & + ul { // get rid of the last comma when cats and tags are siblings
-        li:last-child:after {
+      &:only-child, /* when there's only one list */
+      & + ul { /* get rid of the last comma when cats and tags are siblings */
+        & li:last-child::after {
           content: '';
           margin-right: 0;
         }

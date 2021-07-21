@@ -6,11 +6,11 @@ describe('<PostPreview /> component', () => {
   
   it('renders correctly', () => {
     cy.get('article.post-preview').within(() => {
-      cy.get('.post-preview__header').should('exist')
+      cy.get('.header').should('exist')
       cy.get('time').should('exist')
       cy.get('ul.categories').should('exist')
       cy.get('ul.tags').should('exist')
-      cy.get('a.post-preview__link').should('exist')
+      cy.get('a').should('exist')
     })
     cy.checkA11y('article.post-preview')
   })
@@ -21,7 +21,7 @@ describe('<PostPreview /> component', () => {
     })
 
     it('renders an h2', () => {
-      cy.get('.content-list').eq(0).find('h2.post-preview__header').should('exist')
+      cy.get('.content-list').eq(0).find('h2.header').should('exist')
     })
   })
 
@@ -31,7 +31,7 @@ describe('<PostPreview /> component', () => {
     })
 
     it('renders an h3', () => {
-      cy.get('.content-list').eq(0).find('h3.post-preview__header').should('exist')
+      cy.get('.content-list').eq(0).find('h3.header').should('exist')
     })
   })
 })

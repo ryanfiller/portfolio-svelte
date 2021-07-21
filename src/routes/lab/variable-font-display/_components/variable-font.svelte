@@ -1,10 +1,8 @@
-<style type='text/scss'>
-  @import '../../../../styles/functions.scss';
-
+<style>
   .variable-font {
     margin: var(--padding) 0;
 
-    &__link {
+    & a {
       font-size: .75em;
       text-transform: uppercase;
       text-decoration:none;
@@ -21,49 +19,43 @@
       }
     }
 
-    &__options {
+    & fieldset {
       margin: 0 var(--padding);
       padding: var(--padding);
     }
 
-    label {
+    & label {
       text-transform: lowercase;
       margin-right: 1em;
     }
 
 
-    &__slider {
+    & .slider {
       display: flex;
       align-items: center;
 
-      input {
+      & input {
         width: 100%;
-
-        // // TODO need to make inputs components
-        // &::-webkit-slider-runnable-track,
-        // &::-moz-range-track {
-        //   height: 100%;
-        //   background: var(--textColor);
-        //   border-radius: 50%;
-        // }
       }
     }
 
-    &__checkbox {
-      input {
+    & .checkbox {
+      & input {
         margin: 0;
       }
     }
 
-    &__select {
+    & .select {
       display: flex;
+      align-items: center;
+      white-space: nowrap;
 
-      select {
+      & select {
         flex: 1;
       }
     }
 
-    &__code {
+    & .code {
       padding: var(--padding);
       display: flex;
       align-items: center;
@@ -71,18 +63,13 @@
       left: unset;
       width: 100%;
 
-      *::after {
+      & *::after {
         display: none;
       }
     }
 
-    &__example {
-
-      label {
-        @include visuallyHide;
-      }
-      
-      textarea {
+    & .example {
+      & textarea {
         padding: var(--padding);
         resize: vertical;
         width: 100%;
@@ -95,7 +82,7 @@
       }
     }
 
-    @include medium {
+    @media (--mediumWidth) {
       display: grid;
       grid-template-columns: auto 1fr 1fr;
       grid-template-rows: auto auto;
@@ -103,22 +90,22 @@
         "link example example"
         "link options code";
 
-      &__link {
+      & a {
         grid-area: link;
         writing-mode: sideways-lr;
-        // well this feels weird...
+        /* well this feels weird... */
         text-align: right;
       }
 
-      &__options {
+      & fieldset {
         grid-area: options;
       }
 
-      &__example {
+      & .example {
         grid-area: example;
       }
       
-      &__code {
+      & .code {
         grid-area: code;
         margin-top: 1rem;
       }
@@ -165,17 +152,16 @@
   <a
     target="_blank"
     rel="noopener noreferrer"
-    class='variable-font__link'
     href={url}
   >
     {name}
   </a>
 
-  <fieldset class='variable-font__options'>
+  <fieldset>
     <legend>Options:</legend>
 
     {#each Object.values(styleOptions) as variable, index}
-      <div class='variable-font__slider'>
+      <div class='slider'>
         <label for={makeId(`${variable.name}-slider`)}>
           {variable.name}
         </label>
@@ -188,7 +174,7 @@
       </div>
     {/each}
 
-    <div class='variable-font__checkbox'>
+    <div class='checkbox'>
       <label for={makeId('italic')}>italic</label>
       <input
         type='checkbox'
@@ -197,7 +183,7 @@
       />
     </div>
 
-    <div class='variable-font__select'>
+    <div class='select'>
       <label for={makeId('capitalization')}>text-transform</label>
       <select
         id={makeId('capitalization')}
@@ -212,11 +198,15 @@
     
   </fieldset>
 
-  <div class='variable-font__example'>
-    <label for={makeId('example-text')}>text example</label>
+  <div class='example'>
+    <label
+      class='screenreader'
+      for={makeId('example-text')}>
+      text example
+    </label>
     <textarea
       id={makeId('example-text')}
-      class='variable-font__example'
+      class='example'
       wrap='hard'
       bind:value={text}
       style="
@@ -228,7 +218,7 @@
     />
   </div>
 
-  <pre class='variable-font__code'>
+  <pre class='code'>
     <code>
 font-family: "{name}";
 font-variation-settings: {

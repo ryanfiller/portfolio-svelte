@@ -1,41 +1,46 @@
-<style global type='text/scss'>
-  .form {
+<style global>
+  .form#contact {
     --labelHeight: 1.25em;
     --rowHeight: 4em;
-
-    &__wrapper {
-      height: 30rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: sans-serif;
-    }
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
     
-    &__error,
-    &__success {
+    /* include readable */
+    max-width: var(--readableMax);
+    margin: 0 auto;
+    padding: var(--padding);
+    margin-bottom: var(--padding);
+
+    & > *:not(:last-child) {
+      margin-bottom: var(--padding);
+    }
+
+    &[data-state='sent'],
+    &[data-state='error'] {
       width: 100%;
       text-align: center;
 
-      button {
-        margin-top: var(--padding);
+      & header {
+        font-size: 1.5em;
       }
     }
+  }
 
+  form {
     width: 100%;
     align-self: stretch;
     display: flex;
     flex-direction: column;
 
-    & > * {
+    & > *:not(:last-child) {
       margin-bottom: calc(.5 * var(--padding));
-      width: 100%;
-      
-      &:last-child {
-        margin-bottom: 0;
-      }
-    } 
+    }
 
-    &__row {
+    & label {
       --rowColor: var(--colorHighlight);
       min-height: var(--rowHeight);
       width: 100%;
@@ -50,15 +55,15 @@
         --rowColor: var(--colorActive);
       }
       
-      &--textarea {
+      &.textarea {
         flex: 1;
 
-        textarea {
+        & textarea {
           padding-top: 1rem;
         }
       }
 
-      label {
+      & span {
         text-transform: uppercase;
         color: var(--colorWhite);
         background: var(--rowColor);
@@ -66,7 +71,6 @@
         display: flex;
         align-items: center;
         line-height: 1;
-        font-size: 1em;
         padding-left: 1rem;
         transition: margin var(--transitionSpeed);
         height: var(--labelHeight);
@@ -74,8 +78,9 @@
         border-top: var(--borderWidth) solid var(--rowColor);
       }
 
-      input, 
-      textarea {
+      & input, 
+      & textarea {
+        font-family: inherit;
         background: transparent;
         color: var(--colorText);
         font-size: 1em;
@@ -101,7 +106,7 @@
           outline: none;
           margin: 0;
 
-          + label {
+          & + span {
             margin-bottom: 0;
           }
         }
@@ -111,15 +116,15 @@
     @supports (writing-mode: sideways-lr) {
       --rowHeight: 3em;
 
-      &__row {
+      & label {
         flex-direction: row;
         flex-wrap: nowrap;
 
-        label {
+        & span {
           font-size: .75em;
           order: -1;
           writing-mode: sideways-lr;
-          height: 100%;
+          height: auto;
           padding: .25em;
           display: flex;
           justify-content: center;
@@ -128,14 +133,14 @@
           margin-left: calc(-1 * var(--labelHeight) - var(--borderWidth));
         }
 
-        input, 
-        textarea {
+        & input, 
+        & textarea {
           &:focus,
           &:not(:placeholder-shown) {
             outline: none;
             margin: 0;
     
-            + label {
+            & + span {
               margin-left: 0;
             }
           }
@@ -185,39 +190,34 @@
   }
 </script>
 
-<div class={`form__wrapper ${name} ${name}--${state}`} >
+<div class='form' id='contact' data-state={state}>
   {#if state === 'sent'}
-    <div class='form__success'>
-      <header>
-        Sent!
-      </header>
-      <button 
-        type='reset'
-        on:click={() => {
-          setDefaultValues()
-          state = 'form'
-        }} 
-      >
-        Send Another?
-      </button>
-    </div>
+    <header>
+      Sent!
+    </header>
+    <button 
+      type='reset'
+      on:click={() => {
+        setDefaultValues()
+        state = 'form'
+      }} 
+    >
+      Send Another?
+    </button>
   {:else if state === 'error'}
-    <div class='form__error'>
-      <header>
-        Error!
-      </header>
-      <button 
-        type='reset'
-        on:click={() => {
-          state = 'form'
-        }} 
-      >
-        Try again?
-      </button>
-    </div>
+    <header>
+      Error!
+    </header>
+    <button 
+      type='reset'
+      on:click={() => {
+        state = 'form'
+      }} 
+    >
+      Try again?
+    </button>
   {:else} 
     <form
-      id={name}
       class='form'
       name={name}
       data-netlify='true'
@@ -232,7 +232,7 @@
       {#each fields as field}
         <!-- better way to do this maybe? -->
         {#if field.type === 'textarea'}
-          <div class={`form__row form__row--${field.type}`}>
+          <label for={field.name} class={field.type}>
             <textarea 
               id={field.name}
               name={field.name}
@@ -241,12 +241,12 @@
               value={formValues[field.name]}
               on:input={event => handleInputChange(event, field.name)}
             />
-            <label for={field.name}>
+            <span>
               {field.name}
-            </label>
-          </div>
+            </span>
+          </label>
         {:else}
-          <div class={`form__row form__row--${field.type}`}>
+          <label for={field.name} class={field.type}>
             <input
               type={field.type}
               id={field.name}
@@ -256,10 +256,10 @@
               value={formValues[field.name]}
               on:input={event => handleInputChange(event, field.name)}
             />
-            <label for={field.name}>
+            <span>
               {field.name}
-            </label>
-          </div>
+            </span>
+          </label>
         {/if}
       {/each}
       <button type='submit'>

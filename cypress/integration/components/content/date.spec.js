@@ -23,10 +23,10 @@ describe('<Date /> component', () => {
     })
 
     it('renders two! <time>s!', () => {
-      cy.get('time.date__initial')
+      cy.get('time.initial')
         .contains(/\w+ +\d{0,2}, +\d{0,4}/) // match January 30, 2020
         .should('have.attr', 'datetime')
-      cy.get('time.date__updated')
+      cy.get('time.updated')
         .contains(/\w+ +\d{0,2}, +\d{0,4}/) // match January 30, 2020
         .should('have.attr', 'datetime')
       cy.checkA11y('div.date')

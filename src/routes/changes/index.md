@@ -23,6 +23,9 @@ Change some internals
 
 [refactor/sveltekit](https://github.com/ryanfiller/portfolio-svelte/pull/41) - Sapper -> SvelteKit
 
+[refactor/post-css](https://github.com/ryanfiller/portfolio-svelte/pull/43) - SCSS -> PostCSS
+<!-- TODO styles and config got moved into styles -->
+
 [[details | Version Details]]
 | - Features
 |   - lose `mdsvex` `Prism` highlighting in favor of using `remark` to highlight specific lines
@@ -33,6 +36,7 @@ Change some internals
 |   - move `#index` wrapper from `_layout.svelte` to `layouts/page.svelte`
 |   - fix `npm audit` warnings
 |   - _finally_ refactor to SvelteKit at `1.0.0-next.113`, temporarily use @adpater-static to deploy
+|   - _finally_ refactor to PostCSS (`autoprefixer`, `nesting`, `customMedia`), remove all instances of `<style global>`
 |
 | - Content
 |   - ≈ README.md
@@ -42,20 +46,38 @@ Change some internals
 |
 | - Components
 |   - Layout
+|     - ≈ `<Header />`
+|     - ≈ `<Footer />`
+|     - ≈ `<Banner />`
 |     - ≈ `<Markdown />`
+|     - ≈ `<Nav />`
 |     - ≈ `<ColorSchemeToggle />`
 |     - ≈ `<Footer />`
 |     - ≈ `<SEO />`
-|     - ≈ `<Styles />`
+|     - ≈ `<SocialLinks />`
+|     - \- `<Styles />`
+|   - Blog
+|     - ≈ `<PostPreview />`
+|     - ≈ `<SeriesNavigator />`
+|     - ≈ `<SeriesPreview />`
 |   - Content
 |     - ≈ `<Date />`
+|     - ≈ `<List />`
 |     - ≈ `<TagList />`
-|     - ≈ `<Form />`
+|     - ≈ `<Form />` => `<Form />`
+|   - Inputs
+|     - ≈ `<Toggle />`
 |   - Misc
 |     - ≈ `<Alert />`=> `<Note />`
 |     - \+ `<Alert />`
 |     - ≈ `<ColorChart />`
 |     - ≈ `<ColorStepper />`
+|     - ≈ `<Tabs />`
+|   - Styles
+|     - \+ `<Styles />`
+|     - \+ `config.js`
+|     - \+ `custom-media.css`
+|     - \+ `functions.scss`
 |
 | - Routes
 |   - ≈ `/`
@@ -67,6 +89,7 @@ Change some internals
 |   - ≈ `/blog/rss.xml`
 |   - ≈ `/blog/series/[slug]`
 |   - ≈ `/blog/series`
+|   - ≈ `/changes`
 |   - ≈ `/generate-image`
 |   - ≈ `/sitemap` (temporary disabled)
 |
@@ -104,9 +127,14 @@ Change some internals
 |     - Layout
 |       - ≈ `<Banners />`
 |       - ≈ `<ColorSchemeToggle />`
-|     - ≈ `<SEO />`
+|       - ≈ `<SEO />`
+|     - Content
+|       - ≈ `<Date />`
+|       - ≈ `<Form />` => `<Form />`
 |     - Blog
 |       - ≈ `<SeriesNavigator />`
+|       - ≈ `<PostPreview />`
+|       - ≈ `<SeriesPreview />`
 |   - Misc
 |     - ≈ `<Alert />`=> `<Note />`
 |     - \+ `<Alert />`
@@ -135,6 +163,15 @@ Change some internals
 |   - ≈ `netlify.toml`
 |   - ≈ `.gitignore`
 |
+| - Styles
+|   - functions
+|     - \- animate
+|     - \- arrow
+|     - \- visuallyHide
+|     - \- highlight
+|   - utility classes
+|     - \+ .screenreader
+|
 | - Packages
 |   - \+ cypress-plugin-tab
 |   - \- compression
@@ -149,6 +186,10 @@ Change some internals
 |   - \+ @sveltejs/kit
 |   - \+ encoding
 |   - \+ vite
+|   - \+ autoprefixer
+|   - \+ postcss-custom-media
+|   - \+ postcss-load-config
+|   - \+ postcss-nesting
 
 </Change>
 

@@ -1,6 +1,6 @@
 <script>
-  import { colors, themes } from '../../styles.js'
-  import { capitalize } from '../../helpers'
+  import { colors, themes } from './config.js'
+  import { capitalize } from '../helpers'
 
   // create all the css vars based on a js object
   const setColors = (colors) => {
@@ -41,62 +41,61 @@
   `}
 </svelte:head>
 
-<style global type='text/scss'>
-
-  // -------------
-  // fonts
-  // -------------
+<style global>
+  /* ------------- */
+  /* fonts */
+  /* ------------- */
 
   @font-face {
     font-family: 'LabDJR';
     src: url('/fonts/LabDJR-VF.woff');
     font-display: swap;
-    // unicode-range: U+0000-00FF;  
+    /* unicode-range: U+0000-00FF; */
   }
 
   @font-face {
     font-family: 'Barlow';
     src: url('/fonts/Barlow.woff2');
     font-display: swap;
-    // unicode-range: U+0000-00FF;
+    /* unicode-range: U+0000-00FF; */
   }
 
   @font-face {
     font-family: 'Recursive';
     src: url('/fonts/Recursive.woff2');
     font-display: swap;
-    // unicode-range: U+0000-00FF;
+    /* unicode-range: U+0000-00FF; */
   }
 
-  // -------------
-  // variables
-  // -------------
+  /* ------------- */
+  /* variables */
+  /* ------------- */
 
   :root {
-    // spacing
+    /* spacing */
     --padding: clamp(1rem, 2.5vw, 2rem);
     --verticalSpacing: calc(2 * var(--padding));
 
-    // sizing
-    --containerMaxWidth: $largeBreak;
+    /* sizing */
+    --containerMaxWidth: var(--largeSize);
     --borderRadius: 1rem;
     --borderWidth: calc(var(--padding) / 8);
 
-    // accessibility stuff
+    /* accessibility stuff */
     --tapableSize: 40px;
     --readableMax: 65rem;
 
     --readableColumn: minmax(auto, var(--readableMax));
 
-    // fonts
+    /* fonts */
     --sansSerif: 'Barlow';
-    // -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+    /* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
     --mono: 'Recursive';
-    // "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace
+    /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
     --display: 'LabDJR';
-    // "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace
+    /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
-    // gradients
+    /* gradients */
     --pixelSize: .25rem;
     --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
     --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
@@ -159,14 +158,14 @@
     --pixelBorderRadius: calc(6.25 * var(--borderWidth));
   }
 
-  // -------------
-  // default styles
-  // -------------
+  /* ------------- */
+  /* default styles */
+  /* ------------- */
 
   html {
     font-size: 12px;
 
-    body {
+    & body {
       margin: 0;
       font-size: 1.5rem;
       line-height: 1;
@@ -177,9 +176,9 @@
     }
   }
 
-  // -------------
-  // resets and preferences
-  // -------------
+  /* ------------- */
+  /* resets and preferences */
+  /* ------------- */
 
   * {
     box-sizing: border-box;
@@ -192,9 +191,9 @@
     transition: color var(--transitionSpeed);
   }
 
-  // -------------
-  // utility classes
-  // -------------
+  /* ------------- */
+  /* utility classes */
+  /* ------------- */
 
   body[data-no-js] .needs-js {
 		display: none;
@@ -240,9 +239,9 @@
     clear: both !important;
   }
 
-  // -------------
-  // layouts
-  // -------------
+  /* ------------- */
+  /* layouts */
+  /* ------------- */
 
   .columns {
     display: grid;
@@ -257,9 +256,9 @@
     }
   }
 
-  // -------------
-  // form elements
-  // -------------
+  /* ------------- */
+  /* form elements */
+  /* ------------- */
 
   .button,
   button {
@@ -284,9 +283,9 @@
     }
   }
 
-  // -------------
-  // typography
-  // -------------
+  /* ------------- */
+  /* typography */
+  /* ------------- */
 
   b,
   strong {
@@ -298,9 +297,9 @@
     font-style: italic;
   }
 
-  // -------------
-  // holdover gatsby styles to slowly delete
-  // -------------
+  /* ------------- */
+  /* holdover gatsby styles to slowly delete */
+  /* ------------- */
   progress {
     vertical-align: baseline;
   }
@@ -324,42 +323,22 @@
   sup {
     top: -0.5em;
   }
-  p {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
-    margin-bottom: 1.45rem;
-  }
   fieldset,
   address {
-    margin-left: 0;
-    margin-right: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 0;
+    margin: 0;
     margin-bottom: 1.45rem;
+    padding: 0;
   }
   dt {
     font-weight: bold;
   }
-  acronym {
-    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
-    cursor: help;
-  }
-  abbr {
+  acronym,
+  abbr,
+  abbr[title] {
     border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
     cursor: help;
   }
   abbr[title] {
-    border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
-    cursor: help;
     text-decoration: none;
   }
-
 </style>

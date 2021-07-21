@@ -11,7 +11,7 @@
   const toggleTheme = () => theme === 'light' ? theme = 'dark' : theme = 'light'
 </script>
 
-<style global type='text/scss'>
+<style>
   .theme-example {
     --white: #ffffff;
     --black: #000000;
@@ -22,18 +22,6 @@
     --gray4: #3a3a3a;
     --text: var(--black);
     --background: var(--white);
-
-    [data-user-color-scheme="light"] &,
-    &.theme-example--light:is(section) { // specificity!
-      --text: var(--black);
-      --background: var(--white);
-    }
-
-    [data-user-color-scheme="dark"] &,
-    &.theme-example--dark:is(section) { // specificity!
-      --text: var(--white);
-      --background: var(--black);
-    }
     
     background: var(--background);
     transition: var(--transitionSpeed);
@@ -46,7 +34,7 @@
     position: relative;
     z-index: 1;
 
-    p {
+    & p {
       text-align: center;
       width: calc(50% - .5 * var(--padding));
       line-height: 1.25;
@@ -57,15 +45,27 @@
       }
     }
 
-    span {
+    & span {
       transition: calc(2 * var(--transitionSpeed));
       display: block;
     }
   }
+
+  :global([data-user-color-scheme='light']) .theme-example,
+  .theme-example.light:is(section) { /* specificity! */
+    --text: var(--black);
+    --background: var(--white);
+  }
+
+  :global([data-user-color-scheme='dark']) .theme-example,
+  .theme-example.dark:is(section) { /* specificity! */
+    --text: var(--white);
+    --background: var(--black);
+  }
 </style>
 
 <figure class='needs-js' data-align='right'>
-  <section class={`theme-example theme-example--${theme}`}>
+  <section class={`theme-example ${theme}`}>
     <p>
       <span style='color: var(--text);'>The</span>
       <span style='color: var(--text);'>five</span>

@@ -30,13 +30,13 @@ const twitter = () => async (tree) => {
       const render = avatarUrl => (`
         <div class="twitter-tweet">
           <div class="account">
-            <a class="account__avatar" href="${userLink}" title="${name}" ${linkStuff}>
+            <a class="avatar" href="${userLink}" title="${name}" ${linkStuff}>
               <img src="${avatarUrl}" alt="${name}" />
             </a>
     
-            <div class="account__text">
-              <a href="${userLink}" ${linkStuff} class="account__name">${name}</a>
-              <a href="${userLink}" ${linkStuff} class="account__handle">${handle}</a>
+            <div class="text">
+              <a href="${userLink}" ${linkStuff} class="name">${name}</a>
+              <a href="${userLink}" ${linkStuff} class="handle">${handle}</a>
             </div>
     
             <a class="twitter-logo" href="${tweetLink}" title="View on Twitter" ${linkStuff}>
@@ -51,10 +51,10 @@ const twitter = () => async (tree) => {
           </div>
     
           <div class="meta">
-            <span class="meta__date">
+            <span class="date">
               ${date}
             </span>
-            <a class="meta__info" title="View Twitter Embed Policy" href="/uses/#embedded-tweets">
+            <a class="info" title="View Twitter Embed Policy" href="/uses/#embedded-tweets">
               <svg viewBox="0 0 24 24">
                 <g>
                   <path d="M12 18.042c-.553 0-1-.447-1-1v-5.5c0-.553.447-1 1-1s1 .447 1 1v5.5c0 .553-.447 1-1 1z"></path>

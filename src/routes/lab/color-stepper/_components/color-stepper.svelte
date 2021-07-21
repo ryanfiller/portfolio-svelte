@@ -1,17 +1,16 @@
-<style global lang='scss'>
-  @import '../../../../styles/functions.scss';
-  
+<style>
   .color-stepper {
     display: flex;
     align-items: flex-start;
 
-    .input, .output {
+    & .input,
+    & .output {
       flex: 1;
       display: flex;
       flex-direction: column;
     }
 
-    .input {
+    & .input {
       position: sticky;
       top: var(--padding);
       margin-right: var(--padding);
@@ -20,26 +19,26 @@
         margin-bottom: 1em;
       }
 
-      textarea {
+      & textarea {
         width: 100%;
         max-height: 75vh;
         overflow: auto;
         resize: vertical;
       }
 
-      label {
-        span {
+      & label {
+        & span {
           display: block;
         }
 
-        input {
+        & input {
           width: 100%;
         }
       }
     }
 
-    .output {
-      pre {
+    & .output {
+      & pre {
         --width: 100%;
         margin: 0;
         top: initial;
@@ -47,50 +46,49 @@
         left: initial;
         bottom: initial;
 
-        span {
-          display: inline-block;
-          padding-left: 1.5em;
-          position: relative;
-
-          &::before {
-            content: '';
-            display: block;
-            position: absolute;
-            height: 1.25em;
-            width: 1.25em;
-            left: 0;
-            background: var(--swatch);
-            border-radius: 50%;
-          }
-
-          &.original::before {
-            border-radius: 0;
-            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-          }
-
-          &.transparency::before {
-            border-radius: 0;
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
+        & :global {
+          & span {
+            display: inline-block;
+            padding-left: 1.5em;
+            position: relative;
+  
+            &::before {
+              content: '';
+              display: block;
+              position: absolute;
+              height: 1.25em;
+              width: 1.25em;
+              left: 0;
+              background: var(--swatch);
+              border-radius: 50%;
+            }
+  
+            &.original::before {
+              border-radius: 0;
+              clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+            }
+  
+            &.transparency::before {
+              border-radius: 0;
+              clip-path: polygon(0 0, 100% 0, 50% 100%);
+            }
           }
         }
+
       }
     }
 
-    button {
+    & button {
       position: sticky;
       bottom: 0;
       border-bottom: var(--padding) solid var(--colorBackground);
-    }
-
-    #hidden-code {
-      @include visuallyHide;
     }
   }
 </style>
 
 <script>
   import { onMount } from 'svelte'
-  import { colors } from '../../../../styles.js'
+  import { colors } from '../../../../styles/config.js'
   import { capitalize, getCustomProperty } from '../../../../helpers'
   import { hexToHSL, HSLToHex } from './color-functions.js'
 
@@ -280,6 +278,7 @@
     </label>
   </section>
 
+  <!-- TODO https://developer.mozilla.org/en-US/docs/Web/HTML/Element/output -->
   <section class='output'>
     <pre>
       <code>
@@ -290,7 +289,7 @@
       <button on:click={event => copyText(event)}>
         {copyButtonText}
       </button>
-      <label id='hidden-code'>
+      <label id='hidden-code' class='.screenreader'>
         hidden text for copy field
         <textarea  value={stripHtmlTags(output)} />
       </label>

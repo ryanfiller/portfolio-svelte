@@ -4,61 +4,49 @@
   export let links = []
 </script>
 
-<style global type='text/scss'>
-  @import '../../styles/functions.scss';
+<style>
+  :global(header) nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
-  .nav {
-    header & {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 
-      .logo {
-        margin-bottom: 1rem;
-      }
+    & li {
+      margin-bottom: 0;
+      margin-right: 1em;
 
-      @include small() {
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        .logo {
-          margin-bottom: 0;
-        }
+      &:last-child {
+        margin-right: 0;
       }
     }
+  }
 
-    &__list {
-      display: flex;
-      list-style: none;
-      padding: 0;
-      margin: 0;
+  a {
+    color: currentColor;
+    text-decoration: none;
 
-      &-item {
-        margin-bottom: 0;
-        margin-right: 1em;
+    &.active {
+      position: relative;
 
-        &:last-child {
-          margin-right: 0;
-        }
-      }
-    }
-
-    &__link {
-      color: currentColor;
-
-      &--active {
-        position: relative;
-
-        &::after {
-          content: '';
-          display: block;
-          @include arrow(up);
-          position: absolute;
-          top: calc(100% + .125em);
-          left: 50%;
-          transform: translateX(-50%);
-        }
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc(100% + .125em);
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 1em;
+        width: 0;
+        height: 0;
+        border-left: .3em solid transparent;
+        border-right: .3em solid transparent;
+        border-bottom: .4em solid currentColor;
       }
     }
   }
@@ -67,13 +55,12 @@
 <!-- TODO? rel=prefetch on any of these? -->
 
 <nav class='nav' aria-label={label}>
-  <ul class='nav__list'>
+  <ul>
     {#each links as link}
-      <li class='nav__list-item'>
+      <li>
         {#if link.external}
           <a 
             href={link.url}
-            class='nav__link'
             target='_blank' rel='noopener noreferrer'
           >
             {link.name}
@@ -81,7 +68,7 @@
         {:else}
           <a 
             href={`/${link.url}`}
-            class={link.url === segment ? 'nav__link nav__link--active' : 'nav__link'}
+            class:active={link.url === segment}
           >
             {link.name}
           </a>

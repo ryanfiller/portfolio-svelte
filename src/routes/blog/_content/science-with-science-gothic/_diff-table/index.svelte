@@ -1,18 +1,16 @@
-<!-- TODO - figure out where to put `svelte-ignore css-unused-selector` in this file -->
-
-<style global>
-  .diff-table .diff {
+<style>
+  .table span {
     font-size: .75em;
     font-weight: bold;
     margin-top: .25em;
     margin-right: .25em;
   }
 
-  .diff-table .diff--increase {
+  .table :global(.increase) {
     color: var(--colorHighlight);
   }
 
-  .diff-table .diff--decrease {
+  .table :global(.decrease) {
     color: var(--colorActive);
   }
 </style>
@@ -38,16 +36,16 @@
   const getDiff = (score, compare) => {
     const diff = ((score - compare) / compare) * 100
     if (diff > 0) {
-      return `<span class='diff diff--increase'>(+${diff.toFixed(2)}%)</span>`
+      return `<span class='diff increase'>(+${diff.toFixed(2)}%)</span>`
     } else if (diff < 0) {
-      return `<span class='diff diff--decrease'>(${diff.toFixed(2)}%)</span>`
+      return `<span class='diff decrease'>(${diff.toFixed(2)}%)</span>`
     } else {
       return ``
     }
   }
 </script>
 
-<table class='diff-table'>
+<table class='table'>
   {#if !!caption}
     <caption>{caption}</caption>
   {/if}

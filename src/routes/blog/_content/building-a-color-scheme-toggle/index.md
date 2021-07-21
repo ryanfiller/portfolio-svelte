@@ -382,11 +382,11 @@ const setPreference = (newPreference, getCustomProperty, setCustomProperty, LS_K
 Making sure the button never shows the wrong state also means looking to a single source of truth. We can actually style the toggle button based directly off of the inline style that the `setCustomProperty` helper class applies. For Svelte we'll have to use the [`:global()` style modifier](https://svelte.dev/docs#style) to escape the style encapsulation if everything isn't in the same file.
 
 ```css
-:global([style*='light'] .color-scheme-toggle-button) {
+:global([style*='light'] .color-scheme-toggle) {
   ...
 }
 
-:global([style*='dark'] .color-scheme-toggle-button) {
+:global([style*='dark'] .color-scheme-toggle) {
   ...
 }
 ```

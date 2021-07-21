@@ -1,7 +1,7 @@
 <script>
   import { writable, derived } from 'svelte/store'
   import move from 'array-move'
-  import { colors, themes } from '../../../styles.js'
+  import { colors, themes } from '../../../styles/config.js'
   import { capitalize } from '../../../helpers'
 
   import { Tabs, Tab } from '../../../components/misc/tabs'
@@ -128,7 +128,7 @@
 
 <svelte:head>
   {@html `
-    <style>
+    <${'style'}>
       :root {
         --gradientMachine: ${$css.join(', ')};
         --gradientMachineBlendMode: ${$gradient.blendMode};
@@ -149,7 +149,7 @@
         background-repeat: var(--gradientMachineRepeat);
         mix-blend-mode: overlay;
       }
-    </style>
+    </${'style'}>
   `}
 </svelte:head>
 

@@ -29,42 +29,29 @@
   import List from  '../components/content/list.svelte'
   import PostPreview from '../components/blog/post-preview.svelte'
   import SeriesPreview from '../components/blog/series-preview.svelte'
-  import Form from '../components/form.svelte'
+  import ContactForm from '../components/misc/contact-form.svelte'
 </script>
 
-<style global type='text/scss'>
-
-  @import '../styles/functions.scss';
-
-  #content.homepage {
-    /* TODO remove this */
-    .temp-bio,
-    form#contact {
-      @include readable();
-      margin-bottom: var(--padding);
+<style>
+  /* TODO remove this */
+  .temp-bio {
+    /* include readable */
+    max-width: var(--readableMax);
+    margin: 0 auto;
+    padding: var(--padding);
+    margin-bottom: var(--padding);
+  
+    & p {
+      margin: 1em 0;
+      line-height: 1.5;
     }
-
-    .temp-bio {
-      div {
-        line-height: 1.5;
-      }
-    
-      p {
-        margin: 1em 0;
-      }
-    
-      img {
-        float: right;
-        margin-left: 1em;
-        width: 100px;
-      }
-    }
-
-    & > * {
-      margin-top: 10rem;
+  
+    & img {
+      float: right;
+      margin-left: 1em;
+      width: 100px;
     }
   }
-
 </style>
 
 <Page hideBanner>
@@ -101,5 +88,5 @@
     />
   {/if}
 
-  <Form {...forms.contact} />
+  <ContactForm {...forms.contact} />
 </Page>

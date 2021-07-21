@@ -10,7 +10,7 @@
   import focusTrap from '../../actions/focus-trap.js'
 </script>
 
-<style global type='text/scss'>
+<style>
   .alert {
     position: fixed;
     top: 0;
@@ -27,7 +27,7 @@
     border: 0;
     background-color: transparent;
 
-    .note {
+    & :global(.note) {
       width: 100%;
       max-width: calc(var(--readableMax) - (4 * var(--padding)));
 

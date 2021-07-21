@@ -13,27 +13,29 @@
   const h = title ? '3' : '2'
 </script>
 
-<style type="text/scss">
- @import '../../styles/functions.scss';
- 
+<style>
   section.content-list {
-    @include readable();
+    /* include readable */
+    max-width: var(--readableMax);
+    margin: 0 auto;
+    padding: var(--padding);
+
     clear: both;
     line-height: 1.5;
 
-    & > h2 {
+    & h2 {
       margin: 0;
       font-size: 3.25rem;
       border-bottom: var(--borderWidth) solid currentColor;;
     }
 
-    & > ul {
+    & ul {
       margin: 0 0 2em 0;
       padding: 0;
       font-size: 1.5rem;
       list-style: none;
       
-      li {
+      & li {
         margin-top: calc(2 * var(--varSpacing)) 0;
       }
     }

@@ -14,7 +14,7 @@
 	import { dev } from '$app/env'
 
 	if (dev) {
-		console.log(error)
+		console.error('ERROR: ', error)
 	}
 
 	import Page from '../layouts/page.svelte'
@@ -95,8 +95,8 @@
 	$: image = images[Math.floor(Math.random() * images.length)]
 </script>
 
-<style global>
-	#content.error {
+<style>
+	:global(#site.error #content) {
 		color: var(--colorWhite);
 		font-family: var(--display);
 		font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;
@@ -107,16 +107,16 @@
 		overflow: hidden;
 	}
 
-	#content.error article {
+	article {
 		height: 100%;
 		grid-template-rows: 1fr auto 1fr auto 1fr;
 	}
 
-	#content.error header {
+	header {
 		grid-row: 2 / 3;
 	}
 
-	#content.error h1 {
+	h1 {
 		font-size: 3em;
 		margin: 0 0 var(--padding) 0;
 		display: flex;
@@ -124,17 +124,17 @@
 		flex-direction: row-reverse;
 		justify-content: space-between;
 		margin: 0 0 10vh 0;
+
+		& span {
+			display: inline-block;
+		}
 	}
 
-	#content.error h1 span {
-		display: inline-block;
-	}
-
-	#content.error pre {
+	pre {
 		white-space: pre-line;
 	}
 
-	#content.error ul {
+	ul {
 		margin: 0;
 		padding: var(--padding);
 		background-color: var(--colorPrimary);
@@ -144,40 +144,40 @@
 		display: flex;
 		flex-wrap: wrap;
 		grid-row: 4 / 5;
+		
+		&::before,
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			top: -1px;
+			right: -1px;
+			bottom: -1px;
+			left: -1px;
+			pointer-events: none;
+		}
+
+		&::before {
+			background: var(--pixelBorder);
+			z-index: 3;
+		}
+
+		&::after {
+			background: var(--steppedGradient);
+			border-radius: var(--pixelBorderRadius);
+			z-index: 1;
+			opacity: .75;
+			mix-blend-mode: overlay;
+		}
 	}
 
-	#content.error ul::before,
-	#content.error ul::after {
-		content: '';
-		display: block;
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		pointer-events: none;
-	}
-
-	#content.error ul::before {
-		background: var(--pixelBorder);
-		z-index: 3;
-	}
-
-	#content.error ul::after {
-		background: var(--steppedGradient);
-		border-radius: var(--pixelBorderRadius);
-		z-index: 1;
-		opacity: .75;
-		mix-blend-mode: overlay;
-	}
-
-	#content.error ul li {
+	li {
 		margin: 0;
 		display: block;
 		flex-basis: 25ch;
 	}
 
-	#content.error ul li a {
+	a {
 		position: relative;
 		color: var(--colorLight);
 		display: inline-flex;
@@ -188,30 +188,30 @@
 		cursor: none;
 		text-decoration: none;
 		transition: 0;
+
+		&:hover,
+		&:focus {
+			transform: translate(var(--borderWidth), calc(-1 * var(--borderWidth)));
+			text-shadow: calc(-1 * var(--borderWidth)) var(--borderWidth) var(--colorBlack);
+		}
+
+		&::before {
+			content: '';
+			display: block;
+			height: 1em;
+			width: 1.25em;
+			margin-right: .5em;
+			background-size: contain;
+			background-repeat: no-repeat;
+		}
+
+		&:hover::before,
+		&:focus::before {
+			background-image: url('/images/site-assets/404/pointer.svg');
+		}
 	}
 
-	#content.error ul li a:hover,
-	#content.error ul li a:focus {
-    transform: translate(var(--borderWidth), calc(-1 * var(--borderWidth)));
-    text-shadow: calc(-1 * var(--borderWidth)) var(--borderWidth) var(--colorBlack);
-	}
-
-	#content.error ul li a::before {
-		content: '';
-		display: block;
-		height: 1em;
-		width: 1.25em;
-		margin-right: .5em;
-		background-size: contain;
-		background-repeat: no-repeat;
-	}
-
-	#content.error ul li a:hover::before,
-	#content.error ul li a:focus::before {
-		background-image: url('/images/site-assets/404/pointer.svg');
-	}
-
-	#content.error figure {
+	figure {
 		position: absolute;
 		top: -1px;
 		right: -1px;
@@ -224,7 +224,7 @@
 		background-color: var(--colorHighlight);
 	}
 
-	#content.error img {
+	img {
 		height: 100%;
 		width: 100%;
 		object-fit: cover;
@@ -233,7 +233,7 @@
 		mix-blend-mode: overlay;
 	}
 
-	#content.error figcaption {
+	figcaption {
 		font-size: 1rem;
 		position: absolute;
 		bottom: var(--padding);
