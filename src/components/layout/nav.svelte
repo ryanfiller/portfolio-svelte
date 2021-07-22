@@ -38,15 +38,15 @@
         content: '';
         display: block;
         position: absolute;
-        top: calc(100% + .125em);
+        top: calc(100% + 0.125em);
         left: 50%;
         transform: translateX(-50%);
         font-size: 1em;
         width: 0;
         height: 0;
-        border-left: .3em solid transparent;
-        border-right: .3em solid transparent;
-        border-bottom: .4em solid currentColor;
+        border-left: 0.3em solid transparent;
+        border-right: 0.3em solid transparent;
+        border-bottom: 0.4em solid currentColor;
       }
     }
   }

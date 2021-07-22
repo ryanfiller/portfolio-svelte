@@ -143,7 +143,7 @@
         width: 100%;
         position: relative;
         z-index: 0;
-        opacity: .5;
+        opacity: 0.5;
         background: var(--gradientMachine);
         background-blend-mode: var(--gradientMachineBlendMode);
         background-repeat: var(--gradientMachineRepeat);
@@ -175,7 +175,7 @@
   .row {
     display: flex;
     flex-wrap: nowrap;
-    margin-bottom: calc(.5 * var(--padding));
+    margin-bottom: calc(0.5 * var(--padding));
   }
 
   .row > *:not(:last-child) {
@@ -201,7 +201,7 @@
 
   .edit-gradient__left > * {
     width: 100%;
-    margin-bottom: calc(.5 * var(--padding));
+    margin-bottom: calc(0.5 * var(--padding));
   }
 
   .edit-gradient__right {
@@ -214,14 +214,14 @@
   }
 
   summary {
-    margin-bottom: calc(.5 * var(--padding));
+    margin-bottom: calc(0.5 * var(--padding));
   }
 
   summary button,
   .actions button {
-    padding: .125em .25em;
+    padding: 0.125em 0.25em;
     margin-left: 0;
-    margin-right: calc(.5 * var(--padding));
+    margin-right: calc(0.5 * var(--padding));
     min-width: 1.5em;
     float: right;
   }
@@ -237,7 +237,7 @@
   }
 
   fieldset {
-    padding: calc(.5 * var(--padding));
+    padding: calc(0.5 * var(--padding));
   }
 
   label span {
@@ -261,7 +261,7 @@
 
   .edit-color span {
     display: inline-block;
-    margin-right: calc(.5 * var(--padding));
+    margin-right: calc(0.5 * var(--padding));
   }
 
   .edit-color label:last-child,
@@ -274,7 +274,6 @@
   }
 
   .json textarea {
-    color: var(--colorText);
     height: 100%;
     width: 100%;
     background-color: transparent;
@@ -446,7 +445,7 @@ background-image: {$gradient.repeat}
 <textarea
   rows={($gradient.layers.length * 10) + 1}
   value={JSON.stringify($gradient, null, '  ')}
-  on:input={event => $gradient = !!event.target.value ? JSON.parse(event.target.value) : {}}
+  on:input={event => $gradient = event.target.value ? JSON.parse(event.target.value) : {}}
 />
       </pre>
     </Tab>

@@ -20,7 +20,6 @@
 
   #page-banner {
     grid-area: content;
-    width: 100%;
     margin-top: calc(2 * var(--padding));
     margin-bottom: calc((2 * var(--padding)) + 2rem);
 
@@ -30,12 +29,10 @@
     margin-left: auto;
     margin-right: auto;
     width: 100%;
-    max-width: 1400px;
     /* include readable */
     max-width: var(--readableMax);
-
-    grid-template-columns: auto ;
-    grid-template-rows: auto ;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     grid-template-areas: "title";
 
     & h1 {
@@ -48,10 +45,11 @@
     &[data-segment="series"] {
       display: grid;
       gap: 1rem;
-      grid-template-areas: "title"
-                           "date"
-                           "tags";
-  
+      grid-template-areas:
+        "title"
+        "date"
+        "tags";
+
       & :global(.date) {
         grid-area: date;
         display: block;
@@ -61,15 +59,15 @@
         grid-area: tags;
         display: block;
       }
-
     }
 
     @media (--largeWidth) {
       &[data-segment] {
         grid-template-columns: 1fr auto auto;
         grid-template-rows: 1fr auto auto;
-        grid-template-areas: "title .    date"
-                             "title tags tags";
+        grid-template-areas:
+          "title .    date"
+          "title tags tags";
       }
 
       & :global(.date),
@@ -87,10 +85,10 @@
     grid-column: 1 / -1;
     grid-row: 1 / -1;
     height: 100%;
-    min-height: calc(.66 * var(--headerAspectRatioHeight));
+    min-height: calc(0.66 * var(--headerAspectRatioHeight));
     /* background: var(--pixelGrid); */
     background-color: inherit;
-    
+
     & img {
       position: absolute;
       top: 0;
@@ -101,9 +99,8 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
-
       filter: grayscale(100%);
-      opacity: .75;
+      opacity: 0.75;
       mix-blend-mode: overlay;
       margin: 0;
     }
@@ -111,21 +108,22 @@
     & figcaption {
       font-size: 1rem;
       position: absolute;
-      padding: .25em var(--padding) 1rem var(--padding);
+      padding: 0.25em var(--padding) 1rem var(--padding);
       right: 0;
       bottom: 0;
     }
 
     /* match headerWidth */
     @media (min-width: 1280px) {
-      min-height: calc(.66 * 1px * var(--headerHeight));
-      
+      min-height: calc(0.66 * 1px * var(--headerHeight));
+
       & img {
-        --margin: .5vw;
+        --margin: 0.5vw;
+
         margin: calc(-1 * var(--margin));
         width: calc(100% + (2 * var(--margin)));
         height: calc(100% + (2 * var(--margin)));
-        filter: grayscale(100%) blur(calc(.0125 * (100vw - (1px * var(--headerWidth)))));
+        filter: grayscale(100%) blur(calc(0.0125 * (100vw - (1px * var(--headerWidth)))));
       }
     }
   }

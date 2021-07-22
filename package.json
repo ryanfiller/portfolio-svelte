@@ -16,7 +16,8 @@
     "cypress": "cross-env NODE_ENV=test ./node_modules/.bin/cypress run",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com",
     "eslint": "eslint . --ext .js,.svelte",
-    "stylelint": "stylelint **/*.{css,html,js,md,mjs,svelte,svg,ts}"
+    "stylelint": "stylelint **/*.{css,svelte}",
+    "lint": "npm run eslint && npm run stylelint"
   },
   "repository": {
     "type": "git",

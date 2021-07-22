@@ -25,17 +25,16 @@
 
       &::after {
         content: '';
-        height: .75em;
-        width: .75em;
+        height: 0.75em;
+        width: 0.75em;
         background-color: var(--colorBackground);
         border-radius: 100%;
         position: absolute;
-        top: .125em;
-        left: .125em;
-        transition: .3s;
+        top: 0.125em;
+        left: 0.125em;
+        transition: 0.3s;
       }
     }
-
 
     & input:checked ~ label::after {
       transform: translateX(1em);
@@ -52,7 +51,7 @@
     title={title}
     value={value}
     checked={checked}
-    on:click={event => toggle()}
+    on:click={event => toggle(event)}
   />
   <label for={`toggle-${name}`}>
     <span>{name}</span>

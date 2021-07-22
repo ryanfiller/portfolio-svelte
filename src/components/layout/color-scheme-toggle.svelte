@@ -124,7 +124,7 @@
 
   :global([style*='dark']) button {
     & :global(#main-shape) {
-      transform: scale(.75);
+      transform: scale(0.75);
     }
 
     & :global(#sun-rays) {

@@ -3,10 +3,10 @@
     margin: var(--padding) 0;
 
     & a {
-      font-size: .75em;
+      font-size: 0.75em;
       text-transform: uppercase;
-      text-decoration:none;
-      letter-spacing: .125em;
+      text-decoration: none;
+      letter-spacing: 0.125em;
       display: block;
       padding: var(--padding) 1em;
       background-color: var(--colorPrimary);
@@ -28,7 +28,6 @@
       text-transform: lowercase;
       margin-right: 1em;
     }
-
 
     & .slider {
       display: flex;
@@ -93,7 +92,6 @@
       & a {
         grid-area: link;
         writing-mode: sideways-lr;
-        /* well this feels weird... */
         text-align: right;
       }
 
@@ -104,7 +102,7 @@
       & .example {
         grid-area: example;
       }
-      
+
       & .code {
         grid-area: code;
         margin-top: 1rem;
@@ -213,8 +211,7 @@
         font-family: {name};
         font-variation-settings: {fontStyles};
         text-transform: {capitalization};
-        font-style: {italic ? 'italic' : ''};
-      "
+        font-style: {italic ? 'italic' : ''};"
     />
   </div>
 

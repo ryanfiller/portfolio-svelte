@@ -16,7 +16,7 @@
     --borderColor: var(--colorPrimary);
     --border: var(--borderWidth) solid var(--borderColor);
   }
-  
+
   .tabs {
     display: flex;
     flex-wrap: wrap;
@@ -28,25 +28,25 @@
     margin-left: -1em;
 
     & :global {
-      & label, 
+      & label,
       & div[role="tabpanel"] {
         margin-left: 1em;
       }
-  
+
       & input {
         position: absolute;
         opacity: 0;
       }
-  
+
       & label {
         flex: 1;
-        padding: .75em 1em calc(.75em - var(--borderWidth)) 1em;
+        padding: 0.75em 1em calc(0.75em - var(--borderWidth)) 1em;
         cursor: pointer;
         position: relative;
         margin-bottom: calc(-1 * var(--borderWidth));
         transition: var(--transitionSpeed);
         border: var(--border);
-  
+
         & span {
           font-weight: 1.125em;
           display: inline-block;
@@ -54,7 +54,7 @@
           transition: var(--transitionSpeed);
         }
       }
-  
+
       & div[role="tabpanel"] {
         border: var(--border);
         padding: 1em;
@@ -64,7 +64,7 @@
         order: 999;
         position: relative;
         z-index: 1;
-  
+
         & > * {
           /* this is to combat code style width */
           margin: 0;
@@ -72,12 +72,12 @@
           right: unset;
           width: 100%;
         }
-  
+
         & > *:last-child {
           margin-bottom: 0;
         }
       }
-  
+
       /* not active states */
       & label,
       & input:checked ~ label ~ label {
@@ -85,17 +85,17 @@
         background-color: transparent;
         color: currentColor;
         border-color: var(--colorHighlight);
-  
+
         & span {
           border-bottom-color: transparent;
         }
       }
-  
+
       & div[role="tabpanel"],
       & input:checked ~ div[role="tabpanel"] ~ div[role="tabpanel"] {
         display: none;
       }
-  
+
       /* YES active states */
       & input:checked ~ label {
         z-index: 10;
@@ -103,28 +103,26 @@
         background-color: var(--borderColor);
         color: var(--colorWhite);
       }
-  
+
       & input:checked ~ div[role="tabpanel"] {
         display: block;
       }
-  
-  
+
       /* hover/focus states  */
       & label:hover,
       & input:focus + label {
         background-color: var(--colorHighlight) !important;
-        
+
         & span {
           color: var(--colorWhite) !important;
         }
       }
-  
+
       /* hover/focus for already active */
       & input:checked + label:hover {
         background-color: var(--borderColor) !important;
       }
     }
-    
   }
 </style>
 

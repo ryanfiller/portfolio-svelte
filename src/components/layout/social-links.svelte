@@ -36,9 +36,9 @@
     align-items: center;
     justify-content: center;
     margin: 0 !important;
-    padding: .25em;
+    padding: 0.25em;
   }
-  
+
   li :global(svg) {
     fill: var(--colorWhite);
     height: 1em;

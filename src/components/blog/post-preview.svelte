@@ -11,7 +11,7 @@
   const renderHeader = () => `
     <h${h} class='header'>
       <a rel='prefetch' href=${slug}>
-        ${!!series 
+        ${series 
           ? `<span class='series-header'>${series}: </span> ${title}` 
           : title
         }
@@ -39,33 +39,34 @@
       font-family: sans-serif;
       font-size: 1.5em;
       font-weight: bold;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
 
     & :global(.series-header) {
       display: block;
-      font-size: .75em;
+      font-size: 0.75em;
     }
 
     & :global(.date) {
       font-weight: bold;
-      margin-bottom: .75rem;
+      margin-bottom: 0.75rem;
     }
 
     & .excerpt {
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
 
     & :global(.tag-list) {
       font-weight: bold;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
     }
 
     & .link {
       font-size: 1.25em;
+
       &::after {
         content: '»';
-        margin-left: .25em;
+        margin-left: 0.25em;
       }
     }
   }

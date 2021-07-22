@@ -35,7 +35,7 @@
         color: var(--colorWhite);
       }
     }
-  
+
     &::after {
       content: '';
       display: block;
@@ -45,7 +45,7 @@
       bottom: 0;
       left: 0;
       background: var(--colorBlack);
-      opacity: .5;
+      opacity: 0.5;
       z-index: -1;
       pointer-events: none;
     }

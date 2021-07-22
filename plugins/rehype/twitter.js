@@ -70,7 +70,7 @@ const twitter = () => async (tree) => {
       const promise = fetch(`${noJStwitterUrl}/${handle}`)
         .then(response => response.text())
         .then(html => {
-          const imageUrlRegex = new RegExp(`<img alt="${name}" src="(.*)" \/>`)
+          const imageUrlRegex = new RegExp(`<img alt="${name}" src="(.*)" />`)
           const imageUrlMatch = html.match(imageUrlRegex)
           return imageUrlMatch ? imageUrlMatch[1] : avatarFallback
         })

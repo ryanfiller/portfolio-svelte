@@ -20,7 +20,7 @@
 	const preview = {...series, title: ''}
   
   import Page from '../../../layouts/page.svelte'
-	import List from  '../../../components/content/list.svelte'
+	// import List from  '../../../components/content/list.svelte'
 	import SeriesPreview from '../../../components/blog/series-preview.svelte'
 </script>
 

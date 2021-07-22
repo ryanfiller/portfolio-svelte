@@ -54,19 +54,18 @@
 
 <style>
   .color-chart {
-    width: 100%;
-    overflow-x: auto;
-
     /* TODO this should be a utility class */
     --width: calc(100vw - (2 * var(--padding)));
+
     width: var(--width);
     position: relative;
     left: 50%;
     margin-left: calc(-1 * var(--width) / 2);
+    overflow-x: auto;
 
     & .options {
       cursor: pointer;
-      margin-bottom: calc(.5 * var(--padding));
+      margin-bottom: calc(0.5 * var(--padding));
       position: sticky;
       left: 0;
       text-align: right;

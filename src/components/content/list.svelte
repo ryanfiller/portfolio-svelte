@@ -19,14 +19,13 @@
     max-width: var(--readableMax);
     margin: 0 auto;
     padding: var(--padding);
-
     clear: both;
     line-height: 1.5;
 
     & h2 {
       margin: 0;
       font-size: 3.25rem;
-      border-bottom: var(--borderWidth) solid currentColor;;
+      border-bottom: var(--borderWidth) solid currentColor;
     }
 
     & ul {
@@ -34,7 +33,7 @@
       padding: 0;
       font-size: 1.5rem;
       list-style: none;
-      
+
       & li {
         margin-top: calc(2 * var(--varSpacing)) 0;
       }

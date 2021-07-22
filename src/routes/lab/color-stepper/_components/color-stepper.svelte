@@ -40,6 +40,7 @@
     & .output {
       & pre {
         --width: 100%;
+
         margin: 0;
         top: initial;
         right: initial;
@@ -51,7 +52,7 @@
             display: inline-block;
             padding-left: 1.5em;
             position: relative;
-  
+
             &::before {
               content: '';
               display: block;
@@ -62,19 +63,18 @@
               background: var(--swatch);
               border-radius: 50%;
             }
-  
+
             &.original::before {
               border-radius: 0;
               clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             }
-  
+
             &.transparency::before {
               border-radius: 0;
               clip-path: polygon(0 0, 100% 0, 50% 100%);
             }
           }
         }
-
       }
     }
 
@@ -162,13 +162,13 @@
       const colors = []
       colors.push(spanify(color, value, 'original'))
 
-      if (!!colorVariants) {
+      if (colorVariants) {
         const light = [], dark = []
         for (let i = 1; i <= colorVariants; i++) {
           const steps = 100 / (colorVariants + 1)
           const percent = 100 - Math.round(steps * i)
           const hsl = hexToHSL(value)
-          const [h, s, l] = hsl.replace(/hsl\(|\)|\%/g, '').split(',')
+          const [h, s, l] = hsl.replace(/hsl\(|\)|%/g, '').split(',')
           const lightL = parseFloat(l) + percent
           const darkL = parseFloat(l) - percent
           if (lightL <= 100) {
@@ -182,7 +182,7 @@
         colors.push(...dark.reverse())
       }
 
-      if (!!transparencyVariants) {
+      if (transparencyVariants) {
         for (let i = 1; i <= transparencyVariants; i++) {
           const steps = 100 / (transparencyVariants + 1)
           const percent = 100 - Math.round(steps * i)

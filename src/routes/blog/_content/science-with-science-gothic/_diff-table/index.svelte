@@ -1,9 +1,9 @@
 <style>
   .table span {
-    font-size: .75em;
+    font-size: 0.75em;
     font-weight: bold;
-    margin-top: .25em;
-    margin-right: .25em;
+    margin-top: 0.25em;
+    margin-right: 0.25em;
   }
 
   .table :global(.increase) {

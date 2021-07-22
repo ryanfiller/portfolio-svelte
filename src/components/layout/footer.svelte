@@ -11,7 +11,7 @@
     font-size: 1em;
     color: var(--colorWhite);
     background: var(--colorPrimary);
-    
+
     & div {
       font-weight: bold;
       display: flex;
@@ -24,12 +24,12 @@
       & :global(nav) {
         margin: 1rem var(--padding);
       }
-    
+
       & a {
         text-decoration: none;
         color: currentColor;
-        margin: 0 .25em;
-        
+        margin: 0 0.25em;
+
         &:hover {
           text-decoration: underline;
         }
@@ -37,8 +37,6 @@
     }
   }
 </style>
-
-
 
 <footer
   id='site-footer'

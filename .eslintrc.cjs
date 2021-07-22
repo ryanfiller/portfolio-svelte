@@ -1,10 +1,10 @@
 module.exports = {
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2020,
     sourceType: 'module'
   },
   extends: [
-    'eslint:recommended'
+    'eslint:recommended',
   ],
   env: {
     es6: true,
@@ -30,7 +30,8 @@ module.exports = {
   // rules: {
   //   // ...
   // },
-  // settings: {
-  //   // ...
-  // }
+  settings: {
+    // use styleint instead
+    'svelte3/ignore-styles': () => true
+  }
 }
