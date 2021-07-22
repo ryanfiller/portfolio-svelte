@@ -8,11 +8,9 @@
     background: #663390;
     color: #fefefe;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important;
-    font-size: clamp(0.125vw, 1.155vw, calc(.01175 * 65rem)); /* I got to .01175 by trial and error... */
-    height: 45em;
-    /* height: 630px; */
-    width: 80em;
-    /* width: 1200px; */
+    font-size: clamp(0.125vw, 1.155vw, calc(0.01175 * 65rem)); /* I got to 0.01175 by trial and error... */
+    height: 45em; /* height: 630px; */
+    width: 80em; /* width: 1200px; */
     padding: 2em;
     margin: 0 auto;
     position: relative;
@@ -28,18 +26,19 @@
     height: 100%;
     width: 100%;
     padding: 2em;
-    border: .125em solid currentColor;
+    border: 0.125em solid currentColor;
     display: grid;
     gap: 2em;
     grid-template-rows: 1fr auto auto 1fr auto auto auto;
     grid-template-columns: 3fr 2fr 1fr;
-    grid-template-areas: ".       .            ." 
-                        "title   title        ."
-                         "tags    tags         ."
-                         "url     url          url"
-                         ".       .            ." 
-                         ".       attribution  attribution"
-                         "author  attribution  attribution";
+    grid-template-areas:
+      ".       .            ."
+      "title   title        ."
+      "tags    tags         ."
+      "url     url          url"
+      ".       .            ."
+      ".       attribution  attribution"
+      "author  attribution  attribution";
   }
 
   .exapmle-title {
@@ -60,7 +59,7 @@
     display: inline;
   }
 
-  .exapmle-tags li:not(:last-child):after {
+  .exapmle-tags li:not(:last-child)::after {
     content: ', ';
   }
 
@@ -69,18 +68,20 @@
     display: block;
     font-size: 2em;
   }
+
   .exapmle-author {
     grid-area: author;
     display: block;
     font-size: 3em;
   }
+
   .exapmle-attribution {
     grid-area: attribution;
     font-size: 1em;
     text-align: right;
     align-self: end;
     margin: 0;
-  }  
+  }
 
   .exapmle-attribution span {
     display: block;
@@ -97,9 +98,8 @@
     height: 100%;
     object-fit: cover;
     object-position: center center;
-
     filter: grayscale(100%);
-    opacity: .5;
+    opacity: 0.5;
     mix-blend-mode: overlay;
     margin: 0;
   }

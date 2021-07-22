@@ -21,7 +21,7 @@
     history.pushState({}, null, `${window.location}?${searchParams.toString()}`)
   }
 
-  const closeModal = event => {
+  const closeModal = () => {
     if (searchParams.has('lightbox')) {
       searchParams.delete('lightbox')
       openImage = ''
@@ -45,6 +45,7 @@
 
     /* TODO this should be a utility class */
     --width: calc(100vw - (1 * var(--padding)));
+
     width: var(--width);
     position: relative;
     left: 50%;
@@ -63,7 +64,7 @@
   .photo-grid figure.active,
   .photo-grid figure > button:hover,
   .photo-grid figure > button:focus {
-    outline: .25rem solid var(--colorHighlight);
+    outline: 0.25rem solid var(--colorHighlight);
   }
 
   [data-no-js] .photo-grid button:hover,
@@ -94,11 +95,12 @@
     opacity: 0;
     position: absolute;
   }
+
   .photo-grid figcaption button::before,
   .photo-grid figcaption button::after {
     content: '';
     display: block;
-    height: .25em;
+    height: 0.25em;
     width: 1em;
     background: currentColor;
     position: absolute;
@@ -123,7 +125,6 @@
     display: none;
     z-index: 1000;
     color: var(--colorWhite);
-    /* display: flex; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -137,7 +138,7 @@
     content: '';
     display: block;
     margin: var(--padding);
-    width: calc(100%  - (2 * var(--padding)));
+    width: calc(100% - (2 * var(--padding)));
     flex: 1;
     max-height: 75vh;
     background-image: var(--image);
@@ -165,9 +166,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    opacity: 0;
     background: var(--colorBlack);
-    opacity: .75;
+    opacity: 0.75;
     mix-blend-mode: multiply;
     z-index: -1;
   }
@@ -183,7 +183,7 @@
   {#each images as image}
     <figure
       class:active="{openImage === `${slugify(image.title)}`}"
-      style="--image: url({image.src})"
+      style="--image: url({image.src});"
     >
       <button
         id={`${slugify(image.title)}`}

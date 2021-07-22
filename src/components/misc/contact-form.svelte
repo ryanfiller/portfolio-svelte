@@ -2,13 +2,14 @@
   .form#contact {
     --labelHeight: 1.25em;
     --rowHeight: 4em;
+
     height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     font-family: sans-serif;
-    
+
     /* include readable */
     max-width: var(--readableMax);
     margin: 0 auto;
@@ -37,11 +38,12 @@
     flex-direction: column;
 
     & > *:not(:last-child) {
-      margin-bottom: calc(.5 * var(--padding));
+      margin-bottom: calc(0.5 * var(--padding));
     }
 
     & label {
       --rowColor: var(--colorHighlight);
+
       min-height: var(--rowHeight);
       width: 100%;
       display: flex;
@@ -54,7 +56,7 @@
       &:focus-within {
         --rowColor: var(--colorActive);
       }
-      
+
       &.textarea {
         flex: 1;
 
@@ -78,13 +80,13 @@
         border-top: var(--borderWidth) solid var(--rowColor);
       }
 
-      & input, 
+      & input,
       & textarea {
         font-family: inherit;
         background: transparent;
         color: var(--colorText);
         font-size: 1em;
-        padding: calc(.25 * var(--padding));
+        padding: calc(0.25 * var(--padding));
         border: var(--borderWidth) solid transparent;
         flex: 1;
         order: 1;
@@ -121,11 +123,11 @@
         flex-wrap: nowrap;
 
         & span {
-          font-size: .75em;
+          font-size: 0.75em;
           order: -1;
           writing-mode: sideways-lr;
           height: auto;
-          padding: .25em;
+          padding: 0.25em;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -133,13 +135,13 @@
           margin-left: calc(-1 * var(--labelHeight) - var(--borderWidth));
         }
 
-        & input, 
+        & input,
         & textarea {
           &:focus,
           &:not(:placeholder-shown) {
             outline: none;
             margin: 0;
-    
+
             & + span {
               margin-left: 0;
             }
@@ -161,7 +163,6 @@
   let formValues = {}
   setDefaultValues()
   
-
   const encode = data => Object.keys(data).map(key => {
     return `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
   }).join('&')

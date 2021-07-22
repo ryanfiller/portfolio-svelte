@@ -96,151 +96,150 @@
 </script>
 
 <style>
-	:global(#site.error #content) {
-		color: var(--colorWhite);
-		font-family: var(--display);
-		font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;
-		font-size: 2rem;
-		text-transform: uppercase;
-		height: 100%;
-		position: relative;
-		overflow: hidden;
-	}
+  :global(#site.error #content) {
+    color: var(--colorWhite);
+    font-family: var(--display);
+    font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;
+    font-size: 2rem;
+    text-transform: uppercase;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 
-	article {
-		height: 100%;
-		grid-template-rows: 1fr auto 1fr auto 1fr;
-	}
+  article {
+    height: 100%;
+    grid-template-rows: 1fr auto 1fr auto 1fr;
+  }
 
-	header {
-		grid-row: 2 / 3;
-	}
+  header {
+    grid-row: 2 / 3;
+  }
 
-	h1 {
-		font-size: 3em;
-		margin: 0 0 var(--padding) 0;
-		display: flex;
-		flex-wrap: wrap;
-		flex-direction: row-reverse;
-		justify-content: space-between;
-		margin: 0 0 10vh 0;
+  h1 {
+    font-size: 3em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0 0 10vh 0;
 
-		& span {
-			display: inline-block;
-		}
-	}
+    & span {
+      display: inline-block;
+    }
+  }
 
-	pre {
-		white-space: pre-line;
-	}
+  pre {
+    white-space: pre-line;
+  }
 
-	ul {
-		margin: 0;
-		padding: var(--padding);
-		background-color: var(--colorPrimary);
-		position: relative;
-		list-style: none;
-		border-radius: var(--pixelBorderRadius);
-		display: flex;
-		flex-wrap: wrap;
-		grid-row: 4 / 5;
-		
-		&::before,
-		&::after {
-			content: '';
-			display: block;
-			position: absolute;
-			top: -1px;
-			right: -1px;
-			bottom: -1px;
-			left: -1px;
-			pointer-events: none;
-		}
+  ul {
+    margin: 0;
+    padding: var(--padding);
+    background-color: var(--colorPrimary);
+    position: relative;
+    list-style: none;
+    border-radius: var(--pixelBorderRadius);
+    display: flex;
+    flex-wrap: wrap;
+    grid-row: 4 / 5;
 
-		&::before {
-			background: var(--pixelBorder);
-			z-index: 3;
-		}
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      bottom: -1px;
+      left: -1px;
+      pointer-events: none;
+    }
 
-		&::after {
-			background: var(--steppedGradient);
-			border-radius: var(--pixelBorderRadius);
-			z-index: 1;
-			opacity: .75;
-			mix-blend-mode: overlay;
-		}
-	}
+    &::before {
+      background: var(--pixelBorder);
+      z-index: 3;
+    }
 
-	li {
-		margin: 0;
-		display: block;
-		flex-basis: 25ch;
-	}
+    &::after {
+      background: var(--steppedGradient);
+      border-radius: var(--pixelBorderRadius);
+      z-index: 1;
+      opacity: 0.75;
+      mix-blend-mode: overlay;
+    }
+  }
 
-	a {
-		position: relative;
-		color: var(--colorLight);
-		display: inline-flex;
-		align-items: center;
-		padding: .5em;
-		padding-left: 0;
-		line-height: 0;
-		cursor: none;
-		text-decoration: none;
-		transition: 0;
+  li {
+    margin: 0;
+    display: block;
+    flex-basis: 25ch;
+  }
 
-		&:hover,
-		&:focus {
-			transform: translate(var(--borderWidth), calc(-1 * var(--borderWidth)));
-			text-shadow: calc(-1 * var(--borderWidth)) var(--borderWidth) var(--colorBlack);
-		}
+  a {
+    position: relative;
+    color: var(--colorLight);
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5em;
+    padding-left: 0;
+    line-height: 0;
+    cursor: none;
+    text-decoration: none;
+    transition: 0;
 
-		&::before {
-			content: '';
-			display: block;
-			height: 1em;
-			width: 1.25em;
-			margin-right: .5em;
-			background-size: contain;
-			background-repeat: no-repeat;
-		}
+    &:hover,
+    &:focus {
+      transform: translate(var(--borderWidth), calc(-1 * var(--borderWidth)));
+      text-shadow: calc(-1 * var(--borderWidth)) var(--borderWidth) var(--colorBlack);
+    }
 
-		&:hover::before,
-		&:focus::before {
-			background-image: url('/images/site-assets/404/pointer.svg');
-		}
-	}
+    &::before {
+      content: '';
+      display: block;
+      height: 1em;
+      width: 1.25em;
+      margin-right: 0.5em;
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
 
-	figure {
-		position: absolute;
-		top: -1px;
-		right: -1px;
-		bottom: -1px;
-		left: -1px;
-		padding: 0;
-		margin: 0;
-		z-index: -1;
-		background: var(--pixelGrid);
-		background-color: var(--colorHighlight);
-	}
+    &:hover::before,
+    &:focus::before {
+      background-image: url('/images/site-assets/404/pointer.svg');
+    }
+  }
 
-	img {
-		height: 100%;
-		width: 100%;
-		object-fit: cover;
-		object-position: center center;
-		filter: grayscale(100%);
-		mix-blend-mode: overlay;
-	}
+  figure {
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    bottom: -1px;
+    left: -1px;
+    padding: 0;
+    margin: 0;
+    z-index: -1;
+    background: var(--pixelGrid);
+    background-color: var(--colorHighlight);
+  }
 
-	figcaption {
-		font-size: 1rem;
-		position: absolute;
-		bottom: var(--padding);
-		right: var(--padding);
-		z-index: 10;
-		font-family: var(--mono);
-	}
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: grayscale(100%);
+    mix-blend-mode: overlay;
+  }
+
+  figcaption {
+    font-size: 1rem;
+    position: absolute;
+    bottom: var(--padding);
+    right: var(--padding);
+    z-index: 10;
+    font-family: var(--mono);
+  }
 </style>
 
 <svelte:head>
@@ -268,7 +267,7 @@
 				<a href='/'>Go home</a>
 			</li>
 			<li>
-				<a href='javascript:void(0)' on:click={() => history.back()}>Go back</a>
+				<a href={null} on:click={() => history.back()}>Go back</a>
 			</li>
 			<li>
 				<a href='/blog'>Read some blogs</a>

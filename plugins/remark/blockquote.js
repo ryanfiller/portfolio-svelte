@@ -15,7 +15,6 @@ function transformer(ast) {
       node.children = [
         ...quote,
         {
-          type: 'html',
           type: 'cite', // this doesn't actually matter, but it fails without it
           children: cite[0].children,
           data: {

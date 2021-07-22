@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+// import fetch from 'node-fetch'
 import series from './_series.js'
 import { slugify } from '../../../helpers'
 
@@ -15,7 +15,7 @@ if (markdown) {
 	})
 }
 
-export async function get(args) {
+export async function get() {
   let list = {}
 
   // create a list of keys that can have posts pushed to them
@@ -44,7 +44,7 @@ export async function get(args) {
   // convert from object to array
   list = Object.values(list)
   
-  let sortedList
+  // let sortedList
   if (list.length) {
     const getLast = array => array[array.length - 1]
     

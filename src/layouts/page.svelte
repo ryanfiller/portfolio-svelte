@@ -13,7 +13,7 @@
 </script>
 
 <style>
-	#site {
+  #site {
     min-height: 100vh;
     width: 100%;
     display: grid;
@@ -26,14 +26,14 @@
       "content"
       "footer";
   }
-  
-  #site-header {
+
+  :global(#site-header) {
     grid-area: header;
     width: 100%;
     height: 100%;
   }
 
-  #content {
+  :global(#content) {
     grid-area: content;
     width: 100%;
     min-height: 100%;
@@ -46,7 +46,7 @@
     }
   }
 
-  #site-footer {
+  :global(#site-footer) {
     grid-area: footer;
     width: 100%;
     height: 100%;

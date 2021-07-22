@@ -20,7 +20,6 @@
 </script>
 
 <script>
-  export let test
   export let posts
   export let series
 	
@@ -40,12 +39,12 @@
     margin: 0 auto;
     padding: var(--padding);
     margin-bottom: var(--padding);
-  
+
     & p {
       margin: 1em 0;
       line-height: 1.5;
     }
-  
+
     & img {
       float: right;
       margin-left: 1em;

@@ -23,45 +23,46 @@
       background: var(--colorHighlight);
       text-align: center;
       padding: var(--padding);
-  
+
       & a {
         color: inherit;
+
         &:not(:hover) {
           text-decoration: none;
         }
       }
     }
-    
+
     &.buttons {
       background: var(--colorHighlight);
       display: flex;
     }
-  
+
     & .previous,
     & .next {
       flex-wrap: wrap;
       width: 50%;
-  
+
       &::before {
-        font-size: .8em;
-        margin-bottom: calc(.5 * var(--padding));
+        font-size: 0.8em;
+        margin-bottom: calc(0.5 * var(--padding));
         display: block;
       }
     }
-  
+
     & .previous {
       text-align: right;
       margin-right: auto;
-  
+
       &::before {
         content: '« previous';
       }
     }
-  
+
     & .next {
       text-align: left;
       margin-left: auto;
-      
+
       &::before {
         content: 'next »';
       }

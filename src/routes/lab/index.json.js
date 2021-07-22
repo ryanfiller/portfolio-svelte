@@ -1,4 +1,4 @@
-import getPages from '../../helpers/get-pages.js'
+// import getPages from '../../helpers/get-pages.js'
 
 const pages = import.meta.globEager('./**/*.md')
 

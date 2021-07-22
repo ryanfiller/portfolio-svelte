@@ -19,12 +19,12 @@
         display: inline-block;
 
         &::before {
-          content: '#'
+          content: '#';
         }
 
         &::after {
           content: ',';
-          margin-right: .25em;
+          margin-right: 0.25em;
         }
       }
 

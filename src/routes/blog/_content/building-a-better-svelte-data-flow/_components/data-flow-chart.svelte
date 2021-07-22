@@ -14,7 +14,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: .75em;
+    font-size: 0.75em;
 
     &.top-level {
       margin: calc(2 * var(--padding)) 0;
@@ -32,21 +32,21 @@
     & :global {
       & li {
         margin: 0;
-  
+
         &.text,
         &.file,
         &.browser {
           padding: 1rem;
-        
+
           & svg {
             width: 7.5em;
           }
         }
       }
-  
+
       & .transform {
         height: 12rem;
-  
+
         & svg {
           transform: rotate(90deg);
           height: 100%;
@@ -54,7 +54,7 @@
           overflow: hidden;
         }
       }
-  
+
       & .text,
       & .file,
       & .browser,
@@ -64,31 +64,30 @@
         grid-template-rows: 100%;
         justify-items: center;
         align-items: center;
-        
+
         & > * {
           grid-area: 1 / 1 / 1 / 1;
         }
-  
+
         & .label {
           fill: var(--colorText);
           font-size: 1em;
           white-space: nowrap;
-          padding: .5em;
+          padding: 0.5em;
           background: var(--colorBackground);
           border: var(--borderWidth) solid var(--colorText);
           z-index: 10;
         }
       }
-  
+
       & .browser .label {
         border: none;
       }
-  
+
       & .transform .label {
         border-radius: var(--borderRadius);
       }
     }
-
 
     /* TODO abstract this size into a utility class next time you need it */
     @media (min-width: 1200px) {
@@ -110,7 +109,7 @@
       & :global {
         & .transform {
           flex-basis: 20%;
-  
+
           & svg {
             flex: 1;
             transform: none;

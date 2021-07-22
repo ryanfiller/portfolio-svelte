@@ -12,15 +12,15 @@ function transformer(ast) {
 
     const getLinkType = url => {
       // any string that starts with #
-      if (!!/^\#(.*)/.exec(url)) {
+      if (/^#(.*)/.exec(url)) {
         return 'hash'
 
       // any string that starts with /
-      } else if (!!/^\/(.*)/.exec(url)) {
+      } else if (/^\/(.*)/.exec(url)) {
         return 'relative'
 
       // any subdomain that is not www
-      } else if ( !!new RegExp(`((http:\/\/)|(https:\/\/))?^(?!www).*(${siteUrl})(.*)?`, 'g').exec(url) ) {
+      } else if ( new RegExp(`((http://)|(https://))?^(?!www).*(${siteUrl})(.*)?`, 'g').exec(url) ) {
         return 'subdomain'
 
       // any non-subdomain link

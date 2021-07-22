@@ -10,22 +10,22 @@
     color: var(--colorWhite);
     background: var(--colorPrimary);
     font-weight: bold;
-
     display: grid;
     align-items: center;
     grid-template-columns: auto minmax(var(--padding), 1fr) auto auto;
     grid-template-rows: auto 1fr;
-    grid-template-areas: "logo    gap     nav    options"
-                         "content content content content";
+    grid-template-areas:
+      "logo    gap     nav    options"
+      "content content content content";
 
     & > :global(*) { /* put things on top of the banner */
       position: relative;
       z-index: 2;
     }
-  
+
     & a {
       text-decoration: none;
-      
+
       &:hover {
         text-decoration: underline;
       }
@@ -36,7 +36,7 @@
     & .options {
       margin: 1rem var(--padding);
     }
-  
+
     & .logo {
       grid-area: logo;
       display: inline-block;

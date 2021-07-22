@@ -14,7 +14,7 @@ function fishAttr(string, attr) {
 
 function getCustomProperty(property) {
   if (typeof(window) != 'undefined') {
-    return getComputedStyle(document.documentElement).getPropertyValue(`--${property}`).replace(/(\"|\')/g, '').trim()
+    return getComputedStyle(document.documentElement).getPropertyValue(`--${property}`).replace(/("|')/g, '').trim()
   } else {
     return ''
   }

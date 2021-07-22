@@ -9,12 +9,12 @@
       & pre > code {
         padding-left: calc(var(--padding) + 2rem) !important;
       }
-    
+
       & > li {
         list-style: none;
         position: relative;
         margin-bottom: 0;
-    
+
         & + li {
           margin-top: 2em;
         }
@@ -22,7 +22,7 @@
         & > p:first-child {
           margin-top: calc(-1 * var(--iconSize));  /* move the first paragraph up */
         }
-    
+
         &::before {
           content: '';
           display: block;
@@ -32,19 +32,19 @@
           background-position: center center;
           background-repeat: no-repeat;
           position: sticky;
-          top: calc(.5 * var(--iconSize));
+          top: calc(0.5 * var(--iconSize));
           transform: translateX(calc(-1.5 * var(--iconSize)));
         }
-    
-        &.react:before {
+
+        &.react::before {
           background-image: url('/images/react-logo.svg');
         }
-    
-        &.svelte:before {
+
+        &.svelte::before {
           background-image: url('/images/svelte-logo.svg');
         }
-    
-        &.vue:before {
+
+        &.vue::before {
           background-image: url('/images/vue-logo.svg');
         }
       }

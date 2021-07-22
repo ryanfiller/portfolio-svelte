@@ -84,7 +84,6 @@
     /* accessibility stuff */
     --tapableSize: 40px;
     --readableMax: 65rem;
-
     --readableColumn: minmax(auto, var(--readableMax));
 
     /* fonts */
@@ -96,36 +95,38 @@
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
     /* gradients */
-    --pixelSize: .25rem;
+    --pixelSize: 0.25rem;
     --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
     --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
-
     --steppedGradientColor: 0, 0, 0;
-    --steppedGradient: linear-gradient(
-			rgb(var(--steppedGradientColor), 0) 0%, rgb(var(--steppedGradientColor), 0) 5%, 
-			rgb(var(--steppedGradientColor), .05) 5%, rgb(var(--steppedGradientColor), .05) 10%, 
-			rgb(var(--steppedGradientColor), .10) 10%, rgb(var(--steppedGradientColor), .10) 15%, 
-			rgb(var(--steppedGradientColor), .15) 15%, rgb(var(--steppedGradientColor), .15) 20%, 
-			rgb(var(--steppedGradientColor), .20) 20%, rgb(var(--steppedGradientColor), .20) 25%, 
-			rgb(var(--steppedGradientColor), .25) 25%, rgb(var(--steppedGradientColor), .25) 30%, 
-			rgb(var(--steppedGradientColor), .30) 30%, rgb(var(--steppedGradientColor), .30) 35%, 
-			rgb(var(--steppedGradientColor), .35) 35%, rgb(var(--steppedGradientColor), .35) 40%, 
-			rgb(var(--steppedGradientColor), .40) 40%, rgb(var(--steppedGradientColor), .40) 45%, 
-			rgb(var(--steppedGradientColor), .45) 45%, rgb(var(--steppedGradientColor), .45) 50%, 
-			rgb(var(--steppedGradientColor), .50) 50%, rgb(var(--steppedGradientColor), .50) 55%, 
-			rgb(var(--steppedGradientColor), .55) 55%, rgb(var(--steppedGradientColor), .55) 60%, 
-			rgb(var(--steppedGradientColor), .60) 60%, rgb(var(--steppedGradientColor), .60) 65%, 
-			rgb(var(--steppedGradientColor), .65) 65%, rgb(var(--steppedGradientColor), .65) 70%, 
-			rgb(var(--steppedGradientColor), .70) 70%, rgb(var(--steppedGradientColor), .70) 75%, 
-			rgb(var(--steppedGradientColor), .75) 75%, rgb(var(--steppedGradientColor), .75) 80%, 
-			rgb(var(--steppedGradientColor), .80) 80%, rgb(var(--steppedGradientColor), .80) 85%, 
-			rgb(var(--steppedGradientColor), .85) 85%, rgb(var(--steppedGradientColor), .85) 90%, 
-			rgb(var(--steppedGradientColor), .90) 90%, rgb(var(--steppedGradientColor), .90) 95%, 
-			rgb(var(--steppedGradientColor), .95) 95%, rgb(var(--steppedGradientColor), .95) 100%
-		);
+    /* stylelint-disable function-comma-newline-after */
+    --steppedGradient:
+      linear-gradient(
+        rgb(var(--steppedGradientColor), 0) 0%, rgb(var(--steppedGradientColor), 0) 5%,
+        rgb(var(--steppedGradientColor), 0.05) 5%, rgb(var(--steppedGradientColor), 0.05) 10%,
+        rgb(var(--steppedGradientColor), 0.1) 10%, rgb(var(--steppedGradientColor), 0.1) 15%,
+        rgb(var(--steppedGradientColor), 0.15) 15%, rgb(var(--steppedGradientColor), 0.15) 20%,
+        rgb(var(--steppedGradientColor), 0.2) 20%, rgb(var(--steppedGradientColor), 0.2) 25%,
+        rgb(var(--steppedGradientColor), 0.25) 25%, rgb(var(--steppedGradientColor), 0.25) 30%,
+        rgb(var(--steppedGradientColor), 0.3) 30%, rgb(var(--steppedGradientColor), 0.3) 35%,
+        rgb(var(--steppedGradientColor), 0.35) 35%, rgb(var(--steppedGradientColor), 0.35) 40%,
+        rgb(var(--steppedGradientColor), 0.4) 40%, rgb(var(--steppedGradientColor), 0.4) 45%,
+        rgb(var(--steppedGradientColor), 0.45) 45%, rgb(var(--steppedGradientColor), 0.45) 50%,
+        rgb(var(--steppedGradientColor), 0.5) 50%, rgb(var(--steppedGradientColor), 0.5) 55%,
+        rgb(var(--steppedGradientColor), 0.55) 55%, rgb(var(--steppedGradientColor), 0.55) 60%,
+        rgb(var(--steppedGradientColor), 0.6) 60%, rgb(var(--steppedGradientColor), 0.6) 65%,
+        rgb(var(--steppedGradientColor), 0.65) 65%, rgb(var(--steppedGradientColor), 0.65) 70%,
+        rgb(var(--steppedGradientColor), 0.7) 70%, rgb(var(--steppedGradientColor), 0.7) 75%,
+        rgb(var(--steppedGradientColor), 0.75) 75%, rgb(var(--steppedGradientColor), 0.75) 80%,
+        rgb(var(--steppedGradientColor), 0.8) 80%, rgb(var(--steppedGradientColor), 0.8) 85%,
+        rgb(var(--steppedGradientColor), 0.85) 85%, rgb(var(--steppedGradientColor), 0.85) 90%,
+        rgb(var(--steppedGradientColor), 0.9) 90%, rgb(var(--steppedGradientColor), 0.9) 95%,
+        rgb(var(--steppedGradientColor), 0.95) 95%, rgb(var(--steppedGradientColor), 0.95) 100%
+      );
+    /* stylelint-enable function-comma-newline-after */
 
     /* <image> <position> / <size> */
-    --pixelBorder: 
+    --pixelBorder:
       /* top and bottom */
       no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 0 / calc(100% - calc(6 * var(--borderWidth))) var(--borderWidth),
       no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 100% / calc(100% - calc(6 * var(--borderWidth))) var(--borderWidth),
@@ -141,10 +142,8 @@
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(100% - (2 * var(--borderWidth))) / var(--borderWidth) var(--borderWidth),
       no-repeat linear-gradient(currentColor, currentColor) calc(100% - var(--borderWidth)) calc(2 * var(--borderWidth)) / var(--borderWidth) var(--borderWidth),
-      no-repeat linear-gradient(currentColor, currentColor) calc(100% - var(--borderWidth)) calc(100% - (2 * var(--borderWidth))) / var(--borderWidth) var(--borderWidth)
-    ;
-
-    --pixelBorderFill: 
+      no-repeat linear-gradient(currentColor, currentColor) calc(100% - var(--borderWidth)) calc(100% - (2 * var(--borderWidth))) / var(--borderWidth) var(--borderWidth);
+    --pixelBorderFill:
       /* top and bottom */
       no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--borderWidth)) 0 / calc(100% - calc(6 * var(--borderWidth))) 100%,
       /* left and right */
@@ -152,9 +151,7 @@
       /* inner corners */
       no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--borderWidth)) calc(var(--borderWidth)) / calc(100% - (4 * var(--borderWidth))) calc(100% - (2 * var(--borderWidth))),
       /* outer corners */
-      no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)))
-    ;
-
+      no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)));
     --pixelBorderRadius: calc(6.25 * var(--borderWidth));
   }
 
@@ -184,7 +181,8 @@
     box-sizing: border-box;
 
     @media not all and (prefers-reduced-motion: reduce) {
-      --transitionSpeed: .2s;
+      --transitionSpeed: 0.2s;
+
       scroll-behavior: smooth;
     }
 
@@ -196,8 +194,8 @@
   /* ------------- */
 
   body[data-no-js] .needs-js {
-		display: none;
-	}
+    display: none;
+  }
 
   .screenreader {
     position: absolute;
@@ -212,7 +210,6 @@
 
   .x {
     position: relative;
-    display: block;
     height: 1em;
     width: 1em;
     display: flex;
@@ -224,7 +221,7 @@
       content: '';
       display: block;
       background-color: currentColor;
-      height: .25em;
+      height: 0.25em;
       width: 1em;
       position: absolute;
       transform: rotate(45deg);
@@ -234,7 +231,7 @@
       transform: rotate(-45deg);
     }
   }
-    
+
   .clearfix {
     clear: both !important;
   }
@@ -303,13 +300,16 @@
   progress {
     vertical-align: baseline;
   }
+
   mark {
     background-color: #ff0;
     color: #000;
   }
+
   small {
     font-size: 80%;
   }
+
   sub,
   sup {
     font-size: 75%;
@@ -317,27 +317,29 @@
     position: relative;
     vertical-align: baseline;
   }
-  sub {
-    bottom: -0.25em;
-  }
-  sup {
-    top: -0.5em;
-  }
+
+  sub { bottom: -0.25em; }
+
+  sup { top: -0.5em; }
+
   fieldset,
   address {
     margin: 0;
     margin-bottom: 1.45rem;
     padding: 0;
   }
+
   dt {
     font-weight: bold;
   }
+
   acronym,
   abbr,
   abbr[title] {
     border-bottom: 1px dotted hsla(0, 0%, 0%, 0.5);
     cursor: help;
   }
+
   abbr[title] {
     text-decoration: none;
   }

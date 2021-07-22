@@ -1,11 +1,12 @@
-const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
-  window.HTMLInputElement.prototype,
-  'value'
-).set
-const changeRangeInputValue = $range => value => {
-  nativeInputValueSetter.call($range[0], value)
-  $range[0].dispatchEvent(new Event('change', { value, bubbles: true }))
-}
+// const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
+//   window.HTMLInputElement.prototype,
+//   'value'
+// ).set
+
+// const changeRangeInputValue = $range => value => {
+//   nativeInputValueSetter.call($range[0], value)
+//   $range[0].dispatchEvent(new Event('change', { value, bubbles: true }))
+// }
 
 describe('<VariableFont /> component', () => {
   beforeEach(() => {

@@ -22,11 +22,10 @@
     --gray4: #3a3a3a;
     --text: var(--black);
     --background: var(--white);
-    
+
     background: var(--background);
     transition: var(--transitionSpeed);
     padding: var(--padding);
-
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
@@ -36,7 +35,7 @@
 
     & p {
       text-align: center;
-      width: calc(50% - .5 * var(--padding));
+      width: calc(50% - 0.5 * var(--padding));
       line-height: 1.25;
       margin-bottom: var(--padding);
 

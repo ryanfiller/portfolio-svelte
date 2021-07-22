@@ -1,7 +1,7 @@
 import dotenv from 'dotenv'
 dotenv.config()
 
-import adapterNetlify from '@sveltejs/adapter-netlify'
+// import adapterNetlify from '@sveltejs/adapter-netlify'
 import adapterStatic from '@sveltejs/adapter-static'
 
 import replace from '@rollup/plugin-replace'

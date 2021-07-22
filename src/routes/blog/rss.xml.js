@@ -1,5 +1,5 @@
 import { site } from '../../config.js'
-import getPages from '../../helpers/get-pages.js'
+// import getPages from '../../helpers/get-pages.js'
 import { slugify, xmlEncode } from '../../helpers'
 
 export async function get({ query }) {
@@ -92,7 +92,7 @@ export async function get({ query }) {
             <link>${blogUrl}</link>
           </image>
 
-          ${!!category
+          ${category
             ? `<category>${category}</category>`
             : ''
           }

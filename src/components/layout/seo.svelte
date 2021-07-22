@@ -6,12 +6,12 @@
   export let segment = ''
 
   import { page } from '$app/stores'
-  import { dev } from '$app/env'
+  // import { dev } from '$app/env'
 
-  const host = dev ? `https://${$page.host}` : `http://${$page.host}`
+  // const host = dev ? `https://${$page.host}` : `http://${$page.host}`
   
   import { site } from '../../config.js'
-  import { capitalize, objectToParams, paramsToObject, slugify } from '../../helpers'
+  import { capitalize, objectToParams, slugify } from '../../helpers'
 
   const pageTitle = () => {
     if (title) {
@@ -47,7 +47,7 @@
 
   let imageParams = {}
   let socialImageUrl = ''
-  $: if (!!banner){
+  $: if (banner){
     imageParams = objectToParams({
       title: title,
       series: series,
@@ -108,4 +108,4 @@
 </svelte:head>
 
 <!-- webmention.io stuff -->
-<a style='display: none' href={`mailto:${site.email}`} rel='me'>{site.email}</a>
+<a style='display: none;' href={`mailto:${site.email}`} rel='me'>{site.email}</a>

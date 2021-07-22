@@ -30,6 +30,7 @@
 
   #preview {
     --space: 2rem;
+
     height: 630px;
     width: 1200px;
     background: var(--colorPrimary);
@@ -51,16 +52,17 @@
     border: var(--border);
     border-color: currentColor;
     display: grid;
-    gap: var(--space);;
+    gap: var(--space);
     grid-template-rows: 1fr auto auto 1fr auto auto auto;
     grid-template-columns: 3fr 2fr 1fr;
-    grid-template-areas: ".       .            ." 
-                        "title   title        ."
-                         "tags    tags         ."
-                         "url     url          url"
-                         ".       .            ." 
-                         ".       attribution  attribution"
-                         "author  attribution  attribution";
+    grid-template-areas:
+      ".       .            ."
+      "title   title        ."
+      "tags    tags         ."
+      "url     url          url"
+      ".       .            ."
+      ".       attribution  attribution"
+      "author  attribution  attribution";
   }
 
   h1 {
@@ -70,7 +72,7 @@
   }
 
   h1 .series {
-    font-size: .5em;
+    font-size: 0.5em;
     display: block;
   }
 
@@ -120,9 +122,8 @@
     height: calc(100% + 2px);
     object-fit: cover;
     object-position: center center;
-
     filter: grayscale(100%);
-    opacity: .5;
+    opacity: 0.5;
     mix-blend-mode: overlay;
     margin: 0;
   }

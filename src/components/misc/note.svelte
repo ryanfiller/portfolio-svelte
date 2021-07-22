@@ -10,6 +10,7 @@
 <style global>
   .note {
     --buttonSize: 3rem;
+
     position: relative;
     margin-top: var(--verticalSpacing);
     margin-bottom: var(--verticalSpacing);
@@ -21,7 +22,6 @@
     }
 
     & label {
-      display: block;
       position: absolute;
       top: 0;
       right: 0;
@@ -44,7 +44,7 @@
     & div[role='note'] {
       position: relative;
     }
-  
+
     & div[role='note']::after {
       content: '';
       display: block;
@@ -58,23 +58,21 @@
       color: var(--colorHighlight);
       background: var(--pixelBorder);
     }
-  
+
     & header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       background-color: var(--colorHighlight);
       min-height: var(--buttonSize);
-  
       border-top-right-radius: var(--pixelBorderRadius);
       border-top-left-radius: var(--pixelBorderRadius);
       overflow: hidden;
-
       color: var(--colorWhite);
       font-size: 1.5em;
       padding: 0 calc(var(--buttonSize) + var(--padding)) 0 var(--padding);
     }
-    
+
     & .content {
       background-color: var(--colorWhite);
       color: var(--colorBlack);

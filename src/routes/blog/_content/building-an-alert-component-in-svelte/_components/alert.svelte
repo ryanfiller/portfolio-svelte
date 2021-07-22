@@ -45,7 +45,7 @@
     bottom: 0;
     left: 0;
     background: black;
-    opacity: .5;
+    opacity: 0.5;
     z-index: -1;
     pointer-events: none;
   }
@@ -53,7 +53,7 @@
   section {
     width: 100%;
     max-width: 50rem;
-    border: .25rem solid var(--colorHighlight);
+    border: 0.25rem solid var(--colorHighlight);
     background: var(--colorWhite);
     color: var(--colorBlack);
   }

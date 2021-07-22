@@ -13,7 +13,34 @@ banner:
 
 <Change>
 
-## RF-05-05.5 - "Core Block"
+## RF-05-05.2 - "Chobam"
+
+Improve tooling and testing
+
+[feature/linting](https://github.com/ryanfiller/portfolio-svelte/pull/45) - Add `eslint` and `stylelint`
+
+[[details | Version Details]]
+| - Features
+|   - `eslint`
+|   - `stylelint`
+|
+| - Config
+|   - ≈ `.eslintrc.js` => `.eslintrc.cjs`
+|   - \+ `.stylelintrc.json`
+|   - \+ `.eslintrc.json `
+|
+| - Packages
+|   - \+ eslint
+|   - \+ eslint-plugin-cypress
+|   - \+ eslint-plugin-svelte3
+|   - \+ stylelint
+|   - \+ stylelint-config-standard
+
+</Change>
+
+<Change>
+
+## RF-05-05.1 - "Core Block"
 
 Change some internals
 

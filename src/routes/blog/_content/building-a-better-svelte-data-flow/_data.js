@@ -90,7 +90,7 @@ export const sapper = {
       image: 'svelte'
     },
     {
-      text: '<code>\&#60;slot /\&#62;</code>',
+      text: '<code>&#60;slot /&#62;</code>',
       type: 'transform',
       path: 'single',
     },
@@ -243,7 +243,7 @@ export const mdsvex = {
       image: 'svelte',
     },
     {
-      text: '<code>\&#60;slot /\&#62;</code>',
+      text: '<code>&#60;slot /&#62;</code>',
       type: 'transform',
       path: 'single',
     },
@@ -390,7 +390,7 @@ export const combined = {
       },
     ],
     {
-      text: '<code>\&#60;svelte:component /\&#62;</code>',
+      text: '<code>&#60;svelte:component /&#62;</code>',
       type: 'transform',
       path: 'double-in',
     },
@@ -426,7 +426,7 @@ export const combined = {
       image: 'svelte'
     },
     {
-      text: '<code>\&#60;slot /\&#62;</code>',
+      text: '<code>&#60;slot /&#62;</code>',
       type: 'transform',
       path: 'single',
     },

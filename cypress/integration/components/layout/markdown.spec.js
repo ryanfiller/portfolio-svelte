@@ -1,4 +1,4 @@
-const COLOR_SCHEME_LS_KEY = 'user-color-scheme'
+// const COLOR_SCHEME_LS_KEY = 'user-color-scheme'
 
 describe('<Markdown /> component', () => {
   beforeEach(() => {

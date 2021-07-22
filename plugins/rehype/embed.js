@@ -21,10 +21,10 @@ function transformer(tree) {
         if (aspectRatio) {
           attrs.push(`data-aspect-ratio="${aspectRatio}"`)
         }
-        if (!!id) {
+        if (id) {
           attrs.push(`id="${id}"`)
         }
-        if (!!classes) {
+        if (classes) {
           attrs.push(`class="embed ${classes}"`)
         } else {
           attrs.push(`class="embed"`)
