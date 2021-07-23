@@ -1,6 +1,6 @@
 ---
 name: 'changes'
-title: 'Change Log'
+title: 'Changelog'
 banner:
   src: '/images/gundam-gp01-repair.png'
   alt: 'gundam gp-01 being upgraded'
@@ -22,6 +22,8 @@ Improve tooling and testing
 [design/styles](https://github.com/ryanfiller/portfolio-svelte/pull/46) - Refactor `/styles` page
 
 [feature/tips](https://github.com/ryanfiller/portfolio-svelte/pull/49) - Add a `/blog/tips` section and posts
+
+[refactor/reduce-tests](https://github.com/ryanfiller/portfolio-svelte/pull/50) - Delete a large number of one off tests, replace them with page integrations
 
 [[details | Version Details]]
 | - Features
@@ -52,6 +54,21 @@ Improve tooling and testing
 | - Styles
 |   - animation classes
 |     - \+ .flip-arrow
+|
+| - Tests
+|   - ≈ /components
+|   - ≈ /functions => /api
+|   - \- /layouts
+|   - \+ /plugins
+|   - ≈ /routes => /pages
+|   - \+ /user-flows
+|   - \+ helpers.spec.js
+|   - \+ layout.spec.js
+|   - \+ misc.spec.js
+|   - Commands
+|     - \+ `checkHeaderElements()`
+|     - \+ `checkFooterElements()`
+|     - \- `fillOutContactForm()`
 |
 | - Packages
 |   - \+ eslint

@@ -12,9 +12,9 @@
     "_postbuild": "mv build/404/index.html build/404.html",
     "preview": "svelte-kit preview",
     "start": "node build",
-    "test": "cross-env NODE_ENV=test npm run dev & cypress open",
-    "cypress": "cross-env NODE_ENV=test ./node_modules/.bin/cypress run",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com",
+    "cypress": "cross-env NODE_ENV=test npm run dev & cypress open",
+    "test": "cross-env NODE_ENV=test ./node_modules/.bin/cypress run",
     "eslint": "eslint . --ext .js,.svelte",
     "stylelint": "stylelint **/*.{css,svelte}",
     "lint": "npm run eslint && npm run stylelint"

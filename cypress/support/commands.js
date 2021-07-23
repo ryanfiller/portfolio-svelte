@@ -2,6 +2,26 @@ require('@cypress/snapshot').register()
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command'
 import 'cypress-localstorage-commands'
 
+function checkElementForChildren(element, included = [], excluded = []) {
+  cy.get(element).scrollIntoView()
+  cy.get(element).within(() => {
+    included.map(child => {
+      cy.get(child).should('exist')
+    })
+    excluded.map(child => {
+      cy.get(child).should('not.exist')
+    })
+  })
+} 
+
+Cypress.Commands.add('checkHeaderElements', (included, excluded) => {
+  checkElementForChildren('#site-header', included, excluded)
+})
+
+Cypress.Commands.add('checkFooterElements', (included, excluded) => {
+  checkElementForChildren('#site-footer', included, excluded)
+})
+
 Cypress.Commands.add('inputChange', (input, value) => {
   const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
     window.HTMLInputElement.prototype,
@@ -14,16 +34,6 @@ Cypress.Commands.add('inputChange', (input, value) => {
   }
 
   return cy.get(input).then(input => changeInputValue(input)(value))
-})
-
-Cypress.Commands.add('fillOutContactForm', () => {
-  cy.get('#contact form').scrollIntoView()
-  cy.get('#contact form').within(() => {
-    cy.get('input[name="name"]').type('Philip')
-    cy.get('input[name="email"]').type('fry@planetexpress.com')
-    cy.get('textarea[name="message"]').type('What if that thing I said?')
-    cy.get('button[type="submit"]').click()
-  })
 })
 
 addMatchImageSnapshotCommand({

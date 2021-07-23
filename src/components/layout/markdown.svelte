@@ -466,7 +466,8 @@
       font-family: var(--mono);
       font-variation-settings: 'MONO' 1, 'wght' 450;
       font-size: 0.95em;
-      overflow: auto;
+      /* overflow: auto; */
+      overflow: hidden;
     }
 
     & pre,
@@ -501,6 +502,7 @@
     /* for WIDE blocks */
     & > pre {
       /* TODO this should be a utility class */
+      /* also TODO this specifictiy target is no good */
       --width: calc(100vw - (2 * var(--padding)));
       width: var(--width);
       left: 50%;

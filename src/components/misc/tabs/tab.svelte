@@ -47,7 +47,7 @@
 >
   <span
     role='tab'
-    aria-selected={active()}
+    aria-selected={active().toString()}
     aria-controls={`panel-${id}`}
   >
     {title}
@@ -59,7 +59,7 @@
   role='tabpanel'
   id={`panel-${id}`}
   aria-labelledby={`tab-${id}`}
-  aria-expanded={active()}
+  aria-expanded={active().toString()}
 >
   <slot />
 </div>

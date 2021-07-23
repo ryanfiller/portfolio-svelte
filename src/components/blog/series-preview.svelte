@@ -46,7 +46,7 @@
   {#if !!title}
     {@html renderHeader()}
   {/if}
-  <p>
+  <p class='excerpt'>
     {excerpt}
   </p>
   {#if !hidePosts}
