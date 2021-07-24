@@ -96,7 +96,7 @@
 </script>
 
 <style>
-  :global(#site.error #content) {
+  :global(#site[data-segment='error'] #content) {
     color: var(--colorWhite);
     font-family: var(--display);
     font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;

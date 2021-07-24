@@ -62,17 +62,18 @@
     }
 
     @media (--largeWidth) {
-      &[data-segment] {
+      &[data-segment="blog"],
+      &[data-segment="series"] {
         grid-template-columns: 1fr auto auto;
         grid-template-rows: 1fr auto auto;
         grid-template-areas:
           "title .    date"
           "title tags tags";
-      }
 
-      & :global(.date),
-      & :global(.tag-list) {
-        text-align: right;
+        & :global(.date),
+        & :global(.tag-list) {
+          text-align: right;
+        }
       }
     }
   }
@@ -146,6 +147,9 @@
       tags={meta.tags}
     />
   {/if}
+
+  <slot />
+
 </div>
 
 {#if banner.src}

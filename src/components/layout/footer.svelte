@@ -6,7 +6,7 @@
   import SocialLinks from './social-links.svelte'
 </script>
 
-<style global>
+<style>
   .footer {
     font-size: 1em;
     color: var(--colorWhite);
