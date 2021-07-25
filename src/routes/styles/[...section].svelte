@@ -98,9 +98,9 @@
       segment='styles'
       title='Style Guide'
       banner={{
-        src: 'https://images.unsplash.com/photo-1560961911-ba7ef651a56c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1267&q=80',
-        alt: 'botanical illustrations of squids',
-        attribution: "Les Mollusques: Decrits Et Figures D'Apres La Classification"
+        src: '/images/two-by-two-lego-blocks.png',
+        alt: 'a bunch of 2 x 2 lego blocks',
+        attribution: 'Ryan Quintal, unsplash.com'
       }}
     >
       <ul>
