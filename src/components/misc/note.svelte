@@ -7,7 +7,7 @@
   const id = `${slugify(title)}`
 </script>
 
-<style global>
+<style>
   .note {
     --buttonSize: 3rem;
 

@@ -19,15 +19,32 @@ Improve tooling and testing
 
 [feature/linting](https://github.com/ryanfiller/portfolio-svelte/pull/45) - Add `eslint` and `stylelint`
 
+[design/styles](https://github.com/ryanfiller/portfolio-svelte/pull/46) - Refactor `/styles` page
+
 [[details | Version Details]]
 | - Features
 |   - `eslint`
 |   - `stylelint`
+|   - `/styles` page now has sections
+|
+| - Layouts
+|   - ≈ `<Page />`
+|
+| - Components
+|   - Layout
+|     - ≈ `<Banner />`
+|
+| - Routes
+|   - ≈ `/styles` => `/styles/[...section]`
 |
 | - Config
 |   - ≈ `.eslintrc.js` => `.eslintrc.cjs`
 |   - \+ `.stylelintrc.json`
 |   - \+ `.eslintrc.json `
+|
+| - Styles
+|   - animation classes
+|     - \+ .flip-arrow
 |
 | - Packages
 |   - \+ eslint

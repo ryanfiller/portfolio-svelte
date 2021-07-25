@@ -122,7 +122,8 @@ const config = {
 			layout: {
 				blog: 'src/layouts/blog.svelte',
 				lab: 'src/layouts/lab.svelte',
-				_: 'src/layouts/markdown.svelte',
+				styles: 'src/routes/styles/_examples/layout.svelte',
+				_: 'src/layouts/markdown.svelte'
 			},
 			highlight: false, // use remark plugin instead
 			remarkPlugins: [

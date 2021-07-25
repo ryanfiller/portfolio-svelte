@@ -58,16 +58,19 @@
 <div
 	tabindex={alertActive ? -1 : 0}
   id='site'
-  class={segment}
+  data-segment={segment}
 >
   <Header {segment}>
     {#if !hideBanner}
-      <Banner {segment} {...$$props} />
+      <slot name='banner'>
+        <Banner {segment} {...$$props} />
+      </slot>
     {/if}
   </Header>
 
   <main
     id='content'
+    tabindex='-1'
     class={segment}
   >
     <slot />

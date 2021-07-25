@@ -1,4 +1,4 @@
-<style global>
+<style>
   .form#contact {
     --labelHeight: 1.25em;
     --rowHeight: 4em;

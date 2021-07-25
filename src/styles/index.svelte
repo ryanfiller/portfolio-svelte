@@ -194,7 +194,7 @@
   /* ------------- */
 
   body[data-no-js] .needs-js {
-    display: none;
+    display: none !important;
   }
 
   .screenreader {
@@ -234,6 +234,35 @@
 
   .clearfix {
     clear: both !important;
+  }
+
+  /* ------------- */
+  /* animation classes */
+  /* ------------- */
+
+  .flip-arrow {
+    --arrow-size: 0.5em;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      height: 0;
+      width: 0;
+      border-top: 0.33em solid transparent;
+      border-bottom: 0.33em solid transparent;
+      border-left: var(--arrow-size) solid currentColor;
+      margin-right: calc(0.5 * var(--arrow-size));
+      transition: transform calc(2 * var(--transitionSpeed));
+      transition-timing-function: steps(5, end);
+      transform: rotateX(-0.25turn);
+      transform-style: preserve-3d;
+    }
+
+    &:hover::before,
+    &:focus::before {
+      transform: rotateX(0.5turn);
+      transition: transform calc(4 * var(--transitionSpeed));
+    }
   }
 
   /* ------------- */
