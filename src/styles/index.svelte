@@ -286,6 +286,26 @@
   /* form elements */
   /* ------------- */
 
+  fieldset {
+    & legend {
+      color: var(--colorBackground);
+      background-color: var(--colorText);
+      padding: 0 0.5em;
+      font-weight: bold;
+    }
+
+    margin: 1rem 0 0 0;
+    width: 100%;
+    padding: 1rem var(--padding) 1rem var(--padding);
+    border: var(--borderWidth) solid var(--colorText);
+  }
+
+
+  textarea {
+    width: 100%;
+    resize: vertical;
+  }
+
   .button,
   button {
     text-decoration: none;
@@ -351,7 +371,6 @@
 
   sup { top: -0.5em; }
 
-  fieldset,
   address {
     margin: 0;
     margin-bottom: 1.45rem;

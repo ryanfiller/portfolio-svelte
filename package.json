@@ -46,6 +46,7 @@
     "@sveltejs/kit": "^1.0.0-next.113",
     "array-move": "^3.0.1",
     "autoprefixer": "^10.2.6",
+    "block-ipsum": "^1.0.3",
     "color-contrast-table-svelte": "^4.0.0",
     "cross-env": "^7.0.2",
     "cypress": "^5.3.0",
