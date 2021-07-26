@@ -1,5 +1,6 @@
 <style global>
   #content .markdown {
+    
     padding: calc(2 * var(--padding));
     line-height: 1.5;
     /* include readable */
