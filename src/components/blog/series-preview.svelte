@@ -24,6 +24,7 @@
 <style>
   /* TODO this inherits a lot from post-preview.svelte, which isn't my favorite thing ever */
   article {
+    padding: calc(2 * var(--padding)) var(--padding);
     /* include readable */
     max-width: var(--readableMax);
     margin: 0 auto;

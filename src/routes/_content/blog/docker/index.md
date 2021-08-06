@@ -1,5 +1,5 @@
 ---
-title: Docker!
+title: Getting Started with Docker
 # series: Dark Mode
 banner:
   src: '/images/brehms-whale.jpg'
@@ -8,17 +8,26 @@ banner:
 options:
   published: true
 meta:
-  date: 2021-07-30
+  date: 2021-08-30
   categories:
     - code
   tags:
     - smart home
     - devops
   excerpt: >-
-    ?????
+    After using Docker for almost two years I finally take a look at how it actually works
 ---
 
-https://www.youtube.com/watch?v=TsdIO8RHMTc
+If you search the internet for "top developer skills 2021," "Docker", or some other sort of ["virtualization"](https://en.wikipedia.org/wiki/OS-level_virtualization), will definitely be on the list. I use Docker every day at my job, but much of how it actually works has been a mystery to me. Learning beyond how to start, stop, destroy, and rebuild containers has been a "white whale" (get ready for a lot of whale-based puns in this post) goal of mine for a while now.
+
+This isn't a definitive guide, more just some research notes and explanations of tools I found while setting up a series of Docker containers for use at home. This is a bit of a weird post for me too, since the reason behind this isn't a web-related project. But anyways... strap in, put on some [whale-themed music](https://www.youtube.com/watch?v=TsdIO8RHMTc), and ...
+
+
+## First of all, what is Docker?
+
+## Installing Docker
+
+### A side note about how Docker works on Mac computers
 
 Docker stuff
 
