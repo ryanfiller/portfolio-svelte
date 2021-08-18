@@ -94,9 +94,9 @@ Most web or app servers run a version of [Linux](https://en.wikipedia.org/wiki/L
 There are [a LOT](https://en.wikipedia.org/wiki/List_of_Linux_distributions) of Linux distributions (or "distros"). I chose [Ubuntu](https://en.wikipedia.org/wiki/Ubuntu) based on some very limited research because of its UI focus and stable update and release schedule.
 
 There are a million tutorials on installing Ubuntu for different hardware, but for my Mac Mini it was pretty straightforward. I needed to
- - download the [Ubuntu install image](https://ubuntu.com/download/desktop)
- - use [Etcher](https://www.balena.io/etcher/) to flash the image onto a spare USB drive
- - restart my Mac while holding the Option Key to boot it into [Startup Manager](https://support.apple.com/guide/mac-help/change-your-mac-startup-disk-mchlp1034/mac) mode and choose the Ubuntu drive
+ 1. download the [Ubuntu install image](https://ubuntu.com/download/desktop)
+ 2. use [Etcher](https://www.balena.io/etcher/) to flash the image onto a spare USB drive
+ 3. restart my Mac while holding the Option Key to boot it into [Startup Manager](https://support.apple.com/guide/mac-help/change-your-mac-startup-disk-mchlp1034/mac) mode and choose the Ubuntu drive
 
 From there the installation wizard will walk through the process and ask a few questions along the way. The only screen that I think is worth paying extra attention to is which apps should be installed. I chose to go with the minimal install and skip the software I knew I wouldn't be using. It's _also_ pretty important to make sure and install the third-party wifi drivers to make the Apple hardware play nice with the new OS.
 
@@ -108,7 +108,7 @@ If for some reason the wifi still doesn't work even after checking this box duri
 
 You'll also be asked to assign a name during setup, which is important because `http://NAME.local` is later how to access software running on this machine. I'm following the naming convention I do for all of my devices and choosing a [folklore creature](https://en.wikipedia.org/wiki/Cryptozoology). Since I did promise more whale-based humor, this PC is going to be named ["ningen"](https://en.wikipedia.org/wiki/Ningen_(folklore)), after a Japanese whale monster.
 
-[[clearfix]]
+Also name sure to remember your username and password created during this setup, not only because its good practice to know those things but because they'll also be necessary later.
 
 
 ## Remote Access
@@ -127,19 +127,63 @@ My particular router had this setting under Advanced > Setup > LAN Setup, but I 
 
 ### SSH
 
-https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-18-04/
+Now that the Ubuntu host is findable on the network, it needs to be configured for remote access. To do this, I'm going to enable [SSH](https://en.wikipedia.org/wiki/Secure_Shell) so I can log into remotely from the terminal on another computer. I followed [this great tutorial](https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-18-04/), but the basic steps are to open a terminal on the Ubuntu machine and do as follows:
+
+  1. Make sure everything is up to date and install an SSH server
+  
+  ```bash
+  sudo apt update
+  sudo apt install openssh-server
+  ```
+
+  2. Check and make sure the SSH server is running
+  
+  ```bash
+  sudo systemctl status ssh
+  ```
+
+  3. Configured the [Ubuntu Firewall](https://help.ubuntu.com/community/UFW) to allow incoming SSH traffic
+  
+  ```bash
+  sudo ufw allow ssh
+  ```
+
+Now _should_ be an okay time to move the computer away from a monitor, mouse, and keyboard, but before actually doing that now is probably a better time to make sure everything works as expected. From a terminal on a different computer (on the same wifi or LAN network), open a terminal and try to connect with the username and password from the Ubuntu setup. 
+
+```bash
+ssh [USERNAME]@192.168.1.XX
+```
+Doing so should prompt for a password. Once that is entered some welcome text from Ubuntu should appear.
+
+```bash
+[USERNAME]@192.168.1.XX's password:
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 5.8.0-63-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+Your Hardware Enablement Stack (HWE) is supported until April 2025.
+```
 
 ### VNC
 
 ![vnc viewer logo](/images/vnc-viewer-logo.png){data-align='right' data-small='true'}
 
+While I am _mostly_ comfortable using the command line interface, I am definitely a more visual person. Plus, I went through the trouble of choosing Ubuntu over a different version of Linux because I wanted to use the nice, visual interface. To do this and still keep the computer on a shelf somewhere requires installing a remote desktop software in addition to a remote shell interface.
+
+In order to view the remote desktop from another machine, the remote machine will need some software. There are a lot available, some even included with MacOS, but I'm personally a fan of [VNC Viewer](https://www.realvnc.com/en/connect/download/viewer/).
+
+![vnc viewer application](/images/vnc-viewer-remote-example.png)
+
+Setting up Ubuntu to allow remote desktop access is a little tricky. I
+
+https://itectec.com/ubuntu/ubuntu-add-fake-display-when-no-monitor-is-plugged-in/
+
+
 ## Installing Docker
 
 ---
-
-Set up a static IP
-
-SSH - https://linuxize.com/post/how-to-enable-ssh-on-ubuntu-18-04/
 
 VNC - https://www.answertopia.com/ubuntu/ubuntu-remote-desktop-access-with-vino/
 	- https://askubuntu.com/questions/1126714/vnc-viewer-unable-to-connect-encryption-issue
@@ -148,8 +192,6 @@ VNC - https://www.answertopia.com/ubuntu/ubuntu-remote-desktop-access-with-vino/
 
 	THE REAL ANSWER
 	https://itectec.com/ubuntu/ubuntu-add-fake-display-when-no-monitor-is-plugged-in/
-
-Other apps (1password)
 
 Docker
 	https://docs.docker.com/engine/install/ubuntu/
@@ -160,7 +202,7 @@ Docker
 	run docker not as sudo 
 		https://docs.docker.com/engine/install/linux-postinstall/
 
-Portainer
+<!-- Portainer
 	docker run -d -p 8000:8000 -p 9000:9000 --name=portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce
 
 Pihole
@@ -183,4 +225,4 @@ VS Code
  	the command palette
 	ssh / ssh profile file
 
-Backups!
+Backups! -->
