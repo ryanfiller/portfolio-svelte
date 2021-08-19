@@ -7,7 +7,10 @@ banner:
 options:
   published: true
 meta:
-  date: 2020-06-29T00:00:00.000Z
+  date: [
+    2020-06-29,
+    2021-08-10
+  ]
   excerpt: Exploring some of the more esoteric details about Svelte and Sapper
   categories:
     - code
@@ -15,6 +18,12 @@ meta:
     - svelte
     - sapper
 ---
+
+<script>
+  import SapperWarning from '../../../../components/misc/sapper-warning.svelte'
+</script>
+
+<SapperWarning />
 
 Svelte is a Javascript framework that has been interesting to me since seeing [Nate Clark](https://nateclark.io/) give a short talk on it at a [local meetup](https://memphiswebworkers.com/) last summer. I built a basic color app ([demo](https://rgb-color-values.netlify.app/), [code](https://github.com/ryanfiller/rgb-color-values)) to test some of the things he talked about, I and haven't touched Svelte since then. Both the Svelte framework and the world have changed a lot in the last year. [Svelte 3](https://svelte.dev/blog/svelte-3-rethinking-reactivity) was released a few months ago so I thought now was a good time to take another look at the Svelte ecosystem. 
 

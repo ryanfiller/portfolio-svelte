@@ -7,7 +7,10 @@ banner:
 options:
   published: true
 meta:
-  date: 2020-07-26
+  date: [
+    2020-07-26,
+    2021-08-19
+  ]
   excerpt: Three big limitations I've discovered while working with Svelte and Sapper
   categories:
     - code
@@ -15,6 +18,12 @@ meta:
     - svelte
     - sapper
 ---
+
+<script>
+  import SapperWarning from '../../../../components/misc/sapper-warning.svelte'
+</script>
+
+<SapperWarning />
 
 [Last month](/blog/a-deep-dive-into-sapper) I wrote about testing Svelte and Sapper to learn about their intricacies and limitations before trying to change my blog framework. I decided I'd explored enough to attempt a refactor and I found a few features that couldn't easily be replicated or done at all.
 
