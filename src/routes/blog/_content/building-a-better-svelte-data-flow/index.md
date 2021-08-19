@@ -7,7 +7,10 @@ banner:
   alt: 'Tom from Tom and Jerry designing a better mouse trap'
   attribution: 'Tom and Jerry, MGM Cartoons'
 meta:
-  date: '2021-03-28'
+  date: [
+    2021-03-28,
+    2021-08-19
+  ]
   excerpt: How I got Sapper parameter-based routing, mdsvex and unified markdown preprocessing, dynamic import statements, and server-sider rending all working together.
   categories:
     - code
@@ -22,7 +25,10 @@ meta:
   import Parts from './_components/parts.svg'
   import DataFlowChart from './_components/data-flow-chart.svelte'
   import { sapper, mdsvex, combined } from './_data.js'
+  import SapperWarning from '../../../../components/misc/sapper-warning.svelte'
 </script>
+
+<SapperWarning />
 
 <Parts /> <!-- put these in the document so they can be reused everywhere -->
 

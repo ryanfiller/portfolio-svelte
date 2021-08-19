@@ -7,7 +7,10 @@ banner:
 options:
   published: true
 meta:
-  date: 2020-09-27
+  date: [
+    2020-09-27
+    2021-08-19
+  ]
   excerpt: Building a CRUD site to host color palettes using Svelte, Routify, Sanity, and Netlify Functions.
   categories:
     - code
@@ -17,6 +20,12 @@ meta:
     - sanity
     - serverless
 ---
+
+<script>
+  import SapperWarning from '../../../../components/misc/sapper-warning.svelte'
+</script>
+
+<SapperWarning />
 
 Last month I wrote about creating an [NPM package with Svelte](/blog/building-a-component-in-three-frameworks). This month I built a basic [CRUD site](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) that would let other people use the [`color-contrast-table` package](https://www.npmjs.com/package/color-contrast-table) tool I made.
 
