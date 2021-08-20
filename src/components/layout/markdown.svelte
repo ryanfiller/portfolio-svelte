@@ -498,14 +498,17 @@
       }
     }
 
-    /* for blocks */
-    & pre {
+    /* for WIDE blocks */
+    & > pre {
       /* TODO this should be a utility class */
       --width: calc(100vw - (2 * var(--padding)));
-
       width: var(--width);
       left: 50%;
       margin-left: calc(-1 * var(--width) / 2);
+    }
+
+    /* for blocks */
+    & pre {
       white-space: pre;
       word-spacing: normal;
       word-break: normal;
@@ -526,10 +529,11 @@
         --line-height: 1.5;
 
         display: block;
-        padding: var(--tag-size) 0;
+        /* padding: var(--tag-size) 0; */
+        padding: var(--tag-size) var(--padding);
 
         /* include readable */
-        max-width: var(--readableMax);
+        max-width: calc(var(--readableMax) - (2 * var(--padding)));
         margin: 0 auto;
         font-size: 1.5rem !important; /* this matters a LOT for the line highlight */
         line-height: var(--line-height);

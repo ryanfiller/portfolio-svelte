@@ -21,11 +21,14 @@ Improve tooling and testing
 
 [design/styles](https://github.com/ryanfiller/portfolio-svelte/pull/46) - Refactor `/styles` page
 
+[feature/tips](https://github.com/ryanfiller/portfolio-svelte/pull/49) - Add a `/blog/tips` section and posts
+
 [[details | Version Details]]
 | - Features
 |   - `eslint`
 |   - `stylelint`
 |   - `/styles` page now has sections
+|   - Add a `/tips` subsection to `/blog`
 |
 | - Layouts
 |   - ≈ `<Page />`
@@ -36,6 +39,10 @@ Improve tooling and testing
 |
 | - Routes
 |   - ≈ `/styles` => `/styles/[...section]`
+|   - \+ `/blog/tips`
+|
+| - Endpoints
+|   - \- `/blog/tips.json`
 |
 | - Config
 |   - ≈ `.eslintrc.js` => `.eslintrc.cjs`
@@ -140,8 +147,8 @@ Change some internals
 | - Endpoints
 |   - ≈ `/lab.json`
 |   - ≈ `/blog.json`
-|   - ≈ `blog/series.json`
-|   - \- `blog/series/[slug].json`
+|   - ≈ `/blog/series.json`
+|   - \- `/blog/series/[slug].json`
 |
 | - Plugins
 |   - remark
