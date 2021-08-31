@@ -1,5 +1,5 @@
 ---
-title: Testing Fixing Synthetic Events in Cypress
+title: Testing Synthetic Events in Cypress
 options:
   published: true
 meta:
