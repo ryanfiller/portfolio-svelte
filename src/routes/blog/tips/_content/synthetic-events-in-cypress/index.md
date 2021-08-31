@@ -179,7 +179,7 @@ It is important to set `bubbles: true` in the `dispatchEvent` configuration obje
 
 To make this function more reusable, it can be added as a [custom command](https://docs.cypress.io/api/cypress-api/custom-commands) within the `cypress/support/commands.js` file.
 
-```javascript {3, 17, 20}
+```javascript {3, 17-20}
 // cypress/support/commands.js
 
 Cypress.Commands.add('inputChange', (input, value) => {
