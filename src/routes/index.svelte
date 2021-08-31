@@ -10,10 +10,16 @@
       .then(series => series.slice(0, 3))
       .catch(error => console.log(page.path, error))
 
+		const tips = await fetch(`/blog/tips.json`)
+      .then(response => response.json())
+      .then(series => series.slice(0, 3))
+      .catch(error => console.log(page.path, error))
+
 		return {
       props: {
         posts,
-        series
+        series,
+        tips
       }
     }
 	}
@@ -22,6 +28,7 @@
 <script>
   export let posts
   export let series
+  export let tips
 	
   import { site, forms } from '../config'
 	import Page from '../layouts/page.svelte'
@@ -82,6 +89,19 @@
       component={[SeriesPreview, { hidePosts: true }]}
       link={{
         url: '/blog/series',
+        text: 'See More'
+      }}
+    />
+  {/if}
+
+  <!-- TODO this should use its own preview and not borrow frop PostPreview -->
+  {#if tips.length}
+    <List
+      title='Recent Tips'
+      content={tips}
+      component={PostPreview}
+      link={{
+        url: '/blog/tips',
         text: 'See More'
       }}
     />

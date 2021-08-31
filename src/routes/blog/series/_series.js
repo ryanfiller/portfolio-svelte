@@ -1,3 +1,5 @@
+// TODO each of these entires should be a _content/*/.md file and not json
+
 export default [
   {
     title: 'Dark Mode',
