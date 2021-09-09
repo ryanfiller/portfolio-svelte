@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte'
+
   import Page from './page.svelte'
   import Markdown from '../components/layout/markdown.svelte'
   import Alert from '../components/misc/alert.svelte'
@@ -16,12 +18,16 @@
       Procede anyways?
     </p>
   `
-
-  $: showAlert = $user.labAlert
-    ? !($user.labAlert.show === false && $user.labAlert.id === btoa(alertContent))
-    : true
+  
+  let showAlert
+  onMount(() => {
+		if(!$user.labAlert || ($user.labAlert.show !== false && $user.labAlert.id !== btoa(alertContent))) {
+      showAlert = true
+    }
+	})
 
   const closeAlert = () => { 
+    showAlert = false
     $user.labAlert = {
       show: false,
       id: btoa(alertContent)

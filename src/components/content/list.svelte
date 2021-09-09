@@ -44,7 +44,7 @@
 
 <section class='content-list'>
   {#if title}
-    <h2>{title}</h2>
+    <h2 class='title'>{title}</h2>
   {/if}
   <ul>
     {#each content as item}

@@ -43,7 +43,7 @@
   class='footer'
 >
   <div>
-    <span>
+    <span class='text'>
       Built with
       <a href='https://kit.svelte.dev/' target='_blank' rel='noopener noreferrer'>
         Svelte

@@ -242,11 +242,11 @@
   }
 </style>
 
-<svelte:head>
-	<title>Error {status} | {site.title}</title>
-</svelte:head>
-
-<Page segment='error' hideBanner >
+<Page
+  segment='error'
+  hideBanner
+  title={`Error - ${status}`}
+>
 	<article class='columns'>
 		<header>
 			<h1>

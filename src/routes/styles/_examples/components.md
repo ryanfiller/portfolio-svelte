@@ -61,7 +61,7 @@
 
 ---
 
-<div id="Alert">
+<div id="alert">
 
   <button
     on:click={() => showAlert = true}

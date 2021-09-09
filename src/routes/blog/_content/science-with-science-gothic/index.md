@@ -135,17 +135,19 @@ In short, `preload` is a flag to the browser that this resource, be it a font, j
 
 I won't be exploring the other potential `rel` values in this post because they don't seem to apply to my use case (and it *definitely* isn't because I waited until the last day of the month to get this blog post out...). According to the [W3C spec](https://www.w3.org/TR/resource-hints/#dfn-preconnect), the other resource hints apply mostly to outside resources, which aren't super relevant since I've already demonstrated the advantages of self hosting fonts.
 
-<dt>
-  <a href="https://www.w3.org/TR/resource-hints/#dfn-dns-prefetch">dns-prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#preconnect">preconnect</a>
-</dt>
-<dd>used to indicate an origin that will be used to fetch required resources</dd>
+<dl>
+  <dt>
+    <a href="https://www.w3.org/TR/resource-hints/#dfn-dns-prefetch">dns-prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#preconnect">preconnect</a>
+  </dt>
+  <dd>used to indicate an origin that will be used to fetch required resources</dd>
 
-Since these are self hosted files I shouldn't see any speed benefits here. These attributes seem most applicable to something like an externally hosted font, or a fetch request to needs to go to another url to get data.
+  Since these are self hosted files I shouldn't see any speed benefits here. These attributes seem most applicable to something like an externally hosted font, or a fetch request to needs to go to another url to get data.
 
-<dt>
-  <a href="https://www.w3.org/TR/resource-hints/#prefetch">prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#prerender">prerender</a>
-</dt>
-<dd>used to identify a resource that might be required by the next navigation</dd>
+  <dt>
+    <a href="https://www.w3.org/TR/resource-hints/#prefetch">prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#prerender">prerender</a>
+  </dt>
+  <dd>used to identify a resource that might be required by the next navigation</dd>
+<dl>
 
 Since I'm intending the file to be loaded as fast as possible on *any* page, I don't think I'll get any speed benefits here either. These attributes seem most applicable to a specific page deeper in the site hierarchy that requires some heavy loading.
 
@@ -157,34 +159,36 @@ While large web fonts load in the background, browsers try to do their best to h
 
 > The font display timeline is based on a timer that begins the moment the user agent attempts to use a given downloaded font face. The timeline is divided into the three periods below which dictate the rendering behavior of any elements using the font face.
 
-<dt>Font block period</dt>
-<dd>If the font face is not loaded, any element attempting to use it must render an invisible fallback font face. If the font face successfully loads during this period, it is used normally.</dd>
+<dl>
+  <dt>Font block period</dt>
+  <dd>If the font face is not loaded, any element attempting to use it must render an invisible fallback font face. If the font face successfully loads during this period, it is used normally.</dd>
 
-<dt>Font swap period</dt>
-<dd>If the font face is not loaded, any element attempting to use it must render a fallback font face. If the font face successfully loads during this period, it is used normally.</dd>
+  <dt>Font swap period</dt>
+  <dd>If the font face is not loaded, any element attempting to use it must render a fallback font face. If the font face successfully loads during this period, it is used normally.</dd>
 
-<dt>Font failure period</dt>
-<dd>If the font face is not loaded, the user agent treats it as a failed load causing normal font fallback.</dd>
+  <dt>Font failure period</dt>
+  <dd>If the font face is not loaded, the user agent treats it as a failed load causing normal font fallback.</dd>
 
-There are four possible values that the `font-display` property can take.
+  There are four possible values that the `font-display` property can take.
 
-<dt>optional</dt>
-<dd>Gives the font face an extremely small block period and no swap period.</dd>
+  <dt>optional</dt>
+  <dd>Gives the font face an extremely small block period and no swap period.</dd>
 
-This means that the browser will quickly check if the font is available, if it isn't the fallback font will display. This basically means "the font is optional to the design."
+  This means that the browser will quickly check if the font is available, if it isn't the fallback font will display. This basically means "the font is optional to the design."
 
-<dt>fallback</dt>
-<dd>Gives the font face an extremely small block period and a short swap period.</dd>
+  <dt>fallback</dt>
+  <dd>Gives the font face an extremely small block period and a short swap period.</dd>
 
-This means that the browser will also quickly check if the font is available, but it will provide a short period afterwards for the loaded font to be swapped in.
+  This means that the browser will also quickly check if the font is available, but it will provide a short period afterwards for the loaded font to be swapped in.
 
-<dt>swap</dt>
-<dd>Gives the font face an extremely small block period and an infinite swap period.</dd>
+  <dt>swap</dt>
+  <dd>Gives the font face an extremely small block period and an infinite swap period.</dd>
 
-This option quickly checks for the font, but lets the loaded font appear at any time afterwards.
+  This option quickly checks for the font, but lets the loaded font appear at any time afterwards.
 
-<dt>block</dt>
-<dd>Gives the font face a short block period and an infinite swap period.</dd>
+  <dt>block</dt>
+  <dd>Gives the font face a short block period and an infinite swap period.</dd>
+</dl>
 
 This option give the longest possible time to check for the font before rendering a fallback, but also lets the loaded font appear at any point.
 
