@@ -77,6 +77,7 @@ const config = {
 						'process.env.PORT': process.env.PORT || '3000',
 						'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
 						// https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
+						'process.env.CONTEXT': JSON.stringify(process.env.CONTEXT),
 						'process.env.NETLIFY_URL': process.env.CONTEXT !== 'production'
 							? JSON.stringify(process.env.DEPLOY_URL)
 							: JSON.stringify(process.env.URL)
