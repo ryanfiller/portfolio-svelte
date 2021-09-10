@@ -6,7 +6,9 @@ export function get() {
       'Cache-Control': 'max-age=0'
     },
 		body: process.env.CONTEXT === 'production'
-      ? 'User-agent: * Disallow: '
-      : 'User-agent: * Disallow: /'
+      ? `User-agent: *
+Disallow: `
+      : `User-agent: *
+Disallow: /`
 	}
 }
