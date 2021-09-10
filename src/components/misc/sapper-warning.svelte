@@ -50,10 +50,10 @@
 
   <blockquote>
     <p>
-      Sapper's succesor, <a href='`https://kit.svelte.dev'>SvelteKit</a>, is currently available for use. All development efforts moving forward will be focused on <a href='https://kit.svelte.dev'>SvelteKit</a>.
+      Sapper's succesor, <a href='https://kit.svelte.dev'>SvelteKit</a>, is currently available for use. All development efforts moving forward will be focused on <a href='https://kit.svelte.dev'>SvelteKit</a>.
     </p>
     <p>
-      If you get stuck, reach out for help in the <a href='https://svelte.dev/chat'>Discord chatroom</a>. See the <a href='migrating' rel='noopener noreferrer'>migration guides</a> for help upgrading from older versions.
+      If you get stuck, reach out for help in the <a href='https://svelte.dev/chat'>Discord chatroom</a>. See the <a href='https://kit.svelte.dev/migrating' rel='noopener noreferrer'>migration guides</a> for help upgrading from older versions.
     </p>
   </blockquote>
 

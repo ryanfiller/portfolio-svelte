@@ -62,7 +62,7 @@ const config = {
 			crawl: true,
 			enabled: true,
 			force: true,
-			pages: ['*', '/404']
+			pages: ['*', '/404', '/robots.txt']
 		},
 		router: true,
 		ssr: true,
