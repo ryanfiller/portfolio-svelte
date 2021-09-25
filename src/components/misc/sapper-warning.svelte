@@ -7,12 +7,13 @@
   blockquote {
     --colorSapperGreen: rgb(21, 151, 148);
     --colorSapperBlue: #40b3ff;
+
     color: var(--colorSapperBlue);
     border: 2px solid var(--colorSapperBlue) !important;
     background: white;
     margin: 1.6rem 0 2.4rem;
     padding: 2rem 2.4rem 1.8rem 2.4rem;
-    border-radius: .4rem;
+    border-radius: 0.4rem;
     font: 'Overpass', sans-serif;
     font-size: 1.5rem;
     line-height: 1.5;
@@ -22,7 +23,7 @@
       margin: 1em 0;
       font-size: 1.8rem;
     }
-  
+
     & a {
       text-decoration: none;
       cursor: pointer;
@@ -30,8 +31,8 @@
       border-bottom: 1px solid currentColor;
       user-select: none;
       color: var(--colorSapperGreen);
-      transition: color .2s, border .2s, padding .2s;
-  
+      transition: color 0.2s, border 0.2s, padding 0.2s;
+
       &:hover,
       &:focus {
         color: var(--colorSapperBlue);

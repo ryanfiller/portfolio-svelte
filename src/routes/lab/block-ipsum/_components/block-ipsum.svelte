@@ -112,7 +112,7 @@
     & > label {
       flex: 1;
     }
-    
+
     & textarea {
       height: 33vh;
       line-height: 1.5;

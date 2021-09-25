@@ -1,6 +1,5 @@
 <style global>
   #content .markdown {
-    
     padding: calc(2 * var(--padding));
     line-height: 1.5;
     /* include readable */
@@ -504,6 +503,7 @@
       /* TODO this should be a utility class */
       /* also TODO this specifictiy target is no good */
       --width: calc(100vw - (2 * var(--padding)));
+
       width: var(--width);
       left: 50%;
       margin-left: calc(-1 * var(--width) / 2);
