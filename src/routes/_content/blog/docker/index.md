@@ -176,7 +176,9 @@ In order to view the remote desktop from another machine, the remote machine wil
 
 ![vnc viewer application](/images/vnc-viewer-remote-example.png)
 
-Setting up Ubuntu to allow remote desktop access is a little tricky. I
+Setting up Ubuntu to allow remote desktop access is a little tricky. A lot of the research I did suggested using [Vino](https://wiki.archlinux.org/title/Vino) on the Ubuntu machine, which would allow me to connect [my usual VNC client](https://www.realvnc.com/en/connect/download/viewer/) from any other device. I was never able to get Vino to allow an incoming connection, 
+
+<!-- https://www.headlessghost.com/ -->
 
 https://itectec.com/ubuntu/ubuntu-add-fake-display-when-no-monitor-is-plugged-in/
 
