@@ -511,7 +511,7 @@
 
     /* for blocks */
     & pre {
-      white-space: pre;
+      white-space: pre-wrap;
       word-spacing: normal;
       word-break: normal;
       tab-size: 4;

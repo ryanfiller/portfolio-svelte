@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "svelte-kit dev",
+    "share": "npm run dev -- --host --port 1337",
     "build": "svelte-kit build",
     "_postbuild": "mv build/404/index.html build/404.html",
     "preview": "svelte-kit preview",
