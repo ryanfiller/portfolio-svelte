@@ -9,7 +9,7 @@
 <script>
 	export let status
 	export let error
-	import { site } from '../config'
+	// import { site } from '../config'
 
 	import { dev } from '$app/env'
 

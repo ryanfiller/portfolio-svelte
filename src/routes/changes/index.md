@@ -25,12 +25,19 @@ Improve tooling and testing
 
 [refactor/reduce-tests](https://github.com/ryanfiller/portfolio-svelte/pull/50) - Delete a large number of one off tests, replace them with page integrations
 
+[feature/actions](https://github.com/ryanfiller/portfolio-svelte/pull/53) - Add a GitHub action to run tests and linting
+
 [[details | Version Details]]
 | - Features
 |   - `eslint`
 |   - `stylelint`
 |   - `/styles` page now has sections
 |   - Add a `/tips` subsection to `/blog`
+|   - GitHub action will now run `lint` and `test` for PRs into `main` branch
+|
+| - Actions
+|   - \+ `lint`
+|   - \+ `test`
 |
 | - Layouts
 |   - ≈ `<Page />`
@@ -71,6 +78,7 @@ Improve tooling and testing
 |     - \- `fillOutContactForm()`
 |
 | - Packages
+|   - \+ axe-core
 |   - \+ eslint
 |   - \+ eslint-plugin-cypress
 |   - \+ eslint-plugin-svelte3

@@ -300,7 +300,6 @@
     border: var(--borderWidth) solid var(--colorText);
   }
 
-
   textarea {
     width: 100%;
     resize: vertical;
