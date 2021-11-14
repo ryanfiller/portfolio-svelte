@@ -22,32 +22,18 @@
     overflow-x: hidden;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
-    grid-template-areas: "l-bump r-bump left header right"
-                         "l-bump r-bump left content right"
-                         "l-bump r-bump left footer right";
-
-    & .l,
-    & .r{
-      writing-mode: vertical-lr;
-      text-align: center;
-    }
+    grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
+    grid-template-areas: "bumper left header right"
+                         "bumper left content right"
+                         "bumper left footer right";
     
-    & .l {
-      background: blue;
-      grid-area: l-bump;
-      width: 0;
-    }
-    
-    & .r {
-      background: red;
-      grid-area: r-bump;
+    & .bumper {
+      grid-area: bumper;
       width: var(--offCanvasWidth);
     }
 
-    & .left:focus-within ~ :global(.l) {
-      width: var(--offCanvasWidth);
-      background: pink;
+    & .left:focus-within ~ :global(.bumper) {
+      width: calc(2 * var(--offCanvasWidth));
     }
 
     & .left:focus-within ~ :global(label) {
@@ -57,11 +43,12 @@
 
     & .left {
       grid-area: left;
-      background: red;
-      height: 50vh;
+      height: 100vh;
       position: sticky;
       top: 0;
       overflow: hidden;
+      background-color: var(--colorBlueDark);
+      color: var(--colorText);
     }
 
     & #check {
@@ -91,8 +78,8 @@
       background: lime;
     }
 
-    & #check:checked ~ .r,
-    & .right:focus-within ~ .r {
+    & #check:checked ~ .bumper,
+    & .right:focus-within ~ .bumper {
       width: 0;
     }
   }
@@ -109,9 +96,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    background: lime;
-    min-height: 200vh;
 
     & > :global(*) {
       width: 100%;
@@ -135,7 +119,6 @@
 
   <!-- new stuff -->
   <aside class='left'>
-    <input type='text' placeholder='left'>
     <a href='#content'>skip to content</a>
     <ul>
       <li><a href='#toc'>toc</a></li>
@@ -148,8 +131,7 @@
   <aside class='right'>
     <input type='text' id='right' placeholder='right'>
   </aside>
-  <div class='l'>LEFT BUMPER</div>
-  <div class='r'>RIGHT BUMPER</div>
+  <div class='bumper'></div>
   <!--  -->
 
   <Header {segment}>
@@ -165,7 +147,7 @@
     tabindex='-1'
     class={segment}
   >
-    <!-- <slot /> -->
+    <slot />
   </main>
 
   <!-- <aside id='sidebar'>
