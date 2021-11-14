@@ -13,82 +13,120 @@
 </script>
 
 <style>
+  :global(body) {
+    /* overflow MUST go here for position sticky elements to work within #site */
+    overflow-x: hidden;
+  }
+
   #site {
-    --offCanvasWidth: 10vw;
+    --offCanvasWidth: 50vw;
+    --headerLogoHeight: 60px;
+    --headerHeight: calc(var(--padding) + var(--headerLogoHeight));
 
     min-height: 100vh;
-    width: calc(100% + (2 * var(--offCanvasWidth)));
     margin-left: calc(-2 * var(--offCanvasWidth));
-    overflow-x: hidden;
     display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
-    grid-template-areas: "bumper left header right"
-                         "bumper left content right"
-                         "bumper left footer right";
-    
-    & .bumper {
-      grid-area: bumper;
-      width: var(--offCanvasWidth);
-    }
+    grid-template-rows: var(--headerHeight) 1fr auto;
+    grid-template-columns: auto 100vw var(--offCanvasWidth);
+    grid-template-areas: "header header  header"
+                         ".      content ."
+                         ".      footer  .";
 
-    & .left:focus-within ~ :global(.bumper) {
-      width: calc(2 * var(--offCanvasWidth));
-    }
+    & header {
+      display: grid;
+      grid-template-rows: var(--headerHeight) auto;
+      grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
+      grid-template-areas: "bumper left header right"
+                           "bumper left .      right";
+      grid-row-start: 1;
+      grid-row-end: -1;
+      grid-column-start: 1;
+      grid-column-end: -1;
 
-    & .left:focus-within ~ :global(label) {
-      pointer-events: initial;
-      opacity: .25;
-    }
+      & .bumper {
+        grid-area: bumper;
+        width: var(--offCanvasWidth);
+        transition: var(--transitionSpeed);
+      }
 
-    & .left {
-      grid-area: left;
-      height: 100vh;
-      position: sticky;
-      top: 0;
-      overflow: hidden;
-      background-color: var(--colorBlueDark);
-      color: var(--colorText);
-    }
+      & .left,
+      & .right {
+        transition: var(--transitionSpeed);
+        & * {
+          position: sticky;
+          top: 0;
+        }
+      }
+  
+      & .left:focus-within ~ :global(.bumper) {
+        width: calc(2 * var(--offCanvasWidth));
+      }
+  
+      & .left:focus-within ~ :global(label) {
+        pointer-events: initial;
+        opacity: .25;
+      }
+  
+      & .left {
+        grid-area: left;
+        background-color: var(--colorBlueDark);
+        color: var(--colorText);
+      }
 
-    & #check {
-      grid-area: header;
-      justify-self: end;
-      align-self: center;
-      margin-right: var(--padding);
-      z-index: 100;
-    }
+      & .temp-logo {
+        grid-area: header;
+        justify-self: start;
+        align-self: center;
+        height: var(--headerLogoHeight);
+        display: block;
+        background: orange;
+        position: relative;
+        z-index: 50000;
+      }
+  
+      & #check {
+        grid-area: header;
+        justify-self: end;
+        align-self: center;
+        margin-right: var(--padding);
+        z-index: 100;
 
-    & label.icon {
-      position: absolute;
-      background: black;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-    }
-
-    & #check:checked + label {
-      pointer-events: initial;
-      opacity: .25;
-    }
-
-    & .right {
-      position: relative;
-      grid-area: right;
-      background: lime;
-    }
-
-    & #check:checked ~ .bumper,
-    & .right:focus-within ~ .bumper {
-      width: 0;
+        position: sticky;
+        top: 0;
+      }
+  
+      & label.icon {
+        position: fixed;
+        background: black;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0;
+      }
+  
+      & #check:checked + label {
+        pointer-events: initial;
+        opacity: .25;
+      }
+  
+      & .right {
+        position: relative;
+        grid-area: right;
+        background: lime;
+        /* position: absolute; */
+      }
+  
+      & #check:checked ~ .bumper,
+      & .right:focus-within ~ .bumper {
+        width: 0;
+      }
     }
   }
 
-  :global(#site-header) {
+  /* :global(#site-header) {
     grid-area: header;
     width: 100%;
     height: 100%;
-  }
+  } */
 
   :global(#content) {
     grid-area: content;
@@ -96,6 +134,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    background: pink;
 
     & > :global(*) {
       width: 100%;
@@ -118,29 +158,36 @@
 >
 
   <!-- new stuff -->
-  <aside class='left'>
-    <a href='#content'>skip to content</a>
-    <ul>
-      <li><a href='#toc'>toc</a></li>
-      <li><a href='#toc'>toc</a></li>
-      <li><a href='#toc'>toc</a></li>
-    </ul>
-  </aside>
-  <input type='checkbox' id='check' />
-  <label for='check' class='icon'> </label>
-  <aside class='right'>
-    <input type='text' id='right' placeholder='right'>
-  </aside>
-  <div class='bumper'></div>
+  <header>
+    <aside class='left'>
+      <a href='#content'>skip to content</a>
+      <ul>
+        <li><a href='#toc'>toc</a></li>
+        <li><a href='#toc'>toc</a></li>
+        <li><a href='#toc'>toc</a></li>
+      </ul>
+    </aside>
+    <a class='temp-logo' href='/'>logo</a>
+    <input type='checkbox' id='check' />
+    <label for='check' class='icon'> </label>
+    <aside class='right'>
+      <ul>
+        <li><a href='#nav'>nav</a></li>
+        <li><a href='#nav'>nav</a></li>
+        <li><a href='#nav'>nav</a></li>
+      </ul>
+    </aside>
+    <div class='bumper'></div>
+  </header>
   <!--  -->
 
-  <Header {segment}>
+  <!-- <Header {segment}>
     {#if !hideBanner}
       <slot name='banner'>
         <Banner {segment} {...$$props} />
       </slot>
     {/if}
-  </Header>
+  </Header> -->
 
   <main
     id='content'
