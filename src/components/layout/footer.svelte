@@ -34,6 +34,9 @@
           text-decoration: underline;
         }
       }
+
+      /* &:first-child { margin-left: calc(1.5 * var(--padding)); }
+      &:last-child { margin-right: calc(1.5 * var(--padding)); } */
     }
   }
 </style>
