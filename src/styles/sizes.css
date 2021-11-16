@@ -10,3 +10,11 @@
 @custom-media --mediumWidth (min-width: 768px);
 @custom-media --largeWidth (min-width: 992px);
 @custom-media --extraWidth (min-width: 1400px);
+
+
+/* https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134 */
+@custom-media --touch (hover: none) and (pointer: coarse);
+@custom-media --stylus (hover: none) and (pointer: fine);
+@custom-media --pointer (hover: hover) and (pointer: coarse);
+@custom-media --mouse (hover: hover) and (pointer: fine);
+

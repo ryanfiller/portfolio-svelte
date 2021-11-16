@@ -10,6 +10,7 @@
   import Footer from '$components/layout/footer.svelte'
 
   const alertActive = $$slots.alert
+  // TODO handle jank resize
 </script>
 
 <style>
@@ -19,7 +20,11 @@
   }
 
   #site {
-    --offCanvasWidth: 50vw;
+    --safeAreaBecauseScrollBarsAreFrustrationg: 95vw;
+    --naviconSize: var(--tapableSize);
+    /* mobile, smallest size first */
+    --offCanvasWidth: calc(var(--safeAreaBecauseScrollBarsAreFrustrationg) - var(--naviconSize) - (2 * var(--padding)));
+    --offCanvasSpeed: calc(2 * var(--transitionSpeed));
     --headerLogoHeight: 60px;
     --headerHeight: calc(var(--padding) + var(--headerLogoHeight));
 
@@ -32,47 +37,21 @@
                          ".      content ."
                          ".      footer  .";
 
+    @media (--touch) {
+      /* this break position sticky but it makes touch devices freak out abour horizontal scroll */
+      overflow-x: hidden !important;
+    }
+
     & header {
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
       grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
       grid-template-areas: "bumper left header right"
-                           "bumper left .      right";
-      grid-row-start: 1;
-      grid-row-end: -1;
-      grid-column-start: 1;
-      grid-column-end: -1;
+                           "bumper left body   right";
+      grid-row: 1 / -1;
+      grid-column: 1 / -1;
 
-      & .bumper {
-        grid-area: bumper;
-        width: var(--offCanvasWidth);
-        transition: var(--transitionSpeed);
-      }
-
-      & .left,
-      & .right {
-        transition: var(--transitionSpeed);
-        & * {
-          position: sticky;
-          top: 0;
-        }
-      }
-  
-      & .left:focus-within ~ :global(.bumper) {
-        width: calc(2 * var(--offCanvasWidth));
-      }
-  
-      & .left:focus-within ~ :global(label) {
-        pointer-events: initial;
-        opacity: .25;
-      }
-  
-      & .left {
-        grid-area: left;
-        background-color: var(--colorBlueDark);
-        color: var(--colorText);
-      }
-
+      /* todo put the header stuff here */
       & .temp-logo {
         grid-area: header;
         justify-self: start;
@@ -81,52 +60,108 @@
         display: block;
         background: orange;
         position: relative;
-        z-index: 50000;
+        z-index: 100;
       }
   
-      & #check {
+      & #navicon {
+        height: var(--naviconSize);
+        width: var(--naviconSize);
         grid-area: header;
         justify-self: end;
         align-self: center;
         margin-right: var(--padding);
-        z-index: 100;
+        z-index: 300;
 
         position: sticky;
         top: 0;
       }
-  
-      & label.icon {
-        position: fixed;
+    
+      & label.overlay {
+        /* cover header body */
+        grid-row: 1 / -1;
+        grid-column: 3 / 4;
         background: black;
-        inset: 0;
         pointer-events: none;
         opacity: 0;
+        z-index: 200;
       }
   
-      & #check:checked + label {
+      & #navicon:checked ~ label.overlay {
         pointer-events: initial;
         opacity: .25;
       }
-  
+
+      & .bumper {
+        /* start the bumper at 1x width */
+        grid-area: bumper;
+        width: var(--offCanvasWidth);
+        transition: var(--offCanvasSpeed);
+      }
+
+      & .left,
       & .right {
-        position: relative;
-        grid-area: right;
-        background: lime;
-        /* position: absolute; */
+        transition: var(--offCanvasSpeed);
+        position: sticky;
+        top: 0;
+        height: 100vh;        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        @media (--touch) {
+          /* styles for when position sticky is broken */
+          height: 100%;
+          display: block;
+        }
+
+        background-color: var(--colorBlueDark);
+        color: var(--colorBackground);
+        & a { color: var(--colorBackground); }
+      }
+
+      & .left {
+        grid-area: left;
       }
   
-      & #check:checked ~ .bumper,
+      & .right {
+        grid-area: right;
+      }
+  
+      & .left:focus-within ~ :global(.bumper) {
+        /* expand the bumper, push site to the right */
+        width: calc(2 * var(--offCanvasWidth));
+      }
+  
+      & .left:focus-within ~ :global(label.overlay) {
+        opacity: .25;
+      }
+  
+      & #navicon:checked ~ .bumper,
       & .right:focus-within ~ .bumper {
+        /* retract the bumper, pull site to the left */
         width: 0;
       }
     }
-  }
 
-  /* :global(#site-header) {
-    grid-area: header;
-    width: 100%;
-    height: 100%;
-  } */
+    background: pink;
+
+    @media (--smallWidth) {
+      --offCanvasWidth: 75vw;
+    }
+    @media (--mediumWidth) {
+      background: orange;
+      --offCanvasWidth: 50vw;
+    }
+    @media (--largeWidth) {
+      background: yellow;
+      --offCanvasWidth: 25vw;
+      --offCanvasSpeed: calc(1.5 * var(--transitionSpeed));
+    }
+    
+    @media (--extraWidth) {
+      background: lime;
+    }
+  }
 
   :global(#content) {
     grid-area: content;
@@ -134,8 +169,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    background: pink;
 
     & > :global(*) {
       width: 100%;
@@ -161,22 +194,31 @@
   <header>
     <aside class='left'>
       <a href='#content'>skip to content</a>
+      <a href='#navicon'>skip to site navigation</a>
       <ul>
         <li><a href='#toc'>toc</a></li>
         <li><a href='#toc'>toc</a></li>
         <li><a href='#toc'>toc</a></li>
       </ul>
+      <div class='bottom'>
+        at the bottom
+      </div>
     </aside>
     <a class='temp-logo' href='/'>logo</a>
-    <input type='checkbox' id='check' />
-    <label for='check' class='icon'> </label>
+    <input type='checkbox' id='navicon' />
     <aside class='right'>
       <ul>
         <li><a href='#nav'>nav</a></li>
         <li><a href='#nav'>nav</a></li>
         <li><a href='#nav'>nav</a></li>
       </ul>
+      <div class='bottom'>
+        at the bottom
+      </div>
     </aside>
+    <label class='overlay' for='navicon'>
+      <span class='screenreader'>show site navigation</span>
+    </label>
     <div class='bumper'></div>
   </header>
   <!--  -->
