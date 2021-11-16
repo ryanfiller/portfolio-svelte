@@ -10,7 +10,17 @@
   import Footer from '$components/layout/footer.svelte'
 
   const alertActive = $$slots.alert
-  // TODO handle jank resize
+  
+  let resizeTimer
+  $: isResizing = false
+  const handleResizeJank = () => {
+    clearTimeout(resizeTimer)
+    isResizing = true
+    resizeTimer = setTimeout(function() {
+      // resizing has "stopped"
+      isResizing = false
+    }, 500)
+  }
 </script>
 
 <style>
@@ -42,7 +52,16 @@
       overflow-x: hidden !important;
     }
 
+    /* hide the off canvas stuff while the browser is resizing */
+    &.resizing {
+      & .left,
+      & .right {
+        display: none !important;
+      }
+    }
+
     & header {
+      background-color: var(--colorPrimary);
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
       grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
@@ -73,7 +92,7 @@
         z-index: 300;
 
         position: sticky;
-        top: 0;
+        top: var(--padding);
       }
     
       & label.overlay {
@@ -107,6 +126,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: var(--padding);
 
         @media (--touch) {
           /* styles for when position sticky is broken */
@@ -143,23 +163,23 @@
       }
     }
 
-    background: pink;
+    /* background: pink; */
 
     @media (--smallWidth) {
       --offCanvasWidth: 75vw;
     }
     @media (--mediumWidth) {
-      background: orange;
+      /* background: orange; */
       --offCanvasWidth: 50vw;
     }
     @media (--largeWidth) {
-      background: yellow;
+      /* background: yellow; */
       --offCanvasWidth: 25vw;
       --offCanvasSpeed: calc(1.5 * var(--transitionSpeed));
     }
     
     @media (--extraWidth) {
-      background: lime;
+      /* background: lime; */
     }
   }
 
@@ -169,6 +189,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    background-color: var(--colorBackground);
 
     & > :global(*) {
       width: 100%;
@@ -182,12 +203,15 @@
   }
 </style>
 
+<svelte:window on:resize={handleResizeJank}/>
+
 <SEO {segment} {...$$props} />
 
 <div
   tabindex={alertActive ? -1 : 0}
   id='site'
   data-segment={segment}
+  class={isResizing ? 'resizing' : ''}
 >
 
   <!-- new stuff -->
