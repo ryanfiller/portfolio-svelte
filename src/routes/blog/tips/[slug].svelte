@@ -1,7 +1,7 @@
 <script context='module'>
   export async function load({ page }) {
-
     const { slug } = page.params
+    if (slug.match(/\.json$/)) return
 
     const component = await import(`../../_content/blog/tips/${slug}/index.md`)
 

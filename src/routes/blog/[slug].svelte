@@ -2,7 +2,9 @@
   export async function load({ page, fetch }) {
 
     const { slug } = page.params
+
     if (slug === 'rss.xml') return
+    if (slug.match(/\.json$/)) return
 
     const component = await import(`../_content/blog/${slug}/index.md`)
 
