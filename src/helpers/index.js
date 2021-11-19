@@ -1,4 +1,7 @@
+// TODO https://kit.svelte.dev/docs#modules-$lib here 
+
 import { objectToParams, paramsToObject } from './query-param-helpers.js'
+import { buildPagesJson, sortNewestToOldest } from './import-helpers.js'
 
 function capitalize(string) {
   if (typeof string !== 'string') return ''
@@ -46,11 +49,13 @@ function xmlEncode(string) {
 
 export {
   capitalize,
+  buildPagesJson,
   fishAttr,
   getCustomProperty,
   setCustomProperty,
   slugify,
   objectToParams,
+  sortNewestToOldest,
   paramsToObject,
   xmlEncode
 }
