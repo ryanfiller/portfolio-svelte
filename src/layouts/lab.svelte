@@ -4,7 +4,7 @@
   import Page from './page.svelte'
   import Markdown from '../components/layout/markdown.svelte'
   import Alert from '../components/misc/alert.svelte'
-  import { user } from '../stores/user.js'
+  import { user } from '$lib/stores/user.js'
 
   $$props.meta.date = null
 

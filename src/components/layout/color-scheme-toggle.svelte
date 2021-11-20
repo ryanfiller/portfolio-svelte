@@ -1,6 +1,6 @@
 <script>
   import { onMount } from 'svelte'
-  import { colorScheme } from '../../stores/theme.js'
+  import { colorScheme } from '$lib/stores/theme.js'
   import { getCustomProperty, setCustomProperty } from '$lib/helpers'
   import Icon from '../../../static/images/site-assets/icons/sun-moon.svg'
 
