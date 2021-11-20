@@ -1,6 +1,6 @@
 import { site } from '../../config.js'
-// import getPages from '../../helpers/get-pages.js'
-import { slugify, xmlEncode } from '../../helpers'
+// import getPages from '$lib/helpers/get-pages.js'
+import { slugify, xmlEncode } from '$lib/helpers'
 
 export async function get({ query }) {
   const category = query.category || null

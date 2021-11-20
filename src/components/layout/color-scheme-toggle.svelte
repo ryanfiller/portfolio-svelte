@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { colorScheme } from '../../stores/theme.js'
-  import { getCustomProperty, setCustomProperty } from '../../helpers'
+  import { getCustomProperty, setCustomProperty } from '$lib/helpers'
   import Icon from '../../../static/images/site-assets/icons/sun-moon.svg'
 
   const LS_KEY = 'user-color-scheme'

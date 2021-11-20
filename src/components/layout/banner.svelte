@@ -4,7 +4,7 @@
   export let meta = {}
   export let banner = {}
 
-  import { capitalize } from '../../helpers'
+  import { capitalize } from '$lib/helpers'
 
   import Date from '../content/date.svelte'
   import TagList from '../content/tag-list.svelte'

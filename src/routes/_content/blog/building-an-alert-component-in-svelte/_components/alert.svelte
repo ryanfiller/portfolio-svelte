@@ -11,7 +11,7 @@
   }
 
   import focusTrap from '../../../../../actions/focus-trap.js'
-  import { slugify } from '../../../../../helpers'
+  import { slugify } from '$lib/helpers'
 
   let id
   if ($alert.title) {

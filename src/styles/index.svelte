@@ -1,6 +1,6 @@
 <script>
   import { colors, themes } from './config.js'
-  import { capitalize } from '../helpers'
+  import { capitalize } from '$lib/helpers'
 
   // create all the css vars based on a js object
   const setColors = (colors) => {

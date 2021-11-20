@@ -1,6 +1,6 @@
 <script>
   import { site } from '../config.js' 
-  import { paramsToObject } from '../helpers'
+  import { paramsToObject } from '$lib/helpers'
   import TagList from '../components/content/tag-list.svelte'
 
   import { page } from '$app/stores'
