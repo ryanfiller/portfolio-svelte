@@ -1,23 +1,13 @@
-// import getPages from '../../helpers/get-pages.js'
-
-const pages = import.meta.globEager('./**/*.md')
+import { buildPagesJson } from '../../helpers'
 
 export async function get() {
+	const posts = import.meta.globEager('/src/routes/_content/lab/**/index.md')
+	
 	return {
 		statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-		// body: await getPages({directory: 'lab'})
-		body: Object.entries(pages).map(([path, component]) => {
-			return {
-				...component.metadata,
-				slug: `/lab/${path.split('/')[1]}`
-			}
-		}).filter(post => {
-			return post.options.published
-		}).sort((a, b) => {
-			return new Date(a.meta.date) < new Date(b.meta.date) ? 1 : -1
-		})
+		body: buildPagesJson(posts)
 	}
-} 
+}

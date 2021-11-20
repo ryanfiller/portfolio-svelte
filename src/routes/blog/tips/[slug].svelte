@@ -3,7 +3,7 @@
 
     const { slug } = page.params
 
-    const component = await import(`./_content/${slug}/index.md`)
+    const component = await import(`../../_content/blog/tips/${slug}/index.md`)
 
     return {
       props: {

@@ -1,69 +1,46 @@
-// import fetch from 'node-fetch'
-import series from './_series.js'
-import { slugify } from '../../../helpers'
+import { sortNewestToOldest } from '../../../helpers'
 
-// TODO - this work is all done twice, find a place to abstract is
-const markdown = import.meta.globEager('../_content/**/*.md')
+export async function get({ host }) {
+	// this is gonna be a weird one...
+	const series = import.meta.globEager('/src/routes/_content/blog/series/**/index.md')
 
-let pages
-if (markdown) {
-	pages = Object.entries(markdown).map(([path, component]) => {
-		return {
-			...component.metadata,
-			slug: `/blog/${path.split('/')[2]}`
-		}
-	})
-}
+	const posts = await fetch(`http://${host}/blog.json`)
+		.then(response => response.json())
+		.then(posts => {
+			return posts.filter(post => !!post.series)
+		})
+		.catch(error => console.error(error))
 
-export async function get() {
-  let list = {}
+	const formattedSeries = Object.entries(series)
+		.map(([path, component]) => {
+			// posts are in newest to older order, reverse that
+			const seriesPosts = posts
+				.filter(post => post.series === component.metadata.title)
+				.reverse()
+			
+			const newestPost = seriesPosts[seriesPosts.length - 1]
 
-  // create a list of keys that can have posts pushed to them
-  series.map(series => {
-    series.slug = `/blog/series/${slugify(series.title)}`
-    list[series.title] = series
-  })
+			console.log(path)
 
-  // get only the posts that have series
-  pages = pages.filter(post => !!post.series && Object.keys(list).includes(post.series))
-  // // format the series with the posts
-  pages.map(post => {      
-    const seriesTitle = post.series
-    const postTitle = post.title
-    if(list[seriesTitle].posts) {
-      // stop duplication that's happening for some reason
-      if (!list[seriesTitle].posts.map(post => post.title).includes(postTitle)) {
-        list[seriesTitle].posts.push(post)
-      }
-    } else {
-      list[seriesTitle].posts = [ post ]
-    }
-  })
+			const { title, ...metadata} = component.metadata 
 
-  
-  // convert from object to array
-  list = Object.values(list)
-  
-  // let sortedList
-  if (list.length) {
-    const getLast = array => array[array.length - 1]
-    
-    // sort the posts with oldest first
-    list.map(item => item.posts.sort((a, b) => {
-      return new Date(a.meta.date) > new Date(b.meta.date) ? 1 : -1
-    }))
-
-    // sort the series with most recent last post first
-    list.sort((a, b) => {
-      return getLast(a.posts).meta.date < getLast(b.posts).meta.date ? 1 : -1
-    })
-  }
-
-  return {
+			return {
+				title: title,
+				slug: path.match(/^\/src\/routes\/_content(.*)\/index.md/)[1], // TODO this is repeated in import-helpers, does it have to be?
+				meta: {
+					...metadata.meta,
+					date: Array.isArray(newestPost.meta.date) ? newestPost.meta.date[0] : newestPost.meta.date
+				},
+				posts: seriesPosts
+			}
+		})
+		.sort((a, b) => sortNewestToOldest(a, b))
+	
+	return {
 		statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-		body: list
+		body: JSON.stringify(formattedSeries)
 	}
 }

@@ -13,6 +13,36 @@ banner:
 
 <Change>
 
+## RF-05-06 - "Mk-II"
+
+Refactor and redesign.
+
+[refactor/move-content-files](https://github.com/ryanfiller/portfolio-svelte/pull/55) - refactor content enpoints
+
+[[details | Version Details]]
+| - Features
+|   - use `import.meta.globEager` rather than `fs` for building content endpoints
+|   - store `series` data as `.md` files instead of one large `.json` file
+|   - moved `routes/blog/_content`, `routes/lab/_content` to `routes/_content/blog`, `routes/_content/lab`
+|
+| - Routes
+|   - \+ `/lab/[slug]`
+|
+| - Endpoints
+|   - ≈ `/lab.json`
+|   - ≈ `/blog.json`
+|   - ≈ `/blog/series.json`
+|   - ≈ `/blog/tips.json`
+|
+| - Helpers
+|   - \- `getPages()`
+|   - \+ `buildPagesJson`
+|   - \+ `sortNewestToOldest`
+
+</Change>
+
+<Change>
+
 ## RF-05-05.2 - "Chobam"
 
 Improve tooling and testing

@@ -1,33 +1,17 @@
-// import getPages from '../../helpers/get-pages.js'
-
-const markdown = import.meta.globEager('./_content/**/*.md')
-
-let pages
-if (markdown) {
-	pages = Object.entries(markdown).map(([path, component]) => {
-		return {
-			...component.metadata,
-			slug: `/blog/${path.split('/')[2]}`
-		}
-	})
-}
-
-let filteredAndOrderedPages
-if (pages) {
-	filteredAndOrderedPages = pages.filter(post => {
-		return post.options.published
-	}).sort((a, b) => {
-		return new Date(a.meta.date) < new Date(b.meta.date) ? 1 : -1
-	})
-}
+import { buildPagesJson } from '../../helpers'
 
 export async function get() {
+	const posts = import.meta.globEager('/src/routes/_content/blog/**/index.md')
+	const excludedPaths = [
+		'blog/tips/',
+		'blog/series/'
+	]
+	
 	return {
 		statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-		// body: await getPages({directory: 'blog/_content'})
-		body: filteredAndOrderedPages || null
+		body: buildPagesJson(posts, excludedPaths)
 	}
 }

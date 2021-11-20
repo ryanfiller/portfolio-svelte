@@ -4,7 +4,7 @@
     const { slug } = page.params
     if (slug === 'rss.xml') return
 
-    const component = await import(`../_content/blog/${slug}/index.md`)
+    const component = await import(`../_content/lab/${slug}/index.md`)
 
     const series = await fetch(`/blog/series.json`)
       .then(response => response.json())
