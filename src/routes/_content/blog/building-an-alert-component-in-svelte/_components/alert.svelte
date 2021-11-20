@@ -10,7 +10,7 @@
     close()
   }
 
-  import focusTrap from '../../../../../actions/focus-trap.js'
+  import focusTrap from '$lib/actions/focus-trap.js'
   import { slugify } from '$lib/helpers'
 
   let id

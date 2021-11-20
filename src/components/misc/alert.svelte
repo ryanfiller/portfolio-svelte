@@ -7,7 +7,7 @@
   const id = `${slugify(title)}`
 
   import Note from './note.svelte'
-  import focusTrap from '../../actions/focus-trap.js'
+  import focusTrap from '$lib/actions/focus-trap.js'
 </script>
 
 <style>
