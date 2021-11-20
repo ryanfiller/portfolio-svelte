@@ -1,7 +1,7 @@
 <script>
   import Page from './page.svelte'
-  import Markdown from '../components/layout/markdown.svelte'
-  import SeriesNavigator from '../components/blog/series-navigator.svelte'
+  import Markdown from '$lib/components/layout/markdown.svelte'
+  import SeriesNavigator from '$lib/components/blog/series-navigator.svelte'
 </script>
 
 <Page {...$$props} >

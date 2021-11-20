@@ -4,10 +4,10 @@
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
   export let hideBanner = false
 
-  import SEO from '../components/layout/seo.svelte'
-  import Header from '../components/layout/header.svelte'
-  import Banner from '../components/layout/banner.svelte'
-  import Footer from '../components/layout/footer.svelte'
+  import SEO from '$lib/components/layout/seo.svelte'
+  import Header from '$lib/components/layout/header.svelte'
+  import Banner from '$lib/components/layout/banner.svelte'
+  import Footer from '$lib/components/layout/footer.svelte'
 
   const alertActive = $$slots.alert
 </script>

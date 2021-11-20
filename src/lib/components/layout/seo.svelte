@@ -10,7 +10,7 @@
 
   // const host = dev ? `https://${$page.host}` : `http://${$page.host}`
   
-  import { site } from '../../config.js'
+  import { site } from '../../../config.js'
   import { capitalize, objectToParams, slugify } from '$lib/helpers'
 
   const pageTitle = () => {

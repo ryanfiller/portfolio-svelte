@@ -4,7 +4,7 @@
   import { colors, themes } from '../../../../styles/config.js'
   import { capitalize } from '$lib/helpers'
 
-  import { Tabs, Tab } from '../../../../components/misc/tabs'
+  import { Tabs, Tab } from '$lib/components/misc/tabs'
 
   // lol wtf, this is why people hate javascript...
   const deepCopy = object => JSON.parse(JSON.stringify(object))

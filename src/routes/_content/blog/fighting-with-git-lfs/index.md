@@ -73,7 +73,7 @@ site
 I have a habit of overly organizing my folders, and this always leads to deeply nested files that require long and hard to follow import paths.
 
 ```
-import Component from '../../components/misc/component'
+import Component from '$lib/components/misc/component'
 
 ---
 

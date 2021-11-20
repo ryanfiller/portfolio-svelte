@@ -1,14 +1,14 @@
 <script>
-  import { socialLinks as links } from '../../config.js'
+  import { socialLinks as links } from '../../../config.js'
 
-  import Email from '../../../static/images/site-assets/icons/social/email.svg'
-  import Twitter from '../../../static/images/site-assets/icons/social/twitter.svg'
-  import Instagram from '../../../static/images/site-assets/icons/social/instagram.svg'
-  import LinkedIn from '../../../static/images/site-assets/icons/social/linkedin.svg'
-  import GitHub from '../../../static/images/site-assets/icons/social/github.svg'
-  import CodePen from '../../../static/images/site-assets/icons/social/codepen.svg'
-  import PokemonGO from '../../../static/images/site-assets/icons/social/pokemongo.svg'
-  import RSS from '../../../static/images/site-assets/icons/social/rss.svg'
+  import Email from '../../../../static/images/site-assets/icons/social/email.svg'
+  import Twitter from '../../../../static/images/site-assets/icons/social/twitter.svg'
+  import Instagram from '../../../../static/images/site-assets/icons/social/instagram.svg'
+  import LinkedIn from '../../../../static/images/site-assets/icons/social/linkedin.svg'
+  import GitHub from '../../../../static/images/site-assets/icons/social/github.svg'
+  import CodePen from '../../../../static/images/site-assets/icons/social/codepen.svg'
+  import PokemonGO from '../../../../static/images/site-assets/icons/social/pokemongo.svg'
+  import RSS from '../../../../static/images/site-assets/icons/social/rss.svg'
 
   const icons = {
     email: Email,

@@ -21,8 +21,8 @@ meta:
 
 <script>
   import CardMarkup from './_card-markup.svelte'
-  import { Tabs, Tab } from '../../../../components/misc/tabs/index.js'
-  import Note from '../../../../components/misc/note.svelte'
+  import { Tabs, Tab } from '$lib/components/misc/tabs/index.js'
+  import Note from '$lib/components/misc/note.svelte'
 </script>
 
 <Note title='Cloudinary Dev Jams!'>

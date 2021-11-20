@@ -1,13 +1,13 @@
 <script>
   // TODO put stuff in lib directory
-  import { Tabs, Tab } from '../../../components/misc/tabs'
-  import Note from '../../../components/misc/note.svelte'
+  import { Tabs, Tab } from '$lib/components/misc/tabs'
+  import Note from '$lib/components/misc/note.svelte'
   let showNote = true
   const closeNote = () => { showNote = false }
-  import Alert from '../../../components/misc/alert.svelte'
+  import Alert from '$lib/components/misc/alert.svelte'
   let showAlert = false
   const closeAlert = () => { showAlert = false }
-  import PhotoGrid from '../../../components/misc/photo-grid.svelte'
+  import PhotoGrid from '$lib/components/misc/photo-grid.svelte'
 
 </script>
 
