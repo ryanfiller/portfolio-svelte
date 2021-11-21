@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit'
-import { site } from '../../src/config.js' 
+import { site } from '../../../config.js' 
 const siteUrl = site.siteUrl
 
 function transformer(ast) {

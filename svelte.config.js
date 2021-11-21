@@ -16,21 +16,16 @@ import customMedia from 'postcss-custom-media'
 
 import mdsvexDefault from 'mdsvex'
 const { mdsvex } = mdsvexDefault
-import attr from 'remark-attr'
-import remarkCustomBlocks from 'remark-custom-blocks'
-// TODO remark-abbr
-// TODO https://github.com/JS-DevTools/rehype-toc
-import remarkPlugins from './plugins/remark/index.js'
-import rehypePlugins from './plugins/rehype/index.js'
+
+import remarkPlugins from './src/lib/plugins/remark/index.js'
+import rehypePlugins from './src/lib/plugins/rehype/index.js'
 
 const config = {
-	// compilerOptions: null,
 	extensions: [
 		'.svelte',
 		'.md',
 		'.svg'
 	],
-
 	kit: {
 		adapter: adapterStatic(),
 		// adapter: process.env.ADAPTER === 'static'
@@ -54,10 +49,6 @@ const config = {
 			template: 'src/app.html'
 		},
 		hydrate: true,
-		// paths: {
-		// 	assets: '',
-		// 	base: ''
-		// },
 		prerender: {
 			crawl: true,
 			enabled: true,
@@ -127,24 +118,9 @@ const config = {
 				_: 'src/layouts/markdown.svelte'
 			},
 			highlight: false, // use remark plugin instead
-			remarkPlugins: [
-				[attr, { scope: 'every' }],
-				[remarkCustomBlocks, {
-					details: {
-						classes: 'details',
-						title: 'required',
-						details: true
-					},
-					clearfix: {
-						classes: 'clearfix'
-					}
-				}],
-				...Object.values(remarkPlugins)
-			],
-			rehypePlugins: [
-				...Object.values(rehypePlugins)
-			],
-		}),
+			remarkPlugins: [...Object.values(remarkPlugins)],
+			rehypePlugins: [...Object.values(rehypePlugins)]
+		})
 	]	
 }
 

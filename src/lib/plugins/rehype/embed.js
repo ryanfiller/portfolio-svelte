@@ -1,5 +1,5 @@
 import visit from 'unist-util-visit'
-import { fishAttr } from '../../src/lib/helpers/index.js'
+import { fishAttr } from '../../helpers/index.js'
 
 function transformer(tree) {
   visit(tree, 'raw', visitor)

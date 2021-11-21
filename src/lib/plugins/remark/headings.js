@@ -1,6 +1,6 @@
 import visit from 'unist-util-visit'
 import toString from 'mdast-util-to-string'
-import { slugify } from '../../src/lib/helpers/index.js'
+import { slugify } from '../../helpers/index.js'
 
 function transformer(ast) {
   visit(ast, 'heading', visitor)
