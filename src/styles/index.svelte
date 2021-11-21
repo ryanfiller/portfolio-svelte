@@ -42,6 +42,7 @@
 </svelte:head>
 
 <style global>
+  @import './custom-media.css';
   /* ------------- */
   /* fonts */
   /* ------------- */
