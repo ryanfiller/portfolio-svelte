@@ -30,12 +30,12 @@
   export let series
   export let tips
 	
-  import { site, forms } from '$lib/site-config'
+  import { site, forms } from '$site-config'
 	import Page from '../layouts/page.svelte'
-  import List from  '$lib/components/content/list.svelte'
-  import PostPreview from '$lib/components/blog/post-preview.svelte'
-  import SeriesPreview from '$lib/components/blog/series-preview.svelte'
-  import ContactForm from '$lib/components/misc/contact-form.svelte'
+  import List from  '$components/content/list.svelte'
+  import PostPreview from '$components/blog/post-preview.svelte'
+  import SeriesPreview from '$components/blog/series-preview.svelte'
+  import ContactForm from '$components/misc/contact-form.svelte'
 </script>
 
 <style>

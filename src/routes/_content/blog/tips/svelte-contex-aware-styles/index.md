@@ -13,7 +13,7 @@ meta:
 ---
 
 <script>
-  import { Tab, Tabs } from '$lib/components/misc/tabs'
+  import { Tab, Tabs } from '$components/misc/tabs'
 </script>
 
 ## What?

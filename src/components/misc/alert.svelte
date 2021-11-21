@@ -3,11 +3,11 @@
   export let close
   export let title
   
-  import { slugify } from '$lib/helpers'
+  import { slugify } from '$helpers'
   const id = `${slugify(title)}`
 
   import Note from './note.svelte'
-  import focusTrap from '$lib/actions/focus-trap.js'
+  import focusTrap from '$actions/focus-trap.js'
 </script>
 
 <style>

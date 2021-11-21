@@ -3,7 +3,7 @@
   export let close = null
   export let title = 'hey!'
 
-  import { slugify } from '$lib/helpers'
+  import { slugify } from '$helpers'
   const id = `${slugify(title)}`
 </script>
 

@@ -15,7 +15,7 @@ meta:
 ---
 
 <script>
-  import { colors } from '$lib/styles/config.js'
+  import { colors } from '$styles/config.js'
   import GradientMachine from './_gradient-machine.svelte'
 </script>
 

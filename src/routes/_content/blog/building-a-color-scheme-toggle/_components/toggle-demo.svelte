@@ -1,5 +1,5 @@
 <script>
-  import ColorSchemeToggle from '$lib/components/layout/color-scheme-toggle/index.svelte'
+  import ColorSchemeToggle from '$components/layout/color-scheme-toggle/index.svelte'
 </script>
 
 <style>

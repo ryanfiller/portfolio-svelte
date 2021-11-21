@@ -13,8 +13,8 @@ meta:
 ---
 
 <script>
-  import Note from '$lib/components/misc/note.svelte'
-  import { Tab, Tabs } from '$lib/components/misc/tabs'
+  import Note from '$components/misc/note.svelte'
+  import { Tab, Tabs } from '$components/misc/tabs'
 </script>
 
 ## What?

@@ -1,4 +1,4 @@
-import { buildPagesJson, sortNewestToOldest } from '$lib/helpers'
+import { buildPagesJson, sortNewestToOldest } from '$helpers'
 
 export async function get({ host }) {
 	// this is gonna be a weird one...

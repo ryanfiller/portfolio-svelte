@@ -2,7 +2,7 @@
   export let images
   
   import { onMount } from 'svelte'
-  import { slugify } from '$lib/helpers'
+  import { slugify } from '$helpers'
 
   let searchParams
   let openImage = ''

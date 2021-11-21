@@ -18,7 +18,7 @@ meta:
 ---
 
 <script>
-  import PhotoGrid from '$lib/components/misc/photo-grid.svelte'
+  import PhotoGrid from '$components/misc/photo-grid.svelte'
 
   // define this here because the compile explodes on multi-line components
   const images = [

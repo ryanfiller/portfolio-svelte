@@ -1,4 +1,4 @@
-import { buildPagesJson } from '$lib/helpers'
+import { buildPagesJson } from '$helpers'
 
 export async function get() {
 	const posts = import.meta.globEager('/src/routes/_content/lab/**/index.md')

@@ -23,6 +23,8 @@ Refactor and redesign.
 
 [refactor/clean-up-static-folder](https://github.com/ryanfiller/portfolio-svelte/pull/58) - take lot of things out of `static`
 
+[refactor/aliases](https://github.com/ryanfiller/portfolio-svelte/pull/59) - hilarious undo all the `$lib` work to use aliases instead
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints

@@ -2,7 +2,7 @@
   export let title
   import { getContext } from 'svelte'
   
-  import { slugify } from '$lib/helpers'
+  import { slugify } from '$helpers'
   const { data } = getContext('tabs')
 
   const id = `${slugify(title)}-${slugify($data.group)}`

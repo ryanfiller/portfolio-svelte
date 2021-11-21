@@ -2,9 +2,9 @@
   import { onMount } from 'svelte'
 
   import Page from './page.svelte'
-  import Markdown from '$lib/components/layout/markdown.svelte'
-  import Alert from '$lib/components/misc/alert.svelte'
-  import { user } from '$lib/stores/user.js'
+  import Markdown from '$components/layout/markdown.svelte'
+  import Alert from '$components/misc/alert.svelte'
+  import { user } from '$stores/user.js'
 
   $$props.meta.date = null
 

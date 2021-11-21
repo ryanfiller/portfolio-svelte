@@ -10,8 +10,8 @@
     close()
   }
 
-  import focusTrap from '$lib/actions/focus-trap.js'
-  import { slugify } from '$lib/helpers'
+  import focusTrap from '$actions/focus-trap.js'
+  import { slugify } from '$helpers'
 
   let id
   if ($alert.title) {
