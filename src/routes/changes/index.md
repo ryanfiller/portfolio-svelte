@@ -21,6 +21,8 @@ Refactor and redesign.
 
 [refactor/lib](https://github.com/ryanfiller/portfolio-svelte/pull/57) - put lots of things into `src/lib`
 
+[refactor/clean-up-static-folder](https://github.com/ryanfiller/portfolio-svelte/pull/58) - take lot of things out of `static`
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints

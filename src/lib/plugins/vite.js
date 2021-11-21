@@ -1,7 +1,6 @@
 import replace from '@rollup/plugin-replace'
 import copy from 'rollup-plugin-copy'
 import dynamicImportVars from '@rollup/plugin-dynamic-import-vars'
-import { default as svelteSVG } from '@poppanator/sveltekit-svg'
 
 export default function vitePlugins(envVars) {
   return [
@@ -24,7 +23,6 @@ export default function vitePlugins(envVars) {
         'src/routes/**/*.svelte',
         'src/routes/**/index.md'
       ]
-    }),
-    svelteSVG()
+    })
   ]
 }

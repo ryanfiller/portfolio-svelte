@@ -1,14 +1,14 @@
 <script>
   import { socialLinks as links } from '$lib/site-config.js'
 
-  import Email from '../../../../static/images/site-assets/icons/social/email.svg'
-  import Twitter from '../../../../static/images/site-assets/icons/social/twitter.svg'
-  import Instagram from '../../../../static/images/site-assets/icons/social/instagram.svg'
-  import LinkedIn from '../../../../static/images/site-assets/icons/social/linkedin.svg'
-  import GitHub from '../../../../static/images/site-assets/icons/social/github.svg'
-  import CodePen from '../../../../static/images/site-assets/icons/social/codepen.svg'
-  import PokemonGO from '../../../../static/images/site-assets/icons/social/pokemongo.svg'
-  import RSS from '../../../../static/images/site-assets/icons/social/rss.svg'
+  import Email from './email.svg?raw'
+  import Twitter from './twitter.svg?raw'
+  import Instagram from './instagram.svg?raw'
+  import LinkedIn from './linkedin.svg?raw'
+  import GitHub from './github.svg?raw'
+  import CodePen from './codepen.svg?raw'
+  import PokemonGO from './pokemongo.svg?raw'
+  import RSS from './rss.svg?raw'
 
   const icons = {
     email: Email,
@@ -60,7 +60,7 @@
           class='social-list__link'
           style='color: {link.color};'
         >
-          <svelte:component this={icons[link.name]}/>
+          {@html icons[link.name]}
         </a>
       {:else}
         <a
@@ -70,7 +70,7 @@
           target='_blank' rel='noopener noreferrer'
           style='color: {link.color};'
         >
-          <svelte:component this={icons[link.name]}/>
+          {@html icons[link.name]}
         </a>
       {/if}
     </li>

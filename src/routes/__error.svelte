@@ -12,6 +12,8 @@
 
 	import { dev } from '$app/env'
 
+  import pointer from './pointer.svg'
+
 	if (dev) {
 		console.error('ERROR: ', error)
 	}
@@ -205,7 +207,7 @@
 
     &:hover::before,
     &:focus::before {
-      background-image: url('/images/site-assets/404/pointer.svg');
+      background-image: var(--pointerSvg);
     }
   }
 
@@ -261,7 +263,7 @@
 			{/if}
 		</header>
 
-		<ul>
+		<ul style={`--pointerSvg: url('${pointer}')`}>
 			<li>
 				<a href='/'>Go home</a>
 			</li>

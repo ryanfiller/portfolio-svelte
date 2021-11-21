@@ -3,7 +3,7 @@
 
   import { secondaryNav } from '$lib/site-config.js'
   import Nav from './nav.svelte'
-  import SocialLinks from './social-links.svelte'
+  import SocialLinks from './social-links/index.svelte'
 </script>
 
 <style>
