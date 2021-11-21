@@ -12,7 +12,7 @@
 
 	import { dev } from '$app/env'
 
-  import pointer from './pointer.svg'
+  import pointer from './404/_images/pointer.svg'
 
 	if (dev) {
 		console.error('ERROR: ', error)

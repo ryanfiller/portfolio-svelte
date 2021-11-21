@@ -8,7 +8,7 @@
 				}
 			})
 			.catch(error => {
-				console.log('lab page', error)
+				console.error('lab page', error)
 				return {
 					props: { error }
 				}

@@ -9,7 +9,7 @@
 				return { props: { series } }
 			})
 			.catch(error => {
-				console.log('blog series page', error)
+				console.error('blog series page', error)
 				return null
 			})
 	}

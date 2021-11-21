@@ -6,7 +6,7 @@
 			.catch(response => error = response)
 
 		if (error) {
-			console.log('blog page', error)
+			console.error('blog page', error)
 			return {
 				props: { error }
 			}

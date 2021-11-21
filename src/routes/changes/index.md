@@ -25,7 +25,9 @@ Refactor and redesign.
 
 [refactor/aliases](https://github.com/ryanfiller/portfolio-svelte/pull/59) - hilarious undo all the `$lib` work to use aliases instead
 
-[bug/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/60) - refactor RSS page
+[bug/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/60) - refactor RSS feed
+
+[bug/fix-sitemap](https://github.com/ryanfiller/portfolio-svelte/pull/61) - refactor sitemap
 
 [[details | Version Details]]
 | - Features
@@ -35,10 +37,12 @@ Refactor and redesign.
 |   - added `$` alias for `actions`, `components`, `helpers`, `plugins`, `stores`, `styles`
 |   - replace `../../../` everywhere possible.
 |   - refactor how `.md` content is parsed into HTML for RSS
+|   - fix the broken RSS feed and sitemap
 |
 | - Routes
 |   - \+ `/lab/[slug]`
 |   - ≈ `/blog/rss.xml`
+|   - ≈ `/sitemap.xml`
 |
 | - Endpoints
 |   - ≈ `/lab.json`
