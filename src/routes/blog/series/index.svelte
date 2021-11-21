@@ -14,7 +14,7 @@
 	export let series
 
   import Page from '../../../layouts/page.svelte'
-	import List from  '$lib/content/list.svelte'
+	import List from  '$lib/components/content/list.svelte'
 	import SeriesPreview from '$lib/components/blog/series-preview.svelte'
 </script>
 
