@@ -16,7 +16,7 @@ describe('/generate-image route', () => {
     excerpt: 'short excerpt',
     categories: ['one fish', 'two fish'],
     tags: ['red fish', 'blue fish'],
-    imageSrc: '/images/site-assets/placeholders/jpeg.jpg',
+    imageSrc: '/placeholders/jpeg.jpg',
     imageCredit: 'ollie!',
     url: 'www.ryanfiller.com'
   })

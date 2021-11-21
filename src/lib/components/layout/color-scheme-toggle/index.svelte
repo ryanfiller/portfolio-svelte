@@ -2,7 +2,7 @@
   import { onMount } from 'svelte'
   import { colorScheme } from '$lib/stores/theme.js'
   import { getCustomProperty, setCustomProperty } from '$lib/helpers'
-  import Icon from '../../../../static/images/site-assets/icons/sun-moon.svg'
+  import Icon from './sun-moon.svg?raw'
 
   const LS_KEY = 'user-color-scheme'
   const DOM_ATTR = `data-${LS_KEY}`
@@ -144,5 +144,5 @@
   on:click={toggleColorScheme}
   title={`toggle ${getOpposite($colorScheme)} mode`}
 >
-  <Icon />
+  {@html Icon}
 </button>

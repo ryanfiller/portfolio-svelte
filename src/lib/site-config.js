@@ -6,7 +6,7 @@ export const site = {
   siteUrl: siteUrl,
   author: 'Ryan Filler',
   twitter: '@ryanfiller_',
-  headshot: `${siteUrl}/images/site-assets/headshot_2017.jpg`,
+  headshot: `${siteUrl}/headshot_2017.jpg`,
   description: 'The blog and portfolio of Ryan Filler',
   about: 'I am a designer, developer, illustrator, and maker living and working in Memphis, Tennessee. This is my blog and portfolio.',
   keywords: [

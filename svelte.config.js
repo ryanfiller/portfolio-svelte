@@ -29,7 +29,6 @@ export default {
 	extensions: [
 		'.svelte',
 		'.md',
-		'.svg'
 	],
 	kit: {
 		adapter: adapterStatic(),

@@ -56,4 +56,3 @@ functions-build
 
 # ignore all the images sapper moves over, but not the ones I want to keep
 /static/images/*
-!/static/images/site-assets

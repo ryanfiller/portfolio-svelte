@@ -98,16 +98,16 @@ describe('rehype transformers', () => {
           .scrollIntoView()
           .within(() => {
             cy.get('img').eq(0)
-            .should('have.attr', 'src', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500')
-            .should('have.attr', 'srcset', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
+            .should('have.attr', 'src', '/placeholders/jpeg.jpg?nf_resize=fit&w=500')
+            .should('have.attr', 'srcset', '/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
           })
   
         cy.get('#figures', { timeout: timeout })
           .scrollIntoView()
           .within(() => {
             cy.get('figure').eq(0).find('img')
-            .should('have.attr', 'src', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500')
-            .should('have.attr', 'srcset', '/images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /images/site-assets/placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
+            .should('have.attr', 'src', '/placeholders/jpeg.jpg?nf_resize=fit&w=500')
+            .should('have.attr', 'srcset', '/placeholders/jpeg.jpg?nf_resize=fit&w=500 500w, /placeholders/jpeg.jpg?nf_resize=fit&w=800 800w')
           })
       })
   
@@ -115,7 +115,7 @@ describe('rehype transformers', () => {
         cy.get('#gifs', { timeout: timeout })
           .scrollIntoView()
           .within(() => {
-            cy.get('img').eq(0).should('have.attr', 'src', '/images/site-assets/placeholders/gif.gif')
+            cy.get('img').eq(0).should('have.attr', 'src', '/placeholders/gif.gif')
           })
       })
     })
