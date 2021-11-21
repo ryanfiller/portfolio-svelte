@@ -112,7 +112,7 @@
 </style>
 
 <script>
-  import { slugify } from '../../../../../helpers'
+  import { slugify } from '$lib/helpers'
 
   export let url = ''
   export let name = ''

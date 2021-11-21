@@ -25,7 +25,7 @@ meta:
   import Parts from './_components/parts.svg'
   import DataFlowChart from './_components/data-flow-chart.svelte'
   import { sapper, mdsvex, combined } from './_data.js'
-  import SapperWarning from '../../../../components/misc/sapper-warning.svelte'
+  import SapperWarning from '$lib/components/misc/sapper-warning.svelte'
 </script>
 
 <SapperWarning />

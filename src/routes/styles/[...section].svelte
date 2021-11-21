@@ -9,7 +9,7 @@
   export let subsection
 
 	import Page from '../../layouts/page.svelte'
-	import Banner from '../../components/layout/banner.svelte'
+	import Banner from '$lib/components/layout/banner.svelte'
 
 	import Colors from './_examples/colors.svelte'
 	import Components from './_examples/components.md'

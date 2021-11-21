@@ -1,5 +1,5 @@
 <script>
-  import Markdown from '../../../components/layout/markdown.svelte'
+  import Markdown from '$lib/components/layout/markdown.svelte'
 </script>
 
 <Markdown>

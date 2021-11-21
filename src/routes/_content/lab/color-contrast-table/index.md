@@ -16,7 +16,7 @@ url:
 ---
 
 <script>
-  import ColorChart from '../../../../components/misc/color-chart.svelte'
+  import ColorChart from '$lib/components/misc/color-chart.svelte'
 </script>
 
 <ColorChart />

@@ -1,7 +1,7 @@
 <script>
   export let segment
 
-  import { secondaryNav } from '../../config.js'
+  import { secondaryNav } from '$lib/site-config.js'
   import Nav from './nav.svelte'
   import SocialLinks from './social-links.svelte'
 </script>

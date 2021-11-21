@@ -1,6 +1,6 @@
 <script>
   import { colors, themes } from './config.js'
-  import { capitalize } from '../helpers'
+  import { capitalize } from '$lib/helpers'
 
   // create all the css vars based on a js object
   const setColors = (colors) => {
@@ -42,6 +42,11 @@
 </svelte:head>
 
 <style global>
+  /* ------------- */
+  /* sizes & postcss media queries */
+  /* ------------- */
+  @import './sizes.css';
+
   /* ------------- */
   /* fonts */
   /* ------------- */

@@ -19,11 +19,17 @@ Refactor and redesign.
 
 [refactor/move-content-files](https://github.com/ryanfiller/portfolio-svelte/pull/55) - refactor content enpoints
 
+[refactor/lib](https://github.com/ryanfiller/portfolio-svelte/pull/57) - put lots of things into `src/lib`
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
 |   - store `series` data as `.md` files instead of one large `.json` file
 |   - moved `routes/blog/_content`, `routes/lab/_content` to `routes/_content/blog`, `routes/_content/lab`
+|   - replace `../../../` everywhere possible.
+|
+| - Lib
+|   - moved `actions`, `components`, `helpers`, `plugins`, `stores`, `styles`
 |
 | - Routes
 |   - \+ `/lab/[slug]`
@@ -130,7 +136,6 @@ Change some internals
 [refactor/sveltekit](https://github.com/ryanfiller/portfolio-svelte/pull/41) - Sapper -> SvelteKit
 
 [refactor/post-css](https://github.com/ryanfiller/portfolio-svelte/pull/43) - SCSS -> PostCSS
-<!-- TODO styles and config got moved into styles -->
 
 [[details | Version Details]]
 | - Features
