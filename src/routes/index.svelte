@@ -30,7 +30,7 @@
   export let series
   export let tips
 	
-  import { site, forms } from '../config'
+  import { site, forms } from '$lib/site-config'
 	import Page from '../layouts/page.svelte'
   import List from  '$lib/components/content/list.svelte'
   import PostPreview from '$lib/components/blog/post-preview.svelte'
