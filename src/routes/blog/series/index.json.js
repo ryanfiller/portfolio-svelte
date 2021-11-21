@@ -20,9 +20,6 @@ export async function get() {
 				.reverse()
 			
 			const newestPost = seriesPosts[seriesPosts.length - 1]
-
-			console.log(path)
-
 			const { title, ...metadata} = component.metadata 
 
 			return {

@@ -1,3 +1,4 @@
+// test this
 describe('sitemap', () => {
   beforeEach(() => {
     cy.request(`/sitemap.xml`)

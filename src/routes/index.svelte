@@ -3,17 +3,17 @@
 		const posts = await fetch(`/blog.json`)
       .then(response => response.json())
       .then(posts => posts.filter(post => !post.series).slice(0, 3))
-      .catch(error => console.log(page.path, error))
+      .catch(error => console.error(page.path, error))
 		
 		const series = await fetch(`/blog/series.json`)
       .then(response => response.json())
       .then(series => series.slice(0, 3))
-      .catch(error => console.log(page.path, error))
+      .catch(error => console.error(page.path, error))
 
 		const tips = await fetch(`/blog/tips.json`)
       .then(response => response.json())
       .then(series => series.slice(0, 3))
-      .catch(error => console.log(page.path, error))
+      .catch(error => console.error(page.path, error))
 
 		return {
       props: {
