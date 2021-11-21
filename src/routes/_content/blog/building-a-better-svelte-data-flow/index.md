@@ -22,7 +22,7 @@ meta:
 ---
 
 <script>
-  import Parts from './_components/parts.svg'
+  import Parts from './_components/parts.svg?raw'
   import DataFlowChart from './_components/data-flow-chart.svelte'
   import { sapper, mdsvex, combined } from './_data.js'
   import SapperWarning from '$components/misc/sapper-warning.svelte'
@@ -30,7 +30,8 @@ meta:
 
 <SapperWarning />
 
-<Parts /> <!-- put these in the document so they can be reused everywhere -->
+<!-- put these in the document so they can be reused everywhere -->
+{@html Parts} 
 
 This blog has been running as a [Svelte](https://svelte.dev/)-powered [Sapper](https://sapper.svelte.dev/) app since October 2020. Before changing frameworks from [Gatsby](https://www.gatsbyjs.com/) I put together a [test site](https://sapper-goals.netlify.app/) and wrote a [blog post](/blog/a-deep-dive-into-sapper) about what I learned about configuring Sapper. I found a set up that worked for me, so I [switched my site over](https://github.com/ryanfiller/portfolio-svelte/commit/12a1de926c681ca182be8fca1030b42c4c9ff3cf).
 

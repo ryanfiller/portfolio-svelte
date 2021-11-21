@@ -826,7 +826,7 @@ For compiling pages, an array of plugins can be passed as part of the configurat
   </Tab>
 </Tabs>
 
-The entire purpose of this refactor was to make my content more  portable. The best part of this is that these plugins can be run outside of a framework. Like any other `remark` or `rehype` plugins, they can also be called as chained methods from the parent `unified` function. I use this in a [helper method](https://github.com/ryanfiller/portfolio-svelte/blob/main/src/helpers/get-pages.js) to create `json` and `rss` endpoints of my content.
+The entire purpose of this refactor was to make my content more  portable. The best part of this is that these plugins can be run outside of a framework. Like any other `remark` or `rehype` plugins, they can also be called as chained methods from the parent `unified` function. I use this in a [helper method](https://github.com/ryanfiller/portfolio-svelte/blob/275190a4791ffceec676d84d2b2735ddc7d0f05e/src/helpers/get-pages.js) to create `json` and `rss` endpoints of my content.
 
 ```javascript
   unified()

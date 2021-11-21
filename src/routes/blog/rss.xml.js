@@ -1,56 +1,45 @@
+/* eslint-disable no-useless-escape */
+
 import { site } from '$site-config'
-import { slugify, xmlEncode } from '$helpers'
+import { buildPagesList, slugify, xmlEncode } from '$helpers'
 
 export async function get({ query }) {
-  const category = query.category || null
 
-  const pages = import.meta.globEager('./_content/**/*.md')
+  let posts = import.meta.globEager('/src/routes/_content/blog/**/index.md')
+	const excludedPaths = [
+		'blog/tips/',
+		'blog/series/'
+	]
 
-  const posts = Object.entries(pages).map(([path, component]) => {
-    return {
-      ...component.metadata,
-      slug: `/blog/${path.split('/')[2]}`
-    }
-  }).filter(post => {
-    return post.options.published
-  }).sort((a, b) => {
-    return new Date(a.meta.date) < new Date(b.meta.date) ? 1 : -1
-  })
+  const category = query.has('category') ? query.get('category') : null
 
-  // TODO
-  // Object.entries(pages).map(([path, component]) => {
-  //   console.log('component.default.render()', component.default.render())
-  //   // return {
-  //   //   ...component.metadata,
-  //   //   slug: `/blog/${path.split('/')[2]}`
-  //   // }
-  // })
+  posts = buildPagesList({ files: posts, excludedPaths, content: 'html' })
+  if (category) {
+    posts = posts.filter(post => {
+      return post.meta.categories.includes(category)
+    })
+  }
 
-  // const posts = await getPages({
-  //   directory: 'blog/_content',
-  //   returnBody: true,
-  //   category: category,
-  //   slice: [0, 12]
-  // })
+  posts = posts.slice(0, 12)
 
   const siteUrl = site.siteUrl
   const blogUrl = `${siteUrl}/blog`
 
-  // const format = html => {
-  //   const ignoreInCode = '(?!(.(?!<code ))*<\/code>)'
-  //   return html
-  //     // fix relative images
-  //     .replace(new RegExp(`src="\/${ignoreInCode}`, 'g'), `src="${siteUrl}/`)
-  //     // fix relative urls
-  //     .replace(new RegExp(`href="\/${ignoreInCode}`, 'g'), `href="${siteUrl}/`)
-  //     // remove data attrs
-  //     .replace(new RegExp(`{data-(.*)}${ignoreInCode}`, 'g'), '')
-  //     // remove [[shortcodes]]
-  //     .replace(new RegExp(`(<p>)?\\[\\[.*\\]\\](<\/p>)?${ignoreInCode}`, 'g'), '')
-  //     // remove custom components that sneak in, with our without p tags
-  //     // for some reason multiline mdsvex sneaks through, must investigate...
-  //     .replace(new RegExp(`(<p>)?(&#x3C;|<)[A-Z].*?(&#x3E;|\/>)(<\/p>)?${ignoreInCode}`, 'g'), '')
-  // }
+  const format = html => {
+    const ignoreInCode = '(?!(.(?!<code ))*<\/code>)'
+    return html
+      // fix relative images
+      .replace(new RegExp(`src="\/${ignoreInCode}`, 'g'), `src="${siteUrl}/`)
+      // fix relative urls
+      .replace(new RegExp(`href="\/${ignoreInCode}`, 'g'), `href="${siteUrl}/`)
+      // remove data attrs
+      .replace(new RegExp(`{data-(.*)}${ignoreInCode}`, 'g'), '')
+      // remove [[shortcodes]]
+      .replace(new RegExp(`(<p>)?\\[\\[.*\\]\\](<\/p>)?${ignoreInCode}`, 'g'), '')
+      // remove custom components that sneak in, with our without p tags
+      // for some reason multiline mdsvex sneaks through, must investigate...
+      .replace(new RegExp(`(<p>)?(&#x3C;|<)[A-Z].*?(&#x3E;|\/>)(<\/p>)?${ignoreInCode}`, 'g'), '')
+  }
 
   return {
     statusCode: 200,
@@ -133,14 +122,7 @@ export async function get({ query }) {
               </description>
 
               <content:encoded>
-                ${
-                  // xmlEncode(format(post.html))
-                  `
-                  <![CDATA[
-                    RSS is kinda broken right now, <a href="${siteUrl}${post.slug}">read the post on my blog</a>.
-                  ]]>
-                  `
-                }
+                ${xmlEncode(format(post.html))}
               </content:encoded>
 
             </item>

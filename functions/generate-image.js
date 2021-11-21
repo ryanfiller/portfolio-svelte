@@ -2,7 +2,7 @@ require('dotenv').config()
 const fetch = require('node-fetch')
 const chromium = require('chrome-aws-lambda')
 const cloudinary = require('cloudinary').v2
-const helpers = require('../src/lib/helpers')
+const helpers = require('../src/helpers/index.js')
 const { slugify, objectToParams } = helpers
 
 const local = process.env.NODE_ENV === 'development'

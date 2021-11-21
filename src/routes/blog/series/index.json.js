@@ -1,6 +1,6 @@
-import { buildPagesJson, sortNewestToOldest } from '$helpers'
+import { buildPagesList, sortNewestToOldest } from '$helpers'
 
-export async function get({ host }) {
+export async function get() {
 	// this is gonna be a weird one...
 	const series = import.meta.globEager('/src/routes/_content/blog/series/**/index.md')
 
@@ -10,8 +10,7 @@ export async function get({ host }) {
 		'blog/tips/',
 		'blog/series/'
 	]
-	posts = buildPagesJson(posts, excludedPaths)
-	posts = JSON.parse(posts)
+	posts = buildPagesList({ files: posts, excludedPaths })
 
 	const formattedSeries = Object.entries(series)
 		.map(([path, component]) => {

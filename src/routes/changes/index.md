@@ -25,18 +25,20 @@ Refactor and redesign.
 
 [refactor/aliases](https://github.com/ryanfiller/portfolio-svelte/pull/59) - hilarious undo all the `$lib` work to use aliases instead
 
+[bug/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/60) - refactor RSS page
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
 |   - store `series` data as `.md` files instead of one large `.json` file
 |   - moved `routes/blog/_content`, `routes/lab/_content` to `routes/_content/blog`, `routes/_content/lab`
+|   - added `$` alias for `actions`, `components`, `helpers`, `plugins`, `stores`, `styles`
 |   - replace `../../../` everywhere possible.
-|
-| - Lib
-|   - moved `actions`, `components`, `helpers`, `plugins`, `stores`, `styles`
+|   - refactor how `.md` content is parsed into HTML for RSS
 |
 | - Routes
 |   - \+ `/lab/[slug]`
+|   - ≈ `/blog/rss.xml`
 |
 | - Endpoints
 |   - ≈ `/lab.json`
@@ -46,8 +48,9 @@ Refactor and redesign.
 |
 | - Helpers
 |   - \- `getPages()`
-|   - \+ `buildPagesJson`
+|   - \+ `buildPagesJson` -> `buildPagesList`
 |   - \+ `sortNewestToOldest`
+|   - \+ `getPageContent`
 
 </Change>
 
