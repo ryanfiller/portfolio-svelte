@@ -42,7 +42,11 @@
 </svelte:head>
 
 <style global>
-  @import './custom-media.css';
+  /* ------------- */
+  /* sizes & postcss media queries */
+  /* ------------- */
+  @import './sizes.css';
+
   /* ------------- */
   /* fonts */
   /* ------------- */

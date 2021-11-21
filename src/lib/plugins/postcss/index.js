@@ -7,7 +7,8 @@ export default [
   nesting,
   customMedia({
     importFrom: [
-      'src/styles/custom-media.css'
+      // this is relative to svelte.config.js
+      './src/lib/styles/sizes.css'
     ]
   })
 ]

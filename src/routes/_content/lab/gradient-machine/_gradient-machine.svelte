@@ -1,7 +1,7 @@
 <script>
   import { writable, derived } from 'svelte/store'
   import move from 'array-move'
-  import { colors, themes } from '../../../../styles/config.js'
+  import { colors, themes } from '$lib/styles/config.js'
   import { capitalize } from '$lib/helpers'
 
   import { Tabs, Tab } from '$lib/components/misc/tabs'

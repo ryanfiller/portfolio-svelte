@@ -1,5 +1,5 @@
 <script>
-  import { colors } from '../../../styles/config.js'
+  import { colors } from '.$lib/styles/config.js'
   import ColorChart from '$lib/components/misc/color-chart.svelte'
 </script>
 
