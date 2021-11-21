@@ -3,7 +3,7 @@ title: PostCSS Syntax Highlighting with Svelte in VS Code
 options:
   published: true
 meta:
-  date: 2021-10-31
+  date: 2021-11-21
   excerpt: How to configure VS Code to syntax highlight PostCSS in Svelte components
   categories:
     - code
