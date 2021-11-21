@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
-  import { colors } from '$lib/styles/config'
-  import { capitalize, getCustomProperty } from '$lib/helpers'
+  import { colors } from '$styles/config'
+  import { capitalize, getCustomProperty } from '$helpers'
   import { hexToHSL, HSLToHex } from './color-functions.js'
 
   const formatColors = colorObject => {

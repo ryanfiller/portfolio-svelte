@@ -8,7 +8,7 @@ export default [
   customMedia({
     importFrom: [
       // this is relative to svelte.config.js
-      './src/lib/styles/sizes.css'
+      './src/styles/sizes.css'
     ]
   })
 ]

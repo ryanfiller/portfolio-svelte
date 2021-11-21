@@ -1,5 +1,5 @@
-import { site } from '$lib/site-config.js'
-import { slugify, xmlEncode } from '$lib/helpers'
+import { site } from '$site-config'
+import { slugify, xmlEncode } from '$helpers'
 
 export async function get({ query }) {
   const category = query.category || null

@@ -1,3 +1,5 @@
+import path from 'path';
+
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -9,10 +11,10 @@ import sveltePreprocess from 'svelte-preprocess'
 import mdsvexDefault from 'mdsvex'
 const { mdsvex } = mdsvexDefault
 
-import vitePlugins from './src/lib/plugins/vite.js'
-import postcssPlugins from './src/lib/plugins/postcss/index.js'
-import remarkPlugins from './src/lib/plugins/remark/index.js'
-import rehypePlugins from './src/lib/plugins/rehype/index.js'
+import vitePlugins from './src/plugins/vite.js'
+import postcssPlugins from './src/plugins/postcss/index.js'
+import remarkPlugins from './src/plugins/remark/index.js'
+import rehypePlugins from './src/plugins/rehype/index.js'
 
 const envVars = {
 	'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
@@ -63,7 +65,19 @@ export default {
 		ssr: true,
 		trailingSlash: 'never',
 		vite: {
-			plugins: vitePlugins(envVars)
+			plugins: vitePlugins(envVars),
+			resolve: {
+				alias: {
+					$actions: path.resolve('./src/actions'),
+					$components: path.resolve('./src/components'),
+					$helpers: path.resolve('./src/helpers'),
+					$plugins: path.resolve('./src/plugins'),
+					$stores: path.resolve('./src/stores'),
+					$styles: path.resolve('./src/styles'),
+					$layouts: path.resolve('./src/layouts'),
+					'$site-config': path.resolve('./src/site-config.js')
+				}
+			}
 		}
 	},
 

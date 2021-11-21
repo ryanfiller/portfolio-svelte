@@ -14,8 +14,8 @@
 	export let series
 
   import Page from '../../../layouts/page.svelte'
-	import List from  '$lib//components/content/list.svelte'
-	import PostPreview from '$lib/components/blog/post-preview.svelte'
+	import List from  '$/components/content/list.svelte'
+	import PostPreview from '$components/blog/post-preview.svelte'
 </script>
 
 <Page segment='tips'>

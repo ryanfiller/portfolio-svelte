@@ -1,6 +1,6 @@
 <script>
   export let segment = ''
-  import { mainNav } from '$lib/site-config.js'
+  import { mainNav } from '$site-config'
   import Nav from './nav.svelte'
   import ColorSchemeToggle from './color-scheme-toggle/index.svelte'
 </script>

@@ -241,7 +241,7 @@ The particular alert I'm building needs to go on any pages in the `/lab` section
 <!-- lab.svelte -->
 <script>
   import Page from './page.svelte'
-  import Alert from '$lib/components/misc/alert.svelte'
+  import Alert from '$components/misc/alert.svelte'
 
   let showAlert = true
 
@@ -553,7 +553,7 @@ When the page loads, the component also needs to look into `localStorage` and se
 <!-- lab.svelte -->
 <script>
   import Page from './page.svelte'
-  import Alert from '$lib/components/misc/alert.svelte'
+  import Alert from '$components/misc/alert.svelte'
 
   let showAlert = true
   if (typeof window !== 'undefined' && window.localStorage.getItem('labAlert') === 'false') {
@@ -597,7 +597,7 @@ The text content of the alert can be abstracted to a variable that will hold the
 <!-- lab.svelte -->
 <script>
   import Page from './page.svelte'
-  import Alert from '$lib/components/misc/alert.svelte'
+  import Alert from '$components/misc/alert.svelte'
 
   const alertContent = `
     <p>

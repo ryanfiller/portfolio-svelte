@@ -2,7 +2,7 @@
   let theme
 
   import { onMount } from 'svelte'
-  import Toggle from '$lib/components/inputs/toggle.svelte'
+  import Toggle from '$components/inputs/toggle.svelte'
 
   onMount(() => {
     theme = document.getElementsByTagName('html')[0].dataset.userColorScheme

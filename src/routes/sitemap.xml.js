@@ -1,5 +1,5 @@
 // import fs from 'fs'
-// import { site } from '$lib/site-config.js'
+// import { site } from '$site-config'
 
 // // TODO - this doesn't get nested pages anymore for some reason...
 

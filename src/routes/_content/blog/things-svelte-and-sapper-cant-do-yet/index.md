@@ -20,7 +20,7 @@ meta:
 ---
 
 <script>
-  import SapperWarning from '$lib/components/misc/sapper-warning.svelte'
+  import SapperWarning from '$components/misc/sapper-warning.svelte'
 </script>
 
 <SapperWarning />
