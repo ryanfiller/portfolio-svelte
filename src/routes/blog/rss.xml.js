@@ -1,5 +1,4 @@
-import { site } from '../../config.js'
-// import getPages from '$lib/helpers/get-pages.js'
+import { site } from '$lib/site-config.js'
 import { slugify, xmlEncode } from '$lib/helpers'
 
 export async function get({ query }) {

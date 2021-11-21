@@ -1,5 +1,5 @@
 <script>
-  import { site } from '../config.js' 
+  import { site } from '$lib/site-config.js'
   import { paramsToObject } from '$lib/helpers'
   import TagList from '$lib/components/content/tag-list.svelte'
 

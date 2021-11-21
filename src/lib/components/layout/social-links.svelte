@@ -1,5 +1,5 @@
 <script>
-  import { socialLinks as links } from '../../../config.js'
+  import { socialLinks as links } from '$lib/site-config.js'
 
   import Email from '../../../../static/images/site-assets/icons/social/email.svg'
   import Twitter from '../../../../static/images/site-assets/icons/social/twitter.svg'
