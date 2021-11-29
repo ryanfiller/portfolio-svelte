@@ -35,7 +35,7 @@ const buildPageList = (rootPath, prefix = '') => {
       } else {
         // this is for single file routes
         // chop off the extension(s)
-        pages.push(`/${file.split('.')[0]}`)
+        pages.push(`${file.split('.')[0]}`)
       }
     })
 }
@@ -55,11 +55,6 @@ export function get() {
     },
 		body: `<?xml version="1.0" encoding="UTF-8" ?>
       <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-        <url>
-          <loc>
-            ${site.siteUrl}
-          </loc>
-        </url>
         ${pages.map(page => `
           <url>
             <loc>

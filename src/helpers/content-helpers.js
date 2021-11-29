@@ -6,10 +6,11 @@ import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkExtractFrontmatter from 'remark-extract-frontmatter'
-// import { parse as yaml } from 'yaml'
 import yaml from 'yaml'
 import remarkToRehype from 'remark-rehype'
 import rehypeStringify from 'rehype-stringify'
+
+import rehypeTableOfContents from '../plugins/rehype/table-of-contents.js'
 
 export function sortNewestToOldest(a, b) {
 	// chronologically sort by meta.date
@@ -20,12 +21,10 @@ export function sortNewestToOldest(a, b) {
 	return bDate - aDate
 }
 
-export function getPageContent(path) {
+export function getPageContent(path, content = []) {
 	const file = fs.readFileSync(path.replace('/src', 'src'), 'utf-8')
 	
-	// let frontmatter
-	let html
-	
+	let returnedContent = {}
 	unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml'])
@@ -33,22 +32,38 @@ export function getPageContent(path) {
 		.use(remarkStringify)
 		.use(remarkToRehype)
 		.use(rehypeStringify)
+		.use(rehypeTableOfContents)
 		.process(file, function (error, file) {
 			if (error) {
 				console.error('error getting page', error)
 			}
-			// frontmatter = file.data,
-			html = file.contents
+
+			// TODO? markdown content
+			content.map(contentType => {
+				switch (contentType) {
+					case 'frontmatter':
+						returnedContent.frontmatter = file.data
+						break
+					case 'html':
+						returnedContent.html = file.contents
+						break
+					case 'toc':
+						returnedContent.toc = file.toc
+						break
+					default:
+						null
+				}
+			})
 		})
 
-	return html
+	return returnedContent
 }
 
 export function buildPagesList({
 	files,
 	excludedPaths,
 	sortFunction = sortNewestToOldest,
-	content = false
+	content = []
 }) {
 	if (!files) return new Error(`bad files`)
 
@@ -65,11 +80,7 @@ export function buildPagesList({
 			return component.metadata?.options?.published
 		})
 		.map(([path, component]) => {
-
-			// TODO? - if this gets more complicated a switch would do better here
-			const pageContent = content === 'html'
-				? { html: getPageContent(path) }
-				: null
+			const pageContent = getPageContent(path, content)			
 
 			return {
 				...component.metadata,

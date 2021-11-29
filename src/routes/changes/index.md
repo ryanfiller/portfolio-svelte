@@ -29,6 +29,8 @@ Refactor and redesign.
 
 [bug/fix-sitemap](https://github.com/ryanfiller/portfolio-svelte/pull/61) - refactor sitemap
 
+[feature/auto-table-of-contents](https://github.com/ryanfiller/portfolio-svelte/pull/62) - create a plugin to create a table of contents for markdown posts (data currently unused)
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
@@ -38,6 +40,8 @@ Refactor and redesign.
 |   - replace `../../../` everywhere possible.
 |   - refactor how `.md` content is parsed into HTML for RSS
 |   - fix the broken RSS feed and sitemap
+|   - create/steal a rehype plugin to create a table of contents
+|   - add a `json` endpoint for individual blog posts
 |
 | - Routes
 |   - \+ `/lab/[slug]`
@@ -49,12 +53,17 @@ Refactor and redesign.
 |   - ≈ `/blog.json`
 |   - ≈ `/blog/series.json`
 |   - ≈ `/blog/tips.json`
+|   - \+ `/blog/[slug].json`
 |
 | - Helpers
-|   - \- `getPages()`
+|   - \- `getPages`
 |   - \+ `buildPagesJson` -> `buildPagesList`
 |   - \+ `sortNewestToOldest`
 |   - \+ `getPageContent`
+|
+| - Plugins
+|   - rehype
+|     - \+ `table-of-contents`
 
 </Change>
 

@@ -13,7 +13,7 @@ export async function get({ query }) {
 
   const category = query.has('category') ? query.get('category') : null
 
-  posts = buildPagesList({ files: posts, excludedPaths, content: 'html' })
+  posts = buildPagesList({ files: posts, excludedPaths, content: ['html'] })
   if (category) {
     posts = posts.filter(post => {
       return post.meta.categories.includes(category)

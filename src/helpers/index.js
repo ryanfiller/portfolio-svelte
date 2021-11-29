@@ -1,3 +1,4 @@
+import slugify from './slugify.js'
 import { objectToParams, paramsToObject } from './query-param-helpers.js'
 import { buildPagesList, getPageContent, sortNewestToOldest } from './content-helpers.js'
 
@@ -25,16 +26,6 @@ function setCustomProperty(property, value) {
   if (typeof(window) != 'undefined') {
     document.documentElement.style.setProperty(`--${property}`, value)
   }
-}
-
-/* eslint-disable no-multi-spaces */
-function slugify(string) {
-  return string.toString().toLowerCase()
-    .replace(/\s+/g, '-')       // Replace spaces with -
-    .replace(/[^\w-]+/g, '')    // Remove all non-word chars
-    .replace(/--+/g, '-')       // Replace multiple - with single -
-    .replace(/^-+/, '')         // Trim - from start of text
-    .replace(/-+$/, '')         // Trim - from end of text
 }
 
 function xmlEncode(string) {
