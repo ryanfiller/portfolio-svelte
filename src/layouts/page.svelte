@@ -54,9 +54,17 @@
 
     /* hide the off canvas stuff while the browser is resizing */
     &.resizing {
+      margin-left: 0;
+      transition: width 0s !important;
+
+      & .bumper,
       & .left,
       & .right {
         display: none !important;
+      }
+
+      & header {
+        grid-template-columns: 0 0 100vw 0;
       }
     }
 
@@ -212,7 +220,7 @@
   id='site'
   data-segment={segment}
   class={isResizing ? 'resizing' : ''}
->
+  >
 
   <!-- new stuff -->
   <header>
