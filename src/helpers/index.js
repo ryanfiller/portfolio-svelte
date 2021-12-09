@@ -29,6 +29,7 @@ function setCustomProperty(property, value) {
 }
 
 function xmlEncode(string) {
+  if (!string) return
   return string.replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
