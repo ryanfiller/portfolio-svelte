@@ -42,13 +42,13 @@ export function getPageContent(path, content = []) {
 			content.map(contentType => {
 				switch (contentType) {
 					case 'frontmatter':
-						returnedContent.frontmatter = file.data
+						returnedContent.frontmatter = file?.data
 						break
 					case 'html':
-						returnedContent.html = file.contents
+						returnedContent.html = file?.contents
 						break
 					case 'toc':
-						returnedContent.toc = file.toc
+						returnedContent.toc = file?.toc
 						break
 					default:
 						null

@@ -26,6 +26,8 @@ export async function get({ query }) {
   const blogUrl = `${siteUrl}/blog`
 
   const format = html => {
+    if (!html) return
+
     const ignoreInCode = '(?!(.(?!<code ))*<\/code>)'
     return html
       // fix relative images
