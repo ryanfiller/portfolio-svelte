@@ -1,6 +1,6 @@
 describe('<Form /> component', () => {
   function fillOutContactForm()  {
-    cy.get('#contact form')
+    cy.get(' form')
       .scrollIntoView()
       .wait(500) // wait for animation
       .within(() => {
@@ -18,13 +18,13 @@ describe('<Form /> component', () => {
     })
     
     it('renders correctly', () => {
-      cy.get('.form#contact').within(() => {
+      cy.get('.form').within(() => {
         cy.get('input[name="name"][type="text"][required]').should('exist')
         cy.get('input[name="email"][type="email"][required]').should('exist')
         cy.get('textarea[name="message"][required]').should('exist')
         cy.get('button[type="submit"]').should('exist')
       })
-      cy.checkA11y('.form#contact')
+      cy.checkA11y('.form')
     })
 
     context('sent state', () => {
@@ -53,7 +53,7 @@ describe('<Form /> component', () => {
         cy.get('.form[data-state="sent"]').within(() => {
           cy.get('button[type="reset"]').click({force: true})
         })
-        cy.get('.form#contact').should('exist')
+        cy.get('.form').should('exist')
         cy.get('input[name="name"]').should('have.value', '')
       })
     })
@@ -71,7 +71,7 @@ describe('<Form /> component', () => {
         cy.get('.form[data-state="error"]').within(() => {
           cy.get('button[type="reset"]').click({force: true})
         })
-        cy.get('.form#contact').should('exist')
+        cy.get('.form').should('exist')
         cy.get('input[name="name"]').should('have.value', 'Philip')
       })
     })

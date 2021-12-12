@@ -32,10 +32,8 @@
 	
   import { site, forms } from '$site-config'
 	import Page from '../layouts/page.svelte'
-  import List from  '$components/content/list.svelte'
-  import PostPreview from '$components/blog/post-preview.svelte'
-  import SeriesPreview from '$components/blog/series-preview.svelte'
-  import ContactForm from '$components/misc/contact-form.svelte'
+  import Snippet from '$components/content/snippet.svelte'
+  import Form from '$components/misc/form.svelte'
 </script>
 
 <style>
@@ -107,5 +105,5 @@
     />
   {/if}
 
-  <ContactForm {...forms.contact} />
+  <Form {...forms.contact} />
 </Page>

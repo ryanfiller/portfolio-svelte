@@ -115,7 +115,7 @@ describe('homepage', () => {
 
   describe('<ContactForm />', () => {
     it('renders', () => {
-      cy.get('.form#contact').should('exist')
+      cy.get('.form').should('exist')
     })
   })
 })

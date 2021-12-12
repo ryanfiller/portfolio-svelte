@@ -41,7 +41,7 @@ describe('404 page', () => {
         .should('have.attr', 'href', '/blog')
       cy.get('li').eq(3).get('a')
         .contains('Contact Me')
-        .should('have.attr', 'href', '/#contact')
+        .should('have.attr', 'href', '/.form')
     })
   })
 })
