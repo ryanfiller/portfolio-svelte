@@ -12,7 +12,7 @@
   const alertActive = $$slots.alert
 </script>
 
-<style>
+<style global>
   #site {
     min-height: 100vh;
     width: 100%;
@@ -27,13 +27,13 @@
       "footer";
   }
 
-  :global(#site-header) {
+  #site-header {
     grid-area: header;
     width: 100%;
     height: 100%;
   }
 
-  :global(#content) {
+  #content {
     grid-area: content;
     width: 100%;
     min-height: 100%;
@@ -41,12 +41,12 @@
     flex-direction: column;
     justify-content: space-between;
 
-    & > :global(*) {
+    & > * {
       width: 100%;
     }
   }
 
-  :global(#site-footer) {
+  #site-footer {
     grid-area: footer;
     width: 100%;
     height: 100%;

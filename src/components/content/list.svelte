@@ -22,12 +22,6 @@
     clear: both;
     line-height: 1.5;
 
-    & h2 {
-      margin: 0;
-      font-size: 3.25rem;
-      border-bottom: var(--borderWidth) solid currentColor;
-    }
-
     & ul {
       margin: 0 0 2em 0;
       padding: 0;

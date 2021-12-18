@@ -71,6 +71,7 @@
 
     /* accessibility stuff */
     --tapableSize: 40px;
+    --readableMin: 40rem;
     --readableMax: 65rem;
     --readableColumn: minmax(auto, var(--readableMax));
 
@@ -348,6 +349,13 @@
   .font-mono {
     font-family: var(--fontMono);
     font-variation-settings: "wght" 400;
+  }
+
+  h2,
+  .heading2 {
+    margin: 0;
+    font-size: 3.25rem;
+    border-bottom: var(--borderWidth) solid currentColor;
   }
 
   b,

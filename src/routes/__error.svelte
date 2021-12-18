@@ -272,9 +272,9 @@
 			<li>
 				<a href='/blog'>Read some blogs</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a href='/#contact'>Contact Me</a>
-			</li>
+			</li> -->
 		</ul>
 		{#if image}
 			<figure>
