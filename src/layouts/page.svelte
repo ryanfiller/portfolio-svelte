@@ -4,10 +4,17 @@
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
   export let hideBanner = false
 
+  import { mainNav } from '$site-config'
+  import Nav from '$components/layout/nav.svelte'
+  import ColorSchemeToggle from '$components/layout/color-scheme-toggle/index.svelte'
+
   import SEO from '$components/layout/seo.svelte'
-  import Header from '$components/layout/header.svelte'
+  import Navicon from '$components/page/navicon.svelte'
+  // import Header from '$components/layout/header.svelte'
   import Banner from '$components/layout/banner.svelte'
   import Footer from '$components/layout/footer.svelte'
+
+  import focusTrap from '$actions/focus-trap.js'
 
   const alertActive = $$slots.alert
   
@@ -23,17 +30,19 @@
   }
 </script>
 
-<style>
+<style global>
   :global(body) {
     /* overflow MUST go here for position sticky elements to work within #site */
     overflow-x: hidden;
   }
 
   #site {
-    --safeAreaBecauseScrollBarsAreFrustrationg: 95vw;
+    /* --safeAreaBecauseScrollBarsAreFrustrationg: 95vw; */
+    --safeAreaBecauseScrollBarsAreFrustrationg: 100vw;
     --naviconSize: var(--tapableSize);
     /* mobile, smallest size first */
     --offCanvasWidth: calc(var(--safeAreaBecauseScrollBarsAreFrustrationg) - var(--naviconSize) - (2 * var(--padding)));
+    /* --transitionSpeed: 0s; */
     --offCanvasSpeed: calc(2 * var(--transitionSpeed));
     --headerLogoHeight: 60px;
     --headerHeight: calc(var(--padding) + var(--headerLogoHeight));
@@ -68,7 +77,7 @@
       }
     }
 
-    & header {
+    & #site-header {
       background-color: var(--colorPrimary);
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
@@ -79,6 +88,7 @@
       grid-column: 1 / -1;
 
       /* todo put the header stuff here */
+      & .logo,
       & .temp-logo {
         grid-area: header;
         justify-self: start;
@@ -90,13 +100,13 @@
         z-index: 100;
       }
   
+      & .navicon,
       & #navicon {
-        height: var(--naviconSize);
-        width: var(--naviconSize);
+        /* height: var(--naviconSize);
+        width: var(--naviconSize); */
         grid-area: header;
         justify-self: end;
         align-self: center;
-        margin-right: var(--padding);
         z-index: 300;
 
         position: sticky;
@@ -109,20 +119,22 @@
         grid-column: 3 / 4;
         background: black;
         pointer-events: none;
-        opacity: 0;
+
+        opacity: .25;
+        /* opacity: 0; */
         z-index: 200;
       }
   
       & #navicon:checked ~ label.overlay {
         pointer-events: initial;
-        opacity: .25;
+        /* opacity: .25; */
       }
 
       & .bumper {
         /* start the bumper at 1x width */
         grid-area: bumper;
         width: var(--offCanvasWidth);
-        transition: var(--offCanvasSpeed);
+        transition: width var(--offCanvasSpeed);
       }
 
       & .left,
@@ -153,6 +165,7 @@
   
       & .right {
         grid-area: right;
+        display: none;
       }
   
       & .left:focus-within ~ :global(.bumper) {
@@ -164,8 +177,14 @@
         opacity: .25;
       }
   
-      & #navicon:checked ~ .bumper,
-      & .right:focus-within ~ .bumper {
+      & #navicon:checked ~ .right,
+      & .right:focus-within {
+        display: flex;
+      }
+
+      & #navicon:checked ~ :global(.bumper) {
+      /* & #navicon:checked ~ :global(.bumper),
+      & .right:focus-within ~ :global(.bumper) { */
         /* retract the bumper, pull site to the left */
         width: 0;
       }
@@ -222,8 +241,8 @@
   class={isResizing ? 'resizing' : ''}
   >
 
-  <!-- new stuff -->
-  <header>
+  <header id='site-header'>
+
     <aside class='left'>
       <a href='#content'>skip to content</a>
       <a href='#navicon'>skip to site navigation</a>
@@ -236,9 +255,68 @@
         at the bottom
       </div>
     </aside>
+
+    <a href='/' class='logo'>
+      ryanfiller.com
+    </a>
+
+    <!-- banner -->
+    <!-- TODO banner needs to go outside the header -->
+    <!-- <slot /> -->
+
+    <Navicon />
+
+    <aside
+      class='right'
+      use:focusTrap
+      nav needs escape listener
+    >
+      <Nav
+        segment={segment}
+        label='main navigation'
+        links={mainNav}
+      />
+      
+      <div class='options'>
+        <ColorSchemeToggle />
+      </div>
+
+      <div class='bottom'>
+        at the bottom
+      </div>
+    </aside>
+
+    <!-- <label class='overlay' for='navicon'>
+      <span class='screenreader'>show site navigation</span>
+    </label> -->
+    <div class='bumper'></div>
+
+  </header>
+
+  <!-- new stuff -->
+  <!-- <header>
+    <aside class='left'>
+      <a href='#content'>skip to content</a>
+      <a href='#navicon'>skip to site navigation</a>
+      <ul>
+        <li><a href='#toc'>toc</a></li>
+        <li><a href='#toc'>toc</a></li>
+        <li><a href='#toc'>toc</a></li>
+      </ul>
+      <div class='bottom'>
+        at the bottom
+      </div>
+    </aside>
+
     <a class='temp-logo' href='/'>logo</a>
+
     <input type='checkbox' id='navicon' />
-    <aside class='right'>
+
+    <aside
+      class='right'
+      use:focusTrap
+      nav needs escape listener
+    >
       <ul>
         <li><a href='#nav'>nav</a></li>
         <li><a href='#nav'>nav</a></li>
@@ -252,7 +330,7 @@
       <span class='screenreader'>show site navigation</span>
     </label>
     <div class='bumper'></div>
-  </header>
+  </header> -->
   <!--  -->
 
   <!-- <Header {segment}>
