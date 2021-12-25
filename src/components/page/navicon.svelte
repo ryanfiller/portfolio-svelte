@@ -1,149 +1,79 @@
 <style>
   .navicon {
+    --naviconPixel: calc(var(--naviconSize) / 5);
+    --naviconTransitionSpeed: calc(1 * var(--transitionSpeed));
     position: relative;
     height: var(--naviconSize);
     width: var(--naviconSize);
     margin-right: var(--padding);
+
+    display: grid;
+    grid-template-columns: repeat(5, var(--naviconPixel));
+    grid-template-rows: repeat(5, var(--naviconPixel));
     
     & input {
       opacity: 0;
       margin: 0;
       height: var(--naviconSize);
       width: var(--naviconSize);
+      position: absolute;
+      top: 0;
+      left: 0;
     }
-    
-    & svg {
-      pointer-events: none;
+
+    & span {
+      display: block;
       height: 100%;
       width: 100%;
-      position: absolute;
-      inset: 0;
-      background: lime;
+      pointer-events: none;
+      transform: translate(0, 0) scale(100%);
+      transition: var(--naviconTransitionSpeed);
+      transition-timing-function: steps(3, end);
 
-      & line {
-        stroke: var(--colorWhite);
-        stroke-width: .33em;
-        transition: 1s;
-        transform-origin: center center;
+      background: red;
+
+      &.top {
+        grid-row-start: 1;
       }
 
-      & .top {
-        transform: translateY(1em);
-        transition: top var(--transitionSpeed) ease var(--transitionSpeed),
-                      transform var(--transitionSpeed) ease 0s;
+      &.bottom {
+        grid-row-start: 5;
       }
 
-      & .middle {
-        transition: opacity 0s ease var(--transitionSpeed);
-      }
-
-      & .bottom {
-        transform: translateY(-1em);
-        transition: bottom var(--transitionSpeed) ease var(--transitionSpeed),
-                      transform var(--transitionSpeed) ease 0s;
+      &.middle {
+        grid-row-start: 3;
+        grid-column: 1 / 6;
       }
     }
 
-    & input:focus + svg {
-      /* box-shadow: 0px 0px 10px red; */
+    & input:focus:not(checked) ~ span {
+      background: var(--colorHighlight);
     }
 
-    & input:checked + svg {
-      & .top {
-        transform: translate(0, 0);
-        transition: top var(--transitionSpeed) ease 0s,
-                    transform var(--transitionSpeed) ease var(--transitionSpeed);
+    & input:checked {
+      & ~ span{
+        &:nth-of-type(3),
+        &:nth-of-type(5) {
+          transform: translateY(100%);
+        }
 
-        & line {
-           transform: rotate(45deg);
-           /* transition: top var(--transitionSpeed) ease 0s,
-                    transform var(--transitionSpeed) ease var(--transitionSpeed); */
+        &:nth-of-type(4) {
+          transform: translateY(200%);
+        }
+
+        &:nth-of-type(8),
+        &:nth-of-type(10) {
+          transform: translateY(-100%);
+        }
+
+        &:nth-of-type(9) {
+          transform: translateY(-200%);
+        }
+
+        &:nth-of-type(1) {
+          transform: scaleX(20%);
         }
       }
-
-      & .middle {
-        transform: scaleX(0);
-        transition: opacity 0s ease var(--transitionSpeed);
-      }
-
-      & .bottom {
-        transform: translate(0, 0);
-        transition: bottom var(--transitionSpeed) ease 0s,
-                    transform var(--transitionSpeed) ease var(--transitionSpeed);
-
-        & line {
-           transform: rotate(-45deg);
-           /* transition: bottom var(--transitionSpeed) ease 0s,
-                    transform var(--transitionSpeed) ease var(--transitionSpeed); */
-        }
-      }
-
-      /*
-      &--top, &--middle, &--bottom {
-        display: block;
-        height: .25rem;
-        width: 100%;
-        background-color: $color-white;
-        position: absolute;
-    }
-
-    &--top {
-        top: 0;
-        transform: rotate(0deg);
-
-        .open & {
-            top: calc(50% - .125rem);
-            transform: rotate(45deg);
-        }
-    }
-
-    &--middle {
-        top: 50%;
-        transform: translateY(-50%);
-        opacity: 1;
-
-        .open & {
-            opacity: 0;
-        }
-    }
-
-    &--bottom {
-        position: absolute;
-        bottom: 0;
-
-        .open & {
-            bottom: calc(50% - .125rem);
-            transform: rotate(-45deg);
-        }
-    } */
-
-      /* &--top {
-          transition: top $transition ease $transition,
-                      transform $transition ease 0s;
-      }
-        .open &--top {
-          transition: top $transition ease 0s,
-                    transform $transition ease $transition;
-        }
-
-
-      &--middle {
-          transition: opacity 0s ease $transition;
-      }
-        .open &--middle {
-          transition: opacity 0s ease $transition;
-        }
-
-
-      &--bottom {
-          transition: bottom $transition ease $transition,
-                      transform $transition ease 0s;
-      }
-        .open &--bottom {
-          transition: bottom $transition ease 0s,
-                    transform $transition ease $transition;
-        }
-      */
     }
   }
   
@@ -152,11 +82,18 @@
 <div class='navicon'>
   <!-- autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-checked -->
   <input type='checkbox' id='navicon' autocomplete='false' />
-  <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 50 50'>
-    <g class='top'><line x1='0' y1='25' x2='50' y2='25' /></g>
-    <g class='middle'><line x1='0' y1='25' x2='50' y2='25' /></g>
-    <g class='bottom'><line x1='0' y1='25' x2='50' y2='25' /></g>
-  </svg>
+
+  <span class='middle'></span>
+  <span class='top'></span>
+  <span class='top'></span>
+  <span class='top'></span>
+  <span class='top'></span>
+  <span class='top'></span>
+  <span class='bottom'></span>
+  <span class='bottom'></span>
+  <span class='bottom'></span>
+  <span class='bottom'></span>
+  <span class='bottom'></span>
 </div>
 
 <label class='overlay' for='navicon'>

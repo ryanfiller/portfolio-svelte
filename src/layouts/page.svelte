@@ -100,8 +100,7 @@
         z-index: 100;
       }
   
-      & .navicon,
-      & #navicon {
+      & .navicon {
         /* height: var(--naviconSize);
         width: var(--naviconSize); */
         grid-area: header;
