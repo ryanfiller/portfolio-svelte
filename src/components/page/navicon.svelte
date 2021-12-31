@@ -1,24 +1,35 @@
 <style>
+  /* there are TWO elements with this class in this file */
   .navicon {
-    --naviconPixel: calc(var(--naviconSize) / 5);
-    --naviconTransitionSpeed: calc(1 * var(--transitionSpeed));
-    position: relative;
-    height: var(--naviconSize);
-    width: var(--naviconSize);
-    margin-right: var(--padding);
-
-    display: grid;
-    grid-template-columns: repeat(5, var(--naviconPixel));
-    grid-template-rows: repeat(5, var(--naviconPixel));
+    --naviconPixel: calc(calc(var(--naviconSize) - var(--padding))/ 5);
+    --naviconTransitionSpeed: calc(0.5 * var(--offCanvasSpeed));
+    cursor: pointer;
     
-    & input {
-      opacity: 0;
-      margin: 0;
+    &:is(input) {
+      /* leave clickable area bigger than icon */
       height: var(--naviconSize);
       width: var(--naviconSize);
-      position: absolute;
-      top: 0;
-      left: 0;
+      margin: 0;
+
+      /* remove appearance, but keep focus styles */
+      appearance: none;
+      transition: var(--naviconTransitionSpeed);
+      transition-timing-function: steps(3, end);
+
+      &:not(:checked) {
+        background: var(--colorPrimary);
+      }
+    }
+
+    &:not(:is(input)) {
+      top: var(--padding) !important;
+      margin-right: var(--padding) !important;
+      height: calc(var(--naviconSize) - var(--padding));
+      width: calc(var(--naviconSize) - var(--padding));
+      display: grid;
+      grid-template-columns: repeat(5, var(--naviconPixel));
+      grid-template-rows: repeat(5, var(--naviconPixel));
+      pointer-events: none;
     }
 
     & span {
@@ -26,11 +37,10 @@
       height: 100%;
       width: 100%;
       pointer-events: none;
-      transform: translate(0, 0) scale(100%);
+      transform: translate(0, 0) scale(1, 1);
       transition: var(--naviconTransitionSpeed);
       transition-timing-function: steps(3, end);
-
-      background: red;
+      background: currentColor;
 
       &.top {
         grid-row-start: 1;
@@ -42,47 +52,52 @@
 
       &.middle {
         grid-row-start: 3;
-        grid-column: 1 / 6;
+        grid-column: 3;
+        transform: scaleX(5);
       }
     }
 
-    & input:focus:not(checked) ~ span {
-      background: var(--colorHighlight);
-    }
+    &:checked + .navicon span {
+      &:nth-of-type(3),
+      &:nth-of-type(5) {
+        transform: translateY(100%);
+      }
 
-    & input:checked {
-      & ~ span{
-        &:nth-of-type(3),
-        &:nth-of-type(5) {
-          transform: translateY(100%);
-        }
+      &:nth-of-type(4) {
+        transform: translateY(200%);
+      }
 
-        &:nth-of-type(4) {
-          transform: translateY(200%);
-        }
+      &:nth-of-type(8),
+      &:nth-of-type(10) {
+        transform: translateY(-100%);
+      }
 
-        &:nth-of-type(8),
-        &:nth-of-type(10) {
-          transform: translateY(-100%);
-        }
+      &:nth-of-type(9) {
+        transform: translateY(-200%);
+      }
 
-        &:nth-of-type(9) {
-          transform: translateY(-200%);
-        }
-
-        &:nth-of-type(1) {
-          transform: scaleX(20%);
-        }
+      &.middle {
+        transform: scaleX(1);
       }
     }
+  }
+
+  label#site-overlay {
+    background: var(--colorBlack);
+    transition: var(--offCanvasSpeed);
   }
   
 </style>
 
-<div class='navicon'>
-  <!-- autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-checked -->
-  <input type='checkbox' id='navicon' autocomplete='false' />
+<!-- autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-checked -->
+<input
+  id='navicon'
+  class='navicon'
+  type='checkbox'
+  autocomplete='false'
+/>
 
+<div class='navicon'>
   <span class='middle'></span>
   <span class='top'></span>
   <span class='top'></span>
@@ -96,6 +111,6 @@
   <span class='bottom'></span>
 </div>
 
-<label class='overlay' for='navicon'>
+<label id='site-overlay' for='navicon'>
   <span class='screenreader'>show site navigation</span>
 </label>

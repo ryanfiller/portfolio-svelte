@@ -10,7 +10,7 @@
 
   import SEO from '$components/layout/seo.svelte'
   import Navicon from '$components/page/navicon.svelte'
-  // import Header from '$components/layout/header.svelte'
+  import Logo from '$components/page/logo.svelte'
   import Banner from '$components/layout/banner.svelte'
   import Footer from '$components/layout/footer.svelte'
 
@@ -20,32 +20,51 @@
   
   let resizeTimer
   $: isResizing = false
+
   const handleResizeJank = () => {
     clearTimeout(resizeTimer)
     isResizing = true
     resizeTimer = setTimeout(function() {
-      // resizing has "stopped"
-      isResizing = false
+      isResizing = false // resizing has "stopped"
     }, 500)
   }
 </script>
 
-<style global>
+<style>
   :global(body) {
     /* overflow MUST go here for position sticky elements to work within #site */
     overflow-x: hidden;
   }
 
   #site {
-    /* --safeAreaBecauseScrollBarsAreFrustrationg: 95vw; */
-    --safeAreaBecauseScrollBarsAreFrustrationg: 100vw;
-    --naviconSize: var(--tapableSize);
+    --headerLogoHeight: 1.5em;
+    --naviconSize: calc(var(--padding) + var(--tapableSize));
+    --headerHeight: calc(var(--padding) + max(var(--naviconSize), var(--headerLogoHeight)));
+    --overlayOpacity: 0.5;
     /* mobile, smallest size first */
-    --offCanvasWidth: calc(var(--safeAreaBecauseScrollBarsAreFrustrationg) - var(--naviconSize) - (2 * var(--padding)));
-    /* --transitionSpeed: 0s; */
-    --offCanvasSpeed: calc(2 * var(--transitionSpeed));
-    --headerLogoHeight: 60px;
-    --headerHeight: calc(var(--padding) + var(--headerLogoHeight));
+    --offCanvasWidth: calc(100vw - var(--naviconSize) - (2 * var(--padding)));
+    --offCanvasSpeed: calc(3 * var(--transitionSpeed));
+
+    @media (--smallWidth) {
+      --offCanvasWidth: 75vw;
+    }
+
+    @media (--mediumWidth) {
+      --offCanvasWidth: 50vw;
+    }
+
+    @media (--largeWidth) {
+      --offCanvasWidth: 25vw;
+      /* --offCanvasSpeed: calc(1.5 * var(--transitionSpeed)); */
+    }
+    
+    /* @media (--extraWidth) {
+    } */
+
+    @media (--touch) {
+      /* this break position sticky but it makes touch devices freak out abour horizontal scroll */
+      overflow-x: hidden !important;
+    }
 
     min-height: 100vh;
     margin-left: calc(-2 * var(--offCanvasWidth));
@@ -56,29 +75,9 @@
                          ".      content ."
                          ".      footer  .";
 
-    @media (--touch) {
-      /* this break position sticky but it makes touch devices freak out abour horizontal scroll */
-      overflow-x: hidden !important;
-    }
-
-    /* hide the off canvas stuff while the browser is resizing */
-    &.resizing {
-      margin-left: 0;
-      transition: width 0s !important;
-
-      & .bumper,
-      & .left,
-      & .right {
-        display: none !important;
-      }
-
-      & header {
-        grid-template-columns: 0 0 100vw 0;
-      }
-    }
+    /* general layout */
 
     & #site-header {
-      background-color: var(--colorPrimary);
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
       grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
@@ -87,57 +86,43 @@
       grid-row: 1 / -1;
       grid-column: 1 / -1;
 
-      /* todo put the header stuff here */
-      & .logo,
-      & .temp-logo {
+      & :global(.logo) {
         grid-area: header;
         justify-self: start;
         align-self: center;
-        height: var(--headerLogoHeight);
-        display: block;
-        background: orange;
-        position: relative;
-        z-index: 100;
+        margin-left: var(--padding);
       }
   
-      & .navicon {
-        /* height: var(--naviconSize);
-        width: var(--naviconSize); */
+      /* this effects both the icon and the actual input */
+      & :global(.navicon) {
         grid-area: header;
         justify-self: end;
         align-self: center;
-        z-index: 300;
 
         position: sticky;
-        top: var(--padding);
+        top: calc(0.5 * var(--padding));
+        margin-right: calc(0.5 * var(--padding));
+        z-index: 500;
       }
     
-      & label.overlay {
-        /* cover header body */
+      & :global(#site-overlay) {
+        /* cover header body and make non-interactive */
         grid-row: 1 / -1;
         grid-column: 3 / 4;
-        background: black;
         pointer-events: none;
-
-        opacity: .25;
-        /* opacity: 0; */
-        z-index: 200;
-      }
-  
-      & #navicon:checked ~ label.overlay {
-        pointer-events: initial;
-        /* opacity: .25; */
+        opacity: 0;
+        z-index: 100;
       }
 
-      & .bumper {
+      & #site-bumper {
         /* start the bumper at 1x width */
         grid-area: bumper;
         width: var(--offCanvasWidth);
         transition: width var(--offCanvasSpeed);
       }
 
-      & .left,
-      & .right {
+      & #site-left,
+      & #site-right {
         transition: var(--offCanvasSpeed);
         position: sticky;
         top: 0;
@@ -152,62 +137,75 @@
           height: 100%;
           display: block;
         }
-
-        background-color: var(--colorBlueDark);
-        color: var(--colorBackground);
-        & a { color: var(--colorBackground); }
       }
 
-      & .left {
+      & #site-left {
         grid-area: left;
       }
   
-      & .right {
+      & #site-right {
         grid-area: right;
         display: none;
       }
-  
-      & .left:focus-within ~ :global(.bumper) {
-        /* expand the bumper, push site to the right */
-        width: calc(2 * var(--offCanvasWidth));
-      }
-  
-      & .left:focus-within ~ :global(label.overlay) {
-        opacity: .25;
-      }
-  
-      & #navicon:checked ~ .right,
-      & .right:focus-within {
-        display: flex;
+    }
+
+    /* navicon / overlay interactions  */
+    & :global {
+      & #navicon:checked ~ #site-overlay {
+        pointer-events: initial;
+        opacity: var(--overlayOpacity);
       }
 
-      & #navicon:checked ~ :global(.bumper) {
-      /* & #navicon:checked ~ :global(.bumper),
-      & .right:focus-within ~ :global(.bumper) { */
+      & #navicon:checked ~ #site-right,
+      & #site-right:focus-within {
+        display: flex;
+      }
+      
+      & #navicon:checked ~ #site-bumper {
         /* retract the bumper, pull site to the left */
         width: 0;
       }
+
+      & #site-left:focus-within ~ #site-bumper {
+        /* expand the bumper, push site to the right */
+        width: calc(2 * var(--offCanvasWidth));
+      }
+
+      & #site-left:focus-within ~ #site-overlay {
+        opacity: var(--overlayOpacity);
+      }
     }
 
-    /* background: pink; */
+    /* hide the off canvas stuff while the browser is resizing */
+    &.resizing {
+      margin-left: 0;
+      transition: width 0s !important;
 
-    @media (--smallWidth) {
-      --offCanvasWidth: 75vw;
-    }
-    @media (--mediumWidth) {
-      /* background: orange; */
-      --offCanvasWidth: 50vw;
-    }
-    @media (--largeWidth) {
-      /* background: yellow; */
-      --offCanvasWidth: 25vw;
-      --offCanvasSpeed: calc(1.5 * var(--transitionSpeed));
-    }
-    
-    @media (--extraWidth) {
-      /* background: lime; */
+      & #site-bumper,
+      & #site-left,
+      & #site-right {
+        display: none !important;
+      }
+
+      & #site-header {
+        grid-template-columns: 0 0 100vw 0;
+      }
     }
   }
+
+  /* colors and stuff */
+  #site-header {
+    color: var(--colorBackground);
+    background-color: var(--colorPrimary);
+  }
+
+  #site-left,
+  #site-right {
+    color: var(--colorBackground);
+    background-color: var(--colorHighlight);
+  }
+
+  /* page layout */
 
   :global(#content) {
     grid-area: content;
@@ -242,7 +240,7 @@
 
   <header id='site-header'>
 
-    <aside class='left'>
+    <aside id='site-left'>
       <a href='#content'>skip to content</a>
       <a href='#navicon'>skip to site navigation</a>
       <ul>
@@ -255,9 +253,7 @@
       </div>
     </aside>
 
-    <a href='/' class='logo'>
-      ryanfiller.com
-    </a>
+    <Logo />
 
     <!-- banner -->
     <!-- TODO banner needs to go outside the header -->
@@ -266,7 +262,7 @@
     <Navicon />
 
     <aside
-      class='right'
+      id='site-right'
       use:focusTrap
       nav needs escape listener
     >
@@ -285,52 +281,9 @@
       </div>
     </aside>
 
-    <!-- <label class='overlay' for='navicon'>
-      <span class='screenreader'>show site navigation</span>
-    </label> -->
-    <div class='bumper'></div>
+    <div id='site-bumper'></div>
 
   </header>
-
-  <!-- new stuff -->
-  <!-- <header>
-    <aside class='left'>
-      <a href='#content'>skip to content</a>
-      <a href='#navicon'>skip to site navigation</a>
-      <ul>
-        <li><a href='#toc'>toc</a></li>
-        <li><a href='#toc'>toc</a></li>
-        <li><a href='#toc'>toc</a></li>
-      </ul>
-      <div class='bottom'>
-        at the bottom
-      </div>
-    </aside>
-
-    <a class='temp-logo' href='/'>logo</a>
-
-    <input type='checkbox' id='navicon' />
-
-    <aside
-      class='right'
-      use:focusTrap
-      nav needs escape listener
-    >
-      <ul>
-        <li><a href='#nav'>nav</a></li>
-        <li><a href='#nav'>nav</a></li>
-        <li><a href='#nav'>nav</a></li>
-      </ul>
-      <div class='bottom'>
-        at the bottom
-      </div>
-    </aside>
-    <label class='overlay' for='navicon'>
-      <span class='screenreader'>show site navigation</span>
-    </label>
-    <div class='bumper'></div>
-  </header> -->
-  <!--  -->
 
   <!-- <Header {segment}>
     {#if !hideBanner}
@@ -358,92 +311,3 @@
 {#if alertActive}
   <slot name='alert' />
 {/if}
-
-<!-- <script>
-  import { page } from '$app/stores'
-  // default to context, but overridable with prop // like the error page
-  export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
-  export let hideBanner = false
-
-  import SEO from '../components/layout/seo.svelte'
-  import Header from '../components/layout/header.svelte'
-  import Banner from '../components/layout/banner.svelte'
-  import Footer from '../components/layout/footer.svelte'
-
-  const alertActive = $$slots.alert
-</script>
-
-<style>
-  #site {
-    min-height: 100vh;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 100%;
-    justify-content: stretch;
-    grid-template-rows: auto 1fr auto;
-    align-items: center;
-    grid-template-areas:
-      "header"
-      "content"
-      "footer";
-  }
-
-  :global(#site-header) {
-    grid-area: header;
-    width: 100%;
-    height: 100%;
-  }
-
-  :global(#content) {
-    grid-area: content;
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    & > :global(*) {
-      width: 100%;
-    }
-  }
-
-  :global(#site-footer) {
-    grid-area: footer;
-    width: 100%;
-    height: 100%;
-  }
-</style>
-
-<SEO {segment} {...$$props} />
-
-<div
-	tabindex={alertActive ? -1 : 0}
-  id='site'
-  data-segment={segment}
->
-  <Header {segment}>
-    {#if !hideBanner}
-      <slot name='banner'>
-        <Banner {segment} {...$$props} />
-      </slot>
-    {/if}
-  </Header>
-
-  <main
-    id='content'
-    tabindex='-1'
-    class={segment}
-  >
-    <slot />
-  </main>
-
-  <aside id='sidebar'>
-    <slot name='sidebar' />
-  </aside>
-
-  <Footer />
-</div>
-
-{#if alertActive}
-  <slot name='alert' />
-{/if} -->

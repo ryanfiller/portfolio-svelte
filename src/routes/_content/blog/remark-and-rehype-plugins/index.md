@@ -206,7 +206,7 @@ The `transformer` function will look at all `links`, determine if their `data.ur
   <Tab title='Markdown'>
 
   ```markdown
-  [an intneral link](https://www.ryanfiller.com/about)
+  [an internal link](https://www.ryanfiller.com/about)
   [an external link](https://developer.mozilla.org)
   ```
 
@@ -215,7 +215,7 @@ The `transformer` function will look at all `links`, determine if their `data.ur
 
   ```html
   <a href="https://www.ryanfiller.com/about">
-    an intneral link
+    an internal link
   </a>
   <a target="_blank" rel="noopener" href="https://developer.mozilla.org">
     an external link
@@ -225,7 +225,7 @@ The `transformer` function will look at all `links`, determine if their `data.ur
   </Tab>
   <Tab title="Rendered">
 
-  [an intneral link](https://www.ryanfiller.com/about)
+  [an internal link](https://www.ryanfiller.com/about)
 
   [an external link](https://developer.mozilla.org)
 
