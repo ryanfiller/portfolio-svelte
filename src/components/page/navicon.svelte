@@ -13,11 +13,14 @@
 
       /* remove appearance, but keep focus styles */
       appearance: none;
-      transition: var(--naviconTransitionSpeed);
-      transition-timing-function: steps(3, end);
 
       &:not(:checked) {
         background: var(--colorPrimary);
+      }
+      @media (--touch) {
+        &:checked {
+          background: var(--colorPrimary);
+        }
       }
     }
 
@@ -39,7 +42,7 @@
       pointer-events: none;
       transform: translate(0, 0) scale(1, 1);
       transition: var(--naviconTransitionSpeed);
-      transition-timing-function: steps(3, end);
+      /* transition-timing-function: steps(3, end); */
       background: currentColor;
 
       &.top {

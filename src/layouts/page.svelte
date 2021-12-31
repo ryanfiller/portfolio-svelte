@@ -4,13 +4,16 @@
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
   export let hideBanner = false
 
-  import { mainNav } from '$site-config'
+  import { mainNav, forms } from '$site-config'
+  
+  import SEO from '$components/layout/seo.svelte'
+  
   import Nav from '$components/layout/nav.svelte'
   import ColorSchemeToggle from '$components/layout/color-scheme-toggle/index.svelte'
-
-  import SEO from '$components/layout/seo.svelte'
   import Navicon from '$components/page/navicon.svelte'
   import Logo from '$components/page/logo.svelte'
+  import ContactForm from '$components/misc/contact-form.svelte'
+
   import Banner from '$components/layout/banner.svelte'
   import Footer from '$components/layout/footer.svelte'
 
@@ -31,11 +34,6 @@
 </script>
 
 <style>
-  :global(body) {
-    /* overflow MUST go here for position sticky elements to work within #site */
-    overflow-x: hidden;
-  }
-
   #site {
     --headerLogoHeight: 1.5em;
     --naviconSize: calc(var(--padding) + var(--tapableSize));
@@ -61,16 +59,11 @@
     /* @media (--extraWidth) {
     } */
 
-    @media (--touch) {
-      /* this break position sticky but it makes touch devices freak out abour horizontal scroll */
-      overflow-x: hidden !important;
-    }
-
     min-height: 100vh;
     margin-left: calc(-2 * var(--offCanvasWidth));
     display: grid;
     grid-template-rows: var(--headerHeight) 1fr auto;
-    grid-template-columns: auto 100vw var(--offCanvasWidth);
+    grid-template-columns: var(--offCanvasWidth) 100vw var(--offCanvasWidth);
     grid-template-areas: "header header  header"
                          ".      content ."
                          ".      footer  .";
@@ -80,11 +73,17 @@
     & #site-header {
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
-      grid-template-columns: auto var(--offCanvasWidth) 100vw var(--offCanvasWidth);
+      grid-template-columns: auto var(--offCanvasWidth) 100vw auto;
       grid-template-areas: "bumper left header right"
                            "bumper left body   right";
       grid-row: 1 / -1;
       grid-column: 1 / -1;
+
+      & *,
+      & :global(*:not(.screenreader)) {
+        position: relative;
+        z-index: 500;
+      }
 
       & :global(.logo) {
         grid-area: header;
@@ -102,13 +101,12 @@
         position: sticky;
         top: calc(0.5 * var(--padding));
         margin-right: calc(0.5 * var(--padding));
-        z-index: 500;
       }
     
       & :global(#site-overlay) {
         /* cover header body and make non-interactive */
-        grid-row: 1 / -1;
-        grid-column: 3 / 4;
+        position: fixed;
+        inset: 0;
         pointer-events: none;
         opacity: 0;
         z-index: 100;
@@ -126,17 +124,11 @@
         transition: var(--offCanvasSpeed);
         position: sticky;
         top: 0;
-        height: 100vh;        
+        height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         padding: var(--padding);
-
-        @media (--touch) {
-          /* styles for when position sticky is broken */
-          height: 100%;
-          display: block;
-        }
       }
 
       & #site-left {
@@ -149,8 +141,26 @@
       }
     }
 
+    & main#content {
+      width: 100vw;
+      margin-left: var(--offCanvasWidth);
+    }
+
     /* navicon / overlay interactions  */
     & :global {
+      & #site-left:focus-within ~ #site-bumper {
+        /* expand the bumper, push site to the right */
+        width: calc(2 * var(--offCanvasWidth));
+      }
+
+      & #site-left:focus-within ~ #site-overlay {
+        opacity: var(--overlayOpacity);
+      }
+
+      & #site-left:focus-within ~ .navicon {
+        display: none;
+      }
+
       & #navicon:checked ~ #site-overlay {
         pointer-events: initial;
         opacity: var(--overlayOpacity);
@@ -164,15 +174,6 @@
       & #navicon:checked ~ #site-bumper {
         /* retract the bumper, pull site to the left */
         width: 0;
-      }
-
-      & #site-left:focus-within ~ #site-bumper {
-        /* expand the bumper, push site to the right */
-        width: calc(2 * var(--offCanvasWidth));
-      }
-
-      & #site-left:focus-within ~ #site-overlay {
-        opacity: var(--overlayOpacity);
       }
     }
 
@@ -189,6 +190,11 @@
 
       & #site-header {
         grid-template-columns: 0 0 100vw 0;
+      }
+
+      & main#content {
+        width: 100vw;
+        margin-left: calc(-1 * var(--offCanvasWidth));
       }
     }
   }
@@ -277,7 +283,7 @@
       </div>
 
       <div class='bottom'>
-        at the bottom
+        <ContactForm {...forms.contact} />
       </div>
     </aside>
 

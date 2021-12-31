@@ -30,12 +30,11 @@
   export let series
   export let tips
 	
-  import { site, forms } from '$site-config'
+  import { site } from '$site-config'
 	import Page from '../layouts/page.svelte'
   import List from  '$components/content/list.svelte'
   import PostPreview from '$components/blog/post-preview.svelte'
   import SeriesPreview from '$components/blog/series-preview.svelte'
-  import ContactForm from '$components/misc/contact-form.svelte'
 </script>
 
 <style>
@@ -106,6 +105,4 @@
       }}
     />
   {/if}
-
-  <ContactForm {...forms.contact} />
 </Page>
