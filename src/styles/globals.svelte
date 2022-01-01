@@ -227,7 +227,7 @@
   /* ------------- */
   /* animation classes */
   /* ------------- */
-
+  
   .flip-arrow {
     --arrow-size: 0.5em;
 

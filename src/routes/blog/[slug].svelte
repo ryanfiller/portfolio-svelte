@@ -8,6 +8,12 @@
 
     const component = await import(`../_content/blog/${slug}/index.md`)
 
+    // TODO more data fetching should work this way
+    const toc = await fetch(`/blog/${slug}.json`)
+      .then(response => response.json())
+      .then(response => response.toc)
+      .catch(error => console.error(error))
+
     const series = await fetch(`/blog/series.json`)
       .then(response => response.json())
       .then(allSeries => allSeries.find(series => {
@@ -22,7 +28,8 @@
       props: {
         page: component.default,
         metadata: component.metadata,
-        series: series
+        series: series,
+        toc: toc
       }
     }
   }
@@ -31,8 +38,12 @@
 <script>
   export let page
   export let series
+  export let toc
   import { setContext } from 'svelte'
   setContext('series', series)
 </script>
 
-<svelte:component this={page} />
+<svelte:component
+  this={page}
+  {toc}
+/>

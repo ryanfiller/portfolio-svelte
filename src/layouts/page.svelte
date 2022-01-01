@@ -2,16 +2,18 @@
   import { page } from '$app/stores'
   // default to context, but overridable with prop // like the error page
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
-  export let hideBanner = false
+  export let toc
 
   import { mainNav, forms } from '$site-config'
   
   import SEO from '$components/layout/seo.svelte'
   
-  import Nav from '$components/layout/nav.svelte'
-  import ColorSchemeToggle from '$components/layout/color-scheme-toggle/index.svelte'
   import Navicon from '$components/page/navicon.svelte'
   import Logo from '$components/page/logo.svelte'
+  import PageLinks from '$components/page/page-links.svelte'
+
+  import Nav from '$components/layout/nav.svelte'
+  import ColorSchemeToggle from '$components/layout/color-scheme-toggle/index.svelte'
   import ContactForm from '$components/misc/contact-form.svelte'
 
   import Banner from '$components/layout/banner.svelte'
@@ -125,25 +127,61 @@
         position: sticky;
         top: 0;
         height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
         padding: var(--padding);
+        display: grid;
+        gap: var(--padding);
+        grid-template-columns: 100%;
+        align-items: center;
       }
 
       & #site-left {
         grid-area: left;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "skip" "toc";
+        /* grid just just works here */
       }
   
       & #site-right {
         grid-area: right;
         display: none;
+        grid-template-rows: var(--naviconSize) 1fr 1fr;
+        padding-top: calc(0.5 * var(--padding));
+        grid-template-areas: "options" "nav" "action";
+        display: none;
+        
+        & > :global(*) {
+          grid-area: options;
+
+          & :global(svg) {
+            height: calc(0.5 * var(--naviconSize));
+            width: calc(0.5 * var(--naviconSize));
+          }
+        }
+
+        & > :global(nav) { grid-area: nav; }
+        & > :global(#contact) { grid-area: action; }
       }
     }
 
     & main#content {
       width: 100vw;
       margin-left: var(--offCanvasWidth);
+      grid-area: content;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--colorBackground);
+
+      & > :global(*) {
+        width: 100%;
+      }
+    }
+
+    & :global(#site-footer) {
+      grid-area: footer;
+      width: 100%;
+      height: 100%;
     }
 
     /* navicon / overlay interactions  */
@@ -166,9 +204,8 @@
         opacity: var(--overlayOpacity);
       }
 
-      & #navicon:checked ~ #site-right,
-      & #site-right:focus-within {
-        display: flex;
+      & #navicon:checked ~ #site-right {
+        display: grid;
       }
       
       & #navicon:checked ~ #site-bumper {
@@ -210,27 +247,6 @@
     color: var(--colorBackground);
     background-color: var(--colorHighlight);
   }
-
-  /* page layout */
-
-  :global(#content) {
-    grid-area: content;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background-color: var(--colorBackground);
-
-    & > :global(*) {
-      width: 100%;
-    }
-  }
-
-  :global(#site-footer) {
-    grid-area: footer;
-    width: 100%;
-    height: 100%;
-  }
 </style>
 
 <svelte:window on:resize={handleResizeJank}/>
@@ -242,21 +258,18 @@
   id='site'
   data-segment={segment}
   class={isResizing ? 'resizing' : ''}
-  >
+>
 
   <header id='site-header'>
 
     <aside id='site-left'>
-      <a href='#content'>skip to content</a>
-      <a href='#navicon'>skip to site navigation</a>
-      <ul>
-        <li><a href='#toc'>toc</a></li>
-        <li><a href='#toc'>toc</a></li>
-        <li><a href='#toc'>toc</a></li>
-      </ul>
-      <div class='bottom'>
-        at the bottom
-      </div>
+      <PageLinks links={[
+        {content: 'skip to content', hash: '#content'},
+        {content: 'skip to site navigation', hash: '#navicon'}
+      ]} />
+      {#if toc}
+        <PageLinks links={toc} />
+      {/if}
     </aside>
 
     <Logo />
@@ -278,13 +291,9 @@
         links={mainNav}
       />
       
-      <div class='options'>
-        <ColorSchemeToggle />
-      </div>
+      <ColorSchemeToggle />
 
-      <div class='bottom'>
-        <ContactForm {...forms.contact} />
-      </div>
+      <ContactForm {...forms.contact} />
     </aside>
 
     <div id='site-bumper'></div>

@@ -11,10 +11,9 @@
     font-family: sans-serif;
 
     /* include readable */
+    width: 100%;
     max-width: var(--readableMax);
     margin: 0 auto;
-    padding: var(--padding);
-    margin-bottom: var(--padding);
 
     & > *:not(:last-child) {
       margin-bottom: var(--padding);
@@ -43,6 +42,7 @@
 
     & label {
       --rowColor: var(--colorHighlight);
+      --rowColor: lime;
 
       min-height: var(--rowHeight);
       width: 100%;
@@ -59,6 +59,7 @@
 
       &.textarea {
         flex: 1;
+        min-height: 10em;
 
         & textarea {
           padding-top: 1rem;
@@ -115,39 +116,8 @@
       }
     }
 
-    @supports (writing-mode: sideways-lr) {
-      --rowHeight: 3em;
-
-      & label {
-        flex-direction: row;
-        flex-wrap: nowrap;
-
-        & span {
-          font-size: 0.75em;
-          order: -1;
-          writing-mode: sideways-lr;
-          height: auto;
-          padding: 0.25em;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          margin-bottom: unset !important;
-          margin-left: calc(-1 * var(--labelHeight) - var(--borderWidth));
-        }
-
-        & input,
-        & textarea {
-          &:focus,
-          &:not(:placeholder-shown) {
-            outline: none;
-            margin: 0;
-
-            & + span {
-              margin-left: 0;
-            }
-          }
-        }
-      }
+    & button {
+      background-color: lime !important;
     }
   }
 </style>
