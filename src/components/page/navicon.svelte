@@ -98,6 +98,7 @@
   class='navicon'
   type='checkbox'
   autocomplete='false'
+  checked="true"
 />
 
 <div class='navicon'>

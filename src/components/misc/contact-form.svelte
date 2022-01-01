@@ -41,8 +41,7 @@
     }
 
     & label {
-      --rowColor: var(--colorHighlight);
-      --rowColor: lime;
+      --rowColor: var(--colorActive);
 
       min-height: var(--rowHeight);
       width: 100%;
@@ -114,10 +113,6 @@
           }
         }
       }
-    }
-
-    & button {
-      background-color: lime !important;
     }
   }
 </style>
