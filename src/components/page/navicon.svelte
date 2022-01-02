@@ -1,3 +1,7 @@
+<script>
+  import { right } from '$stores/layout.js'
+</script>
+
 <style>
   /* there are TWO elements with this class in this file */
   .navicon {
@@ -98,7 +102,7 @@
   class='navicon'
   type='checkbox'
   autocomplete='false'
-  checked="true"
+  bind:checked={$right.naviconOpen}
 />
 
 <div class='navicon'>

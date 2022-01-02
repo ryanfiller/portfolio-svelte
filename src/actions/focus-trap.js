@@ -16,7 +16,9 @@ export default function focusTrap(element) {
   // get all the elements inside
   const focusableElements = [...element.querySelectorAll(elements.join(', '))]
     // ... but not the disabled or tab-hidden ones
-    .filter(element => !(element.hasAttribute('disabled') || element.tabIndex === -1))
+    .filter(element => !(element.hasAttribute('disabled') || element.type === 'hidden' || element.tabIndex === -1))
+
+    console.log('focusableElements', focusableElements)
 
   element.addEventListener('keydown', event => {
     if (!(event.key === 'Tab' || event.keyCode === 9)) {
@@ -24,8 +26,8 @@ export default function focusTrap(element) {
       return
     } else {
       const currentElementIndex = focusableElements.indexOf(document.activeElement)
+      console.log('currentElementIndex', currentElementIndex)
       event.preventDefault()
-
       
       if (event.shiftKey) { // shift + tab
         // if at the start, go to end

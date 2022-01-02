@@ -2,6 +2,29 @@
   export let segment
   export let label = ''
   export let links = []
+
+  import { goto } from '$app/navigation'
+  import { right } from '$stores/layout.js'
+
+  // TODO contact form stuff
+  async function navigate(event) {
+    event.preventDefault()
+    const {
+      dataset,
+      href,
+      hash
+    } = event.target
+
+    if (dataset.action && hash) {
+      $right.navAction = dataset.action
+      goto(hash, { keepfocus: true })
+    } else {
+      await goto(href)
+        .then(() => $right.naviconOpen = false)
+        .catch(() => goto('/404?'))
+    }
+  }
+
 </script>
 
 <style>
@@ -61,13 +84,16 @@
         {#if link.external}
           <a 
             href={link.url}
-            target='_blank' rel='noopener noreferrer'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             {link.name}
           </a>
         {:else}
           <a 
+            on:click={navigate}
             href={`/${link.url}`}
+            data-action={link.action}
             class:active={link.url === segment}
           >
             {link.name}

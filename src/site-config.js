@@ -37,10 +37,11 @@ export const mainNav = [
     name: 'r&d',
     url: 'lab'
   },
-  // {
-  //   name: 'contact',
-  //   url: '#contact'
-  // },
+  {
+    name: 'contact',
+    url: '#contact',
+    action: 'contact'
+  },
 ]
 
 export const secondaryNav = [

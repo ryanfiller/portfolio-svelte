@@ -1,5 +1,7 @@
 <script>
   import { page } from '$app/stores'
+  import { right } from '$stores/layout.js'
+
   // default to context, but overridable with prop // like the error page
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
   export let toc
@@ -283,17 +285,21 @@
     <aside
       id='site-right'
       use:focusTrap
-      nav needs escape listener
+      TODO nav needs escape listener
     >
+      <ColorSchemeToggle />
+
       <Nav
         segment={segment}
         label='main navigation'
         links={mainNav}
       />
-      
-      <ColorSchemeToggle />
 
-      <ContactForm {...forms.contact} />
+      {#if $right.navAction === 'contact'}
+        <ContactForm {...forms.contact} />
+      {:else}
+        <!-- TODO -->
+      {/if}
     </aside>
 
     <div id='site-bumper'></div>
