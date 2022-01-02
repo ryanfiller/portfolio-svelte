@@ -24,18 +24,18 @@ export const site = {
 export const mainNav = [
   // {
   //   name: 'about',
-  //   url: 'about'
+  //   url: '/about'
   // },
   {
     name: 'blog',
-    url: 'blog'
+    url: '/blog'
   },
   // {
   //   name: 'portfolio',
   // },
   {
     name: 'r&d',
-    url: 'lab'
+    url: '/lab'
   },
   {
     name: 'contact',
@@ -47,11 +47,11 @@ export const mainNav = [
 export const secondaryNav = [
   {
     name: 'changelog',
-    url: 'changes'
+    url: '/changes'
   },
   {
     name: 'styles',
-    url: 'styles'
+    url: '/styles'
   },
   // {
   //   name: 'analytics',

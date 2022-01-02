@@ -13,20 +13,29 @@ export default function focusTrap(element) {
   // set focus when element is created
   element.focus()
 
-  // get all the elements inside
-  const focusableElements = [...element.querySelectorAll(elements.join(', '))]
-    // ... but not the disabled or tab-hidden ones
-    .filter(element => !(element.hasAttribute('disabled') || element.type === 'hidden' || element.tabIndex === -1))
+  // do this in a function so it can check for new elements every run
+  let focusableElements = []
+  function getFocusableElements() {
+    // get all the elements inside
+    return focusableElements = [...element.querySelectorAll(elements.join(', '))]
+      // ... but not the disabled or tab-hidden ones
+      .filter(element => !(
+        element.hasAttribute('disabled')
+        || element.type === 'hidden'
+        || element.tabIndex === -1
+      ))
+  }
 
-    console.log('focusableElements', focusableElements)
-
+  focusableElements = getFocusableElements()
+  
   element.addEventListener('keydown', event => {
+    focusableElements = getFocusableElements()
+
     if (!(event.key === 'Tab' || event.keyCode === 9)) {
       // immediate exit for all other keys
       return
     } else {
       const currentElementIndex = focusableElements.indexOf(document.activeElement)
-      console.log('currentElementIndex', currentElementIndex)
       event.preventDefault()
       
       if (event.shiftKey) { // shift + tab

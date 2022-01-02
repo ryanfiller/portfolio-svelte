@@ -9,15 +9,12 @@
   // TODO contact form stuff
   async function navigate(event) {
     event.preventDefault()
-    const {
-      dataset,
-      href,
-      hash
-    } = event.target
+    const { href, hash, dataset } = event.target
 
     if (dataset.action && hash) {
       $right.navAction = dataset.action
-      goto(hash, { keepfocus: true })
+      window.location.hash = hash
+      // goto(new URL(href, window.location.href), { keepfocus: true })
     } else {
       await goto(href)
         .then(() => $right.naviconOpen = false)
@@ -92,7 +89,7 @@
         {:else}
           <a 
             on:click={navigate}
-            href={`/${link.url}`}
+            href={`${link.url}`}
             data-action={link.action}
             class:active={link.url === segment}
           >
