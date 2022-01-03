@@ -19,11 +19,11 @@
       justify-content: space-between;
       align-items: center;
 
-      & span,
+      /* & span,
       & :global(ul),
       & :global(nav) {
         margin: 1rem var(--padding);
-      }
+      } */
 
       & a {
         text-decoration: none;

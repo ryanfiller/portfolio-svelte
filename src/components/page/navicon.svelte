@@ -2,6 +2,12 @@
   import { right } from '$stores/layout.js'
 </script>
 
+<svelte:window on:keydown={event => {
+  if (event.keyCode === 27) { // escape key
+    $right.naviconOpen = false
+  }
+}}/>
+
 <style>
   /* there are TWO elements with this class in this file */
   .navicon {

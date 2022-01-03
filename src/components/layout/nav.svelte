@@ -12,9 +12,9 @@
     const { href, hash, dataset } = event.target
 
     if (dataset.action && hash) {
+      $right.naviconOpen = true
       $right.navAction = dataset.action
       window.location.hash = hash
-      // goto(new URL(href, window.location.href), { keepfocus: true })
     } else {
       await goto(href)
         .then(() => $right.naviconOpen = false)
@@ -25,33 +25,26 @@
 </script>
 
 <style>
-  :global(header) nav {
-    display: flex;
+  :global(header) ul {
+    background: red;
+    font-size: 2em;
     flex-direction: column;
     align-items: center;
   }
 
   ul {
     display: flex;
+    gap: 1em;
     list-style: none;
     padding: 0;
     margin: 0;
-
-    & li {
-      margin-bottom: 0;
-      margin-right: 1em;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
   }
 
   a {
     color: currentColor;
     text-decoration: none;
 
-    &.active {
+    /* &.active {
       position: relative;
 
       &::after {
@@ -68,7 +61,7 @@
         border-right: 0.3em solid transparent;
         border-bottom: 0.4em solid currentColor;
       }
-    }
+    } */
   }
 </style>
 
