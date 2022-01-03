@@ -29,8 +29,10 @@
   $: isResizing = false
 
   const handleResizeJank = () => {
+    // safari will fire this on vertical scroll
     clearTimeout(resizeTimer)
     isResizing = true
+
     resizeTimer = setTimeout(function() {
       isResizing = false // resizing has "stopped"
     }, 500)
@@ -227,22 +229,12 @@
 
     /* hide the off canvas stuff while the browser is resizing */
     &.resizing {
-      margin-left: 0;
       transition: width 0s !important;
-
+      
       & #site-bumper,
       & #site-left,
       & #site-right {
-        display: none !important;
-      }
-
-      & #site-header {
-        grid-template-columns: 0 0 100vw 0;
-      }
-
-      & main#content {
-        width: 100vw;
-        margin-left: calc(-1 * var(--offCanvasWidth));
+        transition: height 0s !important;
       }
     }
   }
