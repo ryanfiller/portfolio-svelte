@@ -521,7 +521,7 @@
         padding: var(--tag-size) var(--padding);
         width: minmax(var(--readableMax), min-content);
         margin: 0 auto;
-        font-size: 1.5rem !important; /* this matters a LOT for the line highlight */
+        font-size: 1.33rem !important; /* this matters a LOT for the line highlight */
         line-height: var(--line-height);
         background: var(--pixelBorder);
         overflow: auto !important;
