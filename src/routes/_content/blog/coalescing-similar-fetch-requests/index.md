@@ -22,7 +22,7 @@ meta:
   import Note from '$components/misc/note.svelte'
 </script>
 
-Starting in 2021 we undertook a huge new project at Lensrentals — to rewrite our 11 year old customer-facing Ruby app and split it into multiple [smaller services](https://en.wikipedia.org/wiki/Microservices). The existing app is a monolith that uses [Ruby on Rails](https://rubyonrails.org/) for the backend and a combination of [HAML](https://haml.info/) templates and [Backbone.js](https://backbonejs.org/) for the frontend.
+Starting in 2021 we undertook a huge new project at [Lensrentals](https://www.lensrentals.com/) — to rewrite our 11 year old customer-facing Ruby app and split it into multiple [smaller services](https://en.wikipedia.org/wiki/Microservices). The existing app is a monolith that uses [Ruby on Rails](https://rubyonrails.org/) for the backend and a combination of [HAML](https://haml.info/) templates and [Backbone.js](https://backbonejs.org/) for the frontend.
 
 Because we're pretty entrenched in the React ecosystem (we even have an internal component library across apps) we settled on using [NextJS](https://nextjs.org/). The long term plan is to deploy the site using Next's [static `HTML` export](https://nextjs.org/docs/advanced-features/static-html-export) functionality, which should give us two distinct buckets to sort content into - things we can know whenever the site builds (or new data that needs to trigger a new build), and things that the browser needs to known when they are asked for which can be queried from our other apps.
 
@@ -93,7 +93,7 @@ By default, `next-pwa` will look for the entry point to your worker file at `wor
 ```javascript
 // src/worker/index.js
 
-import fetchAvailabilities from './fetch-availabilities'
+import fetchAvailabilities from './fetch-availabilities.js'
 
 export {
   fetchAvailabilities
@@ -101,7 +101,7 @@ export {
 
 // worker/index.js
 
-import { fetchAvailabilities } from '../src/worker'
+import { fetchAvailabilities } from '../src/worker.js'
 ```
 
 Because I'm using [a version of NextJS newer than 9](https://www.npmjs.com/package/next-pwa#user-content-usage-without-custom-server-nextjs-9), the only configuration needed to pass to the `pwa` portion of the config object is `dest: 'public'`. This tells `next-pwa` to take compiled outcome of `worker/index.js` file and copies it to Next's [`public` directory](https://nextjs.org/docs/basic-features/static-file-serving) as a file named `sw.js`.
@@ -150,7 +150,7 @@ The worker registration from the `<App/>` component tells the browser where the 
 ```javascript {5-7}
 // worker/index.js
 
-import { fetchAvailabilities } from '../src/worker'
+import { fetchAvailabilities } from '../src/worker.js'
 
 self.addEventListener('install', () => {
   console.log('new service worker installed')
@@ -164,7 +164,7 @@ Another nuance of service workers is that they usually don't full "work" until a
 ```javascript {9-12}
 // worker/index.js
 
-import { fetchAvailabilities } from '../src/worker'
+import { fetchAvailabilities } from '../src/worker.js'
 
 self.addEventListener('install', () => {
   console.log('new service worker installed')
@@ -183,7 +183,7 @@ in addition to `'install'` and `'activate'`, the `WorkerGlobalScope` has a [myri
 ```javascript {14-23}
 // worker/index.js
 
-import { fetchAvailabilities } from '../src/worker'
+import { fetchAvailabilities } from '../src/worker.js'
 
 self.addEventListener('install', () => {
   console.log('new service worker installed')
@@ -247,7 +247,7 @@ From the point of view of the `fetch` call coming from the component, this respo
 ```javascript {3, 8, 12}
 // src/worker/fetch-availabilities.js
 
-import AvailabilityAggregator from './availability-aggregator'
+import AvailabilityAggregator from './availability-aggregator.js'
 
 function fetchAvailabilities(event) {
   const productIds = new URL(event.request.url)
