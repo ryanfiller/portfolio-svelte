@@ -305,6 +305,10 @@ class AvailabilityAggregator {
 
 Every time `makeRequest()` fires it will clear the current `requestGroup` batch. If the queue is empty `addRequest()` will wait 10 milliseconds to see if any addition requests are incoming before calling `makeRequest()` with that group. If the current `requestGroup` is _not_ empty, `addRequest()` will push as many promises to it as it can during that 10 milliseconds waiting period.
 
+![screenshot of dev tools network tab, speeds range from 233ms to 1.49s](/images/fetch-availabilities-no-worker.png){data-caption="original request speed, taking up to one a a half seconds!"}
+
+![screenshot of dev tools network tab, speeds range 338ms from to 1.27s](/images/fetch-availabilities-with-worker.png){data-caption="with the service worker in place, reduced by almost 25% of a second"}
+
 <!-- ```javascript
 class AvailabilityAggregator {
   constructor() {
