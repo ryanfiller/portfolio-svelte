@@ -31,8 +31,11 @@ Refactor and redesign.
 
 [feature/auto-table-of-contents](https://github.com/ryanfiller/portfolio-svelte/pull/62) - create a plugin to create a table of contents for markdown posts (data currently unused)
 
+[feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type, its probably about time I really learned this...
+
 [[details | Version Details]]
 | - Features
+|   - typescript
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
 |   - store `series` data as `.md` files instead of one large `.json` file
 |   - moved `routes/blog/_content`, `routes/lab/_content` to `routes/_content/blog`, `routes/_content/lab`
@@ -64,6 +67,9 @@ Refactor and redesign.
 | - Plugins
 |   - rehype
 |     - \+ `table-of-contents`
+|
+| - Packages
+|   - \+ typescript
 
 </Change>
 

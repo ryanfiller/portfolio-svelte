@@ -81,7 +81,10 @@ export default {
 
 	preprocess: [
 		sveltePreprocess({
-			defaults: { style: 'postcss' },
+			defaults: { 
+				style: 'postcss',
+				script: 'typescript'
+			},
 			postcss: {
 				plugins: postcssPlugins
 			}
