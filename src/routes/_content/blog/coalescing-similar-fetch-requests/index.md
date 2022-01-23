@@ -281,6 +281,8 @@ function fetchAvailabilities(event) {
 The actual coalescing and making of the request to the other app's endpoint will happen in the `AvailabilityAggregator` class. The first thing it needs to do is handle the `addRequest()` method that was used to build the list of `requestPromises` in the `fetchAvailabilities()` function. The `addRequest()` method will accept a `productId`, and return the promises that are awaited in `fetchAvailabilities()`. The `AvailabilityAggregator` class will be making the actual network request via its `makeRequest()` method, and there's some logic here using a [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) to delay this function. 
 
 ```javascript
+//  src/worker/availability-aggregator.js
+
 class AvailabilityAggregator {
   constructor() {
     this.requestGroup = []
@@ -303,50 +305,111 @@ class AvailabilityAggregator {
 }
 ```
 
-Every time `makeRequest()` fires it will clear the current `requestGroup` batch. If the queue is empty `addRequest()` will wait 10 milliseconds to see if any addition requests are incoming before calling `makeRequest()` with that group. If the current `requestGroup` is _not_ empty, `addRequest()` will push as many promises to it as it can during that 10 milliseconds waiting period.
+`this.requestGroup` keeps an list of Promises that represents the actual network requests for each `productId`. This list is internal to the `AvailabilityAggregator` class and will later be awaited with [`Promise.all()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) in the `fetchAvailabilities()` function. 
 
-![screenshot of dev tools network tab, speeds range from 233ms to 1.49s](/images/fetch-availabilities-no-worker.png){data-caption="original request speed, taking up to one a a half seconds!"}
+If the current `requestGroup` queue is empty, `addRequest()` will start a 10 millisecond waiting period and listen for any more requests to be made. If the current `requestGroup` is _not_ empty, `addRequest()` will push as many promises to it as it can during that 10 milliseconds waiting period before calling `makeRequest()`.
 
-![screenshot of dev tools network tab, speeds range 338ms from to 1.27s](/images/fetch-availabilities-with-worker.png){data-caption="with the service worker in place, reduced by almost 25% of a second"}
+```javascript {13-22}
+//  src/worker/availability-aggregator.js
 
-<!-- ```javascript
 class AvailabilityAggregator {
   constructor() {
-    this.requestGroup = []
-    this.makeRequest = this.makeRequest.bind(this)
+    ...
   }
 
   addRequest(productId) {
-    if (!this.requestGroup.length) {
-      // wait a brief while for any others that might come in
-      setTimeout(this.makeRequest, 10)
-    }
-
-    // return a Promise which we'll resolve later
-    return new Promise((resolve, reject) => {
-      // add an entry to the group associating this product ID with the promise callbacks
-      this.requestGroup.push({ productId, resolve, reject })
-    })
+    ...
   }
 
   async makeRequest() {
-    // take the batch and set up for the next one
     const currentGroup = [...this.requestGroup]
     this.requestGroup = []
 
-    // we are now responsible for resolving everything in currentGroup
     try {
-      // make a request
-      const productIds = [...new Set(currentGroup.map(entry => entry.productId))]
+      ...
+    } catch (error) {
+      currentGroup.forEach(entry => entry.reject(error))
+    } finally {
+      currentGroup.forEach(entry => entry.reject('☠️'))
+    }
+  }
+}
+```
+
+Each time `makeRequest()` is called the `requestGroup` needs to be reset to start a new queue, so the first thing to do is copy the current queue and reset to an empty array.
+
+To actually talk to the network the function will use a [`try...catch..finally`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch) block to deal with each pending Promise before giving it back to `fetchAvailabilities()`. The `try` portion will take care of actually making the `fetch` call while the `catch` block will ensure that any rejections from this class come back with the same error. The `finally` block ensure that's any Promises not caught by the previous two conditions are rejected, just in case.
+
+```javascript {17-29}
+//  src/worker/availability-aggregator.js
+
+class AvailabilityAggregator {
+  constructor() {
+    ...
+  }
+
+  addRequest(productId) {
+    ...
+  }
+
+  async makeRequest() {
+    const currentGroup = [...this.requestGroup]
+    this.requestGroup = []
+
+    try {
+      const productIds = [...new Set(currentGroup.map(entry => {
+        return entry.productId
+      }))]
       const params = productIds.map(id => `ids[]=${id}`).join('&')
       const response = await fetch(`/products/availability.json?${params}`)
 
-      // parse the response
       const responseJson = await response.json()
       const responsesByProductId = new Map()
-      responseJson.forEach(entry => responsesByProductId.set(entry.productId, entry))
+      responseJson.forEach(entry => {
+        responsesByProductId.set(entry.productId, entry)
+      })
 
-      // resolve the promises in the batch
+      ...
+    } catch (error) {
+      currentGroup.forEach(entry => entry.reject(error))
+    } finally {
+      currentGroup.forEach(entry => entry.reject('☠️'))
+    }
+  }
+}
+```
+
+Each `productId` will return the same response, so a [`Set`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set) can be used to ensure that no item in the list repeats. Each of these unique ids can then be formatted in the correct way and passed as URL Parameters to _finally_ ask the API endpoint about availability. When the API response comes back, each information about each individual product is stored in a [`Map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) using the `productId`s as the keys.
+
+```javascript {29-35}
+//  src/worker/availability-aggregator.js
+
+class AvailabilityAggregator {
+  constructor() {
+    ...
+  }
+
+  addRequest(productId) {
+    ...
+  }
+
+  async makeRequest() {
+    const currentGroup = [...this.requestGroup]
+    this.requestGroup = []
+
+    try {
+      const productIds = [...new Set(currentGroup.map(entry => {
+        return entry.productId
+      }))]
+      const params = productIds.map(id => `ids[]=${id}`).join('&')
+      const response = await fetch(`/products/availability.json?${params}`)
+
+      const responseJson = await response.json()
+      const responsesByProductId = new Map()
+      responseJson.forEach(entry => {
+        responsesByProductId.set(entry.productId, entry)
+      })
+
       currentGroup.forEach(entry => {
         const productResponse = responsesByProductId.get(entry.productId)
         if (productResponse) {
@@ -356,20 +419,74 @@ class AvailabilityAggregator {
         }
       })
     } catch (error) {
-      // reject everything in the batch with the same exception
       currentGroup.forEach(entry => entry.reject(error))
     } finally {
-      // ensure every promise is either resolved or rejected
-      // settled promises can't be re-settled, so we're free to reject every last one
       currentGroup.forEach(entry => entry.reject('☠️'))
     }
   }
 }
-``` -->
+```
 
----
-
+The last thing for this method to do is look through the `currentGroup` of pending entries and check if their `productId` appears in the list of response values. If it does, that entry will call its `resolve()` method with the network response, if it doesn't the entry will call `reject()` and let the aggregator know that no availability information was found.
 
 ## Parcelling data back out
 
+The component to display this data is pretty straightforward if you are already familiar with modern React component code.
+
+```javascript
+// src/components/product-availability.jsx
+
+import { useEffect, useState } from 'react'
+import getProductsAvailability from 'lib/data-fetchers/get-products-availability.js'
+
+function ProductAvailability(props) {
+  const [productAvailabilities, setProductAvailabilities] = useState(null)
+
+  useEffect(async () => {
+    const url = `/products/availability.json?ids[]=${props.id}`
+    const availability =  await fetch(url)
+      .then(response => response.json())
+      .catch(error => console.error(error))
+
+    setProductAvailabilities(availability)
+  }, [])
+
+  if (!productAvailabilities || productAvailabilities instanceof Error) {
+    return null
+  }
+
+  const availability = productAvailabilities.find(product => {
+    return product.productId === props.id
+  })
+
+  if (!availability || !availability.show) {
+    return null
+  }
+
+  return (
+    <div className={availability.status}>
+      {availability.label}
+    </div>
+  )
+}
+```
+
+The component calls the [`useEffect` hook](https://reactjs.org/docs/hooks-effect.html) with an empty dependency array to make a `fetch` call when the component mounts. The component then stores the result of the fetch call with a [`useState` hook](https://reactjs.org/docs/hooks-state.html) and has some logic to return `null` and not render if there is an error or no relevant data.
+
+Because the component needs to function exactly the same with or without the worker intercepting the requests, the API will _always_ return an `array` of data, even if only one `id` is asked for and only `availability` is returned. The component handles this by useing a [`.find` array method](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find) to retrieve that data for whichever singular `id` it happened to ask for from the fetch response.
+
+---
+
 ## Performance Gains
+
+Without modifying the request with the service worker the calls made against the `/availability.json` endpoint took between 230 and 1290 milliseconds. This is _slow_ for sure, but this is the reason to put all of the effort into optimizing both sides of this request.
+
+![screenshot of dev tools network tab, speeds range from 233ms to 1.49s](/images/fetch-availabilities-no-worker.png){data-caption="original request speed, taking between 233ms and 1.49s, with an average of 874.15ms"}
+
+So did it work?
+
+Yes, all of this work actually did make the site faster!
+
+![screenshot of dev tools network tab, speeds range 338ms from to 1.27s](/images/fetch-availabilities-with-worker.png){data-caption="with the service worker in place, taking between 338ms and 1.27s, with an average of 766.5ms"}
+
+The first of the requests is a bit slower, up from about 230 milliseconds to about 380, but because of the `setTimeout` in the aggregator class this is to be expected. However, the final requests is down from about 1500 milliseconds to only about 1300, or roughly a 13% increase in speed! Comparing the average total time of the combined requests shows a decrease from 874.15 milliseconds to only 766.5, also about a 13% reduction.

@@ -71,7 +71,7 @@
 
     /* accessibility stuff */
     --tapableSize: 40px;
-    --readableMax: 65rem;
+    --readableMax: 70rem;
     --readableColumn: minmax(auto, var(--readableMax));
 
     /* fonts */
