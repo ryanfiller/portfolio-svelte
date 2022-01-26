@@ -99,8 +99,7 @@
 <style>
   :global(#site[data-segment='error'] #content) {
     color: var(--colorWhite);
-    font-family: var(--display);
-    font-variation-settings: "BEVL" 1, "OVAL" 1, "QUAD" 1, "SIZE" 1;
+    font-family: var(--fontDisplay);
     font-size: 2rem;
     text-transform: uppercase;
     height: 100%;
@@ -239,7 +238,7 @@
     bottom: var(--padding);
     right: var(--padding);
     z-index: 10;
-    font-family: var(--mono);
+    font-family: var(--fontMono);
   }
 </style>
 

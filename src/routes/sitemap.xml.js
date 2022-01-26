@@ -11,7 +11,7 @@ const excludedRoutes = [
   'generate-image'
 ]
 
-const buildPageList = (rootPath, prefix = '') => {
+const buildPageList = (rootPath) => {
   fs.readdirSync(rootPath)
     .filter(file => {
       // excluded some specials routes

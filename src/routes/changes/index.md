@@ -13,6 +13,23 @@ banner:
 
 <Change>
 
+## RF-05-06.2 - "Full Armor"
+
+I should probably learn TypeScript
+
+[feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type
+
+[[details | Version Details]]
+| - Features
+|   - typescript
+|
+| - Packages
+|   - \+ typescript
+
+</Change>
+
+<Change>
+
 ## RF-05-06 - "Mk-II"
 
 Refactor and redesign.
@@ -23,7 +40,7 @@ Refactor and redesign.
 
 [refactor/clean-up-static-folder](https://github.com/ryanfiller/portfolio-svelte/pull/58) - take lot of things out of `static`
 
-[refactor/aliases](https://github.com/ryanfiller/portfolio-svelte/pull/59) - hilarious undo all the `$lib` work to use aliases instead
+[refactor/aliases](https://github.com/ryanfiller/portfolio-svelte/pull/59) - hilariously undo all the `$lib` work to use aliases instead
 
 [bug/fix-rss](https://github.com/ryanfiller/portfolio-svelte/pull/60) - refactor RSS feed
 
@@ -31,11 +48,10 @@ Refactor and redesign.
 
 [feature/auto-table-of-contents](https://github.com/ryanfiller/portfolio-svelte/pull/62) - create a plugin to create a table of contents for markdown posts (data currently unused)
 
-[feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type, its probably about time I really learned this...
+[design/new-fonts](https://github.com/ryanfiller/portfolio-svelte/pull/66) - choose and implement new variable fonts
 
 [[details | Version Details]]
 | - Features
-|   - typescript
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
 |   - store `series` data as `.md` files instead of one large `.json` file
 |   - moved `routes/blog/_content`, `routes/lab/_content` to `routes/_content/blog`, `routes/_content/lab`
@@ -50,6 +66,7 @@ Refactor and redesign.
 |   - \+ `/lab/[slug]`
 |   - ≈ `/blog/rss.xml`
 |   - ≈ `/sitemap.xml`
+|   - ≈ `/styles`
 |
 | - Endpoints
 |   - ≈ `/lab.json`
@@ -68,8 +85,14 @@ Refactor and redesign.
 |   - rehype
 |     - \+ `table-of-contents`
 |
-| - Packages
-|   - \+ typescript
+| - Static
+|   - \- `LabDJR-VF.woff`
+|   - \- `Barlow.woff2`
+|   - \- `Recursive.woff2`
+|   - \+ `ScienceGothic.ttf`
+|   - \+ `IBM-Plex-Sans.woff2`
+|   - \+ `IBM-Plex-Sans-Italic.woff2`
+|   - \+ `Fira-Code.ttf`
 
 </Change>
 

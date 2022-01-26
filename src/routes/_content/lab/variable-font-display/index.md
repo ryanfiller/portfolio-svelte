@@ -20,8 +20,9 @@ url:
   import VariableFont from './_components/variable-font.svelte'
 </script>
 
-<VariableFont {...fonts['LabDJR']} />
+<VariableFont {...fonts['science-gothic']} />
 
-<VariableFont {...fonts['Barlow']} />
+<VariableFont {...fonts['plex']} />
 
-<VariableFont {...fonts['Recursive']} />
+<VariableFont {...fonts['fira']} />
+
