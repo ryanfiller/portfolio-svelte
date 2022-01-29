@@ -9,7 +9,6 @@
     /* ------------- */
     /* headings */
     /* ------------- */
-    & h1,
     & h2,
     & h3,
     & h4,
@@ -23,7 +22,7 @@
       font-weight: bold;
 
       & a {
-        font-size: inherit;
+        all: inherit;
         color: currentColor;
         text-decoration: none;
 
@@ -49,7 +48,6 @@
       }
     }
 
-    & h1 { font-size: 2.4em; }
     & h2 { font-size: 1.8em; }
     & h3 { font-size: 1.6em; }
     & h4 { font-size: 1.4em; }
@@ -462,8 +460,6 @@
     & kbd *,
     & samp,
     & samp * {
-      font-family: var(--mono);
-      font-variation-settings: 'MONO' 1, 'wght' 450;
       font-size: 0.95em;
       /* overflow: auto; */
       overflow: hidden;
@@ -555,7 +551,6 @@
           background: var(--pixelBorder);
           font-size: 0.8em;
           padding: 0.125em 1em;
-          font-variation-settings: "MONO" 0, "CASL" 0.5, "wght" 360, "slnt" -15, "ital" 1;
           position: absolute;
           top: var(--borderWidth);
           right: 0;

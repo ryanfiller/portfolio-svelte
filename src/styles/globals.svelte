@@ -51,26 +51,7 @@
   /* fonts */
   /* ------------- */
 
-  @font-face {
-    font-family: 'LabDJR';
-    src: url('/fonts/LabDJR-VF.woff');
-    font-display: swap;
-    /* unicode-range: U+0000-00FF; */
-  }
-
-  @font-face {
-    font-family: 'Barlow';
-    src: url('/fonts/Barlow.woff2');
-    font-display: swap;
-    /* unicode-range: U+0000-00FF; */
-  }
-
-  @font-face {
-    font-family: 'Recursive';
-    src: url('/fonts/Recursive.woff2');
-    font-display: swap;
-    /* unicode-range: U+0000-00FF; */
-  }
+  @import './fonts.css';
 
   /* ------------- */
   /* variables */
@@ -92,11 +73,11 @@
     --readableColumn: minmax(auto, var(--readableMax));
 
     /* fonts */
-    --sansSerif: 'Barlow';
-    /* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
-    --mono: 'Recursive';
+    --fontDisplay: 'Science Gothic';
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-    --display: 'LabDJR';
+    --fontSansSerif: 'IBM Plex';
+    /* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
+    --fontMono: 'Fira Code';
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
     /* gradients */
@@ -173,7 +154,7 @@
       line-height: 1;
       color: var(--colorText);
       background-color: var(--colorBackground);
-      font-family: var(--sansSerif);
+      font-family: var(--fontSansSerif);
       font-variation-settings: 'wght' 60, 'wdth' 500;
     }
   }
@@ -336,6 +317,36 @@
   /* ------------- */
   /* typography */
   /* ------------- */
+
+  *, /* default font */
+  .font-sans-serif {
+    font-family: var(--fontSansSerif);
+    font-variation-settings: "wght" 400, "wdth" 92.5;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-display {
+    font-family: var(--fontDisplay);
+    font-variation-settings: "wght" 500, "wdth" 125, "YOPQ" 122;
+  }
+
+  pre,
+  pre *,
+  code,
+  code *,
+  kbd,
+  kbd *,
+  samp,
+  samp *,
+  .font-mono {
+    font-family: var(--fontMono);
+    font-variation-settings: "wght" 400;
+  }
 
   b,
   strong {

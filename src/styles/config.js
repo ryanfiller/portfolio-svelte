@@ -40,35 +40,30 @@ export const themes = {
 }
 
 export const fonts = {
-  LabDJR: {
-    name: 'LabDJR',
-    url: 'https://djr.com/lab-variable/',
+  plex: {
+    name: 'IBM Plex',
+    url: 'https://www.ibm.com/plex/',
+      options: {
+      wght: [100, 700],
+      wdth: [85, 100]
+    }
+  },
+
+  'science-gothic': {
+    name: 'Science Gothic',
+    url: 'https://github.com/tphinney/science-gothic',
     options: {
-      BEVL: [1, 1000],
-      OVAL: [1, 1000],
-      QUAD: [1, 1000],
-      SIZE: [1, 1000]
+      wght: [100, 900],
+      wdth: [50, 200],
+      YOPQ: [18, 122]
     }
   },
 
-  Barlow: {
-    name: 'Barlow',
-    url: 'https://tribby.com/fonts/barlow/',
+  fira: {
+    name: 'Fira Code',
+    url: 'https://github.com/tonsky/FiraCode',
       options: {
-      wght: [22, 188],
-      wdth: [300, 500]
-    }
-  },
-
-  Recursive: {
-    name: 'Recursive',
-    url: 'https://www.recursive.design/',
-      options: {
-      MONO: [0, 1],
-      CASL: [0, 1],
-      wght: [0, 1000],
-      slnt: [-15, 0],
-      ital: [0, 1]
+      wght: [300, 700]
     }
   }
 }

@@ -15,10 +15,11 @@
 	import Components from './_examples/components.md'
 	import Markdown from './_examples/markdown.md'
 	import Media from './_examples/media.md'
+	import Fonts from './_examples/fonts.svelte'
 
   const components = {
     colors: Colors,
-    // typography: '',
+    fonts: Fonts,
     markdown: Markdown,
     media: Media,
     components: Components

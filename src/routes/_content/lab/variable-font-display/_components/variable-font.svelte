@@ -20,8 +20,8 @@
     }
 
     & fieldset {
-      margin: 0 var(--padding);
       padding: var(--padding);
+      margin-top: -1rem;
     }
 
     & label {
@@ -83,6 +83,7 @@
 
     @media (--mediumWidth) {
       display: grid;
+      gap: 1rem;
       grid-template-columns: auto 1fr 1fr;
       grid-template-rows: auto auto;
       grid-template-areas:
@@ -105,7 +106,6 @@
 
       & .code {
         grid-area: code;
-        margin-top: 1rem;
       }
     }
   }
@@ -124,12 +124,13 @@
 
   const styleOptions = Object.entries(options).map(option => {
     const [name, [min, max]] = option
-    const range = max - min;
+    const range = max - min
+    const middle = (max + min) / 2
     return ({
-      name: name,
-      min: min,
-      max: max,
-      value: min >= 0 ? min : max,
+      name,
+      min,
+      max,
+      value: min >= 0 ? middle : max,
       step: range === 1 ? .5 : 1,
     })
   })
@@ -227,13 +228,9 @@ font-variation-settings: {
 };
 {#if capitalization !== 'none'}
   text-transform: "{capitalization}";
-{:else}
-  {` `}
 {/if}
 {#if italic}
   font-style: "italic";
-{:else}
-  {` `}
 {/if}
     </code>
   </pre>
