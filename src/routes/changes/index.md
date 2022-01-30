@@ -50,6 +50,8 @@ Refactor and redesign.
 
 [design/new-fonts](https://github.com/ryanfiller/portfolio-svelte/pull/66) - choose and implement new variable fonts
 
+[refactor/code-component](https://github.com/ryanfiller/portfolio-svelte/pull/67) - slightly redesign the embedded code component
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
@@ -61,6 +63,10 @@ Refactor and redesign.
 |   - fix the broken RSS feed and sitemap
 |   - create/steal a rehype plugin to create a table of contents
 |   - add a `json` endpoint for individual blog posts
+|   - fix a bunch of bugs, add a file name feature to code blocks, update old content
+|
+| - Layouts
+|   - ≈ `<Markdown />`
 |
 | - Routes
 |   - \+ `/lab/[slug]`
@@ -74,6 +80,10 @@ Refactor and redesign.
 |   - ≈ `/blog/series.json`
 |   - ≈ `/blog/tips.json`
 |   - \+ `/blog/[slug].json`
+|
+| - Plugins
+|   - remark
+|     - ≈ ``code`
 |
 | - Helpers
 |   - \- `getPages`

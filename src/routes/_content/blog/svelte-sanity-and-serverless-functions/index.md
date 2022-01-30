@@ -93,8 +93,7 @@ My site structure was pretty shallow and my `/pages` directory looked like this:
 
 Routify interacts with the browser's [`window.url` API](https://developer.mozilla.org/en-US/docs/Web/API/URL) by wrapping an entire app in the [`<Router>` component](https://routify.dev/guide/installation/install-to-existing-project). The `dev`, `serve`, and `build` commands in the `package.json` file will need to be changed to use the `routify` command instead of `rollup`.
 
-```svelte
-// app.svelte
+```svelte app.svelte
 
 <script>
   import { Router } from '@sveltech/routify'
@@ -252,8 +251,7 @@ In order to make the next steps easier, I went ahead and seeded some data via th
 
 Assuming we have data in the Sanity backend, the next step is to get it to the frontend. The easiest way to do this is to use the [JavaScript `@sanity/client` package](https://www.sanity.io/docs/js-client). This package provides an interface that can be called in other JavaScript files that, among other things, makes it much easier to work with GROQ queries. It needs a little bit of configuration to hook it up to your specific Sanity data.
 
- ```javascript
-// sanityClient.js
+```javascript sanityClient.js
 
 import sanityClient from '@sanity/client'
 
@@ -272,8 +270,7 @@ Sanity says that the `projectID` _isn't_ sensitive data and is fine to expose ov
 
 Once the Sanity client is configured it can be imported and used in any component. To retrieve data, the `client.fetch()` method must be passed a GROQ query as the first argument. It can also accept an optional second arguement, a `params` object containing dynamic variables.
 
-```svelte
-// index.svelte
+```svelte index.svelte
 
 <script>
   import client from '../sanityClient.js'
@@ -298,8 +295,7 @@ Since this query fetches the data for the homepage, which will show a list of al
 
 Because the `client.fetch()` returns a [`Promise`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise), Svelte's [`await` blocks](https://svelte.dev/docs#await) make it super easy to handle the different loading states in the UI.
 
-```svelte
-// index.svelte
+```svelte index.svelte
 
 <script>
   const getData = async () => {...}
@@ -318,8 +314,7 @@ Because the `client.fetch()` returns a [`Promise`](https://developer.mozilla.org
 
 Once someone is on a specific Owner's page it makes sense to only load the data relevant to that Owner. To do this, we can use the `client.fetch()` `params` argument to pass variables to the GROQ query. Because part of the Routify link data includes the `owner.slug` data, that can be used to look up a Sanity owner with matching `slug` value.
 
-```svelte
-// [owner]/index.svelte
+```svelte [owner]/index.svelte
 
 <script>
   import { params } from '@sveltech/routify'
@@ -489,8 +484,7 @@ Cool, so, once we have data, we need to move it around to the correct places. To
 
 On each page, there are two main data concerns — the Sanity data that needs to be shown, and the actions that a user can take to interact with that data. In a `stores.js` file, I set up two [`writable`s](https://svelte.dev/docs#writable) that could hold this data.
 
-```javascript
-// stores.js
+```javascript stores.js
 
 import { writable } from 'svelte/store'
 
@@ -514,8 +508,7 @@ export const actions = writable({
 
 To keep page data in sync, every time I made a call to the Sanity `client` I then took the response from the `fetch` call and set the page's `$data` store accordingly.
 
-```svelte
-// index.svelte
+```svelte index.svelte
 
 <script>
   import client from '../sanityClient.js'
@@ -552,8 +545,7 @@ To keep page data in sync, every time I made a call to the Sanity `client` I the
 
 `$data` holds multiple types of page information, so I used the [...spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) to copy the existing data and `set` a new value that only overwrites new data for the current page. On pages that had complicated data, it makes sense to use [destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) to grab data off of the `response` object.
 
-```svelte
-// [owner]/palette.svelte
+```svelte [owner]/palette.svelte
 
 const getData = async () => {
   return client.fetch(query, queryArgs)
@@ -596,8 +588,7 @@ const getData = async () => {
 
 To load the specific actions for each page, I called the `writeable.set()` method any time a new layout was visited. On the `/owner/palette` route, a user needs to be able to add a new color, edit existing colors, or edit the JSON code.
 
-```svelte
-// [owner]/palette.svelte
+```svelte [owner]/palette.svelte
 
 <script>
   import { actions } from '../../stores.js'
@@ -629,8 +620,7 @@ To load the specific actions for each page, I called the `writeable.set()` metho
 
 I mapped through these objects and used each to construct a button. Each configuration object could set things like a title and icon, and set the `$actions.current` value to render a different component to allow the user to edit data.
 
-```svelte
-// actions-buttons.svelte
+```svelte actions-buttons.svelte
 
 <script>
   import { actions } from '../stores.js'
@@ -652,8 +642,7 @@ I mapped through these objects and used each to construct a button. Each configu
 
 The actions component was a `<form>` tag that contained a giant `if...else` switch to conditionally show inputs that would post data back to the Sanity client.
 
-```svelte
-// actions-area.svelte
+```svelte actions-area.svelte
 
 <script>
   import { actions } from '../stores.js'
@@ -707,8 +696,7 @@ Netlify Functions are pretty straightforward to set up. There are steps in the d
 
 I set up two small functions, one to `create` and one to `mutate`, and they look almost exactly the same. The contents of each file in the `/api` folder will be packaged and deployed to a cloud server somewhere, so a new `sanityClient` needed to be created instantiated of each.
 
-```javascript
-// api/create.js
+```javascript api/create.js
 
 require('dotenv').config()
 const sanityClient = require('@sanity/client')
@@ -728,8 +716,7 @@ exports.handler = async function(event, _context, callback) {
 }
 ```
 
-```javascript
-// api/mutate.js
+```javascript api/mutate.js
 
 require('dotenv').config()
 const sanityClient = require('@sanity/client')
@@ -753,8 +740,7 @@ The `returnDocuments: true` option in the configuration object is important beca
 
 To avoid exposing my token credentials in these functions, I used the [`dotenv`](https://www.npmjs.com/package/dotenv) package again. After this package is installed, its `config()` method needs to be called as soon as possible in the project, so I put it at the top of my `rollup.config.js` file.
 
-```javascript
-// rollup.config.js
+```javascript rollup.config.js
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -772,8 +758,7 @@ To send data to these endpoints, I intercepted the `POST` action of the `<form>`
 
 Adding new data means posting a new object to the `/functions/create` endpoint. This object defines the `_type` and information of the new document to be created.
 
-```svelte
-// actions-area.svelte
+```svelte actions-area.svelte
 
 const createNewOwner = () => {
   fetch(`/.netlify/functions/create`, {
@@ -797,8 +782,7 @@ In order to make sure that a user is seeing the most up to date representation o
 
 Adding to the `colors` array, since it involves editing existing data rather than creating new data, is slightly different. To do this I need to hit my `/functions/mutate` endpoint and give Sanity a [`patch`](https://www.sanity.io/docs/http-patches) to make.
 
-```svelte
-// actions-area.svelte
+```svelte actions-area.svelte
 
 const createNewColor = () => {
   fetch(`/.netlify/functions/mutate`, {

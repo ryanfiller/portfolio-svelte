@@ -24,8 +24,7 @@ Because each adapter is technology specific, deploying to different platforms re
 
 Adapters can be used contextually by passing [environment variables](https://en.wikipedia.org/wiki/Environment_variable) and catching them with the [`dotenv` package](https://www.npmjs.com/package/dotenv). The ENV variable can then be passed to an [`if` statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/if...else), a [ternary](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator), or a [switch](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch) to determining the adapter to use.
 
-``` javascript
-// svelte.config.js
+``` javascript svelte.config.js
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -48,8 +47,7 @@ export default config
 
 Passing the `ENV` variable into an [NPM script command](https://docs.npmjs.com/cli/v7/using-npm/scripts) can be done by setting variables on a platform, such as [Netlify](https://docs.netlify.com/configure-builds/environment-variables/). ENV variables can also be passed directly into an NPM script by using the [`cross-env` package](https://www.npmjs.com/package/cross-env).
 
-```json
-// package.json
+```json package.json
 
 {
   "scripts": {

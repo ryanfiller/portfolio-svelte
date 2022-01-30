@@ -146,8 +146,7 @@ A React component is literally just a function that is exportd from a `.js` or `
 
 The `React` package itself will need to be imported first thing in any React component file.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 
@@ -172,8 +171,7 @@ JSX works _mostly_ like HTML, but with ability to interpolate Javascript by wrap
 
 This particular component is self-contained, but if it needed to wrap and render another component it could use React's special [`props.children`](https://reactjs.org/docs/composition-vs-inheritance.html) value. This value will be automatically added to any component that contains children and doesn't need to be explicity passed anywhere.
 
-```react
-// label.jsx
+```react label.jsx
 
 import React from 'react'
 
@@ -190,8 +188,7 @@ export default Label
 
 A component can be imported into another component's file with an [import statement](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) and then used like any other element.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 import Label from './label.jsx'
@@ -215,8 +212,7 @@ export default Color
 
 A Svelte component is a special type of file with the `.svelte` extension that lets the Svelte compiler know it needs to be treated in a certain way. Behind the scenes, Svelte components are actually JavaScript classes, but writing them is a lot like writing [regular HTML](https://svelte.dev/docs#Component_format). JavaScript is contained within `<script>` tags, CSS within `<style>` tags, and everything else on the page will be rendered as HTML. A Svelte component can consist of one or more of these three sections.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let color
@@ -237,8 +233,7 @@ Component composition works slightly different as well. Rather than passing chil
 
 `<slot>` elements are functionally very different than JSX's `props.children`, but at a basic level they should work mostly the same.
 
-```svelte
-// label.svelte
+```svelte label.svelte
 
 <span>
   <slot />
@@ -247,8 +242,7 @@ Component composition works slightly different as well. Rather than passing chil
 
 Components can be imported within the `<script>` section of other components and used as custom HTML tags.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let color
@@ -269,8 +263,7 @@ Vue, like React, has multiple ways to structure a component file.  I don't have 
 
 Apparently you _can_ [use JSX with Vue](https://vuejs.org/v2/guide/render-function.html), but none of the Vue developers I know have ever mentioned doing this. By default, Vue comes with its [own template syntax](https://vuejs.org/v2/guide/syntax.html) that is similar to Svelte's.
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>  
   export default {
@@ -298,8 +291,7 @@ Vue also needs to return a `<template>` tag in each component to register what H
 
 For composing components, Vue also uses the [`<slot>` tag](https://vuejs.org/v2/guide/components-slots.html). 
 
-```vue
-// label.vue
+```vue label.vue
 
 <script>  
   export default {
@@ -316,8 +308,7 @@ For composing components, Vue also uses the [`<slot>` tag](https://vuejs.org/v2/
 
 Like `props`, any imported components will need to be registered inside the `<script>` tag. After that, they can be used inside the `<template>` as custom elements.
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>  
   import Label from './label.vue'
@@ -373,8 +364,7 @@ The good news is that all three frameworks also have tools to add [types](https:
 
 In React, `props` are [immutable data passed into child components](https://reactjs.org/docs/components-and-props.html#props-are-read-only). This means that unless you go out of your way to allow changes, what you pass into a component will be exactly what the component will always render. Props are passed using regular HTML attribute syntax for strings, and the curly brackets syntax for any other type of value.
 
-```react
-// row.jsx
+```react row.jsx
 
 import React from 'react'
 import Color from './color.jsx'
@@ -399,8 +389,7 @@ To ensure that the `<Color>` component knows what type to expect for each prop, 
 
 A component's `.propTypes` are assigned in the same file, after the main body of the component.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -427,8 +416,7 @@ export default Color
 
 To make this more concise, the entire `color` object can be passed from `<Row>` to `<Color>`, then its attributes can be accessed inside the `<Color>` component.
 
-```react
-// row.jsx
+```react row.jsx
 
 import React from 'react'
 import Color from './color.jsx'
@@ -446,8 +434,7 @@ export default Row
 
 This means an update in the Color's PropTypes. It's possible to deep check the shape of an object, but for the sake of simplicity let's just check that it _is_ an object.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -471,8 +458,7 @@ export default Color
 
 The last way to pass props is to take advantage of the fact that they themselves are `object` type and use the [...spread](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax) operator. Instead of passing the bundled object as one value, the spread operator will take each attribute and pass it individually. This is a particularly helpful tool when a parent is passed props that in turn need to all be passed through to a child. Rather than be set to the value of an attribute, this syntax is applied directly to the component.
 
-```react
-// row.jsx
+```react row.jsx
 
 import React from 'react'
 import Color from './color.jsx'
@@ -490,8 +476,7 @@ export default Row
 
 Because each attribute was passed unbundled from the single `color` object, the type of each individual prop can be checked.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -543,8 +528,7 @@ export default Color
 
 Unlike React, Svelte comes built-in with an easy-to-opt-into typing system. When defining a `prop` in a child component using the `export let` syntax, [a default value can be set](https://svelte.dev/docs#1_export_creates_a_component_prop). Svelte will then throw a warning when a new value is assigned that does not match that original type. To opt out of this either don't set a default or explicitly assign it `undefined`.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let name = ''
@@ -581,8 +565,7 @@ Svelte can also pass an entire object as one attribute. One cool thing Svelte of
 
 These values can then be accessed off of the object in the child component.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 <script>
   export let color = {}
 </script>
@@ -600,8 +583,7 @@ It may seem like all individually defined and exported props are not automatical
 
 The same spread operator syntax can be used to pass all props into a child.
 
-```svelte
-// row.svelte
+```svelte row.svelte
 
 <script>
   export let color = {}
@@ -616,8 +598,7 @@ The same spread operator syntax can be used to pass all props into a child.
 
 In the child component the exported `props` will need to correspond to whatever was also passed to the parent. In this example, it would be a `color` object.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let color = {}
@@ -667,8 +648,7 @@ Passing props in Vue works mostly like React and Svelte, but with a few syntacti
 
 Vue, like Svelte, comes with a [typing system](https://vuejs.org/v2/guide/components-props.html#Prop-Validation) that only requires a small amount of additional syntax. When registering `props` to a component, each prop can be assigned a value to define a type associated with each key.
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>  
   export default {
@@ -723,8 +703,7 @@ Just like the other frameworks, objects can be passed down as props as well. Lik
 
 As you would probably expect, those values can be accessed via the `color` object prop.
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>  
   export default {
@@ -770,8 +749,7 @@ I'll be using [Block Element Modifier](http://getbem.com/) style classes for thi
 
 React does its best to be unopinionated when it comes to styles. JSX uses the [`className` attribute](https://reactjs.org/docs/faq-styling.html#how-do-i-add-css-classes-to-components) as an analog to the regular HTML `class`. Any string, or expression that evaluates to a string, can be used and will end up in the DOM and can be hooked up to an external style sheet.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 
@@ -792,8 +770,7 @@ export default Color
 
 React also allows for inline styles, but the syntax is [different](https://reactjs.org/docs/dom-elements.html#style) than regular HTML. The `style` attribute accepts an object, and as such the keys need to be camelCase strings rathan than normal CSS properties that contain hyphens. JavaScript values can be used directly in this object.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 
@@ -814,8 +791,7 @@ export default Color
 
 The last built-in way to work with styles in React is similar to inline styles, but is useful for styles that don't need to be attached to a specific DOM element. React's (hilariously named) [`dangerouslySetInnerHTML`](https://reactjs.org/docs/dom-elements.html#dangerouslysetinnerhtml) attribute can be combined with a `<style>` tag to create an on-page style sheet.
 
-```react
-// styles.jsx
+```react styles.jsx
 
 import React from 'react'
 
@@ -834,8 +810,7 @@ export default Styles
 
 Since JSX is "just javascript," running inline method doesn't require any special work. A function can be imported from another file, and then used anywhere in the body of the component or its returned JSX.
 
-```react
-// color.jsx
+```react color.jsx
 
 import React from 'react'
 import getLabelColor from './get-label-color.js'
@@ -862,8 +837,7 @@ export default Color
 
 More complex functions can even be defined as nested functions within a component before the return of the component's JSX. To hook up the `useStyle` prop I used this strategy to conditionally add a top level `className` and then scoped my `<style>` tag accordingly.
 
-```react
-// table.jsx
+```react table.jsx
 const Table = (props) => {
 
   function getClassName() {
@@ -892,8 +866,7 @@ export default Table
 
 Svelte, striving to be as close to HTML as possible, lets you use regular HTML class attribute syntax.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 <script>
   export let color
 </script>
@@ -909,8 +882,7 @@ Svelte, striving to be as close to HTML as possible, lets you use regular HTML c
 
 Since "valid HTML is valid Svelte," a regular [`style` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/style) can be used to create inline styles. This isn't very well documented, but Svelte can also interpolate JavaScript values within this attribute with the curly bracket syntax.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let color
@@ -927,8 +899,7 @@ Since "valid HTML is valid Svelte," a regular [`style` attribute](https://develo
 
 Svelte also comes with some pretty powerful built-in style tools. In addition to being able to define a `<script>` tag at the top of a `.svelte` file, you can define a [`<style>` tag](https://svelte.dev/docs#style) as well. The Svelte compiler will generate unique classes that will encapsulate styles to only effect elements within this component file. This means that styles won't naturally cascade down to child components, unless the style rule is wrapped with the `:global()` modifier.
 
-```svelte
-// styles.svelte
+```svelte styles.svelte
 
 <style>
   :global(.color-contrast-table) {
@@ -941,8 +912,7 @@ Because the `<script>` and HTML sections of a component are optional, this creat
 
 Since the `<script>` section of a component will run any valid JavaScript, component functions can be imported and run here. Variables can also be created and used in the HTML body with the same bracket syntax as `props` values.
 
-```svelte
-// color.svelte
+```svelte color.svelte
 
 <script>
   export let color
@@ -965,8 +935,7 @@ Since the `<script>` section of a component will run any valid JavaScript, compo
 
 Just like React, methods can be called inline using curly brackets. I used the same scoping method combined with a `:global()` modifier to toggle the styles for the chart. 
 
-```svelte
-// table.svelte
+```svelte table.svelte
 
 <script>
   export let colors
@@ -990,8 +959,7 @@ Just like React, methods can be called inline using curly brackets. I used the s
 
 One extra thing to note here when applying this logic specifically to classes is that Svelte also comes with a [`class:` directive](https://svelte.dev/docs#class_name) that makes conditionally rendering classes easier. Whatever directly follows the `:` will be added to the element's class list if the prop is truthy.
 
-```svelte
-// table.svelte
+```svelte table.svelte
 
 <script>
   export let colors
@@ -1014,8 +982,7 @@ One extra thing to note here when applying this logic specifically to classes is
 
 Vue, just like Svelte, uses the same class attribute syntax as regular HTML.
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>
   export default {
@@ -1041,8 +1008,7 @@ Vue's [inline style attribute](https://vuejs.org/v2/guide/class-and-style.html#B
 
 Any attributes that need access to interpolated values needs to use a Vue [directives](https://vuejs.org/v2/guide/custom-directive.html). A directive is a special kdinf of attribute, usually prefixed with "v-" that lets Vue know it needs to interpolate that attribute in a special way. 
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>
   export default {
@@ -1066,8 +1032,7 @@ Any attributes that need access to interpolated values needs to use a Vue [direc
 
 One awesome benefit of using a Vue [single file component](https://vuejs.org/v2/guide/single-file-components.html) is the ability to add a `<style>` tag to a component in addition to a `<script>` tag. This works a lot like the Svelte `<style>` tag, but is [more configurable](https://vue-loader.vuejs.org/guide/scoped-css.html). By default the styles will work like a global CSS stylesheet, but the tag itself can accept a `scoped` attribute. This will add generated classes and encapsulate the styles similar to Svelte.
 
-```vue
-// styles.vue
+```vue styles.vue
 
 <script>
   export default {
@@ -1092,8 +1057,7 @@ When it comes to using methods inside of components, Vue requires a bit more str
 
 To define a value in the `<script>` section and use that value in the component body, it must [be registered](https://vuejs.org/v2/guide/instance.html#Data-and-Methods) like other imports. In a single file component, `data` needs to be a [function that returns an object of data values](https://vuejs.org/v2/guide/components.html#data-Must-Be-a-Function). If that `data` value is going to be defined as the result of an expression, that function needs to also be registered to the `methods` key of the Vue object. 
 
-```vue
-// color.vue
+```vue color.vue
 
 <script>  
   import getLabelColor from './get-label-color.js'
@@ -1132,8 +1096,7 @@ To define a value in the `<script>` section and use that value in the component 
 
 Methods can also be defined as values inside the `methods` object, and can be run directly within the `<template>` section.
 
-```vue
-// table.vue
+```vue table.vue
 
 <script>  
   export default {
@@ -1165,8 +1128,7 @@ Methods can also be defined as values inside the `methods` object, and can be ru
 
 For methods that determine which classes are added to an element, Vue allows for [binding a directive to the `class` attribute](https://vuejs.org/v2/guide/class-and-style.html#Binding-HTML-Classes). You can pass an object to a bound class attribute, and if the value returns truthy the key will be added to the element's class list.
 
-```vue
-// table.vue
+```vue table.vue
 
 <script>  
   export default {
@@ -1221,8 +1183,7 @@ The biggest difference between JSX and any other templating system I've used is 
 
 This means that rather than learning JSX specific ways to programmatically create markup, React relies on directly using JavaScript methods. To render a list of items, an array of data can be looped through with a [`.map`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) or a [`.forEach`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) `Array` method.
 
-```react
-// row.jsx
+```react row.jsx
 
 import React from 'react'
 import Color from './color.jsx'
@@ -1264,8 +1225,7 @@ If the row component needed to _only_ show `<Color>` components for passing colo
 
 The ternary operator is used when one element is needed in one scenario and another in a different scenario, such as in the Header of each row.
 
-```react
-// header.jsx
+```react header.jsx
 
 import React from 'react'
 
@@ -1332,8 +1292,7 @@ An `if` block wraps some HTML that will only be returned if the condition return
 
 An `if` statement can also have an `:else` clause, providing a default that will be rendered if the conditional is evaluated as false.
 
-```svelte
-// header.svelte
+```svelte header.svelte
 
 <script>
   export let editNames
@@ -1363,8 +1322,7 @@ Vue templates also come with a built in logic system, but rather than using cust
 
 Vue's template directive attributes are interesting because they can be applied directly onto a tag, or can be applied to a wrapping `<template>` element that will function as a "rootless" element during render.
 
-```vue
-// row.vue
+```vue row.vue
 
 <script>  
   import Header from './header.vue'
@@ -1407,8 +1365,7 @@ Vue's template directive attributes are interesting because they can be applied 
 
 Vue also has both `v-if` and `v-else` directives that work how you would expect. Just like with `v-for` these can be applied on a wrapping `<template>` or directly to an element.
 
-```vue
-// header.vue 
+```vue header.vue 
 <script>
   export default {
     name: 'Header',
@@ -1450,8 +1407,7 @@ Vue also has both `v-if` and `v-else` directives that work how you would expect.
 
 Vue also comes with one extra operator that the other two frameworks don't include — [`v-show`](https://vuejs.org/v2/guide/conditional.html#v-show). `v-show` works visually just like `v-if`, but instead of not rendering an element it still renders the markup, but uses CSS to hide it from the DOM.
 
-```vue
-// directive directly on element
+```vue directive directly on element
 <Color v-show="color.score !== 'fail'" color={color} />
 
 // with wrapping element
@@ -1486,8 +1442,7 @@ Any of the [built-in React hooks](https://reactjs.org/docs/hooks-overview.html) 
 
 The `useState` hook is a function that can accept an argument to use as its initial state. It will return two values: the state value and a function to update that state value. These two values are usually written with the [array destructure assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) syntax, and will mostly follow the `valueName`, `setValueName` naming convention.
 
-```react
-// chart.js
+```react chart.js
 
 import React, { useState } from 'react'
 import generateChart from 'color-contrast-table'
@@ -1509,8 +1464,7 @@ Calling `setColor(newColors)` would cause the value of `colors` to change and ca
 
 Because this function needs to be called on the change event of an input, which will only return one value, the function needs to do a little more work to get only that new value into the existing `colors` object. Once that is worked out, the new `colors` object can be set using the `setColor` updater.
 
-```react
-// chart.js
+```react chart.js
 
 import React, { useState } from 'react'
 import generateChart from 'color-contrast-table'
@@ -1570,8 +1524,7 @@ export default Header
 
 The most important concept when dealing with state in React is that state objects are [immutable](https://developer.mozilla.org/en-US/docs/Glossary/Immutable) and should always be set using one of React's updaters and never reassigned directly. 
 
-```react
-// don't do this!
+```react don't do this!
 
 const [colors] = useState(props.colors)
 
@@ -1590,8 +1543,7 @@ Svelte also comes with a [built-in method](https://svelte.dev/docs#3_$_marks_a_s
 
 All of that to say, simply by declaring a prop, a Svelte app is already stateful. State, whether just a reactive prop or a labeled reactive statement, can be passed down to child components like any other type of data.
 
-```svelte
-// table.svelte 
+```svelte table.svelte 
 
 <script>
   export let colors
@@ -1618,8 +1570,7 @@ export const colorArray = writable()
 
 Then, in the `<Chart>` component, the `colorArray` store can be imported, `set` with `props` data, subscribed to, and passed down.
 
-```svelte
-// chart.svelte
+```svelte chart.svelte
 
 <script>
   export let colors
@@ -1639,8 +1590,7 @@ Then, in the `<Chart>` component, the `colorArray` store can be imported, `set` 
 
 This doesn't change much in the `<Chart>` component itself, but what it does allow for is direct access to update the `colorArray` store without having to pass functions. Instead, the `<Header>` component can access the store directly, call its `update` method, and the rest of the components will be made aware of this change via the `subscribe` method in `<Chart>`. Store methods can be composed in other functions that will sort out updating a single object property, then can be bound to input events using Svelte's [element directives](https://svelte.dev/docs#Element_directives).
 
-```svelte
-// header.svelte
+```svelte header.svelte
 
 <script>
   export let color
@@ -1685,8 +1635,7 @@ This doesn't change much in the `<Chart>` component itself, but what it does all
 
 Vue has two state-like concepts: [computed and watched properties](https://vuejs.org/v2/guide/computed.html). A [`computed` property](https://vuejs.org/v2/guide/computed.html#Computed-Properties) is one that is calculated based on some other data in the app and will remain cached after updating. A [`watch` property](https://vuejs.org/v2/guide/computed.html#Watchers) is like a `computed` property that requires a more custom implementation for how the data changing should be handled. The Vue docs recommend using `computed` over `watch` for most scenarios that don't involve asynchronous data, so that seemed like the right option for me.
 
-```vue
-// chart.vue
+```vue chart.vue
 
 <script>  
   import generateChart from 'color-contrast-table'
@@ -1728,8 +1677,7 @@ It feels slightly extraneous to have to assign a `data.colorArray` value and pas
 
 Vue uses an event-driven system to update state. Rather than having a function be passed down and bound to the change event of an input, an event is emitted by the input and then "caught" by a parent component. Custom events are defined by using the `v-on:` syntax, and are then passed an `$emit()` function. The first argument of `$emit()` is the name of the event to be emitted and the rest will be passed into the function when the event is caught.
 
-```vue
-// header.vue
+```vue header.vue
 
 <script>  
   import getLabelColor from './get-label-color.js'
@@ -1819,8 +1767,7 @@ methods: {
 
 This might _look_ like props being passed down, but this data flow is actually starting in the nested component and working its way upward. Once this function has been passed upwards to the same component in which the original computed values live, a method with the same name as the emitted event can be run to assign new data.
 
-```vue
-// chart.vue
+```vue chart.vue
 
 <script>  
   import generateChart from 'color-contrast-table'

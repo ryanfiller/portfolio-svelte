@@ -494,20 +494,10 @@
       }
     }
 
-    /* for WIDE blocks */
-    & > pre {
-      /* TODO this should be a utility class */
-      /* also TODO this specifictiy target is no good */
-      --width: calc(100vw - (2 * var(--padding)));
-
-      width: var(--width);
-      left: 50%;
-      margin-left: calc(-1 * var(--width) / 2);
-    }
-
     /* for blocks */
     & pre {
-      white-space: pre-wrap;
+      /* width: var(--fullBleedWidth); */
+      white-space: no-wrap;
       word-spacing: normal;
       word-break: normal;
       tab-size: 4;
@@ -519,6 +509,7 @@
         background-color: var(--codeBackgroundColor);
         opacity: var(--codeBackgroundOpacity);
         z-index: -2;
+        border-radius: var(--pixelBorderRadius);
       }
 
       & code {
@@ -527,14 +518,13 @@
         --line-height: 1.5;
 
         display: block;
-        /* padding: var(--tag-size) 0; */
         padding: var(--tag-size) var(--padding);
-
-        /* include readable */
-        max-width: calc(var(--readableMax) - (2 * var(--padding)));
+        width: minmax(var(--readableMax), min-content);
         margin: 0 auto;
         font-size: 1.5rem !important; /* this matters a LOT for the line highlight */
         line-height: var(--line-height);
+        background: var(--pixelBorder);
+        overflow: auto !important;
 
         &::after {
           top: var(--tag-size);
@@ -545,16 +535,29 @@
         }
       }
 
-      & code[data-language] {
+      & code[data-language],
+      & code[data-filename] {
         &::before {
-          content: attr(data-language);
-          background: var(--pixelBorder);
+          background: var(--colorText);
+          color: var(--colorBackground);
+          border-top-left-radius: var(--pixelBorderRadius);
+          border-top-right-radius: var(--pixelBorderRadius);
+          text-align: right;
           font-size: 0.8em;
-          padding: 0.125em 1em;
+          padding: 0.25em var(--padding);
           position: absolute;
-          top: var(--borderWidth);
+          top: 0;
+          left: 0;
           right: 0;
         }
+      }
+
+      & code[data-language]::before {
+        content: attr(data-language);
+      }
+
+      & code[data-filename]::before {
+        content: attr(data-filename);
       }
     }
   }

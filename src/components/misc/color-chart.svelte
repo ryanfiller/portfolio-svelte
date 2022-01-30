@@ -54,13 +54,8 @@
 
 <style>
   .color-chart {
-    /* TODO this should be a utility class */
-    --width: calc(100vw - (2 * var(--padding)));
-
-    width: var(--width);
-    position: relative;
-    left: 50%;
-    margin-left: calc(-1 * var(--width) / 2);
+    width: var(--fullBleedWidth);
+    padding: 0 var(--fullBleedPadding);
     overflow-x: auto;
 
     & .options {

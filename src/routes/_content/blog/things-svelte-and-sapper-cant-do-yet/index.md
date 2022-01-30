@@ -33,8 +33,7 @@ The first problem I uncovered is a limitation within the Svelte framework. I fou
 
 On my Gatsby blog I use [MDX](https://mdxjs.com/) to replace markdown elements with React components. Sapper has an equivalent tool, [MDsveX](https://mdsvex.com/). The configuration for both is similar — they need to import components and create an object that maps them to HTML elements.
 
-```javascript
-// react
+```react
 import { H1, H2, H3, H4, H5, H6 } from "../markdown/headings/index.js"
 
 const components = {
@@ -47,8 +46,9 @@ const components = {
 }
 
 <MDXProvider components={components}>...</MDXProvider>
+```
 
-// svelte
+```svelte
 <script context="module">
   import { h1, h2, h3, h4, h5, h6 } from './headings/index.js'
   export { h1, h2, h3, h4, h5, h6 }

@@ -42,7 +42,7 @@ This is an `inline code sample`.
 
 These are line highlighted code blocks:
 
-```html {1, 3-5, 11}
+```html index.html {1, 3-5, 11}
 <!DOCTYPE html>
 <html>
   <head>
@@ -76,6 +76,8 @@ function factorial(n) {
 
 // returns 6
 factorial(3);
+
+const thisVariableNameCausesHorizontalScrollBecauseItIsSuperLooooooooooooooooooong = ''
 ```
 
 </div>

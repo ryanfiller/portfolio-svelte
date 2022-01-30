@@ -61,8 +61,7 @@ The `<Alert />` component markup is pretty straightforward. It accepts a few `pr
 
 Since this is going to be a reusable component, I'm using the Svelte [`<slot />` element](https://svelte.dev/docs#slot) to pass content into the main body of the component.
 
-```svelte
-<!-- alert.svelte -->
+```svelte alert.svelte
 <script>
   export let show
   export let close
@@ -97,8 +96,7 @@ When trying to make accessible content, people tend to reach for adding [ARIA at
 
 HTML5 introduced the [`<dialog>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) for content like this, so it will be the foundattion for my component. The `<dialog>` element will be understood by modern screen readers and also comes with built-in conveniences like an `open` attribute to toggle visibility and a `::backdrop` pseudo element to handle the overlay on the content behind it.
 
-```svelte {9, 24}
-<!-- alert.svelte -->
+```svelte alert.svelte {8, 23}
 <script>
   export let show
   export let close
@@ -131,8 +129,7 @@ Unfortunately, Safari [doesn't fully support the `<dialog />`](https://caniuse.c
 
 The good news is that rather than render nothing, Safari will still render the element but instead treat it like a normal `<div>`. Because it will be rendered as a non-semantic element, I can mark it with the [ARIA `role='dialog'`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/dialog_role) so that any Safari screen reader will still treat it correctly.
 
-```svelte {12}
-<!-- alert.svelte -->
+```svelte alert.svelte {11}
 <script>
   export let show
   export let close
@@ -172,8 +169,7 @@ To address the first point, two more attributes can be added to the `<dialog />`
 
 I'll get back to the second criteria later in the post.
 
-```svelte {7, 15-16, 19, 28}
-<!-- alert.svelte -->
+```svelte alert.svelte {6, 14-15, 18, 27}
 <script>
   export let show
   export let close
@@ -216,8 +212,7 @@ Instead of relying on only CSS, I wanted my modal to take advantage of the fact 
 
 My site is already set up in such a way that each page is created with a `<Page />` Svelte component that I use to include shared page elements like the header and the footer. Adding a place for the alert to render at the end of the pages is as easy as adding a [named `<slot />`](https://svelte.dev/docs#slot_name). Because I don't want errant HTML to render on pages that don't need it, I'm also checking to see if an alert is present using the [`$$slots` object](https://svelte.dev/docs#slots_object) that Svelte provides.
 
-```svelte {14-16}
-<!-- page.svelte -->
+```svelte page.svelte {13-15}
 <SEO {...$$props} />
 
 <div id='site'>
@@ -237,8 +232,7 @@ My site is already set up in such a way that each page is created with a `<Page 
 
 The particular alert I'm building needs to go on any pages in the `/lab` section of my site, so I need to add the code for the actual alert to the `<Lab />` component that serves as the template for those subpages. To learn more about how exactly templates on my blog work, I have [another post](https://www.ryanfiller.com/blog/building-a-better-svelte-data-flow#how-does-mdsvex-work) that goes into depth, or there are the official [`mdsvex` docs](https://mdsvex.com/docs#layouts). Either way, just know that anything added to the `<Lab />` component outside of the default `<slot />` will appear on every page that matches the url `/lab/[slug]`. The `<Lab />` template is also responsible for managing the `showAlert` and `closeAlert` props.
 
-```svelte {4, 6, 8-10, 17-31}
-<!-- lab.svelte -->
+```svelte lab.svelte {3, 4, 7-9, 16-30}
 <script>
   import Page from './page.svelte'
   import Alert from '$components/misc/alert.svelte'
@@ -340,8 +334,7 @@ Stacking elements like this can quickly get confusing, so I highly recommend usi
 
 I have to manually swap a few `tabindex` attributes to make everything else on the page inert to someone tabbing through the site while the alert is open.
 
-```svelte {6}
-<!-- page.svelte -->
+```svelte page.svelte {5}
 <SEO {...$$props} />
 
 <div
@@ -368,8 +361,7 @@ To make everything within the main body of the site in the `<Page />` component 
 
 > A negative value (usually tabindex="-1") means that the element is not reachable via sequential keyboard navigation, but could be focused with JavaScript or visually by clicking with the mouse. It's mostly useful to create accessible widgets with JavaScript. 
 
-```svelte {17}
-<!-- alert.svelte -->
+```svelte alert.svelte {16}
 <script>
   export let show
   export let close
@@ -421,8 +413,7 @@ To handle the `escape` key the special [`<svelte:window />` component](https://s
 
 The main component can use a [Svelte Action](https://svelte.dev/docs#use_action) to attach and remove the events listeners for trapping focus.
 
-```svelte {9, 12, 22}
-<!-- alert.svelte -->
+```svelte alert.svelte {8, 11, 21}
 <script>
   export let show
   export let close
@@ -467,8 +458,7 @@ An `action` is just a function that will be passed the `node` on which the `use:
 
 The first thing I want to do when an alert is created is focus on it, which I can do with the [`.focus()` method](https://developer.mozilla.org/en-US/docs/Web/API/HTMLOrForeignElement/focus) thanks to the `tabindex='-1` from earlier.
 
-```javascript
-// focus-trap.js
+```javascript focus-trap.js
 function focusTrap(element) {
   element.focus()
 }
@@ -476,8 +466,7 @@ function focusTrap(element) {
 
 The next step is to get a list of every element that should be focusable within the `<dialog />` box. Taking inspiration from [this article by Zell Liew](https://zellwk.com/blog/keyboard-focusable-elements/), I used a list of natively focusable elements and created a `focusableElements` array, filtering out any that should be skipped.
 
-```javascript {2-10, 15-16}
-// focus-trap.js
+```javascript focus-trap.js {1-9, 14-15}
 const elements = [
   'a',
   'button',
@@ -500,8 +489,7 @@ Next, borrowing more logic from [this article by Hidde de Vries](https://hiddede
 
 If a user has pressed the `Tab` key, I want to prevent the default response and implement my own. The two things I need to know for this custom behavior are which element is currently in focus, which I can do by checking the [`document.activeElement`](https://developer.mozilla.org/en-US/docs/Web/API/Document/activeElement) against my `focusableElements` array, and whether the user intends to move forwards or backwards through the DOM, which I can do by checking whether or not they have included the `shiftKey`. The idea is to call `.focus()` on the next `focusableElements` item when the user presses just `Tab`, and on the previous element if they have pressed `Shift + Tab`.
 
-```javascript {18-33}
-// focus-trap.js
+```javascript focus-trap.js {17-32}
 const elements = [
   'a',
   'button',
@@ -549,8 +537,7 @@ When a user closes the alert, instead of just toggling the `showAlert` variable,
 
 When the page loads, the component also needs to look into `localStorage` and see if the user has closed the modal in the past. Svelte component code runs in both the client, where the `window` object exists, and on the server, where `window` will be undefined. Before trying to access `window.localStorage` the component needs to check if `typeof window !== 'undefined'` to avoid erroring on the server. This check isn't necessary inside of `closeAlert` since running that function can only be triggered by a user in their browser and not ever on the server. It's also important to check if the returned value is equal to a string value of `'false'` rather than the boolean `false` because `localStorage` will coerce any set value to a string. 
 
-```svelte {7-9, 13}
-<!-- lab.svelte -->
+```svelte lab.svelte {6-8, 12}
 <script>
   import Page from './page.svelte'
   import Alert from '$components/misc/alert.svelte'
@@ -593,8 +580,7 @@ But wait... what if the content in the modal changes and a user needs to see new
 
 The text content of the alert can be abstracted to a variable that will hold the HTML as a string. It can then be used in the body of the component using Svelte's [`@html` template syntax](https://svelte.dev/docs#html). When a user calls the `closeAlert` function, instead of storing `'false'`, the function can use the browser's [`btoa` method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/btoa) to convert the `alertContent` to a [base64 string](https://developer.mozilla.org/en-US/docs/Glossary/Base64) and store it. Since `btoa(alertContent)` will return a different string given new content, when the component checks `localStorage.getItem('labAlert')`, `showAlert` will be set only if a user has seen this exact content before.
 
-```svelte {6-12, 15, 21, 34}
-<!-- lab.svelte -->
+```svelte lab.svelte {5-11, 14, 20, 33}
 <script>
   import Page from './page.svelte'
   import Alert from '$components/misc/alert.svelte'
