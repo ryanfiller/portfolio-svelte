@@ -158,7 +158,7 @@ The most common error I have personally run across is a test runner will use jQu
 
 The most reliable way I have found to work around this issue is to use [getOwnPropertyDescriptor](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertyDescriptor) to fish the `.set()` method from a browser's [`HTMLInputElement` object](https://developer.mozilla.org/en-US/docs/Web/API/HTMLInputElement). That native method can then be called directly and attached to a DOM input element using the [`.dispatchEvent()` method](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent).
 
-``` javascript
+```javascript
 const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
   window.HTMLInputElement.prototype,
   'value'
@@ -179,8 +179,7 @@ It is important to set `bubbles: true` in the `dispatchEvent` configuration obje
 
 To make this function more reusable, it can be added as a [custom command](https://docs.cypress.io/api/cypress-api/custom-commands) within the `cypress/support/commands.js` file.
 
-```javascript {3, 17-20}
-// cypress/support/commands.js
+```javascript cypress/support/commands.js {2, 16-19}
 
 Cypress.Commands.add('inputChange', (input, value) => {
   const nativeInputValueSetter = Object.getOwnPropertyDescriptor(
@@ -204,8 +203,7 @@ Cypress.Commands.add('inputChange', (input, value) => {
 
 This command can now be called anywhere the `cy` global object is available.
 
-```javascript
-// range-input.spec.js
+```javascript range-input.spec.js
 
 cy.get('#range-input').then(input => cy.inputChange(input, '15'))
 ```

@@ -49,8 +49,7 @@ npm run dev -- --host --port 3333
 
 This will pass on any arguments after the empty `--` to whatever script `npm run ...` is calling. Running the command above will resolve the passed arguments and execute `svelte-kit dev "--host" "--port" "3333"`. In order to save having to type a long list of arguments every time, this can be defined in a `package.json` file in a few ways:
 
-```json
-// package.json
+```json package.json
 {
   "scripts": {
     "dev": "svelte-kit dev",

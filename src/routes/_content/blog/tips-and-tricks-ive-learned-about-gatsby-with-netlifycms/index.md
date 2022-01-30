@@ -35,8 +35,8 @@ I like being able to do page transitions and other things that required my heade
 
 [`gatsby-plugin-react-helmet`](https://www.gatsbyjs.org/packages/gatsby-plugin-react-helmet/) is a default Gatsby plugin that comes with every new Gatsby starter site. The starter site uses the plugin to pass metadata from pages up and into the `<head>` of the site, but it actually comes with a lot of other features. The layout wrapping method I outlined above can make it kind of difficult to pass data upwards, but if you dig into the [documentation of the base package](https://github.com/nfl/react-helmet#reference-guide) there's actually a way to add attributes to the `<body>` tag of the page. I've used this in a few instances to add high level classnames to the top of the page and then used my [favorite scss feature](https://css-tricks.com/the-sass-ampersand/#article-header-id-5) to add page specific overrides.
 
-```javascript
-// layout.jsx
+
+```javascript layout.jsx
 
 const Layout = props => {
   return (
@@ -45,8 +45,9 @@ const Layout = props => {
     <Footer className="footer"/>
   )
 }
+```
 
-// homepage.jsx
+```javascript homepage.jsx
 
 const Homepage = props => {
   return (
@@ -58,8 +59,9 @@ const Homepage = props => {
     </>
   )
 }
+```
 
-// header.scss
+```javascript header.scss
 
 .header {
   background: maroon;
@@ -138,8 +140,7 @@ With this setup anything in the `blog` directory gets the default template of `b
 
 While technically in beta, NetlifyCMS supports [manual javascript initialization](https://www.netlifycms.org/docs/beta-features/#manual-initialization) instead of using a `config.yaml` file. This makes a lot of sense to use with Gatsby since the entire ecosystem is already javascript based. Besides not having to deal with yaml indention this also adds the full power of javascript to the configuration file. That means you can break up configurations into different partials and compose them in your `config` object.
 
-```javascript
-// common-fields.js
+```javascript common-fields.js
 
 export const commonFields = [
   {
@@ -153,10 +154,9 @@ export const commonFields = [
     widget: 'date'
   }
 ]
+```
 
----
-
-// blog.js
+```javascript blog.js
 
 import commonFields from './common-fields'
 
@@ -172,10 +172,9 @@ export const blog = {
     }
   ]
 }
+```
 
----
-
-// cms.js
+```javascript cms.js
 
 import blog from './blog'
 

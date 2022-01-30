@@ -73,8 +73,7 @@ Most component-based frameworks offer this feature, but I wanted the ability to 
 
 For the header component I put together:
 
-```svelte
-// nav.svelte
+```svelte nav.svelte
 <script>
   export let segment
 </script>

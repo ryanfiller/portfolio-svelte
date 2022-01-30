@@ -66,6 +66,8 @@
     --containerMaxWidth: var(--largeSize);
     --borderRadius: 1rem;
     --borderWidth: calc(var(--padding) / 8);
+    --fullBleedWidth: 100vw;
+    --fullBleedPadding: var(--padding);
 
     /* accessibility stuff */
     --tapableSize: 40px;
