@@ -43,7 +43,6 @@
         &:hover,
         &:focus,
         &:focus-within {
-          background: pink;
           &::before {
             opacity: 1;
           }

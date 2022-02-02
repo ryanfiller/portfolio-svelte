@@ -40,15 +40,18 @@
 </script>
 
 <style>
+  :global(body) {
+    overflow-x: hidden;
+  }
+
   #site {
-    /* --widthMinusScrollbar: calc(100vw - 15px); */
-    --widthMinusScrollbar: 100vw;
+    --contentWidth: 100vw;
     --headerLogoHeight: 1.5em;
     --naviconSize: calc(var(--padding) + var(--tapableSize));
     --headerHeight: calc(var(--padding) + max(var(--naviconSize), var(--headerLogoHeight)));
     --overlayOpacity: 0.5;
     /* mobile, smallest size first */
-    --offCanvasWidth: calc(var(--widthMinusScrollbar) - var(--naviconSize) - (2 * var(--padding)));
+    --offCanvasWidth: calc(var(--contentWidth) - var(--naviconSize) - (2 * var(--padding)));
     --offCanvasSpeed: calc(3 * var(--transitionSpeed));
 
     @media (--smallWidth) {
@@ -71,7 +74,7 @@
     margin-left: calc(-2 * var(--offCanvasWidth));
     display: grid;
     grid-template-rows: var(--headerHeight) 1fr auto;
-    grid-template-columns: var(--offCanvasWidth) var(--widthMinusScrollbar) var(--offCanvasWidth);
+    grid-template-columns: auto var(--contentWidth) var(--offCanvasWidth);
     grid-template-areas: "header header  header"
                          ".      content ."
                          ".      footer  .";
@@ -81,7 +84,7 @@
     & #site-header {
       display: grid;
       grid-template-rows: var(--headerHeight) auto;
-      grid-template-columns: auto var(--offCanvasWidth) var(--widthMinusScrollbar) var(--offCanvasWidth);
+      grid-template-columns: auto var(--offCanvasWidth) var(--contentWidth) var(--offCanvasWidth);
       grid-template-areas: "bumper left header right"
                            "bumper left body   right";
       grid-row: 1 / -1;
@@ -90,7 +93,7 @@
       & *,
       & :global(*:not(.screenreader)) {
         position: relative;
-        z-index: 500;
+        z-index: 100;
       }
 
       & :global(.logo) {
@@ -105,8 +108,8 @@
         grid-area: header;
         justify-self: end;
         align-self: center;
-
         position: sticky;
+        z-index: 150;
         top: calc(0.5 * var(--padding));
         margin-right: calc(0.5 * var(--padding));
       }
@@ -132,6 +135,7 @@
         transition: var(--offCanvasSpeed);
         position: sticky;
         top: 0;
+        z-index: 150;
         height: 100vh;
         padding: var(--padding);
         display: grid;
@@ -144,7 +148,6 @@
         grid-area: left;
         grid-template-rows: 1fr 1fr;
         grid-template-areas: "skip" "toc";
-        /* grid just just works here */
       }
   
       & #site-right {
@@ -177,8 +180,8 @@
     }
 
     & main#content {
-      width: var(--widthMinusScrollbar);
-      margin-left: var(--offCanvasWidth);
+      width: var(--contentWidth);
+      /* margin-left: var(--offCanvasWidth); */
       grid-area: content;
       min-height: 100%;
       display: flex;
@@ -234,7 +237,7 @@
       & #site-bumper,
       & #site-left,
       & #site-right {
-        transition: height 0s !important;
+        transition: width 0s !important;
       }
     }
   }
