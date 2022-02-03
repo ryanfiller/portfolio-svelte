@@ -1,6 +1,6 @@
 <script>
   import { page } from '$app/stores'
-  import { right } from '$stores/layout.js'
+  import layout from '$stores/layout.js'
 
   // default to context, but overridable with prop // like the error page
   export let segment = $page.path === '/' ? 'homepage' : $page.path.split('/')[1]
@@ -52,7 +52,7 @@
     --overlayOpacity: 0.5;
     /* mobile, smallest size first */
     --offCanvasWidth: calc(var(--contentWidth) - var(--naviconSize) - (2 * var(--padding)));
-    --offCanvasSpeed: calc(3 * var(--transitionSpeed));
+    --offCanvasSpeed: calc(2 * var(--transitionSpeed));
 
     @media (--smallWidth) {
       --offCanvasWidth: 75vw;
@@ -64,7 +64,6 @@
 
     @media (--largeWidth) {
       --offCanvasWidth: 25vw;
-      /* --offCanvasSpeed: calc(1.5 * var(--transitionSpeed)); */
     }
     
     /* @media (--extraWidth) {
@@ -138,10 +137,6 @@
         z-index: 150;
         height: 100vh;
         padding: var(--padding);
-        display: grid;
-        gap: var(--padding);
-        grid-template-columns: 100%;
-        align-items: center;
       }
 
       & #site-left {
@@ -151,12 +146,11 @@
       }
   
       & #site-right {
-        grid-area: right;
-        display: none;
+        /* grid-area: right;
         grid-template-rows: var(--naviconSize) 1fr 1fr;
         padding-top: calc(0.5 * var(--padding));
-        grid-template-areas: "options" "nav" "action";
-        display: none;
+        grid-template-areas: "options" "nav" "action"; */
+        visibility: hidden;
         
         & > :global(*) {
           grid-area: options;
@@ -181,7 +175,6 @@
 
     & main#content {
       width: var(--contentWidth);
-      /* margin-left: var(--offCanvasWidth); */
       grid-area: content;
       min-height: 100%;
       display: flex;
@@ -207,26 +200,20 @@
         width: calc(2 * var(--offCanvasWidth));
       }
 
-      & #site-left:focus-within ~ #site-overlay {
-        opacity: var(--overlayOpacity);
-      }
-
-      & #site-left:focus-within ~ .navicon {
-        display: none;
-      }
-
-      & #navicon:checked ~ #site-overlay {
-        pointer-events: initial;
-        opacity: var(--overlayOpacity);
-      }
-
-      & #navicon:checked ~ #site-right {
-        display: grid;
-      }
-      
       & #navicon:checked ~ #site-bumper {
         /* retract the bumper, pull site to the left */
         width: 0;
+      }
+
+      & #navicon:checked ~ #site-right {
+        visibility: visible;
+      }
+
+      & #site-left:focus-within ~ #site-overlay,
+      & #site-right:focus-within ~ #site-overlay,
+      & #navicon:checked ~ #site-overlay {
+        pointer-events: initial;
+        opacity: var(--overlayOpacity);
       }
     }
 
@@ -238,6 +225,12 @@
       & #site-left,
       & #site-right {
         transition: width 0s !important;
+      }
+    }
+    
+    @media (--largeWidth) {
+      & #site-right :global(.nav) {
+        background: pink !important;
       }
     }
   }
@@ -289,7 +282,6 @@
     <aside
       id='site-right'
       use:focusTrap
-      TODO nav needs escape listener
     >
       <ColorSchemeToggle />
 
@@ -299,10 +291,10 @@
         links={mainNav}
       />
 
-      {#if $right.navAction === 'contact'}
+      {#if $layout.navAction === 'contact'}
         <ContactForm {...forms.contact} />
       {:else}
-        <!-- TODO -->
+        TODO
       {/if}
     </aside>
 

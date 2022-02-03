@@ -1,10 +1,10 @@
 <script>
-  import { right } from '$stores/layout.js'
+  import layout from '$stores/layout.js'
 </script>
 
 <svelte:window on:keydown={event => {
   if (event.keyCode === 27) { // escape key
-    $right.naviconOpen = false
+    $layout.naviconOpen = false
   }
 }}/>
 
@@ -108,7 +108,7 @@
   class='navicon'
   type='checkbox'
   autocomplete='false'
-  bind:checked={$right.naviconOpen}
+  bind:checked={$layout.naviconOpen}
 />
 
 <div class='navicon'>

@@ -43,15 +43,36 @@
 
 <style global>
   /* ------------- */
-  /* sizes & postcss media queries */
-  /* ------------- */
-  @import './sizes.css';
-
-  /* ------------- */
   /* fonts */
   /* ------------- */
 
   @import './fonts.css';
+
+  /* ------------- */
+  /* sizes & postcss media queries */
+  /* ------------- */
+  @import './sizes.css';
+
+  /* for debugging    */
+  /* #content {
+    background-color: #FF4136 !important;
+
+    @media (--smallWidth) {
+      background-color: #FF851B !important;
+    }
+    
+    @media (--mediumWidth) {
+      background-color: #FFDC00 !important;
+    }
+    
+    @media (--largeWidth) {
+      background-color: #3D9970 !important;
+    }
+    
+    @media (--extraWidth) {
+      background-color: #0074D9 !important;
+    }
+  } */
 
   /* ------------- */
   /* variables */

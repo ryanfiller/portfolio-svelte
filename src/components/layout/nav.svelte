@@ -4,7 +4,7 @@
   export let links = []
 
   import { goto } from '$app/navigation'
-  import { right } from '$stores/layout.js'
+  import layout from '$stores/layout.js'
 
   // TODO contact form stuff
   async function navigate(event) {
@@ -12,12 +12,12 @@
     const { href, hash, dataset } = event.target
 
     if (dataset.action && hash) {
-      $right.naviconOpen = true
-      $right.navAction = dataset.action
+      $layout.naviconOpen = true
+      $layout.navAction = dataset.action
       window.location.hash = hash
     } else {
       await goto(href)
-        .then(() => $right.naviconOpen = false)
+        .then(() => $layout.naviconOpen = false)
         .catch(() => goto('/404?'))
     }
   }
@@ -25,12 +25,11 @@
 </script>
 
 <style>
-  :global(header) ul {
-    background: red;
+  /* :global(header) ul {
     font-size: 2em;
     flex-direction: column;
     align-items: center;
-  }
+  } */
 
   ul {
     display: flex;
