@@ -11,14 +11,15 @@
 <style>
   /* there are TWO elements with this class in this file */
   .navicon {
-    --naviconPixel: calc(calc(var(--naviconSize) - var(--padding))/ 5);
+    --naviconIconSize: (var(--naviconSize) - var(--padding));
+    --naviconPixel: calc(var(--naviconIconSize)/ 5);
     --naviconTransitionSpeed: calc(0.5 * var(--offCanvasSpeed));
     cursor: pointer;
+    height: var(--naviconSize);
+    width: var(--naviconSize);
     
     &:is(input) {
       /* leave clickable area bigger than icon */
-      height: var(--naviconSize);
-      width: var(--naviconSize);
       margin: 0;
 
       /* remove appearance, but keep focus styles */
@@ -35,10 +36,7 @@
     }
 
     &:not(:is(input)) {
-      top: var(--padding) !important;
-      margin-right: var(--padding) !important;
-      height: calc(var(--naviconSize) - var(--padding));
-      width: calc(var(--naviconSize) - var(--padding));
+      padding: calc((var(--naviconSize) - var(--naviconIconSize)) / 2);
       display: grid;
       grid-template-columns: repeat(5, var(--naviconPixel));
       grid-template-rows: repeat(5, var(--naviconPixel));
@@ -52,7 +50,7 @@
       pointer-events: none;
       transform: translate(0, 0) scale(1, 1);
       transition: var(--naviconTransitionSpeed);
-      /* transition-timing-function: steps(3, end); */
+      transition-timing-function: steps(3, end);
       background: currentColor;
 
       &.top {
@@ -102,7 +100,7 @@
   
 </style>
 
-<!-- autocomplete: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-checked -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/checkbox#attr-checked -->
 <input
   id='navicon'
   class='navicon'

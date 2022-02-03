@@ -88,6 +88,7 @@
                            "bumper left body   right";
       grid-row: 1 / -1;
       grid-column: 1 / -1;
+      align-items: center;
 
       & *,
       & :global(*:not(.screenreader)) {
@@ -98,7 +99,6 @@
       & :global(.logo) {
         grid-area: header;
         justify-self: start;
-        align-self: center;
         margin-left: var(--padding);
       }
   
@@ -106,10 +106,9 @@
       & :global(.navicon) {
         grid-area: header;
         justify-self: end;
-        align-self: center;
-        position: sticky;
+        /* position: sticky; */
         z-index: 150;
-        top: calc(0.5 * var(--padding));
+        /* top: calc(0.5 * var(--padding)); */
         margin-right: calc(0.5 * var(--padding));
       }
     
@@ -262,10 +261,7 @@
   <header id='site-header'>
 
     <aside id='site-left'>
-      <PageLinks links={[
-        {content: 'skip to content', hash: '#content'},
-        {content: 'skip to site navigation', hash: '#navicon'}
-      ]} />
+      <PageLinks links={[ {content: 'skip to content', hash: '#content'} ]} />
       {#if toc}
         <PageLinks links={toc} />
       {/if}
