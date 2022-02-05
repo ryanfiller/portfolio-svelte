@@ -3,8 +3,10 @@
   export let label = ''
   export let links = []
 
+  import { onMount } from 'svelte';
   import { goto } from '$app/navigation'
   import layout from '$stores/layout.js'
+  import { getCustomProperty } from '$helpers'
 
   // TODO contact form stuff
   async function navigate(event) {
@@ -22,6 +24,19 @@
     }
   }
 
+  // take itself out of the tabIndex when its visually out of the drawer
+  // this is specifically for the header nav instance, not the footer nav instance
+  let navSize
+  let skipFocusTrap = 'true' // important to default to true
+  onMount(() => {
+    navSize = parseInt(getCustomProperty('navSize').match(/(.*)px/)[1])
+
+    new ResizeObserver(([body]) => {
+      const bodySize = body.contentRect.width
+      skipFocusTrap = bodySize > navSize
+    }).observe(document.body)
+  })
+
 </script>
 
 <style>
@@ -33,6 +48,8 @@
 
   ul {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
     gap: 1em;
     list-style: none;
     padding: 0;
@@ -66,24 +83,30 @@
 
 <!-- TODO? rel=prefetch on any of these? -->
 
-<nav class='nav' aria-label={label}>
+<nav
+  class='nav'
+  aria-label={label}
+>
   <ul>
     {#each links as link}
       <li>
         {#if link.external}
-          <a 
+          <a
             href={link.url}
             target='_blank'
             rel='noopener noreferrer'
+            data-skip-focus-trap={skipFocusTrap}
           >
             {link.name}
           </a>
         {:else}
-          <a 
+          <a
             on:click={navigate}
             href={`${link.url}`}
             data-action={link.action}
+            class:needs-js={!!link.action}
             class:active={link.url === segment}
+            data-skip-focus-trap={skipFocusTrap}
           >
             {link.name}
           </a>

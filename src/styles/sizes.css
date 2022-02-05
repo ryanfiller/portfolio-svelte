@@ -3,6 +3,7 @@
   --mediumSize: 768px;
   --largeSize: 992px;
   --extraSize: 1400px;
+  --navSize: var(--largeSize);
 }
 
 /* https://github.com/postcss/postcss-custom-media */
@@ -10,6 +11,8 @@
 @custom-media --mediumWidth (min-width: 768px);
 @custom-media --largeWidth (min-width: 992px);
 @custom-media --extraWidth (min-width: 1400px);
+
+@custom-media --navWidth (min-width: 992px); /* --largeWidth */
 
 @custom-media --smallHeight (min-height: 576px);
 @custom-media --mediumHeight (min-height: 768px);

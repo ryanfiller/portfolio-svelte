@@ -54,7 +54,7 @@
   @import './sizes.css';
 
   /* for debugging    */
-  /* #content {
+  #content {
     background-color: #FF4136 !important;
 
     @media (--smallWidth) {
@@ -72,7 +72,7 @@
     @media (--extraWidth) {
       background-color: #0074D9 !important;
     }
-  } */
+  }
 
   /* ------------- */
   /* variables */

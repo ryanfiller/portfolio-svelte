@@ -1,5 +1,5 @@
 <script>
-  import layout from '$stores/layout.js'
+  import layout from '$stores/layout.js' 
 </script>
 
 <svelte:window on:keydown={event => {
@@ -107,6 +107,7 @@
   type='checkbox'
   autocomplete='false'
   bind:checked={$layout.naviconOpen}
+  title={$layout.naviconOpen ? 'close' : 'open'}
 />
 
 <div class='navicon'>
@@ -124,5 +125,5 @@
 </div>
 
 <label id='site-overlay' for='navicon'>
-  <span class='screenreader'>show site navigation</span>
+  <span class='screenreader'>show site sidebar</span>
 </label>

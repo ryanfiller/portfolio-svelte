@@ -54,6 +54,10 @@
     --offCanvasWidth: calc(var(--contentWidth) - var(--naviconSize) - (2 * var(--padding)));
     --offCanvasSpeed: calc(2 * var(--transitionSpeed));
 
+    @media (--mouse) {
+      --naviconSize: calc(var(--padding) + 1em);
+    }
+
     @media (--smallWidth) {
       --offCanvasWidth: 75vw;
     }
@@ -62,9 +66,9 @@
       --offCanvasWidth: 50vw;
     }
 
-    @media (--largeWidth) {
+    /* @media (--largeWidth) {
       --offCanvasWidth: 25vw;
-    }
+    } */
     
     /* @media (--extraWidth) {
     } */
@@ -74,6 +78,7 @@
     display: grid;
     grid-template-rows: var(--headerHeight) 1fr auto;
     grid-template-columns: auto var(--contentWidth) var(--offCanvasWidth);
+    /* header doesn't actually use these areas, this is just for reference */
     grid-template-areas: "header header  header"
                          ".      content ."
                          ".      footer  .";
@@ -106,19 +111,19 @@
       & :global(.navicon) {
         grid-area: header;
         justify-self: end;
-        /* position: sticky; */
-        z-index: 150;
-        /* top: calc(0.5 * var(--padding)); */
+        z-index: 200;
         margin-right: calc(0.5 * var(--padding));
       }
     
       & :global(#site-overlay) {
         /* cover header body and make non-interactive */
-        position: fixed;
-        inset: 0;
         pointer-events: none;
         opacity: 0;
-        z-index: 100;
+        z-index: 150;
+        grid-row: 1 / -1;
+        grid-column: 3 / 4;
+        height: 100%;
+        width: 100%;
       }
 
       & #site-bumper {
@@ -130,10 +135,11 @@
 
       & #site-left,
       & #site-right {
+        align-self: start;
         transition: var(--offCanvasSpeed);
         position: sticky;
         top: 0;
-        z-index: 150;
+        z-index: 100;
         height: 100vh;
         padding: var(--padding);
       }
@@ -145,29 +151,40 @@
       }
   
       & #site-right {
-        /* grid-area: right;
-        grid-template-rows: var(--naviconSize) 1fr 1fr;
-        padding-top: calc(0.5 * var(--padding));
-        grid-template-areas: "options" "nav" "action"; */
-        visibility: hidden;
+        grid-area: right;
+        display: grid;
+        grid-template-rows: 1fr 1fr var(--naviconSize);
+        grid-template-areas: "nav"
+                             "action"
+                             "options";
         
         & > :global(*) {
-          grid-area: options;
-          justify-self: end;
+          visibility: hidden;
+        }
+        
+        /* nav starts in the tray, is pulled out on big screens */
+        & :global(.nav[aria-label="main navigation"]) {
+          grid-area: nav;
 
-          & :global(svg) {
-            height: calc(0.5 * var(--naviconSize));
-            width: calc(0.5 * var(--naviconSize));
+          @media (--navWidth) {
+            visibility: visible !important;
+            position: absolute;
+            background: red;
+            top: 0;
+            left: calc(-100% - ((2 * var(--padding) + var(--naviconSize))));
+            height: min-content;
+            width: 100%;
           }
         }
 
-        & > :global(nav) {
-          grid-area: nav;
-          justify-self: center;
+        & :global(.form) {
+          grid-area: action;
         }
 
-        & > :global(#contact) {
-          grid-area: action;
+        & #site-options {
+          grid-area: options;
+          justify-self: center;
+          width: min-content;
         }
       }
     }
@@ -205,7 +222,9 @@
       }
 
       & #navicon:checked ~ #site-right {
-        visibility: visible;
+        & > :global(*) {
+          visibility: visible !important;
+        }
       }
 
       & #site-left:focus-within ~ #site-overlay,
@@ -224,12 +243,6 @@
       & #site-left,
       & #site-right {
         transition: width 0s !important;
-      }
-    }
-    
-    @media (--largeWidth) {
-      & #site-right :global(.nav) {
-        background: pink !important;
       }
     }
   }
@@ -257,9 +270,7 @@
   data-segment={segment}
   class={isResizing ? 'resizing' : ''}
 >
-
   <header id='site-header'>
-
     <aside id='site-left'>
       <PageLinks links={[ {content: 'skip to content', hash: '#content'} ]} />
       {#if toc}
@@ -279,8 +290,6 @@
       id='site-right'
       use:focusTrap
     >
-      <ColorSchemeToggle />
-
       <Nav
         segment={segment}
         label='main navigation'
@@ -292,6 +301,10 @@
       {:else}
         TODO
       {/if}
+
+      <div id='site-options'>
+        <ColorSchemeToggle />
+      </div>
     </aside>
 
     <div id='site-bumper'></div>

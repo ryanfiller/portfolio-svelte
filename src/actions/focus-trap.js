@@ -9,8 +9,8 @@ const elements = [
 ]
 
 export default function focusTrap(element) {
-  
-  // set focus when element is created
+
+  // set focus when element is created, if its focusable
   element.focus()
 
   // do this in a function so it can check for new elements every run
@@ -23,13 +23,30 @@ export default function focusTrap(element) {
         element.hasAttribute('disabled')
         || element.type === 'hidden'
         || element.tabIndex === -1
+        || element.dataset.skipFocusTrap === 'true'
       ))
+      // .map(el => {
+      //   console.log(el)
+      //   return el
+      // })
   }
 
-  focusableElements = getFocusableElements()
+  element.addEventListener('focusin', event => {
+    // make sure a keypress didn't change the list of elements
+    focusableElements = getFocusableElements()
+    // console.log(focusableElements)
+    // bail if this wasn't supposed to get into this state
+    if (event.target.dataset.skipFocusTrap === 'true') {
+      focusableElements[0].focus()
+    }
+  })
   
   element.addEventListener('keydown', event => {
+    // check this as often as possible
     focusableElements = getFocusableElements()
+    
+    // bail if this isn't suppose to do anything extra
+    if (event.target.dataset.skipFocusTrap === 'true') return
 
     if (!(event.key === 'Tab' || event.keyCode === 9)) {
       // immediate exit for all other keys

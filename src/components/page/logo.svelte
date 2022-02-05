@@ -14,6 +14,9 @@
   }
 </style>
 
-<a href='/' class='logo'>
+<a
+  href='/'
+  class='logo'
+>
   ryanfiller.com
 </a>
