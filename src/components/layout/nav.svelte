@@ -29,12 +29,12 @@
   let navSize
   let skipFocusTrap = 'true' // important to default to true
   onMount(() => {
-    navSize = parseInt(getCustomProperty('navSize').match(/(.*)px/)[1])
+    navSize = getCustomProperty('navSize')
+    const navBreak = window.matchMedia(`(min-width: ${navSize})`);
 
-    new ResizeObserver(([body]) => {
-      const bodySize = body.contentRect.width
-      skipFocusTrap = bodySize > navSize
-    }).observe(document.body)
+    navBreak.addEventListener('change', () => {
+      skipFocusTrap = navBreak.matches
+    })
   })
 
 </script>
