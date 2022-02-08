@@ -162,29 +162,54 @@
           visibility: hidden;
         }
         
-        /* nav starts in the tray, is pulled out on big screens */
         & :global(.nav[aria-label="main navigation"]) {
           grid-area: nav;
-
-          @media (--navWidth) {
-            visibility: visible !important;
-            position: absolute;
-            background: red;
-            top: 0;
-            left: calc(-100% - ((2 * var(--padding) + var(--naviconSize))));
-            height: min-content;
-            width: 100%;
-          }
         }
 
-        & :global(.form) {
+        & #action-area {
           grid-area: action;
+          display: flex;
+          align-items: center;
         }
 
         & #site-options {
           grid-area: options;
-          justify-self: center;
-          width: min-content;
+        }
+
+        @media (--navWidth) {
+          --siteOptionsHeight: var(--naviconSize);
+          --actionAreaHeight: calc(100vh - (3 * var(--padding)) - var(--siteOptionsHeight));
+
+          /* drawer needs to not be sticky so nav doesn't get stuck */
+          position: relative;
+          display: block;
+          height: 100%;
+
+          /* nav starts in the tray, is pulled out on big screens */
+          & :global(.nav[aria-label="main navigation"]) {
+            visibility: visible !important;
+            position: absolute;
+            left: calc(-100% - ((2 * var(--padding) + var(--naviconSize))));
+            top: calc(0.5 * var(--headerHeight));
+            transform: translateY(-50%);
+            height: min-content;
+            width: 100%;
+          }
+
+          & #action-area,
+          & #site-options {
+            position: sticky;
+          }
+          
+          & #action-area {
+            top: var(--padding);
+            height: var(--actionAreaHeight);
+          }
+
+          & #site-options {
+            top: calc(var(--actionAreaHeight) + (2 * var(--padding)));
+            height: var(--siteOptionsHeight);
+          }
         }
       }
     }
@@ -296,11 +321,13 @@
         links={mainNav}
       />
 
-      {#if $layout.navAction === 'contact'}
-        <ContactForm {...forms.contact} />
-      {:else}
-        TODO
-      {/if}
+      <div id='action-area'>
+        {#if $layout.navAction === 'contact'}
+          <ContactForm {...forms.contact} />
+        {:else}
+          TODO
+        {/if}
+      </div>
 
       <div id='site-options'>
         <ColorSchemeToggle />

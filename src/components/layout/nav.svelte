@@ -5,8 +5,12 @@
 
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation'
+  import { page } from '$app/stores'
+
   import layout from '$stores/layout.js'
   import { getCustomProperty } from '$helpers'
+
+  console.log('page', $page)
 
   // TODO contact form stuff
   async function navigate(event) {
@@ -35,6 +39,11 @@
     navBreak.addEventListener('change', () => {
       skipFocusTrap = navBreak.matches
     })
+
+    // TODO  - there's probably a better way to handle this, I dunno...
+    if (window.location.hash === '#contact') {
+      $layout.naviconOpen = true
+    }
   })
 
 </script>
