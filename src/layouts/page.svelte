@@ -40,9 +40,9 @@
 </script>
 
 <style>
-  :global(body) {
+  /* body {
     overflow-x: hidden;
-  }
+  } */
 
   #site {
     --contentWidth: 100vw;
@@ -71,12 +71,13 @@
     }
 
     min-height: 100vh;
-    margin-left: calc(-2 * var(--offCanvasWidth));
+    margin-left: calc(-1 * var(--offCanvasWidth));
+    margin-right: auto;
     display: grid;
     grid-template-rows: var(--headerHeight) 1fr auto;
-    grid-template-columns: auto var(--contentWidth) var(--offCanvasWidth);
+    grid-template-columns: auto var(--contentWidth) 1fr;
     /* header doesn't actually use these areas, this is just for reference */
-    grid-template-areas: "header header  header"
+    grid-template-areas: "header header  ."
                          ".      content ."
                          ".      footer  .";
 
@@ -84,13 +85,13 @@
 
     & #site-header {
       display: grid;
-      grid-template-rows: var(--headerHeight) auto;
-      grid-template-columns: auto var(--offCanvasWidth) var(--contentWidth) var(--offCanvasWidth);
-      grid-template-areas: "bumper left header right"
-                           "bumper left body   right";
+      grid-template-rows: var(--headerHeight);
+      grid-template-columns: auto var(--contentWidth);
+      grid-template-areas: "bumper header";
       grid-row: 1 / -1;
-      grid-column: 1 / -1;
+      grid-column: 1 / -2;
       align-items: center;
+      position: relative;
 
       & *,
       & :global(*:not(.screenreader)) {
@@ -108,7 +109,7 @@
       & :global(.navicon) {
         grid-area: header;
         justify-self: end;
-        z-index: 200;
+        z-index: 350;
         margin-right: calc(0.5 * var(--padding));
       }
     
@@ -116,9 +117,9 @@
         /* cover header body and make non-interactive */
         pointer-events: none;
         opacity: 0;
-        z-index: 150;
-        grid-row: 1 / -1;
-        grid-column: 3 / 4;
+        z-index: 250;
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
         height: 100%;
         width: 100%;
       }
@@ -135,28 +136,33 @@
         align-self: start;
         width: var(--offCanvasWidth);
         transition: var(--offCanvasSpeed);
-        position: sticky;
-        top: 0;
+        position: absolute;
         z-index: 100;
-        height: 100vh;
+        top: 0;
+        bottom: -100%;
+        height: 100%;
         padding: var(--padding);
+        display: grid;
       }
 
       & #site-left {
-        grid-area: left;
+        /* this needs to slide relative to the right side */
+        right: var(--contentWidth);
         grid-template-rows: 1fr 1fr;
         grid-template-areas: "skip" "toc";
       }
   
       & #site-right {
-        grid-area: right;
-        display: grid;
+        display: none;
+        right: calc(-1 * var(--offCanvasWidth));
         grid-template-rows: 1fr 1fr var(--naviconSize);
         grid-template-areas: "nav"
                              "action"
                              "options";
         
         & > :global(*) {
+          position: sticky;
+          top: 0;
           visibility: hidden;
         }
         
@@ -174,16 +180,16 @@
           grid-area: options;
         }
 
-        @media (--navWidth) {
+        /* @media (--navWidth) {
           --siteOptionsHeight: var(--naviconSize);
           --actionAreaHeight: calc(100vh - (3 * var(--padding)) - var(--siteOptionsHeight));
 
-          /* drawer needs to not be sticky so nav doesn't get stuck */
+          drawer needs to not be sticky so nav doesn't get stuck
           position: relative;
           display: block;
           height: 100%;
 
-          /* nav starts in the tray, is pulled out on big screens */
+          nav starts in the tray, is pulled out on big screens
           & :global(.nav[aria-label="main navigation"]) {
             visibility: visible !important;
             position: absolute;
@@ -208,30 +214,13 @@
             top: calc(var(--actionAreaHeight) + (2 * var(--padding)));
             height: var(--siteOptionsHeight);
           }
-        }
+        } */
       }
     }
 
-    /* this is some pain in the butt mobile stuff, I'm not even sure if its 'fixable' */
-    @media (--touch) {
-      overflow-x: hidden;
-
-      & #site-header {
-        & #site-left,
-        & #site-right {
-          height: 100%;
-          align-items: start;
-          display: flex;
-          flex-direction: column;
-          gap: var(--padding);
-
-          & > :global(*) {
-            display: block;
-            width: 100%;
-            align-self: start !important;
-          }
-        }
-      }
+    & main#content,
+    & :global(#site-footer) {
+      z-index: 200;
     }
 
     & main#content {
@@ -267,6 +256,8 @@
       }
 
       & #navicon:checked ~ #site-right {
+        display: grid;
+
         & > :global(*) {
           visibility: visible !important;
         }
