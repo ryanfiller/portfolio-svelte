@@ -66,12 +66,9 @@
       --offCanvasWidth: 50vw;
     }
 
-    /* @media (--largeWidth) {
+    @media (--largeWidth) {
       --offCanvasWidth: 25vw;
-    } */
-    
-    /* @media (--extraWidth) {
-    } */
+    }
 
     min-height: 100vh;
     margin-left: calc(-2 * var(--offCanvasWidth));
@@ -136,6 +133,7 @@
       & #site-left,
       & #site-right {
         align-self: start;
+        width: var(--offCanvasWidth);
         transition: var(--offCanvasSpeed);
         position: sticky;
         top: 0;
@@ -209,6 +207,28 @@
           & #site-options {
             top: calc(var(--actionAreaHeight) + (2 * var(--padding)));
             height: var(--siteOptionsHeight);
+          }
+        }
+      }
+    }
+
+    /* this is some pain in the butt mobile stuff, I'm not even sure if its 'fixable' */
+    @media (--touch) {
+      overflow-x: hidden;
+
+      & #site-header {
+        & #site-left,
+        & #site-right {
+          height: 100%;
+          align-items: start;
+          display: flex;
+          flex-direction: column;
+          gap: var(--padding);
+
+          & > :global(*) {
+            display: block;
+            width: 100%;
+            align-self: start !important;
           }
         }
       }
