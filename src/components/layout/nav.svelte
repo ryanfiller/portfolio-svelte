@@ -10,8 +10,6 @@
   import layout from '$stores/layout.js'
   import { getCustomProperty } from '$helpers'
 
-  console.log('page', $page)
-
   // TODO contact form stuff
   async function navigate(event) {
     event.preventDefault()
@@ -58,16 +56,19 @@
   ul {
     display: flex;
     flex-wrap: wrap;
-    justify-content: end;
-    gap: 1em;
+    justify-content: center;
+    gap: var(--padding);
     list-style: none;
     padding: 0;
     margin: 0;
+    background: pink;
   }
 
   a {
     color: currentColor;
     text-decoration: none;
+    background: red;
+    font-size: 1em;
 
     /* &.active {
       position: relative;

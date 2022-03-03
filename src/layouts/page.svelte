@@ -22,6 +22,18 @@
   import Footer from '$components/layout/footer.svelte'
 
   import focusTrap from '$actions/focus-trap.js'
+  function shouldFocusTrap(element) {
+    // TODO - for some reason this isn't recalculating when the window changes, I dunno
+    const extraSize = getCustomProperty('extraSize')
+    const extraBreak = window.matchMedia(`(min-width: ${extraSize})`);
+    let trapFocus = !extraBreak.matches
+    extraBreak.addEventListener('change', () => {
+      // intentionally invert this logic, DON'T trap when it DOES match
+      trapFocus = !extraBreak.matches
+    })
+
+    return trapFocus ? focusTrap(element) : null
+  }
 
   const alertActive = $$slots.alert
   
@@ -40,11 +52,8 @@
 </script>
 
 <style>
-  /* body {
-    overflow-x: hidden;
-  } */
-
   #site {
+    /* TODO - change this to new content aware width value one day? */
     --contentWidth: 100vw;
     --headerLogoHeight: 1.5em;
     --naviconSize: calc(var(--padding) + var(--tapableSize));
@@ -70,6 +79,10 @@
       --offCanvasWidth: 25vw;
     }
 
+    @media (--extraWidth) {
+      --offCanvasWidth: min(15vw, 25rem);
+    }
+
     min-height: 100vh;
     margin-left: calc(-1 * var(--offCanvasWidth));
     margin-right: auto;
@@ -88,6 +101,7 @@
       grid-template-rows: var(--headerHeight);
       grid-template-columns: auto var(--contentWidth);
       grid-template-areas: "bumper header";
+      grid-area: header;
       grid-row: 1 / -1;
       grid-column: 1 / -2;
       align-items: center;
@@ -142,31 +156,21 @@
         bottom: -100%;
         height: 100%;
         padding: var(--padding);
-        display: grid;
+        display: flex;
+        flex-direction: column;
+        gap: var(--padding);
       }
 
       & #site-left {
         /* this needs to slide relative to the right side */
         right: var(--contentWidth);
-        grid-template-rows: 1fr 1fr;
-        grid-template-areas: "skip" "toc";
       }
   
       & #site-right {
-        display: none;
         right: calc(-1 * var(--offCanvasWidth));
-        grid-template-rows: 1fr 1fr var(--naviconSize);
-        grid-template-areas: "nav"
-                             "action"
-                             "options";
+        padding: var(--padding);
         
-        & > :global(*) {
-          position: sticky;
-          top: 0;
-          visibility: hidden;
-        }
-        
-        & :global(.nav[aria-label="main navigation"]) {
+        /* & :global(.nav[aria-label="main navigation"]) {
           grid-area: nav;
         }
 
@@ -178,29 +182,28 @@
 
         & #site-options {
           grid-area: options;
-        }
+        } */
 
-        /* @media (--navWidth) {
-          --siteOptionsHeight: var(--naviconSize);
-          --actionAreaHeight: calc(100vh - (3 * var(--padding)) - var(--siteOptionsHeight));
+        @media (--navWidth) {
+          /* --siteOptionsHeight: var(--naviconSize); */
+          /* --actionAreaHeight: calc(100vh - (3 * var(--padding)) - var(--siteOptionsHeight)); */
 
-          drawer needs to not be sticky so nav doesn't get stuck
-          position: relative;
-          display: block;
-          height: 100%;
+          /* makes sure things don't animate weird when this sliding around */
+          transition: 0s;
 
-          nav starts in the tray, is pulled out on big screens
+          /* nav starts in the tray, is pulled out on big screens */
           & :global(.nav[aria-label="main navigation"]) {
+            display: block !important;
             visibility: visible !important;
             position: absolute;
-            left: calc(-100% - ((2 * var(--padding) + var(--naviconSize))));
+            right: calc(100% + var(--padding) + var(--naviconSize));
             top: calc(0.5 * var(--headerHeight));
             transform: translateY(-50%);
             height: min-content;
-            width: 100%;
+            width: 50vw; /* arbitrary, just wide */
           }
 
-          & #action-area,
+          /* & #action-area,
           & #site-options {
             position: sticky;
           }
@@ -213,8 +216,8 @@
           & #site-options {
             top: calc(var(--actionAreaHeight) + (2 * var(--padding)));
             height: var(--siteOptionsHeight);
-          }
-        } */
+          } */
+        }
       }
     }
 
@@ -250,24 +253,120 @@
         width: calc(2 * var(--offCanvasWidth));
       }
 
-      & #navicon:checked ~ #site-bumper {
-        /* retract the bumper, pull site to the left */
-        width: 0;
+      & #navicon:not(:checked) ~ #site-right {
+        & > * {
+          display: none;
+          /* visibility: hidden; */
+        }
       }
 
-      & #navicon:checked ~ #site-right {
-        display: grid;
+      & #navicon:checked {
+        & ~ #site-bumper {
+          /* retract the bumper, pull site to the left */
+          width: 0;
+        }
 
-        & > :global(*) {
-          visibility: visible !important;
+        & ~ #site-right {
+          & > * {
+            visibility: visible !important;
+          }
         }
       }
 
       & #site-left:focus-within ~ #site-overlay,
-      & #site-right:focus-within ~ #site-overlay,
       & #navicon:checked ~ #site-overlay {
         pointer-events: initial;
         opacity: var(--overlayOpacity);
+      }
+    }
+
+    @media (--extraWidth) {
+      @supports (grid-template-columns: subgrid) {
+        margin-left: 0;
+        width: 100%;
+        /* height: 100vh; */
+        grid-template-areas: "offcanvas header content sidebar"
+                             "offcanvas footer content sidebar";
+        grid-template-columns: auto var(--offCanvasWidth) 1fr var(--offCanvasWidth);
+
+        & #site-header {
+          grid-row: 1 / -1;
+          grid-column: 1 / -1;
+          /* grid-template-rows: 1fr 1fr; */
+          grid-template-rows: var(--headerHeight) 1fr;
+          grid-template-columns: subgrid;
+          grid-template-areas: "offcanvas header content sidebar"
+                               "offcanvas footer content sidebar";
+          position: sticky;
+          top: 0;
+          
+          & :global(.logo) {
+            grid-area: header;
+            /* align-self: start; */
+          }
+
+          & :global(#navicon),
+          & :global(.navicon),
+          & :global(#site-overlay) {
+            display: none;
+          }
+
+          & #site-left,
+          & #site-right {
+            position: unset;
+            display: block;
+            height: 100vh;
+          }
+
+          & #site-left {
+            grid-area: offcanvas;
+            margin-left: calc(-1 * var(--offCanvasWidth));
+
+            &:focus-within {
+              margin-left: 0;
+            }
+          }
+
+          & #site-right {
+            grid-area: sidebar;
+            max-width: unset;
+            position: unset;
+            display: revert;
+
+            display: grid;
+            padding: 0;
+            gap: 0;
+            grid-template-columns: auto var(--offCanvasWidth) 1fr var(--offCanvasWidth);
+            align-items: start;
+            background: lime;
+            grid-column-start: 2;
+            grid-column-end: 5;
+            width: 100%;
+
+            position: sticky;
+            top: 0;
+
+            & #action-area,
+            & #site-options {
+              display: block !important;
+              grid-row-start: 1;
+              grid-column-start: 4;
+              background: orange;
+            }
+
+            & :global(.nav[aria-label="main navigation"]) {
+              all: revert;
+              align-self: start;
+              background: red;
+            }
+          }
+        }
+
+        & main#content,
+        & :global(#site-footer) {
+          width: auto;
+          height: 100%;
+        }
       }
     }
 
@@ -284,16 +383,20 @@
   }
 
   /* colors and stuff */
+  #site {
+    background-color: var(--colorPrimary);
+  }
+
   #site-header {
     color: var(--colorBackground);
     background-color: var(--colorPrimary);
   }
 
-  #site-left,
+  /* #site-left,
   #site-right {
     color: var(--colorBackground);
     background-color: var(--colorHighlight);
-  }
+  } */
 </style>
 
 <svelte:window on:resize={handleResizeJank}/>
@@ -324,7 +427,7 @@
 
     <aside
       id='site-right'
-      use:focusTrap
+      use:shouldFocusTrap
     >
       <Nav
         segment={segment}
