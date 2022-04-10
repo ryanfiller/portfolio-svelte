@@ -5,10 +5,10 @@ import customMedia from 'postcss-custom-media'
 export default [
   autoprefixer,
   nesting,
-  // customMedia({
-  //   importFrom: [
-  //     // this is relative to svelte.config.js
-  //     './src/styles/sizes.css'
-  //   ]
-  // })
+  customMedia({
+    importFrom: [
+      // this is relative to svelte.config.js
+      './src/styles/custom-media.css'
+    ]
+  })
 ]

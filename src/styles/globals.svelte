@@ -45,13 +45,13 @@
   /* ------------- */
   /* sizes & postcss media queries */
   /* ------------- */
-  @import './sizes.css';
+  @import './custom-media.css';
 
   /* ------------- */
   /* fonts */
   /* ------------- */
 
-  @import './fonts.css';
+  @import './font-face.css';
 
   /* ------------- */
   /* variables */
