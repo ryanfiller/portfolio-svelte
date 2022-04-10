@@ -15,16 +15,23 @@ banner:
 
 ## RF-05-06.2 - "Full Armor"
 
-I should probably learn TypeScript
+I should _probably_ learn TypeScript. I should _definitely_ write better tests.
 
 [feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type
 
+[feature/vitest](https://github.com/ryanfiller/portfolio-svelte/pull/70) - install a proper unit test runner
+
 [[details | Version Details]]
 | - Features
-|   - typescript
+|   - TypesSript
+|   - Vitest
 |
 | - Packages
 |   - \+ typescript
+|   - \+ @testing-library/svelte
+|   - \+ jsom
+|   - \+ vitest
+|   - \+ vitest-svelte-kit
 
 </Change>
 
