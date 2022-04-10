@@ -40,6 +40,8 @@ Asking our database(s) about availability is an expensive query that involves lo
 
 Each product will need to perform this complicated query, but luckily because the operation is taxing my coworkers have already set up a way to query for multiple products at one time.
 
+[[clearfix]]
+
 ```javascript
 // will return one result
 fetch(`/products/availability.json?ids[]=123`)
