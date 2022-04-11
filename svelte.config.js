@@ -52,16 +52,17 @@ export default {
 			// serviceWorker: 'src/service-worker',
 			template: 'src/app.html'
 		},
-		hydrate: true,
+		trailingSlash: 'never',
+		browser: {
+			hydrate: true,
+			router: true,
+		},
 		prerender: {
 			crawl: true,
 			enabled: true,
-			force: true,
-			pages: ['*', '/404', '/robots.txt']
+			onError: 'continue',
+			entries: ['*', '/404', '/robots.txt']
 		},
-		router: true,
-		ssr: true,
-		trailingSlash: 'never',
 		vite: {
 			plugins: vitePlugins(envVars),
 			resolve: {
