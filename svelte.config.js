@@ -89,17 +89,17 @@ export default {
 				plugins: postcssPlugins
 			}
 		}),
-		mdsvex({
-			extension: '.md',
-			layout: {
-				blog: 'src/layouts/blog.svelte',
-				lab: 'src/layouts/lab.svelte',
-				styles: 'src/routes/styles/_examples/layout.svelte',
-				_: 'src/layouts/markdown.svelte'
-			},
-			highlight: false, // use remark plugin instead
-			remarkPlugins: [...Object.values(remarkPlugins)],
-			rehypePlugins: [...Object.values(rehypePlugins)]
-		})
+		// mdsvex({
+		// 	extension: '.md',
+		// 	layout: {
+		// 		blog: 'src/layouts/blog.svelte',
+		// 		lab: 'src/layouts/lab.svelte',
+		// 		styles: 'src/routes/styles/_examples/layout.svelte',
+		// 		_: 'src/layouts/markdown.svelte'
+		// 	},
+		// 	highlight: false, // use remark plugin instead
+		// 	remarkPlugins: [...Object.values(remarkPlugins)],
+		// 	rehypePlugins: [...Object.values(rehypePlugins)]
+		// })
 	]	
 }
