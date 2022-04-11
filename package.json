@@ -15,6 +15,8 @@
     "eslint": "eslint . --ext .js,.svelte",
     "stylelint": "stylelint **/*.{css,svelte}",
     "lint": "npm run eslint && npm run stylelint",
+    "vitest": "vitest",
+    "vitest:coverage": "vitest run --coverage",
     "cypress": "npm run dev & cypress open",
     "test": "npm run dev & ./node_modules/.bin/cypress run",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
@@ -43,6 +45,7 @@
     "@sveltejs/adapter-netlify": "^1.0.0-next.17",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
     "@sveltejs/kit": "^1.0.0-next.113",
+    "@testing-library/svelte": "^3.1.1",
     "array-move": "^3.0.1",
     "autoprefixer": "^10.2.6",
     "axe-core": "^4.3.3",
@@ -58,6 +61,7 @@
     "eslint": "^7.31.0",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-svelte3": "^3.2.0",
+    "jsdom": "^19.0.0",
     "mdast-util-to-string": "^1.1.0",
     "mdsvex": "^0.9.7",
     "node-sass": "^4.14.1",
@@ -82,7 +86,7 @@
     "rollup-plugin-terser": "^5.3.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
-    "svelte": "^3.38.2",
+    "svelte": "^3.47.0",
     "svelte-local-storage-store": "^0.2.3",
     "svelte-preprocess": "^3.7.4",
     "to-vfile": "^6.1.0",
@@ -90,6 +94,8 @@
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
     "vite": "^2.3.6",
+    "vitest": "^0.9.3",
+    "vitest-svelte-kit": "^0.0.6",
     "yaml": "^1.10.0"
   }
 }
