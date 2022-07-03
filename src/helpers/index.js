@@ -15,17 +15,15 @@ function fishAttr(string, attr) {
 }
 
 function getCustomProperty(property) {
-  if (typeof(window) != 'undefined') {
-    return getComputedStyle(document.documentElement).getPropertyValue(`--${property}`).replace(/("|')/g, '').trim()
-  } else {
-    return ''
-  }
+  if (typeof(window) === 'undefined') return ''
+
+  return getComputedStyle(document.documentElement).getPropertyValue(`--${property}`).replace(/("|')/g, '').trim()
 }
 
 function setCustomProperty(property, value) {
-  if (typeof(window) != 'undefined') {
-    document.documentElement.style.setProperty(`--${property}`, value)
-  }
+  if (typeof(window) === 'undefined') return 
+  
+  document.documentElement.style.setProperty(`--${property}`, value)
 }
 
 function xmlEncode(string) {
