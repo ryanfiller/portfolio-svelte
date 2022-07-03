@@ -52,7 +52,7 @@ Cypress.Commands.add("setResolution", (size) => {
 })
 
 Cypress.Commands.add('setColorScheme', (theme) => {
-  cy.get('html').then(html => html[0].setAttribute('data-user-color-scheme', theme))
+  cy.get('html').then(html => html[0].setAttribute('data-user-theme', theme))
 })
 
 Cypress.Commands.add('closeAlert', () => {
