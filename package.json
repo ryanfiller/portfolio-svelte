@@ -15,10 +15,10 @@
     "eslint": "eslint . --ext .js,.svelte",
     "stylelint": "stylelint **/*.{css,svelte}",
     "lint": "npm run eslint && npm run stylelint",
-    "vitest": "vitest",
-    "vitest:coverage": "vitest run --coverage",
-    "cypress": "npm run dev & cypress open",
-    "test": "npm run dev & ./node_modules/.bin/cypress run",
+    "vitest": "vitest --config vitest.config.js",
+    "vitest:coverage": "vitest run --coverage --config vitest.config.js",
+    "cypress": "npm run share & cypress open --e2e --browser firefox",
+    "test": "npm run dev & ./node_modules/.bin/cypress run --e2e",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
   },
   "repository": {
@@ -51,7 +51,7 @@
     "axe-core": "^4.3.3",
     "block-ipsum": "^1.0.3",
     "color-contrast-table-svelte": "^4.0.0",
-    "cypress": "^8.7.0",
+    "cypress": "^10.2.0",
     "cypress-axe": "^0.13.0",
     "cypress-commands": "^1.1.0",
     "cypress-image-snapshot": "^4.0.1",
