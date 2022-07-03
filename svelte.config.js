@@ -1,4 +1,4 @@
-import path from 'path';
+import path from 'path'
 
 import dotenv from 'dotenv'
 dotenv.config()
@@ -43,7 +43,6 @@ export default {
 		// 	})
 		// 	: adapterNetlify(),
     // target: null,
-		amp: false,
     floc: false,
 		appDir: '_app',
 		files: {
@@ -76,6 +75,12 @@ export default {
 					$layouts: path.resolve('./src/layouts'),
 					'$site-config': path.resolve('./src/site-config.js')
 				}
+			},
+			test: {
+				globals: true,
+				environment: 'jsdom',
+				setupFiles: 'tests/unit/setup.js',
+				include: ['tests/unit/**/*.test.js'],
 			}
 		}
 	},

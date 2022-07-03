@@ -44,7 +44,7 @@
     "@rollup/plugin-replace": "^2.4.2",
     "@sveltejs/adapter-netlify": "^1.0.0-next.17",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
-    "@sveltejs/kit": "^1.0.0-next.310",
+    "@sveltejs/kit": "^1.0.0-next.350",
     "@testing-library/svelte": "^3.1.1",
     "array-move": "^3.0.1",
     "autoprefixer": "^10.2.6",
@@ -93,8 +93,8 @@
     "typescript": "^4.5.4",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
-    "vite": "^2.3.6",
-    "vitest": "^0.9.3",
+    "vite": "^2.9.12",
+    "vitest": "^0.15.1",
     "vitest-svelte-kit": "^0.0.6",
     "yaml": "^1.10.0"
   }
