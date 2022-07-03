@@ -1,5 +1,15 @@
+// http://ecoiron.blogspot.com/2007/01/emergy-c-low-wattage-palette.html
+
+const emergyc = {
+  // #822007 (rusty red)
+  // #000000 (black)
+  // #b2bbc0 (blue grey)
+  // #19472a (forest green)
+  // #3d414c (cobalt)
+  // #ffffff (white)
+}
+
 export const colors = {
-  // https://www.comiclink.com/img/comics/scans/RADB3E84201959_16201.jpg
   black: '#080025',
   white: '#fefdf2',
   purpleLight: '#a176b6',
@@ -10,14 +20,6 @@ export const colors = {
   orangeDark: '#ac284f',
   grayLight: '#5e828f',
   grayDark: '#4e6773',
-
-  // // gabby
-  // black: '#1e1638',
-  // white: '#fffefa',
-  // purple: '#7735c9',
-  // blue: '#0d63c9',
-  // orange: '#f54e6b',
-  // gray: '#9892a3',
 }
 
 export const themes = {
@@ -37,6 +39,23 @@ export const themes = {
     active: 'blueLight',
     disabled: 'grayDark',
   }
+
+  // light: {
+  //   text: 'black',
+  //   background: 'white',
+  //   primary: 'purpleDark',
+  //   highlight: 'blueDark',
+  //   active: 'orangeLight',
+  //   disabled: 'grayLight',
+  // },
+  // dark: {
+  //   text: 'white',
+  //   background: 'black',
+  //   primary: 'purpleDark',
+  //   highlight: 'orangeDark',
+  //   active: 'blueLight',
+  //   disabled: 'grayDark',
+  // }
 }
 
 export const fonts = {

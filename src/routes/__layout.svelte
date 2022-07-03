@@ -1,6 +1,8 @@
 <script>
 	import { colors } from '$styles/config.js'
 	import Styles from '$styles/globals.svelte'
+
+	import ThemeControls from '$components/misc/theme-controls.svelte'
 </script>
 
 <svelte:head>
@@ -26,3 +28,7 @@
 <Styles />
 
 <slot />
+
+<ThemeControls />
+
+hellooooooo world.
