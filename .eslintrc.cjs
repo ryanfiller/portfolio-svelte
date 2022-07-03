@@ -27,7 +27,20 @@ module.exports = {
     '.svelte-kit',
     '.vscode',
     'build',
+    'tests/__jail'
   ],
+  globals: {
+    cy: true,
+    Cypress: true,
+    vi: true,
+    beforeEach: true,
+    describe: true,
+    context: true,
+    context: true,
+    it: true,
+    test: true,
+    expect: true
+  },
   // rules: {
   //   // ...
   // },

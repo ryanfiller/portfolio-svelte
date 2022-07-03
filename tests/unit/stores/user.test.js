@@ -1,4 +1,3 @@
-import { tick } from 'svelte'
 import { get } from 'svelte/store'
 
 import user, { defaultData } from '$stores/user.js'
