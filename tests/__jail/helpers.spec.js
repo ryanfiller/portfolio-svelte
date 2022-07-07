@@ -8,26 +8,6 @@ import {
 } from '../../src/helpers/'
 
 describe('helper functions', () => {
-  describe('custom properties', () => {
-    describe('getCustomProperty()', () => {
-      // it('gets', () => { ... })
-      
-      it('does not blow up when `window` is undefined', () => {
-        const result = getCustomProperty('whatever')
-        expect(result).to.eq('')  
-      })
-    })
-    
-    describe('setCustomProperty()', () => {
-      // it('sets', () => { ... })
-      
-      it('does not blow up when `window` is undefined', () => {
-        const result = setCustomProperty('whatever')
-        expect(result).to.eq(undefined)
-      })
-    })
-  })
-
   describe('fishAttr()', () => {
     const string = `<img src="logo.png" title='okay' alt="logo" />`
 

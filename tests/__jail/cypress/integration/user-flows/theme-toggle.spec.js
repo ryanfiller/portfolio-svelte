@@ -12,7 +12,7 @@ describe('user color scheme', () => {
     })
 
     it('sets a data attribute', () => {
-      cy.get('[data-user-color-scheme]').should('exist')
+      cy.get('[data-user-theme]').should('exist')
     })
   })
 
@@ -25,7 +25,7 @@ describe('user color scheme', () => {
 
       it('renders light mode', () => {
         cy.document().then(document => {
-          const theme = document.documentElement.attributes['data-user-color-scheme'].value
+          const theme = document.documentElement.attributes['data-user-theme'].value
           expect(theme).to.equal('light')
           const style = document.documentElement.attributes['style'].value
           expect(style).to.equal('--user-color-scheme:light;')
@@ -41,7 +41,7 @@ describe('user color scheme', () => {
 
       it('renders dark mode', () => {
         cy.document().then(document => {
-          const theme = document.documentElement.attributes['data-user-color-scheme'].value
+          const theme = document.documentElement.attributes['data-user-theme'].value
           expect(theme).to.equal('dark')
           const style = document.documentElement.attributes['style'].value
           expect(style).to.equal('--user-color-scheme:dark;')

@@ -10,6 +10,19 @@
     }).join('\n')
   }
 
+  const monoizeTheme = (theme) => {
+    const mono = {}
+    for (const color in theme) {
+      if (color === 'background') {
+        mono[color] = theme[color]
+      } else {
+        // mono[color] = theme['primary']
+        mono[color] = theme['highlight']
+      }
+    }
+    return mono
+  }
+
   const setTheme = (theme) => {
     return Object.entries(theme).map(color => {
       const [ name, value ] = color
@@ -22,20 +35,60 @@
   <meta name='color-scheme' content='dark light'>
   {@html `
     <${'style'}>
+      /* defaults */
+
       :root {
         ${setColors(colors)}
         ${setTheme(themes.light)}
       }
 
-      @media (prefers-color-scheme: dark) {
-        /* prevent default from overriding user selection if no js */
-        :root:not([data-user-color-scheme]) {
-          ${setTheme(themes.dark)}
+      /* user set preferences */
+
+      [data-user-theme='light'] {
+        :root {
+          ${setTheme(themes.light)}
         }
       }
 
-      [data-user-color-scheme='dark'] {
+      [data-user-theme='dark'] {
         ${setTheme(themes.dark)}
+      }
+
+      [data-user-contrast='more'] {
+        ${setTheme(monoizeTheme(themes.light))}
+      }
+
+      [data-user-contrast='more'][data-user-theme='dark'] {
+        ${setTheme(monoizeTheme(themes.dark))}
+      }
+
+      /* automatic from preferences */
+
+      @media (prefers-color-scheme: dark) {
+        :root[data-user-theme='auto'] {
+          --test: hello;
+          ${setTheme(themes.dark)}
+        }
+
+        :root[data-user-theme='auto'][data-user-contrast='more'] {
+          ${setTheme(monoizeTheme(themes.dark))}
+        }
+      }
+
+      @media (prefers-contrast: more) {
+        :root[data-user-contrast='no-preference'] {
+          ${setTheme(monoizeTheme(themes.light))}
+        }
+
+        :root[data-user-contrast='no-preference'][data-user-theme='dark'] {
+          ${setTheme(monoizeTheme(themes.dark))}
+        }
+      }
+
+      @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+        :root[data-user-theme='auto'] {
+          ${setTheme(monoizeTheme(themes.dark))}
+        }
       }
     </${'style'}>
   `}
@@ -45,13 +98,13 @@
   /* ------------- */
   /* sizes & postcss media queries */
   /* ------------- */
-  @import './sizes.css';
+  @import './custom-media.css';
 
   /* ------------- */
   /* fonts */
   /* ------------- */
 
-  @import './fonts.css';
+  @import './font-face.css';
 
   /* ------------- */
   /* variables */

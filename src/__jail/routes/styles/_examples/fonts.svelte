@@ -1,7 +1,7 @@
 <script>
   import Markdown from '$components/layout/markdown.svelte'
 
-  const css = Object.values(import.meta.globEager('/src/styles/fonts.css'))[0].default
+  const css = Object.values(import.meta.globEager('/src/styles/font-face.css'))[0].default
   const fonts = css.split('@font-face').filter(css => css.includes('font-family'))
   const fontFamilies = [...new Set(fonts.map(font => font.match(/font-family: '(.*)';/)[1]))]
   const characters = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ':', ';', '<', '=', '>', '?', '@', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '[', '\\', ']', '^', '_', '`', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '{', '|', '}', '~']

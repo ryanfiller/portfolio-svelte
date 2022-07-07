@@ -1,4 +1,6 @@
-require('@cypress/snapshot').register()
+import { register } from '@cypress/snapshot'
+register()
+
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command'
 import 'cypress-localstorage-commands'
 

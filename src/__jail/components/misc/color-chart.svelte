@@ -86,19 +86,19 @@
 <svelte:head>
   {@html `
     <${'style'}>
-      html[data-user-color-scheme] [data-color^="color"] {
+      html[data-user-theme] [data-color^="color"] {
         display: none;
       }
 
-      ${cssForColors('html[data-user-color-scheme="light"]', themes.light)} {
+      ${cssForColors('html[data-user-theme="light"]', themes.light)} {
         display: revert;
       }
 
-      ${cssForColors('html[data-user-color-scheme="dark"]', themes.dark)} {
+      ${cssForColors('html[data-user-theme="dark"]', themes.dark)} {
         display: revert;
       }
 
-      html[data-user-color-scheme] .color-chart--show-all-colors [data-color^="color"] {
+      html[data-user-theme] .color-chart--show-all-colors [data-color^="color"] {
         display: revert !important;
       }
     </${'style'}>
