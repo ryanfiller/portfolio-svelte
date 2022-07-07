@@ -22,11 +22,12 @@ export default {
   remarkCustomBlocks: [remarkCustomBlocks, {
     details: {
       classes: 'details',
-      title: 'required',
+      // title: 'required',
+      title: 'optional',
       details: true
     },
     clearfix: {
       classes: 'clearfix'
     }
-  }], 
+  }] 
 }

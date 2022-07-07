@@ -1,5 +1,3 @@
-// TODO tests!
-
 import fs from 'fs'
 import unified from 'unified'
 import remarkParse from 'remark-parse'
@@ -12,6 +10,9 @@ import rehypeStringify from 'rehype-stringify'
 
 import rehypeTableOfContents from '../plugins/rehype/table-of-contents.js'
 
+import remarkPlugins from '../plugins/remark/index.js'
+import rehypePlugins from '../plugins/rehype/index.js'
+
 export function sortNewestToOldest(a, b) {
 	// chronologically sort by meta.date
 	let aDate = a.meta.date
@@ -21,34 +22,47 @@ export function sortNewestToOldest(a, b) {
 	return bDate - aDate
 }
 
-export function getPageContent(path, content = []) {
-	const file = fs.readFileSync(path.replace('/src', 'src'), 'utf-8')
-	
-	let returnedContent = {}
-	unified()
+export function transformMarkdown(file, contentTypes = []) {
+	let content = {}
+	const parser = unified()
 		.use(remarkParse)
 		.use(remarkFrontmatter, ['yaml'])
 		.use(remarkExtractFrontmatter, { yaml: yaml.parse })
 		.use(remarkStringify)
-		.use(remarkToRehype)
-		.use(rehypeStringify)
-		.use(rehypeTableOfContents)
-		.process(file, function (error, file) {
+
+		for (const plugin in remarkPlugins) {
+			if (Array.isArray(remarkPlugins[plugin])) {
+				parser.use(...remarkPlugins[plugin])
+			} else {
+				parser.use(remarkPlugins[plugin])
+			}
+		}
+
+		parser.use(remarkToRehype)
+
+		for (const plugin in rehypePlugins) {
+			parser.use(rehypePlugins[plugin])
+		}
+
+		parser.use(rehypeStringify)
+			.use(rehypeTableOfContents)
+
+		parser.process(file, function (error, file) {
 			if (error) {
 				console.error('error getting page', error)
 			}
 
 			// TODO? markdown content
-			content.map(contentType => {
+			contentTypes.map(contentType => {
 				switch (contentType) {
 					case 'frontmatter':
-						returnedContent.frontmatter = file?.data
+						content.frontmatter = file?.data
 						break
 					case 'html':
-						returnedContent.html = file?.contents
+						content.html = file?.contents
 						break
 					case 'toc':
-						returnedContent.toc = file?.toc
+						content.toc = file?.toc
 						break
 					default:
 						null
@@ -56,7 +70,13 @@ export function getPageContent(path, content = []) {
 			})
 		})
 
-	return returnedContent
+	return content
+}
+
+export function getPageContent(path, contentTypes = []) {
+	const file = fs.readFileSync(path.replace('/src', 'src'), 'utf-8')
+	
+	return transformMarkdown(file, contentTypes)
 }
 
 export function buildPagesList({

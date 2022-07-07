@@ -1,6 +1,6 @@
 import slugify from './slugify.js'
 import { objectToParams, paramsToObject } from './query-param-helpers.js'
-import { buildPagesList, getPageContent, sortNewestToOldest } from './content-helpers.js'
+import { buildPagesList, transformMarkdown, getPageContent, sortNewestToOldest } from './content-helpers.js'
 
 function capitalize(string) {
   if (typeof string !== 'string') return ''
@@ -42,11 +42,12 @@ export {
   buildPagesList,
   fishAttr,
   getCustomProperty,
+  transformMarkdown,
   getPageContent,
   setCustomProperty,
   slugify,
   objectToParams,
   sortNewestToOldest,
   paramsToObject,
-  xmlEncode
+  xmlEncode,
 }
