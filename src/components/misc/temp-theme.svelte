@@ -1,3 +1,23 @@
+<script>
+  import { themes } from '$styles/config.js'
+  import user from '$stores/user.js'
+
+  const colors = themes[$user.theme]
+  console.log('colors', colors)
+</script>
+
+{#if colors}
+  <table>
+    {#each Object.entries(colors) as color}
+      {@const [ name, value ] = color}
+      <tr>
+        <td>{name}</td>
+        <td style='background-color: {value}'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      </tr>
+    {/each}
+  </table>
+{/if}
+
 <br />
 <br />
 

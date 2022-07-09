@@ -18,8 +18,7 @@
       if (color === 'background') {
         mono[color] = theme[color]
       } else {
-        // mono[color] = theme['primary']
-        mono[color] = theme['highlight']
+        mono[color] = theme['primary']
       }
     }
     return mono
