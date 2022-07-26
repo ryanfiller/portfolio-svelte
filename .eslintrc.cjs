@@ -41,9 +41,10 @@ module.exports = {
     test: true,
     expect: true
   },
-  // rules: {
-  //   // ...
-  // },
+  rules: {
+    // i'm not using web-components the way svelte expects, this rule isn't needed
+    'svelte/missing-custom-element-compile-options': 0
+  },
   settings: {
     // use styleint instead
     'svelte3/ignore-styles': () => true
