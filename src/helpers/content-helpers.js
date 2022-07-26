@@ -6,6 +6,7 @@ import remarkFrontmatter from 'remark-frontmatter'
 import remarkExtractFrontmatter from 'remark-extract-frontmatter'
 import yaml from 'yaml'
 import remarkToRehype from 'remark-rehype'
+import rehypeRaw from 'rehype-raw'
 import rehypeStringify from 'rehype-stringify'
 
 import rehypeTableOfContents from '../plugins/rehype/table-of-contents.js'
@@ -22,7 +23,7 @@ export function sortNewestToOldest(a, b) {
 	return bDate - aDate
 }
 
-export function transformMarkdown(file, contentTypes = []) {
+export function transformMarkdown(markdown, contentTypes = []) {
 	let content = {}
 	const parser = unified()
 		.use(remarkParse)
@@ -38,31 +39,37 @@ export function transformMarkdown(file, contentTypes = []) {
 			}
 		}
 
-		parser.use(remarkToRehype)
+		// without allowDangerousHtml and rehypeRaw <web-components> won't load
+		parser
+			.use(remarkToRehype, { allowDangerousHtml: true })
+			.use(rehypeRaw)
 
 		for (const plugin in rehypePlugins) {
 			parser.use(rehypePlugins[plugin])
 		}
 
-		parser.use(rehypeStringify)
+		parser
+			.use(rehypeStringify, { allowDangerousHtml: true })
 			.use(rehypeTableOfContents)
 
-		parser.process(file, function (error, file) {
+		parser.process(markdown, function (error, markdown) {
 			if (error) {
 				console.error('error getting page', error)
 			}
 
-			// TODO? markdown content
 			contentTypes.map(contentType => {
 				switch (contentType) {
+					case 'markdown':
+						content.markdown = markdown
+						break
 					case 'frontmatter':
-						content.frontmatter = file?.data
+						content.frontmatter = markdown?.data
 						break
 					case 'html':
-						content.html = file?.contents
+						content.html = markdown?.contents
 						break
 					case 'toc':
-						content.toc = file?.toc
+						content.toc = markdown?.toc
 						break
 					default:
 						null
