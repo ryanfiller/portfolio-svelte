@@ -172,7 +172,7 @@
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
     /* gradients */
-    --pixelSize: 0.25rem;
+    --pixelSize: var(--borderWidth);
     --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
     --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
     --steppedGradientColor: 0, 0, 0;
