@@ -199,7 +199,7 @@
 
   <div class='example'>
     <label
-      class='screenreader'
+      aria-hidden='true'
       for={makeId('example-text')}>
       text example
     </label>
