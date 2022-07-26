@@ -6,6 +6,8 @@
 
   const THEME_ATTR = 'data-user-theme'
   const CONTRAST_ATTR = 'data-user-contrast'
+  const WRITING_MODE_ATTR = 'data-user-writing-mode'
+  
 
   const waitForLocalStorage = () => {
     if (!localStorage.getItem('user')) {
@@ -15,12 +17,14 @@
     return localStorage.getItem('user')
   }
 
-  const resolveInitialUserTheme = (user, window, THEME_ATTR, CONTRAST_ATTR) => {
+  const resolveInitialUserTheme = (user, window, THEME_ATTR, CONTRAST_ATTR, WRITING_MODE_ATTR) => {
     const theme = user && user.theme ? user.theme : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
     const contrast = user && user.contrast ? user.contrast : window.matchMedia('(prefers-contrast: more)').matches ? 'more' : 'no-preference'
+    const writingMode = user && user.writingMode ? user.writingMode : 'horizontal-tb'
 
     window.document.documentElement.setAttribute(THEME_ATTR, theme)
     window.document.documentElement.setAttribute(CONTRAST_ATTR, contrast)
+    window.document.documentElement.setAttribute(WRITING_MODE_ATTR, writingMode)
   }
 
   const changeTheme = event => {
@@ -33,6 +37,12 @@
     const contrast = event.target.checked ? 'more' : 'no-preference'
     $user.contrast = contrast
     window.document.documentElement.setAttribute(CONTRAST_ATTR, contrast)
+  }
+
+  const changeWritingMode = event => {
+    const writingMode = event.target.value
+    $user.writingMode = writingMode
+    window.document.documentElement.setAttribute(WRITING_MODE_ATTR, writingMode)
   }
 
   onMount(() => {
@@ -60,11 +70,12 @@
     <${'script data-theme-controls-js'}>
       var THEME_ATTR = '${THEME_ATTR}'
       var CONTRAST_ATTR = '${CONTRAST_ATTR}'
+      var WRITING_MODE_ATTR = '${WRITING_MODE_ATTR}'
       var waitForLocalStorage = ${waitForLocalStorage.toString()}
       var resolveInitialUserTheme = ${resolveInitialUserTheme.toString()}
 
       var user = waitForLocalStorage()
-      resolveInitialUserTheme(JSON.parse(user), window, THEME_ATTR, CONTRAST_ATTR)
+      resolveInitialUserTheme(JSON.parse(user), window, THEME_ATTR, CONTRAST_ATTR, WRITING_MODE_ATTR)
     </${'script'}>
   `}
 </svelte:head>
@@ -103,6 +114,20 @@
       on:change={changeContrast}
     />
   </label>
+
+  <!-- <label for='writing-mode'>
+    writing-mode
+    <select
+      name='writing-mode'
+      id='theme'
+      value={$user.writingMode || 'horizontal-tb'}
+      on:change={changeWritingMode}
+    >
+      {#each ['horizontal-tb', 'vertical-lr', 'vertical-rl'] as mode}
+        <option>{mode}</option>
+      {/each}
+    </select>
+  </label> -->
 </fieldset>
 
 <Theme />
