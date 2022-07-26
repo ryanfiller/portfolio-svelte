@@ -2,6 +2,8 @@
   import { colors, themes } from './config.js'
   import { capitalize } from '$helpers'
 
+  import user from '$stores/user.js'
+
   // create all the css vars based on a js object
   const setColors = (colors) => {
     return Object.entries(colors).map(color => {
@@ -29,10 +31,30 @@
       return `--color${capitalize(name)}: var(--color${capitalize(value)});`
     }).join('\n')
   }
+
+  // handle css filters for images
+  const filters = {
+    light: '',
+    dark: 'brightness(.75)',
+    mono: {
+      light: 'grayscale(100%) url(#mono-color-screen-light) url(#mono-color-multiply-light)',
+      dark: 'grayscale(100%) brightness(1.25) url(#mono-color-screen-dark) url(#mono-color-multiply-dark)',
+    }
+  }
+
+  let colorSchemeMeta
+  $: if ($user.theme === 'light') {
+    colorSchemeMeta = 'light'
+  } else if ($user.theme === 'dark') {
+    colorSchemeMeta = 'dark'
+  } else {
+    colorSchemeMeta = 'light dark'
+  }
 </script>
 
 <svelte:head>
-  <meta name='color-scheme' content='dark light'>
+  <meta name='color-scheme' content={colorSchemeMeta}>
+  <!-- this css is the work of a crazy person -->
   {@html `
     <${'style'}>
       /* defaults */
@@ -62,20 +84,33 @@
         ${setTheme(monoizeTheme(themes.dark))}
       }
 
+      [data-user-writing-mode='horizontal-tb'] {
+        writing-mode: horizontal-tb;
+      }
+      [data-user-writing-mode='vertical-lr'] {
+        writing-mode: vertical-lr;
+      }
+      [data-user-writing-mode='vertical-rl'] {
+        writing-mode: vertical-rl;
+      }
+
       /* automatic from preferences */
 
       @media (prefers-color-scheme: dark) {
+        :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
           --test: hello;
           ${setTheme(themes.dark)}
         }
 
+        :root[data-user-theme='dark'][data-user-contrast='more'],
         :root[data-user-theme='auto'][data-user-contrast='more'] {
           ${setTheme(monoizeTheme(themes.dark))}
         }
       }
 
       @media (prefers-contrast: more) {
+        :root:not([data-user-contrast='more']),
         :root[data-user-contrast='no-preference'] {
           ${setTheme(monoizeTheme(themes.light))}
         }
@@ -86,6 +121,7 @@
       }
 
       @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+        :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
           ${setTheme(monoizeTheme(themes.dark))}
         }
