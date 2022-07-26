@@ -7,14 +7,18 @@
 
 <svelte:head>
 	<link rel='sitemap' type='application/xml' href='/sitemap.xml'>
-  <meta name='theme-color' content={colors.primary}>
+  
+	<meta name='theme-color' content={colors.primary}>
+
+	<!-- avoid svelte-preprocess trying to turn this into typescript -->
+	<svelte:element this='script' src='/web-components.js' />
 
 	<!-- analtyics -->
 	<script 
 		async
 		src='//gc.zgo.at/count.js'
 		data-goatcounter='https://ryanfiller.goatcounter.com/count'
-	></script>
+	/>
 
   <!-- webmention stuff -->
   <link rel='webmention' href='https://webmention.io/www.ryanfiller.com/webmention' />

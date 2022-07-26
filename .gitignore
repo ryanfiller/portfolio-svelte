@@ -56,3 +56,7 @@ functions-build
 
 # ignore all the images sapper moves over, but not the ones I want to keep
 /static/images/*
+
+# ignore compiled web-components output
+/static/web-components.js
+/static/web-components.js.map
