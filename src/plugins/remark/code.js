@@ -17,7 +17,7 @@ function transformer(ast) {
     const linesRegex = new RegExp(/{.*}/)
 
     let filename = ''
-    // get string before ' ', and only to the first ' ', unless it container '{'
+    // get string before ' ', and only to the first ' ', unless it contains '{'
     const fileRegex = new RegExp(/.*?[^( | {)]*/)
 
     if (meta) {
@@ -69,7 +69,7 @@ function transformer(ast) {
       }
     }
 
-    node.value = escapeSvelte(value)
+    node.value = value
   }
 }
 
