@@ -7,16 +7,16 @@
   "author": "Ryan Filler <ryanfiller89@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "svelte-kit dev",
-    "share": "npm run dev -- --host --port 1337",
-    "build": "svelte-kit build",
+    "dev": "vite dev --port 1337",
+    "share": "npm run dev -- --host",
+    "build": "vite build",
     "_postbuild": "mv build/404/index.html build/404.html",
-    "preview": "svelte-kit preview",
+    "preview": "vite preview",
     "eslint": "eslint . --ext .js,.svelte",
     "stylelint": "stylelint **/*.{css,svelte}",
     "lint": "npm run eslint && npm run stylelint",
-    "vitest": "vitest --config vitest.config.js",
-    "vitest:coverage": "vitest run --coverage --config vitest.config.js",
+    "vitest": "vitest",
+    "vitest:coverage": "vitest run --coverage",
     "cypress": "npm run share & cypress open --e2e --browser firefox",
     "test": "npm run dev & ./node_modules/.bin/cypress run --e2e",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
@@ -44,7 +44,8 @@
     "@rollup/plugin-replace": "^2.4.2",
     "@sveltejs/adapter-netlify": "^1.0.0-next.17",
     "@sveltejs/adapter-static": "^1.0.0-next.13",
-    "@sveltejs/kit": "^1.0.0-next.350",
+    "@sveltejs/kit": "next",
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.49",
     "@testing-library/svelte": "^3.1.1",
     "array-move": "^3.0.1",
     "autoprefixer": "^10.2.6",
@@ -95,7 +96,6 @@
     "unist-util-visit": "^2.0.3",
     "vite": "^2.9.12",
     "vitest": "^0.15.1",
-    "vitest-svelte-kit": "^0.0.6",
     "yaml": "^1.10.0"
   }
 }
