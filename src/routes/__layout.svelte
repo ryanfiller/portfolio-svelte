@@ -34,6 +34,3 @@
 <ThemeControls />
 
 <slot />
-
-
-hellooooooo world.

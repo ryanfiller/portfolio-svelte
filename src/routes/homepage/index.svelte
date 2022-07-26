@@ -5,6 +5,7 @@
     markdown[key.match(/\.\/_markdown\/(.*)\.md/)[1]] = value
   })
 
+  import Note from '$web-components/note.svelte'
   import Tabs from '$web-components/tabs.svelte'
 </script>
 
@@ -73,6 +74,43 @@
     <panel>
       <div class='readable'>
         <Markdown content={markdown.tabs} />
+      </div>
+    </panel>
+  </Tabs>
+
+  <h3 id='note'>
+    <a href="#note" title="#note">Note</a>
+  </h3>
+  
+  <Tabs name='note examples'>
+    <tablist slot='tablist'>
+      <tab id='note-svelte-component'>
+        Svelte Component
+      </tab>
+      <tab id='note-web-component'>
+        Web Component
+      </tab>
+    </tablist>
+    <panel>
+      <div class='readable'>
+        <Note title='A Svelte Note'>
+          <p>
+            Aspernatur sequi aliquam ea ut fugiat iste doloremque error. Qui totam assumenda fugiat commodi asperiores omnis et. Hic deserunt ut qui qui qui vitae minima. Ab quia id ratione voluptatem aliquid et aliquid autem quod. Minus est doloremque velit nemo at. Est molestiae culpa sed dignissimos praesentium deleniti voluptas aliquam facilis sapiente.
+          </p>
+          <blockquote>
+            Architecto et aut officia non consequuntur voluptatem iure quia quia amet voluptas vitae. Cumque aut ipsum ad veritatis qui fugiat quam libero facilis ea voluptatum in non eos.
+          </blockquote>
+          <pre><code>{`function lorem(ipsum, dolor = 1) {
+  const sit = ipsum == null ? 0 : ipsum.sit;
+  dolor = sit - amet(dolor);
+  return sit ? consectetur(ipsum, 0, dolor < 0 ? 0 : dolor) : [];
+}`}</code></pre>
+        </Note>
+      </div>
+    </panel>
+    <panel>
+      <div class='readable'>
+        <Markdown content={markdown.note} />
       </div>
     </panel>
   </Tabs>
