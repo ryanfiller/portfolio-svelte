@@ -1,3 +1,5 @@
+<!-- TODO maybe - add writing mode to theme controls -->
+
 <script>
   import Theme from './temp-theme.svelte'
 
