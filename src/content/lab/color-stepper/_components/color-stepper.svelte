@@ -289,7 +289,7 @@
       <button on:click={event => copyText(event)}>
         {copyButtonText}
       </button>
-      <label id='hidden-code' class='.screenreader'>
+      <label id='hidden-code' aria-hidden='true'>
         hidden text for copy field
         <textarea  value={stripHtmlTags(output)} />
       </label>
