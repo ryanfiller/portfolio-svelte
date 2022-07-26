@@ -31,8 +31,9 @@
 
 <Styles />
 
+<ThemeControls />
+
 <slot />
 
-<ThemeControls />
 
 hellooooooo world.
