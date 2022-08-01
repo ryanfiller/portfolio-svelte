@@ -4,6 +4,17 @@ register()
 import { addMatchImageSnapshotCommand } from 'cypress-image-snapshot/command'
 import 'cypress-localstorage-commands'
 
+Cypress.Commands.add('visitWithNoJS', (route) => {
+  // https://github.com/cypress-io/cypress/issues/1611#issuecomment-962979606
+  cy.request(route)
+    .its('body')
+    .then((html) => {
+      // remove the application code JS bundle
+      html = html.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
+      cy.document().invoke({ log: false }, 'write', html)
+    })
+})
+
 function checkElementForChildren(element, included = [], excluded = []) {
   cy.get(element).scrollIntoView()
   cy.get(element).within(() => {

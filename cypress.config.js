@@ -11,6 +11,7 @@ export default defineConfig({
       runMode: 3,
       openMode: 0,
     },
+    includeShadowDom: true,
     fixturesFolder: './tests/fixtures',
     specPattern: './tests/end-to-end/e2e/**/*.cy.js',
     screenshotsFolder: './tests/end-to-end/screenshots',

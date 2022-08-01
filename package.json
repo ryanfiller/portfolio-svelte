@@ -54,7 +54,7 @@
     "block-ipsum": "^1.0.3",
     "color-contrast-table-svelte": "^4.0.0",
     "cypress": "^10.2.0",
-    "cypress-axe": "^0.13.0",
+    "cypress-axe": "^1.0.0",
     "cypress-commands": "^1.1.0",
     "cypress-image-snapshot": "^4.0.1",
     "cypress-localstorage-commands": "^1.5.0",
