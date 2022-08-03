@@ -16,7 +16,7 @@ describe('<Tabs />, <rf-tabs>', () => {
         cy.get('@topLevelTabs').eq(componentIndex).click().click().click()
         
         // get whatever content is immediately inside the tab panel
-        cy.get(`#${componentId} > panel`).eq(componentIndex).find('.readable > *').as('component')
+        cy.get(`#${componentId} > panel`).eq(componentIndex).find('.columns > *').as('component')
 
         cy.get('@component').then(component => component.find('tablist')).as('tablist')
         cy.get('@component').then(component => component.find('tab')).as('tabs')

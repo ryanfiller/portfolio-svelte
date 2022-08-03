@@ -10,13 +10,6 @@
 </script>
 
 <style>
-  .readable {
-    /* include readable */
-    max-width: var(--readableMax);
-    margin: 0 auto;
-    padding: 0 var(--padding);
-  }
-
   .padding {
     padding: var(--padding);
   }
@@ -42,7 +35,7 @@
       </tab>
     </tablist>
     <panel>
-      <div class='readable'>
+      <div class='columns'>
         <Tabs name='svelte component tabs'>
           <tablist slot='tablist'>
             <tab id='svelte-tab-one'>
@@ -72,7 +65,7 @@
       </div>
     </panel>
     <panel>
-      <div class='readable'>
+      <div class='columns'>
         <Markdown content={markdown.tabs} />
       </div>
     </panel>
@@ -92,7 +85,7 @@
       </tab>
     </tablist>
     <panel>
-      <div class='readable'>
+      <div class='columns'>
         <Note title='A Svelte Note'>
           <p>
             Aspernatur sequi aliquam ea ut fugiat iste doloremque error. Qui totam assumenda fugiat commodi asperiores omnis et. Hic deserunt ut qui qui qui vitae minima. Ab quia id ratione voluptatem aliquid et aliquid autem quod. Minus est doloremque velit nemo at. Est molestiae culpa sed dignissimos praesentium deleniti voluptas aliquam facilis sapiente.
@@ -109,7 +102,7 @@
       </div>
     </panel>
     <panel>
-      <div class='readable'>
+      <div class='columns'>
         <Markdown content={markdown.note} />
       </div>
     </panel>
