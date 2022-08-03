@@ -327,7 +327,7 @@
     & .tabs:not([data-active-tab]) panel:nth-of-type(1),
     & .tabs[data-active-tab] panel.active,
     & panel.active {
-      display: block;
+      display: revert;
     }
   }
 </style>
