@@ -7,6 +7,9 @@ customElements.define('rf-note', Note)
 import Tabs from './tabs.svelte'
 customElements.define('rf-tabs', Tabs)
 
+import Alert from './alert.svelte'
+customElements.define('rf-alert', Alert)
+
 // https://www.colorglare.com/svelte-components-as-web-components-b400d1253504
 
 // customElements.define('rf-NAME',

@@ -105,7 +105,6 @@
 
         &:focus,
         &:not(:placeholder-shown) {
-          outline: none;
           margin: 0;
 
           & + span {
@@ -139,7 +138,6 @@
         & textarea {
           &:focus,
           &:not(:placeholder-shown) {
-            outline: none;
             margin: 0;
 
             & + span {

@@ -171,7 +171,7 @@
     --fontMono: 'Fira Code';
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
-    /* gradients */
+    /* "gradients" */
     --pixelSize: var(--borderWidth);
     --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
     --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
@@ -230,6 +230,51 @@
       /* outer corners */
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)));
     --pixelBorderRadius: calc(6.25 * var(--borderWidth));
+
+    /* "icons" */
+
+    /* <image> <position> / <size> */
+    --pixelX:
+      /* left top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
+
+    --pixelXHover:
+      /* left top top -> right top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left top middle -> left bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top top -> right bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top middle -> left top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle middle -> stay */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom bottom -> left top top*/
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom middle -> right bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom bottom -> left bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom middle -> right top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
   }
 
   /* ------------- */
@@ -258,7 +303,7 @@
     box-sizing: border-box;
 
     @media not all and (prefers-reduced-motion: reduce) {
-      --transitionSpeed: 0.2s;
+      --transitionSpeed: 0.1s;
 
       scroll-behavior: smooth;
     }
