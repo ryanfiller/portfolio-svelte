@@ -1,4 +1,3 @@
-<!-- <svelte:options tag='rf-note' /> -->
 <svelte:options tag={null} />
 
 <script>
@@ -25,14 +24,11 @@
       })
     }
   })
-
 </script>
 
 <style>
   .note {
     position: relative;
-    margin-block-start: var(--verticalSpacing);
-    margin-block-end: var(--verticalSpacing);
 
     &::after {
       content: '';
@@ -55,8 +51,8 @@
       border-end-end-radius: var(--pixelBorderRadius);
       border-end-start-radius: var(--pixelBorderRadius);
       max-block-size: 100%;
-      /* overflow-block: auto; */
-      overflow-y: hidden;
+      max-height: var(--noteMaxHeight);
+      overflow: auto;
     }
   }
 
@@ -67,6 +63,7 @@
 
   .title,
   :global([slot='heading']),
+  :global(rf-alert [slot='heading']), /* specificity for when this is a child component */
   :global(rf-note::part(title)) {
     display: flex;
     justify-content: space-between;
@@ -76,11 +73,10 @@
     border-start-start-radius: var(--pixelBorderRadius);
     background-color: var(--colorHighlight);
     color: var(--colorBackground);
-    /* padding: calc(0.75 * var(--padding)) var(--padding); */
-    padding-inline: var(--padding);
     padding-block: calc(0.75 * var(--padding));
+    padding-inline-start: var(--padding);
+    padding-inline-end: var(--buttonPadding, calc(0.75 * var(--padding)));
     margin: 0;
-
     font-size: 1.25em;
     font-family: var(--fontDisplay);
     font-variation-settings: "wght" 450, "wdth" 100, "YOPQ" 122;

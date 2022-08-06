@@ -69,7 +69,6 @@
 
   [data-no-js] .photo-grid button:hover,
   [data-no-js] .photo-grid button:focus {
-    outline: none;
     cursor: initial;
   }
 

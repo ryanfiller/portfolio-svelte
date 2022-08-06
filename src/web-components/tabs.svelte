@@ -1,4 +1,3 @@
-<!-- <svelte:options tag='rf-tabs' /> -->
 <svelte:options tag={null} />
 
 <script>
@@ -51,9 +50,9 @@
     } else {
       const slots = [...component.children]
 
-      tablist = slots.find(slot => slot.name === 'tablist').assignedNodes()[0]
+      tablist = slots.find(slot => slot.name === 'tablist').assignedElements()[0]
       tabs = [...tablist.children]
-      panels = [...slots.find(slot => !slot.name).assignedNodes()].filter(node => node.tagName === 'PANEL')
+      panels = [...slots.find(slot => !slot.name).assignedElements()].filter(node => node.tagName === 'PANEL')
     }
 
     return { tablist, tabs, panels }
@@ -261,7 +260,6 @@
 
       &:hover,
       &:focus {
-        outline: none;
         text-decoration: underline;
         text-decoration-thickness: var(--pixelSize);
         inset-block-start: calc(-0.5 * var(--pixelOffset));
