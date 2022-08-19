@@ -1,14 +1,17 @@
 // use `customElements.define()` in this file,
 // because `<svelte:options tag='...' />` won't stop throwing a warning
 
+import Alert from './alert.svelte'
+customElements.define('rf-alert', Alert)
+
+import ImageGallery from './image-gallery.svelte'
+customElements.define('rf-image-gallery', ImageGallery)
+
 import Note from './note.svelte'
 customElements.define('rf-note', Note)
 
 import Tabs from './tabs.svelte'
 customElements.define('rf-tabs', Tabs)
-
-import Alert from './alert.svelte'
-customElements.define('rf-alert', Alert)
 
 // https://www.colorglare.com/svelte-components-as-web-components-b400d1253504
 
