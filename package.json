@@ -83,6 +83,7 @@
     "remark-parse-yaml": "0.0.3",
     "remark-rehype": "^8.0.0",
     "remark-stringify": "^8.1.1",
+    "remark-unwrap-images": "^3.0.1",
     "rollup": "^2.75.7",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-svelte": "^6.1.1",

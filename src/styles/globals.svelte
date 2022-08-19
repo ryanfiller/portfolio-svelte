@@ -57,11 +57,14 @@
   <!-- this css is the work of a crazy person -->
   {@html `
     <${'style'}>
+      /* color preferences */
+
       /* defaults */
 
       :root {
         ${setColors(colors)}
         ${setTheme(themes.light)}
+         --imgFilter: ${filters.light};
       }
 
       /* user set preferences */
@@ -69,29 +72,23 @@
       [data-user-theme='light'] {
         :root {
           ${setTheme(themes.light)}
+           --imgFilter: ${filters.light};
         }
       }
 
       [data-user-theme='dark'] {
         ${setTheme(themes.dark)}
+        --imgFilter: ${filters.dark};
       }
 
       [data-user-contrast='more'] {
         ${setTheme(monoizeTheme(themes.light))}
+        --imgFilter: ${filters.mono.light};
       }
 
       [data-user-contrast='more'][data-user-theme='dark'] {
         ${setTheme(monoizeTheme(themes.dark))}
-      }
-
-      [data-user-writing-mode='horizontal-tb'] {
-        writing-mode: horizontal-tb;
-      }
-      [data-user-writing-mode='vertical-lr'] {
-        writing-mode: vertical-lr;
-      }
-      [data-user-writing-mode='vertical-rl'] {
-        writing-mode: vertical-rl;
+        --imgFilter: ${filters.mono.dark};
       }
 
       /* automatic from preferences */
@@ -99,13 +96,14 @@
       @media (prefers-color-scheme: dark) {
         :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
-          --test: hello;
           ${setTheme(themes.dark)}
+          --imgFilter: ${filters.dark};
         }
 
         :root[data-user-theme='dark'][data-user-contrast='more'],
         :root[data-user-theme='auto'][data-user-contrast='more'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
       }
 
@@ -113,10 +111,12 @@
         :root:not([data-user-contrast='more']),
         :root[data-user-contrast='no-preference'] {
           ${setTheme(monoizeTheme(themes.light))}
+          --imgFilter: ${filters.mono.light};
         }
 
         :root[data-user-contrast='no-preference'][data-user-theme='dark'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
       }
 
@@ -124,11 +124,53 @@
         :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
+      }
+
+      /* writing modes */
+
+      [data-user-writing-mode='horizontal-tb'] {
+        writing-mode: horizontal-tb;
+        --writingModeRotation: 0deg;
+      }
+
+      [data-user-writing-mode='vertical-lr'] {
+        writing-mode: vertical-lr;
+        --writingModeRotation: 90deg;
+      }
+
+      [data-user-writing-mode='vertical-rl'] {
+        writing-mode: vertical-rl;
+        --writingModeRotation: 90deg;
       }
     </${'style'}>
   `}
 </svelte:head>
+
+<svg
+  class='svg-filters'
+  height='0'
+  width='0'
+  style='visibility: hidden; height: 0; width: 0; overflow: hidden; display: inherit;'
+>
+  <filter id='mono-color-screen-light'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorPrimary)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='screen'/>
+  </filter>
+  <filter id='mono-color-multiply-light'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorBackground)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='multiply'/>
+  </filter>
+  <filter id='mono-color-screen-dark'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorBackground)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='screen'/>
+  </filter>
+  <filter id='mono-color-multiply-dark'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorPrimary)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='multiply'/>
+  </filter>
+</svg>
 
 <style global>
   /* ------------- */
@@ -275,6 +317,44 @@
       /* right bottom middle -> right top middle */
       no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
     ;
+
+    --pixelArrow:
+      /* top one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* top two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle line */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
+
+    --pixelArrowHover:
+      /* top one -> bottom one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* top two -> bottom two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle line */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom two -> top two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom one -> top one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
   }
 
   /* ------------- */
@@ -303,12 +383,17 @@
     box-sizing: border-box;
 
     @media not all and (prefers-reduced-motion: reduce) {
-      --transitionSpeed: 0.1s;
+      --transitionSpeed: 0.2s;
 
       scroll-behavior: smooth;
     }
 
+    --transitionSpeedIcons: calc(3 * var(--transitionSpeed));
     transition: color var(--transitionSpeed);
+  }
+
+  img {
+    filter: var(--imgFilter);
   }
 
   /* ------------- */
@@ -434,7 +519,7 @@
     cursor: pointer;
     border: none;
     background: var(--colorHighlight);
-    color: var(--colorWhite);
+    color: var(--colorBackground);
     transition: var(--transitionSpeed);
     font-size: 1em;
     padding: 1rem;
@@ -447,6 +532,19 @@
     &:disabled {
       background: var(--colorDisabled);
       cursor: not-allowed;
+    }
+  }
+
+  /* ------------- */
+  /* other elements */
+  /* ------------- */
+
+  dialog[open],
+  *::part(dialog) {
+    /* can't just use a color here??? */
+    /* https://stackoverflow.com/questions/58818299/css-variables-not-working-in-dialogbackdrop */
+    &::backdrop {
+      backdrop-filter: brightness(50%) grayscale(50%);
     }
   }
 
