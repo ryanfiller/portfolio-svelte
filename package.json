@@ -22,7 +22,7 @@
     "cy:run": "./node_modules/.bin/cypress run --e2e --browser firefox",
     "cypress": "start-server-and-test dev 1337 cy:run",
     "cypress:watch": "npm run share & cypress open --e2e --browser firefox",
-    "test": "npm run dev & ./node_modules/.bin/cypress run --e2e",
+    "test": "npm run dev & npm run vitest & npm run cypress",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
   },
   "repository": {
@@ -56,7 +56,7 @@
     "axe-core": "^4.3.3",
     "block-ipsum": "^1.0.3",
     "color-contrast-table-svelte": "^4.0.0",
-    "cypress": "^10.2.0",
+    "cypress": "^10.3.0",
     "cypress-axe": "^1.0.0",
     "cypress-commands": "^1.1.0",
     "cypress-image-snapshot": "^4.0.1",
@@ -101,7 +101,7 @@
     "typescript": "^4.5.4",
     "unified": "^9.2.0",
     "unist-util-visit": "^2.0.3",
-    "vite": "^2.9.12",
+    "vite": "^3.0.9",
     "vitest": "^0.15.1",
     "yaml": "^1.10.0"
   }

@@ -10,7 +10,7 @@ describe('<Tabs />, <rf-tabs>', () => {
   ['svelte component', 'web component'].forEach((domComponent, componentIndex) => {
     context(`the ${domComponent} version`, () => {
       beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/styles/components')
         cy.get(`#${componentId} > tablist > tab`).as('topLevelTabs')
         // why so many clicks??
         cy.get('@topLevelTabs').eq(componentIndex).click().click().click()
@@ -116,7 +116,7 @@ describe('<Tabs />, <rf-tabs>', () => {
 
       context('without javascript', () => {
         beforeEach(() => {
-          cy.visitWithNoJS('/')
+          cy.visitWithNoJS('/styles/components')
         })
 
         it('does not have any glaring a11y issues', () => {
