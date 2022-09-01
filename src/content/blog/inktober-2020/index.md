@@ -44,8 +44,7 @@ meta:
       title: 'Radio',
       alt: 'Yanky Hotel Foxtrot cover illustration',
       src: '/images/inktober-2020-04-radio.jpg',
-      caption: `10/04/31 - "Yankee Hotel Foxtrot" by Wilco, with the song "Radio Cure." I listened to this album a lot last year.
-I didn’t even know these were buildings until I looked it up today...`
+      caption: `10/04/31 - "Yankee Hotel Foxtrot" by Wilco, with the song "Radio Cure." I listened to this album a lot last year. I didn’t even know these were buildings until I looked it up today...`
     },
     {
       title: 'Blade',
@@ -111,7 +110,7 @@ I didn’t even know these were buildings until I looked it up today...`
       title: 'Outpost',
       alt: 'World of Warcraft Troll riding a raptor illustration',
       src: '/images/inktober-2020-15-outpost.jpg',
-      caption: `10/15/31 - I really had fun that summer my wifre got really into World of Warcraft. That one outpost was like constantly under attack by the Alliance. No ink again.`
+      caption: `10/15/31 - I really had fun that summer my wife got really into World of Warcraft. That one outpost was like constantly under attack by the Alliance. No ink again.`
     },
     {
       title: 'Rocket',
@@ -153,7 +152,7 @@ I didn’t even know these were buildings until I looked it up today...`
       title: 'Chef',
       alt: 'illustration',
       src: '/images/inktober-2020-22-chef.jpg',
-      caption: `10/22/31 - I didn’t really like cooking all that much in Breathe of the Wild, but I did like eating. Dear people with a consistent style, what is that like? It’s like I learned how to draw link when I was 11 and now brain permanently thinks "yes, he is an anime character." Just pencil lines this time again.`
+      caption: `10/22/31 - I didn’t really like cooking all that much in Breathe of the Wild, but I did like eating. Dear people with a consistent style, what is that like? It’s like I learned how to draw Link when I was 11 and now brain permanently thinks "yes, he is an anime character." Just pencil lines this time again.`
     },
     {
       title: 'Rip',
