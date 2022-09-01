@@ -18,7 +18,9 @@
     "lint": "npm run eslint && npm run stylelint",
     "vitest": "vitest",
     "vitest:coverage": "vitest run --coverage",
-    "cypress": "npm run share & cypress open --e2e --browser firefox",
+    "cy:run": "./node_modules/.bin/cypress run --e2e --browser firefox",
+    "cypress": "start-server-and-test dev 1337 cy:run",
+    "cypress:watch": "npm run share & cypress open --e2e --browser firefox",
     "test": "npm run dev & ./node_modules/.bin/cypress run --e2e",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
   },
@@ -88,6 +90,7 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-svelte": "^6.1.1",
     "rollup-plugin-terser": "^5.3.0",
+    "start-server-and-test": "^1.14.0",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "svelte": "^3.47.0",
