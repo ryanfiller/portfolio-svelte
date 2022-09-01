@@ -1,6 +1,7 @@
 import slugify from './slugify.js'
 import { objectToParams, paramsToObject } from './query-param-helpers.js'
 import { buildPagesList, transformMarkdown, getPageContent, sortNewestToOldest } from './content-helpers.js'
+import { addSrcset } from './image-helpers.js'
 
 function capitalize(string) {
   if (typeof string !== 'string') return ''
@@ -36,6 +37,7 @@ function xmlEncode(string) {
 }
 
 export {
+  addSrcset,
   capitalize,
   buildPagesList,
   fishAttr,

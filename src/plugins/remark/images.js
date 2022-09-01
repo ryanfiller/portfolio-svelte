@@ -1,6 +1,8 @@
 import visit from 'unist-util-visit'
 import { renderVideo } from './video.js'
 
+import { addSrcset } from '../../helpers/image-helpers.js'
+
 function transformer(ast) {
   visit(ast, 'image', visitor)
 
@@ -45,10 +47,11 @@ function transformer(ast) {
         if (skipSrcSet) {
           attrs.push(`src="${src}"`)
         } else {
-          attrs.push(
-            `srcset="${src}?nf_resize=fit&w=500 500w, ${src}?nf_resize=fit&w=800 800w"`,
-            `src="${src}?nf_resize=fit&w=500"`,
-          )
+          // attrs.push(
+          //   `srcset="${src}?nf_resize=fit&w=500 500w, ${src}?nf_resize=fit&w=800 800w"`,
+          //   `src="${src}?nf_resize=fit&w=500"`,
+          // )
+          attrs.push(addSrcset(src))
         }
         return attrs.join(' ')
       }
