@@ -1,8 +1,3 @@
-import path from 'path'
-
-import dotenv from 'dotenv'
-dotenv.config()
-
 // import adapterNetlify from '@sveltejs/adapter-netlify'
 import adapterStatic from '@sveltejs/adapter-static'
 
@@ -11,21 +6,9 @@ import sveltePreprocess from 'svelte-preprocess'
 import mdsvexDefault from 'mdsvex'
 const { mdsvex } = mdsvexDefault
 
-import vitePlugins from './src/plugins/vite.js'
 import postcssPlugins from './src/plugins/postcss/index.js'
 import remarkPlugins from './src/plugins/remark/index.js'
 import rehypePlugins from './src/plugins/rehype/index.js'
-
-const envVars = {
-	'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-	'process.env.PORT': process.env.PORT || '3000',
-	'process.env.CLOUDINARY_CLOUD': JSON.stringify(process.env.CLOUDINARY_CLOUD),
-	// https://docs.netlify.com/configure-builds/environment-variables/#read-only-variables
-	'process.env.CONTEXT': JSON.stringify(process.env.CONTEXT),
-	'process.env.NETLIFY_URL': process.env.CONTEXT !== 'production'
-		? JSON.stringify(process.env.DEPLOY_URL)
-		: JSON.stringify(process.env.URL)
-}
 
 export default {
 	extensions: [
@@ -43,7 +26,6 @@ export default {
 		// 	})
 		// 	: adapterNetlify(),
     // target: null,
-    floc: false,
 		appDir: '_app',
 		files: {
 			assets: 'static',
@@ -62,27 +44,21 @@ export default {
 			onError: 'continue',
 			entries: ['*', '/404', '/robots.txt']
 		},
-		vite: {
-			plugins: vitePlugins(envVars),
-			resolve: {
-				alias: {
-					$actions: path.resolve('./src/actions'),
-					$components: path.resolve('./src/components'),
-					$helpers: path.resolve('./src/helpers'),
-					$plugins: path.resolve('./src/plugins'),
-					$stores: path.resolve('./src/stores'),
-					$styles: path.resolve('./src/styles'),
-					$layouts: path.resolve('./src/layouts'),
-					'$site-config': path.resolve('./src/site-config.js')
-				}
-			},
-			test: {
-				globals: true,
-				environment: 'jsdom',
-				setupFiles: 'tests/unit/setup.js',
-				include: ['tests/unit/**/*.test.js'],
-			}
-		}
+		// vite: {
+		// 	plugins: vitePlugins(envVars),
+		// 	resolve: {
+		// 		alias: {
+		// 			$actions: path.resolve('./src/actions'),
+		// 			$components: path.resolve('./src/components'),
+		// 			$helpers: path.resolve('./src/helpers'),
+		// 			$plugins: path.resolve('./src/plugins'),
+		// 			$stores: path.resolve('./src/stores'),
+		// 			$styles: path.resolve('./src/styles'),
+		// 			$layouts: path.resolve('./src/layouts'),
+		// 			'$site-config': path.resolve('./src/site-config.js')
+		// 		}
+		// 	}
+		// }
 	},
 
 	preprocess: [

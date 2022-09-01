@@ -2,6 +2,8 @@
   import { colors, themes } from './config.js'
   import { capitalize } from '$helpers'
 
+  import user from '$stores/user.js'
+
   // create all the css vars based on a js object
   const setColors = (colors) => {
     return Object.entries(colors).map(color => {
@@ -29,17 +31,40 @@
       return `--color${capitalize(name)}: var(--color${capitalize(value)});`
     }).join('\n')
   }
+
+  // handle css filters for images
+  const filters = {
+    light: '',
+    dark: 'brightness(.75)',
+    mono: {
+      light: 'grayscale(100%) url(#mono-color-screen-light) url(#mono-color-multiply-light)',
+      dark: 'grayscale(100%) brightness(1.25) url(#mono-color-screen-dark) url(#mono-color-multiply-dark)',
+    }
+  }
+
+  let colorSchemeMeta
+  $: if ($user.theme === 'light') {
+    colorSchemeMeta = 'light'
+  } else if ($user.theme === 'dark') {
+    colorSchemeMeta = 'dark'
+  } else {
+    colorSchemeMeta = 'light dark'
+  }
 </script>
 
 <svelte:head>
-  <meta name='color-scheme' content='dark light'>
+  <meta name='color-scheme' content={colorSchemeMeta}>
+  <!-- this css is the work of a crazy person -->
   {@html `
     <${'style'}>
+      /* color preferences */
+
       /* defaults */
 
       :root {
         ${setColors(colors)}
         ${setTheme(themes.light)}
+         --imgFilter: ${filters.light};
       }
 
       /* user set preferences */
@@ -47,52 +72,105 @@
       [data-user-theme='light'] {
         :root {
           ${setTheme(themes.light)}
+           --imgFilter: ${filters.light};
         }
       }
 
       [data-user-theme='dark'] {
         ${setTheme(themes.dark)}
+        --imgFilter: ${filters.dark};
       }
 
       [data-user-contrast='more'] {
         ${setTheme(monoizeTheme(themes.light))}
+        --imgFilter: ${filters.mono.light};
       }
 
       [data-user-contrast='more'][data-user-theme='dark'] {
         ${setTheme(monoizeTheme(themes.dark))}
+        --imgFilter: ${filters.mono.dark};
       }
 
       /* automatic from preferences */
 
       @media (prefers-color-scheme: dark) {
+        :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
-          --test: hello;
           ${setTheme(themes.dark)}
+          --imgFilter: ${filters.dark};
         }
 
+        :root[data-user-theme='dark'][data-user-contrast='more'],
         :root[data-user-theme='auto'][data-user-contrast='more'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
       }
 
       @media (prefers-contrast: more) {
+        :root:not([data-user-contrast='more']),
         :root[data-user-contrast='no-preference'] {
           ${setTheme(monoizeTheme(themes.light))}
+          --imgFilter: ${filters.mono.light};
         }
 
         :root[data-user-contrast='no-preference'][data-user-theme='dark'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
       }
 
       @media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+        :root:not([data-user-theme='light']),
         :root[data-user-theme='auto'] {
           ${setTheme(monoizeTheme(themes.dark))}
+          --imgFilter: ${filters.mono.dark};
         }
+      }
+
+      /* writing modes */
+
+      [data-user-writing-mode='horizontal-tb'] {
+        writing-mode: horizontal-tb;
+        --writingModeRotation: 0deg;
+      }
+
+      [data-user-writing-mode='vertical-lr'] {
+        writing-mode: vertical-lr;
+        --writingModeRotation: 90deg;
+      }
+
+      [data-user-writing-mode='vertical-rl'] {
+        writing-mode: vertical-rl;
+        --writingModeRotation: 90deg;
       }
     </${'style'}>
   `}
 </svelte:head>
+
+<svg
+  class='svg-filters'
+  height='0'
+  width='0'
+  style='visibility: hidden; height: 0; width: 0; overflow: hidden; display: inherit;'
+>
+  <filter id='mono-color-screen-light'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorPrimary)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='screen'/>
+  </filter>
+  <filter id='mono-color-multiply-light'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorBackground)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='multiply'/>
+  </filter>
+  <filter id='mono-color-screen-dark'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorBackground)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='screen'/>
+  </filter>
+  <filter id='mono-color-multiply-dark'>
+    <feFlood x='0' y='0' width='100%' height='100%' flood-color='var(--colorPrimary)' flood-opacity='1'/>
+    <feBlend in='SourceGraphic' in2='floodFill' mode='multiply'/>
+  </filter>
+</svg>
 
 <style global>
   /* ------------- */
@@ -135,8 +213,8 @@
     --fontMono: 'Fira Code';
     /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
-    /* gradients */
-    --pixelSize: 0.25rem;
+    /* "gradients" */
+    --pixelSize: var(--borderWidth);
     --pixelStripes: transparent 0, transparent calc(var(--pixelSize) - 1px), var(--colorBlack) calc(var(--pixelSize) - 1px), var(--colorBlack) var(--pixelSize);
     --pixelGrid: repeating-linear-gradient(var(--pixelStripes)), repeating-linear-gradient(90deg, var(--pixelStripes));
     --steppedGradientColor: 0, 0, 0;
@@ -194,6 +272,89 @@
       /* outer corners */
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)));
     --pixelBorderRadius: calc(6.25 * var(--borderWidth));
+
+    /* "icons" */
+
+    /* <image> <position> / <size> */
+    --pixelX:
+      /* left top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
+
+    --pixelXHover:
+      /* left top top -> right top top */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left top middle -> left bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top top -> right bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right top middle -> left top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle middle -> stay */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom bottom -> left top top*/
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* left bottom middle -> right bottom middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom bottom -> left bottom bottom */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* right bottom middle -> right top middle */
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
+
+    --pixelArrow:
+      /* top one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* top two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle line */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
+
+    --pixelArrowHover:
+      /* top one -> bottom one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(4 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* top two -> bottom two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(3 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* middle line */
+      no-repeat linear-gradient(currentColor, currentColor) calc(0 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(1 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(4 * var(--pixelSize)) calc(2 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom two -> top two */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      no-repeat linear-gradient(currentColor, currentColor) calc(3 * var(--pixelSize)) calc(1 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize),
+      /* bottom one -> top one */
+      no-repeat linear-gradient(currentColor, currentColor) calc(2 * var(--pixelSize)) calc(0 * var(--pixelSize)) / var(--pixelSize) var(--pixelSize)
+    ;
   }
 
   /* ------------- */
@@ -227,7 +388,12 @@
       scroll-behavior: smooth;
     }
 
+    --transitionSpeedIcons: calc(3 * var(--transitionSpeed));
     transition: color var(--transitionSpeed);
+  }
+
+  img {
+    filter: var(--imgFilter);
   }
 
   /* ------------- */
@@ -238,7 +404,7 @@
     display: none !important;
   }
 
-  .screenreader {
+  [aria-hidden='true'] {
     position: absolute;
     width: 0;
     height: 0;
@@ -353,7 +519,7 @@
     cursor: pointer;
     border: none;
     background: var(--colorHighlight);
-    color: var(--colorWhite);
+    color: var(--colorBackground);
     transition: var(--transitionSpeed);
     font-size: 1em;
     padding: 1rem;
@@ -366,6 +532,19 @@
     &:disabled {
       background: var(--colorDisabled);
       cursor: not-allowed;
+    }
+  }
+
+  /* ------------- */
+  /* other elements */
+  /* ------------- */
+
+  dialog[open],
+  *::part(dialog) {
+    /* can't just use a color here??? */
+    /* https://stackoverflow.com/questions/58818299/css-variables-not-working-in-dialogbackdrop */
+    &::backdrop {
+      backdrop-filter: brightness(50%) grayscale(50%);
     }
   }
 
