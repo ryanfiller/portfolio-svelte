@@ -9,7 +9,7 @@ describe('<Alert />, <rf-alert>', () => {
   ['svelte component', 'web component'].forEach((domComponent, componentIndex) => {
     context(`the ${domComponent} version`, () => {
       beforeEach(() => {
-        cy.visit('/')
+        cy.visit('/styles/components')
         cy.get(`#${componentId} > tablist > tab`).as('topLevelTabs')
         // why so many clicks??
         cy.get('@topLevelTabs').eq(componentIndex).click().click().click()
@@ -95,7 +95,7 @@ describe('<Alert />, <rf-alert>', () => {
         cy.get('@actions').find('button')
       })
 
-      describe.only('trapping focus', () => {
+      describe('trapping focus', () => {
         const numberOfTimesToTab = 5
         beforeEach(() => {
           if (domComponent === 'web component') {
@@ -137,16 +137,12 @@ describe('<Alert />, <rf-alert>', () => {
             cy.get('@component').find('button[title="close"]').click()
             cy.get('@dialog').should('not.have.attr', 'open')
           })
-
-          it('closes with the backdrop', () => {
-            cy.get('@component').find('.backdrop').click({ force: true })
-            cy.get('@dialog').should('not.have.attr', 'open')
-          })
         })
 
         describe('using a keyboard', () => {
           it('closes with the escape key', () => {
-            cy.get('body').type('{esc}')
+            // cypress requires this type into a type-able element even though the listener is on window...
+            cy.get('@component').find('[tabindex]').type('{esc}')
             cy.get('@dialog').should('not.have.attr', 'open')
           })
         })
@@ -156,7 +152,7 @@ describe('<Alert />, <rf-alert>', () => {
 
   // context('without javascript', () => {
   //   beforeEach(() => {
-  //     cy.visitWithNoJS('/')
+  //     cy.visitWithNoJS('/styles/components')
   //     cy.get('#no-js-alert').as('component')
   //   })
 

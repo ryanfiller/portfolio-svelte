@@ -1,6 +1,6 @@
 <script>
   import { transformMarkdown } from '$helpers'
-  import content from './_content.md?raw'
+  import content from './content.md?raw'
 
   const { html } = transformMarkdown(content, ['html'])
 </script>

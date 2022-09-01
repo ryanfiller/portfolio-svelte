@@ -30,34 +30,9 @@ export default {
 			assets: 'static',
 			routes: 'src/routes',
 			// serviceWorker: 'src/service-worker',
-			template: 'src/app.html'
+			appTemplate: 'src/app.html'
 		},
-		trailingSlash: 'never',
-		browser: {
-			hydrate: true,
-			router: true,
-		},
-		prerender: {
-			crawl: true,
-			enabled: true,
-			onError: 'continue',
-			entries: ['*', '/404', '/robots.txt']
-		},
-		// vite: {
-		// 	plugins: vitePlugins(envVars),
-		// 	resolve: {
-		// 		alias: {
-		// 			$actions: path.resolve('./src/actions'),
-		// 			$components: path.resolve('./src/components'),
-		// 			$helpers: path.resolve('./src/helpers'),
-		// 			$plugins: path.resolve('./src/plugins'),
-		// 			$stores: path.resolve('./src/stores'),
-		// 			$styles: path.resolve('./src/styles'),
-		// 			$layouts: path.resolve('./src/layouts'),
-		// 			'$site-config': path.resolve('./src/site-config.js')
-		// 		}
-		// 	}
-		// }
+		trailingSlash: 'never'
 	},
 
 	preprocess: [
