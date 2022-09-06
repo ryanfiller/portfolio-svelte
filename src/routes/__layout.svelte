@@ -1,4 +1,6 @@
 <script>
+	export const prerender = true
+
 	import { colors } from '$styles/config.js'
 	import Styles from '$styles/globals.svelte'
 
