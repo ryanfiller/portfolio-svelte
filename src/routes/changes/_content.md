@@ -31,6 +31,7 @@ Refactor and redesign.
 | - [refactor/code-component](https://github.com/ryanfiller/portfolio-svelte/pull/67) - slightly redesign the embedded code component
 | - [design/simplify-changelog](https://github.com/ryanfiller/portfolio-svelte/pull/74) - remove extraneous details from the /changes page
 | - [refactor/web-components](https://github.com/ryanfiller/portfolio-svelte/pull/77) - refactor all markdown components to have both a Svelte and web-component scenario
+| - [bug/fix-deploys](https://github.com/ryanfiller/portfolio-svelte/pull/80) - add back the logic for multiple deploy adapters, fix some pre-1.0 bugs
 
 ## RF-05-05.2 - "Chobam"
 

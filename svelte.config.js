@@ -1,4 +1,4 @@
-// import adapterNetlify from '@sveltejs/adapter-netlify'
+import adapterNetlify from '@sveltejs/adapter-netlify'
 import adapterStatic from '@sveltejs/adapter-static'
 
 import sveltePreprocess from 'svelte-preprocess'
@@ -16,16 +16,15 @@ export default {
 		'.md',
 	],
 	kit: {
-		adapter: adapterStatic(),
-		// adapter: process.env.ADAPTER === 'static'
-		// 	? adapterStatic({
-		// 		pages: 'build',
-		// 		assets: 'build',
-		// 		fallback: null
-		// 		// fallback: '404.html'
-		// 	})
-		// 	: adapterNetlify(),
-    // target: null,
+		adapter: process.env.ADAPTER === 'static'
+			? adapterStatic({
+				pages: 'build',
+				assets: 'build',
+				fallback: '404.html'
+			})
+			: adapterNetlify({
+				fallback: '404.html'
+			}),
 		appDir: '_app',
 		files: {
 			assets: 'static',
