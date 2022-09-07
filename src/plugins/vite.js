@@ -12,7 +12,7 @@ export default function vitePlugins(envVars) {
     copy({
       targets: [
         { 
-          src: 'src/**/_images/*.*',
+          src: 'src/**/images/*.*',
           dest: 'static/images'
         }
       ],
