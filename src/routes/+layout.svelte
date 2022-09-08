@@ -1,10 +1,12 @@
 <script>
-	export const prerender = true
+	// export const prerender = true
+	export const prerender = false
+	import AppLoader from '$components/misc/app-loader.svelte'
 
 	import { colors } from '$styles/config.js'
-	import Styles from '$styles/globals.svelte'
 
-	import ThemeControls from '$components/misc/theme-controls.svelte'
+	import Styles from '$styles/globals.svelte'
+	import ThemeControls from '$components/theme/theme-controls.svelte'
 </script>
 
 <svelte:head>
@@ -31,8 +33,10 @@
   <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
 </svelte:head>
 
-<Styles />
-
-<ThemeControls />
-
-<slot />
+<AppLoader>
+	<Styles />
+	
+	<ThemeControls />
+	
+	<slot />
+</AppLoader>

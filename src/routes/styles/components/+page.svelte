@@ -3,8 +3,8 @@
   
   import Markdown from '$components/markdown.svelte'
   const markdown = {}
-  Object.entries(import.meta.glob('./markdown/*.md', { as: 'raw', eager: true })).forEach(([key, value]) => {
-    markdown[key.match(/\.\/markdown\/(.*)\.md/)[1]] = value
+  Object.entries(import.meta.glob('./*.md', { as: 'raw', eager: true })).forEach(([key, value]) => {
+    markdown[key.match(/\.\/(.*)\.md/)[1]] = value
   })
 
   import Alert from '$web-components/alert.svelte'

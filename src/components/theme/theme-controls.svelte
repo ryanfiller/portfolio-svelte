@@ -9,15 +9,6 @@
   const THEME_ATTR = 'data-user-theme'
   const CONTRAST_ATTR = 'data-user-contrast'
   const WRITING_MODE_ATTR = 'data-user-writing-mode'
-  
-
-  const waitForLocalStorage = () => {
-    if (!localStorage.getItem('user')) {
-      var timer = setTimeout(waitForLocalStorage, 1)
-    }
-    clearTimeout(timer)
-    return localStorage.getItem('user')
-  }
 
   const resolveInitialUserTheme = (user, window, THEME_ATTR, CONTRAST_ATTR, WRITING_MODE_ATTR) => {
     const theme = user && user.theme ? user.theme : window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
@@ -73,10 +64,9 @@
       var THEME_ATTR = '${THEME_ATTR}'
       var CONTRAST_ATTR = '${CONTRAST_ATTR}'
       var WRITING_MODE_ATTR = '${WRITING_MODE_ATTR}'
-      var waitForLocalStorage = ${waitForLocalStorage.toString()}
       var resolveInitialUserTheme = ${resolveInitialUserTheme.toString()}
 
-      var user = waitForLocalStorage()
+      var user = localStorage.getItem('user')
       resolveInitialUserTheme(JSON.parse(user), window, THEME_ATTR, CONTRAST_ATTR, WRITING_MODE_ATTR)
     </${'script'}>
   `}

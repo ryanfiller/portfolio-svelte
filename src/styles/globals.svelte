@@ -5,9 +5,18 @@
   import user from '$stores/user.js'
 
   // create all the css vars based on a js object
-  const setColors = (colors) => {
-    return Object.entries(colors).map(color => {
-      const [ name, value ] = color
+  const setColors = () => {
+    let colorArray = Object.entries(colors).map(color => {
+      const [name, value] = color
+      return { name, value }
+    })
+
+    if ($user.colors) {
+      colorArray = $user.colors.map(color => ({ name: color.color, value: color.value }))
+    }
+
+    return colorArray.map(color => {
+      const { name, value } = color
       return `--color${capitalize(name)}: ${value};`
     }).join('\n')
   }
@@ -61,7 +70,7 @@
       /* defaults */
 
       :root {
-        ${setColors(colors)}
+        ${setColors()}
         ${setTheme(themes.light)}
          --imgFilter: ${filters.light};
       }

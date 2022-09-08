@@ -54,7 +54,7 @@ Object.values(colors).forEach(color => {
     to: 'lab'
   }).color
 
-  console.log(`lab(${l}% ${a} ${b})`)
+  // console.log(`lab(${l}% ${a} ${b})`)
 })
 
 export const themes = {
