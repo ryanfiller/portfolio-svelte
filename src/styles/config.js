@@ -59,6 +59,12 @@ Object.values(colors).forEach(color => {
 
 export const themes = {
   light: {
+    // text: 'black',
+    // background: 'white',
+    // primary: 'purpleDark',
+    // highlight: 'blueDark',
+    // active: 'orangeLight',
+    // disabled: 'grayLight',
     text: 'black',
     background: 'white',
     primary: 'purpleDark',

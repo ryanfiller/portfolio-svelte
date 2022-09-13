@@ -32,17 +32,30 @@
   }
 
   const allColors = formatColorArray(colors)
-  let userTheme, themeColors
+  let userColors, themeColors
 
-  function determineUserTheme(userTheme) {
-    if (userTheme !== 'auto') return userTheme
-    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
-    return 'light'
+  function determinUserColors(user) {
+    const getTheme = (theme) => {
+      if (theme !== 'auto') return theme
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark'
+      return 'light'
+    }
+
+    const getContrast = (contrast) => {
+      if (contrast) return contrast
+      if (window.matchMedia('(prefers-contrast: more)').matches) return 'more'
+      return 'no-preference'
+    }
+
+    return {
+      theme: getTheme(user.theme),
+      contrast: getContrast(user.contrast)
+    }
   }
 
   function getThemeColors(theme) {
     const themeColors = {}
-    Object.entries(themes[theme]).forEach(themeColor => {
+    Object.entries(themes[theme.theme]).forEach(themeColor => {
       const [name, color] = themeColor
 
       themeColors[name] = {
@@ -50,12 +63,24 @@
         value: getCustomProperty(nameColorVariable(color))
       }
     })
+
+    if (theme.contrast === 'more') {
+      Object.entries(themes[theme.theme]).forEach(themeColor => {
+        console.log('themeColor', themeColor)
+        const [name] = themeColor
+
+        if (!(name === 'background' || name === 'primary')) {
+          delete themeColors[name]
+        }
+      })
+    }
+
     return formatColorArray(themeColors)
   }
 
   onMount(() => {
-    userTheme = determineUserTheme($user.theme)
-    themeColors = getThemeColors(userTheme)
+    userColors = determinUserColors($user)
+    themeColors = getThemeColors(userColors)
   })
 
   const handleValuesChanges = (index, newValue) => {
@@ -70,25 +95,29 @@
 
   // keep the table in sync with a user changing themes
   $: if (browser) {
-    userTheme = determineUserTheme($user.theme)
-    themeColors = getThemeColors(userTheme)
+    userColors = determinUserColors($user)
+    themeColors = getThemeColors(userColors)
   }
 
 </script>
 
 <style>
   .color-chart {
-    width: var(--fullBleedWidth);
-    padding: 0 var(--fullBleedPadding);
     overflow-x: auto;
+    margin: 0 var(--fullBleedPadding);
+    /* width: var(--fullBleedWidth); */
+    width: calc(100% - (2 * var(--fullBleedPadding)));
 
-    & :global(table) {
-      width: 100%;
+    & :global {
+      & table {
+        width: 100%;
+        overflow-x: auto;
 
-      & :global(th) {
-        position: sticky;
-        left: 0;
-        z-index: 50;
+        & th {
+          position: sticky;
+          left: 0;
+          z-index: 50;
+        }
       }
     }
   }

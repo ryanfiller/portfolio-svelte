@@ -3,6 +3,7 @@
 
   function clearUserData() {
     $user = {...defaultData}
+    location.reload()
   }
 </script>
 
