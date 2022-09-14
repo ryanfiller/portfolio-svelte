@@ -1,5 +1,3 @@
-<svelte:options tag={null} />
-
 <script>
   import slugify from '../helpers/slugify.js'
 
@@ -15,13 +13,13 @@
   let images
   let activeImage = null
   onMount(() => {
-    isSvelteComponent = Object.keys(component).includes('__svelte_meta')
+    isSvelteComponent = !component.parentNode.host
 
-    if (isSvelteComponent) {
-      images = [...component.getElementsByClassName('grid')[0].children]
-    } else {
-      // shadow dom timing is weird, use a timeout to fire this when the browser event loop is empty
-      setTimeout(() => {
+    // shadow dom timing is weird, use a timeout to fire this when the browser event loop is empty
+    setTimeout(() => {
+      if (isSvelteComponent) {
+        images = [...component.getElementsByClassName('grid')[0].children]
+      } else {
         id = id || slugify(title)
         component.id = id
         // have to copy the filter to be able to use it here, but don't do it multiple times
@@ -29,13 +27,13 @@
           component.append(document.getElementsByClassName('svg-filters')[0].cloneNode(true))
         }
         images = component.getElementsByClassName('grid')[0].getElementsByTagName('slot')[0].assignedElements()
+      }
+  
+      images && images.forEach(image => {
+        image.tabIndex = 0
+        image.addEventListener('click', (event) => setActiveImage(image, event))
+        image.addEventListener('keydown', (event) => setActiveImage(image, event))
       })
-    }
-
-    images && images.forEach(image => {
-      image.tabIndex = 0
-      image.addEventListener('click', (event) => setActiveImage(image, event))
-      image.addEventListener('keydown', (event) => setActiveImage(image, event))
     })
   })
 

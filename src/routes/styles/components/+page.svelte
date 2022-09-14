@@ -18,9 +18,10 @@
   const toggleSvelteAlert = () => showSvelteAlert = !showSvelteAlert
   const toggleWebComponentAlert = () => {
     const alert = document.querySelectorAll('#alert-examples rf-alert')[0]
-    showWebComponentAlert = alert.getAttribute('show') !== 'true'
+    showWebComponentAlert = !(alert.getAttribute('show') === 'true')
     alert.setAttribute('show', showWebComponentAlert)
   }
+
   onMount(() => {
     document.getElementById('web-component-show-alert').addEventListener('click', toggleWebComponentAlert)
     document.getElementById('web-component-close-alert').addEventListener('click', toggleWebComponentAlert)
@@ -44,6 +45,7 @@
 </Alert>
 
 <div class='padding'>
+  
   <h2 id='web-svelte-components'>
     <a href="#web-svelte-components" title="#web-svelte-components">Web / Svelte Components</a>
   </h2>
@@ -107,6 +109,7 @@
                 </tr>
               </tbody>
             </table>
+
             <div slot='actions'>
               <button on:click={() => toggleSvelteAlert()}>
                 Close this alert
@@ -159,6 +162,10 @@
       <Markdown content={markdown['image-gallery']} />
     </panel>
   </Tabs>
+
+  <h3 id='notes'>
+    <a href="#notes" title="#notes">Notes</a>
+  </h3>
   
   <Tabs name='note examples'>
     <tablist slot='tablist'>
@@ -192,6 +199,7 @@
       </div>
     </panel>
   </Tabs>
+  
 
   <h3 id='tabs'>
     <a href="#tabs" title="#tabs">Tabs</a>

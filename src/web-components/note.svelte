@@ -1,5 +1,3 @@
-<svelte:options tag={null} />
-
 <script>
   import slugify from '../helpers/slugify.js'
   import { onMount } from 'svelte'
@@ -11,7 +9,7 @@
   let isSvelteComponent
 
   onMount(() => {
-    isSvelteComponent = Object.keys(component).includes('__svelte_meta')
+    isSvelteComponent = !component.parentNode.host
 
     if(!isSvelteComponent) {
       // shadow dom timing is weird, use a timeout to fire this when the browser event loop is empty

@@ -1,8 +1,6 @@
 <!-- TODO refactor this when majority of safari users are coming from 15.4+ -->
 <!-- https://caniuse.com/?search=dialog -->
 
-<svelte:options tag={null} />
-
 <script>
   export let show = false
   export let close = false
@@ -21,25 +19,23 @@
   let isSvelteComponent = true // this needs to default to true in this component becasue of the noJS prop
 
   onMount(() => {
-    isSvelteComponent = Object.keys(component).includes('__svelte_meta')
+    isSvelteComponent = !component.parentNode.host
 
     // shadow dom timing is weird, use a timeout to fire this when the browser event loop is empty
     setTimeout(() => {
       if (component) dialog = component.getElementsByTagName('dialog')[0]
-    })
 
-    if(!isSvelteComponent) {
-      setTimeout(() => {
+      if(!isSvelteComponent) {
         if (component) {
           title = component.querySelectorAll('slot[name="heading"]')[0].assignedElements()[0].innerText
           id = id || slugify(title)
         }
-      })
-    }
+      }
+    })
   })
 
   $: if (dialog && !noJs) {
-    (show === true || show === 'true') ? dialog.showModal() : dialog.close()
+    ((show === true || show === 'true') && !dialog.open) ? dialog.showModal() : dialog.close()
   }
 
   function handleClose(event) {

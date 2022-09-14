@@ -12,8 +12,8 @@
   
 	<meta name='theme-color' content={colors.primary}>
 
-	<!-- avoid svelte-preprocess trying to turn this into typescript -->
-	<svelte:element this='script' src='/web-components.js' />
+	<!-- load the web componets -->
+	<script src='/web-components.js' />
 
 	<!-- analtyics -->
 	<script 

@@ -227,7 +227,6 @@ After this version of `surge` is installed you can run `surge --help` and see a 
 
 
 ```bash
-```bash
 $ surge -h
 
   Surge.sh ⚡ Static Web Publishing 0.24.0-rc.6

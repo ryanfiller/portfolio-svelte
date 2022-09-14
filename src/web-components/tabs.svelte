@@ -1,5 +1,3 @@
-<svelte:options tag={null} />
-
 <script>
   // this one is SUPER WEIRD for the web-components & no-js
   // KIND OF inspired by:
@@ -18,7 +16,7 @@
   let activeTab = null
 
   onMount(() => {
-    isSvelteComponent = Object.keys(component).includes('__svelte_meta')
+    isSvelteComponent = !component.parentNode.host
 
     // web-components don't get this until browser run time, set it again
     groupId = groupId || slugify(name)

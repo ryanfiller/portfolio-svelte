@@ -19,9 +19,7 @@ const envVars = {
 
 export default {
   plugins: [
-    sveltekit({
-      exclude: ['src/web-components/index.js'],
-    }),
+    sveltekit(),
     vitePlugins(envVars)
   ],
   resolve: {

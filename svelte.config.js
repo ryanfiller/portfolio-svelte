@@ -10,21 +10,30 @@ import postcssPlugins from './src/plugins/postcss/index.js'
 import remarkPlugins from './src/plugins/remark/index.js'
 import rehypePlugins from './src/plugins/rehype/index.js'
 
+process.env.ADAPTER === 'static' ? console.log('!!! using STATIC adapter !!!') : console.log('!!! using NETLIFY adapter !!!')
+
 export default {
 	extensions: [
 		'.svelte',
 		'.md',
 	],
 	kit: {
-		adapter: process.env.ADAPTER === 'static'
-			? adapterStatic({
-				pages: 'build',
-				assets: 'build',
-				fallback: '404.html'
-			})
-			: adapterNetlify({
-				fallback: '404.html'
-			}),
+		// adapter: process.env.ADAPTER === 'static'
+		// 	? adapterStatic({
+		// 		pages: 'build',
+		// 		assets: 'build',
+		// 		precompress: false,
+		// 		fallback: '404.html'
+		// 	})
+		// 	: adapterNetlify({
+		// 		fallback: '404.html'
+		// 	}),
+		adapter: adapterStatic({
+			pages: 'build',
+			assets: 'build',
+			precompress: false,
+			fallback: '404.html'
+		}),
 		appDir: '_app',
 		files: {
 			assets: 'static',
