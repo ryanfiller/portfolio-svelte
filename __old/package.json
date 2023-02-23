@@ -4,9 +4,6 @@
     "build": "svelte-kit build",
     "_postbuild": "mv build/404/index.html build/404.html",
     "preview": "svelte-kit preview",
-    "eslint": "eslint . --ext .js,.svelte",
-    "stylelint": "stylelint **/*.{css,svelte}",
-    "lint": "npm run eslint && npm run stylelint",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
   },
   "dependencies": {

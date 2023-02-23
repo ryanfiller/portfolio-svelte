@@ -1,15 +1,15 @@
 {
-  "name": "ryanfiller.com",
-  "description": "ryanfiller.com",
-  "version": "0.2.0",
-  "author": "Ryan Filler <ryanfiller89@gmail.com>",
+	"name": "ryanfiller.com",
+	"description": "ryanfiller.com",
+	"version": "0.2.0",
+	"author": "Ryan Filler <ryanfiller89@gmail.com>",
 	"repository": {
-    "type": "git",
-    "url": "https://github.com/ryanfiller/portfolio-svelte"
-  },
-  "bugs": {
-    "url": "https://github.com/ryanfiller/portfolio-svelte/issues"
-  },
+		"type": "git",
+		"url": "https://github.com/ryanfiller/portfolio-svelte"
+	},
+	"bugs": {
+		"url": "https://github.com/ryanfiller/portfolio-svelte/issues"
+	},
 	"type": "module",
 	"private": true,
 	"scripts": {
@@ -17,7 +17,9 @@
 		"share": "npm run dev -- --host",
 		"build": "vite build",
 		"preview": "vite preview",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"lint:eslint": "prettier --plugin-search-dir . --check . && eslint .",
+		"lint:stylelint": "stylelint **/*.{css,svelte}",
+		"lint": "npm run lint:eslint && npm run lint:stylelint",
 		"format": "prettier --plugin-search-dir . --write .",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
@@ -36,6 +38,8 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
+		"stylelint": "^15.2.0",
+		"stylelint-config-standard": "^30.0.1",
 		"svelte": "^3.54.0",
 		"svelte-check": "^3.0.1",
 		"tslib": "^2.4.1",
