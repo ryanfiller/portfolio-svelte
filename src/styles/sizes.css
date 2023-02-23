@@ -1,0 +1,12 @@
+:root {
+	--small-size: 576px;
+	--medium-size: 768px;
+	--large-size: 992px;
+	--extra-size: 1400px;
+}
+
+/* https://github.com/postcss/postcss-custom-media */
+@custom-media --small-width (min-width: 576px);
+@custom-media --medium-width (min-width: 768px);
+@custom-media --large-width (min-width: 992px);
+@custom-media --extra-width (min-width: 1400px);
