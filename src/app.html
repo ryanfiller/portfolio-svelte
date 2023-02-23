@@ -1,15 +1,12 @@
-<!doctype html>
-<html lang='en'>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<meta charset='utf-8'>
-		<meta name='viewport' content='width=device-width,initial-scale=1.0'>
-		<!-- <link rel='manifest' href='manifest.json' crossorigin='use-credentials'> -->
-		<!-- <link rel='icon' type='image/png' href='favicon.png'> -->
-		%svelte.head%
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width" />
+		%sveltekit.head%
 	</head>
-	<body data-no-js>
-		<!-- this is an intentionally blocking script that runs when js is not disabled -->
-		<script>document.body.removeAttribute('data-no-js')</script>
-		%svelte.body%
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
 	</body>
 </html>
