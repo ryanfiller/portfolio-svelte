@@ -1,10 +1,4 @@
 {
-  "type": "module",
-  "name": "ryanfiller.com",
-  "private": true,
-  "description": "ryanfiller.com",
-  "version": "0.1.0",
-  "author": "Ryan Filler <ryanfiller89@gmail.com>",
   "license": "MIT",
   "scripts": {
     "dev": "svelte-kit dev",
@@ -18,13 +12,6 @@
     "cypress": "npm run dev & cypress open",
     "test": "npm run dev & ./node_modules/.bin/cypress run",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ryanfiller/portfolio-svelte"
-  },
-  "bugs": {
-    "url": "https://github.com/ryanfiller/portfolio-svelte/issues"
   },
   "dependencies": {
     "chrome-aws-lambda": "^5.3.1",

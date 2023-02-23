@@ -1,6 +1,16 @@
 {
-	"name": "tmp",
-	"version": "0.0.1",
+  "name": "ryanfiller.com",
+  "description": "ryanfiller.com",
+  "version": "0.2.0",
+  "author": "Ryan Filler <ryanfiller89@gmail.com>",
+	"repository": {
+    "type": "git",
+    "url": "https://github.com/ryanfiller/portfolio-svelte"
+  },
+  "bugs": {
+    "url": "https://github.com/ryanfiller/portfolio-svelte/issues"
+  },
+	"type": "module",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -30,6 +40,5 @@
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
-	},
-	"type": "module"
+	}
 }
