@@ -7,8 +7,6 @@
     "eslint": "eslint . --ext .js,.svelte",
     "stylelint": "stylelint **/*.{css,svelte}",
     "lint": "npm run eslint && npm run stylelint",
-    "cypress": "npm run dev & cypress open",
-    "test": "npm run dev & ./node_modules/.bin/cypress run",
     "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
   },
   "dependencies": {

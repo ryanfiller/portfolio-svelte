@@ -17,12 +17,13 @@
 		"share": "npm run dev -- --host",
 		"build": "vite build",
 		"preview": "vite preview",
-		"test": "playwright test",
+		"lint": "prettier --plugin-search-dir . --check . && eslint .",
+		"format": "prettier --plugin-search-dir . --write .",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
-		"lint": "prettier --plugin-search-dir . --check . && eslint .",
-		"format": "prettier --plugin-search-dir . --write ."
+		"test:e2e": "playwright test",
+		"test": "npm run test:unit & npm run test:e2e"
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
