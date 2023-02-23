@@ -23,8 +23,8 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Test
-      uses: cypress-io/github-action@v2
-      with:
-        start: npm run dev
-        wait-on: http://localhost:3000
+    - name: Install
+      run: npm install
+    
+    - name: test
+      run: npm run test
