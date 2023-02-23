@@ -25,7 +25,7 @@
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"test:unit": "vitest",
 		"test:e2e": "playwright test",
-		"test": "npm run test:unit & npm run test:e2e"
+		"test": "npm run test:unit -- run & npm run test:e2e"
 	},
 	"devDependencies": {
 		"@csstools/postcss-global-data": "^1.0.3",
