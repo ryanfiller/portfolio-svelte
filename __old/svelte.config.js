@@ -6,8 +6,6 @@ dotenv.config()
 // import adapterNetlify from '@sveltejs/adapter-netlify'
 import adapterStatic from '@sveltejs/adapter-static'
 
-import sveltePreprocess from 'svelte-preprocess'
-
 import mdsvexDefault from 'mdsvex'
 const { mdsvex } = mdsvexDefault
 

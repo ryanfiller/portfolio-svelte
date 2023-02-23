@@ -1,5 +1,5 @@
 {
-	"extends": ["stylelint-config-standard"],
+	"extends": ["stylelint-config-standard", "stylelint-config-html/svelte"],
 	"syntax": "postcss",
 	"rules": {
 		"color-hex-length": null,
