@@ -1,15 +1,11 @@
----
+<!-- ---
 name: 'changes'
 title: 'Changelog'
 banner:
   src: '/images/gundam-gp01-repair.png'
   alt: 'gundam gp-01 being upgraded'
   attribution: 'Mobile Suit Gundam 0083: Stardust Memory, Sunrise / Bandai'
----
-
-<script>
-  import Change from './_change.svelte'
-</script>
+--- -->
 
 <Change>
 
@@ -21,7 +17,7 @@ DO OVER.
 
 </Change>
 
-<Change>
+<!-- <Change>
 
 ## RF-05-06 - "Hazel II"
 
@@ -1230,4 +1226,4 @@ This version of my personal website follows five previous versions, dating all t
 |   - [Late Fall 2011](http://2011.ryanfiller.com/)
 |   - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
 
-</Change>
+</Change> -->
