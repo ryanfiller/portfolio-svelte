@@ -5,6 +5,7 @@
 		"color-hex-length": null,
 		"comment-empty-line-before": null,
 		"no-descending-specificity": null,
+		"selector-not-notation": null,
 		"selector-pseudo-class-no-unknown": [
 			true,
 			{

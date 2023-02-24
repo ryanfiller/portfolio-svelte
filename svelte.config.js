@@ -1,3 +1,4 @@
+import path from 'path';
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import sveltePreprocess from 'svelte-preprocess';
@@ -9,10 +10,6 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		sveltePreprocess({
-			defaults: {
-				style: 'postcss',
-				script: 'typescript'
-			},
 			postcss: {
 				plugins: postcssPlugins
 			}
@@ -20,7 +17,17 @@ const config = {
 	],
 
 	kit: {
-		adapter: adapter()
+		adapter: adapter(),
+		alias: {
+			// $actions: path.resolve('./src/actions'),
+			$components: path.resolve('./src/components')
+			// $helpers: path.resolve('./src/helpers'),
+			// $plugins: path.resolve('./src/plugins'),
+			// $stores: path.resolve('./src/stores'),
+			// $styles: path.resolve('./src/styles'),
+			// $layouts: path.resolve('./src/layouts'),
+			// '$site-config': path.resolve('./src/site-config.js')
+		}
 	}
 };
 
