@@ -1,5 +1,3 @@
-import path from 'path';
-
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -61,19 +59,7 @@ export default {
 		ssr: true,
 		trailingSlash: 'never',
 		vite: {
-			plugins: vitePlugins(envVars),
-			resolve: {
-				alias: {
-					$actions: path.resolve('./src/actions'),
-					$components: path.resolve('./src/components'),
-					$helpers: path.resolve('./src/helpers'),
-					$plugins: path.resolve('./src/plugins'),
-					$stores: path.resolve('./src/stores'),
-					$styles: path.resolve('./src/styles'),
-					$layouts: path.resolve('./src/layouts'),
-					'$site-config': path.resolve('./src/site-config.js')
-				}
-			}
+			plugins: vitePlugins(envVars)
 		}
 	},
 
