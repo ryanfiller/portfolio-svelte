@@ -1,40 +1,29 @@
----
+<!-- ---
 name: 'changes'
 title: 'Changelog'
 banner:
   src: '/images/gundam-gp01-repair.png'
   alt: 'gundam gp-01 being upgraded'
   attribution: 'Mobile Suit Gundam 0083: Stardust Memory, Sunrise / Bandai'
----
-
-<script>
-  import Change from './_change.svelte'
-</script>
+--- -->
 
 <Change>
 
-## RF-05-06.2 - "Full Armor"
+## RF-05-07 - "MK II"
 
-I should probably learn TypeScript
+DO OVER.
 
-[feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type
-
-[[details | Version Details]]
-| - Features
-|   - typescript
-|
-| - Packages
-|   - \+ typescript
+[https://github.com/ryanfiller/portfolio-svelte/pull/84] - start over with a fresh SvelteKit 1.0 install
 
 </Change>
 
-<Change>
+<!-- <Change>
 
-## RF-05-06 - "Mk-II"
+## RF-05-06 - "Hazel II"
 
 Refactor and redesign.
 
-[refactor/move-content-files](https://github.com/ryanfiller/portfolio-svelte/pull/55) - refactor content enpoints
+[refactor/move-content-files](https://github.com/ryanfiller/portfolio-svelte/pull/55) - refactor content endpoints
 
 [refactor/lib](https://github.com/ryanfiller/portfolio-svelte/pull/57) - put lots of things into `src/lib`
 
@@ -52,6 +41,8 @@ Refactor and redesign.
 
 [refactor/code-component](https://github.com/ryanfiller/portfolio-svelte/pull/67) - slightly redesign the embedded code component
 
+[feature/typescript](https://github.com/ryanfiller/portfolio-svelte/pull/64) - turn TypeScript on as the default script type
+
 [[details | Version Details]]
 | - Features
 |   - use `import.meta.globEager` rather than `fs` for building content endpoints
@@ -64,6 +55,7 @@ Refactor and redesign.
 |   - create/steal a rehype plugin to create a table of contents
 |   - add a `json` endpoint for individual blog posts
 |   - fix a bunch of bugs, add a file name feature to code blocks, update old content
+|   - typescript
 |
 | - Layouts
 |   - ≈ `<Markdown />`
@@ -103,6 +95,9 @@ Refactor and redesign.
 |   - \+ `IBM-Plex-Sans.woff2`
 |   - \+ `IBM-Plex-Sans-Italic.woff2`
 |   - \+ `Fira-Code.ttf`
+|
+| - Packages
+|   - \+ typescript
 
 </Change>
 
@@ -179,6 +174,7 @@ Improve tooling and testing
 |   - \+ eslint-plugin-svelte3
 |   - \+ stylelint
 |   - \+ stylelint-config-standard
+
 
 </Change>
 
@@ -1230,4 +1226,4 @@ This version of my personal website follows five previous versions, dating all t
 |   - [Late Fall 2011](http://2011.ryanfiller.com/)
 |   - Built using HTML, CSS, and jQuery to satisfy an assignment for a Web01 college course.
 
-</Change>
+</Change> -->
