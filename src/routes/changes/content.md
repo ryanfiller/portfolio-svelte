@@ -642,19 +642,19 @@ Big changes. The nuclear option.
 | - Features
 |   - Completely remove NetlifyCMS
 |   - Remove MDX custom components, add remark & rehype plugins
-| 
+|
 | - CMS
 |   - Editor
 |     - \- Clearfix
 |     - \- Embed
 |     - \- Image
 |   - Fields
-|     - \- Blog 
+|     - \- Blog
 |     - \- commonFields
 |     - \- pageFields
 |     - \- postFields
 |     - \- mediasettings
-| 
+|
 | - Components
 |   - ≈ * `React` -> `Svelte`
 |   - Markdown
@@ -668,12 +668,12 @@ Big changes. The nuclear option.
 |     - \- `<Change />`
 |     - \- `<ColorChart />`
 |     - \- `<VariableFont />`
-| 
+|
 | - Helpers
 |   - ≈ `fishAttr`
 |   - \+ `getPages`
 |   - \+ `capitalize`
-| 
+|
 | - Plugins
 |   - remark
 |     - \+ `blockquote`
@@ -684,7 +684,7 @@ Big changes. The nuclear option.
 |   - rehype
 |     - \+ `embed`
 |     - \+ `video`
-| 
+|
 | - Tests
 |   - Markdown
 |     - ≈ `blockquote`
@@ -695,13 +695,13 @@ Big changes. The nuclear option.
 |     - ≈ `link`
 |     - \+ `twitter`
 |     - \+ `video`
-| 
-| - Packages 
+|
+| - Packages
 |   - \- gatsby-plugin-netlify-cms
 |   - \+ mdast-util-to-string
 |   - \- netlify-cms-app
 |   - \+ node-fetch
-|   - \+ remark-attr 
+|   - \+ remark-attr
 |   - \+ unist-util-visit
 |   - ---
 |   - \- @mdx-js/mdx
@@ -743,7 +743,7 @@ Big changes. The nuclear option.
 |   - \- react-helmet
 |   - \- react-transition-group
 |   - \- unist-util-visit
-|   
+|
 |   - \+ @babel/core
 |   - \+ @babel/plugin-syntax-dynamic-import
 |   - \+ @babel/plugin-transform-runtime
@@ -807,26 +807,26 @@ Make the site interface with other sites.
 |   - Added RSS feed for #code category in blog
 |   - Added /uses page
 |   - Refactored structure of content and updated CMS config accordingly
-| 
+|
 | - CMS
 |   - Fields
 |     - \+ mediasettings
-| 
+|
 | - Content
 |   - /uses
 |     - desk
 |     - hardware
 |     - software
 |     - doesn't use
-| 
+|
 | - Assets
 |   - Twitter svg
-| 
+|
 | - Components
 |   - Markdown
 |     - ≈ `<Blockquote />`
 |   - \+ `<Form />`
-|     
+|
 | - Tests
 |   - Markdown
 |     - ≈ `<Blockquote />`
@@ -835,10 +835,10 @@ Make the site interface with other sites.
 |     - \+ `/rss`
 |   - Commands
 |     - \+ `fillOutContactForm()`
-| 
+|
 | - Config
 |   - \+ `forms.js`
-| 
+|
 | - Packages
 |   - \+ gatsby-plugin-feed
 |   - \+ gatsby-remark-copy-linked-files
@@ -871,10 +871,10 @@ Adding structure beyond the homepage.
 | - Features
 |   - Added actual site navigation
 |   - Added `react-color-contrast-table` package, component, and chart
-| 
+|
 | - Content
 |   - Workshop -> Lab
-| 
+|
 | - Components
 |   - Layout
 |     - ≈ `<Header />`
@@ -893,7 +893,7 @@ Adding structure beyond the homepage.
 |     - \+ `<VariableFont />`
 |   - Static
 |     - \+ `<FontLoader />`
-| 
+|
 | - Tests
 |   - Layout
 |     - ≈ `<Header />`
@@ -909,7 +909,7 @@ Adding structure beyond the homepage.
 |     - \+ `<VariableFont />`
 |   - Commands
 |     - \+ `inputChange()`
-| 
+|
 | - Styles
 |   - globals
 |     - changed global `rem` size from `16px` to `12px`
@@ -917,10 +917,10 @@ Adding structure beyond the homepage.
 |     - \+ container
 |     - \+ readable
 |     - \+ visuallyHide
-| 
+|
 | - Config
 |   - \+ `pages.js`
-| 
+|
 | - Packages
 |   - \+ react-color-contrast-table
 |   - \- babel-preset-gatsby
@@ -963,14 +963,14 @@ Improving up CMS funtionality, site build time, and client side performance.
 |   - Added highlight hover animation
 |   - Added component to automatically add [Gatsby Link](https://www.gatsbyjs.org/docs/gatsby-link/) to internal urls
 |   - Remove [Jest](https://jestjs.io/), replace with [Cypress](https://www.cypress.io/) and refactor all tests. Also refactors scss-modules to be scss imports
-| 
+|
 | - Components
 |   - Markdown
 |     - \+ `<Embed />`
 |     - ≈ `<Heading />`
 |     - \+ `<Link />`
 |   - `<Change />`
-| 
+|
 | - CMS
 |   - Editor
 |     - \+ Clearfix
@@ -979,7 +979,7 @@ Improving up CMS funtionality, site build time, and client side performance.
 |     - \- commonFields
 |     - \+ pageFields
 |     - \+ postFields
-| 
+|
 | - Tests
 |   - Content
 |     - ≈ `<Meta />`
@@ -996,13 +996,13 @@ Improving up CMS funtionality, site build time, and client side performance.
 |   - Helpers
 |     - ≈ `slugify()`
 |     - ≈ `fishAttr()`
-| 
+|
 | - Styles
 |   - functions
 |     - \+ animate
 |     - \+ arrow
 |     - \+ highlight
-| 
+|
 | - Packages
 |   - \+ gatsby-plugin-netlify-cache
 |   - \+ gatsby-plugin-preact
@@ -1015,7 +1015,7 @@ Improving up CMS funtionality, site build time, and client side performance.
 |   - \- jest-coverage-badges
 |   - \+ preact
 |   - \+ react-transition-group
-    
+
 </Change>
 
 <Change>
@@ -1041,11 +1041,11 @@ General behind the scenes improvements and accessibility formatting.
 |   - [eslint](https://www.gatsbyjs.org/docs/eslint/)
 |   - [Jest for Gatsby](https://www.gatsbyjs.org/docs/unit-testing/)
 |   - Updated [ReactHelmet](https://github.com/nfl/react-helmet) to pull data from post frontmatter
-| 
+|
 | - Content
 |   - Changelog
 |   - README.md
-| 
+|
 | - Components
 |   - Content
 |     - \+ `<Meta />`
@@ -1053,7 +1053,7 @@ General behind the scenes improvements and accessibility formatting.
 |   - Markdown
 |     - \+ `<Heading />`
 |   - \+ `<Change />`
-| 
+|
 | - Tests
 |   - Content
 |     - \+ `<Meta />`
@@ -1068,10 +1068,10 @@ General behind the scenes improvements and accessibility formatting.
 |   - Helpers
 |     - \+ `slugify()`
 |     - \+ `fishAttr()`
-| 
-| - Styles 
+|
+| - Styles
 |   - \+ globals
-| 
+|
 | - Packages
 |   - \+ babel-eslint
 |   - \+ babel-jest
@@ -1095,7 +1095,7 @@ General behind the scenes improvements and accessibility formatting.
 
 </Change>
 
-<Change>  
+<Change>
 
 ## RF-05-00-GN1 "Alex"
 
@@ -1109,33 +1109,33 @@ Building content editting.
 | - Features
 |   - [NetlifyCMS](https://www.netlifycms.org/docs/gatsby/)
 |   - [Netlify Large Media](https://www.netlifycms.org/docs/netlify-large-media/)
-| 
+|
 | - Content
 |   - Changelog
 |   - Styles
 |     - add `<Image />` examples
-| 
+|
 | - Components
 |   - Markdown
 |     - \+ `<Image />`
-| 
+|
 | - CMS
 |   - Editor
 |     - \+ Image
 |   - Fields
 |     - \+ Blog (Scaffolded)
-| 
+|
 | - Helpers
 |   - `fishAttr()` - takes an element and returns a dom attribute or an empty string
-| 
-| - Packages 
+|
+| - Packages
 |   - \+ netlify-cms-app
 |   - \+ gatsby-plugin-netlify-cms
 |   - \+ node-sass
 |   - \+ gatsby-plugin-sass
 |   - \+ classnames
-| 
-| - Styles 
+|
+| - Styles
 |   - \+ variables
 |   - \+ functions
 
@@ -1144,7 +1144,7 @@ Building content editting.
 <Change>
 
 ## RF-05-00-G "Prototype"
-  
+
 Bare bones Gatsby site that aggregates blog posts on the homepage.
 
 [Initial commit](https://github.com/ryanfiller/portfolio-gatsby-v2/commit/b56638550881dc0d4dd0e0856ec3ff362309ea78) - made Christmas Eve, 2019.
@@ -1160,7 +1160,7 @@ Bare bones Gatsby site that aggregates blog posts on the homepage.
 |   - `gatsby-node.js`
 |     - `customUrl` override for posts
 |     - `customTemplate` override for posts
-| 
+|
 | - Content
 |   - 404 (scaffolded)
 |   - About (scaffolded)
@@ -1172,14 +1172,14 @@ Bare bones Gatsby site that aggregates blog posts on the homepage.
 |   - Portfolio (scaffolded)
 |   - Styles (scaffolded)
 |   - Workshop (scaffolded)
-| 
+|
 | - Components
 |   - \+ Layout
 |     - \+ `<Header />`
 |     - \+ `<Markdown />`
 |     - \+ `<PageLayout />`
 |   - \+ `<Posts />`
-| 
+|
 | - Packages
 |   - \+ @mdx-js/mdx
 |   - \+ @mdx-js/react
