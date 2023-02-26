@@ -12,13 +12,17 @@
 			type={`font/${font.split('.')[1]}`}
 		/>
 	{/each}
+	<!-- include client side polyfill for :has selector -->
+	<!-- https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo#browser -->
+	<script src="https://unpkg.com/css-has-pseudo@5.0.2/dist/browser-global.js"></script>
+  <!-- <script>cssHasPseudo(document)</script> -->
 </svelte:head>
 
 <style lang="postcss" global>
 	/* ------------- */
 	/* sizes & postcss media queries */
 	/* ------------- */
-	@import url('./sizes.css');
+	/* @import url('./sizes.css'); */
 
 	/* ------------- */
 	/* fonts */

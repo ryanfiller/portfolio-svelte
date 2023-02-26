@@ -1,14 +1,20 @@
-import autoprefixer from 'autoprefixer'
-import nesting from 'postcss-nesting'
-import customMedia from 'postcss-custom-media'
-import globalData from '@csstools/postcss-global-data'
+import postcssPresetEnv from 'postcss-preset-env';
+import globalData from '@csstools/postcss-global-data';
 
 export default [
-	autoprefixer,
-	nesting,
 	globalData({
 		// this is relative to svelte.config.js
 		files: ['./src/styles/sizes.css']
 	}),
-	customMedia
-]
+	postcssPresetEnv({
+		stage: 4,
+		preserve: true,
+		features: {
+			'nesting-rules': true,
+			'custom-media-queries': true,
+			// need some client side js for this one -
+			// https://github.com/csstools/postcss-plugins/tree/main/plugins/css-has-pseudo#browser
+			'has-pseudo-class': true
+		}
+	})
+];
