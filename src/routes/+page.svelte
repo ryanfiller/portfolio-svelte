@@ -1,5 +1,5 @@
 <script>
-	import GlobalStyles from '$styles/globals.svelte'
+	import GlobalStyles from '$styles/globals.svelte';
 	import Logo from '$components/logo.svelte';
 </script>
 
