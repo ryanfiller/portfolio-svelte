@@ -20,11 +20,11 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			// $actions: path.resolve('./src/actions'),
-			$components: path.resolve('./src/components')
+			$components: path.resolve('./src/components'),
 			// $helpers: path.resolve('./src/helpers'),
 			// $plugins: path.resolve('./src/plugins'),
 			// $stores: path.resolve('./src/stores'),
-			// $styles: path.resolve('./src/styles'),
+			$styles: path.resolve('./src/styles')
 			// $layouts: path.resolve('./src/layouts'),
 			// '$site-config': path.resolve('./src/site-config.js')
 		}

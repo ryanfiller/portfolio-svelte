@@ -15,7 +15,9 @@ DO OVER.
 
 [https://github.com/ryanfiller/portfolio-svelte/pull/84] - start over with a fresh SvelteKit 1.0 install
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/88] - add blackletter logo and favicons
+[https://github.com/ryanfiller/portfolio-svelte/pull/86] - add blackletter logo and favicons
+
+[https://github.com/ryanfiller/portfolio-svelte/pull/88] - add Science Gothic, IBM Plex, and Fira Code
 
 </Change>
 
