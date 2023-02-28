@@ -43,17 +43,6 @@
 
 <style global>
   /* ------------- */
-  /* sizes & postcss media queries */
-  /* ------------- */
-  @import './sizes.css';
-
-  /* ------------- */
-  /* fonts */
-  /* ------------- */
-
-  @import './fonts.css';
-
-  /* ------------- */
   /* variables */
   /* ------------- */
 
@@ -73,14 +62,6 @@
     --tapableSize: 40px;
     --readableMax: 65rem;
     --readableColumn: minmax(auto, var(--readableMax));
-
-    /* fonts */
-    --fontDisplay: 'Science Gothic';
-    /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-    --fontSansSerif: 'IBM Plex';
-    /* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
-    --fontMono: 'Fira Code';
-    /* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 
     /* gradients */
     --pixelSize: 0.25rem;
@@ -156,8 +137,6 @@
       line-height: 1;
       color: var(--colorText);
       background-color: var(--colorBackground);
-      font-family: var(--fontSansSerif);
-      font-variation-settings: 'wght' 60, 'wdth' 500;
     }
   }
 
