@@ -31,6 +31,9 @@ module.exports = {
 		'svelte/typescript': () => require('typescript'),
 		'svelte/ignore-styles': () => true
 	},
+	rules: {
+		'@typescript-eslint/no-inferrable-types': 0
+	},
 	parserOptions: {
 		sourceType: 'module',
 		ecmaVersion: 2020
