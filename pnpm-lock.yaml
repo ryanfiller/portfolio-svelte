@@ -1,5 +1,8 @@
 lockfileVersion: 5.3
 
+overrides:
+  svelte: npm:@typhonjs-svelte/svelte@3.55.1-cq2
+
 specifiers:
   '@csstools/postcss-global-data': ^1.0.3
   '@playwright/test': ^1.28.1

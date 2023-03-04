@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+      - mk-ii-release-candidate
 
 jobs:
   lint:
@@ -11,8 +12,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install
-        run: npm install
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Lint
         run: npm run lint
@@ -23,8 +31,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Install
-        run: npm install
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
 
       - name: Playwright Install
         run: npx playwright install
