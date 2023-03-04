@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+      - mk-ii-release-candidate
 
 jobs:
   lint:
