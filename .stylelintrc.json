@@ -1,21 +1,16 @@
-{  
-  "extends": [
-    "stylelint-config-standard"
-  ],
-  "syntax": "postcss",
-  "rules": {
-    "color-hex-length": null,
-    "comment-empty-line-before": null,
-    "no-descending-specificity": null,
-    "selector-pseudo-class-no-unknown": [
-      true,
-      {
-        "ignorePseudoClasses": ["global"]
-      }
-    ]
-  },
-  "ignoreFiles": [
-    "node_modules/**/*.css",
-    "build/**/*.css"
-  ]
+{
+	"extends": ["stylelint-config-standard", "stylelint-config-html/svelte"],
+	"syntax": "postcss",
+	"rules": {
+		"color-hex-length": null,
+		"comment-empty-line-before": null,
+		"no-descending-specificity": null,
+		"selector-pseudo-class-no-unknown": [
+			true,
+			{
+				"ignorePseudoClasses": ["global"]
+			}
+		]
+	},
+	"ignoreFiles": ["node_modules/**/*.css", "build/**/*.css", "__old/**/*.*"]
 }

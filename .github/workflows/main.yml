@@ -8,23 +8,26 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Install
-      run: npm install
-    
-    - name: Lint
-      run: npm run lint
+      - name: Install
+        run: npm install
+
+      - name: Lint
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
 
-    - name: Test
-      uses: cypress-io/github-action@v2
-      with:
-        start: npm run dev
-        wait-on: http://localhost:3000
+      - name: Install
+        run: npm install
+
+      - name: Playwright Install
+        run: npx playwright install
+
+      - name: Test
+        run: npm run test

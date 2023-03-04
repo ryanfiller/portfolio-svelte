@@ -1,74 +1,38 @@
-# ryanfiller.com
+# create-svelte
 
-This is my personal portfolio site and blog. It's way over engineered for just a blog that parses markdown files and serves images, but hey, I want to show off my ability to code, too.
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Installing
+## Creating a project
 
-Clone the repository
+If you're seeing this, you've probably already done this step. Congrats!
 
-```shell
-git clone git@github.com:ryanfiller/portfolio-svelte.git ryansite
+```bash
+# create a new project in the current directory
+npm create svelte@latest
+
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
 
-This site uses [git LFS](https://git-lfs.github.com/) to store images, so if you want those you'll also need to run
+## Developing
 
-```shell
-git lfs get
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+
+```bash
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-Install dependencies
+## Building
 
-```shell
-cd ryansite
-yarn install
+To create a production version of your app:
+
+```bash
+npm run build
 ```
 
-## I like Svelte!
+You can preview the production build with `npm run preview`.
 
-This site is built using [Svelte](https://svelte.dev/) & [SvelteKit](https://kit.svelte.dev/).
-
-Navigate into this site’s directory and start it up.
-
-```shell
-npm run start
-```
-
-The site is now running at `http://localhost:3000`!
-
-## I like testing!
-
-This site uses [Cypress](https://www.cypress.io/) with several accessibility extensions. To run basic tests
-
-```shell
-npm run test
-```
-
-See my testing setup [here](https://github.com/ryanfiller/portfolio-svelte/tree/main/cypress)
-
-## I like Netlify!
-
-[![Netlify Status](https://api.netlify.com/api/v1/badges/2a2468bd-7002-493e-a56d-1ddc2ffd2efc/deploy-status)](https://app.netlify.com/sites/ryanfiller-svelte/deploys)
-
-I use [Netlify](https://www.netlify.com/) for hosting and [Netlify Large Media](https://www.netlify.com/products/large-media/) as my image transformer and CDN.
-
-## I like Your Privacy!
-This site contains no invasive analtyics tracking. It uses  [Netlify Analytics](https://www.netlify.com/products/analytics/) on the site to anonymously track how many server requests are made, and [GoatCounter](https://www.goatcounter.com/) to see what browsers and screen sizes people are using.
-
-## Roadmap
-
-See my planned features / known bugs [here](https://github.com/ryanfiller/portfolio-svelte/projects/1).
-I also keep a pretty up to date change log [here](http://ryanfiller.com/changes)
-
-## Bugs!
-
-Oh no! 🐜
-
-If you find something broken, feel free to [file an issue](https://github.com/ryanfiller/portfolio-svelte/issues) or DM me on [Twitter](https://twitter.com/ryanfiller_) and I will get to it as soon as possible.
-
-## License
-
-This is a public repository under an MIT license. Feel free to replicate any code you find here if it helps you, but please, do not steal my original content.
-
-## Old Repo
-
-If for some reason you're looking for the [Gatsby](https://www.gatsbyjs.com/) version of this site, that repo can be found [here](https://github.com/ryanfiller/portfolio-gatsby-v2).
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
