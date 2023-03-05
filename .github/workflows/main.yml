@@ -6,6 +6,25 @@ on:
       - mk-ii-release-candidate
 
 jobs:
+  type-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: pnpm/action-setup@v2
+        name: Install pnpm
+        id: pnpm-install
+        with:
+          version: 7
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      - name: Lint
+        run: npm run check
+
   lint:
     runs-on: ubuntu-latest
     steps:
