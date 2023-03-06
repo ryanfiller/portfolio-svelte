@@ -21,28 +21,6 @@ export const site = {
   rss: `/blog/rss.xml`
 }
 
-export const mainNav = [
-  // {
-  //   name: 'about',
-  //   url: 'about'
-  // },
-  {
-    name: 'blog',
-    url: 'blog'
-  },
-  // {
-  //   name: 'portfolio',
-  // },
-  {
-    name: 'r&d',
-    url: 'lab'
-  },
-  // {
-  //   name: 'contact',
-  //   url: '#contact'
-  // },
-]
-
 export const secondaryNav = [
   {
     name: 'changelog',

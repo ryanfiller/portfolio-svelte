@@ -32,6 +32,7 @@ const config = {
 				: adapterAuto(),
 
 		alias: {
+			'$site-config': path.resolve('./src/site-config.js'),
 			$actions: path.resolve('./src/actions'),
 			$components: path.resolve('./src/components'),
 			$helpers: path.resolve('./src/helpers'),
@@ -39,7 +40,6 @@ const config = {
 			// $stores: path.resolve('./src/stores'),
 			$styles: path.resolve('./src/styles')
 			// $layouts: path.resolve('./src/layouts'),
-			// '$site-config': path.resolve('./src/site-config.js')
 		}
 	}
 }
