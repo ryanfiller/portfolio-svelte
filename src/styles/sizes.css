@@ -1,12 +1,19 @@
-:root {
-	--small-size: 576px;
-	--medium-size: 768px;
-	--large-size: 992px;
-	--extra-size: 1400px;
-}
-
 /* https://github.com/postcss/postcss-custom-media */
 @custom-media --small-width (min-width: 576px);
 @custom-media --medium-width (min-width: 768px);
 @custom-media --large-width (min-width: 992px);
 @custom-media --extra-width (min-width: 1400px);
+
+/* medium */
+@custom-media --nav-switch-width (min-width: 768px);
+
+@custom-media --small-height (min-height: 576px);
+@custom-media --medium-height (min-height: 768px);
+@custom-media --large-height (min-height: 992px);
+@custom-media --extra-height (min-height: 1400px);
+
+/* https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134 */
+@custom-media --touch (hover: none) and (pointer: coarse);
+@custom-media --stylus (hover: none) and (pointer: fine);
+@custom-media --pointer (hover: hover) and (pointer: coarse);
+@custom-media --mouse (hover: hover) and (pointer: fine);

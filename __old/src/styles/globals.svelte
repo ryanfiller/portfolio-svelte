@@ -47,9 +47,6 @@
   /* ------------- */
 
   :root {
-    /* spacing */
-    --padding: clamp(1rem, 2.5vw, 2rem);
-    --verticalSpacing: calc(2 * var(--padding));
 
     /* sizing */
     --containerMaxWidth: var(--largeSize);
@@ -122,38 +119,6 @@
       /* outer corners */
       no-repeat linear-gradient(currentColor, currentColor) calc(var(--borderWidth)) calc(2 * var(--borderWidth)) / calc(100% - (2 * var(--borderWidth))) calc(100% - (4 * var(--borderWidth)));
     --pixelBorderRadius: calc(6.25 * var(--borderWidth));
-  }
-
-  /* ------------- */
-  /* default styles */
-  /* ------------- */
-
-  html {
-    font-size: 12px;
-
-    & body {
-      margin: 0;
-      font-size: 1.5rem;
-      line-height: 1;
-      color: var(--colorText);
-      background-color: var(--colorBackground);
-    }
-  }
-
-  /* ------------- */
-  /* resets and preferences */
-  /* ------------- */
-
-  * {
-    box-sizing: border-box;
-
-    @media not all and (prefers-reduced-motion: reduce) {
-      --transitionSpeed: 0.2s;
-
-      scroll-behavior: smooth;
-    }
-
-    transition: color var(--transitionSpeed);
   }
 
   /* ------------- */
