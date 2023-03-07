@@ -29,6 +29,7 @@
 		"test": "npm run test:unit -- run & npm run test:e2e"
 	},
 	"devDependencies": {
+		"@axe-core/playwright": "^4.6.0",
 		"@csstools/postcss-global-data": "^1.0.3",
 		"@playwright/test": "^1.28.1",
 		"@sveltejs/adapter-auto": "^2.0.0",
