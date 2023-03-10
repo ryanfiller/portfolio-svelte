@@ -1,8 +1,7 @@
 {
   "license": "MIT",
   "scripts": {
-    "_postbuild": "mv build/404/index.html build/404.html",
-    "surge": "ADAPTER=static npm run build && surge --project build --domain beta.ryanfiller.com"
+    "_postbuild": "mv build/404/index.html build/404.html"
   },
   "dependencies": {
     "chrome-aws-lambda": "^5.3.1",
