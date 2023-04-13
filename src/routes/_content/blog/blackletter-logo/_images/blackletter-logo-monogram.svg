@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 370 440" style="enable-background:new 0 0 370 440;" xml:space="preserve">
+<style type="text/css">
+	#Layer_1{background:white;}
+	.st0{fill:#231F20;}
+</style>
+<path class="st0" d="M230,110v220l-30,30l-30-30l30-30V140L230,110z M290,110l-30-30l-30,30l30,30L290,110z M260,150l-30,30l30,30
+	l30-30L260,150z"/>
+<path class="st0" d="M140,180v60l30,30l-30,30l-30-30v-60l-30-30l30-30L140,180z M200,180l-30-30l-30,30l30,30L200,180z"/>
+</svg>
