@@ -34,6 +34,7 @@
 		container-type: inline-size;
 		display: flex;
 		justify-content: center;
+		box-sizing: content-box;
 
 		:global {
 			& svg {
