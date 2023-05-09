@@ -1,0 +1,58 @@
+/* these live in a separate file so they can be important and programmatically shown on the styleguide */
+
+@font-face {
+	font-family: 'Science Gothic';
+	/* this is the no-italic variant */
+	src: url('/fonts/ScienceGothic.ttf');
+	/* https://jrgraphix.net/r/Unicode/0020-007F */
+	unicode-range: U+0020-007F;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex';
+	src: url('/fonts/IBM-Plex-Sans.woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'IBM Plex';
+	src: url('/fonts/IBM-Plex-Sans-Italic.woff2');
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fira Code';
+	src: url('/fonts/Fira-Code.ttf');
+	font-display: swap;
+}
+
+/* -- */
+
+@font-face {
+	font-family: 'Fraunces';
+	src: url('/fonts/Fraunces.woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Fraunces';
+	src: url('/fonts/Fraunces-Italic.woff2');
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Recursive';
+	/* this is the latin subset variant */
+	src: url('/fonts/Recursive.woff2');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Inter';
+	/* this is the roman subset variant */
+	src: url('/fonts/Inter.ttf');
+	font-display: swap;
+}

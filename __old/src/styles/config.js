@@ -38,32 +38,3 @@ export const themes = {
     disabled: 'grayDark',
   }
 }
-
-export const fonts = {
-  plex: {
-    name: 'IBM Plex',
-    url: 'https://www.ibm.com/plex/',
-      options: {
-      wght: [100, 700],
-      wdth: [85, 100]
-    }
-  },
-
-  'science-gothic': {
-    name: 'Science Gothic',
-    url: 'https://github.com/tphinney/science-gothic',
-    options: {
-      wght: [100, 900],
-      wdth: [50, 200],
-      YOPQ: [18, 122]
-    }
-  },
-
-  fira: {
-    name: 'Fira Code',
-    url: 'https://github.com/tonsky/FiraCode',
-      options: {
-      wght: [300, 700]
-    }
-  }
-}
