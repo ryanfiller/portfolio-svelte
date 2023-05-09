@@ -13,7 +13,7 @@ export const fonts: Fonts = {
   // headers fonts
 
   'Science Gothic': {
-    url: 'https://github.com/tphinney/science-gothic',
+    url: 'https://sciencegothic.com/',
     options: {
       wght: [100, 900],
       wdth: [50, 200],

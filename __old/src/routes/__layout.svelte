@@ -1,6 +1,5 @@
 <script>
 	import { colors } from '$styles/config.js'
-	import Styles from '$styles/globals.svelte'
 </script>
 
 <svelte:head>
@@ -24,7 +23,5 @@
   <!-- webmonetization stuff -->
   <meta name='monetization' content='$ilp.uphold.com/grFqX3z4EBqj'>
 </svelte:head>
-
-<Styles />
 
 <slot />
