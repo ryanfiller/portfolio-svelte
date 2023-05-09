@@ -1,12 +1,12 @@
 :root {
-  --smallSize: 576px;
-  --mediumSize: 768px;
-  --largeSize: 992px;
-  --extraSize: 1400px;
+	--small-size: 576px;
+	--medium-size: 768px;
+	--large-size: 992px;
+	--extra-size: 1400px;
 }
 
 /* https://github.com/postcss/postcss-custom-media */
-@custom-media --smallWidth (min-width: 576px);
-@custom-media --mediumWidth (min-width: 768px);
-@custom-media --largeWidth (min-width: 992px);
-@custom-media --extraWidth (min-width: 1400px);
+@custom-media --small-width (min-width: 576px);
+@custom-media --medium-width (min-width: 768px);
+@custom-media --large-width (min-width: 992px);
+@custom-media --extra-width (min-width: 1400px);
