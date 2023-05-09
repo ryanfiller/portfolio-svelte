@@ -26,37 +26,9 @@
 }
 
 @font-face {
-	font-family: 'Fira Code';
-	src: url('/fonts/Fira-Code.ttf');
-	font-display: swap;
-}
-
-/* -- */
-
-@font-face {
-	font-family: 'Fraunces';
-	src: url('/fonts/Fraunces.woff2');
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Fraunces';
-	src: url('/fonts/Fraunces-Italic.woff2');
-	font-style: italic;
-	font-display: swap;
-}
-
-@font-face {
 	font-family: 'Recursive';
 	/* this is the latin subset variant */
 	src: url('/fonts/Recursive.woff2');
 	unicode-range: U+0020-007F;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: 'Inter';
-	/* this is the roman subset variant */
-	src: url('/fonts/Inter.ttf');
 	font-display: swap;
 }

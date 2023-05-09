@@ -28,13 +28,10 @@
 	:root {
 		/* fonts */
 		--font-display: 'Science Gothic';
-		--font-display: 'Fraunces';
 		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-		/* --font-sans-serif: 'IBM Plex'; */
-		--font-sans-serif: 'Recursive';
+		--font-sans-serif: 'IBM Plex';
 		/* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
-		/* --font-mono: 'Fira Code'; */
-		--font-sans-serif: 'Recursive';
+		--font-mono: 'Recursive';
 		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
 	}
 

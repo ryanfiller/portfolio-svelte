@@ -213,6 +213,7 @@
     gap: 1rem;
     grid-template-columns: 30ch 1fr;
     grid-auto-flow: auto auto auto;
+    padding-block: 1rem;
 
     & header {
       font-size: 1.5em;
@@ -220,10 +221,6 @@
 
     & > *:not(a) {
       flex: 1;
-    }
-
-    &:not(last-child) {
-      margin-block-end: 5rem;
     }
 
     & header {
