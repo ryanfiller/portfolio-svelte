@@ -10,9 +10,11 @@
 
 <Logo />
 
-{#each Object.keys(fonts) as font}
-  <VariableFont fontName={font} />
-{/each}
+<section class='fonts'>
+	{#each Object.keys(fonts) as font}
+		<VariableFont fontName={font} />
+	{/each}
+</section>
 
 <style lang="postcss">
 	:global(body) {
@@ -29,7 +31,7 @@
 		flex-wrap: wrap;
 		gap: 2rem;
 
-		& article {
+		& > :global(*) {
 			flex: 1;
 			display: flex;
 			flex-direction: column;

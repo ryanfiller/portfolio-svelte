@@ -3,7 +3,7 @@
 
   import { browser } from '$app/environment'
   import { fonts } from '$styles/config'
-  import css from '$styles/fonts.css?raw'
+  import css from '$styles/fonts.css?inline'
 
   // TODO - abstract this into $helpers function
   function slugify(input: string) {
@@ -53,8 +53,10 @@
           .catch(error => console.error(error))
       })
     )
+
     // convert add the bytes together and convert to kilobytes and round to 0 decimal places
     const kbSize = Math.round(bytes.reduce((total, current) => total + current, 0) / 1000)
+    // push this to the persisted object
     fileSizes[fontName] = kbSize
     return kbSize
   }
@@ -87,6 +89,12 @@
   const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',]
   const symbols = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/',  ':', ';', '<', '=', '>', '?', '@', '{', '|', '}', '~',  '[', '\\', ']', '^', '_', '`', ]
   const codeLigatures = ['&&', '||', '=>', '==', '!=', '<=', '>=', '!!', '?.']
+
+  // for some reason this test fails if it this is just `bind:value={font.capitalization}`
+  function handleSelect(event: Event) {
+    if (!(event.target instanceof HTMLSelectElement)) return
+    font.capitalization = event.target.value
+  }
 
   $: font = {
     name: fontName,
@@ -149,7 +157,7 @@
       <label for={makeId('capitalization')}>text-transform</label>
       <select
         id={makeId('capitalization')}
-        bind:value={font.capitalization}
+        on:change={handleSelect}
       >
         <option value='none'>none</option>
         <option value='capitalize'>capitalize</option>
@@ -159,7 +167,10 @@
     </div>
   </fieldset>
 
-  <pre class='code'>
+  <pre
+    class='code'
+    role='code'
+  >
     <code>
       font-family: "{font.name}";
       font-variation-settings: {
@@ -169,11 +180,11 @@
         .replace(/ "/g, '\n  "', )
         .replace(/"/, '\n  "', )
       };
-      {#if font.capitalization !== 'none'}
-        text-transform: "{font.capitalization}";
-      {/if}
       {#if font.italic}
-        font-style: "italic";
+        font-style: italic;
+      {/if}
+      {#if font.capitalization !== 'none'}
+        text-transform: {font.capitalization};
       {/if}
     </code>
   </pre>
@@ -212,7 +223,7 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: 30ch 1fr;
-    grid-auto-flow: auto auto auto;
+    grid-template-rows: auto auto 1fr;
     padding-block: 1rem;
 
     & header {
