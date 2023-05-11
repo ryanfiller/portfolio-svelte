@@ -1,16 +1,14 @@
 <script>
-	const fonts = import.meta.glob('/static/fonts/**.*')
+	const fonts = import.meta.glob('/static/fonts/**.*');
 </script>
 
 <svelte:head>
 	{#each Object.keys(fonts) as font}
-		<link rel='preload' href={font.replace('/static', '')} as='font' type={font.split('.')[1]}>
+		<link rel="preload" href={font.replace('/static', '')} as="font" type={font.split('.')[1]} />
 	{/each}
 </svelte:head>
 
-
-
-<style global>
+<style lang="postcss" global>
 	/* ------------- */
 	/* sizes & postcss media queries */
 	/* ------------- */
@@ -55,22 +53,22 @@
 		white-space: pre-line;
 	}
 
-	  /* ------------- */
-  /* utility classes */
-  /* ------------- */
+	/* ------------- */
+	/* utility classes */
+	/* ------------- */
 
-  body[data-no-js] .needs-js {
-    display: none !important;
-  }
+	body[data-no-js] .needs-js {
+		display: none !important;
+	}
 
-  .screen-reader {
-    position: absolute;
-    width: 0;
-    height: 0;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
+	.screen-reader {
+		position: absolute;
+		width: 0;
+		height: 0;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		border: 0;
+	}
 </style>

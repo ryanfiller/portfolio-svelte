@@ -1,16 +1,16 @@
-<script lang='typescript'>
-	import GlobalStyles from '$styles/globals.svelte'
-	import Logo from '$components/logo.svelte'
+<script lang="typescript">
+	import GlobalStyles from '$styles/globals.svelte';
+	import Logo from '$components/logo.svelte';
 
-	import { fonts } from '$styles/config'
-	import VariableFont from '$components/styles/variable-font.svelte'
+	import { fonts } from '$styles/config';
+	import VariableFont from '$components/styles/variable-font.svelte';
 </script>
 
 <GlobalStyles />
 
 <Logo />
 
-<section class='fonts'>
+<section class="fonts">
 	{#each Object.keys(fonts) as font}
 		<VariableFont fontName={font} />
 	{/each}
