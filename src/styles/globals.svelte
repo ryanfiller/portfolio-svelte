@@ -1,3 +1,15 @@
+<script>
+	const fonts = import.meta.glob('/static/fonts/**.*')
+</script>
+
+<svelte:head>
+	{#each Object.keys(fonts) as font}
+		<link rel='preload' href={font.replace('/static', '')} as='font' type={font.split('.')[1]}>
+	{/each}
+</svelte:head>
+
+
+
 <style global>
 	/* ------------- */
 	/* sizes & postcss media queries */
