@@ -1,0 +1,238 @@
+// Vitest Snapshot v1
+
+exports[`<VariableFont /> > rendering > renders consistently 1`] = `
+<body>
+  <div>
+    <section
+      class="variable-font s-mErrwtoW59yo"
+    >
+      <header
+        class="s-mErrwtoW59yo"
+      >
+        <a
+          class="s-mErrwtoW59yo"
+          href="https://sciencegothic.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Science Gothic
+        </a>
+         
+        <span
+          class="s-mErrwtoW59yo"
+        >
+          (...)
+        </span>
+      </header>
+       
+      <fieldset
+        class="needs-js s-mErrwtoW59yo"
+      >
+        <legend
+          class="s-mErrwtoW59yo"
+        >
+          Options:
+        </legend>
+         
+        <div
+          class="slider s-mErrwtoW59yo"
+        >
+          <label
+            class="s-mErrwtoW59yo"
+            for="science-gothic-wght-slider"
+          >
+            wght
+          </label>
+           
+          <input
+            class="s-mErrwtoW59yo"
+            id="science-gothic-wght-slider"
+            max="900"
+            min="100"
+            name="wght"
+            step="1"
+            type="range"
+          />
+        </div>
+        <div
+          class="slider s-mErrwtoW59yo"
+        >
+          <label
+            class="s-mErrwtoW59yo"
+            for="science-gothic-wdth-slider"
+          >
+            wdth
+          </label>
+           
+          <input
+            class="s-mErrwtoW59yo"
+            id="science-gothic-wdth-slider"
+            max="200"
+            min="50"
+            name="wdth"
+            step="1"
+            type="range"
+          />
+        </div>
+        <div
+          class="slider s-mErrwtoW59yo"
+        >
+          <label
+            class="s-mErrwtoW59yo"
+            for="science-gothic-YOPQ-slider"
+          >
+            YOPQ
+          </label>
+           
+          <input
+            class="s-mErrwtoW59yo"
+            id="science-gothic-YOPQ-slider"
+            max="122"
+            min="18"
+            name="YOPQ"
+            step="1"
+            type="range"
+          />
+        </div>
+         
+        <div
+          class="checkbox s-mErrwtoW59yo"
+        >
+          <label
+            class="s-mErrwtoW59yo"
+            for="science-gothic-italic"
+          >
+            italic
+          </label>
+           
+          <input
+            class="s-mErrwtoW59yo"
+            id="science-gothic-italic"
+            type="checkbox"
+          />
+        </div>
+         
+        <div
+          class="select s-mErrwtoW59yo"
+        >
+          <label
+            class="s-mErrwtoW59yo"
+            for="science-gothic-capitalization"
+          >
+            text-transform
+          </label>
+           
+          <select
+            class="s-mErrwtoW59yo"
+            id="science-gothic-capitalization"
+          >
+            <option
+              class="s-mErrwtoW59yo"
+              value="none"
+            >
+              none
+            </option>
+            <option
+              class="s-mErrwtoW59yo"
+              value="capitalize"
+            >
+              capitalize
+            </option>
+            <option
+              class="s-mErrwtoW59yo"
+              value="uppercase"
+            >
+              uppercase
+            </option>
+            <option
+              class="s-mErrwtoW59yo"
+              value="lowercase"
+            >
+              lowercase
+            </option>
+          </select>
+        </div>
+      </fieldset>
+       
+      <pre
+        class="code s-mErrwtoW59yo"
+        role="code"
+      >
+            
+        <code
+          class="s-mErrwtoW59yo"
+        >
+          
+      font-family: "
+          Science Gothic
+          ";
+      font-variation-settings: 
+          
+  "wght" 500,
+  "wdth" 125,
+  "YOPQ" 70
+          ;
+      
+          
+      
+          
+    
+        </code>
+        
+  
+      </pre>
+       
+      <div
+        class="example s-mErrwtoW59yo"
+      >
+        <label
+          class="screen-reader s-mErrwtoW59yo"
+          for="science-gothic-example-text"
+        >
+          text example
+        </label>
+         
+        <div
+          class="s-mErrwtoW59yo"
+          style="font-family: \\"Science Gothic\\"; font-variation-settings: 'wght' 500, 'wdth' 125, 'YOPQ' 70; text-transform: none;"
+        >
+          <textarea
+            class="example s-mErrwtoW59yo"
+            id="science-gothic-example-text"
+            wrap="hard"
+          />
+           
+          <p
+            class="s-mErrwtoW59yo"
+          >
+            a b c d e f g h i j k l m n o p q r s t u v w x y z A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+             
+            <br
+              class="s-mErrwtoW59yo"
+            />
+             
+            0 1 2 3 4 5 6 7 8 9
+             
+            <br
+              class="s-mErrwtoW59yo"
+            />
+             
+            ! " # $ % & ' ( ) * + , - . / : ; &lt; = &gt; ? @ { | } ~ [ \\ ] ^ _ \`
+             
+            <br
+              class="s-mErrwtoW59yo"
+            />
+             
+            && || =&gt; == != &lt;= &gt;= !! ?.
+             
+            <br
+              class="s-mErrwtoW59yo"
+            />
+          </p>
+        </div>
+      </div>
+    </section>
+    <!--&lt;Variable-font&gt;-->
+  </div>
+</body>
+`;

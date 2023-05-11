@@ -1,30 +1,41 @@
-<script>
+<script lang="typescript">
+	import GlobalStyles from '$styles/globals.svelte';
 	import Logo from '$components/logo.svelte';
+
+	import { fonts } from '$styles/config';
+	import VariableFont from '$components/styles/variable-font.svelte';
 </script>
 
-<main>
-	<Logo />
-	<!-- <h1>Welcome to SvelteKit</h1> -->
-	<!-- <p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p> -->
-</main>
+<GlobalStyles />
+
+<Logo />
+
+<section class="fonts">
+	{#each Object.keys(fonts) as font}
+		<VariableFont fontName={font} />
+	{/each}
+</section>
 
 <style lang="postcss">
 	:global(body) {
-		width: 100dvw;
-		height: 100dvh;
-		overflow: hidden;
+		min-height: 100dvh;
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
 	}
 
-	/* main {
-		& h1 {
-			color: lime;
+	.fonts {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 2rem;
 
-			@media (--largeWidth) {
-				color: pink;
-			}
+		& > :global(*) {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
 		}
-	} */
+	}
 </style>
