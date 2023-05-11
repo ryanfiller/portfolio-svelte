@@ -9,8 +9,6 @@
 
 <GlobalStyles />
 
-<Logo />
-
 <section class="fonts">
 	{#each Object.keys(fonts) as font}
 		<VariableFont fontName={font} />
@@ -31,7 +29,7 @@
 	.fonts {
 		width: 100%;
 		display: flex;
-		flex-wrap: wrap;
+		flex-direction: column;
 		gap: 2rem;
 
 		& > :global(*) {

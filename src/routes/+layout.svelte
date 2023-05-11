@@ -60,6 +60,7 @@
 		 										 "content"
 												 "footer";
 		max-block-size: 100%;
+		inline-size: 100dvw;
 		max-inline-size: 100%;
 
 		&.resizing {
