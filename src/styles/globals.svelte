@@ -25,12 +25,17 @@
 	/* ------------- */
 	:root {
 		/* fonts */
-		--font-display: 'Science Gothic';
-		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-		--font-sans-serif: 'IBM Plex';
-		/* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
-		--font-mono: 'Recursive';
-		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
+		/* i'm not 100% sure this works, but do your best to always get a variable font on mac, window, and android */
+		--font-fallback-stack: '-apple-system', 'San Francisco Variable', 'Segoe UI Variable', 'Roboto Variable', system-ui;
+		--font-display: 'Science Gothic', var(--font-fallback-stack), serif;
+		--font-sans-serif: 'IBM Plex', var(--font-fallback-stack), sans-serif;
+		--font-mono: 'Recursive', var(--font-fallback-stack), monospace;
+
+		@media (prefers-reduced-data: reduce) {
+			--font-display: var(--font-fallback-stack), serif;
+			--font-sans-serif: var(--font-fallback-stack), sans-serif;
+			--font-mono: var(--font-fallback-stack), monospace;
+		}
 	}
 
 	/* ------------- */
