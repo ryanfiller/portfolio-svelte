@@ -86,95 +86,11 @@
 			.join(', ');
 	}
 
-	const characters = [
-		'a',
-		'b',
-		'c',
-		'd',
-		'e',
-		'f',
-		'g',
-		'h',
-		'i',
-		'j',
-		'k',
-		'l',
-		'm',
-		'n',
-		'o',
-		'p',
-		'q',
-		'r',
-		's',
-		't',
-		'u',
-		'v',
-		'w',
-		'x',
-		'y',
-		'z',
-		'A',
-		'B',
-		'C',
-		'D',
-		'E',
-		'F',
-		'G',
-		'H',
-		'I',
-		'J',
-		'K',
-		'L',
-		'M',
-		'N',
-		'O',
-		'P',
-		'Q',
-		'R',
-		'S',
-		'T',
-		'U',
-		'V',
-		'W',
-		'X',
-		'Y',
-		'Z'
-	];
+	// prettier-ignore
+	const characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	const symbols = [
-		'!',
-		'"',
-		'#',
-		'$',
-		'%',
-		'&',
-		"'",
-		'(',
-		')',
-		'*',
-		'+',
-		',',
-		'-',
-		'.',
-		'/',
-		':',
-		';',
-		'<',
-		'=',
-		'>',
-		'?',
-		'@',
-		'{',
-		'|',
-		'}',
-		'~',
-		'[',
-		'\\',
-		']',
-		'^',
-		'_',
-		'`'
-	];
+	// prettier-ignore
+	const symbols = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '{', '|', '}', '~', '[', '\\', ']', '^', '_', '`'];
 	const codeLigatures = ['&&', '||', '=>', '==', '!=', '<=', '>=', '!!', '?.'];
 
 	// for some reason this test fails if it this is just `bind:value={font.capitalization}`
@@ -193,8 +109,6 @@
 		// text: characters.join(' ')
 	};
 </script>
-
-<!-- TODO class='needs-js' -->
 
 <section class="variable-font">
 	<header>
@@ -243,7 +157,7 @@
 		</div>
 	</fieldset>
 
-	<pre class="code" role="code">
+	<pre class="code needs-js" role="code">
     <code>
       font-family: "{font.name}";
       font-variation-settings: {JSON.stringify(createFontStyles(font.variationSettings))
