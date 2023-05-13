@@ -19,6 +19,10 @@ meta:
     Refining an old logo design I've been working on to use for the basis of a new site.
 ---
 
+<script>
+  import MkIIProgress from '$components/misc/mk-ii-progress.svelte'
+</script>
+
 When I [started my website from scratch in 2020](http://localhost:3000/blog/starting-fresh-in-2020), I always intended to create a new logo as one of the first things I would work on. However, other tasks took priority, and now more than three years later, I still only have my name typed out in a font at the top of the site serving as a makeshift logo. This has made it difficult to make big design decisions elsewhere on the site, as I was afraid I would put a lot of work into a design element, only to have it clash with whatever I eventually settled on for a logo. This time around, I made sure to do things in a different order when starting over.
 
 To check out the finished logo, feel free to jump straight to [the end](#the-finished-logo).
@@ -285,9 +289,4 @@ And that's it! In less than 30 lines of CSS I was able to create a logo that dyn
   on <a href="https://codepen.io">CodePen</a>.
 </iframe> -->
 
-<!-- TODO make this better -->
-## Progress on the New Site
-
-![screenshot of beta.ryanfiller.com that corresponds with the additions from this blog post](/images/beta-screenshot-1.png)
-
-Follow along with my redesign at [beta.ryanfiller.com](http://beta.ryanfiller.com/) (which may or may not currently match what is shown at the time of publishing this blog post.)
+<MkIIProgress imageUrl='/images/beta-screenshot-1.png' />
