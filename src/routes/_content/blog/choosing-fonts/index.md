@@ -19,6 +19,10 @@ meta:
     Choosing three new variable fonts and their fallback font stacks.
 ---
 
+<script>
+  import MkIIProgress from '$components/misc/mk-ii-progress.svelte'
+</script>
+
 ## Inspriation
 
 ## Candidates
@@ -29,20 +33,20 @@ meta:
 
  ### Header
 
+ https://www.youtube.com/watch?v=k0oQr7ZVtBQ
+
  ### Body
  https://www.neurodiversity.design/font/
 
  ### Code
  https://wesbos.com/uses#editor--terminal
 
-## Font Stacks
+## Web Fonts
 
-## Talk about how you already wrote about loading fonts and what you did different this time
+/blog/science-with-science-gothic
+
+## Font Stacks
 
 ## Talke about `prefers-reduced-data` and how it WOULD work if it existed yet
 
-## Progress on the New Site
-
-![screenshot of beta.ryanfiller.com that corresponds with the additions from this blog post](/images/beta-screenshot-2.png)
-
-Follow along with my redesign at [beta.ryanfiller.com](http://beta.ryanfiller.com/) (which may or may not currently match what is shown at the time of publishing this blog post.)
+<MkIIProgress imageUrl='/images/beta-screenshot-2.png' />
