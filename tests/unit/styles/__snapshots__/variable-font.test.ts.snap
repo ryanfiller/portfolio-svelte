@@ -9,19 +9,29 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
       <header
         class="s-mErrwtoW59yo"
       >
-        <a
+        <code
           class="s-mErrwtoW59yo"
-          href="https://sciencegothic.com/"
-          rel="noopener noreferrer"
-          target="_blank"
         >
-          Science Gothic
-        </a>
+          --test-font
+        </code>
          
         <span
-          class="s-mErrwtoW59yo"
+          class="no-reduce-data s-mErrwtoW59yo"
         >
-          (...)
+          <a
+            class="s-mErrwtoW59yo"
+            href="https://sciencegothic.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Science Gothic
+          </a>
+           
+          <span
+            class="needs-js s-mErrwtoW59yo"
+          >
+            (...)
+          </span>
         </span>
       </header>
        
@@ -155,31 +165,31 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
       </fieldset>
        
       <pre
-        class="code s-mErrwtoW59yo"
+        class="code needs-js s-mErrwtoW59yo"
         role="code"
       >
-            
+        		
         <code
           class="s-mErrwtoW59yo"
         >
           
-      font-family: "
-          Science Gothic
-          ";
-      font-variation-settings: 
+			font-family: 
+          "Science Gothic"
+          ;
+			font-variation-settings: 
           
   "wght" 500,
   "wdth" 125,
   "YOPQ" 70
           ;
-      
+			
           
-      
+			
           
-    
+		
         </code>
         
-  
+	
       </pre>
        
       <div
@@ -194,7 +204,7 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
          
         <div
           class="s-mErrwtoW59yo"
-          style="font-family: \\"Science Gothic\\"; font-variation-settings: 'wght' 500, 'wdth' 125, 'YOPQ' 70; text-transform: none;"
+          style="font-family: \\"Science Gothic\\"; font-variation-settings: 'wght' 500, 'wdth' 125, 'YOPQ' 70; text-transform: none; font-style: unset; --reduced-data-font: var(--test-font);"
         >
           <textarea
             class="example s-mErrwtoW59yo"
