@@ -11,6 +11,12 @@
 			{
 				"ignorePseudoClasses": ["global"]
 			}
+		],
+		"media-feature-name-no-unknown": [
+			true,
+			{
+				"ignoreMediaFeatureNames": ["prefers-reduced-data"]
+			}
 		]
 	},
 	"ignoreFiles": ["node_modules/**/*.css", "build/**/*.css", "__old/**/*.*"]
