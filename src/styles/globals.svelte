@@ -4,7 +4,13 @@
 
 <svelte:head>
 	{#each Object.keys(fonts) as font}
-		<link rel="preload" href={font.replace('/static', '')} as="font" type={font.split('.')[1]} />
+		<link
+			rel="preload"
+			href={font.replace('/static', '')}
+			as="font"
+			type={font.split('.')[1]}
+			media="(prefers-reduced-data: no-preference)"
+		/>
 	{/each}
 </svelte:head>
 
@@ -23,15 +29,9 @@
 	/* ------------- */
 	/* variables */
 	/* ------------- */
-	:root {
-		/* fonts */
-		--font-display: 'Science Gothic';
-		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-		--font-sans-serif: 'IBM Plex';
-		/* -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif */
-		--font-mono: 'Recursive';
-		/* "SFMono-Regular", Consolas, "Roboto Mono", "Droid Sans Mono", "Liberation Mono", Menlo, Courier, monospace */
-	}
+
+	/* :root {
+	} */
 
 	/* ------------- */
 	/* default styles */
@@ -54,12 +54,22 @@
 	}
 
 	/* ------------- */
-	/* utility classes */
+	/* conditional rendering */
 	/* ------------- */
 
 	body[data-no-js] .needs-js {
 		display: none !important;
 	}
+
+	@media (prefers-reduced-data: reduce) {
+		.no-reduce-data {
+			display: none !important;
+		}
+	}
+
+	/* ------------- */
+	/* utility classes */
+	/* ------------- */
 
 	.screen-reader {
 		position: absolute;

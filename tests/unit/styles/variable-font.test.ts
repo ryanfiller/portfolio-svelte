@@ -2,6 +2,8 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, fireEvent, waitFor, within, isInaccessible } from '@testing-library/svelte';
 import type { RenderResult } from '@testing-library/svelte';
 
+import { mockMatchMedia } from '../test-helpers';
+
 import { fonts } from '$styles/config';
 import VariableFont from '$components/styles/variable-font.svelte';
 
@@ -12,7 +14,8 @@ describe('<VariableFont />', () => {
 	let textArea: HTMLTextAreaElement,
 		variationOptions: HTMLInputElement[],
 		italic: HTMLInputElement,
-		textTransform: HTMLSelectElement;
+		textTransform: HTMLSelectElement,
+		css: HTMLElement;
 
 	// TODO - should this props function be abstracted to a helper?
 	function props(overrides = {}) {
@@ -22,8 +25,20 @@ describe('<VariableFont />', () => {
 		};
 	}
 
-	beforeEach(async () => {
+	function createComponent() {
+		component = render(VariableFont, props());
+		textArea = component.getByRole('textbox') as HTMLTextAreaElement;
+		const inputs = component.getByRole('group');
+		variationOptions = within(inputs).getAllByRole('slider');
+		italic = within(inputs).getByRole('checkbox');
+		textTransform = within(inputs).getByRole('combobox');
+		css = component.getByRole('code');
+	}
+
+	beforeEach(() => {
 		// lots of complicated mocking for this component...
+
+		mockMatchMedia('(prefers-reduced-data: reduce)', false);
 
 		vi.mock('$styles/fonts.css?inline', () => ({
 			default: `
@@ -31,6 +46,10 @@ describe('<VariableFont />', () => {
           font-family: '${Object.keys(fonts)[0]}';
           src: url('/fonts/whatever.ttf');
         }
+
+				:root {
+					--test-font: '${Object.keys(fonts)[0]}';
+				}
       `
 		}));
 
@@ -46,12 +65,7 @@ describe('<VariableFont />', () => {
 			});
 		});
 
-		component = render(VariableFont, props());
-		textArea = component.getByRole('textbox') as HTMLTextAreaElement;
-		const inputs = component.getByRole('group');
-		variationOptions = within(inputs).getAllByRole('slider');
-		italic = within(inputs).getByRole('checkbox');
-		textTransform = within(inputs).getByRole('combobox');
+		createComponent();
 	});
 
 	afterEach(() => {
@@ -69,6 +83,7 @@ describe('<VariableFont />', () => {
 
 		it('renders the font name and size', async () => {
 			const font = Object.keys(fonts)[0];
+			expect(component.getByRole('banner').textContent).toMatch(`--test-font`);
 			expect(component.getByRole('banner').textContent).toMatch(`${font} (...)`);
 			await waitFor(() =>
 				expect(component.getByRole('banner').textContent).toMatch(`${font} (${100}KB)`)
@@ -108,17 +123,47 @@ describe('<VariableFont />', () => {
 		});
 
 		it('applies the styles', () => {
-			const styles = (textArea.parentElement as HTMLElement)?.getAttribute('style');
-			expect(styles).toMatch(`'${property}' ${min}`);
-			expect(styles).toMatch(`font-style: italic`);
-			expect(styles).toMatch(`text-transform: lowercase`);
+			const inlineStyles = (textArea.parentElement as HTMLElement)?.getAttribute('style');
+			expect(inlineStyles).toMatch(`'${property}' ${min}`);
+			expect(inlineStyles).toMatch(`font-style: italic`);
+			expect(inlineStyles).toMatch(`text-transform: lowercase`);
 		});
 
 		it('creates the css', () => {
-			const css = component.getByRole('code').textContent;
-			expect(css).toMatch(`"${property}" ${min}`);
-			expect(css).toMatch(`font-style: italic;`);
-			expect(css).toMatch(`text-transform: lowercase;`);
+			const font = Object.keys(fonts)[0];
+			expect(css.textContent).toMatch(`font-family: "${font}";`);
+			expect(css.textContent).toMatch(`"${property}" ${min}`);
+			expect(css.textContent).toMatch(`font-style: italic;`);
+			expect(css.textContent).toMatch(`text-transform: lowercase;`);
+		});
+	});
+
+	describe('prefers-reduced-data', () => {
+		beforeEach(() => {
+			mockMatchMedia('(prefers-reduced-data: reduce)', true);
+			// unmount the original component
+			component.unmount();
+			// recreate it with reduced data
+			createComponent();
+		});
+
+		it('filters the font options correctly', () => {
+			Object.keys(Object.values(fonts)[0].options).forEach((option) => {
+				if (option === 'wght' || option === 'wdth') {
+					expect(component.getByLabelText(option)).toBeTruthy();
+				} else {
+					expect(() => component.getByLabelText(option)).toThrow();
+				}
+			});
+		});
+
+		it('applies the styles', () => {
+			const inlineStyles = (textArea.parentElement as HTMLElement)?.getAttribute('style');
+			expect(inlineStyles).toMatch(`--reduced-data-font: var(--test-font);`);
+		});
+
+		it('creates the css', () => {
+			expect(css.textContent).toMatch(`font-family: var(--reduced-data-font);`);
 		});
 	});
 });

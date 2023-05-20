@@ -5,6 +5,14 @@
 	import { fonts } from '$styles/config';
 	import css from '$styles/fonts.css?inline';
 
+	// TODO - it would be nice to move all these checks to a context store and only do them once
+	let reduceData = false;
+	if (browser) {
+		const mediaQuery = window.matchMedia('(prefers-reduced-data: reduce)');
+		reduceData = mediaQuery.matches;
+		mediaQuery.addEventListener('change', (event) => (reduceData = event.matches));
+	}
+
 	// TODO - abstract this into $helpers function
 	function slugify(input: string) {
 		return input
@@ -23,13 +31,21 @@
 
 	function getFontFiles() {
 		// get the matching font face declarations
-		// const regexPattern = `@font-face\\s*{\\s*font-family:\\s*['"]${fontName}['"];[^}]+}`
-		const regexPattern = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`;
-		const regex = new RegExp(regexPattern, 'g');
+		const fontFaceRegex = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`;
+		const regex = new RegExp(fontFaceRegex, 'g');
 
 		return css.match(regex)?.map((fontFace) => {
 			return fontFace.match(/src:\s*url\(['"]?(.*?)['"]?\);/)?.[1];
 		});
+	}
+
+	function getFontVariableName() {
+		const rootStyles = css.split(':root')[1];
+
+		const regexPattern = `(--[^:\\n\\r]+):\\s*'${fontName}`;
+		const regex = new RegExp(regexPattern);
+
+		return rootStyles.match(regex)?.[1];
 	}
 
 	// do some memoization so there's not a fetch on every render
@@ -64,18 +80,26 @@
 	}
 
 	function getVariationSettings() {
-		return Object.entries(fonts[fontName].options).map((option) => {
-			const [name, [min, max]] = option;
-			const range = max - min;
-			const middle = (max + min) / 2;
-			return {
-				name,
-				min,
-				max,
-				value: min >= 0 ? middle : max,
-				step: range === 1 ? 0.5 : 1
-			};
-		});
+		return Object.entries(fonts[fontName].options)
+			.map((option) => {
+				const [name, [min, max]] = option;
+				const range = max - min;
+				const middle = (max + min) / 2;
+				return {
+					name,
+					min,
+					max,
+					value: min >= 0 ? middle : max,
+					step: range === 1 ? 0.5 : 1
+				};
+			})
+			.filter((options) => {
+				if (reduceData) {
+					return options.name === 'wght' || options.name === 'wdth';
+				} else {
+					return true;
+				}
+			});
 	}
 
 	function createFontStyles(variationSettings: { name: string; value: number }[]) {
@@ -86,95 +110,11 @@
 			.join(', ');
 	}
 
-	const characters = [
-		'a',
-		'b',
-		'c',
-		'd',
-		'e',
-		'f',
-		'g',
-		'h',
-		'i',
-		'j',
-		'k',
-		'l',
-		'm',
-		'n',
-		'o',
-		'p',
-		'q',
-		'r',
-		's',
-		't',
-		'u',
-		'v',
-		'w',
-		'x',
-		'y',
-		'z',
-		'A',
-		'B',
-		'C',
-		'D',
-		'E',
-		'F',
-		'G',
-		'H',
-		'I',
-		'J',
-		'K',
-		'L',
-		'M',
-		'N',
-		'O',
-		'P',
-		'Q',
-		'R',
-		'S',
-		'T',
-		'U',
-		'V',
-		'W',
-		'X',
-		'Y',
-		'Z'
-	];
+	// prettier-ignore
+	const characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 	const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-	const symbols = [
-		'!',
-		'"',
-		'#',
-		'$',
-		'%',
-		'&',
-		"'",
-		'(',
-		')',
-		'*',
-		'+',
-		',',
-		'-',
-		'.',
-		'/',
-		':',
-		';',
-		'<',
-		'=',
-		'>',
-		'?',
-		'@',
-		'{',
-		'|',
-		'}',
-		'~',
-		'[',
-		'\\',
-		']',
-		'^',
-		'_',
-		'`'
-	];
+	// prettier-ignore
+	const symbols = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '{', '|', '}', '~', '[', '\\', ']', '^', '_', '`'];
 	const codeLigatures = ['&&', '||', '=>', '==', '!=', '<=', '>=', '!!', '?.'];
 
 	// for some reason this test fails if it this is just `bind:value={font.capitalization}`
@@ -185,28 +125,33 @@
 
 	$: font = {
 		name: fontName,
+		variable: getFontVariableName(),
 		...fonts[fontName],
 		variationSettings: getVariationSettings(),
 		italic: false,
 		capitalization: 'none',
-		text: 'the five boxing wizards jump quickly'
-		// text: characters.join(' ')
+		text: 'the five boxing wizards jump quickly',
+		// text: characters.join(' '),
+		reduceData
 	};
 </script>
 
-<!-- TODO class='needs-js' -->
-
 <section class="variable-font">
 	<header>
-		<a target="_blank" rel="noopener noreferrer" href={font.url}>
-			{font.name}
-		</a>
-		<span>
-			{#await getFilesSizes()}
-				(...)
-			{:then size}
-				({size}KB)
-			{/await}
+		<code>
+			{font.variable}
+		</code>
+		<span class="no-reduce-data">
+			<a target="_blank" rel="noopener noreferrer" href={font.url}>
+				{font.name}
+			</a>
+			<span class="needs-js">
+				{#await getFilesSizes()}
+					(...)
+				{:then size}
+					({size}KB)
+				{/await}
+			</span>
 		</span>
 	</header>
 
@@ -243,31 +188,35 @@
 		</div>
 	</fieldset>
 
-	<pre class="code" role="code">
-    <code>
-      font-family: "{font.name}";
-      font-variation-settings: {JSON.stringify(createFontStyles(font.variationSettings))
+	<pre class="code needs-js" role="code">
+		<code>
+			font-family: {!reduceData ? `"${font.name}"` : 'var(--reduced-data-font)'};
+			font-variation-settings: {JSON.stringify(createFontStyles(font.variationSettings))
 				.replace(/"/g, '')
 				.replace(/'/g, '"')
 				.replace(/ "/g, '\n  "')
 				.replace(/"/, '\n  "')};
-      {#if font.italic}
+			{#if font.italic}
 				font-style: italic;
 			{/if}
-      {#if font.capitalization !== 'none'}
+			{#if font.capitalization !== 'none'}
 				text-transform: {font.capitalization};
 			{/if}
-    </code>
-  </pre>
+		</code>
+	</pre>
 
 	<div class="example">
 		<label class="screen-reader" for={makeId('example-text')}> text example </label>
 		<div
 			style="
-        font-family: '{font.name}';
+        font-family: {!reduceData ? `${font.name}` : `var(${font.variable})`};
         font-variation-settings: {createFontStyles(font.variationSettings)};
         text-transform: {font.capitalization};
-        font-style: {font.italic ? 'italic' : ''};"
+        font-style: {font.italic ? 'italic' : 'unset'};
+				/* lol, wut */
+				/* stylelint disable custom-property-empty-line-before */
+				--reduced-data-font: var({font.variable});
+			"
 		>
 			<textarea id={makeId('example-text')} class="example" wrap="hard" bind:value={font.text} />
 			<p>
@@ -292,7 +241,8 @@
 			grid-column: 1 / -1;
 			font-size: 1.5em;
 
-			& span {
+			& > span {
+				display: block;
 				font-size: 0.75em;
 			}
 		}
@@ -301,12 +251,20 @@
 			flex: 1;
 		}
 
-		.example {
+		& .example {
 			grid-column: span 2;
 
 			& textarea {
-				all: inherit;
 				font-size: 2.5em;
+			}
+
+			& textarea,
+			& p {
+				font-family: inherit;
+				font-variation-settings: inherit;
+				font-style: inherit;
+				text-transform: inherit;
+				border: none;
 				width: 100%;
 				resize: block;
 			}

@@ -17,7 +17,7 @@ DO OVER.
 
 [https://github.com/ryanfiller/portfolio-svelte/pull/91] - add blackletter logo and favicons
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/93] - add Science Gothic, IBM Plex, and Recursive
+[https://github.com/ryanfiller/portfolio-svelte/pull/93] &[https://github.com/ryanfiller/portfolio-svelte/pull/99] - add Science Gothic, IBM Plex, and Recursive
 
 </Change>
 
