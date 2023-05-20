@@ -4,7 +4,13 @@
 
 <svelte:head>
 	{#each Object.keys(fonts) as font}
-		<link rel="preload" href={font.replace('/static', '')} as="font" type={font.split('.')[1]} />
+		<link
+			rel="preload"
+			href={font.replace('/static', '')}
+			as="font"
+			type={font.split('.')[1]}
+			media="(prefers-reduced-data: no-preference)"
+		/>
 	{/each}
 </svelte:head>
 
@@ -23,20 +29,9 @@
 	/* ------------- */
 	/* variables */
 	/* ------------- */
-	:root {
-		/* fonts */
-		/* i'm not 100% sure this works, but do your best to always get a variable font on mac, window, and android */
-		--font-fallback-stack: '-apple-system', 'San Francisco Variable', 'Segoe UI Variable', 'Roboto Variable', system-ui;
-		--font-display: 'Science Gothic', var(--font-fallback-stack), serif;
-		--font-sans-serif: 'IBM Plex', var(--font-fallback-stack), sans-serif;
-		--font-mono: 'Recursive', var(--font-fallback-stack), monospace;
 
-		@media (prefers-reduced-data: reduce) {
-			--font-display: var(--font-fallback-stack), serif;
-			--font-sans-serif: var(--font-fallback-stack), sans-serif;
-			--font-mono: var(--font-fallback-stack), monospace;
-		}
-	}
+	/* :root {
+	} */
 
 	/* ------------- */
 	/* default styles */
@@ -59,12 +54,22 @@
 	}
 
 	/* ------------- */
-	/* utility classes */
+	/* conditional rendering */
 	/* ------------- */
 
 	body[data-no-js] .needs-js {
 		display: none !important;
 	}
+
+	@media (prefers-reduced-data: reduce) {
+		.no-reduce-data {
+			display: none !important;
+		}
+	}
+
+	/* ------------- */
+	/* utility classes */
+	/* ------------- */
 
 	.screen-reader {
 		position: absolute;
