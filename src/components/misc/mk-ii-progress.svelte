@@ -2,12 +2,14 @@
   export let imageUrl = ''
 </script>
 
-<a
-  href='#progress-on-the-new-site'
-  title='#progress-on-the-new-site'
->
-  Progress on the New Site
-</a>
+<h2>
+  <a
+    href='#progress-on-the-new-site'
+    title='#progress-on-the-new-site'
+  >
+    Progress on the New Site
+  </a>
+</h2>
 
 <img
   src={imageUrl}
