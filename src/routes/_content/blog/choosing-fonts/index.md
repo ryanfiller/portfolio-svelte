@@ -23,8 +23,6 @@ meta:
   import MkIIProgress from '$components/misc/mk-ii-progress.svelte'
 </script>
 
-
-
 ## Inspiration
 
 While working on my logo I had a fairly well-formed idea in my head of how I wanted it to turn out. The process of deciding on a font was a lot more abstract. I knew I wanted to lean more into a vintage science fiction direction.
@@ -37,9 +35,9 @@ This might seem at odds with the logo I designed in my [last post](/blog/blackle
 
 On the technical end there were two limitations that I wanted to follow: 
  - I wanted to use a set of [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variation-settings) for my redesign (I even wrote a [blog post](/blog/science-with-science-gothic#what-are-variable-fonts) about this way back in March of 2020).
- - I wanted to pick a series of fonts that would comply with the [guidelines from neurodiversity.design](https://www.neurodiversity.design/font/).
+ - I wanted to pick a series of fonts that would comply with the [guidelines from neurodiversity.design](https://www.neurodiversity.design).
 
-## Candidates
+## Candidates and Choices
 
 I needed three fonts - a header or display font, something flexible and readable for body copy, and a monospace font for blocks of code.
 
@@ -47,48 +45,68 @@ Two of the best sites I can recommend for finding variable fonts are [v-fonts.co
 
 After looking through pages and pages of fonts I narrowed my selection down to two for each category.
 
-### Header
+### Display Font
 
-For a display font I was between Science Gothic, a sans serif art deco font, and Fraunces, an art nouveau serif font.
+For the headers font I was between Science Gothic, a sans serif art deco font, and Fraunces, an art nouveau serif font.
 
-|           | [Science Gothic](https://v-fonts.com/fonts/science-gothic) | [Fraunces](https://v-fonts.com/fonts/fraunces)       |
-| --------- | ---------------------------------------------------------- | ---------------------------------------------------- |
-| axes      | weight <br /> width <br /> y opaque <br /> slant           | optical size <br /> weight <br /> soften <br /> wonk |
-| size      | 653 KB                                                     | 190 KB <br /> 230 KB (talic)                         |
-| ligatures | no                                                         | yes                                                  |
+<!-- prettier-ignore -->
+|           | [![Science Gothic](/images/example-science-gothic.svg)](https://v-fonts.com/fonts/science-gothic) | [![Fraunces](/images/example-fraunces.svg)](https://v-fonts.com/fonts/fraunces)    |
+| --------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| axis(es)  | weight (`wght`)<br />width (`wdth`)<br />y opaque (`YOPQ`)<br /> slant (`slnt`)                   | optical size (`opsz`)<br />weight (`wght`)<br />soften (`SOFT`)<br />wonk (`WONK`) |
+| size      | 653 KB                                                                                            | 230 KB<br />190 KB (italic)                                                        |
+| ligatures | no                                                                                                | yes                                                                                |
 
-### Body
+I ended up going with Science Gothic for a few reasons. I was interested in Fraunces because retro-ish serif fonts [are currently having a bit of a moment](https://99designs.com/blog/trends/font-trends-2022/#matrix-17). I liked the look of this font, but I was worried that choosing something trendy would date the design in a few years when industry tastes moved onto something else. While I did like the vibe of the font I was also a little hesitant that the serifs would clash with the brush style of my logo, and the lowercase "f" and "j" characters weren't my favorite. Overall I just _really_ wanted to work Science Gothic into the design since its been a font on my radar for a few years now and I think there's a lot of cool variation combinations that can be made.
 
+Choosing this font was a bit of a performance tradeoff in that its about 200 kilobytes larger than the combined size of Fraunces and its italic version. 200 KB is significant amount of data to transfer over the network, so I had to keep this in mind while selecting the rest of the fonts.
 
+<!-- TODO - put the interactive font widget here -->
+See an interactive font specimen of Science Gothic [here](http://sciencegothic.com).
 
-|           | [IBM Plex](https://v-fonts.com/fonts/ibm-plex-sans-variable) | [Recursive](https://v-fonts.com/fonts/recursive)                  |
-| --------- | ------------------------------------------------------------ | ----------------------------------------------------------------- |
-| axes      | 106 KB <br /> 122 KB (italic)                                | monospace <br /> casual <br /> weight <br /> slant <br /> cursive |
-| size      | 786 KB                                                       | 190 KB <br /> 230 KB (italic)                                     |
-| ligatures | yes                                                          | no                                                                |
+### Body Copy
 
-### Code
+For the main text of the site I wanted to maximize accessibility by following the [typography](https://www.neurodiversity.design/typography/) and [font](https://www.neurodiversity.design/font/) guidelines from [neurodiversity.design](https://www.neurodiversity.design). This meant finding a sans serif font that would work on screens at small sizes. The two fonts I narrowed down to were IBM Plex and Inter, both fonts specifically designed for digital user interfaces
 
-(`Recursive` appears here as I was considering using it both as a body font and as a code font)
-Fire code has ligatures that I like
+<!-- prettier-ignore -->
+|           | [![IBM Plex](/images/example-ibm-plex.svg)](https://v-fonts.com/fonts/ibm-plex-sans-variable) | [![Inter](/images/example-inter.svg)](https://v-fonts.com/fonts/inter) |
+| --------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| axis(es)  | weight (`wght`)<br />width (`wdth`)                                                           | weight (`wght`)<br />slant (`slnt`)                                    |
+| size      | 106 KB<br />122 KB (italic)                                                                   | 786 KB<br />                                                           |
+| ligatures | yes                                                                                           | no                                                                     |
 
-|           | [Recursive](https://v-fonts.com/fonts/recursive)                  | [Fira Code](https://v-fonts.com/fonts/fira-code) |
-| --------- | ----------------------------------------------------------------- | ------------------------------------------------ |
-| axes      | monospace <br /> casual <br /> weight <br /> slant <br /> cursive | weight                                           |
-| size      | 190 KB <br /> 230 KB (italic)                                     | 280 KB                                           |
-| ligatures | no                                                                | yes                                              |
+I chose IBM Plex, and to be honest it was almost entirely because of the file size. Even with the regular and italic styles split up into two files the combined size of both was less than 30% the size of the single Inter file. As a nice bonus the Plex font had some ligature letters, including my favorite which is the "ﬁ" grouping.
 
+I did some digging into why Inter was so huge, and the answer ended up being that it is full of tons of (albeit cool) glyphs I didn't forsee myself using. Since it did include some very nice [contextual alternates](https://rsms.me/inter/#features/calt) I did consider using it for the code block font, but I was afraid it didn't come with a true monospace setting it wouldn't be differentiated enough from the regular body text.
+
+<!-- TODO - put the interactive font widget here -->
+See an interactive font specimen of IBM Plex [here](https://www.ibm.com/plex).
+
+### Code Blocks
+
+My two choices for code blocks were Recursive and Fira Code. I actually used Fira Code for a while as my daily editor font for a long while so I thought it would be cool to use it on my website as well. Like Inter, Fira Code comes with a ton of cool ligatures for use in coding.
+
+<!-- prettier-ignore -->
+|           | [![Recursive](/images/example-recursive.svg)](https://v-fonts.com/fonts/recursive)                     | [![Fira Code](/images/example-fira-code.svg)](https://v-fonts.com/fonts/fira-code) |
+| --------- | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
+| axis(es)  | monospace (`MONO`)<br />casual (`CASL`)<br />weight (`wght`)<br />slant (`slnt`)<br />cursive (`CRSV`) | weight (`wght`)                                                                    |
+| size      | 284 KB                                                                                                 | 280 KB                                                                             |
+| ligatures | no                                                                                                     | yes                                                                                |
+
+The biggest reason I chose Recursive of Fira Code was the same reason I stopped using it as my editor font — the more I used the fancy ligatures the more I found them to be confusing. I've also heard stories of people being confused to see them in blog posts, not knowing that the "⇒" character is just a conjoined version of "=" and ">". Recursive also had variation-settings for casual, cursive, and slant settings which I could crank all the way up and emulate how [Wes Bos](https://wesbos.com/uses#editor--terminal) uses a script font for code comments. For only 4 kilobytes for size, Recursive just had a lot more flexibility to offer.
+
+<!-- TODO - put the interactive font widget here -->
+See an interactive font specimen of Recursive [here](https://www.recursive.design).
+
+## Maximizing Performance
+
+So, with three variable fonts I have a total of 1165 kilobytes, or 1.165 megabytes, or file size _just_ for fonts on my site.
+
+## Fallback Font Stacks
 
 ## Choices
- - mention fetching the size here
  - talk about `CSS.loadFont()` or whatever
 
- ### Header
-
- https://www.youtube.com/watch?v=k0oQr7ZVtBQ
-
- ### Body
- https://www.neurodiversity.design/font/
+  - /styles#fonts
 
  ### Code
  https://wesbos.com/uses#editor--terminal
@@ -99,6 +117,6 @@ Fire code has ligatures that I like
 
 ## Font Stacks
 
-## Talke about `prefers-reduced-data` and how it WOULD work if it existed yet
+## Talk about `prefers-reduced-data` and how it WOULD work if it existed yet
 
 <MkIIProgress imageUrl='/images/beta-screenshot-2.png' />
