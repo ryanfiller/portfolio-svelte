@@ -7,7 +7,10 @@ banner:
 options:
   published: true
 meta:
-  date: 2021-05-31
+  date: [
+    2021-05-31,
+    2023-06-23
+  ]
   excerpt: Calculating the cost of my immutable deploys previews.
   categories:
     - code
@@ -16,6 +19,20 @@ meta:
     - jamstack
     - devops
 ---
+
+<script>
+  import Note from '$components/misc/note.svelte'
+</script>
+
+<Note title='An Update About Netlify'>
+
+There's some outdated information in this post, it looks like in June of 2022 Netlify [added the ability to delete deploys](https://www.netlify.com/blog/deploy-deletion/) and a few months later in September of 2022 [added automatic deletion of old previews](https://www.netlify.com/blog/automated-deploy-cleanup-and-new-deploy-retention-policies/).
+
+![new 90 day deletion policy for preview builds](/images/netlify-automatic-deploy-deletion.png)
+
+I think this is awesome, and big kudos to Netlify for adding this feature.
+
+</Note>
 
 I love Netlify. I think it's a wonderful service that provides _tremendous_ value to many developers and teams. But, like so many things in the modern world, I think it’s easy to overlook some of the behind-the-scenes consequences of convenience. This post examines the cost of what some of those conveniences, how to change some default settings to lessen their impact, and what some situational alternatives can be.
 
