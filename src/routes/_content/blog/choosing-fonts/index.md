@@ -99,7 +99,13 @@ See an interactive font specimen of Recursive [here](https://www.recursive.desig
 
 ## Maximizing Performance
 
-So, with three variable fonts I have a total of 1165 kilobytes, or 1.165 megabytes, or file size _just_ for fonts on my site.
+So, with three variable fonts I have a total of 1165 kilobytes, or 1.165 megabytes, o files _just_ for fonts on my site.
+
+However, if I look at the last fully-designed version of my site [from 2018](https://2018.ryanfiller.com/) I was using the fonts `Dosis` (27KB) and `Raleway` (21KB). I wasn't loading every font weight, but let assume I was getting three for `Dosis` - light, medium, and bold, and six for `Raleway` - the same three weights and italic for each. That's... only 207KB. Shit.
+
+https://fonts.google.com/specimen/Dosis?query=dosis
+https://fonts.google.com/specimen/Raleway?query=raleway
+
 
 ## Fallback Font Stacks
 
