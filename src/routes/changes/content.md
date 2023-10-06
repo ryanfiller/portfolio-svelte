@@ -19,6 +19,8 @@ DO OVER.
 
 [https://github.com/ryanfiller/portfolio-svelte/pull/93] &[https://github.com/ryanfiller/portfolio-svelte/pull/99] - add Science Gothic, IBM Plex, and Recursive
 
+[https://github.com/ryanfiller/portfolio-svelte/pull/102] - start tracking co2 generated per page
+
 </Change>
 
 <!-- <Change>
