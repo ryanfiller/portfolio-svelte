@@ -21,6 +21,10 @@ DO OVER.
 
 [PR#102](https://github.com/ryanfiller/portfolio-svelte/pull/102) & [PR#104](https://github.com/ryanfiller/portfolio-svelte/pull/104)- start tracking co2 generated per page
 
+[PR#101](https://github.com/ryanfiller/portfolio-svelte/pull/101) - optimize font files
+
+[https://github.com/ryanfiller/portfolio-svelte/pull/101] - subset fonts and remove some axis
+
 </Change>
 
 <!-- <Change>
