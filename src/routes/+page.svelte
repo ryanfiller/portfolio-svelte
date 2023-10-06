@@ -4,6 +4,7 @@
 
 	import { fonts } from '$styles/config';
 	import VariableFont from '$components/styles/variable-font.svelte';
+	import Footer from '$components/layout/footer.svelte';
 </script>
 
 <GlobalStyles />
@@ -15,6 +16,8 @@
 		<VariableFont fontName={font} />
 	{/each}
 </section>
+
+<Footer />
 
 <style lang="postcss">
 	:global(body) {

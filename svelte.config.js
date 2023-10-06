@@ -25,10 +25,11 @@ const config = {
 						// strict: false
 				  })
 				: adapterAuto(),
+
 		alias: {
 			// $actions: path.resolve('./src/actions'),
 			$components: path.resolve('./src/components'),
-			// $helpers: path.resolve('./src/helpers'),
+			$helpers: path.resolve('./src/helpers'),
 			// $plugins: path.resolve('./src/plugins'),
 			// $stores: path.resolve('./src/stores'),
 			$styles: path.resolve('./src/styles')
