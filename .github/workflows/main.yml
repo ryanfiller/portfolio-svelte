@@ -20,7 +20,7 @@ jobs:
           run_install: false
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Lint
         run: npm run check
@@ -39,7 +39,7 @@ jobs:
           run_install: false
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Lint
         run: npm run lint
@@ -58,7 +58,7 @@ jobs:
           run_install: false
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --no-frozen-lockfile
 
       - name: Playwright Install
         run: npx playwright install

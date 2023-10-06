@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, fireEvent, waitFor, within, isInaccessible } from '@testing-library/svelte';
 import type { RenderResult } from '@testing-library/svelte';
 
-import { mockMatchMedia } from '../test-helpers';
+import { mockMatchMedia } from '../../test-helpers';
 
 import { fonts } from '$styles/config';
 import VariableFont from '$components/styles/variable-font.svelte';

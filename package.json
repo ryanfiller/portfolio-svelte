@@ -64,5 +64,8 @@
 		"overrides": {
 			"svelte": "npm:@typhonjs-svelte/svelte@3.55.1-cq2"
 		}
+	},
+	"dependencies": {
+		"@tgwf/co2": "^0.13.7"
 	}
 }

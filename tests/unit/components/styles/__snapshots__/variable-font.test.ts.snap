@@ -204,7 +204,7 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
          
         <div
           class="s-mErrwtoW59yo"
-          style="font-family: \\"Science Gothic\\"; font-variation-settings: 'wght' 500, 'wdth' 125, 'YOPQ' 70; text-transform: none; font-style: unset; --reduced-data-font: var(--test-font);"
+          style="font-family: Science Gothic; font-variation-settings: 'wght' 500, 'wdth' 125, 'YOPQ' 70; text-transform: none; font-style: unset; /* lol, wut */ /* stylelint disable custom-property-empty-line-before */ --reduced-data-font: var(--test-font);"
         >
           <textarea
             class="example s-mErrwtoW59yo"
