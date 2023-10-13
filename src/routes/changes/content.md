@@ -13,13 +13,13 @@ banner:
 
 DO OVER.
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/84] - start over with a fresh SvelteKit 1.0 install
+[PR#84](https://github.com/ryanfiller/portfolio-svelte/pull/84) - start over with a fresh SvelteKit 1.0 install
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/91] - add blackletter logo and favicons
+[PR#91](https://github.com/ryanfiller/portfolio-svelte/pull/91) - add blackletter logo and favicons
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/93] &[https://github.com/ryanfiller/portfolio-svelte/pull/99] - add Science Gothic, IBM Plex, and Recursive
+[PR#93](https://github.com/ryanfiller/portfolio-svelte/pull/93) & [PR#99](https://github.com/ryanfiller/portfolio-svelte/pull/99) - add Science Gothic, IBM Plex, and Recursive
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/102] - start tracking co2 generated per page
+[PR#102](https://github.com/ryanfiller/portfolio-svelte/pull/102) & [PR#104](https://github.com/ryanfiller/portfolio-svelte/pull/104)- start tracking co2 generated per page
 
 </Change>
 

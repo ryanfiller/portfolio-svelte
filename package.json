@@ -24,7 +24,7 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-		"test:unit": "vitest",
+		"test:unit": "TESTING=true vitest",
 		"test:e2e": "playwright test",
 		"test": "npm run test:unit -- run & npm run test:e2e"
 	},

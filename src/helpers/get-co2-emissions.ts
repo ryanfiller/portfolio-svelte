@@ -1,21 +1,9 @@
 import tgwf from '@tgwf/co2';
 
-const conversion = {
-	bytes: 1,
-	kilobytes: 1024,
-	megabytes: 1024 * 1024,
-	gigabytes: 1024 * 1024 * 1024
-};
-
-type conversion = keyof typeof conversion;
+import { convertBytes } from '.';
+import type { conversion } from './convert-bytes';
 
 // https://developers.thegreenwebfoundation.org/api/greencheck/v3/check-single-domain/#response-object
-interface SupportingDocuments {
-	id: number;
-	title: string;
-	link: string;
-}
-
 interface Host {
 	url: string;
 	hosted_by: string;
@@ -27,8 +15,10 @@ interface Host {
 	supporting_documents: [SupportingDocuments];
 }
 
-function convertSize(size: number, unit: conversion) {
-	return (size / conversion[unit as keyof typeof conversion]).toFixed(2);
+interface SupportingDocuments {
+	id: number;
+	title: string;
+	link: string;
 }
 
 function getEmissions(bytes: number, host: Host) {
@@ -53,18 +43,26 @@ async function checkHost(host: string) {
 	}
 }
 
-export default async function co2Emissions(hostname: string, unit: conversion = 'bytes') {
-	const resources = performance.getEntriesByType('resource');
+export default async function getCo2Emissions(hostname: string, unit: conversion = 'bytes') {
+	const resources = performance.getEntriesByType('resource')
 
-	const bytes = resources.reduce((total, resource) => {
-		return total + ((resource as PerformanceResourceTiming).encodedBodySize || 0);
+	const formattedResources: { [key: string]: number } = {};
+	resources.map(resource => {
+		const { name, encodedBodySize } = resource as PerformanceResourceTiming;
+		// if two resources have the same name, the last one will overwrite the first one,
+		// which is great because one should be from cache and we don't want to count it anyways
+		return formattedResources[name] = encodedBodySize
+	});
+
+	const bytes = Object.values(formattedResources).reduce((total, bytes) => {
+		return total + (bytes || 0);
 	}, 0);
 
 	const host = await checkHost(hostname);
 
 	return {
-		size: `${convertSize(bytes, unit)} ${unit}`,
-		emissions: `${getEmissions(bytes, host)} g`,
+		size: `${convertBytes(bytes, unit)} ${unit}`,
+		emissions: `${getEmissions(bytes, host)} grams`,
 		host: host
 	};
 }

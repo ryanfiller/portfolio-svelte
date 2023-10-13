@@ -16,6 +16,8 @@ describe('<VariableFont />', () => {
 		italic: HTMLInputElement,
 		textTransform: HTMLSelectElement,
 		css: HTMLElement;
+	// @ts-ignore
+	let performance;
 
 	// TODO - should this props function be abstracted to a helper?
 	function props(overrides = {}) {
@@ -57,19 +59,23 @@ describe('<VariableFont />', () => {
 			browser: true
 		}));
 
-		global.fetch = vi.fn().mockImplementation(() => {
-			return Promise.resolve({
-				headers: {
-					get: () => 100000
-				}
-			});
-		});
+		performance = global.performance;
+
+		global.performance = {
+			getEntriesByType: () => [
+				// @ts-ignore
+				{ name: Object.keys(fonts)[0].replace(' ', '-'), decodedBodySize: 1024 }
+			]
+		};
 
 		createComponent();
 	});
 
 	afterEach(() => {
 		vi.resetAllMocks();
+
+		// @ts-ignore
+		global.performance = performance;
 	});
 
 	describe('rendering', () => {
@@ -81,19 +87,10 @@ describe('<VariableFont />', () => {
 			expect(isInaccessible(component.container)).toBe(false);
 		});
 
-		it('renders the font name and size', async () => {
+		it('renders the font name and size', () => {
 			const font = Object.keys(fonts)[0];
 			expect(component.getByRole('banner').textContent).toMatch(`--test-font`);
-			expect(component.getByRole('banner').textContent).toMatch(`${font} (...)`);
-			await waitFor(() =>
-				expect(component.getByRole('banner').textContent).toMatch(`${font} (${100}KB)`)
-			);
-		});
-
-		it.skip('memoized the font size', () => {
-			expect(global.fetch).toHaveBeenCalledTimes(1);
-			component.rerender(props());
-			expect(global.fetch).toHaveBeenCalledTimes(1);
+			expect(component.getByRole('banner').textContent).toMatch(`${font} (1.00KB)`)
 		});
 
 		it('renders the font options', async () => {

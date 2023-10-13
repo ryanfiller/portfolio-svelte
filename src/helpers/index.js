@@ -1,3 +1,7 @@
-import co2Emissions from './co2-emissions';
+import convertBytes from './convert-bytes';
+import getCo2Emissions from './get-co2-emissions';
 
-export { co2Emissions };
+export {
+  convertBytes,
+  getCo2Emissions
+};

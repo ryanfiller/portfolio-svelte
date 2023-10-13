@@ -4,6 +4,7 @@
 	import { browser } from '$app/environment';
 	import { fonts } from '$styles/config';
 	import css from '$styles/fonts.css?inline';
+	import { convertBytes } from '$helpers';
 
 	// TODO - it would be nice to move all these checks to a context store and only do them once
 	let reduceData = false;
@@ -48,8 +49,6 @@
 		return rootStyles.match(regex)?.[1];
 	}
 
-	// do some memoization so there's not a fetch on every render
-	const fileSizes: { [key: string]: number } = {};
 	async function getFilesSizes() {
 		// only run this on the client, not the browser
 		if (!browser) return;
@@ -58,25 +57,35 @@
 		// don't do this if there's no files
 		if (!files.length) return;
 
-		// return the value if we've already fetched it
-		if (fileSizes[fontName]) return fileSizes[fontName];
-
 		const bytes: [number] = [0];
-		await Promise.all(
-			files.map(async (path) => {
-				if (!path) return;
-				await fetch(path)
-					.then((response) => response.headers.get('content-length'))
-					.then((byteSize) => bytes.push(parseFloat(byteSize || '0')))
-					.catch((error) => console.error(error));
+
+		// jump through some dumb hoops for testing...
+		let promise
+		if (typeof process !== 'undefined' && process.env.TESTING) {
+			promise = Promise.resolve()
+		} else {
+			promise = document.fonts.ready
+		}
+
+		// make sure not run this until the fonts are loaded
+		await promise.then(() => {
+			const resources = performance.getEntriesByType('resource')
+			
+			const dedupedResources: { [key: string]: PerformanceEntry } = {};
+			resources.forEach((resource) => {
+				dedupedResources[resource.name] = resource
 			})
-		);
+
+			Object.values(dedupedResources).forEach((resource) => {
+				if (resource.name.includes(fontName.replace(' ', '-'))) {
+					bytes.push((resource as PerformanceResourceTiming).decodedBodySize);
+				}
+			});
+		});
 
 		// convert add the bytes together and convert to kilobytes and round to 0 decimal places
-		const kbSize = Math.round(bytes.reduce((total, current) => total + current, 0) / 1000);
-		// push this to the persisted object
-		fileSizes[fontName] = kbSize;
-		return kbSize;
+		const total = bytes.reduce((total, current) => total + current, 0);
+		return convertBytes(total, 'kilobytes');
 	}
 
 	function getVariationSettings() {
