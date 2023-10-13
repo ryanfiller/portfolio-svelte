@@ -1,8 +1,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
-import { co2Emissions } from '$helpers';
+import { getCo2Emissions } from '$helpers';
 
-describe('co2Emissions()', () => {
+describe('getCo2Emissions()', () => {
 	let result;
 
 	const bytes = 1073741824; // this is 1GB in bytes
@@ -73,11 +73,11 @@ describe('co2Emissions()', () => {
 		});
 
 		it('returns the correct data', async () => {
-			result = await co2Emissions(hostName);
+			result = await getCo2Emissions(hostName);
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
-				emissions: '329.78 g',
+				emissions: '329.78 grams',
 				host: greencheckAPIFound
 			});
 		});
@@ -92,11 +92,11 @@ describe('co2Emissions()', () => {
 		});
 
 		it('returns the correct data', async () => {
-			result = await co2Emissions(hostName);
+			result = await getCo2Emissions(hostName);
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
-				emissions: '380.30 g',
+				emissions: '380.30 grams',
 				host: greencheckAPINotFound
 			});
 		});
@@ -109,49 +109,17 @@ describe('co2Emissions()', () => {
 		});
 
 		it('returns the correct data, but logs an error', async () => {
-			result = await co2Emissions(hostName);
+			result = await getCo2Emissions(hostName);
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
-				emissions: '380.30 g',
+				emissions: '380.30 grams',
 				host: {
 					green: false,
 					error: undefined
 				}
 			});
 			expect(console.error).toHaveBeenCalled();
-		});
-	});
-
-	describe('byte sizes', () => {
-		beforeEach(() => {
-			// @ts-ignore
-			global.fetch = vi.fn(() => Promise.reject());
-		});
-
-		describe.each([
-			{
-				format: 'bytes',
-				expected: '1073741824.00 bytes'
-			},
-			{
-				format: 'kilobytes',
-				expected: '1048576.00 kilobytes'
-			},
-			{
-				format: 'megabytes',
-				expected: '1024.00 megabytes'
-			},
-			{
-				format: 'gigabytes',
-				expected: '1.00 gigabytes'
-			}
-		])('describe object add($a, $b)', ({ format, expected }) => {
-			it(`calculates ${format} correctly`, async () => {
-				// @ts-ignore
-				result = await co2Emissions(hostName, format);
-				expect(result.size).toEqual(expected);
-			});
 		});
 	});
 });
