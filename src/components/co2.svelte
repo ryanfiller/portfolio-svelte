@@ -1,29 +1,44 @@
 <script lang="typescript">
 	import { page } from '$app/stores';
-	import { co2Emissions } from '$helpers';
+	import { onMount } from 'svelte';
+
+	import { getCo2Emissions } from '$helpers';
+
+	function link(text: string, url: string) {
+		return `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`
+	}
+
+	let canWaitUntilRequestsAreDone: boolean;
+	let calculating: Promise<any>;
+
+	onMount(() => {
+		canWaitUntilRequestsAreDone = "requestIdleCallback" in window
+
+		requestIdleCallback(() => {
+			calculating = getCo2Emissions($page.url.hostname, 'kilobytes')
+		});
+	})
+	
 </script>
 
-<details>
+<details class='needs-js'>
 	<summary>
-		<a
-			target="_blank"
-			rel="noopener noreferrer"
-			href="https://www.thegreenwebfoundation.org/co2-js/"
-		>
-			co2.js
-		</a>
-		data:
+		{@html link("co2.js", "https://www.thegreenwebfoundation.org/co2-js/")} data:
 	</summary>
-
-	{#await co2Emissions($page.url.hostname, 'kilobytes')}
-		...
-	{:then c02}
-		<pre>{JSON.stringify(c02, null, 2)}</pre>
-	{/await}
+	{#if canWaitUntilRequestsAreDone}
+		{#await calculating}
+			...
+		{:then c02}
+			<pre>{JSON.stringify(c02, null, 2)}</pre>
+		{/await}
+	{:else}
+		this feature uses {@html link("<code>requestIdleCallback</code>", "https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback")}, which {@html link("your browser currently does not support", "https://caniuse.com/?search=requestIdleCallback")}
+	{/if}
 </details>
 
+
 <style>
-	summary a {
+	details :global(a) {
 		color: currentcolor;
 		font-weight: bolder;
 	}

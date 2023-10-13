@@ -1,14 +1,9 @@
 import tgwf from '@tgwf/co2';
 
 import { convertBytes } from '.';
+import type { conversion } from './convert-bytes';
 
 // https://developers.thegreenwebfoundation.org/api/greencheck/v3/check-single-domain/#response-object
-interface SupportingDocuments {
-	id: number;
-	title: string;
-	link: string;
-}
-
 interface Host {
 	url: string;
 	hosted_by: string;
@@ -18,6 +13,12 @@ interface Host {
 	hosted_by_id: number;
 	modified: string;
 	supporting_documents: [SupportingDocuments];
+}
+
+interface SupportingDocuments {
+	id: number;
+	title: string;
+	link: string;
 }
 
 function getEmissions(bytes: number, host: Host) {
@@ -47,11 +48,10 @@ export default async function getCo2Emissions(hostname: string, unit: conversion
 
 	const formattedResources: { [key: string]: number } = {};
 	resources.map(resource => {
-		const { name, decodedBodySize } = resource as PerformanceResourceTiming;
+		const { name, encodedBodySize } = resource as PerformanceResourceTiming;
 		// if two resources have the same name, the last one will overwrite the first one,
 		// which is great because one should be from cache and we don't want to count it anyways
-		// return formattedResources[name] = encodedBodySize
-		return formattedResources[name] = decodedBodySize
+		return formattedResources[name] = encodedBodySize
 	});
 
 	const bytes = Object.values(formattedResources).reduce((total, bytes) => {

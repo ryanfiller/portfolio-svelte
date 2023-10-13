@@ -46,9 +46,9 @@ describe('getCo2Emissions()', () => {
 			getEntriesByType: () => [
 				// make it return two to make sure accumulator works
 				// @ts-ignore
-				{ encodedBodySize: bytes / 2 },
+				{ name: 'one', encodedBodySize: bytes / 2 },
 				// @ts-ignore
-				{ encodedBodySize: bytes / 2 }
+				{ name: 'two', encodedBodySize: bytes / 2 }
 			]
 		};
 
