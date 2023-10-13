@@ -1,4 +1,5 @@
 <script>
+	// TODO - update this when `media="(not(prefers-reduced-data: reduce))"` is supported
 	const fonts = import.meta.glob('/static/fonts/**.*');
 </script>
 
@@ -8,8 +9,7 @@
 			rel="preload"
 			href={font.replace('/static', '')}
 			as="font"
-			type={font.split('.')[1]}
-			media="(prefers-reduced-data: no-preference)"
+			type={`font/${font.split('.')[1]}`}
 		/>
 	{/each}
 </svelte:head>

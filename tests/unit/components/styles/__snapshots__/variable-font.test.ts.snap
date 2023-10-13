@@ -9,12 +9,6 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
       <header
         class="s-mErrwtoW59yo"
       >
-        <code
-          class="s-mErrwtoW59yo"
-        >
-          --test-font
-        </code>
-         
         <span
           class="no-reduce-data s-mErrwtoW59yo"
         >
@@ -30,9 +24,17 @@ exports[`<VariableFont /> > rendering > renders consistently 1`] = `
           <span
             class="needs-js s-mErrwtoW59yo"
           >
-            (...)
+            (
+            1.00
+            KB)
           </span>
         </span>
+         
+        <code
+          class="s-mErrwtoW59yo"
+        >
+          --test-font
+        </code>
       </header>
        
       <fieldset
