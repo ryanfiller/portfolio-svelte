@@ -1,33 +1,32 @@
 /* these live in a separate file so they can be important and programmatically shown on the styleguide */
-/* make sure to set the unicode range to make these smaller */
+
+/* font files are subsetted to a smaller unicode range */
 /* https://jrgraphix.net/r/Unicode/0020-007F */
+/* https://github.com/zachleat/glyphhanger */
+/* can check with */
+/* https://wakamaifondue.com/ */
 
 @font-face {
 	font-family: 'Science Gothic';
-	/* this is the no-italic variant */
-	src: url('/fonts/ScienceGothic.ttf');
+	/* this variant has had the slnt axis removed */
+	src: url('/fonts/Science-Gothic.woff2');
 	unicode-range: U+0020-007F;
 	font-display: swap;
 }
 
 @font-face {
 	font-family: 'IBM Plex';
+	/* intentionally not including the IBM-Plex-Sans-Italic file */
 	src: url('/fonts/IBM-Plex-Sans.woff2');
 	unicode-range: U+0020-007F;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'IBM Plex';
-	src: url('/fonts/IBM-Plex-Sans-Italic.woff2');
-	font-style: italic;
-	unicode-range: U+0020-007F;
-	font-display: swap;
-}
-
-@font-face {
-	font-family: Recursive;
-	/* this is the latin subset variant */
+	/* needs quotes for a regex to work correctly */
+	/* stylelint-disable-next-line font-family-name-quotes */
+	font-family: 'Recursive';
+	/* this variant has had the slnt and MONO axis removed */
 	src: url('/fonts/Recursive.woff2');
 	unicode-range: U+0020-007F;
 	font-display: swap;

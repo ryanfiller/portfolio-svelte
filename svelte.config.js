@@ -18,6 +18,11 @@ const config = {
 		})
 	],
 
+	optimizeDeps: {
+		// make sure this file stays available in the build
+		include: ['src/styles/fonts.css']
+	},
+
 	kit: {
 		adapter:
 			process.env.ADAPTER === 'static'

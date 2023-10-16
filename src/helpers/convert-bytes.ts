@@ -9,4 +9,4 @@ export type conversion = keyof typeof conversion;
 
 export default function convertBytes(size: number, unit: conversion) {
 	return (size / conversion[unit as keyof typeof conversion]).toFixed(2);
-};
+}

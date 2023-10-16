@@ -32,10 +32,10 @@
 
 	function getFontFiles() {
 		// get the matching font face declarations
-		const fontFaceRegex = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`;
-		const regex = new RegExp(fontFaceRegex, 'g');
+		const fontFaceRegexPattern = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`;
+		const fontFaceRegex = new RegExp(fontFaceRegexPattern, 'g');
 
-		return css.match(regex)?.map((fontFace) => {
+		return css.match(fontFaceRegex)?.map((fontFace) => {
 			return fontFace.match(/src:\s*url\(['"]?(.*?)['"]?\);/)?.[1];
 		});
 	}
@@ -43,7 +43,7 @@
 	function getFontVariableName() {
 		const rootStyles = css.split(':root')[1];
 
-		const regexPattern = `(--[^:\\n\\r]+):\\s*'${fontName}`;
+		const regexPattern = `[\t;](--[^:\\n\\r]+):\\s*['"]${fontName}['"]`;
 		const regex = new RegExp(regexPattern);
 
 		return rootStyles.match(regex)?.[1];
@@ -60,21 +60,21 @@
 		const bytes: [number] = [0];
 
 		// jump through some dumb hoops for testing...
-		let promise
+		let promise;
 		if (typeof process !== 'undefined' && process.env.TESTING) {
-			promise = Promise.resolve()
+			promise = Promise.resolve();
 		} else {
-			promise = document.fonts.ready
+			promise = document.fonts.ready;
 		}
 
 		// make sure not run this until the fonts are loaded
 		await promise.then(() => {
-			const resources = performance.getEntriesByType('resource')
-			
+			const resources = performance.getEntriesByType('resource');
+
 			const dedupedResources: { [key: string]: PerformanceEntry } = {};
 			resources.forEach((resource) => {
-				dedupedResources[resource.name] = resource
-			})
+				dedupedResources[resource.name] = resource;
+			});
 
 			Object.values(dedupedResources).forEach((resource) => {
 				if (resource.name.includes(fontName.replace(' ', '-'))) {
@@ -147,9 +147,6 @@
 
 <section class="variable-font">
 	<header>
-		<code>
-			{font.variable}
-		</code>
 		<span class="no-reduce-data">
 			<a target="_blank" rel="noopener noreferrer" href={font.url}>
 				{font.name}
@@ -162,6 +159,9 @@
 				{/await}
 			</span>
 		</span>
+		<code>
+			{font.variable}
+		</code>
 	</header>
 
 	<fieldset class="needs-js">
@@ -252,7 +252,10 @@
 
 			& > span {
 				display: block;
-				font-size: 0.75em;
+
+				& a {
+					font-size: 1.5em;
+				}
 			}
 		}
 
