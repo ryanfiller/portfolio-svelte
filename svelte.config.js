@@ -1,10 +1,10 @@
-import path from 'path';
-import adapterAuto from '@sveltejs/adapter-auto';
-import adapterStatic from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import sveltePreprocess from 'svelte-preprocess';
+import path from 'path'
+import adapterAuto from '@sveltejs/adapter-auto'
+import adapterStatic from '@sveltejs/adapter-static'
+import { vitePreprocess } from '@sveltejs/kit/vite'
+import sveltePreprocess from 'svelte-preprocess'
 
-import postcssPlugins from './src/plugins/postcss/index.js';
+import postcssPlugins from './src/plugins/postcss/index.js'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -42,6 +42,6 @@ const config = {
 			// '$site-config': path.resolve('./src/site-config.js')
 		}
 	}
-};
+}
 
-export default config;
+export default config

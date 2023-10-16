@@ -1,13 +1,13 @@
 export type Fonts = {
-	[key: string]: Font;
-};
+	[key: string]: Font
+}
 
 export type Font = {
-	url: string;
+	url: string
 	options: {
-		[key: string]: [number, number];
-	};
-};
+		[key: string]: [number, number]
+	}
+}
 
 // commented options here have been removed with slice app
 // https://github.com/source-foundry/Slice
@@ -41,4 +41,4 @@ export const fonts: Fonts = {
 			CRSV: [0, 1]
 		}
 	}
-};
+}

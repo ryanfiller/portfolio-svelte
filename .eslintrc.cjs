@@ -1,13 +1,21 @@
 module.exports = {
 	root: true,
 	parser: '@typescript-eslint/parser',
-	extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'prettier'],
-	plugins: ['svelte3', '@typescript-eslint'],
+	extends: [
+		'eslint:recommended',
+		'plugin:svelte/recommended',
+		'plugin:@typescript-eslint/recommended',
+		'prettier'
+	],
+	plugins: ['@typescript-eslint'],
 	ignorePatterns: ['*.cjs'],
 	overrides: [
 		{
 			files: ['*.svelte'],
-			processor: 'svelte3/svelte3'
+			parser: 'svelte-eslint-parser',
+			parserOptions: {
+				parser: '@typescript-eslint/parser'
+			}
 		},
 		{
 			files: ['tests/**/*.{js,ts}'],
@@ -16,9 +24,12 @@ module.exports = {
 			}
 		}
 	],
+	rules: {
+		'svelte/no-at-html-tags': 'off'
+	},
 	settings: {
-		'svelte3/typescript': () => require('typescript'),
-		'svelte3/ignore-styles': () => true
+		'svelte/typescript': () => require('typescript'),
+		'svelte/ignore-styles': () => true
 	},
 	parserOptions: {
 		sourceType: 'module',
@@ -29,4 +40,4 @@ module.exports = {
 		es2017: true,
 		node: true
 	}
-};
+}

@@ -1,4 +1,4 @@
-import { vi } from 'vitest';
+import { vi } from 'vitest'
 
 export default function mockMatchMedia(media: string, matches = false, mockFunctions = {}) {
 	Object.defineProperty(window, 'matchMedia', {
@@ -11,7 +11,7 @@ export default function mockMatchMedia(media: string, matches = false, mockFunct
 				removeEventListener: vi.fn(),
 				dispatchEvent: vi.fn(),
 				...mockFunctions
-			};
+			}
 		})
-	});
+	})
 }

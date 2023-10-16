@@ -1,12 +1,12 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 
-import { getCo2Emissions } from '$helpers';
+import { getCo2Emissions } from '$helpers'
 
 describe('getCo2Emissions()', () => {
-	let result;
+	let result
 
-	const bytes = 1073741824; // this is 1GB in bytes
-	const hostName = 'ryanfiller.com';
+	const bytes = 1073741824 // this is 1GB in bytes
+	const hostName = 'ryanfiller.com'
 
 	const greencheckAPIFound = {
 		url: hostName,
@@ -23,24 +23,24 @@ describe('getCo2Emissions()', () => {
 				link: 'https://sustainability.google'
 			}
 		]
-	};
+	}
 
 	const greencheckAPINotFound = {
 		green: false,
 		url: hostName,
 		data: false
-	};
+	}
 
 	// @ts-ignore
-	let performance;
+	let performance
 	// @ts-ignore
-	let fetch;
+	let fetch
 	// @ts-ignore
-	let error;
+	let error
 	beforeEach(() => {
-		performance = global.performance;
-		fetch = global.fetch;
-		error = console.error;
+		performance = global.performance
+		fetch = global.fetch
+		error = console.error
 
 		global.performance = {
 			getEntriesByType: () => [
@@ -52,66 +52,66 @@ describe('getCo2Emissions()', () => {
 				// @ts-ignore
 				{ name: 'three', transferSize: 0 }
 			]
-		};
+		}
 
-		console.error = vi.fn();
-	});
+		console.error = vi.fn()
+	})
 
 	afterEach(() => {
 		// @ts-ignore
-		global.performance = performance;
+		global.performance = performance
 		// @ts-ignore
-		global.fetch = fetch;
+		global.fetch = fetch
 		// @ts-ignore
-		global.console.error = error;
-	});
+		global.console.error = error
+	})
 
 	describe('when the API finds data', () => {
 		beforeEach(() => {
 			// @ts-ignore
 			global.fetch = vi.fn(() => ({
 				json: () => greencheckAPIFound
-			}));
-		});
+			}))
+		})
 
 		it('returns the correct data', async () => {
-			result = await getCo2Emissions(hostName);
+			result = await getCo2Emissions(hostName)
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
 				emissions: '329.78 grams',
 				host: greencheckAPIFound
-			});
-		});
-	});
+			})
+		})
+	})
 
 	describe('when the API does NOT find data', () => {
 		beforeEach(() => {
 			// @ts-ignore
 			global.fetch = vi.fn(() => ({
 				json: () => greencheckAPINotFound
-			}));
-		});
+			}))
+		})
 
 		it('returns the correct data', async () => {
-			result = await getCo2Emissions(hostName);
+			result = await getCo2Emissions(hostName)
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
 				emissions: '380.30 grams',
 				host: greencheckAPINotFound
-			});
-		});
-	});
+			})
+		})
+	})
 
 	describe('when the API errors', () => {
 		beforeEach(() => {
 			// @ts-ignore
-			global.fetch = vi.fn(() => Promise.reject());
-		});
+			global.fetch = vi.fn(() => Promise.reject())
+		})
 
 		it('returns the correct data, but logs an error', async () => {
-			result = await getCo2Emissions(hostName);
+			result = await getCo2Emissions(hostName)
 
 			expect(result).toEqual({
 				size: '1073741824.00 bytes',
@@ -120,8 +120,8 @@ describe('getCo2Emissions()', () => {
 					green: false,
 					error: undefined
 				}
-			});
-			expect(console.error).toHaveBeenCalled();
-		});
-	});
-});
+			})
+			expect(console.error).toHaveBeenCalled()
+		})
+	})
+})

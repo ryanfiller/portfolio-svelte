@@ -1,11 +1,11 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from 'vitest'
 
-import { convertBytes } from '$helpers';
+import { convertBytes } from '$helpers'
 
 describe('convertBytes()', () => {
-	let result;
+	let result
 
-	const bytes = 1073741824; // this is 1GB in bytes
+	const bytes = 1073741824 // this is 1GB in bytes
 
 	describe.each([
 		{
@@ -27,8 +27,8 @@ describe('convertBytes()', () => {
 	])('describe object add($a, $b)', ({ format, expected }) => {
 		it(`calculates ${format} correctly`, async () => {
 			// @ts-ignore
-			result = await convertBytes(bytes, format);
-			expect(result).toEqual(expected);
-		});
-	});
-});
+			result = await convertBytes(bytes, format)
+			expect(result).toEqual(expected)
+		})
+	})
+})
