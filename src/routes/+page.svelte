@@ -1,23 +1,17 @@
 <script lang="typescript">
 	import GlobalStyles from '$styles/globals.svelte';
-	import Logo from '$components/logo.svelte';
 
 	import { fonts } from '$styles/config';
 	import VariableFont from '$components/styles/variable-font.svelte';
-	import Footer from '$components/layout/footer.svelte';
 </script>
 
 <GlobalStyles />
-
-<Logo />
 
 <section class="fonts">
 	{#each Object.keys(fonts) as font}
 		<VariableFont fontName={font} />
 	{/each}
 </section>
-
-<Footer />
 
 <style lang="postcss">
 	:global(body) {
@@ -29,10 +23,12 @@
 	}
 
 	.fonts {
-		width: 100%;
+		/* max-width: var(--readable-max); */
+		margin-inline: auto;
 		display: flex;
 		flex-wrap: wrap;
-		gap: 2rem;
+		padding: 3rem;
+		gap: 3rem;
 
 		& > :global(*) {
 			flex: 1;

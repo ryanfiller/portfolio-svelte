@@ -7,7 +7,7 @@
   import SEO from '$components/layout/seo.svelte'
   import Header from '$components/layout/header.svelte'
   import Banner from '$components/layout/banner.svelte'
-  import Footer from '$components/layout/footer.svelte'
+  import Footer from '$components/footer.svelte'
 
   const alertActive = $$slots.alert
 </script>

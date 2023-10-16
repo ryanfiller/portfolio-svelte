@@ -17,6 +17,13 @@
 			{
 				"ignoreMediaFeatureNames": ["prefers-reduced-data"]
 			}
+		],
+		"at-rule-empty-line-before": null,
+		"declaration-block-no-redundant-longhand-properties": [
+			true,
+			{
+				"ignoreShorthands": ["/grid/"]
+			}
 		]
 	},
 	"ignoreFiles": ["node_modules/**/*.css", "build/**/*.css", "__old/**/*.*"]

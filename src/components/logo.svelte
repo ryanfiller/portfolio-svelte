@@ -1,13 +1,19 @@
 <script lang="typescript">
+	export let href: string;
+	export let title: string;
+
 	import logo from '/static/logo.svg?raw';
 
 	function addTransitionDelay(svg: string) {
+		let iterator = 0
 		return svg
 			.split('\n') // explode the element
-			.map((part, index) => {
+			.map((part) => {
 				if (part.includes('<path')) {
-					// if this is a `<path>` add a delay...
-					return part.replace('<path', `<path style="--transition-index: ${index}"`);
+					// if this is a `<path>` start counting at 1...
+					iterator = iterator + 1
+					// ... and add a delay...
+					return part.replace('<path', `<path style="--transition-index: ${iterator}"`);
 				} else {
 					// ...otherwise don't edit things like `<svg>`
 					return part;
@@ -15,45 +21,54 @@
 			})
 			.join('\n'); // make this into an svg and not an array
 	}
+
+	const rendered = addTransitionDelay(logo);
 </script>
 
-<figure data-testid="logo">
-	{@html addTransitionDelay(logo)}
+<figure
+	class="logo"
+	title={href ? null : title || null}
+>
+	{#if href}
+		<a
+			{href}
+			title={title}
+		>
+			{@html rendered}
+		</a>
+	{:else}
+		{@html rendered}
+	{/if}
 </figure>
 
 <style lang="postcss">
-	figure {
-		--transition-speed: 0.2s;
+	a {
+		display: inline-block;
+	}
 
-		resize: horizontal;
-		overflow: hidden;
-		width: 50vw;
-		min-width: 7.5em;
-		max-width: 33.125em;
-		padding: 1rem;
+	figure {
 		container-type: inline-size;
-		display: flex;
-		justify-content: center;
-		box-sizing: content-box;
+		font-size: 1em;
+		margin: 0;
+		line-height: 0;
 
 		:global {
 			& svg {
-				display: block;
-				height: 10em;
-				width: 100%;
-				max-width: 7.5em;
-				color: black;
-				transition-duration: var(--transition-speed);
+				inline-size: 100%;
+				/* canvas 210px x 280px */
+				/* this ratio reduces to 21 x 28 */
+				aspect-ratio: 21 / 28;
+				max-inline-size: 1.5em;
 
 				& path {
 					fill: currentcolor;
 					stroke: currentcolor;
 					stroke-linecap: round;
-					stroke-width: 1;
+					stroke-inline-size: 1;
 
 					/* use where for specificity */
 					&:where(.f) {
-						transform: translateX(-11.75em);
+						transform: translateX(-39.5%);
 					}
 
 					&:where(:not(.r.one):not(.f)) {
@@ -62,10 +77,13 @@
 				}
 			}
 
-			@container (min-width: 33.125em) {
+			/* logo is 6.7125em wide */
+			@container (min-width: 10em) {
 				& svg {
-					width: 100%;
-					max-width: 33.125em;
+					/* canvas 960px x 280px */
+					/* this ratio reduces to 24 x 7 */
+					aspect-ratio: 24 / 7;
+					max-inline-size: 6.6em;
 
 					& path {
 						opacity: 1;

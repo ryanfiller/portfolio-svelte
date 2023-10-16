@@ -1,0 +1,19 @@
+// Vitest Snapshot v1
+
+exports[`<Navicon /> > renders consistently 1`] = `
+<body>
+  <div>
+    <button
+      class="navicon s-gtbQPPg4bHUW"
+      data-for-size="whatever"
+      title="show off canvas navigation"
+    >
+      <label
+        class="s-gtbQPPg4bHUW"
+        for="show-right-drawer"
+      />
+    </button>
+    <!--&lt;Navicon&gt;-->
+  </div>
+</body>
+`;
