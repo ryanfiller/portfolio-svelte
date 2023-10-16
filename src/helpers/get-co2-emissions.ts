@@ -46,16 +46,17 @@ async function checkHost(host: string) {
 export default async function getCo2Emissions(hostname: string, unit: conversion = 'bytes') {
 	const resources = performance.getEntriesByType('resource')
 
-	const formattedResources: { [key: string]: number } = {};
-	resources.map(resource => {
-		const { name, encodedBodySize } = resource as PerformanceResourceTiming;
-		// if two resources have the same name, the last one will overwrite the first one,
-		// which is great because one should be from cache and we don't want to count it anyways
-		return formattedResources[name] = encodedBodySize
-	});
+	// const formattedResources: { [key: string]: number } = {};
+	// resources.map(resource => {
+	// 	const { name, encodedBodySize } = resource as PerformanceResourceTiming;
+	// 	// if two resources have the same name, the last one will overwrite the first one,
+	// 	// which is great because one should be from cache and we don't want to count it anyways
+	// 	return formattedResources[name] = encodedBodySize
+	// });
 
-	const bytes = Object.values(formattedResources).reduce((total, bytes) => {
-		return total + (bytes || 0);
+	const bytes = resources.reduce((total, resource) => {
+		const { transferSize } = resource as PerformanceResourceTiming;
+		return total + transferSize;
 	}, 0);
 
 	const host = await checkHost(hostname);
