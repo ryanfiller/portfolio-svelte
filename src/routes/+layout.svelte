@@ -3,6 +3,7 @@
 	import GlobalStyles from '$styles/globals.svelte';
 
 	import Header from '$components/header.svelte';
+	import Footer from '$components/footer.svelte';
 
 	let resizeTimer: ReturnType<typeof setTimeout>
   $: isResizing = false
@@ -46,9 +47,7 @@
 		<slot />
 	</main>
 
-	<footer id="site-footer">
-		footer
-	</footer>
+	<Footer />
 </div>
 
 <style global lang="postcss">

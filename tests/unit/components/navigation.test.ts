@@ -3,7 +3,7 @@ import { render } from '@testing-library/svelte'
 
 import Navigation from '/src/components/navigation.svelte'
 
-import { mainNav } from '../../src/site-config.js';
+import { mainNav } from '../../../src/site-config.js';
 
 describe('<Navigation />', () => {
 	let component
