@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { render, fireEvent, waitFor, within, isInaccessible } from '@testing-library/svelte';
+import { render, fireEvent, within, isInaccessible } from '@testing-library/svelte';
 import type { RenderResult } from '@testing-library/svelte';
 
 import { mockMatchMedia } from '../../test-helpers';
@@ -90,7 +90,7 @@ describe('<VariableFont />', () => {
 		it('renders the font name and size', () => {
 			const font = Object.keys(fonts)[0];
 			expect(component.getByRole('banner').textContent).toMatch(`--test-font`);
-			expect(component.getByRole('banner').textContent).toMatch(`${font} (1.00KB)`)
+			expect(component.getByRole('banner').textContent).toMatch(`${font} (1.00KB)`);
 		});
 
 		it('renders the font options', async () => {

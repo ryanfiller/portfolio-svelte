@@ -43,7 +43,7 @@
 	function getFontVariableName() {
 		const rootStyles = css.split(':root')[1];
 
-		const regexPattern = `[\t\;](--[^:\\n\\r]+):\\s*['"]${fontName}['"]`;
+		const regexPattern = `[\t;](--[^:\\n\\r]+):\\s*['"]${fontName}['"]`;
 		const regex = new RegExp(regexPattern);
 
 		return rootStyles.match(regex)?.[1];
@@ -60,21 +60,21 @@
 		const bytes: [number] = [0];
 
 		// jump through some dumb hoops for testing...
-		let promise
+		let promise;
 		if (typeof process !== 'undefined' && process.env.TESTING) {
-			promise = Promise.resolve()
+			promise = Promise.resolve();
 		} else {
-			promise = document.fonts.ready
+			promise = document.fonts.ready;
 		}
 
 		// make sure not run this until the fonts are loaded
 		await promise.then(() => {
-			const resources = performance.getEntriesByType('resource')
-			
+			const resources = performance.getEntriesByType('resource');
+
 			const dedupedResources: { [key: string]: PerformanceEntry } = {};
 			resources.forEach((resource) => {
-				dedupedResources[resource.name] = resource
-			})
+				dedupedResources[resource.name] = resource;
+			});
 
 			Object.values(dedupedResources).forEach((resource) => {
 				if (resource.name.includes(fontName.replace(' ', '-'))) {

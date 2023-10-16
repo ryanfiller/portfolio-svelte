@@ -23,6 +23,8 @@
 }
 
 @font-face {
+	/* needs quotes for a regex to work correctly */
+	/* stylelint-disable-next-line font-family-name-quotes */
 	font-family: 'Recursive';
 	/* this variant has had the slnt and MONO axis removed */
 	src: url('/fonts/Recursive.woff2');
