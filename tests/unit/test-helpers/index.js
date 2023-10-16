@@ -1,1 +1,1 @@
-export { default as mockMatchMedia } from './mock-match-media';
+export { default as mockMatchMedia } from './mock-match-media'
