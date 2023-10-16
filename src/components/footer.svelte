@@ -2,7 +2,9 @@
 	import CO2 from '$components/co2.svelte';
 </script>
 
-<footer>
+<footer
+	id="site-footer"
+>
 	<CO2 />
 </footer>
 

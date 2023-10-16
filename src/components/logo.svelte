@@ -1,6 +1,6 @@
 <script lang="typescript">
-	export let href: string = '';
-	export let title: string = '';
+	export let href: string;
+	export let title: string;
 
 	import logo from '/static/logo.svg?raw';
 

@@ -1,4 +1,6 @@
 <script lang="typescript">
+ 	import { page } from '$app/stores';
+
 	// import { colors } from '$styles/config.js'
 	import GlobalStyles from '$styles/globals.svelte';
 
@@ -15,6 +17,13 @@
       isResizing = false
     }, 500)
   }
+
+	let segment: string;
+	if ($page.route.id === '/') {
+		segment = 'homepage';
+	} else {
+		segment = $page.url.pathname.split('/').filter(Boolean)[0];
+	}
 </script>
 
 <svelte:head>
@@ -39,7 +48,7 @@
 
 <div
 	id="site"
-	class={isResizing ? 'resizing' : ''}
+	class={`${segment} ${isResizing ? 'resizing' : ''}`}
 >
 	<Header />
 
@@ -53,11 +62,12 @@
 <style global lang="postcss">
 	#site {
 		display: grid;
-		grid-template-rows: auto auto auto;
+		grid-template-rows: auto 1fr auto;
 		grid-template-columns: 100%;
 		grid-template-areas: "header"
 		 										 "content"
 												 "footer";
+		block-size: 100dvh;
 		max-block-size: 100%;
 		inline-size: 100dvw;
 		max-inline-size: 100%;
@@ -74,6 +84,7 @@
 
 		& main#content {
 			grid-area: content;
+			align-self: center;
 			overflow: auto;
 		}
 

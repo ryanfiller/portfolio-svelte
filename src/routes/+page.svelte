@@ -23,10 +23,12 @@
 	}
 
 	.fonts {
-		width: 100%;
+		/* max-width: var(--readable-max); */
+		margin-inline: auto;
 		display: flex;
-		flex-direction: column;
-		gap: 2rem;
+		flex-wrap: wrap;
+		padding: 3rem;
+		gap: 3rem;
 
 		& > :global(*) {
 			flex: 1;
