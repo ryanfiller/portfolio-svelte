@@ -21,9 +21,9 @@ DO OVER.
 
 [PR#102](https://github.com/ryanfiller/portfolio-svelte/pull/102) & [PR#104](https://github.com/ryanfiller/portfolio-svelte/pull/104)- start tracking co2 generated per page
 
-[PR#101](https://github.com/ryanfiller/portfolio-svelte/pull/101) - optimize font files
+[PR#101](https://github.com/ryanfiller/portfolio-svelte/pull/101) - optimize font files, subset and remove some axis
 
-[https://github.com/ryanfiller/portfolio-svelte/pull/101] - subset fonts and remove some axis
+[PR#105](https://github.com/ryanfiller/portfolio-svelte/pull/105) - upgrade to [Svelte 4](https://svelte.dev/docs/v4-migration-guide#transitions-are-local-by-default)
 
 </Change>
 
