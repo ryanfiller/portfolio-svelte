@@ -25,6 +25,8 @@ DO OVER.
 
 [PR#105](https://github.com/ryanfiller/portfolio-svelte/pull/105) - upgrade to [Svelte 4](https://svelte.dev/docs/v4-migration-guide#transitions-are-local-by-default)
 
+[PR#106](https://github.com/ryanfiller/portfolio-svelte/pull/106) - add analytics to beta and production sites
+
 </Change>
 
 <!-- <Change>

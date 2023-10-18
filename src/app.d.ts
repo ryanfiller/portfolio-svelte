@@ -9,4 +9,11 @@ declare global {
 	}
 }
 
+declare global {
+	interface Window {
+		// there are more properties here, this is just the only ever called directly
+		goatcounter: { count: function }
+	}
+}
+
 export {}

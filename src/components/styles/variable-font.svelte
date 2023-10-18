@@ -61,7 +61,7 @@
 
 		// jump through some dumb hoops for testing...
 		let promise;
-		if (typeof process !== 'undefined' && process.env.TESTING) {
+		if (import.meta.env.MODE === 'testing') {
 			promise = Promise.resolve();
 		} else {
 			promise = document.fonts.ready;

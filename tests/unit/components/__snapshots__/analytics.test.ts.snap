@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`<Analytics /> > renders the correct urls 1`] = `
+<body>
+  <div>
+     
+    <!--&lt;Analytics&gt;-->
+  </div>
+</body>
+`;
