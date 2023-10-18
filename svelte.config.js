@@ -32,7 +32,7 @@ const config = {
 				: adapterAuto(),
 
 		alias: {
-			// $actions: path.resolve('./src/actions'),
+			$actions: path.resolve('./src/actions'),
 			$components: path.resolve('./src/components'),
 			$helpers: path.resolve('./src/helpers'),
 			// $plugins: path.resolve('./src/plugins'),

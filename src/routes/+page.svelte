@@ -20,12 +20,18 @@
 <Footer />
 
 <style lang="postcss">
-	:global(body) {
+	:global(body, html) {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+	}
+
+	:global(#site) {
 		min-height: 100dvh;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 	}
 
 	.fonts {
