@@ -1,7 +1,11 @@
 <script lang="typescript">
-	import Analytics from "$components/analytics.svelte"
+	import Analytics from '$components/analytics.svelte'
+	import KonamiCode from '$components/konami-code.svelte'
 </script>
 
 <Analytics />
+<KonamiCode />
 
-<slot />
+<div id="site">
+	<slot />
+</div>
