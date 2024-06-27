@@ -20,6 +20,7 @@ meta:
 ---
 
 <script>
+  import Note from '$components/misc/note.svelte'
   import MkIIProgress from '$components/misc/mk-ii-progress.svelte'
 </script>
 
@@ -99,7 +100,13 @@ See an interactive font specimen of Recursive [here](https://www.recursive.desig
 
 ## Maximizing Performance
 
-So, with three variable fonts I have a total of 1165 kilobytes, or 1.165 megabytes, o files _just_ for fonts on my site.
+So, with three variable fonts I have a total of 1165 kilobytes, or 1.165 megabytes, of files _just_ for fonts on my site.
+
+<Note title="Editor's Note">
+
+  While fact checking this post I realized that I made a bit of a mistake — The version of Science Gothic that I'd been doing these comparisons on had actually _already_ had some of it's axis removed using a tool that I [talk about later in the post](TODO). 
+
+</Note>
 
 However, if I look at the last fully-designed version of my site [from 2018](https://2018.ryanfiller.com/) I was using the fonts `Dosis` (27KB) and `Raleway` (21KB). I wasn't loading every font weight, but let assume I was getting three for `Dosis` - light, medium, and bold, and six for `Raleway` - the same three weights and italic for each. That's... only 207KB. Shit.
 
