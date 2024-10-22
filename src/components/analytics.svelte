@@ -1,18 +1,18 @@
-<script lang='typescript'>
+<script lang="typescript">
 	let analyticsUrl: string
-  const mode = import.meta.env.MODE
+	const mode = import.meta.env.MODE
 
 	switch (mode) {
-    case 'development':
-    case 'testing':
+		case 'development':
+		case 'testing':
 			analyticsUrl = 'https://testing-analytics/'
-			break;
+			break
 		case 'beta':
 			analyticsUrl = 'https://ryanfiller-beta.goatcounter.com/count'
-			break;
-    case 'production':
+			break
+		case 'production':
 			analyticsUrl = 'https://ryanfiller.goatcounter.com/count'
-			break;
+			break
 		default:
 			analyticsUrl = ''
 	}
@@ -23,10 +23,10 @@
 		async
 		src={mode !== 'testing' ? '//gc.zgo.at/count.js' : 'testing-analytics.js'}
 		data-goatcounter={analyticsUrl}
-	/>
+	></script>
 </svelte:head>
 
 <noscript>
 	<!-- send an event that some with no js came to the site -->
-	<img data-testid='tracking-pixel' alt='' src={`${analyticsUrl}?p=/no-js&e=true`} />
+	<img data-testid="tracking-pixel" alt="" src={`${analyticsUrl}?p=/no-js&e=true`} />
 </noscript>

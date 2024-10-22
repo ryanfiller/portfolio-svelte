@@ -1,10 +1,10 @@
 <script lang="typescript">
-	import GlobalStyles from '$styles/globals.svelte';
-	import Logo from '$components/logo.svelte';
+	import GlobalStyles from '$styles/globals.svelte'
+	import Logo from '$components/logo.svelte'
 
-	import { fonts } from '$styles/config';
-	import VariableFont from '$components/styles/variable-font.svelte';
-	import Footer from '$components/layout/footer.svelte';
+	import { fonts } from '$styles/config'
+	import VariableFont from '$components/styles/variable-font.svelte'
+	import Footer from '$components/layout/footer.svelte'
 </script>
 
 <GlobalStyles />

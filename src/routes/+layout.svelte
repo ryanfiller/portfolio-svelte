@@ -7,7 +7,7 @@
 	 */
 
 	/** @type {Props} */
-	let { children } = $props();
+	let { children } = $props()
 </script>
 
 <Analytics />

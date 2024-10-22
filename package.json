@@ -63,6 +63,7 @@
 		"vitest": "^1.0.0"
 	},
 	"dependencies": {
-		"@tgwf/co2": "^0.13.7"
+		"@tgwf/co2": "^0.13.7",
+		"@types/tgwf__co2": "^0.14.2"
 	}
 }

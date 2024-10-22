@@ -11,6 +11,7 @@ const config = {
 	preprocess: [
 		vitePreprocess(),
 		sveltePreprocess({
+			typescript: true,
 			postcss: {
 				plugins: postcssPlugins,
 				fallback: 'index.html'

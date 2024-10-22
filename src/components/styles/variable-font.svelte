@@ -1,17 +1,17 @@
 <script lang="typescript">
-	export let fontName: string;
+	export let fontName: string
 
-	import { browser } from '$app/environment';
-	import { fonts } from '$styles/config';
-	import css from '$styles/fonts.css?inline';
-	import { convertBytes } from '$helpers';
+	import { browser } from '$app/environment'
+	import { fonts } from '$styles/config'
+	import css from '$styles/fonts.css?inline'
+	import { convertBytes } from '$helpers'
 
 	// TODO - it would be nice to move all these checks to a context store and only do them once
-	let reduceData = false;
+	let reduceData = false
 	if (browser) {
-		const mediaQuery = window.matchMedia('(prefers-reduced-data: reduce)');
-		reduceData = mediaQuery.matches;
-		mediaQuery.addEventListener('change', (event) => (reduceData = event.matches));
+		const mediaQuery = window.matchMedia('(prefers-reduced-data: reduce)')
+		reduceData = mediaQuery.matches
+		mediaQuery.addEventListener('change', (event) => (reduceData = event.matches))
 	}
 
 	// TODO - abstract this into $helpers function
@@ -23,113 +23,113 @@
 			.replace(/[^\w-]+/g, '') // Remove all non-word chars
 			.replace(/--+/g, '-') // Replace multiple - with single -
 			.replace(/^-+/, '') // Trim - from start of text
-			.replace(/-+$/, ''); // Trim - from end of text
+			.replace(/-+$/, '') // Trim - from end of text
 	}
 
 	function makeId(string: string) {
-		return `${slugify(fontName)}-${string}`;
+		return `${slugify(fontName)}-${string}`
 	}
 
 	function getFontFiles() {
 		// get the matching font face declarations
-		const fontFaceRegexPattern = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`;
-		const fontFaceRegex = new RegExp(fontFaceRegexPattern, 'g');
+		const fontFaceRegexPattern = `@font-face\\s*{[^}]*font-family:\\s*['"]?${fontName}['"]?;[^}]*src:\\s*url\\(['"]?(.*?)['"]?\\);`
+		const fontFaceRegex = new RegExp(fontFaceRegexPattern, 'g')
 
 		return css.match(fontFaceRegex)?.map((fontFace) => {
-			return fontFace.match(/src:\s*url\(['"]?(.*?)['"]?\);/)?.[1];
-		});
+			return fontFace.match(/src:\s*url\(['"]?(.*?)['"]?\);/)?.[1]
+		})
 	}
 
 	function getFontVariableName() {
-		const rootStyles = css.split(':root')[1];
+		const rootStyles = css.split(':root')[1]
 
-		const regexPattern = `[\t;](--[^:\\n\\r]+):\\s*['"]${fontName}['"]`;
-		const regex = new RegExp(regexPattern);
+		const regexPattern = `[\t;](--[^:\\n\\r]+):\\s*['"]${fontName}['"]`
+		const regex = new RegExp(regexPattern)
 
-		return rootStyles.match(regex)?.[1];
+		return rootStyles.match(regex)?.[1]
 	}
 
 	async function getFilesSizes() {
 		// only run this on the client, not the browser
-		if (!browser) return;
+		if (!browser) return
 
-		const files = getFontFiles() || [];
+		const files = getFontFiles() || []
 		// don't do this if there's no files
-		if (!files.length) return;
+		if (!files.length) return
 
-		const bytes: [number] = [0];
+		const bytes: [number] = [0]
 
 		// jump through some dumb hoops for testing...
-		let promise;
+		let promise
 		if (import.meta.env.MODE === 'testing') {
-			promise = Promise.resolve();
+			promise = Promise.resolve()
 		} else {
-			promise = document.fonts.ready;
+			promise = document.fonts.ready
 		}
 
 		// make sure not run this until the fonts are loaded
 		await promise.then(() => {
-			const resources = performance.getEntriesByType('resource');
+			const resources = performance.getEntriesByType('resource')
 
-			const dedupedResources: { [key: string]: PerformanceEntry } = {};
+			const dedupedResources: { [key: string]: PerformanceEntry } = {}
 			resources.forEach((resource) => {
-				dedupedResources[resource.name] = resource;
-			});
+				dedupedResources[resource.name] = resource
+			})
 
 			Object.values(dedupedResources).forEach((resource) => {
 				if (resource.name.includes(fontName.replace(' ', '-'))) {
-					bytes.push((resource as PerformanceResourceTiming).decodedBodySize);
+					bytes.push((resource as PerformanceResourceTiming).decodedBodySize)
 				}
-			});
-		});
+			})
+		})
 
 		// convert add the bytes together and convert to kilobytes and round to 0 decimal places
-		const total = bytes.reduce((total, current) => total + current, 0);
-		return convertBytes(total, 'kilobytes');
+		const total = bytes.reduce((total, current) => total + current, 0)
+		return convertBytes(total, 'kilobytes')
 	}
 
 	function getVariationSettings() {
 		return Object.entries(fonts[fontName].options)
 			.map((option) => {
-				const [name, [min, max]] = option;
-				const range = max - min;
-				const middle = (max + min) / 2;
+				const [name, [min, max]] = option
+				const range = max - min
+				const middle = (max + min) / 2
 				return {
 					name,
 					min,
 					max,
 					value: min >= 0 ? middle : max,
 					step: range === 1 ? 0.5 : 1
-				};
+				}
 			})
 			.filter((options) => {
 				if (reduceData) {
-					return options.name === 'wght' || options.name === 'wdth';
+					return options.name === 'wght' || options.name === 'wdth'
 				} else {
-					return true;
+					return true
 				}
-			});
+			})
 	}
 
 	function createFontStyles(variationSettings: { name: string; value: number }[]) {
 		return variationSettings
 			.map(({ name, value }) => {
-				return `'${name}' ${value}`;
+				return `'${name}' ${value}`
 			})
-			.join(', ');
+			.join(', ')
 	}
 
 	// prettier-ignore
 	const characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-	const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+	const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 	// prettier-ignore
 	const symbols = ['!', '"', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '{', '|', '}', '~', '[', '\\', ']', '^', '_', '`'];
-	const codeLigatures = ['&&', '||', '=>', '==', '!=', '<=', '>=', '!!', '?.'];
+	const codeLigatures = ['&&', '||', '=>', '==', '!=', '<=', '>=', '!!', '?.']
 
 	// for some reason this test fails if it this is just `bind:value={font.capitalization}`
 	function handleSelect(event: Event) {
-		if (!(event.target instanceof HTMLSelectElement)) return;
-		font.capitalization = event.target.value;
+		if (!(event.target instanceof HTMLSelectElement)) return
+		font.capitalization = event.target.value
 	}
 
 	$: font = {
@@ -142,7 +142,7 @@
 		text: 'the five boxing wizards jump quickly',
 		// text: characters.join(' '),
 		reduceData
-	};
+	}
 </script>
 
 <section class="variable-font">
@@ -227,7 +227,8 @@
 				--reduced-data-font: var({font.variable});
 			"
 		>
-			<textarea id={makeId('example-text')} class="example" wrap="hard" bind:value={font.text} />
+			<textarea id={makeId('example-text')} class="example" wrap="hard" bind:value={font.text}>
+			</textarea>
 			<p>
 				{characters.join(' ')} <br />
 				{numbers.join(' ')} <br />
@@ -257,10 +258,6 @@
 					font-size: 1.5em;
 				}
 			}
-		}
-
-		& > *:not(a) {
-			flex: 1;
 		}
 
 		& .example {

@@ -1,5 +1,5 @@
 <script lang="typescript">
-	import logo from '/static/logo.svg?raw';
+	import logo from '/static/logo.svg?raw'
 
 	function addTransitionDelay(svg: string) {
 		return svg
@@ -7,13 +7,13 @@
 			.map((part, index) => {
 				if (part.includes('<path')) {
 					// if this is a `<path>` add a delay...
-					return part.replace('<path', `<path style="--transition-index: ${index}"`);
+					return part.replace('<path', `<path style="--transition-index: ${index}"`)
 				} else {
 					// ...otherwise don't edit things like `<svg>`
-					return part;
+					return part
 				}
 			})
-			.join('\n'); // make this into an svg and not an array
+			.join('\n') // make this into an svg and not an array
 	}
 </script>
 
