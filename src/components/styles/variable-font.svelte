@@ -1,5 +1,5 @@
 <script lang="typescript">
-	export let fontName: string
+	let { fontName } = $props<{ fontName: string }>()
 
 	import { browser } from '$app/environment'
 	import { fonts } from '$styles/config'
@@ -7,12 +7,12 @@
 	import { convertBytes } from '$helpers'
 
 	// TODO - it would be nice to move all these checks to a context store and only do them once
-	let reduceData = false
-	if (browser) {
+	let reduceData = $state(false)
+	$effect(() => {
 		const mediaQuery = window.matchMedia('(prefers-reduced-data: reduce)')
 		reduceData = mediaQuery.matches
 		mediaQuery.addEventListener('change', (event) => (reduceData = event.matches))
-	}
+	})
 
 	// TODO - abstract this into $helpers function
 	function slugify(input: string) {
@@ -132,17 +132,16 @@
 		font.capitalization = event.target.value
 	}
 
-	$: font = {
+	const font = $state({
 		name: fontName,
 		variable: getFontVariableName(),
 		...fonts[fontName],
 		variationSettings: getVariationSettings(),
 		italic: false,
 		capitalization: 'none',
-		text: 'the five boxing wizards jump quickly',
+		text: 'the five boxing wizards jump quickly'
 		// text: characters.join(' '),
-		reduceData
-	}
+	})
 </script>
 
 <section class="variable-font">
@@ -188,7 +187,7 @@
 
 		<div class="select">
 			<label for={makeId('capitalization')}>text-transform</label>
-			<select id={makeId('capitalization')} on:change={handleSelect}>
+			<select id={makeId('capitalization')} onchange={handleSelect}>
 				<option value="none">none</option>
 				<option value="capitalize">capitalize</option>
 				<option value="uppercase">uppercase</option>

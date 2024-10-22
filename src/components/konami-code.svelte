@@ -15,7 +15,7 @@
 		{ key: 'A', symbol: '🅰️' }
 	]
 
-	export let activated = false
+	let { activated = false } = $props()
 
 	const keys = code.map(({ key }) => key)
 	const symbols = code.map(({ symbol }) => symbol)

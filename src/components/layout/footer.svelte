@@ -20,7 +20,7 @@
 			go see if it worked
 		</a>
 	{:else}
-		<button on:click={track}> send a tracking event </button>
+		<button onclick={track}> send a tracking event </button>
 	{/if}
 </footer>
 
