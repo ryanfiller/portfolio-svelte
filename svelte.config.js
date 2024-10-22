@@ -1,7 +1,7 @@
 import path from 'path'
 import adapterAuto from '@sveltejs/adapter-auto'
 import adapterStatic from '@sveltejs/adapter-static'
-import { vitePreprocess } from '@sveltejs/kit/vite'
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 import sveltePreprocess from 'svelte-preprocess'
 
 import postcssPlugins from './src/plugins/postcss/index.js'

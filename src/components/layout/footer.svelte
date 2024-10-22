@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: Unexpected token -->
 <script lang="typescript">
 	import CO2 from '$components/co2.svelte'
 

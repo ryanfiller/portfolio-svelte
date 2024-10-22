@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: Unexpected token -->
 <script lang="typescript">
 	import { page } from '$app/stores';
 	import { onMount } from 'svelte';

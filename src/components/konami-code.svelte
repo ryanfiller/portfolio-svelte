@@ -1,3 +1,4 @@
+<!-- @migration-task Error while migrating Svelte code: Unexpected token -->
 <script lang="typescript">
 	import keySequenceListener from '$actions/key-sequence-listener'
   import { sendToAnalytics } from '$helpers';
