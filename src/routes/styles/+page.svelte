@@ -1,7 +1,7 @@
 <script lang="typescript">
-	import { fonts } from '$styles/config';
-	import GlobalStyles from '$styles/globals.svelte';
-	import VariableFont from '$components/styles/variable-font.svelte';
+	import { fonts } from '$styles/config'
+	import GlobalStyles from '$styles/globals.svelte'
+	import VariableFont from '$components/styles/variable-font.svelte'
 </script>
 
 <!-- TODO get rid of this -->

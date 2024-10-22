@@ -1,6 +1,6 @@
 <script>
 	// TODO - update this when `media="(not(prefers-reduced-data: reduce))"` is supported
-	const fonts = import.meta.glob('/static/fonts/**.*');
+	const fonts = import.meta.glob('/static/fonts/**.*')
 </script>
 
 <svelte:head>
@@ -44,7 +44,9 @@
 	html {
 		& body {
 			font-family: var(--font-sans-serif);
-			font-variation-settings: 'wght' 60, 'wdth' 500;
+			font-variation-settings:
+				'wght' 60,
+				'wdth' 500;
 		}
 	}
 

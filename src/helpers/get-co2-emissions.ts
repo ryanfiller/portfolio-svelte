@@ -22,10 +22,10 @@ interface SupportingDocuments {
 }
 
 function getEmissions(bytes: number, host: Host) {
-	const emissions = new tgwf.co2()
+	const emissions = new tgwf.co2({})
 	const greenHost = host.green
 
-	return emissions.perByte(bytes, greenHost).toFixed(2)
+	return (emissions.perByte(bytes, greenHost) as number).toFixed(2)
 }
 
 async function checkHost(host: string) {

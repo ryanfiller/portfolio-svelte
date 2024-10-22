@@ -29,6 +29,8 @@ DO OVER.
 
 [PR#107](https://github.com/ryanfiller/portfolio-svelte/pull/107) - ?????
 
+[PR#109](https://github.com/ryanfiller/portfolio-svelte/pull/109) - migrate to `Svelte5` and `SvelteKit2`
+
 </Change>
 
 <!-- <Change>
