@@ -1,4 +1,3 @@
-<!-- @migration-task Error while migrating Svelte code: Unexpected token -->
 <script lang='typescript'>
 	let analyticsUrl: string
   const mode = import.meta.env.MODE
