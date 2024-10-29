@@ -147,7 +147,7 @@ I won't be exploring the other potential `rel` values in this post because they 
     <a href="https://www.w3.org/TR/resource-hints/#prefetch">prefetch</a> & <a href="https://www.w3.org/TR/resource-hints/#prerender">prerender</a>
   </dt>
   <dd>used to identify a resource that might be required by the next navigation</dd>
-<dl>
+</dl>
 
 Since I'm intending the file to be loaded as fast as possible on *any* page, I don't think I'll get any speed benefits here either. These attributes seem most applicable to a specific page deeper in the site hierarchy that requires some heavy loading.
 

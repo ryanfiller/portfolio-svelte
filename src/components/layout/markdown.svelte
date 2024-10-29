@@ -436,6 +436,12 @@
         & * {
           color: var(--colorWhite);
         }
+
+        & img {
+          height: 1.5em;
+          width: auto;
+          margin: 0;
+        }
       }
 
       & tr {
@@ -444,6 +450,7 @@
 
       & th,
       & td {
+        vertical-align: baseline;
         border: 1px solid var(--colorPrimary);
         padding: 0.25em;
       }
