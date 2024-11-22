@@ -8,7 +8,7 @@ options:
   published: true
 meta:
   date: 2024-11-22
-  excerpt: Revisiting some code I wrong for a job interview in 2018.
+  excerpt: Revisiting some code I wrote for a job interview in 2018.
   categories:
     - code
   tags:
